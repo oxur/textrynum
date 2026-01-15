@@ -1,0 +1,17 @@
+[package]
+name = "ecl-design"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Design documentation and architectural decision records for ECL"
+keywords = ["documentation", "design"]
+categories = ["development-tools"]
+
+[dependencies]
+# No dependencies - this is a documentation-only crate
+
+[dev-dependencies]
+oxur-odm = { workspace = true }

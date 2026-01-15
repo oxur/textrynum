@@ -1,0 +1,19 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/ecl",
+    "crates/design",
+]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2021"
+authors = ["Duncan McGreggor <oubiwann@gmail.com>"]
+license = "Apache-2.0"
+repository = "https://github.com/oxur/ecl"
+homepage = "https://github.com/oxur/ecl"
+description = "\"Extract, Cogitate, Load\" — Managed Serialism for AI Agent Workflows"
+
+[workspace.dependencies]
+# Design documentation management (using local oxur repo for latest updates)
+oxur-odm = { version = "0.1.0", path = "../oxur/crates/oxur-odm" }
