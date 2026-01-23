@@ -1,0 +1,25 @@
+services:
+  restate:
+    image: restatedev/restate:latest
+    ports:
+      - "8080:8080"  # Ingress
+      - "9070:9070"  # Admin
+    environment:
+      - RUST_LOG=info
+    volumes:
+      - restate-data:/data
+
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ecl
+      POSTGRES_USER: ecl
+      POSTGRES_PASSWORD: ecl_dev_password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  restate-data:
+  postgres-data:
