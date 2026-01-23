@@ -189,4 +189,61 @@ mod tests {
         let deserialized: StepId = serde_json::from_str(&json).unwrap();
         assert_eq!(id, deserialized);
     }
+
+    #[test]
+    fn test_workflow_id_clone() {
+        let id = WorkflowId::new();
+        let cloned = id;
+        assert_eq!(id, cloned);
+    }
+
+    #[test]
+    fn test_step_id_clone() {
+        let id = StepId::new("test");
+        let cloned = id.clone();
+        assert_eq!(id, cloned);
+    }
+
+    #[test]
+    fn test_step_id_as_ref() {
+        let id = StepId::new("my-step");
+        let s: &str = id.as_ref();
+        assert_eq!(s, "my-step");
+    }
+
+    #[test]
+    fn test_workflow_id_hash() {
+        use std::collections::HashMap;
+        let id1 = WorkflowId::new();
+        let id2 = id1;
+        let mut map = HashMap::new();
+        map.insert(id1, "value");
+        assert_eq!(map.get(&id2), Some(&"value"));
+    }
+
+    #[test]
+    fn test_step_id_hash() {
+        use std::collections::HashMap;
+        let id1 = StepId::new("test");
+        let id2 = StepId::new("test");
+        let mut map = HashMap::new();
+        map.insert(id1, "value");
+        assert_eq!(map.get(&id2), Some(&"value"));
+    }
+
+    #[test]
+    fn test_workflow_id_as_uuid() {
+        let uuid = Uuid::new_v4();
+        let id = WorkflowId::from_uuid(uuid);
+        assert_eq!(id.as_uuid(), &uuid);
+    }
+
+    #[test]
+    fn test_step_id_equality() {
+        let id1 = StepId::new("same");
+        let id2 = StepId::new("same");
+        let id3 = StepId::new("different");
+        assert_eq!(id1, id2);
+        assert_ne!(id1, id3);
+    }
 }

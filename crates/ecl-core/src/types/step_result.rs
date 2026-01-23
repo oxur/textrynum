@@ -188,4 +188,79 @@ mod tests {
         };
         result.unwrap();
     }
+
+    #[test]
+    fn test_map_on_needs_revision() {
+        let result: StepResult<i32> = StepResult::NeedsRevision {
+            output: 5,
+            feedback: "improve".to_string(),
+        };
+        let mapped = result.map(|x| x * 2);
+        let StepResult::NeedsRevision { output, feedback } = mapped else {
+            unreachable!("Expected NeedsRevision");
+        };
+        assert_eq!(output, 10);
+        assert_eq!(feedback, "improve");
+    }
+
+    #[test]
+    fn test_map_on_failed() {
+        let result: StepResult<i32> = StepResult::Failed {
+            error: "error".to_string(),
+            retryable: true,
+        };
+        let mapped = result.map(|x| x * 2);
+        let StepResult::Failed { error, retryable } = mapped else {
+            unreachable!("Expected Failed");
+        };
+        assert_eq!(error, "error");
+        assert!(retryable);
+    }
+
+    #[test]
+    fn test_unwrap_or_on_needs_revision() {
+        let result: StepResult<i32> = StepResult::NeedsRevision {
+            output: 7,
+            feedback: "feedback".to_string(),
+        };
+        assert_eq!(result.unwrap_or(0), 0);
+    }
+
+    #[test]
+    fn test_clone() {
+        let result = StepResult::Success(42);
+        let cloned = result.clone();
+        assert_eq!(result, cloned);
+    }
+
+    #[test]
+    fn test_failed_not_retryable() {
+        let result: StepResult<i32> = StepResult::Failed {
+            error: "permanent error".to_string(),
+            retryable: false,
+        };
+        assert!(!result.is_retryable());
+    }
+
+    #[test]
+    fn test_serialization_needs_revision() {
+        let result: StepResult<String> = StepResult::NeedsRevision {
+            output: "draft".to_string(),
+            feedback: "needs work".to_string(),
+        };
+        let json = serde_json::to_string(&result).unwrap();
+        let deserialized: StepResult<String> = serde_json::from_str(&json).unwrap();
+        assert_eq!(result, deserialized);
+    }
+
+    #[test]
+    fn test_serialization_failed() {
+        let result: StepResult<String> = StepResult::Failed {
+            error: "timeout".to_string(),
+            retryable: true,
+        };
+        let json = serde_json::to_string(&result).unwrap();
+        let deserialized: StepResult<String> = serde_json::from_str(&json).unwrap();
+        assert_eq!(result, deserialized);
+    }
 }

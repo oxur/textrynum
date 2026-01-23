@@ -187,4 +187,68 @@ mod tests {
         fn assert_send_sync<T: Send + Sync>() {}
         assert_send_sync::<Error>();
     }
+
+    #[test]
+    fn test_config_error() {
+        let err = Error::config("Invalid API endpoint");
+        assert_eq!(err.to_string(), "Configuration error: Invalid API endpoint");
+        assert!(!err.is_retryable());
+    }
+
+    #[test]
+    fn test_workflow_not_found() {
+        let err = Error::WorkflowNotFound {
+            id: "wf-123".to_string(),
+        };
+        assert_eq!(err.to_string(), "Workflow not found: wf-123");
+        assert!(!err.is_retryable());
+    }
+
+    #[test]
+    fn test_step_not_found() {
+        let err = Error::StepNotFound {
+            id: "step-456".to_string(),
+        };
+        assert_eq!(err.to_string(), "Step not found: step-456");
+        assert!(!err.is_retryable());
+    }
+
+    #[test]
+    fn test_llm_error_with_source() {
+        let io_error = std::io::Error::other("network failure");
+        let err = Error::llm_with_source("API call failed", Box::new(io_error));
+        assert!(err.to_string().contains("API call failed"));
+        assert!(err.is_retryable());
+    }
+
+    #[test]
+    fn test_io_error_is_retryable() {
+        let io_error = std::io::Error::new(std::io::ErrorKind::NotFound, "file not found");
+        let err: Error = io_error.into();
+        assert!(err.is_retryable());
+    }
+
+    #[test]
+    fn test_serde_error_not_retryable() {
+        let json = "{invalid json}";
+        let serde_err = serde_json::from_str::<serde_json::Value>(json).unwrap_err();
+        let err: Error = serde_err.into();
+        assert!(!err.is_retryable());
+    }
+
+    #[test]
+    fn test_timeout_error_display() {
+        let err = Error::Timeout { seconds: 60 };
+        assert_eq!(err.to_string(), "Step timed out after 60s");
+    }
+
+    #[test]
+    fn test_validation_without_field() {
+        let err = Error::validation("Generic validation failure");
+        let Error::Validation { field, message } = err else {
+            unreachable!("Expected Validation error");
+        };
+        assert_eq!(field, None);
+        assert_eq!(message, "Generic validation failure");
+    }
 }
