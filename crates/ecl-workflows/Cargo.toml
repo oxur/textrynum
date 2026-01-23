@@ -1,3 +1,7 @@
+[[bin]]
+name = "ecl-workflows"
+path = "src/main.rs"
+
 [package]
 name = "ecl-workflows"
 version.workspace = true
@@ -21,6 +25,7 @@ anyhow = { workspace = true }
 async-trait = { workspace = true }
 restate-sdk = { workspace = true }
 tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
 backon = { workspace = true }
 failsafe = { workspace = true }
 
