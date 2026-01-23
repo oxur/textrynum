@@ -6,6 +6,7 @@
 //!
 //! Restate workflow definitions for ECL.
 
+pub mod critique_loop;
 pub mod simple;
 
 // Re-export core types

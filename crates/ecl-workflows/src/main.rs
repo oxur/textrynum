@@ -1,12 +1,15 @@
 //! ECL Workflows service entry point.
 //!
 //! Note: Full Restate HTTP server integration deferred pending SDK 0.7 API verification.
-//! This main creates the workflow service and demonstrates the setup pattern.
+//! This main creates the workflow services and demonstrates the setup pattern.
 
 use ecl_core::llm::{ClaudeProvider, MockLlmProvider, RetryWrapper};
 use std::sync::Arc;
 
+mod critique_loop;
 mod simple;
+
+use critique_loop::CritiqueLoopWorkflow;
 use simple::SimpleWorkflowService;
 
 #[tokio::main]
@@ -47,22 +50,52 @@ async fn main() -> anyhow::Result<()> {
         Arc::new(RetryWrapper::new(Arc::new(claude)))
     };
 
-    // Create workflow service
-    let service = SimpleWorkflowService::new(llm);
+    // Determine which workflow to run
+    let workflow_type = std::env::var("WORKFLOW_TYPE").unwrap_or_else(|_| "simple".to_string());
 
-    // Run a test workflow
-    let input = simple::SimpleWorkflowInput::new("Benefits of Rust programming");
+    match workflow_type.as_str() {
+        "simple" => {
+            tracing::info!("Running simple 2-step workflow");
+            let service = SimpleWorkflowService::new(llm);
+            let input = simple::SimpleWorkflowInput::new("Benefits of Rust programming");
 
-    tracing::info!("Running test workflow");
-    match service.run_simple(input).await {
-        Ok(output) => {
-            tracing::info!("Workflow completed successfully");
-            tracing::info!("Generated: {}", output.generated_text);
-            tracing::info!("Critique: {}", output.critique);
+            match service.run_simple(input).await {
+                Ok(output) => {
+                    tracing::info!("Simple workflow completed successfully");
+                    tracing::info!("Generated: {}", output.generated_text);
+                    tracing::info!("Critique: {}", output.critique);
+                }
+                Err(e) => {
+                    tracing::error!("Simple workflow failed: {}", e);
+                    return Err(e.into());
+                }
+            }
         }
-        Err(e) => {
-            tracing::error!("Workflow failed: {}", e);
-            return Err(e.into());
+        "critique_loop" => {
+            tracing::info!("Running critique-revise loop workflow");
+            let workflow = CritiqueLoopWorkflow::new(llm);
+            let input = critique_loop::CritiqueLoopInput::new("Benefits of Rust programming")
+                .with_max_revisions(2);
+
+            match workflow.run(input).await {
+                Ok(output) => {
+                    tracing::info!("Critique loop workflow completed successfully");
+                    tracing::info!("Revisions: {}", output.revision_count);
+                    tracing::info!("Final text: {}", output.final_text);
+                    tracing::info!("Critiques: {}", output.critiques.len());
+                }
+                Err(e) => {
+                    tracing::error!("Critique loop workflow failed: {}", e);
+                    return Err(e.into());
+                }
+            }
+        }
+        other => {
+            tracing::error!("Unknown workflow type: {}", other);
+            return Err(anyhow::anyhow!(
+                "Unknown WORKFLOW_TYPE: {}. Use 'simple' or 'critique_loop'",
+                other
+            ));
         }
     }
 

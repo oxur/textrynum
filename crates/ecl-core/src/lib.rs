@@ -13,4 +13,4 @@ pub mod types;
 // Re-exports for convenience
 pub use error::{Error, Result};
 pub use llm::{CompletionRequest, CompletionResponse, LlmProvider, Message};
-pub use types::{StepId, StepMetadata, StepResult, WorkflowId, WorkflowState};
+pub use types::{CritiqueDecision, StepId, StepMetadata, StepResult, WorkflowId, WorkflowState};

@@ -1,8 +1,13 @@
 # ECL — Extract, Cogitate, Load
 
-> *Far more than agent parallelism, we've found a deep need for "managed serialism" or agent workflow management.*
+[![][build-badge]][build]
+[![][crate-badge]][crate]
+[![][tag-badge]][tag]
+[![][docs-badge]][docs]
 
----
+[![][logo]][logo-large]
+
+*Far more than agent parallelism, we've found a deep need for "managed serialism" or agent workflow management.*
 
 ## What is ECL?
 
@@ -51,7 +56,7 @@ ECL provides:
 
 ## Architecture Overview
 
-```
+```text
 ┌───────────────────────────────────────────────────────────┐
 │                            ECL                            │
 │                                                           │
@@ -226,10 +231,15 @@ TBD
 
 ---
 
-## Acknowledgments
+[//]: ---Named-Links---
 
-ECL builds on excellent work from the Rust ecosystem:
-
-- [Restate](https://restate.dev) — Durable execution engine from the creators of Apache Flink
-- [SQLx](https://github.com/launchbadge/sqlx) — Async SQL toolkit
-- [Tokio](https://tokio.rs) — Async runtime that powers it all
+[logo]: assets/images/logo/v1-x250.png
+[logo-large]: assets/images/logo/v1.png
+[build]: https://github.com/oxur/ecl/actions/workflows/ci.yml
+[build-badge]: https://github.com/oxur/ecl/actions/workflows/ci.yml/badge.svg
+[crate]: https://crates.io/crates/ecl
+[crate-badge]: https://img.shields.io/crates/v/ecl.svg
+[docs]: https://docs.rs/ecl/
+[docs-badge]: https://img.shields.io/badge/rust-documentation-blue.svg
+[tag-badge]: https://img.shields.io/github/tag/oxur/ecl.svg
+[tag]: https://github.com/oxur/ecl/tags
