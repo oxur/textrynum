@@ -1,0 +1,21 @@
+[package]
+name = "fabryk"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Knowledge fabric for AI workflows - umbrella crate"
+
+[dependencies]
+fabryk-core = { path = "../fabryk-core" }
+fabryk-acl = { path = "../fabryk-acl" }
+fabryk-storage = { path = "../fabryk-storage" }
+fabryk-query = { path = "../fabryk-query" }
+fabryk-api = { path = "../fabryk-api" }
+fabryk-client = { path = "../fabryk-client" }
+
+[dev-dependencies]
+proptest.workspace = true

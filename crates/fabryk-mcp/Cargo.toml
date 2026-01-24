@@ -1,0 +1,48 @@
+[package]
+name = "fabryk-mcp"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Model Context Protocol server for Fabryk knowledge fabric"
+
+[[bin]]
+name = "fabryk-mcp"
+path = "src/main.rs"
+
+[dependencies]
+fabryk-core = { path = "../fabryk-core" }
+fabryk-client = { path = "../fabryk-client" }
+
+# MCP Protocol
+# TODO: Add rmcp when ready to implement
+# rmcp = { version = "0.8", features = ["server", "transport-stdio", "transport-http"] }
+
+# Async runtime
+tokio.workspace = true
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+
+# Configuration
+confyg.workspace = true
+
+# Logging
+twyg.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+# Error handling
+thiserror.workspace = true
+anyhow.workspace = true
+
+# Utilities
+uuid.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+tempfile.workspace = true

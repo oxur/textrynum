@@ -1,0 +1,39 @@
+[package]
+name = "fabryk-storage"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Storage backend implementations for Fabryk knowledge fabric"
+
+[dependencies]
+fabryk-core = { path = "../fabryk-core" }
+
+# Async runtime
+tokio.workspace = true
+async-trait.workspace = true
+
+# Database
+sqlx.workspace = true
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+
+# Error handling
+thiserror.workspace = true
+
+# Utilities
+uuid.workspace = true
+chrono.workspace = true
+
+# File system operations
+walkdir = "2"
+notify = "6"
+
+[dev-dependencies]
+proptest.workspace = true
+tempfile.workspace = true

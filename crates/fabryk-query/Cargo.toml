@@ -1,0 +1,36 @@
+[package]
+name = "fabryk-query"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Query engine for Fabryk knowledge fabric"
+
+[dependencies]
+fabryk-core = { path = "../fabryk-core" }
+fabryk-storage = { path = "../fabryk-storage" }
+
+# Async runtime
+tokio.workspace = true
+async-trait.workspace = true
+
+# Database
+sqlx.workspace = true
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+
+# Error handling
+thiserror.workspace = true
+
+# Utilities
+uuid.workspace = true
+chrono.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+tempfile.workspace = true

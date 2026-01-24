@@ -7,10 +7,20 @@ members = [
     "crates/ecl-steps",
     "crates/ecl-workflows",
     "crates/ecl-cli",
+    # Fabryk crates
+    "crates/fabryk",
+    "crates/fabryk-core",
+    "crates/fabryk-acl",
+    "crates/fabryk-storage",
+    "crates/fabryk-query",
+    "crates/fabryk-api",
+    "crates/fabryk-client",
+    "crates/fabryk-mcp",
+    "crates/fabryk-cli",
 ]
 
 [workspace.package]
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
 rust-version = "1.75"
 authors = ["Duncan McGreggor <oubiwann@gmail.com>"]

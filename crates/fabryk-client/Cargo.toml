@@ -1,0 +1,35 @@
+[package]
+name = "fabryk-client"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Rust client library for Fabryk knowledge fabric"
+
+[dependencies]
+fabryk-core = { path = "../fabryk-core" }
+
+# Async runtime
+tokio.workspace = true
+
+# HTTP client
+reqwest.workspace = true
+
+# Serialization
+serde.workspace = true
+serde_json.workspace = true
+
+# Error handling
+thiserror.workspace = true
+
+# Utilities
+uuid.workspace = true
+chrono.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+tempfile.workspace = true
+mockall.workspace = true
