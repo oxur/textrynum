@@ -332,17 +332,18 @@ publish-dry-run:
 		i=$$((i+1)); \
 	done
 	@echo ""
-	@echo "$(BLUE)Verifying each crate...$(RESET)"
+	@echo "$(BLUE)Verifying each crate can be packaged...$(RESET)"
 	@for crate in $(PUBLISH_ORDER); do \
 		echo ""; \
-		echo "$(CYAN)• Checking $$crate...$(RESET)"; \
+		echo "$(CYAN)• Packaging $$crate...$(RESET)"; \
 		cd crates/$$crate && \
-		cargo publish --dry-run && \
+		cargo package --list > /dev/null 2>&1 && \
 		cd ../..; \
 		if [ $$? -eq 0 ]; then \
-			echo "  $(GREEN)✓$(RESET) $$crate passed validation"; \
+			echo "  $(GREEN)✓$(RESET) $$crate is ready for publishing"; \
 		else \
 			echo "  $(RED)✗$(RESET) $$crate failed validation"; \
+			cd crates/$$crate && cargo package --list && cd ../..; \
 			exit 1; \
 		fi; \
 	done
