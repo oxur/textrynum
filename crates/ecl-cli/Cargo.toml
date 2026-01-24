@@ -6,6 +6,7 @@ rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
+description = "Command-line interface for ECL AI workflow management"
 
 [dependencies]
 # Internal dependencies
