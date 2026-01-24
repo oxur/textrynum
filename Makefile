@@ -275,10 +275,10 @@ push:
 # ECL crates: design -> core -> steps -> workflows -> cli -> ecl
 # Fabryk crates: core -> (client, acl, storage) -> query -> api -> (mcp, cli) -> fabryk
 #PUBLISH_ORDER := ecl-core ecl-steps ecl-workflows ecl-cli ecl \
-#                 fabryk-core fabryk-client
-PUBLISH_ORDER := fabryk-acl fabryk-storage fabryk-query fabryk-api fabryk-mcp fabryk-cli fabryk
+#                 fabryk-core fabryk-client fabryk-acl fabryk-storage
+PUBLISH_ORDER := fabryk-query fabryk-api fabryk-mcp fabryk-cli fabryk
 # crates.io rate limit delay (seconds)
-PUBLISH_DELAY := 360
+PUBLISH_DELAY := 372
 .PHONY: publish
 publish:
 	@echo ""
@@ -314,8 +314,10 @@ publish:
 			echo "  $(YELLOW)⊙$(RESET) $$crate already published, skipping"; \
 		elif echo "$$output" | grep -q "429 Too Many Requests"; then \
 			echo "  $(YELLOW)⚠$(RESET) Rate limit hit for $$crate"; \
-			retry_after=$$(echo "$$output" | grep -oP 'after \K[^"]+' || echo "1 hour"); \
-			echo "  $(YELLOW)→$(RESET) Server says: retry after $$retry_after"; \
+			retry_after=$$(echo "$$output" | sed -n 's/.*after \([^.]*\).*/\1/p' | head -1); \
+			if [ -n "$$retry_after" ]; then \
+				echo "  $(YELLOW)→$(RESET) Server says: retry after $$retry_after"; \
+			fi; \
 			echo "  $(YELLOW)→$(RESET) Tip: Email help@crates.io to request a limit increase"; \
 			echo "  $(YELLOW)→$(RESET) Or wait and run: cd crates/$$crate && cargo publish"; \
 			exit 1; \
