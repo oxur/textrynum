@@ -270,3 +270,83 @@ push:
 	@echo "$(CYAN)• Github:$(RESET)"
 	@git push github main && git push github --tags
 	@echo "$(GREEN)✓ Pushed$(RESET)"
+
+# Crates in dependency order (leaf crates first, dependent crates later)
+# ECL crates: design -> core -> steps -> workflows -> cli -> ecl
+# Fabryk crates: core -> (client, acl, storage) -> query -> api -> (mcp, cli) -> fabryk
+PUBLISH_ORDER := ecl-core ecl-steps ecl-workflows ecl-cli ecl \
+                 fabryk-core fabryk-client fabryk-acl fabryk-storage fabryk-query fabryk-api fabryk-mcp fabryk-cli fabryk
+
+.PHONY: publish
+publish:
+	@echo ""
+	@echo "$(CYAN)╔══════════════════════════════════════════════════════════╗$(RESET)"
+	@echo "$(CYAN)║$(RESET) $(BLUE)Publishing $(PROJECT_NAME) Crates to crates.io$(RESET)                        $(CYAN)║$(RESET)"
+	@echo "$(CYAN)╚══════════════════════════════════════════════════════════╝$(RESET)"
+	@echo ""
+	@echo "$(YELLOW)⚠ This will publish all crates in dependency order$(RESET)"
+	@echo "$(YELLOW)⚠ Ensure all tests pass and versions are updated$(RESET)"
+	@echo ""
+	@read -p "Continue? [y/N] " -n 1 -r; \
+	echo; \
+	if [[ ! $$REPLY =~ ^[Yy]$$ ]]; then \
+		echo "$(RED)✗ Aborted$(RESET)"; \
+		exit 1; \
+	fi
+	@echo ""
+	@echo "$(BLUE)Publishing crates in dependency order...$(RESET)"
+	@for crate in $(PUBLISH_ORDER); do \
+		echo ""; \
+		echo "$(CYAN)• Publishing $$crate...$(RESET)"; \
+		cd crates/$$crate && \
+		output=$$(cargo publish 2>&1); \
+		result=$$?; \
+		cd ../..; \
+		if [ $$result -eq 0 ]; then \
+			echo "  $(GREEN)✓$(RESET) $$crate published successfully"; \
+			echo "  $(YELLOW)→ Waiting 30s for crates.io index update...$(RESET)"; \
+			sleep 30; \
+		elif echo "$$output" | grep -q "already exists"; then \
+			echo "  $(YELLOW)⊙$(RESET) $$crate already published, skipping"; \
+		else \
+			echo "  $(RED)✗$(RESET) Failed to publish $$crate"; \
+			echo "$$output"; \
+			exit 1; \
+		fi; \
+	done
+	@echo ""
+	@echo "$(GREEN)✓ All crates published successfully!$(RESET)"
+	@echo ""
+
+.PHONY: publish-dry-run
+publish-dry-run:
+	@echo ""
+	@echo "$(CYAN)╔══════════════════════════════════════════════════════════╗$(RESET)"
+	@echo "$(CYAN)║$(RESET) $(BLUE)Dry Run: Publishing $(PROJECT_NAME) Crates$(RESET)                           $(CYAN)║$(RESET)"
+	@echo "$(CYAN)╚══════════════════════════════════════════════════════════╝$(RESET)"
+	@echo ""
+	@echo "$(BLUE)Publishing order (in dependency order):$(RESET)"
+	@i=1; \
+	for crate in $(PUBLISH_ORDER); do \
+		echo "  $(YELLOW)$$i.$(RESET) $$crate"; \
+		i=$$((i+1)); \
+	done
+	@echo ""
+	@echo "$(BLUE)Verifying each crate...$(RESET)"
+	@for crate in $(PUBLISH_ORDER); do \
+		echo ""; \
+		echo "$(CYAN)• Checking $$crate...$(RESET)"; \
+		cd crates/$$crate && \
+		cargo publish --dry-run && \
+		cd ../..; \
+		if [ $$? -eq 0 ]; then \
+			echo "  $(GREEN)✓$(RESET) $$crate passed validation"; \
+		else \
+			echo "  $(RED)✗$(RESET) $$crate failed validation"; \
+			exit 1; \
+		fi; \
+	done
+	@echo ""
+	@echo "$(GREEN)✓ All crates ready for publishing!$(RESET)"
+	@echo "$(CYAN)→ Run 'make publish' to publish to crates.io$(RESET)"
+	@echo ""
