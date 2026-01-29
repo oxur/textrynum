@@ -6,6 +6,7 @@ This index is automatically generated. Do not edit manually.
 
 | Number | Title | State | Updated |
 |--------|-------|-------|----------|
+| 0009 | Unified Ecosystem Vision | Under Review | 2026-01-28 |
 | 0008 | Fabryk-MCP Project Proposal | Under Review | 2026-01-23 |
 | 0007 | Fabryk File Management: Addendum | Under Review | 2026-01-23 |
 | 0006 | Fabryk Project Proposal | Under Review | 2026-01-23 |
@@ -19,6 +20,7 @@ This index is automatically generated. Do not edit manually.
 
 ### Under Review
 
+- [0009 - Unified Ecosystem Vision](02-under-review/0009-unified-ecosystem-vision.md)
 - [0008 - Fabryk-MCP Project Proposal](02-under-review/0008-fabryk-mcp-project-proposal.md)
 - [0007 - Fabryk File Management: Addendum](02-under-review/0007-fabryk-file-management-addendum.md)
 - [0006 - Fabryk Project Proposal](02-under-review/0006-fabryk-project-proposal.md)
