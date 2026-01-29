@@ -5,10 +5,10 @@ author: "AI agents"
 component: All
 tags: [change-me]
 created: 2026-01-23
-updated: 2026-01-23
-state: Final
+updated: 2026-01-28
+state: Superseded
 supersedes: null
-superseded-by: null
+superseded-by: 9
 version: 1.0
 ---
 
@@ -16,8 +16,6 @@ version: 1.0
 
 ## Expanding from Workflow Engine to Knowledge-Augmented AI Platform
 
-**Date**: January 2026  
-**Status**: Vision Capture (Pre-Proposal)  
 **Purpose**: Preserve context and decisions from initial design discussions
 
 ---
@@ -46,6 +44,7 @@ ECL was designed to solve "managed serialism" — orchestrating sequential AI wo
 - Auditability (trace every decision)
 
 **Persistence in original scope was purely operational:**
+
 - Workflow state (where did we leave off?)
 - Step execution records (what happened?)
 - Artifacts (files produced by steps)
@@ -240,18 +239,18 @@ This creates **persistent, secure, cross-conversation AI memory**.
 impl StepContext {
     // Existing: workflow-scoped artifacts
     pub async fn store_artifact(&self, ...) -> Result<ArtifactRef>;
-    
+
     // NEW: persistent knowledge storage
     pub async fn store_knowledge(
-        &self, 
-        item: KnowledgeItem, 
+        &self,
+        item: KnowledgeItem,
         partition: &PartitionId,
         tags: &[Tag],
     ) -> Result<KnowledgeRef>;
-    
+
     // NEW: query existing knowledge
     pub async fn query_knowledge(
-        &self, 
+        &self,
         query: FabrykQuery,
         partitions: &[PartitionId],  // explicit!
     ) -> Result<Vec<KnowledgeItem>>;
@@ -288,6 +287,7 @@ additional_tags = ["type:analysis-report"]
 | MCP Server | **fabryk-mcp** | Fabryk's MCP interface |
 
 "Fabryk" chosen because:
+
 - Evokes "fabric" (woven knowledge)
 - The "k" nods to "knowledge"
 - Available on crates.io (unlike "fabric" or "loom")
@@ -298,6 +298,7 @@ additional_tags = ["type:analysis-report"]
 ## Crate Structure
 
 ### ECL (existing plan)
+
 ```
 ecl/
 ├── ecl-core/
@@ -307,6 +308,7 @@ ecl/
 ```
 
 ### Fabryk (new)
+
 ```
 fabryk/
 ├── fabryk-core/       # Types, traits, errors
@@ -336,22 +338,26 @@ fabryk/
 ## Open Questions for Future Docs
 
 ### Fabryk Core
+
 1. **Storage backend**: SQLx only, or also vector DB (pgvector, Qdrant)?
 2. **Embedding generation**: Built-in or external service?
 3. **Schema evolution**: How do knowledge item schemas change over time?
 4. **Retention policies**: Auto-expire old knowledge?
 
 ### Fabryk ACL
+
 1. **Existing Rust RBAC libraries**: What can we reuse?
 2. **Policy language**: Simple grants or full policy DSL?
 3. **Audit logging**: What level of access logging?
 
 ### Fabryk-MCP
+
 1. **Authentication flow**: How does MCP auth map to Fabryk identities?
 2. **Rate limiting**: Per-identity? Per-partition?
 3. **Streaming**: Large query results via MCP streaming?
 
 ### ECL Integration
+
 1. **Transaction semantics**: Workflow step + knowledge store atomicity?
 2. **Failure handling**: What if Fabryk store fails mid-workflow?
 
@@ -368,6 +374,7 @@ The ECL ecosystem has grown from a single workflow engine into a three-part plat
 This creates a flywheel: workflows produce knowledge, knowledge informs future workflows and conversations, and access control keeps it all secure.
 
 The separation of concerns is clean:
+
 - Each project has its own repo, crates, and documentation
 - Integration is via well-defined client APIs
 - Each can evolve independently
