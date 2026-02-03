@@ -6,6 +6,9 @@ This index is automatically generated. Do not edit manually.
 
 | Number | Title | State | Updated |
 |--------|-------|-------|----------|
+| 0012 | Fabryk Extraction Audit: Amendment & Refinements | Final | 2026-02-03 |
+| 0011 | Fabryk Extraction Audit: Music Theory MCP Server | Final | 2026-02-03 |
+| 0010 | Knowledge Graph Query Capabilities Demo | Final | 2026-02-03 |
 | 0009 | Unified Ecosystem Vision: ECL + Fabryk + Skill Framework | Draft | 2026-01-28 |
 | 0008 | Fabryk-MCP Project Proposal | Under Review | 2026-01-23 |
 | 0007 | Fabryk File Management: Addendum | Under Review | 2026-01-23 |
@@ -36,6 +39,9 @@ This index is automatically generated. Do not edit manually.
 
 ### Final
 
+- [0012 - Fabryk Extraction Audit: Amendment & Refinements](06-final/0012-fabryk-extraction-audit-amendment-refinements.md)
+- [0011 - Fabryk Extraction Audit: Music Theory MCP Server](06-final/0011-fabryk-extraction-audit-music-theory-mcp-server.md)
+- [0010 - Knowledge Graph Query Capabilities Demo](06-final/0010-knowledge-graph-query-capabilities-demo.md)
 - [0002 - ECL Library Research & Recommendations](06-final/0002-ecl-library-research-recommendations.md)
 
 ### Superseded
