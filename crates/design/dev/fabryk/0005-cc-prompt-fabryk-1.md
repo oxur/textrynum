@@ -4,8 +4,9 @@ milestone: "1.5"
 phase: 1
 author: "Claude (Opus 4.5)"
 created: 2026-02-03
-prerequisites: ["1.1–1.4 completed"]
-governing-docs: [0009-audit §4.1, 0013-project-plan]
+updated: 2026-02-03
+prerequisites: ["1.0 Cleanup", "1.1 Workspace scaffold", "1.2 Error types", "1.3 File & path utilities", "1.4 ID utilities & PathResolver"]
+governing-docs: [0011-audit §4.1, 0012-amendment, 0013-project-plan]
 ---
 
 # CC Prompt: Fabryk 1.5 — ConfigProvider Trait & AppState
@@ -15,8 +16,12 @@ governing-docs: [0009-audit §4.1, 0013-project-plan]
 This is the most architecturally significant milestone in Phase 1. It defines
 the `ConfigProvider` trait — the core abstraction that lets every Fabryk crate
 work with any domain's configuration without knowing its specifics. It also
-extracts `state.rs` as `AppState<C: ConfigProvider>`, making the application
-state generic.
+creates a minimal `AppState<C: ConfigProvider>` for config management.
+
+**Music-Theory Migration**: This milestone extracts code to Fabryk only.
+Music-theory continues using its local copy until the v0.1-alpha checkpoint
+(after Phase 3 completion), when all imports will be updated in a single
+coordinated migration.
 
 **Classification:** Parameterized (P) — requires trait abstraction.
 
