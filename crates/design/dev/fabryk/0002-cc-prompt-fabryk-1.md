@@ -1,138 +1,203 @@
 ---
-title: "CC Prompt: Fabryk 1.2 — Error Types & Result"
+title: "CC Prompt: Fabryk 1.2 — Error Types & Result (Full Extraction)"
 milestone: "1.2"
 phase: 1
 author: "Claude (Opus 4.5)"
 created: 2026-02-03
-prerequisites: ["1.1 Workspace scaffold"]
-governing-docs: [0009-audit §4.1, 0013-project-plan]
+updated: 2026-02-03
+prerequisites: ["1.0 Cleanup", "1.1 Workspace scaffold"]
+governing-docs: [0011-audit §4.1, 0012-amendment, 0013-project-plan]
 ---
 
-# CC Prompt: Fabryk 1.2 — Error Types & Result
+# CC Prompt: Fabryk 1.2 — Error Types & Result (Full Extraction)
 
 ## Context
 
 Phase 1 extracts shared types, traits, errors, and utilities into `fabryk-core`.
-Milestone 1.1 created the workspace scaffold. This milestone extracts the error
-types — the simplest extraction because `error.rs` is already fully generic
-(Classification: G, no changes needed).
+Milestones 1.0 and 1.1 created the workspace scaffold with a **minimal error stub**
+using `thiserror`. This milestone extracts the **full error implementation** from
+the music-theory MCP server.
 
-## Source File
+**Key difference from original audit classification:** The music-theory `error.rs`
+contains MCP-specific code (`to_mcp_error()` method using `rmcp::model`). This
+MCP integration belongs in `fabryk-mcp`, not `fabryk-core`. This milestone
+separates the concerns:
 
+- **fabryk-core**: Generic error types (I/O, config, not-found, path, parse)
+- **fabryk-mcp**: MCP error mapping via extension trait
+
+## Source Files
+
+**Music-theory source** (via symlink):
 ```
-~/lab/music-comp/ai-music-theory/crates/server/src/error.rs
+~/lab/oxur/ecl/workbench/music-theory-mcp-server/crates/server/src/error.rs
 ```
 
-**From Audit §1 (File Inventory):** 182 lines. Types: `Error`, `Result<T>`.
-External deps: `thiserror`.
+Or directly:
+```
+~/lab/music-comp/ai-music-theory/mcp-server/crates/server/src/error.rs
+```
 
-**Classification:** Generic (G) — no domain coupling.
+**From Audit §1 (File Inventory):** 381 lines (including tests). Types: `Error`,
+`ErrorKind`, `Result<T>`. External deps: `thiserror` (for Fabryk), `rmcp` (stays
+in music-theory).
+
+**Classification:** Generic (G) for core error types, but MCP integration is
+domain-specific.
 
 ## Objective
 
-1. Extract `error.rs` from the music-theory server into `fabryk-core`
-2. Define `fabryk_core::Error` and `fabryk_core::Result<T>`
-3. Ensure the error type covers all the error variants needed by downstream
-   Fabryk crates (file I/O, config, serialisation, etc.)
-4. Verify: `fabryk-core` compiles and error types are exported
+1. Expand `fabryk-core/src/error.rs` with full error variants from music-theory
+2. Use `thiserror` derive (not custom struct) for cleaner API
+3. Add inspector methods: `is_io()`, `is_not_found()`, `is_config()`
+4. Add constructor helpers for all variants
+5. Add `#[backtrace]` support via thiserror 2.x
+6. **Separate MCP concerns**: Document that `to_mcp_error()` goes to `fabryk-mcp`
+7. Bring over the extensive test suite
+8. Verify: `cargo test -p fabryk-core` passes
+
+## Architecture Decision: thiserror vs Custom Struct
+
+**Music-theory uses**: Custom `Error` struct with internal `ErrorKind` enum +
+manual `Backtrace::capture()` calls.
+
+**Fabryk will use**: `thiserror` derive with `#[backtrace]` attribute.
+
+**Rationale**:
+- `thiserror` 2.x supports `#[backtrace]` attribute natively
+- Cleaner, more idiomatic API
+- Less boilerplate
+- Same backtrace capability
 
 ## Implementation Steps
 
-### Step 1: Read the source file
+### Step 1: Analyse the source file
 
-```bash
-cat ~/lab/music-comp/ai-music-theory/crates/server/src/error.rs
-```
+The music-theory `error.rs` has these variants:
 
-Understand the current error variants. Expect to see variants for:
+| Variant | Description | Keep in fabryk-core? |
+|---------|-------------|---------------------|
+| `Io(std::io::Error)` | I/O operations | ✅ Yes |
+| `Config(String)` | Configuration errors | ✅ Yes |
+| `NotFound { path }` | File not found | ✅ Yes (modify) |
+| `NotFoundMsg { message }` | Generic not found | ✅ Yes (merge with above) |
+| `InvalidPath { path, reason }` | Path validation | ✅ Yes |
+| `ParseError { message }` | Parsing failures | ✅ Yes |
+| `SearchError { message }` | Search failures | ✅ Yes (rename to generic) |
 
-- I/O errors (`std::io::Error`)
-- Config/parsing errors (TOML, YAML, JSON)
-- Search errors (Tantivy-related)
-- Graph errors (petgraph-related)
-- General string errors
+**MCP-specific (does NOT go in fabryk-core)**:
+- `to_mcp_error()` method — depends on `rmcp::model::{ErrorCode, ErrorData}`
 
-### Step 2: Create `fabryk-core/src/error.rs`
+### Step 2: Write `fabryk-core/src/error.rs`
 
-Copy the file, then review each error variant:
-
-- **Keep** variants that are generic infrastructure errors (I/O, serialisation,
-  config loading, "not found", "invalid input")
-- **Remove** any variants that are music-theory-specific (unlikely given the G
-  classification, but verify)
-- **Conditionally compile** variants that depend on optional features. For
-  example, if there are Tantivy-specific error variants, those belong in
-  `fabryk-fts`, not here. If there are petgraph-specific variants, those belong
-  in `fabryk-graph`. Keep `fabryk-core` error lean — only errors for crates
-  that `fabryk-core` itself depends on.
-
-The error type should follow this pattern:
+Replace the stub from milestone 1.0 with the full implementation:
 
 ```rust
 //! Error types for the Fabryk ecosystem.
 //!
-//! Provides a common `Error` type and `Result<T>` alias used across
-//! all Fabryk crates. Domain-specific error types can wrap or extend
-//! this as needed.
+//! Provides a common `Error` type and `Result<T>` alias used across all Fabryk
+//! crates. Uses `thiserror` for derive macros with backtrace support.
+//!
+//! # Error Categories
+//!
+//! - **I/O errors**: File operations, network, etc.
+//! - **Configuration errors**: Invalid config, missing fields
+//! - **Not found errors**: Missing resources (files, concepts, etc.)
+//! - **Path errors**: Invalid paths, missing directories
+//! - **Parse errors**: Malformed content, invalid format
+//! - **Operation errors**: Generic operation failures
+//!
+//! # MCP Integration
+//!
+//! MCP-specific error mapping (converting to `ErrorData`) is provided by
+//! `fabryk-mcp` via the `McpErrorExt` trait, keeping this crate free of
+//! MCP dependencies.
 
+use std::backtrace::Backtrace;
 use std::path::PathBuf;
 
+use thiserror::Error;
+
 /// Common error type for Fabryk operations.
-#[derive(Debug, thiserror::Error)]
+///
+/// All Fabryk crates use this error type or wrap it in their own domain-specific
+/// error types. The variants cover common infrastructure errors; domain-specific
+/// errors should use `Operation` with a descriptive message or wrap this type.
+#[derive(Error, Debug)]
 pub enum Error {
     /// I/O error (file operations, network, etc.)
     #[error("I/O error: {0}")]
-    Io(#[from] std::io::Error),
+    Io(
+        #[from]
+        #[backtrace]
+        std::io::Error,
+    ),
 
-    /// YAML parsing error.
-    #[error("YAML error: {0}")]
-    Yaml(#[from] serde_yaml::Error),
+    /// I/O error with path context.
+    #[error("I/O error at {path}: {message}")]
+    IoWithPath {
+        path: PathBuf,
+        message: String,
+        #[backtrace]
+        backtrace: Backtrace,
+    },
 
-    /// JSON parsing error.
-    #[error("JSON error: {0}")]
-    Json(#[from] serde_json::Error),
-
-    /// Configuration error with descriptive message.
+    /// Configuration error.
     #[error("Configuration error: {0}")]
     Config(String),
 
-    /// Requested resource not found.
+    /// JSON serialization/deserialization error.
+    #[error("JSON error: {0}")]
+    Json(
+        #[from]
+        #[backtrace]
+        serde_json::Error,
+    ),
+
+    /// Resource not found (file, concept, source, etc.)
     #[error("{resource_type} not found: {id}")]
     NotFound {
         resource_type: String,
         id: String,
     },
 
-    /// Invalid input or argument.
-    #[error("Invalid input: {0}")]
-    InvalidInput(String),
+    /// File not found at specific path.
+    #[error("File not found: {}", path.display())]
+    FileNotFound { path: PathBuf },
 
-    /// Path-related error.
-    #[error("Path error: {path}: {message}")]
-    Path {
-        path: PathBuf,
-        message: String,
-    },
+    /// Invalid path.
+    #[error("Invalid path {}: {reason}", path.display())]
+    InvalidPath { path: PathBuf, reason: String },
 
-    /// Generic error with message (escape hatch).
+    /// Parse error (malformed content, invalid format).
+    #[error("Parse error: {0}")]
+    Parse(String),
+
+    /// Generic operation error (escape hatch for domain-specific errors).
     #[error("{0}")]
-    Other(String),
+    Operation(String),
 }
 
-/// Convenience Result type alias for Fabryk operations.
-pub type Result<T> = std::result::Result<T, Error>;
-```
-
-Also provide constructor helpers if the original file has them:
-
-```rust
 impl Error {
+    // ========================================================================
+    // Constructor helpers
+    // ========================================================================
+
+    /// Create an I/O error with path context.
+    pub fn io_with_path(err: std::io::Error, path: impl Into<PathBuf>) -> Self {
+        Self::IoWithPath {
+            path: path.into(),
+            message: err.to_string(),
+            backtrace: Backtrace::capture(),
+        }
+    }
+
     /// Create a configuration error.
     pub fn config(msg: impl Into<String>) -> Self {
         Self::Config(msg.into())
     }
 
-    /// Create a not-found error.
+    /// Create a not-found error with resource type and ID.
     pub fn not_found(resource_type: impl Into<String>, id: impl Into<String>) -> Self {
         Self::NotFound {
             resource_type: resource_type.into(),
@@ -140,75 +205,238 @@ impl Error {
         }
     }
 
-    /// Create a path error.
-    pub fn path(path: impl Into<PathBuf>, msg: impl Into<String>) -> Self {
-        Self::Path {
+    /// Create a file-not-found error.
+    pub fn file_not_found(path: impl Into<PathBuf>) -> Self {
+        Self::FileNotFound { path: path.into() }
+    }
+
+    /// Create an invalid path error.
+    pub fn invalid_path(path: impl Into<PathBuf>, reason: impl Into<String>) -> Self {
+        Self::InvalidPath {
             path: path.into(),
-            message: msg.into(),
+            reason: reason.into(),
         }
     }
+
+    /// Create a parse error.
+    pub fn parse(msg: impl Into<String>) -> Self {
+        Self::Parse(msg.into())
+    }
+
+    /// Create an operation error (generic domain-specific error).
+    pub fn operation(msg: impl Into<String>) -> Self {
+        Self::Operation(msg.into())
+    }
+
+    // ========================================================================
+    // Inspector methods
+    // ========================================================================
+
+    /// Check if this is an I/O error.
+    pub fn is_io(&self) -> bool {
+        matches!(self, Self::Io(_) | Self::IoWithPath { .. })
+    }
+
+    /// Check if this is a not-found error (any variant).
+    pub fn is_not_found(&self) -> bool {
+        matches!(self, Self::NotFound { .. } | Self::FileNotFound { .. })
+    }
+
+    /// Check if this is a configuration error.
+    pub fn is_config(&self) -> bool {
+        matches!(self, Self::Config(_))
+    }
+
+    /// Check if this is a path-related error.
+    pub fn is_path_error(&self) -> bool {
+        matches!(
+            self,
+            Self::InvalidPath { .. } | Self::FileNotFound { .. } | Self::IoWithPath { .. }
+        )
+    }
+
+    /// Check if this is a parse error.
+    pub fn is_parse(&self) -> bool {
+        matches!(self, Self::Parse(_))
+    }
 }
-```
 
-**Key decision:** If the original `error.rs` has error variants for Tantivy,
-petgraph, rkyv, or other crate-specific errors, do **not** include them here.
-Those will be defined in their respective Fabryk crates (`fabryk-fts`,
-`fabryk-graph`). The crate-specific error types can contain a
-`Core(fabryk_core::Error)` variant or use `#[from]` to wrap the core error.
+/// Result type alias for Fabryk operations.
+pub type Result<T> = std::result::Result<T, Error>;
 
-### Step 3: Update `fabryk-core/src/lib.rs`
+// ============================================================================
+// Tests
+// ============================================================================
 
-```rust
-//! Fabryk Core — shared types, traits, errors, and utilities.
-//!
-//! This crate provides the foundational types used across all Fabryk crates.
-//! It has no internal Fabryk dependencies (dependency level 0).
-
-pub mod error;
-
-// Re-export key types at crate root for convenience
-pub use error::{Error, Result};
-```
-
-### Step 4: Update `fabryk-core/Cargo.toml`
-
-Ensure the dependencies include what the error module needs:
-
-```toml
-[dependencies]
-thiserror = { workspace = true }
-serde = { workspace = true }
-serde_json = { workspace = true }
-serde_yaml = { workspace = true }
-```
-
-### Step 5: Add tests
-
-If the original `error.rs` has tests, bring them along. If not, add basic tests:
-
-```rust
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::error::Error as StdError;
+
+    // ------------------------------------------------------------------------
+    // Constructor tests
+    // ------------------------------------------------------------------------
 
     #[test]
-    fn test_error_display() {
-        let err = Error::config("missing field");
-        assert_eq!(err.to_string(), "Configuration error: missing field");
-    }
-
-    #[test]
-    fn test_not_found_display() {
-        let err = Error::not_found("Concept", "major-triad");
-        assert_eq!(err.to_string(), "Concept not found: major-triad");
-    }
-
-    #[test]
-    fn test_io_error_conversion() {
-        let io_err = std::io::Error::new(std::io::ErrorKind::NotFound, "file missing");
+    fn test_error_io() {
+        let io_err = std::io::Error::new(std::io::ErrorKind::NotFound, "file not found");
         let err: Error = io_err.into();
-        assert!(matches!(err, Error::Io(_)));
+        assert!(err.is_io());
+        assert!(!err.is_not_found());
+        assert!(!err.is_config());
+        assert!(err.to_string().contains("I/O error"));
     }
+
+    #[test]
+    fn test_error_io_with_path() {
+        let io_err =
+            std::io::Error::new(std::io::ErrorKind::PermissionDenied, "permission denied");
+        let path = PathBuf::from("/test/path.txt");
+        let err = Error::io_with_path(io_err, &path);
+        assert!(err.is_io());
+        assert!(err.is_path_error());
+        let msg = err.to_string();
+        assert!(msg.contains("I/O error at"));
+        assert!(msg.contains("/test/path.txt"));
+        assert!(msg.contains("permission denied"));
+    }
+
+    #[test]
+    fn test_error_config() {
+        let err = Error::config("invalid configuration");
+        assert!(err.is_config());
+        assert!(!err.is_io());
+        assert!(!err.is_not_found());
+        assert!(err.to_string().contains("Configuration error"));
+        assert!(err.to_string().contains("invalid configuration"));
+    }
+
+    #[test]
+    fn test_error_not_found() {
+        let err = Error::not_found("Concept", "major-triad");
+        assert!(err.is_not_found());
+        assert!(!err.is_io());
+        assert!(!err.is_config());
+        let msg = err.to_string();
+        assert!(msg.contains("Concept not found"));
+        assert!(msg.contains("major-triad"));
+    }
+
+    #[test]
+    fn test_error_file_not_found() {
+        let path = PathBuf::from("/missing/file.txt");
+        let err = Error::file_not_found(&path);
+        assert!(err.is_not_found());
+        assert!(err.is_path_error());
+        assert!(!err.is_io());
+        let msg = err.to_string();
+        assert!(msg.contains("File not found"));
+        assert!(msg.contains("/missing/file.txt"));
+    }
+
+    #[test]
+    fn test_error_invalid_path() {
+        let path = PathBuf::from("/bad/path");
+        let err = Error::invalid_path(&path, "invalid characters");
+        assert!(err.is_path_error());
+        assert!(!err.is_io());
+        assert!(!err.is_not_found());
+        let msg = err.to_string();
+        assert!(msg.contains("Invalid path"));
+        assert!(msg.contains("/bad/path"));
+        assert!(msg.contains("invalid characters"));
+    }
+
+    #[test]
+    fn test_error_parse() {
+        let err = Error::parse("syntax error at line 5");
+        assert!(err.is_parse());
+        assert!(!err.is_io());
+        assert!(!err.is_config());
+        assert!(err.to_string().contains("Parse error"));
+        assert!(err.to_string().contains("syntax error at line 5"));
+    }
+
+    #[test]
+    fn test_error_operation() {
+        let err = Error::operation("index corrupted");
+        assert!(!err.is_io());
+        assert!(!err.is_not_found());
+        assert!(!err.is_config());
+        assert!(err.to_string().contains("index corrupted"));
+    }
+
+    // ------------------------------------------------------------------------
+    // From implementations
+    // ------------------------------------------------------------------------
+
+    #[test]
+    fn test_error_from_io_error() {
+        let io_err = std::io::Error::new(std::io::ErrorKind::ConnectionReset, "connection lost");
+        let err: Error = io_err.into();
+        assert!(err.is_io());
+        assert!(err.to_string().contains("connection lost"));
+    }
+
+    #[test]
+    fn test_error_from_json_error() {
+        let json_str = "{ invalid json }";
+        let json_err = serde_json::from_str::<serde_json::Value>(json_str).unwrap_err();
+        let err: Error = json_err.into();
+        assert!(matches!(err, Error::Json(_)));
+        assert!(err.to_string().contains("JSON error"));
+    }
+
+    // ------------------------------------------------------------------------
+    // Error trait implementation
+    // ------------------------------------------------------------------------
+
+    #[test]
+    fn test_error_source_io() {
+        let io_err = std::io::Error::new(std::io::ErrorKind::NotFound, "test");
+        let err: Error = io_err.into();
+        assert!(err.source().is_some());
+    }
+
+    #[test]
+    fn test_error_source_non_io() {
+        let err = Error::config("test");
+        assert!(err.source().is_none());
+    }
+
+    // ------------------------------------------------------------------------
+    // Display tests
+    // ------------------------------------------------------------------------
+
+    #[test]
+    fn test_error_display_all_variants() {
+        let errors = vec![
+            Error::Io(std::io::Error::new(std::io::ErrorKind::NotFound, "io")),
+            Error::io_with_path(
+                std::io::Error::new(std::io::ErrorKind::NotFound, "io"),
+                "/path",
+            ),
+            Error::config("config"),
+            Error::not_found("Type", "id"),
+            Error::file_not_found("/path"),
+            Error::invalid_path("/path", "reason"),
+            Error::parse("parse"),
+            Error::operation("operation"),
+        ];
+
+        for err in errors {
+            let display = err.to_string();
+            assert!(
+                !display.is_empty(),
+                "Display should produce non-empty string for {:?}",
+                err
+            );
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Result alias
+    // ------------------------------------------------------------------------
 
     #[test]
     fn test_result_alias() {
@@ -221,35 +449,139 @@ mod tests {
 }
 ```
 
+### Step 3: Update `fabryk-core/src/lib.rs`
+
+Ensure the error module is exported:
+
+```rust
+//! Fabryk Core — shared types, traits, errors, and utilities.
+//!
+//! This crate provides the foundational types used across all Fabryk crates.
+//! It has no internal Fabryk dependencies (dependency level 0).
+//!
+//! # Modules
+//!
+//! - [`error`]: Error types and Result alias
+
+#![doc = include_str!("../README.md")]
+
+pub mod error;
+
+// Re-export key types at crate root for convenience
+pub use error::{Error, Result};
+
+// Modules to be added during extraction:
+// pub mod util;
+// pub mod traits;
+// pub mod state;
+// pub mod resources;
+```
+
+### Step 4: Update `fabryk-core/Cargo.toml`
+
+Ensure dependencies are correct (should already be from milestone 1.1):
+
+```toml
+[dependencies]
+# Error handling
+thiserror = { workspace = true }
+
+# Serialization (for JSON error conversion)
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# ... other deps unchanged
+```
+
+### Step 5: Document MCP error extension for `fabryk-mcp`
+
+Create a note for milestone 5.x (MCP extraction) about the error extension:
+
+The `to_mcp_error()` method from music-theory depends on `rmcp::model`. When
+extracting `fabryk-mcp`, add an extension trait:
+
+```rust
+// fabryk-mcp/src/error_ext.rs (future milestone)
+
+use fabryk_core::Error;
+use rmcp::model::{ErrorCode, ErrorData};
+
+/// Extension trait for converting Fabryk errors to MCP errors.
+pub trait McpErrorExt {
+    /// Convert to MCP ErrorData with appropriate error code.
+    fn to_mcp_error(&self, context: &str) -> ErrorData;
+}
+
+impl McpErrorExt for Error {
+    fn to_mcp_error(&self, context: &str) -> ErrorData {
+        let (code, msg) = if self.is_not_found() {
+            (ErrorCode::RESOURCE_NOT_FOUND, format!("Not found: {}", self))
+        } else if self.is_config() {
+            (ErrorCode::INVALID_PARAMS, format!("Configuration error: {}", self))
+        } else {
+            (ErrorCode::INTERNAL_ERROR, format!("{}: {}", context, self))
+        };
+        ErrorData::new(code, msg, None)
+    }
+}
+```
+
+This keeps `fabryk-core` free of MCP dependencies while preserving the useful
+error mapping functionality.
+
 ### Step 6: Verify
 
 ```bash
-cd ~/lab/music-comp/fabryk
+cd ~/lab/oxur/ecl
 cargo check -p fabryk-core
 cargo test -p fabryk-core
 cargo clippy -p fabryk-core -- -D warnings
+cargo doc -p fabryk-core --no-deps
 ```
 
 ## Exit Criteria
 
-- [ ] `fabryk-core/src/error.rs` exists with `Error` enum and `Result<T>` alias
-- [ ] Error type covers: I/O, YAML, JSON, Config, NotFound, InvalidInput, Path, Other
-- [ ] No domain-specific (music-theory) error variants present
-- [ ] No Tantivy/petgraph/rkyv-specific error variants (those go in downstream crates)
-- [ ] Constructor helpers provided (`Error::config()`, `Error::not_found()`, etc.)
-- [ ] `cargo test -p fabryk-core` passes
+- [ ] `fabryk-core/src/error.rs` has full `Error` enum with all variants
+- [ ] Uses `thiserror` derive (not custom struct)
+- [ ] Has `#[backtrace]` on `#[from]` conversions
+- [ ] Constructor helpers: `config()`, `not_found()`, `file_not_found()`,
+      `invalid_path()`, `parse()`, `operation()`, `io_with_path()`
+- [ ] Inspector methods: `is_io()`, `is_not_found()`, `is_config()`,
+      `is_path_error()`, `is_parse()`
+- [ ] `From<std::io::Error>` and `From<serde_json::Error>` implementations
+- [ ] No MCP dependencies in `fabryk-core`
+- [ ] Note added for `fabryk-mcp` error extension (future milestone)
+- [ ] `cargo test -p fabryk-core` passes (all tests from music-theory adapted)
 - [ ] `cargo clippy -p fabryk-core -- -D warnings` clean
+- [ ] `cargo doc -p fabryk-core --no-deps` generates clean documentation
+
+## Music-Theory Migration Note
+
+After `fabryk-core` error types are ready, music-theory MCP server can:
+
+1. Replace `use crate::error::{Error, Result}` with `use fabryk_core::{Error, Result}`
+2. Keep `to_mcp_error()` as a local extension until `fabryk-mcp` is ready
+3. Remove the custom `ErrorKind` enum and backtrace handling
+
+This is a low-risk migration since the API is compatible.
 
 ## Commit Message
 
 ```
-feat(core): extract error types and Result alias
+feat(core): extract full error types from music-theory
 
-Extract error.rs from music-theory MCP server into fabryk-core.
-Provides Error enum with common infrastructure variants (I/O, YAML,
-JSON, config, not-found, path) and Result<T> alias.
+Expand fabryk-core error.rs with complete implementation:
+- All error variants: Io, IoWithPath, Config, Json, NotFound,
+  FileNotFound, InvalidPath, Parse, Operation
+- Constructor helpers for all variants
+- Inspector methods: is_io(), is_not_found(), is_config(), etc.
+- Backtrace support via thiserror #[backtrace]
+- Comprehensive test suite (adapted from music-theory)
 
-No domain-specific error variants — downstream crates define their own.
+MCP-specific error mapping (to_mcp_error) documented for fabryk-mcp
+extraction in future milestone.
 
 Ref: Doc 0013 milestone 1.2, Audit §4.1
+
+Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 ```

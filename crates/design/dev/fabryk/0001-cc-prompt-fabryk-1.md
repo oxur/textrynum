@@ -117,12 +117,27 @@ pub use error::{Error, Result};
 ```
 
 **fabryk-core/src/error.rs**:
+
+> **Note**: This is a minimal stub using `thiserror` to allow the workspace to
+> compile. **Milestone 1.2** expands this with the full error type extracted from
+> music-theory, including additional variants (`InvalidPath`, `ParseError`, etc.),
+> backtrace support via `#[backtrace]`, and inspector methods (`is_io()`,
+> `is_not_found()`, `is_config()`).
+
 ```rust
 //! Error types for Fabryk operations.
+//!
+//! This module provides a common `Error` type and `Result<T>` alias used across
+//! all Fabryk crates. Uses `thiserror` for derive macros.
+//!
+//! **Note**: This is a minimal stub. See milestone 1.2 for the full extraction.
 
 use thiserror::Error;
 
 /// Errors that can occur in Fabryk operations.
+///
+/// This is a minimal stub — milestone 1.2 adds additional variants,
+/// backtrace support, and inspector methods.
 #[derive(Error, Debug)]
 pub enum Error {
     /// I/O error.
