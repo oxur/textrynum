@@ -253,7 +253,7 @@ For each agent, compile:
 
 ## Phase 2: Parallel Extraction
 
-### Concept Card Template (v2)
+### Concept Card Template (v3)
 
 ```markdown
 ---
