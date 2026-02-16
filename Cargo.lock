@@ -1885,6 +1885,7 @@ name = "fabryk-content"
 version = "0.1.0-alpha.0"
 dependencies = [
  "fabryk-core",
+ "log",
  "pulldown-cmark",
  "regex",
  "serde",
@@ -1917,7 +1918,10 @@ name = "fabryk-fts"
 version = "0.1.0-alpha.0"
 dependencies = [
  "async-trait",
+ "async-walkdir",
+ "chrono",
  "fabryk-core",
+ "futures",
  "log",
  "serde",
  "serde_json",
