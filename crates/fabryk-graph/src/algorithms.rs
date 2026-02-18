@@ -74,7 +74,7 @@ pub struct PrerequisitesResult {
 }
 
 /// Centrality scores for a node.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
 pub struct CentralityScore {
     /// Node ID.
     pub node_id: String,
