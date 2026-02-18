@@ -1,0 +1,16 @@
+[package]
+name = "fabryk-auth-google"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Google OAuth2 provider for fabryk-auth — JWKS cache, JWT validation, userinfo"
+
+[dependencies]
+fabryk-auth = { path = "../fabryk-auth" }
+jsonwebtoken = "9"
+reqwest = { workspace = true }
+serde = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }

@@ -1,0 +1,20 @@
+[package]
+name = "fabryk-auth"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Generic auth primitives for Fabryk — AuthenticatedUser, TokenValidator trait, Tower middleware"
+
+[dependencies]
+axum = { workspace = true }
+http = "1"
+tower = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
+tower = { workspace = true, features = ["util"] }
+serde_json = { workspace = true }

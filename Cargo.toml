@@ -21,6 +21,10 @@ members = [
     "crates/fabryk-mcp-fts",
     "crates/fabryk-mcp-graph",
     "crates/fabryk-cli",
+    # Fabryk auth crates
+    "crates/fabryk-auth",
+    "crates/fabryk-auth-google",
+    "crates/fabryk-auth-mcp",
 ]
 
 [workspace.package]
@@ -141,6 +145,9 @@ arrow-schema = "57"
 
 # Local embedding generation
 fastembed = "4"
+
+# JWT/Auth
+jsonwebtoken = "9"
 
 # Graph database
 petgraph = "0.6"

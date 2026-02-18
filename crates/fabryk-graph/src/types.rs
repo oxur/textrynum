@@ -48,6 +48,10 @@ pub enum Relationship {
     Covers,
     /// A is a source-specific variant of canonical concept B.
     VariantOf,
+    /// A contrasts with or is an alternative to B.
+    ContrastsWith,
+    /// A answers or addresses question B.
+    AnswersQuestion,
     /// Domain-specific relationship not covered above.
     Custom(String),
 }
@@ -65,6 +69,8 @@ impl Relationship {
             Self::Introduces => 0.8,
             Self::Covers => 0.8,
             Self::VariantOf => 0.9,
+            Self::ContrastsWith => 0.7,
+            Self::AnswersQuestion => 0.6,
             Self::RelatesTo => 0.7,
             Self::Custom(_) => 0.5,
         }
@@ -80,6 +86,8 @@ impl Relationship {
             Self::Introduces => "introduces",
             Self::Covers => "covers",
             Self::VariantOf => "variant_of",
+            Self::ContrastsWith => "contrasts_with",
+            Self::AnswersQuestion => "answers_question",
             Self::Custom(name) => name,
         }
     }

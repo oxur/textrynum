@@ -5,8 +5,8 @@
 
 #![doc = include_str!("../README.md")]
 
-pub use fabryk_core as core;
 pub use fabryk_content as content;
+pub use fabryk_core as core;
 
 #[cfg(feature = "fts")]
 pub use fabryk_fts as fts;

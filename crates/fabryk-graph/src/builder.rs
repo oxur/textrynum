@@ -277,6 +277,10 @@ fn parse_relationship(s: &str) -> Relationship {
         "introduces" => Relationship::Introduces,
         "covers" => Relationship::Covers,
         "variant_of" | "variantof" => Relationship::VariantOf,
+        "contrasts_with" | "contrastswith" => Relationship::ContrastsWith,
+        "answers_question" | "answersquestion" | "answers_questions" => {
+            Relationship::AnswersQuestion
+        }
         other => Relationship::Custom(other.to_string()),
     }
 }

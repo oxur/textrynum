@@ -334,6 +334,96 @@ impl IndexBuilder {
 
         Ok(stats)
     }
+
+    /// Append documents to an existing index from an additional content path.
+    ///
+    /// Unlike `build()`, this does NOT clear the existing index or check freshness.
+    /// Use this to index additional content directories into an already-built index.
+    ///
+    /// # Example
+    ///
+    /// ```rust,ignore
+    /// // Build main index
+    /// builder.build(&cards_path, &index_path).await?;
+    /// // Append source documents with a different extractor
+    /// builder2.build_append(&sources_path, &index_path).await?;
+    /// ```
+    pub async fn build_append(&self, content_path: &Path, index_path: &Path) -> Result<IndexStats> {
+        if !content_path.exists() {
+            return Err(Error::not_found(
+                content_path.to_string_lossy(),
+                "content directory",
+            ));
+        }
+
+        log::info!("Appending to index from {:?}", content_path);
+
+        let schema = SearchSchema::build();
+        let mut indexer = Indexer::new(index_path, &schema)?;
+        // Note: no clear() — we're appending
+
+        let extensions: HashSet<_> = self
+            .extractor
+            .supported_extensions()
+            .iter()
+            .map(|s| s.to_lowercase())
+            .collect();
+
+        let files = find_files_with_extensions(content_path, &extensions).await?;
+
+        let mut stats = IndexStats::default();
+        let mut batch_count = 0;
+
+        for file_path in files {
+            stats.files_processed += 1;
+
+            let content = match tokio::fs::read_to_string(&file_path).await {
+                Ok(c) => c,
+                Err(e) => {
+                    log::warn!("Failed to read {:?}: {}", file_path, e);
+                    stats.errors += 1;
+                    continue;
+                }
+            };
+
+            stats.bytes_processed += content.len();
+
+            let doc = match self.extractor.extract(&file_path, &content) {
+                Some(d) => d,
+                None => {
+                    stats.files_skipped += 1;
+                    continue;
+                }
+            };
+
+            if let Err(e) = indexer.add_document(&doc) {
+                log::warn!("Failed to index {:?}: {}", file_path, e);
+                stats.errors += 1;
+                continue;
+            }
+
+            stats.documents_indexed += 1;
+            batch_count += 1;
+
+            if batch_count >= self.batch_size {
+                indexer.commit()?;
+                batch_count = 0;
+            }
+        }
+
+        if batch_count > 0 {
+            indexer.commit()?;
+        }
+
+        log::info!(
+            "Appended {} documents ({} bytes, {} errors)",
+            stats.documents_indexed,
+            stats.bytes_processed,
+            stats.errors
+        );
+
+        Ok(stats)
+    }
 }
 
 impl Default for IndexBuilder {

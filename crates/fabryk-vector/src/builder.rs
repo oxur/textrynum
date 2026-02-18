@@ -228,6 +228,121 @@ impl<E: VectorExtractor> VectorIndexBuilder<E> {
         self.extractor
             .extract_document(base_path, file_path, &frontmatter, body)
     }
+
+    /// Append documents from a content path into an existing backend.
+    ///
+    /// Unlike `build()`, this does not create a new backend — it adds
+    /// embedded documents to the provided one. Use this to index multiple
+    /// content directories (potentially with different extractors) into
+    /// a single vector search backend.
+    ///
+    /// # Example
+    ///
+    /// ```rust,ignore
+    /// // Build initial index from concept cards
+    /// let (mut backend, stats1) = VectorIndexBuilder::new(card_extractor)
+    ///     .with_content_path(&cards_path)
+    ///     .with_embedding_provider(provider.clone())
+    ///     .build()
+    ///     .await?;
+    ///
+    /// // Append source documents with a different extractor
+    /// let stats2 = VectorIndexBuilder::new(source_extractor)
+    ///     .with_content_path(&sources_path)
+    ///     .with_embedding_provider(provider)
+    ///     .build_append(&mut backend)
+    ///     .await?;
+    /// ```
+    pub async fn build_append(self, backend: &mut SimpleVectorBackend) -> Result<VectorIndexStats> {
+        let start = Instant::now();
+
+        let content_path = self
+            .content_path
+            .as_ref()
+            .ok_or_else(|| Error::config("Content path not set. Use with_content_path() first."))?
+            .clone();
+
+        let provider = self
+            .provider
+            .as_ref()
+            .ok_or_else(|| {
+                Error::config("Embedding provider not set. Use with_embedding_provider() first.")
+            })?
+            .clone();
+
+        let files = discover_files(&content_path).await?;
+
+        let mut errors: Vec<BuildError> = Vec::new();
+        let mut documents: Vec<VectorDocument> = Vec::new();
+        let mut files_processed = 0usize;
+        let mut files_skipped = 0usize;
+
+        // Phase 1: Discover + Extract
+        for file_path in &files {
+            match self.extract_file(&content_path, file_path) {
+                Ok(doc) => {
+                    documents.push(doc);
+                }
+                Err(e) => {
+                    let build_error = BuildError {
+                        file: file_path.clone(),
+                        message: e.to_string(),
+                    };
+
+                    match self.error_handling {
+                        ErrorHandling::FailFast => return Err(e),
+                        ErrorHandling::Collect => {
+                            files_skipped += 1;
+                            errors.push(build_error);
+                        }
+                        ErrorHandling::Skip => {
+                            files_skipped += 1;
+                            log::warn!("Skipping {}: {}", file_path.display(), build_error.message);
+                            errors.push(build_error);
+                        }
+                    }
+                }
+            }
+            files_processed += 1;
+        }
+
+        // Phase 2: Batch embed + insert into existing backend
+        let mut embedded_documents: Vec<EmbeddedDocument> = Vec::with_capacity(documents.len());
+
+        for chunk in documents.chunks(self.batch_size) {
+            let texts: Vec<&str> = chunk.iter().map(|d| d.text.as_str()).collect();
+            let embeddings = provider.embed_batch(&texts).await?;
+
+            for (doc, embedding) in chunk.iter().zip(embeddings.into_iter()) {
+                embedded_documents.push(EmbeddedDocument::new(doc.clone(), embedding));
+            }
+        }
+
+        let documents_indexed = embedded_documents.len();
+        let embedding_dimension = provider.dimension();
+        let content_hash = compute_content_hash(&content_path).await?;
+
+        backend.add_documents(embedded_documents);
+
+        let stats = VectorIndexStats {
+            documents_indexed,
+            files_processed,
+            files_skipped,
+            embedding_dimension,
+            content_hash,
+            build_duration_ms: start.elapsed().as_millis() as u64,
+            errors,
+        };
+
+        log::info!(
+            "Appended {} vector documents from {} ({} errors)",
+            documents_indexed,
+            content_path.display(),
+            stats.errors.len(),
+        );
+
+        Ok(stats)
+    }
 }
 
 // ============================================================================
