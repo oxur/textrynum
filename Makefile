@@ -262,6 +262,62 @@ tracked-files:
 	@echo "$(GREEN)✓ Tracked files saved to $(TARGET)/git-tracked-files.txt$(RESET)"
 	@echo "$(CYAN)• Total files: $$(wc -l < $(TARGET)/git-tracked-files.txt)$(RESET)"
 
+# Ensure cargo-binstall is available for fast tool installation
+.PHONY: ensure-binstall
+ensure-binstall:
+	@command -v cargo-binstall >/dev/null 2>&1 || { \
+		echo "$(YELLOW)→ Installing cargo-binstall...$(RESET)"; \
+		curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash; \
+	}
+
+.PHONY: check-deps
+check-deps: ensure-binstall
+	@echo "$(BLUE)Checking for outdated dependencies...$(RESET)"
+	@command -v cargo-upgrade >/dev/null 2>&1 || { \
+		echo "$(YELLOW)→ Installing cargo-edit...$(RESET)"; \
+		cargo binstall -y cargo-edit; \
+	}
+	@OUTPUT=$$(cargo upgrade --dry-run --incompatible 2>&1); \
+	if ! echo "$$OUTPUT" | grep -q "aborting upgrade due to dry run"; then \
+		echo "$(RED)✗ cargo upgrade --dry-run failed:$(RESET)"; \
+		echo "$$OUTPUT"; \
+		exit 1; \
+	fi; \
+	UPDATES=$$(echo "$$OUTPUT" | awk '/^[a-z][a-z0-9_-]/ && !/^name / { \
+		split($$2, a, "."); split($$4, b, "."); \
+		if (a[1] == b[1] && (b[2]+0 > a[2]+0 || (b[2]+0 == a[2]+0 && b[3]+0 >= a[3]+0))) print \
+	}' | sort -t' ' -k1,1 -u); \
+	MAJOR=$$(echo "$$OUTPUT" | awk '/^[a-z][a-z0-9_-]/ && !/^name / { \
+		split($$2, a, "."); split($$5, b, "."); \
+		if (a[1] != b[1]) print \
+	}' | sort -t' ' -k1,1 -u | wc -l | tr -d ' '); \
+	if [ -n "$$UPDATES" ]; then \
+		printf "%-20s %-10s %-10s\n" "name" "current" "latest"; \
+		printf "%-20s %-10s %-10s\n" "====" "=======" "======"; \
+		echo "$$UPDATES" | awk '{ printf "%-20s %-10s %-10s\n", $$1, $$2, $$4 }'; \
+		echo ""; \
+		echo "$(RED)✗ Dependency updates available$(RESET)"; \
+		echo "$(YELLOW)→ Run 'make deps' to update$(RESET)"; \
+		if [ "$$MAJOR" -gt 0 ]; then \
+			echo "$(CYAN)  ($$MAJOR major-version updates not shown)$(RESET)"; \
+		fi; \
+		exit 1; \
+	else \
+		echo "$(GREEN)✓ All dependencies up to date$(RESET)"; \
+		if [ "$$MAJOR" -gt 0 ]; then \
+			echo "$(CYAN)  ($$MAJOR major-version updates available, not shown)$(RESET)"; \
+		fi; \
+	fi
+.PHONY: deps
+deps: ensure-binstall
+	@echo "$(BLUE)Updating dependencies ...$(RESET)"
+	@command -v cargo-upgrade >/dev/null 2>&1 || { \
+		echo "$(YELLOW)→ Installing cargo-edit...$(RESET)"; \
+		cargo binstall -y cargo-edit; \
+	}
+	@cargo upgrade
+	@echo "$(GREEN)✓ Cargo deps upgraded$(RESET)"
+
 push:
 	@echo "$(BLUE)Pushing changes ...$(RESET)"
 	@for remote in $(GIT_REMOTES); do \
