@@ -15,6 +15,9 @@ Cargo.lock
 *.swp
 *.swo
 
+# Python
+.venv/
+
 # Environment
 .env
 .env.local
