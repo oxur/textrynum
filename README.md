@@ -2,6 +2,7 @@
 
 [![][build-badge]][build]
 [![][tag-badge]][tag]
+[![][license badge]][license]
 
 [![][logo]][logo-large]
 
@@ -129,3 +130,5 @@ Apache-2.0
 [build-badge]: https://github.com/oxur/textrynum/actions/workflows/cicd.yml/badge.svg
 [tag-badge]: https://img.shields.io/github/tag/oxur/textrynum.svg
 [tag]: https://github.com/oxur/textrynum/tags
+[license]: LICENSE-APACHE
+[license badge]: https://img.shields.io/badge/License-Apache%202.0%2FMIT-blue.svg

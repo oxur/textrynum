@@ -1,5 +1,8 @@
 # ECL
 
+[![][crate-badge]][crate]
+[![][docs-badge]][docs]
+
 [![][logo]][logo-large]
 
 *Extract, Cogitate, Load*  • Part of the [Textrynum](README.md) project
@@ -41,3 +44,7 @@ ECL is early stage. The core types and critique-loop workflow are implemented; t
 
 [logo]: assets/images/ecl/v2-y250.png
 [logo-large]: assets/images/ecl/v2.png
+[crate]: https://crates.io/crates/ecl
+[crate-badge]: https://img.shields.io/crates/v/ecl.svg
+[docs]: https://docs.rs/ecl/
+[docs-badge]: https://img.shields.io/badge/rust-documentation-blue.svg

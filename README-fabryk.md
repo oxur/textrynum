@@ -1,5 +1,8 @@
 # Fabryk
 
+[![][crate-badge]][crate]
+[![][docs-badge]][docs]
+
 [![][logo]][logo-large]
 
  *A hyper-connected, multi-model knowlege fabric* • Part of the [Textrynum](README.md) project
@@ -64,3 +67,7 @@ fabryk = { version = "0.1", features = ["full"] }
 
 [logo]: assets/images/fabryk/v1-y250.png
 [logo-large]: assets/images/fabryk/v1.png
+[crate]: https://crates.io/crates/fabryk
+[crate-badge]: https://img.shields.io/crates/v/fabryk.svg
+[docs]: https://docs.rs/fabryk/
+[docs-badge]: https://img.shields.io/badge/rust-documentation-blue.svg
