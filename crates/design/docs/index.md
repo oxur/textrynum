@@ -6,6 +6,7 @@ This index is automatically generated. Do not edit manually.
 
 | Number | Title | State | Updated |
 |--------|-------|-------|----------|
+| 0014 | Fabryk Architecture - 2026-02-24 | Final | 2026-02-24 |
 | 0013 | Fabryk Extraction: Project Plan Overview | Active | 2026-02-03 |
 | 0012 | Fabryk Extraction Audit: Amendment & Refinements | Final | 2026-02-03 |
 | 0011 | Fabryk Extraction Audit: Music Theory MCP Server | Final | 2026-02-03 |
@@ -41,6 +42,7 @@ This index is automatically generated. Do not edit manually.
 
 ### Final
 
+- [0014 - Fabryk Architecture - 2026-02-24](06-final/0014-fabryk-architecture-2026-02-24.md)
 - [0012 - Fabryk Extraction Audit: Amendment & Refinements](06-final/0012-fabryk-extraction-audit-amendment-refinements.md)
 - [0011 - Fabryk Extraction Audit: Music Theory MCP Server](06-final/0011-fabryk-extraction-audit-music-theory-mcp-server.md)
 - [0010 - Knowledge Graph Query Capabilities Demo](06-final/0010-knowledge-graph-query-capabilities-demo.md)
