@@ -65,6 +65,10 @@ jobs:
         restore-keys: |
           cargo-tools-${{ runner.os }}-
 
+    # Install protoc (required by lance-encoding, a transitive dep of lancedb)
+    - name: Install protoc
+      uses: arduino/setup-protoc@v3
+
     # Check for outdated dependencies - FAILS build if semver-compatible updates are available
     # Only run dependency check once (in debug mode)
     - name: Check dependencies
