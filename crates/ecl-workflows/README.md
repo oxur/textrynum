@@ -2,4 +2,4 @@
 
 Restate workflow definitions for ECL.
 
-This crate provides the Restate service implementations that orchestrate ECL workflows.
+Part of the [Textrynum](https://github.com/oxur/textrynum) project. Provides workflow orchestration and state management for ECL.

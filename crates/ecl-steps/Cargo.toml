@@ -6,7 +6,7 @@ rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Step execution framework for ECL AI workflows"
+description = "Step execution framework for ECL workflow orchestration"
 
 [dependencies]
 # Internal dependencies

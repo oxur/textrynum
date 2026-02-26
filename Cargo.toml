@@ -33,13 +33,13 @@ edition = "2021"
 rust-version = "1.75"
 authors = ["Duncan McGreggor <oubiwann@gmail.com>"]
 license = "Apache-2.0"
-repository = "https://github.com/oxur/ecl"
-homepage = "https://github.com/oxur/ecl"
-description = "ECL & Fabryk — Workflow Orchestration and Knowledge Fabric"
+repository = "https://github.com/oxur/textrynum"
+homepage = "https://github.com/oxur/textrynum"
+description = "Textrynum — Knowledge Fabric Workshop (Fabryk + ECL)"
 
 [workspace.dependencies]
 # ============================================================
-# ECL Dependencies (existing)
+# ECL Dependencies
 # ============================================================
 
 # Design documentation management
@@ -75,7 +75,7 @@ tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 uuid = { version = "1", features = ["v4", "serde"] }
 anyhow = "1"
 
-# Testing (ECL)
+# Testing
 proptest = "1"
 mockall = "0.12"
 

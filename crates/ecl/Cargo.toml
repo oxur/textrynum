@@ -6,6 +6,6 @@ authors.workspace = true
 license.workspace = true
 repository.workspace = true
 homepage.workspace = true
-description = "ECL: Extract, Cogitate, Load - AI workflow orchestration engine built on Restate"
+description = "ECL workflow orchestration (part of Textrynum)"
 
 [dependencies]

@@ -2,4 +2,4 @@
 
 Step implementations for ECL workflows.
 
-This crate provides concrete step implementations that can be composed into workflows.
+Part of the [Textrynum](https://github.com/oxur/textrynum) project. Provides concrete step implementations that can be composed into workflows.

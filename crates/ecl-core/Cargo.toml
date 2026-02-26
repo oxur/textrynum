@@ -6,7 +6,7 @@ rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Core types and traits for ECL (Extract, Cogitate, Load) AI workflow engine"
+description = "Core types and traits for ECL workflow orchestration"
 
 [dependencies]
 # Workspace dependencies

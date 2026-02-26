@@ -10,7 +10,7 @@ rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Workflow orchestration and state management for ECL AI workflows"
+description = "Workflow orchestration and state management for ECL"
 
 [dependencies]
 # Internal dependencies

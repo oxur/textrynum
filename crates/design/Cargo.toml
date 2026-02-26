@@ -6,7 +6,7 @@ authors.workspace = true
 license.workspace = true
 repository.workspace = true
 homepage.workspace = true
-description = "Design documentation and architectural decision records for ECL"
+description = "Design documentation for Textrynum"
 keywords = ["documentation", "design"]
 categories = ["development-tools"]
 

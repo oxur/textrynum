@@ -1,4 +1,4 @@
-# Makefile for the ECL Project
+# Makefile for the Textrynum Project
 
 # ANSI color codes
 BLUE := \033[1;34m
@@ -9,7 +9,7 @@ CYAN := \033[1;36m
 RESET := \033[0m
 
 # Variables
-PROJECT_NAME := ECL
+PROJECT_NAME := Textrynum
 BIN_DIR := ./bin
 MODE := debug
 TARGET := ./target/$(MODE)

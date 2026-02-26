@@ -1,12 +1,12 @@
-# AI Assistant Guide for ECL Development
+# AI Assistant Guide for Textrynum Development
 
 **Version:** 2.0
 **Last Updated:** 2025-12-31
-**Purpose:** Comprehensive guidelines for AI assistants working with the ECL Rust project
+**Purpose:** Comprehensive guidelines for AI assistants working with the Textrynum Rust project
 
 ## About This Document
 
-This document provides essential guidance for AI assistants (like Claude Code) when working with the ECL codebase. It focuses on **ECL-specific** conventions, patterns, and workflows, while deferring to authoritative Rust guidelines for general best practices.
+This document provides essential guidance for AI assistants (like Claude Code) when working with the Textrynum codebase. It focuses on **project-specific** conventions, patterns, and workflows, while deferring to authoritative Rust guidelines for general best practices.
 
 ### Document Hierarchy
 
@@ -15,7 +15,7 @@ This document provides essential guidance for AI assistants (like Claude Code) w
 1. **`assets/ai/ai-rust/skills/claude/SKILL.md`** - Advanced Rust programming skill (**use this**)
 2. **`assets/ai/ai-rust/guides/*.md`** - Comprehensive Rust guidelines referenced by the skill
 3. **`assets/ai/CLAUDE-CODE-COVERAGE.md`** - Comprehensive test coverage guide
-4. **This file (CLAUDE.md)** - ECL-specific conventions only
+4. **This file (CLAUDE.md)** - Project-specific conventions only
 
 **Important:** Depending upon the systesm, `assets/ai/ai-rust` may be a symlink; if so, you will need to look in `assets/ai/ai-rust/` (note the final slash). Depending upon the computer you are running on, the actual dir may be at `~/lab/oxur/ai-rust`, `~/lab/oxur/ai-rust-skill`, etc. If, after performing the above checks, you determine that `assets/ai/ai-rust` does not exist on the file system in any form, ask permission to clone it:
 
@@ -86,7 +86,7 @@ git clone https://github.com/oxur/ai-rust assets/ai/ai-rust
 - [ ] Loaded `11-anti-patterns.md`
 - [ ] Checked each pattern (AP-01 to AP-20)
 - [ ] Loaded topic guides for code content
-- [ ] Verified ECL conventions
+- [ ] Verified project conventions
 - [ ] Checked test coverage (≥95%)
 - [ ] Verified design doc alignment
 - [ ] Checked error handling
@@ -96,14 +96,14 @@ git clone https://github.com/oxur/ai-rust assets/ai/ai-rust
 
 ## Summary
 
-**This document provides ECL-specific guidance. For Rust best practices:**
+**This document provides project-specific guidance. For Rust best practices:**
 
 📖 **Use the Rust Guidelines Skill:** `assets/ai/ai-rust/skills/claude/SKILL.md`
 
 **Key takeaways:**
 
 1. **Rust code quality** → Use the skill and guides
-2. **ECL conventions** → Use this document
+2. **Project conventions** → Use this document
 3. **Testing** → Use CLAUDE-CODE-COVERAGE.md + Rust guides
 4. **Architecture** → Check design docs
 5. **Always** load anti-patterns guide first
