@@ -1,6 +1,8 @@
-# Fabryk — The Knowledge Fabric
+# Fabryk
 
-Part of the [Textrynum](README.md) project.
+[![][logo]][logo-large]
+
+ *A hyper-connected, multi-model knowlege fabric* • Part of the [Textrynum](README.md) project
 
 Fabryk turns structured content (Markdown with YAML frontmatter) into a multi-modal knowledge store: a **graph** of relationships, a **full-text search** index, and a **vector space** for semantic similarity — all exposed via **MCP tools** and a **CLI**.
 
@@ -57,3 +59,8 @@ fabryk = { version = "0.1", features = ["full"] }
 | Auth | [jsonwebtoken](https://crates.io/crates/jsonwebtoken) | JWT validation |
 | CLI | [clap](https://crates.io/crates/clap) | Command-line parsing |
 | Configuration | [confyg](https://crates.io/crates/confyg) | Hierarchical config |
+
+[//]: ---Named-Links---
+
+[logo]: assets/images/fabryk/v1-y250.png
+[logo-large]: assets/images/fabryk/v1.png

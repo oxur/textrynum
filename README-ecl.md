@@ -1,8 +1,10 @@
-# ECL — The Loom
+# ECL
 
-Part of the [Textrynum](README.md) project.
+[![][logo]][logo-large]
 
-ECL (Extract, Cogitate, Load) addresses **workflows that require deliberate, validated sequencing** — where each step must complete before the next begins, and downstream steps can request revisions from upstream.
+*Extract, Cogitate, Load*  • Part of the [Textrynum](README.md) project
+
+ECL addresses **workflows that require deliberate, validated sequencing** — where each step must complete before the next begins, and downstream steps can request revisions from upstream.
 
 ## Core Concepts
 
@@ -34,3 +36,8 @@ ECL (Extract, Cogitate, Load) addresses **workflows that require deliberate, val
 ## Status
 
 ECL is early stage. The core types and critique-loop workflow are implemented; the CLI, step library, and durable execution integration are planned.
+
+[//]: ---Named-Links---
+
+[logo]: assets/images/ecl/v2-y250.png
+[logo-large]: assets/images/ecl/v2.png

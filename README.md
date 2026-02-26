@@ -5,17 +5,15 @@
 
 [![][logo]][logo-large]
 
-*A Rust workspace for weaving knowledge into searchable, interconnected fabric.*
+*A workspace and tools for weaving knowledge into a hyper-connected, searchable fabric*
 
 ## What is Textrynum?
 
-Textrynum (from the Roman *textrinum* — a weaving workshop) is a Rust workspace for building **knowledge systems**. It houses two complementary layers:
+Textrynum is a workspace for building **knowledge systems**. It currently houses two complementary layers:
 
 1. **[Fabryk](README-fabryk.md)** — A modular knowledge fabric: ingest content, build knowledge graphs, index for full-text and semantic search, and serve it all via MCP tools. Production-ready, 24,000+ lines, 14 crates.
 
 2. **[ECL](README-ecl.md)** (Extract, Cogitate, Load) — A workflow orchestration engine for durable AI agent pipelines with feedback loops, validation, and managed serialism. Early stage, building on solid foundations.
-
-The metaphor: Textrynum is the workshop. Fabryk is the fabric it produces. ECL is the loom.
 
 ---
 
@@ -25,13 +23,13 @@ The metaphor: Textrynum is the workshop. Fabryk is the fabric it produces. ECL i
 Textrynum
 ┌──────────────────────────────────────────────────────────────────┐
 │                                                                  │
-│  ECL (the loom)                                                  │
+│  ECL                                                             │
 │  ┌────────────────────────────────────────────────────────────┐  │
 │  │                      Workflow Layer                        │  │
 │  │          (Steps, Feedback Loops, Journaling)               │  │
 │  └────────────────────────────┬───────────────────────────────┘  │
 │                               │                                  │
-│  Fabryk (the fabric)          v                                  │
+│  Fabryk                       v                                  │
 │  ┌────────────────────────────────────────────────────────────┐  │
 │  │                    Knowledge Fabric                        │  │
 │  │                                                            │  │
@@ -125,7 +123,7 @@ Apache-2.0
 
 [//]: ---Named-Links---
 
-[logo]: assets/images/logo/v1-x250.png
+[logo]: assets/images/logo/v1-y250.png
 [logo-large]: assets/images/logo/v1.png
 [build]: https://github.com/oxur/textrynum/actions/workflows/cicd.yml
 [build-badge]: https://github.com/oxur/textrynum/actions/workflows/cicd.yml/badge.svg
