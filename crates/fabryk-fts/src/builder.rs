@@ -801,11 +801,7 @@ mod tests {
             .unwrap();
 
         // Modify append content
-        create_test_file(
-            append_dir.path(),
-            "extra2.md",
-            "# Extra 2\n\nNew content",
-        );
+        create_test_file(append_dir.path(), "extra2.md", "# Extra 2\n\nNew content");
 
         // Second append: should detect change and re-index
         let stats = IndexBuilder::new()

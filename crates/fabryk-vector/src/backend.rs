@@ -142,8 +142,7 @@ impl SimpleVectorBackend {
         // Ensure parent directory exists
         if let Some(parent) = path.parent() {
             if !parent.exists() {
-                std::fs::create_dir_all(parent)
-                    .map_err(|e| Error::io_with_path(e, parent))?;
+                std::fs::create_dir_all(parent).map_err(|e| Error::io_with_path(e, parent))?;
             }
         }
 
@@ -165,16 +164,12 @@ impl SimpleVectorBackend {
     ///
     /// Returns `Ok(Some(backend))` if the cache exists and loaded successfully,
     /// `Ok(None)` if the cache doesn't exist, or `Err` on read/parse errors.
-    pub fn load_cache(
-        path: &Path,
-        provider: Arc<dyn EmbeddingProvider>,
-    ) -> Result<Option<Self>> {
+    pub fn load_cache(path: &Path, provider: Arc<dyn EmbeddingProvider>) -> Result<Option<Self>> {
         if !path.exists() {
             return Ok(None);
         }
 
-        let json = std::fs::read_to_string(path)
-            .map_err(|e| Error::io_with_path(e, path))?;
+        let json = std::fs::read_to_string(path).map_err(|e| Error::io_with_path(e, path))?;
 
         let cache: VectorCache = serde_json::from_str(&json)
             .map_err(|e| Error::parse(format!("Failed to parse vector cache: {e}")))?;

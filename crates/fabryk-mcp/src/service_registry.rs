@@ -34,10 +34,7 @@ impl ServiceAwareRegistry {
     ///
     /// All `services` must be available (Ready or Degraded) for tool calls
     /// to be delegated to the inner registry.
-    pub fn new<R: ToolRegistry + 'static>(
-        registry: R,
-        services: Vec<ServiceHandle>,
-    ) -> Self {
+    pub fn new<R: ToolRegistry + 'static>(registry: R, services: Vec<ServiceHandle>) -> Self {
         Self {
             inner: Box::new(registry),
             services,

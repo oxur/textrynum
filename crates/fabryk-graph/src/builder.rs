@@ -303,8 +303,7 @@ impl<E: GraphExtractor> GraphBuilder<E> {
             // Ensure parent directory exists
             if let Some(parent) = cache_path.parent() {
                 if !parent.exists() {
-                    std::fs::create_dir_all(parent)
-                        .map_err(|e| Error::io_with_path(e, parent))?;
+                    std::fs::create_dir_all(parent).map_err(|e| Error::io_with_path(e, parent))?;
                 }
             }
             if let Err(e) = persistence::save_graph(&graph, cache_path, Some(metadata)) {
@@ -432,11 +431,7 @@ fn compute_content_hash(dir: &Path) -> Result<String> {
     let mut hasher = DefaultHasher::new();
     let mut file_info: Vec<(String, u64)> = Vec::new();
 
-    fn collect_files(
-        dir: &Path,
-        base: &Path,
-        file_info: &mut Vec<(String, u64)>,
-    ) -> Result<()> {
+    fn collect_files(dir: &Path, base: &Path, file_info: &mut Vec<(String, u64)>) -> Result<()> {
         for entry in std::fs::read_dir(dir).map_err(|e| Error::io_with_path(e, dir))? {
             let entry = entry.map_err(Error::io)?;
             let path = entry.path();

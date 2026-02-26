@@ -141,10 +141,7 @@ impl ServiceHandle {
             match state {
                 ServiceState::Ready => return Ok(()),
                 ServiceState::Failed(reason) => {
-                    return Err(format!(
-                        "Service '{}' failed: {reason}",
-                        self.inner.name
-                    ));
+                    return Err(format!("Service '{}' failed: {reason}", self.inner.name));
                 }
                 _ => {}
             }

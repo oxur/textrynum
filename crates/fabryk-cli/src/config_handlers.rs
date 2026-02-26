@@ -24,8 +24,12 @@ pub fn handle_config_command(config_path: Option<&str>, action: ConfigAction) ->
     match action {
         ConfigAction::Path => cmd_config_path::<FabrykConfig>(config_path),
         ConfigAction::Get { key } => cmd_config_get::<FabrykConfig>(config_path, &key),
-        ConfigAction::Set { key, value } => cmd_config_set::<FabrykConfig>(config_path, &key, &value),
-        ConfigAction::Init { file, force } => cmd_config_init::<FabrykConfig>(file.as_deref(), force),
+        ConfigAction::Set { key, value } => {
+            cmd_config_set::<FabrykConfig>(config_path, &key, &value)
+        }
+        ConfigAction::Init { file, force } => {
+            cmd_config_init::<FabrykConfig>(file.as_deref(), force)
+        }
         ConfigAction::Export { docker_env } => {
             let config = FabrykConfig::load(config_path)?;
             cmd_config_export(&config, docker_env)
@@ -73,7 +77,11 @@ pub fn cmd_config_get<C: ConfigManager>(config_path: Option<&str>, key: &str) ->
 }
 
 /// Set a configuration value by dotted key in the config file.
-pub fn cmd_config_set<C: ConfigManager>(config_path: Option<&str>, key: &str, value: &str) -> Result<()> {
+pub fn cmd_config_set<C: ConfigManager>(
+    config_path: Option<&str>,
+    key: &str,
+    value: &str,
+) -> Result<()> {
     let path = C::resolve_config_path(config_path)
         .ok_or_else(|| Error::config("Could not determine config directory"))?;
 
@@ -268,7 +276,8 @@ mod tests {
         let config = FabrykConfig::default();
         std::fs::write(&path, config.to_toml_string().unwrap()).unwrap();
 
-        let result = cmd_config_get::<FabrykConfig>(Some(path.to_str().unwrap()), "nonexistent.key");
+        let result =
+            cmd_config_get::<FabrykConfig>(Some(path.to_str().unwrap()), "nonexistent.key");
         assert!(result.is_err());
         assert!(result.unwrap_err().to_string().contains("not found"));
     }
@@ -284,7 +293,11 @@ mod tests {
         let config = FabrykConfig::default();
         std::fs::write(&path, config.to_toml_string().unwrap()).unwrap();
 
-        let result = cmd_config_set::<FabrykConfig>(Some(path.to_str().unwrap()), "project_name", "new-name");
+        let result = cmd_config_set::<FabrykConfig>(
+            Some(path.to_str().unwrap()),
+            "project_name",
+            "new-name",
+        );
         assert!(result.is_ok());
 
         let content = std::fs::read_to_string(&path).unwrap();
@@ -298,7 +311,8 @@ mod tests {
         let config = FabrykConfig::default();
         std::fs::write(&path, config.to_toml_string().unwrap()).unwrap();
 
-        let result = cmd_config_set::<FabrykConfig>(Some(path.to_str().unwrap()), "server.port", "8080");
+        let result =
+            cmd_config_set::<FabrykConfig>(Some(path.to_str().unwrap()), "server.port", "8080");
         assert!(result.is_ok());
 
         let content = std::fs::read_to_string(&path).unwrap();
@@ -307,7 +321,8 @@ mod tests {
 
     #[test]
     fn test_cmd_config_set_missing_file() {
-        let result = cmd_config_set::<FabrykConfig>(Some("/nonexistent/config.toml"), "key", "value");
+        let result =
+            cmd_config_set::<FabrykConfig>(Some("/nonexistent/config.toml"), "key", "value");
         assert!(result.is_err());
         assert!(result.unwrap_err().to_string().contains("does not exist"));
     }

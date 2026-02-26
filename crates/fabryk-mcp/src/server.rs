@@ -356,8 +356,7 @@ mod tests {
         svc1.set_state(ServiceState::Ready);
         svc2.set_state(ServiceState::Ready);
 
-        let server = FabrykMcpServer::new(CompositeRegistry::new())
-            .with_services(vec![svc1, svc2]);
+        let server = FabrykMcpServer::new(CompositeRegistry::new()).with_services(vec![svc1, svc2]);
 
         assert!(server.is_ready());
     }
@@ -369,8 +368,7 @@ mod tests {
         svc1.set_state(ServiceState::Ready);
         svc2.set_state(ServiceState::Starting);
 
-        let server = FabrykMcpServer::new(CompositeRegistry::new())
-            .with_services(vec![svc1, svc2]);
+        let server = FabrykMcpServer::new(CompositeRegistry::new()).with_services(vec![svc1, svc2]);
 
         assert!(!server.is_ready());
     }
@@ -389,8 +387,7 @@ mod tests {
         svc1.set_state(ServiceState::Ready);
         svc2.set_state(ServiceState::Starting);
 
-        let server = FabrykMcpServer::new(CompositeRegistry::new())
-            .with_services(vec![svc1, svc2]);
+        let server = FabrykMcpServer::new(CompositeRegistry::new()).with_services(vec![svc1, svc2]);
 
         let health = server.health();
         assert_eq!(health[0], ("graph".to_string(), ServiceState::Ready));
@@ -402,8 +399,7 @@ mod tests {
         let svc = ServiceHandle::new("fast");
         svc.set_state(ServiceState::Ready);
 
-        let server = FabrykMcpServer::new(CompositeRegistry::new())
-            .with_service(svc);
+        let server = FabrykMcpServer::new(CompositeRegistry::new()).with_service(svc);
 
         let result = server.wait_ready(Duration::from_millis(50)).await;
         assert!(result.is_ok());
@@ -414,8 +410,7 @@ mod tests {
         let svc = ServiceHandle::new("slow");
         svc.set_state(ServiceState::Starting);
 
-        let server = FabrykMcpServer::new(CompositeRegistry::new())
-            .with_service(svc);
+        let server = FabrykMcpServer::new(CompositeRegistry::new()).with_service(svc);
 
         let result = server.wait_ready(Duration::from_millis(50)).await;
         assert!(result.is_err());

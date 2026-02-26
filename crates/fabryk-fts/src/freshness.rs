@@ -273,8 +273,7 @@ impl AppendMetadata {
             return Ok(None);
         }
 
-        let content =
-            std::fs::read_to_string(&path).map_err(|e| Error::io_with_path(e, &path))?;
+        let content = std::fs::read_to_string(&path).map_err(|e| Error::io_with_path(e, &path))?;
 
         let metadata: Self = serde_json::from_str(&content)
             .map_err(|e| Error::parse(format!("Invalid append metadata JSON: {e}")))?;
