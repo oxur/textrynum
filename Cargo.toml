@@ -45,9 +45,6 @@ description = "ECL & Fabryk — Workflow Orchestration and Knowledge Fabric"
 # Design documentation management
 oxur-odm = { version = "0.3", path = "../oxur/crates/oxur-odm" }
 
-# Restate SDK
-restate-sdk = "0.7"
-
 # Database
 sqlx = { version = "0.8", features = ["runtime-tokio", "sqlite", "postgres", "chrono", "uuid"] }
 
