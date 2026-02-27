@@ -40,6 +40,7 @@ fn make_tool(name: &str, description: &str, schema: Value) -> Tool {
         output_schema: None,
         annotations: None,
         icons: None,
+        execution: None,
         meta: None,
     }
 }

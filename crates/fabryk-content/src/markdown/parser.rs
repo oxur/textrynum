@@ -23,7 +23,7 @@
 //! assert_eq!(paragraph, "This is the first paragraph.");
 //! ```
 
-use pulldown_cmark::{Event, HeadingLevel, Parser, Tag};
+use pulldown_cmark::{Event, HeadingLevel, Parser, Tag, TagEnd};
 
 /// Extract the first heading from markdown content.
 ///
@@ -58,12 +58,12 @@ pub fn extract_first_heading(content: &str) -> Option<(HeadingLevel, String)> {
 
     for event in parser {
         match event {
-            Event::Start(Tag::Heading(level, _, _)) => {
+            Event::Start(Tag::Heading { level, .. }) => {
                 in_heading = true;
                 heading_level = level;
                 heading_text.clear();
             }
-            Event::End(Tag::Heading(_, _, _)) => {
+            Event::End(TagEnd::Heading(_)) => {
                 if in_heading && !heading_text.is_empty() {
                     return Some((heading_level, heading_text.trim().to_string()));
                 }
@@ -115,10 +115,10 @@ pub fn extract_first_paragraph(content: &str, max_chars: usize) -> Option<String
     for event in parser {
         match event {
             // Skip content inside headings
-            Event::Start(Tag::Heading(_, _, _)) => {
+            Event::Start(Tag::Heading { .. }) => {
                 skip_until_heading_end = true;
             }
-            Event::End(Tag::Heading(_, _, _)) => {
+            Event::End(TagEnd::Heading(_)) => {
                 skip_until_heading_end = false;
             }
 
@@ -127,7 +127,7 @@ pub fn extract_first_paragraph(content: &str, max_chars: usize) -> Option<String
                 in_paragraph = true;
                 paragraph_text.clear();
             }
-            Event::End(Tag::Paragraph) if in_paragraph => {
+            Event::End(TagEnd::Paragraph) if in_paragraph => {
                 let trimmed = paragraph_text.trim();
                 if !trimmed.is_empty() {
                     return Some(truncate_text(trimmed, max_chars));
@@ -185,7 +185,7 @@ pub fn extract_text_content(content: &str) -> String {
             Event::Start(Tag::CodeBlock(_)) => {
                 in_code_block = true;
             }
-            Event::End(Tag::CodeBlock(_)) => {
+            Event::End(TagEnd::CodeBlock) => {
                 in_code_block = false;
             }
             Event::Text(text) if !in_code_block => {
@@ -205,7 +205,7 @@ pub fn extract_text_content(content: &str) -> String {
                     text_content.push(' ');
                 }
             }
-            Event::End(Tag::Paragraph) | Event::End(Tag::Heading(_, _, _)) => {
+            Event::End(TagEnd::Paragraph) | Event::End(TagEnd::Heading(_)) => {
                 if !text_content.is_empty() && !text_content.ends_with('\n') {
                     text_content.push('\n');
                 }
