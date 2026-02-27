@@ -5,7 +5,7 @@
 
 [![][logo]][logo-large]
 
- *A hyper-connected, multi-model knowlege fabric* • Part of the [Textrynum](README.md) project
+ *A hyper-connected, multi-modal knowlege fabric* • Part of the [Textrynum](README.md) project
 
 Fabryk turns structured content (Markdown with YAML frontmatter) into a multi-modal knowledge store: a **graph** of relationships, a **full-text search** index, and a **vector space** for semantic similarity — all exposed via **MCP tools** and a **CLI**.
 
