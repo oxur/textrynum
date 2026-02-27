@@ -14,8 +14,8 @@ graph-rkyv-cache = ["dep:rkyv", "dep:memmap2", "dep:blake3"]
 test-utils = []
 
 [dependencies]
-fabryk-core = { path = "../fabryk-core" }
-fabryk-content = { path = "../fabryk-content" }
+fabryk-core = { version = "0.1.0", path = "../fabryk-core" }
+fabryk-content = { version = "0.1.0", path = "../fabryk-content" }
 
 # Graph
 petgraph = { workspace = true }

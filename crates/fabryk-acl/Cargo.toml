@@ -9,7 +9,7 @@ repository.workspace = true
 description = "Access control layer for Fabryk (placeholder for v0.2/v0.3)"
 
 [dependencies]
-fabryk-core = { path = "../fabryk-core" }
+fabryk-core = { version = "0.1.0", path = "../fabryk-core" }
 
 # Async
 async-trait = { workspace = true }

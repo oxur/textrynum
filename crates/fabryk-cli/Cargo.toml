@@ -9,9 +9,9 @@ repository.workspace = true
 description = "CLI framework for Fabryk-based applications"
 
 [dependencies]
-fabryk-core = { path = "../fabryk-core" }
-fabryk-graph = { path = "../fabryk-graph" }
-fabryk-content = { path = "../fabryk-content" }
+fabryk-core = { version = "0.1.0", path = "../fabryk-core" }
+fabryk-graph = { version = "0.1.0", path = "../fabryk-graph" }
+fabryk-content = { version = "0.1.0", path = "../fabryk-content" }
 
 # CLI
 clap = { workspace = true }

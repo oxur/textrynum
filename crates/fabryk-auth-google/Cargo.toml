@@ -6,7 +6,7 @@ license.workspace = true
 description = "Google OAuth2 provider for fabryk-auth — JWKS cache, JWT validation, userinfo"
 
 [dependencies]
-fabryk-auth = { path = "../fabryk-auth" }
+fabryk-auth = { version = "0.1.0", path = "../fabryk-auth" }
 jsonwebtoken = "9"
 reqwest = { workspace = true }
 serde = { workspace = true }

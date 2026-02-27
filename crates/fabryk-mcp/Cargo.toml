@@ -9,7 +9,7 @@ repository.workspace = true
 description = "Core MCP server infrastructure for Fabryk"
 
 [dependencies]
-fabryk-core = { path = "../fabryk-core" }
+fabryk-core = { version = "0.1.0", path = "../fabryk-core" }
 
 # MCP SDK
 rmcp = { workspace = true }
