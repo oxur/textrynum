@@ -14,8 +14,8 @@ description = "Workflow orchestration and state management for ECL"
 
 [dependencies]
 # Internal dependencies
-ecl-core = { version = "0.1.0", path = "../ecl-core" }
-ecl-steps = { version = "0.1.0", path = "../ecl-steps" }
+ecl-core = { version = "0.1.1", path = "../ecl-core" }
+ecl-steps = { version = "0.1.1", path = "../ecl-steps" }
 
 # Workspace dependencies
 tokio = { workspace = true }

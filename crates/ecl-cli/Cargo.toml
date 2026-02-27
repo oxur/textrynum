@@ -10,9 +10,9 @@ description = "Command-line interface for ECL workflow management"
 
 [dependencies]
 # Internal dependencies
-ecl-core = { version = "0.1.0", path = "../ecl-core" }
-ecl-steps = { version = "0.1.0", path = "../ecl-steps" }
-ecl-workflows = { version = "0.1.0", path = "../ecl-workflows" }
+ecl-core = { version = "0.1.1", path = "../ecl-core" }
+ecl-steps = { version = "0.1.1", path = "../ecl-steps" }
+ecl-workflows = { version = "0.1.1", path = "../ecl-workflows" }
 
 # Workspace dependencies
 tokio = { workspace = true }
