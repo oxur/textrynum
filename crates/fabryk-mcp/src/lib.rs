@@ -43,6 +43,7 @@
 //!     .await?;
 //! ```
 
+pub mod discoverable;
 pub mod error;
 pub mod registry;
 pub mod server;
@@ -60,6 +61,9 @@ pub use server::{FabrykMcpServer, ServerConfig};
 
 // Re-exports — error
 pub use error::McpErrorExt;
+
+// Re-exports — discoverable registry
+pub use discoverable::{DiscoverableRegistry, ExternalConnector, ToolMeta};
 
 // Re-exports — built-in tools
 pub use tools::{handle_health, HealthResponse, HealthTools};

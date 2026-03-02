@@ -137,6 +137,18 @@ impl FabrykMcpServer {
         }
     }
 
+    /// Auto-generate server instructions for discoverability.
+    ///
+    /// Sets the server description to remind AI agents to call the directory
+    /// tool first. Use with [`DiscoverableRegistry`](crate::DiscoverableRegistry).
+    pub fn with_discoverable_instructions(mut self, server_name: &str) -> Self {
+        self.config.description = Some(format!(
+            "ALWAYS call {server_name}_directory first — it maps all available tools, \
+             valid filter values, and the optimal query strategy for this session."
+        ));
+        self
+    }
+
     /// Get the server configuration.
     pub fn config(&self) -> &ServerConfig {
         &self.config
@@ -336,6 +348,15 @@ mod tests {
 
         let deserialized: ServerConfig = serde_json::from_str(&json).unwrap();
         assert_eq!(deserialized.name, "test");
+    }
+
+    #[test]
+    fn test_with_discoverable_instructions() {
+        let server =
+            FabrykMcpServer::new(CompositeRegistry::new()).with_discoverable_instructions("myapp");
+        let desc = server.config().description.as_deref().unwrap();
+        assert!(desc.contains("myapp_directory"));
+        assert!(desc.contains("ALWAYS call"));
     }
 
     #[test]
