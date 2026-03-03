@@ -154,7 +154,7 @@ impl TantivySearch {
         let max_len = self.config.snippet_length;
 
         // Try description first
-        if let Some(ref desc) = description {
+        if let Some(desc) = &description {
             if let Some(snippet) = find_snippet_in_text(desc, query, max_len) {
                 return Some(snippet);
             }

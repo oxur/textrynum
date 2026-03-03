@@ -228,14 +228,16 @@ mod tests {
         let _ = std::fs::create_dir_all(&temp_dir);
 
         // Set env var
-        env::set_var("FABRYK_TEST_CONFIG_CONFIG_DIR", &temp_dir);
+        // SAFETY: This test runs serially and no other thread reads this env var.
+        unsafe { env::set_var("FABRYK_TEST_CONFIG_CONFIG_DIR", &temp_dir) };
 
         let result = resolver.config_dir();
         assert!(result.is_some());
         assert_eq!(result.unwrap(), temp_dir);
 
         // Clean up
-        env::remove_var("FABRYK_TEST_CONFIG_CONFIG_DIR");
+        // SAFETY: This test runs serially and no other thread reads this env var.
+        unsafe { env::remove_var("FABRYK_TEST_CONFIG_CONFIG_DIR") };
         let _ = std::fs::remove_dir_all(&temp_dir);
     }
 
@@ -248,14 +250,16 @@ mod tests {
         let _ = std::fs::create_dir_all(&temp_dir);
 
         // Set env var
-        env::set_var("FABRYK_TEST_ROOT_ROOT", &temp_dir);
+        // SAFETY: This test runs serially and no other thread reads this env var.
+        unsafe { env::set_var("FABRYK_TEST_ROOT_ROOT", &temp_dir) };
 
         let result = resolver.project_root();
         assert!(result.is_some());
         assert_eq!(result.unwrap(), temp_dir);
 
         // Clean up
-        env::remove_var("FABRYK_TEST_ROOT_ROOT");
+        // SAFETY: This test runs serially and no other thread reads this env var.
+        unsafe { env::remove_var("FABRYK_TEST_ROOT_ROOT") };
         let _ = std::fs::remove_dir_all(&temp_dir);
     }
 

@@ -123,14 +123,14 @@ pub fn compute_stats(graph: &GraphData) -> GraphStats {
 
     let (most_depended_on, max_in_degree) = in_degrees
         .iter()
-        .max_by_key(|(_, &v)| v)
-        .map(|(k, &v)| (Some(k.clone()), v))
+        .max_by_key(|(_, v)| *v)
+        .map(|(k, v)| (Some(k.clone()), *v))
         .unwrap_or((None, 0));
 
     let (most_dependencies, max_out_degree) = out_degrees
         .iter()
-        .max_by_key(|(_, &v)| v)
-        .map(|(k, &v)| (Some(k.clone()), v))
+        .max_by_key(|(_, v)| *v)
+        .map(|(k, v)| (Some(k.clone()), *v))
         .unwrap_or((None, 0));
 
     GraphStats {

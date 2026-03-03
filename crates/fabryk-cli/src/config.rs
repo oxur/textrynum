@@ -10,7 +10,7 @@
 //! 3. XDG default: `~/.config/fabryk/config.toml`
 //! 4. Built-in defaults
 
-use confyg::{env, Confygery};
+use confyg::{Confygery, env};
 use fabryk_core::traits::ConfigProvider;
 use fabryk_core::{Error, Result};
 use serde::{Deserialize, Serialize};
@@ -272,7 +272,8 @@ mod tests {
     impl EnvGuard {
         fn new(key: &str, value: &str) -> Self {
             let prev = std::env::var(key).ok();
-            std::env::set_var(key, value);
+            // SAFETY: Test-only helper; tests using this guard run serially.
+            unsafe { std::env::set_var(key, value) };
             Self {
                 key: key.to_string(),
                 prev,
@@ -281,7 +282,8 @@ mod tests {
 
         fn remove(key: &str) -> Self {
             let prev = std::env::var(key).ok();
-            std::env::remove_var(key);
+            // SAFETY: Test-only helper; tests using this guard run serially.
+            unsafe { std::env::remove_var(key) };
             Self {
                 key: key.to_string(),
                 prev,
@@ -291,10 +293,11 @@ mod tests {
 
     impl Drop for EnvGuard {
         fn drop(&mut self) {
-            if let Some(ref val) = self.prev {
-                std::env::set_var(&self.key, val);
+            // SAFETY: Test-only helper; tests using this guard run serially.
+            if let Some(val) = &self.prev {
+                unsafe { std::env::set_var(&self.key, val) };
             } else {
-                std::env::remove_var(&self.key);
+                unsafe { std::env::remove_var(&self.key) };
             }
         }
     }

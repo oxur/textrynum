@@ -25,12 +25,14 @@ members = [
     "crates/fabryk-auth",
     "crates/fabryk-auth-google",
     "crates/fabryk-auth-mcp",
+    # Workspace utilities
+    "crates/textrynum-util",
 ]
 
 [workspace.package]
 version = "0.1.1"
-edition = "2021"
-rust-version = "1.75"
+edition = "2024"
+rust-version = "1.85"
 authors = ["Duncan McGreggor <oubiwann@gmail.com>"]
 license = "Apache-2.0"
 repository = "https://github.com/oxur/textrynum"
@@ -97,7 +99,7 @@ serde_json = "1"
 toml = "0.9"
 
 # Error handling
-thiserror = "1"
+thiserror = "2"
 
 # Time
 chrono = { version = "0.4", features = ["serde"] }
