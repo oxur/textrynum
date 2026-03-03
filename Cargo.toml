@@ -132,7 +132,7 @@ async-walkdir = "2"
 regex = "1"
 
 # Full-text search
-tantivy = "0.22"
+tantivy = "0.25"
 stop-words = "0.10"
 
 # String matching (for source resolution)
