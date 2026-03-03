@@ -1,0 +1,30 @@
+[package]
+name = "fabryk-redis"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Redis client abstraction for the Fabryk knowledge fabric"
+
+[dependencies]
+# Redis
+redis = { workspace = true }
+
+# Async
+tokio = { workspace = true }
+async-trait = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Error handling
+thiserror = { workspace = true }
+
+# Logging
+log = { workspace = true }
+
+[dev-dependencies]
+tokio-test = { workspace = true }

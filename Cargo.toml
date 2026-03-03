@@ -21,6 +21,7 @@ members = [
     "crates/fabryk-mcp-fts",
     "crates/fabryk-mcp-graph",
     "crates/fabryk-cli",
+    "crates/fabryk-redis",
     # Fabryk auth crates
     "crates/fabryk-auth",
     "crates/fabryk-auth-google",
@@ -150,6 +151,9 @@ fastembed = "5"
 
 # JWT/Auth
 jsonwebtoken = { version = "10", features = ["rust_crypto"] }
+
+# Redis
+redis = { version = "1.0", features = ["tokio-comp", "connection-manager"] }
 
 # Graph database
 petgraph = "0.8"

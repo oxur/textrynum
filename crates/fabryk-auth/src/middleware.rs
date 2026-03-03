@@ -17,10 +17,22 @@ use tower::{Layer, Service};
 use crate::{AuthConfig, TokenValidator};
 
 /// Tower `Layer` that wraps services with token authentication.
-#[derive(Clone)]
 pub struct AuthLayer<V: TokenValidator> {
     validator: Arc<V>,
     config: AuthConfig,
+}
+
+// Manual Clone impl — only requires V: TokenValidator (V is behind Arc,
+// so Clone on V itself is never needed). Using #[derive(Clone)] would
+// add an unnecessary V: Clone bound that breaks validators containing
+// non-Clone types like RwLock.
+impl<V: TokenValidator> Clone for AuthLayer<V> {
+    fn clone(&self) -> Self {
+        Self {
+            validator: self.validator.clone(),
+            config: self.config.clone(),
+        }
+    }
 }
 
 impl<V: TokenValidator> AuthLayer<V> {
@@ -46,11 +58,21 @@ impl<V: TokenValidator, S> Layer<S> for AuthLayer<V> {
 ///
 /// On successful validation, inserts `AuthenticatedUser` into request
 /// extensions where it's available to downstream handlers.
-#[derive(Clone)]
 pub struct AuthService<V: TokenValidator, S> {
     inner: S,
     validator: Arc<V>,
     config: AuthConfig,
+}
+
+// Manual Clone impl — only requires S: Clone (V is behind Arc).
+impl<V: TokenValidator, S: Clone> Clone for AuthService<V, S> {
+    fn clone(&self) -> Self {
+        Self {
+            inner: self.inner.clone(),
+            validator: self.validator.clone(),
+            config: self.config.clone(),
+        }
+    }
 }
 
 impl<V, S> Service<Request<Body>> for AuthService<V, S>
