@@ -12,6 +12,7 @@
 
 #![doc = include_str!("../README.md")]
 
+pub mod deploy;
 pub mod error;
 pub mod service;
 pub mod state;
