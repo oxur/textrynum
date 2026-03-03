@@ -66,7 +66,7 @@ pub use error::McpErrorExt;
 pub use discoverable::{DiscoverableRegistry, ExternalConnector, ToolMeta};
 
 // Re-exports — built-in tools
-pub use tools::{handle_health, HealthResponse, HealthTools};
+pub use tools::{HealthResponse, HealthTools, handle_health};
 
 // Re-exports — rmcp types used by downstream crates
 pub mod model {
@@ -77,5 +77,5 @@ pub mod model {
 // Re-exports — HTTP transport (requires `http` feature)
 #[cfg(feature = "http")]
 pub use rmcp::transport::streamable_http_server::{
-    session::local::LocalSessionManager, StreamableHttpServerConfig, StreamableHttpService,
+    StreamableHttpServerConfig, StreamableHttpService, session::local::LocalSessionManager,
 };

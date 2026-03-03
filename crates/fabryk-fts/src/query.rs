@@ -27,10 +27,10 @@
 //! ```
 
 use fabryk_core::Result;
+use tantivy::Term;
 use tantivy::query::{BooleanQuery, BoostQuery, Occur, Query, TermQuery};
 use tantivy::schema::IndexRecordOption;
 use tantivy::tokenizer::{LowerCaser, SimpleTokenizer, Stemmer, TextAnalyzer, TokenStream};
-use tantivy::Term;
 
 use crate::schema::SearchSchema;
 use crate::stopwords::StopwordFilter;

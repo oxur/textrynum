@@ -13,7 +13,7 @@ mod user;
 
 pub use error::AuthError;
 pub use middleware::{AuthLayer, AuthService};
-pub use user::{email_from_parts, user_from_parts, AuthenticatedUser};
+pub use user::{AuthenticatedUser, email_from_parts, user_from_parts};
 
 /// Configuration for the auth middleware.
 #[derive(Clone, Debug, Default)]

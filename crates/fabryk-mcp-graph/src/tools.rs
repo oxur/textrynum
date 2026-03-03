@@ -8,12 +8,11 @@ use fabryk_mcp::model::{CallToolResult, Content, ErrorData, Tool};
 use fabryk_mcp::registry::{ToolRegistry, ToolResult};
 
 use fabryk_graph::{
-    calculate_centrality, compute_stats, find_bridges, neighborhood, prerequisites_sorted,
-    shortest_path, validate_graph, EdgeInfo, GraphData, NeighborInfo, NodeSummary, PathStep,
-    Relationship,
+    EdgeInfo, GraphData, NeighborInfo, NodeSummary, PathStep, Relationship, calculate_centrality,
+    compute_stats, find_bridges, neighborhood, prerequisites_sorted, shortest_path, validate_graph,
 };
 use serde::Deserialize;
-use serde_json::{json, Value};
+use serde_json::{Value, json};
 use std::sync::Arc;
 use tokio::sync::RwLock;
 

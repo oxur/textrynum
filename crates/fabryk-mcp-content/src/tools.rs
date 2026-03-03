@@ -538,16 +538,20 @@ mod tests {
     fn test_content_tools_descriptions() {
         let tools = ContentTools::new(MockContentProvider).with_prefix("concepts");
         let tool_list = tools.tools();
-        assert!(tool_list[0]
-            .description
-            .as_ref()
-            .unwrap()
-            .contains("concepts"));
-        assert!(tool_list[1]
-            .description
-            .as_ref()
-            .unwrap()
-            .contains("concept"));
+        assert!(
+            tool_list[0]
+                .description
+                .as_ref()
+                .unwrap()
+                .contains("concepts")
+        );
+        assert!(
+            tool_list[1]
+                .description
+                .as_ref()
+                .unwrap()
+                .contains("concept")
+        );
     }
 
     #[test]
@@ -621,9 +625,11 @@ mod tests {
     #[test]
     fn test_content_tools_unknown_tool() {
         let tools = ContentTools::new(MockContentProvider).with_prefix("concepts");
-        assert!(tools
-            .call("concepts_delete", serde_json::json!({}))
-            .is_none());
+        assert!(
+            tools
+                .call("concepts_delete", serde_json::json!({}))
+                .is_none()
+        );
     }
 
     // -- SourceTools tests --------------------------------------------------
@@ -702,8 +708,10 @@ mod tests {
     #[test]
     fn test_source_tools_unknown_tool() {
         let tools = SourceTools::new(MockSourceProvider);
-        assert!(tools
-            .call("sources_delete", serde_json::json!({}))
-            .is_none());
+        assert!(
+            tools
+                .call("sources_delete", serde_json::json!({}))
+                .is_none()
+        );
     }
 }

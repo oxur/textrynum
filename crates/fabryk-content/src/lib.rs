@@ -45,9 +45,9 @@ pub mod markdown;
 
 // Re-export commonly used types
 pub use markdown::{
-    extract_all_list_items, extract_first_heading, extract_first_paragraph, extract_frontmatter,
-    extract_list_from_section, extract_section_content, extract_text_content, normalize_id,
-    parse_comma_list, parse_keyword_list, strip_frontmatter, FrontmatterResult,
+    FrontmatterResult, extract_all_list_items, extract_first_heading, extract_first_paragraph,
+    extract_frontmatter, extract_list_from_section, extract_section_content, extract_text_content,
+    normalize_id, parse_comma_list, parse_keyword_list, strip_frontmatter,
 };
 
 // Re-export HeadingLevel for convenience

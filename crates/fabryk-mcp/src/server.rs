@@ -19,7 +19,7 @@ use std::time::Duration;
 
 #[cfg(feature = "http")]
 use rmcp::transport::streamable_http_server::{
-    session::local::LocalSessionManager, StreamableHttpServerConfig, StreamableHttpService,
+    StreamableHttpServerConfig, StreamableHttpService, session::local::LocalSessionManager,
 };
 
 /// Configuration for the MCP server.

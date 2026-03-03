@@ -38,7 +38,7 @@
 //! ```
 
 use std::collections::HashSet;
-use stop_words::{get, LANGUAGE};
+use stop_words::{LANGUAGE, get};
 
 use crate::SearchConfig;
 

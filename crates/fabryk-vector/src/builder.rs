@@ -411,7 +411,7 @@ impl<E: VectorExtractor> VectorIndexBuilder<E> {
 
 /// Discover content files in a directory.
 async fn discover_files(base_path: &Path) -> Result<Vec<PathBuf>> {
-    use fabryk_core::util::files::{find_all_files, FindOptions};
+    use fabryk_core::util::files::{FindOptions, find_all_files};
 
     let files = find_all_files(base_path, FindOptions::markdown()).await?;
     let paths: Vec<PathBuf> = files.into_iter().map(|f| f.path).collect();
@@ -423,7 +423,7 @@ async fn discover_files(base_path: &Path) -> Result<Vec<PathBuf>> {
 ///
 /// Hashes all markdown file contents in the directory using blake3.
 pub async fn compute_content_hash(content_path: &Path) -> Result<String> {
-    use fabryk_core::util::files::{find_all_files, FindOptions};
+    use fabryk_core::util::files::{FindOptions, find_all_files};
 
     let files = find_all_files(content_path, FindOptions::markdown()).await?;
 

@@ -333,15 +333,21 @@ related:
 
         assert_eq!(edges.len(), 3);
 
-        assert!(edges
-            .iter()
-            .any(|e| e.to == "a" && e.relationship == Relationship::Prerequisite));
-        assert!(edges
-            .iter()
-            .any(|e| e.to == "b" && e.relationship == Relationship::Prerequisite));
-        assert!(edges
-            .iter()
-            .any(|e| e.to == "x" && e.relationship == Relationship::RelatesTo));
+        assert!(
+            edges
+                .iter()
+                .any(|e| e.to == "a" && e.relationship == Relationship::Prerequisite)
+        );
+        assert!(
+            edges
+                .iter()
+                .any(|e| e.to == "b" && e.relationship == Relationship::Prerequisite)
+        );
+        assert!(
+            edges
+                .iter()
+                .any(|e| e.to == "x" && e.relationship == Relationship::RelatesTo)
+        );
 
         // All edges should have from_id set
         assert!(edges.iter().all(|e| e.from == "from-node"));

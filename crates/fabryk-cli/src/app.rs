@@ -6,8 +6,8 @@
 use crate::cli::{BaseCommand, CliArgs, GraphSubcommand};
 use crate::config::FabrykConfig;
 use crate::{config_handlers, graph_handlers};
-use fabryk_core::traits::ConfigProvider;
 use fabryk_core::Result;
+use fabryk_core::traits::ConfigProvider;
 use std::sync::Arc;
 use tracing_subscriber::EnvFilter;
 

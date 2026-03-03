@@ -505,10 +505,12 @@ mod tests {
 
         let result = validate_graph(&graph);
 
-        assert!(!result
-            .errors
-            .iter()
-            .any(|e| e.code == "INVALID_CANONICAL_REF"));
+        assert!(
+            !result
+                .errors
+                .iter()
+                .any(|e| e.code == "INVALID_CANONICAL_REF")
+        );
     }
 
     #[test]
@@ -519,10 +521,12 @@ mod tests {
         let result = validate_graph(&graph);
 
         assert!(!result.valid);
-        assert!(result
-            .errors
-            .iter()
-            .any(|e| e.code == "INVALID_CANONICAL_REF"));
+        assert!(
+            result
+                .errors
+                .iter()
+                .any(|e| e.code == "INVALID_CANONICAL_REF")
+        );
     }
 
     #[test]
@@ -536,10 +540,12 @@ mod tests {
         let result = validate_graph(&graph);
 
         assert!(!result.valid);
-        assert!(result
-            .errors
-            .iter()
-            .any(|e| e.code == "INVALID_CANONICAL_REF"));
+        assert!(
+            result
+                .errors
+                .iter()
+                .any(|e| e.code == "INVALID_CANONICAL_REF")
+        );
     }
 
     // ------------------------------------------------------------------------

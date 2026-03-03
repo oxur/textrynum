@@ -5,4 +5,4 @@
 
 pub mod health;
 
-pub use health::{handle_health, HealthResponse, HealthTools};
+pub use health::{HealthResponse, HealthTools, handle_health};

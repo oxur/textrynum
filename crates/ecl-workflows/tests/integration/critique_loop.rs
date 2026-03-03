@@ -4,7 +4,7 @@ use ecl_core::Error;
 use ecl_workflows::critique_loop::{CritiqueLoopInput, CritiqueLoopWorkflow};
 use std::sync::Arc;
 
-use crate::common::{mock_always_revise, mock_pass_immediately, mock_revise_once, TestHarness};
+use crate::common::{TestHarness, mock_always_revise, mock_pass_immediately, mock_revise_once};
 
 #[tokio::test]
 async fn test_critique_loop_passes_immediately() {

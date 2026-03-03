@@ -12,7 +12,7 @@
 //! when creating the routes.
 
 use axum::Json;
-use serde_json::{json, Value};
+use serde_json::{Value, json};
 
 /// Create an axum `Router` with the MCP discovery routes.
 ///
@@ -117,10 +117,12 @@ mod tests {
             authorization_server_metadata("https://accounts.google.com".to_string()).await;
         assert!(value.is_object());
         assert_eq!(value["issuer"], "https://accounts.google.com");
-        assert!(value["authorization_endpoint"]
-            .as_str()
-            .unwrap()
-            .contains("oauth2"));
+        assert!(
+            value["authorization_endpoint"]
+                .as_str()
+                .unwrap()
+                .contains("oauth2")
+        );
         assert!(value["token_endpoint"].is_string());
         assert!(value["jwks_uri"].is_string());
         assert!(value.get("registration_endpoint").is_none());

@@ -10,7 +10,7 @@ use std::pin::Pin;
 use std::sync::RwLock;
 use std::time::{Duration, Instant};
 
-use jsonwebtoken::{decode, decode_header, Algorithm, DecodingKey, Validation};
+use jsonwebtoken::{Algorithm, DecodingKey, Validation, decode, decode_header};
 use serde::Deserialize;
 
 use fabryk_auth::{AuthConfig, AuthError, AuthenticatedUser, TokenValidator};
@@ -294,7 +294,7 @@ impl TokenValidator for GoogleTokenValidator {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use jsonwebtoken::{encode, EncodingKey, Header};
+    use jsonwebtoken::{EncodingKey, Header, encode};
     use serde::Serialize;
 
     // Pre-generated 2048-bit RSA key pair for testing only.
@@ -463,12 +463,14 @@ kooeTEzEZMJu3/AKnRMd2NY=
 
     #[test]
     fn test_check_domain_hd_takes_precedence() {
-        assert!(GoogleTokenValidator::check_domain(
-            "alice@other.com",
-            Some("banyan.com".to_string()),
-            "banyan.com"
-        )
-        .is_ok());
+        assert!(
+            GoogleTokenValidator::check_domain(
+                "alice@other.com",
+                Some("banyan.com".to_string()),
+                "banyan.com"
+            )
+            .is_ok()
+        );
     }
 
     #[test]

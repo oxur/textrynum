@@ -38,7 +38,7 @@ pub mod helpers;
 pub mod parser;
 
 // Re-export key types and functions
-pub use frontmatter::{extract_frontmatter, strip_frontmatter, FrontmatterResult};
+pub use frontmatter::{FrontmatterResult, extract_frontmatter, strip_frontmatter};
 pub use helpers::{
     extract_all_list_items, extract_list_from_section, extract_section_content, normalize_id,
     parse_comma_list, parse_keyword_list,

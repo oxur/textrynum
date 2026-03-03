@@ -468,7 +468,7 @@ fn compute_content_hash(dir: &Path) -> Result<String> {
 
 /// Discover markdown content files in a directory.
 async fn discover_files(base_path: &Path) -> Result<Vec<PathBuf>> {
-    use fabryk_core::util::files::{find_all_files, FindOptions};
+    use fabryk_core::util::files::{FindOptions, find_all_files};
 
     let files = find_all_files(base_path, FindOptions::markdown()).await?;
     let paths: Vec<PathBuf> = files.into_iter().map(|f| f.path).collect();
@@ -483,8 +483,8 @@ async fn discover_files(base_path: &Path) -> Result<Vec<PathBuf>> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::extractor::mock::MockExtractor;
     use crate::Relationship;
+    use crate::extractor::mock::MockExtractor;
     use tempfile::tempdir;
 
     async fn setup_test_files() -> (tempfile::TempDir, PathBuf) {
@@ -703,10 +703,12 @@ mod tests {
             .unwrap();
 
         assert_eq!(stats.manual_edges_loaded, 0);
-        assert!(stats
-            .dangling_refs
-            .iter()
-            .any(|r| r.contains("nonexistent")));
+        assert!(
+            stats
+                .dangling_refs
+                .iter()
+                .any(|r| r.contains("nonexistent"))
+        );
     }
 
     // ================================================================

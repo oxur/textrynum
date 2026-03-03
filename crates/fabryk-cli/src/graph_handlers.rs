@@ -6,8 +6,8 @@
 use fabryk_core::traits::ConfigProvider;
 use fabryk_core::{Error, Result};
 use fabryk_graph::{
-    compute_stats, load_graph, neighborhood, prerequisites_sorted, save_graph, shortest_path,
-    validate_graph, GraphBuilder, GraphData, GraphExtractor, GraphMetadata,
+    GraphBuilder, GraphData, GraphExtractor, GraphMetadata, compute_stats, load_graph,
+    neighborhood, prerequisites_sorted, save_graph, shortest_path, validate_graph,
 };
 use std::path::PathBuf;
 

@@ -37,11 +37,11 @@
 //!
 //! This means "harmonics" matches "harmony", "running" matches "run", etc.
 
+use tantivy::Index;
 use tantivy::schema::{
-    Field, Schema, SchemaBuilder, TextFieldIndexing, TextOptions, FAST, STORED, STRING,
+    FAST, Field, STORED, STRING, Schema, SchemaBuilder, TextFieldIndexing, TextOptions,
 };
 use tantivy::tokenizer::{LowerCaser, SimpleTokenizer, Stemmer, TextAnalyzer};
-use tantivy::Index;
 
 /// Schema version for cache invalidation.
 ///

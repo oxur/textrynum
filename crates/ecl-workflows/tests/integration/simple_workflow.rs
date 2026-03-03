@@ -3,7 +3,7 @@
 use ecl_workflows::simple::{SimpleWorkflowInput, SimpleWorkflowService};
 
 // Re-use the test harness
-use crate::common::{mock_pass_immediately, TestHarness};
+use crate::common::{TestHarness, mock_pass_immediately};
 
 #[tokio::test]
 async fn test_simple_workflow_completes_successfully() {

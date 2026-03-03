@@ -421,9 +421,11 @@ mod tests {
     #[test]
     fn test_fts_tools_unknown_tool() {
         let tools = FtsTools::new(MockSearchBackend::new());
-        assert!(tools
-            .call("search_suggest", serde_json::json!({}))
-            .is_none());
+        assert!(
+            tools
+                .call("search_suggest", serde_json::json!({}))
+                .is_none()
+        );
     }
 
     // -- Response type tests ------------------------------------------------

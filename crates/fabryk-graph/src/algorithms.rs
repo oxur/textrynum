@@ -11,10 +11,10 @@
 
 use crate::{Edge, GraphData, Node, Relationship};
 use fabryk_core::Result;
+use petgraph::Direction;
 use petgraph::algo::toposort;
 use petgraph::graph::NodeIndex;
 use petgraph::visit::EdgeRef;
-use petgraph::Direction;
 use std::collections::{HashMap, HashSet, VecDeque};
 
 /// Maximum allowed BFS depth to prevent runaway traversals.

@@ -29,8 +29,8 @@ pub mod validation;
 
 // Re-exports — algorithms
 pub use algorithms::{
-    calculate_centrality, find_bridges, get_related, neighborhood, prerequisites_sorted,
-    shortest_path, CentralityScore, NeighborhoodResult, PathResult, PrerequisitesResult,
+    CentralityScore, NeighborhoodResult, PathResult, PrerequisitesResult, calculate_centrality,
+    find_bridges, get_related, neighborhood, prerequisites_sorted, shortest_path,
 };
 
 // Re-exports — builder
@@ -41,7 +41,7 @@ pub use extractor::GraphExtractor;
 
 // Re-exports — persistence
 pub use persistence::{
-    is_cache_fresh, load_graph, load_graph_from_str, save_graph, GraphMetadata, SerializableGraph,
+    GraphMetadata, SerializableGraph, is_cache_fresh, load_graph, load_graph_from_str, save_graph,
 };
 
 // Re-exports — query
@@ -52,13 +52,13 @@ pub use query::{
 };
 
 // Re-exports — stats
-pub use stats::{compute_stats, quick_summary, top_nodes_by_degree, DegreeDirection, GraphStats};
+pub use stats::{DegreeDirection, GraphStats, compute_stats, quick_summary, top_nodes_by_degree};
 
 // Re-exports — types
 pub use types::{Edge, EdgeOrigin, GraphData, Node, NodeType, Relationship};
 
 // Re-exports — validation
-pub use validation::{is_valid, validate_graph, ValidationIssue, ValidationResult};
+pub use validation::{ValidationIssue, ValidationResult, is_valid, validate_graph};
 
 #[cfg(any(test, feature = "test-utils"))]
 pub use extractor::mock::{MockEdgeData, MockExtractor, MockNodeData};
