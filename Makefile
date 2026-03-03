@@ -420,14 +420,14 @@ publish:
 .PHONY: check-versions
 check-versions: build
 	@echo "$(BLUE)Checking internal dependency versions...$(RESET)"
-	@./bin/textyl -- check-versions
+	@./bin/textyl check-versions
 	@echo "$(GREEN)✓ All internal dependency versions are consistent$(RESET)"
 
 .PHONY: sync-versions
 sync-versions: build
 	@echo "$(BLUE)Syncing internal dependency versions to workspace version...$(RESET)"
 	@WS_VERSION=$$(grep '^version' Cargo.toml | head -1 | sed 's/.*"\(.*\)"/\1/'); \
-	./bin/textyl -- set-version "$$WS_VERSION"
+	./bin/textyl set-version "$$WS_VERSION"
 	@echo "$(GREEN)✓ All versions synced$(RESET)"
 
 .PHONY: publish-dry-run
