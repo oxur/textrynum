@@ -67,7 +67,7 @@ impl FastEmbedProvider {
             init = init.with_cache_dir(std::path::PathBuf::from(path));
         }
 
-        let text_embedding = fastembed::TextEmbedding::try_new(init)
+        let mut text_embedding = fastembed::TextEmbedding::try_new(init)
             .map_err(|e| Error::operation(format!("Failed to initialize fastembed model: {e}")))?;
 
         // Probe dimension via a test embedding
@@ -95,7 +95,7 @@ impl EmbeddingProvider for FastEmbedProvider {
         let text = text.to_string();
 
         tokio::task::spawn_blocking(move || {
-            let model = model
+            let mut model = model
                 .lock()
                 .map_err(|e| Error::operation(format!("Mutex poisoned: {e}")))?;
             let results = model
@@ -115,7 +115,7 @@ impl EmbeddingProvider for FastEmbedProvider {
         let texts: Vec<String> = texts.iter().map(|t| t.to_string()).collect();
 
         tokio::task::spawn_blocking(move || {
-            let model = model
+            let mut model = model
                 .lock()
                 .map_err(|e| Error::operation(format!("Mutex poisoned: {e}")))?;
             model

@@ -144,7 +144,7 @@ arrow-array = "57"
 arrow-schema = "57"
 
 # Local embedding generation
-fastembed = "4"
+fastembed = "5"
 
 # JWT/Auth
 jsonwebtoken = { version = "10", features = ["rust_crypto"] }
