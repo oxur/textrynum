@@ -151,7 +151,7 @@ jsonwebtoken = "9"
 
 # Graph database
 petgraph = "0.8"
-rkyv = { version = "0.7", features = ["validation"] }
+rkyv = { version = "0.8", features = ["bytecheck"] }
 memmap2 = "0.9"
 blake3 = "1.8"
 
