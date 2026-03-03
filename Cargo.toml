@@ -147,7 +147,7 @@ arrow-schema = "57"
 fastembed = "4"
 
 # JWT/Auth
-jsonwebtoken = "9"
+jsonwebtoken = { version = "10", features = ["rust_crypto"] }
 
 # Graph database
 petgraph = "0.8"

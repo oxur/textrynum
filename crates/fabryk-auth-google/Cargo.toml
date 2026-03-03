@@ -7,7 +7,7 @@ description = "Google OAuth2 provider for fabryk-auth — JWKS cache, JWT valida
 
 [dependencies]
 fabryk-auth = { version = "0.1.0", path = "../fabryk-auth" }
-jsonwebtoken = "9"
+jsonwebtoken = { workspace = true }
 reqwest = { workspace = true }
 serde = { workspace = true }
 log = { workspace = true }
