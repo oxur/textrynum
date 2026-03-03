@@ -90,7 +90,7 @@ pub async fn find_file_by_id(base_path: &Path, id: &str, options: FindOptions) -
     let mut walker = WalkDir::new(base_path);
 
     while let Some(entry_result) = walker.next().await {
-        let entry = entry_result.map_err(Error::io)?;
+        let entry = entry_result.map_err(|e| Error::io(e.into()))?;
         let path = entry.path();
 
         // Check depth limit
@@ -161,7 +161,7 @@ pub async fn find_all_files(base_path: &Path, options: FindOptions) -> Result<Ve
     let mut walker = WalkDir::new(base_path);
 
     while let Some(entry_result) = walker.next().await {
-        let entry = entry_result.map_err(Error::io)?;
+        let entry = entry_result.map_err(|e| Error::io(e.into()))?;
         let path = entry.path();
 
         // Skip directories
