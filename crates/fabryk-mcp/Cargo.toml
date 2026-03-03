@@ -28,6 +28,14 @@ schemars = { workspace = true }
 # Logging
 log = { workspace = true }
 
+# HTTP transport (optional)
+axum = { workspace = true, optional = true }
+
+[features]
+default = []
+http = ["rmcp/transport-streamable-http-server", "dep:axum"]
+
 [dev-dependencies]
 tempfile = { workspace = true }
 tokio-test = { workspace = true }
+reqwest = { workspace = true }

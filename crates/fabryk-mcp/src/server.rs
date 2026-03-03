@@ -17,6 +17,11 @@ use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 use std::time::Duration;
 
+#[cfg(feature = "http")]
+use rmcp::transport::streamable_http_server::{
+    session::local::LocalSessionManager, StreamableHttpServerConfig, StreamableHttpService,
+};
+
 /// Configuration for the MCP server.
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct ServerConfig {
@@ -182,6 +187,72 @@ impl FabrykMcpServer {
             .waiting()
             .await
             .map_err(|e| fabryk_core::Error::operation(format!("MCP server terminated: {e}")))?;
+
+        log::info!("Server shut down.");
+        Ok(())
+    }
+
+    /// Build a streamable HTTP service for composing into an axum router.
+    ///
+    /// Returns a Tower `Service<Request<Body>>` that handles MCP over
+    /// streamable HTTP. Callers can wrap it with auth middleware, nest
+    /// it in an axum router, etc.
+    ///
+    /// # Example
+    ///
+    /// ```rust,ignore
+    /// let mcp_service = server.into_http_service();
+    /// let router = Router::new()
+    ///     .route("/health", get(|| async { "ok" }))
+    ///     .nest_service("/mcp", mcp_service);
+    /// ```
+    #[cfg(feature = "http")]
+    pub fn into_http_service(self) -> StreamableHttpService<Self> {
+        self.into_http_service_with_config(StreamableHttpServerConfig::default())
+    }
+
+    /// Build a streamable HTTP service with custom config.
+    #[cfg(feature = "http")]
+    pub fn into_http_service_with_config(
+        self,
+        config: StreamableHttpServerConfig,
+    ) -> StreamableHttpService<Self> {
+        log::info!(
+            "Building HTTP service for {} v{} with {} tools",
+            self.config.name,
+            self.config.version,
+            self.registry.tool_count()
+        );
+        StreamableHttpService::new(
+            move || Ok(self.clone()),
+            Arc::new(LocalSessionManager::default()),
+            config,
+        )
+    }
+
+    /// Convenience: serve HTTP on a given address with a minimal router.
+    ///
+    /// Creates a router with the MCP service at `/mcp` and a health
+    /// endpoint at `/health`. For custom routers or auth middleware,
+    /// use `into_http_service()` instead.
+    #[cfg(feature = "http")]
+    pub async fn serve_http(self, addr: std::net::SocketAddr) -> fabryk_core::Result<()> {
+        let service = self.clone().into_http_service();
+        let server_name = self.config.name.clone();
+
+        let router = axum::Router::new()
+            .route("/health", axum::routing::get(|| async { "ok" }))
+            .nest_service("/mcp", service);
+
+        log::info!("{server_name} HTTP server listening on {addr}");
+
+        let listener = tokio::net::TcpListener::bind(addr)
+            .await
+            .map_err(|e| fabryk_core::Error::operation(format!("bind failed: {e}")))?;
+
+        axum::serve(listener, router)
+            .await
+            .map_err(|e| fabryk_core::Error::operation(format!("HTTP server error: {e}")))?;
 
         log::info!("Server shut down.");
         Ok(())
@@ -439,5 +510,86 @@ mod tests {
         let errors = result.unwrap_err();
         assert_eq!(errors.len(), 1);
         assert!(errors[0].contains("not ready after"));
+    }
+}
+
+#[cfg(all(test, feature = "http"))]
+mod http_tests {
+    use super::*;
+    use crate::registry::{CompositeRegistry, ToolResult};
+    use rmcp::model::{CallToolResult, Content, Tool};
+
+    struct MockRegistry;
+
+    impl ToolRegistry for MockRegistry {
+        fn tools(&self) -> Vec<Tool> {
+            vec![Tool {
+                name: "test_tool".to_string().into(),
+                description: Some("A test tool".to_string().into()),
+                input_schema: Arc::new(serde_json::Map::new()),
+                title: None,
+                output_schema: None,
+                annotations: None,
+                icons: None,
+                execution: None,
+                meta: None,
+            }]
+        }
+
+        fn call(&self, name: &str, _args: serde_json::Value) -> Option<ToolResult> {
+            if name == "test_tool" {
+                Some(Box::pin(async {
+                    Ok(CallToolResult::success(vec![Content::text("ok")]))
+                }))
+            } else {
+                None
+            }
+        }
+    }
+
+    #[test]
+    fn test_into_http_service_creation() {
+        let server = FabrykMcpServer::new(MockRegistry)
+            .with_name("test-http")
+            .with_version("0.1.0");
+        // Construction should not panic
+        let _service = server.into_http_service();
+    }
+
+    #[test]
+    fn test_into_http_service_with_custom_config() {
+        let server = FabrykMcpServer::new(MockRegistry).with_name("test-http");
+        let config = StreamableHttpServerConfig::default();
+        let _service = server.into_http_service_with_config(config);
+    }
+
+    #[test]
+    fn test_into_http_service_empty_registry() {
+        let server = FabrykMcpServer::new(CompositeRegistry::new()).with_name("empty");
+        let _service = server.into_http_service();
+    }
+
+    #[tokio::test]
+    async fn test_serve_http_health_endpoint() {
+        let server = FabrykMcpServer::new(MockRegistry)
+            .with_name("test-http")
+            .with_version("0.1.0");
+
+        // Bind to a random available port
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+        let addr = listener.local_addr().unwrap();
+        drop(listener);
+
+        let handle = tokio::spawn(async move { server.serve_http(addr).await });
+
+        // Give the server a moment to start
+        tokio::time::sleep(Duration::from_millis(100)).await;
+
+        // Hit the health endpoint
+        let resp = reqwest::get(format!("http://{addr}/health")).await.unwrap();
+        assert_eq!(resp.status(), 200);
+        assert_eq!(resp.text().await.unwrap(), "ok");
+
+        handle.abort();
     }
 }
