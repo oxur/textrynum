@@ -19,6 +19,8 @@ GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unkno
 BUILD_TIME := $(shell date -u '+%Y-%m-%dT%H:%M:%SZ')
 RUST_VERSION := $(shell rustc --version 2>/dev/null || echo "unknown")
 
+BINARIES := textyl
+
 # Git remotes to push to
 GIT_REMOTES := macpro github codeberg
 REMOTE_macpro := ssh://macpro.local:23231/oxur/$(CODE_NAME).git
@@ -58,6 +60,8 @@ help:
 	@echo "  $(YELLOW)make push$(RESET)             - Pushes to Codeberg and Github"
 	@echo "  $(YELLOW)make publish$(RESET)          - WIP: Publishes all crates to crates.io"
 	@echo "  $(YELLOW)make tracked-files$(RESET)    - Save list of tracked files"
+	@echo "  $(YELLOW)make check-versions$(RESET)   - Check internal dep versions match workspace version"
+	@echo "  $(YELLOW)make sync-versions$(RESET)    - Sync internal dep versions to workspace version"
 	@echo ""
 	@echo "$(GREEN)Information:$(RESET)"
 	@echo "  $(YELLOW)make info$(RESET)             - Show build information"
@@ -413,8 +417,21 @@ publish:
 	@echo "$(GREEN)✓ All crates published successfully!$(RESET)"
 	@echo ""
 
+.PHONY: check-versions
+check-versions: build
+	@echo "$(BLUE)Checking internal dependency versions...$(RESET)"
+	@./bin/textyl -- check-versions
+	@echo "$(GREEN)✓ All internal dependency versions are consistent$(RESET)"
+
+.PHONY: sync-versions
+sync-versions: build
+	@echo "$(BLUE)Syncing internal dependency versions to workspace version...$(RESET)"
+	@WS_VERSION=$$(grep '^version' Cargo.toml | head -1 | sed 's/.*"\(.*\)"/\1/'); \
+	./bin/textyl -- set-version "$$WS_VERSION"
+	@echo "$(GREEN)✓ All versions synced$(RESET)"
+
 .PHONY: publish-dry-run
-publish-dry-run:
+publish-dry-run: check-versions
 	@echo ""
 	@echo "$(CYAN)╔══════════════════════════════════════════════════════════╗$(RESET)"
 	@echo "$(CYAN)║$(RESET) $(BLUE)Dry Run: Publishing $(PROJECT_NAME) Crates$(RESET)                     $(CYAN)║$(RESET)"
