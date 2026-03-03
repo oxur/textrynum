@@ -73,3 +73,9 @@ pub mod model {
     //! Re-exported rmcp model types.
     pub use rmcp::model::{CallToolResult, Content, ErrorData, Tool};
 }
+
+// Re-exports — HTTP transport (requires `http` feature)
+#[cfg(feature = "http")]
+pub use rmcp::transport::streamable_http_server::{
+    session::local::LocalSessionManager, StreamableHttpServerConfig, StreamableHttpService,
+};
