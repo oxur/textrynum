@@ -62,7 +62,12 @@ pub struct ServiceStatus {
 ///
 /// Returns 200 when all services are `Ready` or `Stopped` (not configured),
 /// 503 otherwise.
-pub fn health_router(services: Vec<ServiceHandle>) -> axum::Router {
+///
+/// Generic over the router state type `S` so callers can merge this into
+/// routers that carry application state (e.g. `Router<AppState>`).
+pub fn health_router<S: Clone + Send + Sync + 'static>(
+    services: Vec<ServiceHandle>,
+) -> axum::Router<S> {
     axum::Router::new().route(
         "/health",
         axum::routing::get(move || {
