@@ -6,8 +6,65 @@ use anyhow::{Context, Result};
 use std::collections::{HashMap, HashSet, VecDeque};
 use std::path::{Path, PathBuf};
 
+/// Check if the given directory's Cargo.toml has a `[workspace]` table.
+pub fn is_workspace(root: &Path) -> Result<bool> {
+    let cargo_toml = root.join("Cargo.toml");
+    let content = std::fs::read_to_string(&cargo_toml).map_err(|e| TextylError::FileRead {
+        path: cargo_toml.clone(),
+        source: e,
+    })?;
+    let doc: toml::Value = toml::from_str(&content).context("failed to parse Cargo.toml")?;
+    Ok(doc.get("workspace").is_some())
+}
+
+/// Discover the nearest project root by walking up from `start` looking for any `Cargo.toml`.
+/// Returns the directory containing the first Cargo.toml found (workspace or single crate).
+pub fn find_project_root(start: &Path) -> Result<PathBuf> {
+    let mut dir = start.to_path_buf();
+    loop {
+        let cargo_toml = dir.join("Cargo.toml");
+        if cargo_toml.exists() {
+            return Ok(dir);
+        }
+        if !dir.pop() {
+            return Err(TextylError::WorkspaceNotFound {
+                start_dir: start.to_path_buf(),
+            }
+            .into());
+        }
+    }
+}
+
+/// Scan a single Cargo.toml for dependencies whose names match any of the given prefixes.
+/// Returns `(section, dep_name)` pairs.
+pub fn scan_matching_deps(
+    cargo_toml_path: &Path,
+    prefixes: &[&str],
+) -> Result<Vec<(String, String)>> {
+    let content =
+        std::fs::read_to_string(cargo_toml_path).map_err(|e| TextylError::FileRead {
+            path: cargo_toml_path.to_path_buf(),
+            source: e,
+        })?;
+    let doc: toml::Value = toml::from_str(&content)
+        .with_context(|| format!("failed to parse {}", cargo_toml_path.display()))?;
+
+    let mut matches = Vec::new();
+    for section in &DEP_SECTIONS {
+        if let Some(deps) = doc.get(section).and_then(|d| d.as_table()) {
+            for dep_name in deps.keys() {
+                if prefixes.iter().any(|prefix| dep_name.starts_with(prefix)) {
+                    matches.push((section.to_string(), dep_name.clone()));
+                }
+            }
+        }
+    }
+    Ok(matches)
+}
+
 /// Discover workspace root by walking up from `start` looking for a
 /// `Cargo.toml` that contains a `[workspace]` table.
+#[allow(dead_code)]
 pub fn find_workspace_root(start: &Path) -> Result<PathBuf> {
     let mut dir = start.to_path_buf();
     loop {
@@ -371,6 +428,114 @@ publish = false
 "#,
         )
         .expect("failed to write tool Cargo.toml");
+    }
+
+    #[test]
+    fn test_is_workspace_returns_true_for_workspace() {
+        let tmp = TempDir::new().expect("failed to create tempdir");
+        create_workspace(tmp.path());
+        assert!(is_workspace(tmp.path()).expect("should check"));
+    }
+
+    #[test]
+    fn test_is_workspace_returns_false_for_single_crate() {
+        let tmp = TempDir::new().expect("failed to create tempdir");
+        fs::write(
+            tmp.path().join("Cargo.toml"),
+            r#"[package]
+name = "myapp"
+version = "1.0.0"
+
+[dependencies]
+fabryk-core = "0.1.0"
+"#,
+        )
+        .expect("write");
+        assert!(!is_workspace(tmp.path()).expect("should check"));
+    }
+
+    #[test]
+    fn test_find_project_root_finds_single_crate() {
+        let tmp = TempDir::new().expect("failed to create tempdir");
+        fs::write(
+            tmp.path().join("Cargo.toml"),
+            r#"[package]
+name = "myapp"
+version = "1.0.0"
+"#,
+        )
+        .expect("write");
+        let subdir = tmp.path().join("src");
+        fs::create_dir_all(&subdir).expect("mkdir");
+        let root = find_project_root(&subdir).expect("should find root");
+        assert_eq!(root, tmp.path());
+    }
+
+    #[test]
+    fn test_find_project_root_finds_workspace() {
+        let tmp = TempDir::new().expect("failed to create tempdir");
+        create_workspace(tmp.path());
+        let subdir = tmp.path().join("crates/alpha");
+        let root = find_project_root(&subdir).expect("should find root");
+        // find_project_root stops at nearest Cargo.toml, which is the crate itself.
+        assert_eq!(root, subdir);
+    }
+
+    #[test]
+    fn test_scan_matching_deps_finds_prefixed_deps() {
+        let tmp = TempDir::new().expect("failed to create tempdir");
+        let cargo_toml = tmp.path().join("Cargo.toml");
+        fs::write(
+            &cargo_toml,
+            r#"[package]
+name = "myapp"
+version = "1.0.0"
+
+[dependencies]
+fabryk-core = "0.1.0"
+fabryk-graph = { version = "0.1.0", features = ["serde"] }
+serde = "1.0"
+ecl-design = "0.1.0"
+
+[dev-dependencies]
+fabryk-test = "0.1.0"
+tokio = { version = "1.0", features = ["full"] }
+"#,
+        )
+        .expect("write");
+
+        let matches =
+            scan_matching_deps(&cargo_toml, &["fabryk-", "ecl-"]).expect("should scan");
+        assert_eq!(matches.len(), 4);
+
+        let dep_names: Vec<&str> = matches.iter().map(|(_, n)| n.as_str()).collect();
+        assert!(dep_names.contains(&"fabryk-core"));
+        assert!(dep_names.contains(&"fabryk-graph"));
+        assert!(dep_names.contains(&"ecl-design"));
+        assert!(dep_names.contains(&"fabryk-test"));
+        assert!(!dep_names.contains(&"serde"));
+        assert!(!dep_names.contains(&"tokio"));
+    }
+
+    #[test]
+    fn test_scan_matching_deps_no_matches_returns_empty() {
+        let tmp = TempDir::new().expect("failed to create tempdir");
+        let cargo_toml = tmp.path().join("Cargo.toml");
+        fs::write(
+            &cargo_toml,
+            r#"[package]
+name = "myapp"
+version = "1.0.0"
+
+[dependencies]
+serde = "1.0"
+"#,
+        )
+        .expect("write");
+
+        let matches =
+            scan_matching_deps(&cargo_toml, &["fabryk-", "ecl-"]).expect("should scan");
+        assert!(matches.is_empty());
     }
 
     #[test]

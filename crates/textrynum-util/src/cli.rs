@@ -29,10 +29,22 @@ pub enum Command {
     /// Operations on a single crate.
     Crate(CrateArgs),
 
-    /// Set workspace version and sync all internal path dep versions.
+    /// Set version and sync dependencies.
+    ///
+    /// With a positional version: sets both project and dep versions (workspace mode).
+    /// With --project-version / --deps-version: can target each independently.
+    /// Works in any Rust project (workspace or single crate).
     SetVersion {
-        /// The new version string (e.g., "0.2.0").
-        version: String,
+        /// Version for both project and deps (shorthand for existing behavior).
+        version: Option<String>,
+
+        /// Project's own version (workspace.package.version or package.version).
+        #[arg(long)]
+        project_version: Option<String>,
+
+        /// Version to set on all fabryk-*/ecl-* dependencies.
+        #[arg(long)]
+        deps_version: Option<String>,
 
         /// Only check for mismatches; do not write. Exit non-zero if mismatches found.
         #[arg(long)]
@@ -229,11 +241,13 @@ mod tests {
     }
 
     #[test]
-    fn test_args_set_version() {
+    fn test_args_set_version_positional() {
         let args = Args::parse_from(["textyl", "set-version", "0.2.0"]);
         match args.command {
-            Command::SetVersion { version, check } => {
-                assert_eq!(version, "0.2.0");
+            Command::SetVersion {
+                version, check, ..
+            } => {
+                assert_eq!(version, Some("0.2.0".to_string()));
                 assert!(!check);
             }
             _ => panic!("Expected SetVersion command"),
@@ -244,9 +258,77 @@ mod tests {
     fn test_args_set_version_check_mode() {
         let args = Args::parse_from(["textyl", "set-version", "0.2.0", "--check"]);
         match args.command {
-            Command::SetVersion { version, check } => {
-                assert_eq!(version, "0.2.0");
+            Command::SetVersion {
+                version, check, ..
+            } => {
+                assert_eq!(version, Some("0.2.0".to_string()));
                 assert!(check);
+            }
+            _ => panic!("Expected SetVersion command"),
+        }
+    }
+
+    #[test]
+    fn test_args_set_version_project_and_deps_flags() {
+        let args = Args::parse_from([
+            "textyl",
+            "set-version",
+            "--project-version",
+            "2.0.0",
+            "--deps-version",
+            "0.1.2",
+        ]);
+        match args.command {
+            Command::SetVersion {
+                version,
+                project_version,
+                deps_version,
+                check,
+            } => {
+                assert!(version.is_none());
+                assert_eq!(project_version, Some("2.0.0".to_string()));
+                assert_eq!(deps_version, Some("0.1.2".to_string()));
+                assert!(!check);
+            }
+            _ => panic!("Expected SetVersion command"),
+        }
+    }
+
+    #[test]
+    fn test_args_set_version_deps_only() {
+        let args = Args::parse_from(["textyl", "set-version", "--deps-version", "0.1.2"]);
+        match args.command {
+            Command::SetVersion {
+                version,
+                project_version,
+                deps_version,
+                ..
+            } => {
+                assert!(version.is_none());
+                assert!(project_version.is_none());
+                assert_eq!(deps_version, Some("0.1.2".to_string()));
+            }
+            _ => panic!("Expected SetVersion command"),
+        }
+    }
+
+    #[test]
+    fn test_args_set_version_positional_with_deps_override() {
+        let args = Args::parse_from([
+            "textyl",
+            "set-version",
+            "0.2.0",
+            "--deps-version",
+            "0.1.2",
+        ]);
+        match args.command {
+            Command::SetVersion {
+                version,
+                deps_version,
+                ..
+            } => {
+                assert_eq!(version, Some("0.2.0".to_string()));
+                assert_eq!(deps_version, Some("0.1.2".to_string()));
             }
             _ => panic!("Expected SetVersion command"),
         }
