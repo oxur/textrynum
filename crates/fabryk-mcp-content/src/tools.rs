@@ -162,13 +162,19 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
             ),
             make_tool(
                 &self.tool_name("get"),
-                &format!("Get a specific {type_name} by ID"),
+                &format!(
+                    "Get a specific {type_name} by its slug identifier (the id field from {type_plural}_list results)"
+                ),
                 serde_json::json!({
                     "type": "object",
                     "properties": {
                         "id": {
                             "type": "string",
-                            "description": format!("{type_name} identifier")
+                            "description": format!(
+                                "{type_name} slug identifier, e.g. \"voice-leading\" (use the id values returned by {type_plural}_list)",
+                                type_name = type_name,
+                                type_plural = type_plural,
+                            )
                         }
                     },
                     "required": ["id"]
