@@ -88,7 +88,7 @@ pub use extractor::VectorExtractor;
 pub use builder::VectorIndexBuilder;
 
 // Re-exports — hybrid search
-pub use hybrid::{HybridSearchResult, reciprocal_rank_fusion};
+pub use hybrid::{FtsResult, HybridSearchResult, reciprocal_rank_fusion};
 
 // Re-exports — persistence
 pub use persistence::is_index_fresh;

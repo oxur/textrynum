@@ -18,7 +18,8 @@
 //! │  McpErrorExt — fabryk_core::Error → rmcp::ErrorData         │
 //! ├─────────────────────────────────────────────────────────────┤
 //! │  Built-in tools:                                            │
-//! │  └── health — server status and tool count                  │
+//! │  ├── health — server status and tool count                  │
+//! │  └── diagnostics — config inspection and service status     │
 //! └─────────────────────────────────────────────────────────────┘
 //! ```
 //!
@@ -66,7 +67,7 @@ pub use error::McpErrorExt;
 pub use discoverable::{DiscoverableRegistry, ExternalConnector, ToolMeta};
 
 // Re-exports — built-in tools
-pub use tools::{HealthResponse, HealthTools, handle_health};
+pub use tools::{DiagnosticTools, HealthResponse, HealthTools, handle_health};
 
 // Re-exports — rmcp types used by downstream crates
 pub mod model {

@@ -20,6 +20,7 @@ members = [
     "crates/fabryk-mcp-content",
     "crates/fabryk-mcp-fts",
     "crates/fabryk-mcp-graph",
+    "crates/fabryk-mcp-semantic",
     "crates/fabryk-cli",
     "crates/fabryk-redis",
     # Fabryk auth crates
