@@ -179,10 +179,7 @@ impl SemanticSearchTools {
     ///
     /// The slot is checked at call time, so vector search becomes available
     /// as soon as the background builder populates it.
-    pub fn with_vector_slot(
-        fts: Arc<dyn SearchBackend>,
-        vector_slot: VectorSlot,
-    ) -> Self {
+    pub fn with_vector_slot(fts: Arc<dyn SearchBackend>, vector_slot: VectorSlot) -> Self {
         Self {
             fts,
             vector: None,
@@ -624,8 +621,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_with_vector_slot_empty() {
-        let slot: VectorSlot =
-            Arc::new(tokio::sync::RwLock::new(None));
+        let slot: VectorSlot = Arc::new(tokio::sync::RwLock::new(None));
         let tools = SemanticSearchTools::with_vector_slot(Arc::new(MockFts::empty()), slot);
 
         // Hybrid mode should fall back to FTS-only when slot is empty
@@ -641,13 +637,11 @@ mod tests {
 
     #[tokio::test]
     async fn test_with_vector_slot_populated() {
-        let slot: VectorSlot =
-            Arc::new(tokio::sync::RwLock::new(Some(Arc::new(
-                MockVector::with_ids(&["vec-a", "vec-b"]),
-            ))));
+        let slot: VectorSlot = Arc::new(tokio::sync::RwLock::new(Some(Arc::new(
+            MockVector::with_ids(&["vec-a", "vec-b"]),
+        ))));
         let fts_items = vec![make_fts_result("fts-a", 0.9)];
-        let tools =
-            SemanticSearchTools::with_vector_slot(Arc::new(MockFts::new(fts_items)), slot);
+        let tools = SemanticSearchTools::with_vector_slot(Arc::new(MockFts::new(fts_items)), slot);
 
         // Hybrid mode should use vector backend from the slot
         let result = tools
@@ -661,15 +655,17 @@ mod tests {
         assert!(!result.is_error.unwrap_or(false));
         // Should produce hybrid results (HybridResult format with rrf_score) rather than plain FTS
         let json = serde_json::to_string(&result.content).unwrap();
-        assert!(json.contains("rrf_score"), "Expected hybrid result format with rrf_score, got: {json}");
+        assert!(
+            json.contains("rrf_score"),
+            "Expected hybrid result format with rrf_score, got: {json}"
+        );
     }
 
     #[tokio::test]
     async fn test_with_vector_slot_vector_mode() {
-        let slot: VectorSlot =
-            Arc::new(tokio::sync::RwLock::new(Some(Arc::new(
-                MockVector::with_ids(&["vec-a"]),
-            ))));
+        let slot: VectorSlot = Arc::new(tokio::sync::RwLock::new(Some(Arc::new(
+            MockVector::with_ids(&["vec-a"]),
+        ))));
         let tools = SemanticSearchTools::with_vector_slot(Arc::new(MockFts::empty()), slot);
 
         // Explicit vector mode should work via slot
@@ -685,8 +681,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_with_vector_slot_vector_mode_empty() {
-        let slot: VectorSlot =
-            Arc::new(tokio::sync::RwLock::new(None));
+        let slot: VectorSlot = Arc::new(tokio::sync::RwLock::new(None));
         let tools = SemanticSearchTools::with_vector_slot(Arc::new(MockFts::empty()), slot);
 
         // Explicit vector mode should fail when slot is empty
