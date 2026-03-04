@@ -46,6 +46,8 @@
 
 pub mod discoverable;
 pub mod error;
+#[cfg(feature = "http")]
+pub mod health_router;
 pub mod registry;
 pub mod server;
 pub mod service_registry;
@@ -74,6 +76,10 @@ pub mod model {
     //! Re-exported rmcp model types.
     pub use rmcp::model::{CallToolResult, Content, ErrorData, Tool};
 }
+
+// Re-exports — HTTP health router (requires `http` feature)
+#[cfg(feature = "http")]
+pub use health_router::{ServiceHealthResponse, ServiceStatus, health_router};
 
 // Re-exports — HTTP transport (requires `http` feature)
 #[cfg(feature = "http")]

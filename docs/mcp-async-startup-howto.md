@@ -12,7 +12,7 @@ MCP servers often depend on slow-to-initialize services: embedding model downloa
 2. **Use `ServiceHandle`** (from `fabryk_core::service`) to track lifecycle of each background service
 3. **Use `tokio::sync::OnceCell`** for services that initialize asynchronously — the cell is shared via `Arc` before being populated
 4. **Guard tool access** with `require_*()` methods that return clear "not ready yet" errors
-5. **Expose a `/health` endpoint** that reports per-service state
+5. **Expose a `/health` endpoint** via `fabryk_mcp::health_router(services)` — no need to reimplement per-project
 
 ## ServiceHandle Lifecycle
 
@@ -22,10 +22,35 @@ Stopped ──► Starting ──► Ready
                 └──► Failed(reason)
 ```
 
+Every transition is recorded in an **audit trail** with monotonic timestamps, accessible via `handle.transitions()`.
+
 - **Stopped**: Not configured (e.g., Redis URL empty). Health considers this "ok".
 - **Starting**: Background task is running. Health returns 503.
 - **Ready**: Fully operational. Health returns 200.
 - **Failed**: Initialization failed. Health returns 503. Tools return clear errors.
+
+## Fabryk API Reference
+
+### fabryk_core::service
+
+| API | Purpose |
+|-----|---------|
+| `ServiceHandle::new(name)` | Create a handle (initial state: Stopped) |
+| `handle.set_state(state)` | Update state, broadcast to subscribers, record in audit trail |
+| `handle.state()` | Get current state |
+| `handle.transitions()` | Get full audit trail with timestamps |
+| `handle.wait_ready(timeout)` | Await Ready/Failed/timeout for one service |
+| `wait_all_ready(&[handles], timeout)` | Await all services **in parallel** via `futures::join_all` |
+| `spawn_with_retry(handle, config, init_fn)` | Background task with exponential backoff retry |
+| `RetryConfig { max_attempts, initial_delay, max_delay }` | Configuration for retry behaviour |
+
+### fabryk_mcp::health_router (requires `http` feature)
+
+| API | Purpose |
+|-----|---------|
+| `health_router(services)` | Build an axum `Router` with `/health` endpoint |
+| `ServiceHealthResponse` | JSON response struct (`status`, `services[]`) |
+| `ServiceStatus` | Per-service entry (`name`, `state`) |
 
 ## Code Examples
 
@@ -64,6 +89,52 @@ tokio::spawn(async move {
         }
     }
 });
+```
+
+### Background Task with Retry
+
+For transient failures (network timeouts, DNS hiccups), use `spawn_with_retry`:
+
+```rust
+use fabryk_core::service::{spawn_with_retry, RetryConfig};
+
+let svc = ServiceHandle::new("redis");
+let cell = Arc::new(OnceCell::new());
+let cell_bg = cell.clone();
+let url = config.redis.url.clone();
+
+spawn_with_retry(
+    svc.clone(),
+    RetryConfig {
+        max_attempts: 5,
+        initial_delay: Duration::from_secs(1),
+        max_delay: Duration::from_secs(30),
+    },
+    move || {
+        let cell = cell_bg.clone();
+        let url = url.clone();
+        async move {
+            let client = RedisClient::new(&url).await.map_err(|e| format!("{e}"))?;
+            cell.set(Arc::new(client) as Arc<dyn RedisOps>).ok();
+            Ok(())
+        }
+    },
+);
+```
+
+### Parallel Service Wait
+
+Wait for all services concurrently — wall-clock time equals the **slowest** service:
+
+```rust
+use fabryk_core::service::wait_all_ready;
+
+// Wait up to 30s for all services to be ready
+if let Err(errors) = wait_all_ready(&service_handles, Duration::from_secs(30)).await {
+    for e in &errors {
+        log::error!("Service failed: {e}");
+    }
+}
 ```
 
 ### OnceCell for Struct Fields (Vector Engine Example)
@@ -105,24 +176,17 @@ fn require_redis(&self) -> Result<&dyn RedisOps, Error> {
 }
 ```
 
-### Health Endpoint
+### Health Endpoint (fabryk_mcp)
+
+Instead of reimplementing `/health` in every project, use the shared router:
 
 ```rust
-fn health_handler(services: Vec<ServiceHandle>) -> impl IntoResponse {
-    let all_ready = services.iter().all(|h| {
-        let s = h.state();
-        s.is_ready() || s == ServiceState::Stopped
-    });
+use fabryk_mcp::health_router;
 
-    let status_code = if all_ready {
-        StatusCode::OK
-    } else {
-        StatusCode::SERVICE_UNAVAILABLE
-    };
-
-    // Return JSON with per-service state
-    (status_code, Json(HealthResponse { ... }))
-}
+let router = axum::Router::new()
+    .merge(health_router(service_handles.clone()))
+    .merge(discovery_routes(&resource_url, "https://accounts.google.com"))
+    .nest_service("/mcp", authed_service);
 ```
 
 Response example:
@@ -135,6 +199,24 @@ Response example:
     {"name": "vector", "state": "starting"}
   ]
 }
+```
+
+### Transition Audit Trail
+
+Every `set_state` call is recorded with a monotonic timestamp:
+
+```rust
+let svc = ServiceHandle::new("redis");
+svc.set_state(ServiceState::Starting);
+// ... some time passes ...
+svc.set_state(ServiceState::Ready);
+
+for t in svc.transitions() {
+    println!("{}: {} (at {:?})", svc.name(), t.state, t.elapsed);
+}
+// redis: stopped (at 0ns)
+// redis: starting (at 1.234ms)
+// redis: ready (at 523.456ms)
 ```
 
 ### Worker Adaptation
@@ -164,7 +246,7 @@ async fn worker_loop(
 1. Config + logging                         (sync, <100ms)
 2. Create ServiceHandle instances           (instant)
 3. BQ OnceCell                              (deferred to first use)
-4. Redis OnceCell + spawn background task   (non-blocking)
+4. Redis OnceCell + spawn background task   (non-blocking, with retry)
 5. KnowledgeEngine::build()                 (sync, <1s)
    → knowledge_svc → Ready
 6. Spawn vector engine background task      (10-30s in background)
@@ -181,11 +263,24 @@ async fn worker_loop(
    cell.set(Arc::new(MockRedis::new()) as Arc<dyn RedisOps>).ok();
    ```
 
-2. **Health endpoint tests**: Use `axum::Router::oneshot()` with different `ServiceState` combinations.
+2. **Health endpoint tests**: Use `axum::Router::oneshot()` with different `ServiceState` combinations:
+   ```rust
+   let handles = vec![
+       make_handle("redis", ServiceState::Ready),
+       make_handle("vector", ServiceState::Starting),
+   ];
+   let app = health_router(handles);
+   let resp = app.oneshot(Request::get("/health").body(Body::empty()).unwrap()).await.unwrap();
+   assert_eq!(resp.status(), StatusCode::SERVICE_UNAVAILABLE);
+   ```
 
 3. **Worker tests**: `poll_and_process()` takes `&dyn RedisOps` directly — test it without the OnceCell wrapper.
+
+4. **Retry tests**: Use `spawn_with_retry` with an `AtomicU32` counter to simulate flaky init.
+
+5. **Transition audit**: Assert exact transition sequences and timestamp ordering.
 
 ## Projects Using This Pattern
 
 - **ai-kasu**: `CompositeRegistry` + `ServiceAwareRegistry` with `ServiceHandle` lifecycle tracking
-- **taproot**: `OnceCell` fields + `require_*()` guards + `/health` endpoint
+- **taproot**: `OnceCell` fields + `require_*()` guards + `fabryk_mcp::health_router`

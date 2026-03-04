@@ -126,20 +126,11 @@ impl FabrykMcpServer {
 
     /// Wait for all registered services to be ready (with timeout).
     ///
-    /// Waits sequentially for each service. Returns all errors if any
-    /// services fail to reach Ready within the timeout.
+    /// Waits for all services **in parallel** using `futures::join_all`.
+    /// The wall-clock time equals the slowest service, not the sum of all.
+    /// Returns all errors if any services fail to reach Ready within the timeout.
     pub async fn wait_ready(&self, timeout: Duration) -> Result<(), Vec<String>> {
-        let mut errors = Vec::new();
-        for svc in &self.services {
-            if let Err(e) = svc.wait_ready(timeout).await {
-                errors.push(e);
-            }
-        }
-        if errors.is_empty() {
-            Ok(())
-        } else {
-            Err(errors)
-        }
+        fabryk_core::service::wait_all_ready(&self.services, timeout).await
     }
 
     /// Auto-generate server instructions for discoverability.
@@ -245,9 +236,10 @@ impl FabrykMcpServer {
     pub async fn serve_http(self, addr: std::net::SocketAddr) -> fabryk_core::Result<()> {
         let service = self.clone().into_http_service();
         let server_name = self.config.name.clone();
+        let services = self.services.clone();
 
         let router = axum::Router::new()
-            .route("/health", axum::routing::get(|| async { "ok" }))
+            .merge(crate::health_router::health_router(services))
             .nest_service("/mcp", service);
 
         log::info!("{server_name} HTTP server listening on {addr}");
@@ -618,10 +610,12 @@ mod http_tests {
         // Give the server a moment to start
         tokio::time::sleep(Duration::from_millis(100)).await;
 
-        // Hit the health endpoint
+        // Hit the health endpoint — now returns JSON
         let resp = reqwest::get(format!("http://{addr}/health")).await.unwrap();
         assert_eq!(resp.status(), 200);
-        assert_eq!(resp.text().await.unwrap(), "ok");
+        let body = resp.text().await.unwrap();
+        let json: serde_json::Value = serde_json::from_str(&body).unwrap();
+        assert_eq!(json["status"], "ok");
 
         handle.abort();
     }
