@@ -144,13 +144,19 @@ impl FabrykMcpServer {
 
     /// Auto-generate server instructions for discoverability.
     ///
-    /// Sets the server description to remind AI agents to call the directory
-    /// tool first. Use with [`DiscoverableRegistry`](crate::DiscoverableRegistry).
+    /// Prepends a directive telling AI agents to call the directory tool first.
+    /// If a description was already set via [`with_description`](Self::with_description),
+    /// it is preserved after the directive. Use with
+    /// [`DiscoverableRegistry`](crate::DiscoverableRegistry).
     pub fn with_discoverable_instructions(mut self, server_name: &str) -> Self {
-        self.config.description = Some(format!(
+        let directive = format!(
             "ALWAYS call {server_name}_directory first — it maps all available tools, \
              valid filter values, and the optimal query strategy for this session."
-        ));
+        );
+        self.config.description = Some(match self.config.description.take() {
+            Some(existing) => format!("{directive}\n\n{existing}"),
+            None => directive,
+        });
         self
     }
 
@@ -428,6 +434,33 @@ mod tests {
         let desc = server.config().description.as_deref().unwrap();
         assert!(desc.contains("myapp_directory"));
         assert!(desc.contains("ALWAYS call"));
+    }
+
+    #[test]
+    fn test_discoverable_instructions_compose_with_description() {
+        let server = FabrykMcpServer::new(CompositeRegistry::new())
+            .with_description("My custom description.")
+            .with_discoverable_instructions("myapp");
+        let desc = server.config().description.as_deref().unwrap();
+        assert!(
+            desc.starts_with("ALWAYS call myapp_directory first"),
+            "Directive should come first: {desc}"
+        );
+        assert!(
+            desc.contains("My custom description."),
+            "Original description should be preserved: {desc}"
+        );
+    }
+
+    #[test]
+    fn test_discoverable_instructions_without_prior_description() {
+        let server =
+            FabrykMcpServer::new(CompositeRegistry::new()).with_discoverable_instructions("myapp");
+        let desc = server.config().description.as_deref().unwrap();
+        assert!(
+            !desc.contains("\n\n"),
+            "Should not have double newline when no prior description"
+        );
     }
 
     #[test]
