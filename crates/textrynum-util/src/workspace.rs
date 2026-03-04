@@ -41,11 +41,10 @@ pub fn scan_matching_deps(
     cargo_toml_path: &Path,
     prefixes: &[&str],
 ) -> Result<Vec<(String, String)>> {
-    let content =
-        std::fs::read_to_string(cargo_toml_path).map_err(|e| TextylError::FileRead {
-            path: cargo_toml_path.to_path_buf(),
-            source: e,
-        })?;
+    let content = std::fs::read_to_string(cargo_toml_path).map_err(|e| TextylError::FileRead {
+        path: cargo_toml_path.to_path_buf(),
+        source: e,
+    })?;
     let doc: toml::Value = toml::from_str(&content)
         .with_context(|| format!("failed to parse {}", cargo_toml_path.display()))?;
 
@@ -504,8 +503,7 @@ tokio = { version = "1.0", features = ["full"] }
         )
         .expect("write");
 
-        let matches =
-            scan_matching_deps(&cargo_toml, &["fabryk-", "ecl-"]).expect("should scan");
+        let matches = scan_matching_deps(&cargo_toml, &["fabryk-", "ecl-"]).expect("should scan");
         assert_eq!(matches.len(), 4);
 
         let dep_names: Vec<&str> = matches.iter().map(|(_, n)| n.as_str()).collect();
@@ -533,8 +531,7 @@ serde = "1.0"
         )
         .expect("write");
 
-        let matches =
-            scan_matching_deps(&cargo_toml, &["fabryk-", "ecl-"]).expect("should scan");
+        let matches = scan_matching_deps(&cargo_toml, &["fabryk-", "ecl-"]).expect("should scan");
         assert!(matches.is_empty());
     }
 
