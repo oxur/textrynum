@@ -324,7 +324,7 @@ mod tests {
         Tool {
             name: name.to_string().into(),
             description: Some(description.to_string().into()),
-            input_schema: Arc::new(serde_json::Map::new()),
+            input_schema: Arc::new(crate::empty_input_schema()),
             title: None,
             output_schema: None,
             annotations: None,
@@ -551,7 +551,7 @@ mod http_tests {
             vec![Tool {
                 name: "test_tool".to_string().into(),
                 description: Some("A test tool".to_string().into()),
-                input_schema: Arc::new(serde_json::Map::new()),
+                input_schema: Arc::new(crate::empty_input_schema()),
                 title: None,
                 output_schema: None,
                 annotations: None,
