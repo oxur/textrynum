@@ -54,7 +54,7 @@ impl ToolRegistry for HealthTools {
         vec![Tool {
             name: "health".into(),
             description: Some("Check server health and status".into()),
-            input_schema: Arc::new(serde_json::Map::new()),
+            input_schema: Arc::new(crate::empty_input_schema()),
             title: None,
             output_schema: None,
             annotations: None,

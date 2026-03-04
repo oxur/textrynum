@@ -131,7 +131,7 @@ mod tests {
         Tool {
             name: name.to_string().into(),
             description: Some(description.to_string().into()),
-            input_schema: Arc::new(serde_json::Map::new()),
+            input_schema: Arc::new(crate::empty_input_schema()),
             title: None,
             output_schema: None,
             annotations: None,

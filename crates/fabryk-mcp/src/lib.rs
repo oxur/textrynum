@@ -52,6 +52,7 @@ pub mod registry;
 pub mod server;
 pub mod service_registry;
 pub mod tools;
+pub mod validate;
 
 // Re-exports — registry
 pub use registry::{CompositeRegistry, ToolRegistry, ToolResult};
@@ -71,10 +72,23 @@ pub use discoverable::{DiscoverableRegistry, ExternalConnector, ToolMeta};
 // Re-exports — built-in tools
 pub use tools::{DiagnosticTools, HealthResponse, HealthTools, handle_health};
 
+// Re-exports — validation
+pub use validate::{assert_tools_valid, validate_tools, warn_on_invalid_tools};
+
 // Re-exports — rmcp types used by downstream crates
 pub mod model {
     //! Re-exported rmcp model types.
     pub use rmcp::model::{CallToolResult, Content, ErrorData, Tool};
+}
+
+/// Return a minimal valid JSON Schema for a tool that takes no parameters.
+///
+/// MCP requires `inputSchema` to have at least `{"type": "object"}`.
+/// An empty map `{}` is rejected by some clients (e.g. Claude Desktop).
+pub fn empty_input_schema() -> serde_json::Map<String, serde_json::Value> {
+    let mut m = serde_json::Map::new();
+    m.insert("type".to_string(), serde_json::Value::String("object".to_string()));
+    m
 }
 
 // Re-exports — HTTP health router (requires `http` feature)
