@@ -1,0 +1,33 @@
+[package]
+name = "fabryk-mcp-semantic"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Semantic (hybrid) search MCP tools for Fabryk"
+
+[dependencies]
+fabryk-core = { version = "0.1.2", path = "../fabryk-core" }
+fabryk-fts = { version = "0.1.2", path = "../fabryk-fts" }
+fabryk-vector = { version = "0.1.2", path = "../fabryk-vector" }
+fabryk-mcp = { version = "0.1.2", path = "../fabryk-mcp" }
+
+# Async
+tokio = { workspace = true }
+async-trait = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Schema
+schemars = { workspace = true }
+
+# Logging
+log = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
+tokio-test = { workspace = true }

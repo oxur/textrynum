@@ -3592,6 +3592,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "fabryk-mcp-semantic"
+version = "0.1.2"
+dependencies = [
+ "async-trait",
+ "fabryk-core",
+ "fabryk-fts",
+ "fabryk-mcp",
+ "fabryk-vector",
+ "log",
+ "schemars 1.2.1",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "tokio",
+ "tokio-test",
+]
+
+[[package]]
 name = "fabryk-redis"
 version = "0.1.2"
 dependencies = [
