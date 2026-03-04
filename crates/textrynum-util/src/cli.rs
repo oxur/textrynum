@@ -244,9 +244,7 @@ mod tests {
     fn test_args_set_version_positional() {
         let args = Args::parse_from(["textyl", "set-version", "0.2.0"]);
         match args.command {
-            Command::SetVersion {
-                version, check, ..
-            } => {
+            Command::SetVersion { version, check, .. } => {
                 assert_eq!(version, Some("0.2.0".to_string()));
                 assert!(!check);
             }
@@ -258,9 +256,7 @@ mod tests {
     fn test_args_set_version_check_mode() {
         let args = Args::parse_from(["textyl", "set-version", "0.2.0", "--check"]);
         match args.command {
-            Command::SetVersion {
-                version, check, ..
-            } => {
+            Command::SetVersion { version, check, .. } => {
                 assert_eq!(version, Some("0.2.0".to_string()));
                 assert!(check);
             }
@@ -314,13 +310,7 @@ mod tests {
 
     #[test]
     fn test_args_set_version_positional_with_deps_override() {
-        let args = Args::parse_from([
-            "textyl",
-            "set-version",
-            "0.2.0",
-            "--deps-version",
-            "0.1.2",
-        ]);
+        let args = Args::parse_from(["textyl", "set-version", "0.2.0", "--deps-version", "0.1.2"]);
         match args.command {
             Command::SetVersion {
                 version,

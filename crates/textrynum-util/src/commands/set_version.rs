@@ -270,11 +270,7 @@ fn collect_dep_mismatches(
 }
 
 /// Read the declared version of a specific dep from a Cargo.toml.
-fn read_dep_version(
-    cargo_toml: &Path,
-    section: &str,
-    dep_name: &str,
-) -> Result<Option<String>> {
+fn read_dep_version(cargo_toml: &Path, section: &str, dep_name: &str) -> Result<Option<String>> {
     let content = std::fs::read_to_string(cargo_toml)?;
     let doc: toml::Value = toml::from_str(&content)?;
 
@@ -287,7 +283,9 @@ fn read_dep_version(
                 return Some(v.to_string());
             }
             // Table: dep = { version = "1.0", ... }
-            dep.get("version").and_then(|v| v.as_str()).map(|s| s.to_string())
+            dep.get("version")
+                .and_then(|v| v.as_str())
+                .map(|s| s.to_string())
         });
 
     Ok(version)
@@ -468,7 +466,10 @@ ecl-design = "0.1.0"
         // Check that project version is 2.0.0 (in [package]).
         // We need a smarter check since fabryk-graph also has version = "0.1.2".
         let lines: Vec<&str> = content.lines().collect();
-        let pkg_version_line = lines.iter().find(|l| l.starts_with("version")).expect("version");
+        let pkg_version_line = lines
+            .iter()
+            .find(|l| l.starts_with("version"))
+            .expect("version");
         assert!(pkg_version_line.contains("2.0.0"));
         // Deps updated.
         assert!(content.contains(r#"fabryk-core = "0.1.2""#));
