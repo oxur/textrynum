@@ -169,17 +169,19 @@ impl<R: ToolRegistry> DiscoverableRegistry<R> {
     /// Build the Tool definition for the auto-injected directory tool.
     fn directory_tool_def(&self) -> Tool {
         let dir_name = self.directory_tool_name();
+        let tool_count = self.inner.tools().len();
         Tool {
             name: dir_name.into(),
             description: Some(
                 format!(
-                    "Describes all {} tools, connected external services, data freshness, \
-                     and the optimal query strategy.\n\
+                    "Describes all {count} {name} tools, connected external services, \
+                     data freshness, and the optimal query strategy.\n\
                      WHEN TO USE: Call this at the start of every session to understand \
                      what capabilities are available before doing any work.\n\
                      RETURNS: Tool list with when-to-use guidance, external connector list, \
                      optimal query strategy, and data freshness information.",
-                    self.server_name
+                    count = tool_count,
+                    name = self.server_name,
                 )
                 .into(),
             ),
@@ -233,9 +235,35 @@ impl<R: ToolRegistry> DiscoverableRegistry<R> {
         let strategy = &self.query_strategy;
         let freshness = &self.data_freshness;
 
+        // Build category summary from tool metadata
+        let mut category_counts: std::collections::BTreeMap<String, usize> =
+            std::collections::BTreeMap::new();
+        for tool in self.inner.tools().iter() {
+            let name = tool.name.to_string();
+            let cat = self
+                .meta_map
+                .get(&name)
+                .and_then(|m| m.category.as_deref())
+                .unwrap_or("general")
+                .to_string();
+            *category_counts.entry(cat).or_insert(0) += 1;
+        }
+
         // Build the response, omitting empty sections
         let mut response = serde_json::Map::new();
         response.insert(tools_key, Value::Array(tool_entries));
+
+        if !category_counts.is_empty() {
+            response.insert(
+                "categories".into(),
+                Value::Object(
+                    category_counts
+                        .iter()
+                        .map(|(k, v)| (k.clone(), Value::Number((*v).into())))
+                        .collect(),
+                ),
+            );
+        }
 
         if !connectors.is_empty() {
             response.insert("external_connectors".into(), Value::Array(connectors));
@@ -414,6 +442,22 @@ mod tests {
         // Inner has 1 tool, directory adds 1 more
         assert_eq!(tools.len(), 2);
         assert!(tools.iter().any(|t| t.name == "myapp_directory"));
+    }
+
+    #[test]
+    fn test_directory_tool_description_includes_tool_count() {
+        let inner = MockRegistry {
+            tools: vec![make_tool("a", "A"), make_tool("b", "B")],
+        };
+
+        let registry = DiscoverableRegistry::new(inner, "myapp");
+        let tools = registry.tools();
+        let dir_tool = tools.iter().find(|t| t.name == "myapp_directory").unwrap();
+        let desc = dir_tool.description.as_deref().unwrap();
+        assert!(
+            desc.contains("2 myapp tools"),
+            "Should include tool count in description: {desc}"
+        );
     }
 
     #[tokio::test]
@@ -595,6 +639,65 @@ mod tests {
         assert!(tools.iter().any(|t| t.name == "tool_a"));
         assert!(tools.iter().any(|t| t.name == "tool_b"));
         assert!(tools.iter().any(|t| t.name == "myapp_directory"));
+    }
+
+    // ── categories summary ─────────────────────────────────────────────────
+
+    #[tokio::test]
+    async fn test_directory_tool_includes_categories_summary() {
+        let inner = MockRegistry {
+            tools: vec![make_tool("search", "Search"), make_tool("get_item", "Get")],
+        };
+
+        let registry = DiscoverableRegistry::new(inner, "myapp")
+            .with_tool_meta(
+                "search",
+                ToolMeta {
+                    category: Some("search".into()),
+                    ..Default::default()
+                },
+            )
+            .with_tool_meta(
+                "get_item",
+                ToolMeta {
+                    category: Some("content".into()),
+                    ..Default::default()
+                },
+            );
+
+        let result = registry
+            .call("myapp_directory", json!({}))
+            .unwrap()
+            .await
+            .unwrap();
+
+        let text = extract_text(&result);
+        let value: Value = serde_json::from_str(&text).unwrap();
+
+        let cats = value.get("categories").expect("Should have categories key");
+        assert_eq!(cats["search"], 1);
+        assert_eq!(cats["content"], 1);
+    }
+
+    #[tokio::test]
+    async fn test_directory_tool_categories_defaults_to_general() {
+        let inner = MockRegistry {
+            tools: vec![make_tool("unknown_tool", "No meta")],
+        };
+
+        // No ToolMeta attached — should default to "general"
+        let registry = DiscoverableRegistry::new(inner, "myapp");
+        let result = registry
+            .call("myapp_directory", json!({}))
+            .unwrap()
+            .await
+            .unwrap();
+
+        let text = extract_text(&result);
+        let value: Value = serde_json::from_str(&text).unwrap();
+
+        let cats = value.get("categories").expect("Should have categories key");
+        assert_eq!(cats["general"], 1);
     }
 
     // ── ToolMeta default ─────────────────────────────────────────────────────
