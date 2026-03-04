@@ -42,6 +42,7 @@ use crate::types::SearchConfig;
 
 /// Tantivy-based full-text search backend.
 pub struct TantivySearch {
+    /// Retained for ownership — dropping the Index would invalidate the reader.
     #[allow(dead_code)]
     index: Index,
     reader: IndexReader,

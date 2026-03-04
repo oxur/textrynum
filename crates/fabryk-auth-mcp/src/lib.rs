@@ -52,10 +52,7 @@ pub fn discovery_routes(resource_url: &str, auth_server_url: &str) -> axum::Rout
         )
         .route(
             "/.well-known/oauth-authorization-server/mcp",
-            axum::routing::get(move || {
-                let _url = resource_url.clone();
-                async move { authorization_server_metadata_google().await }
-            }),
+            axum::routing::get(move || async move { authorization_server_metadata_google().await }),
         )
 }
 
