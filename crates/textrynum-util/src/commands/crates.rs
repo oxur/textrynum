@@ -11,10 +11,25 @@ use std::path::Path;
 
 /// Run the `crates` command.
 pub fn run(root: &Path, args: CratesArgs) -> Result<()> {
+    if args.publish_order {
+        return publish_order(root, &args.exclude);
+    }
     match args.action {
         None => list(root, &args),
         Some(CratesAction::Update { data }) => update(root, data),
     }
+}
+
+/// Print publishable crates in dependency order (space-separated).
+fn publish_order(root: &Path, exclude: &[String]) -> Result<()> {
+    let order = workspace::publish_order(root)?;
+    let filtered: Vec<&str> = order
+        .iter()
+        .filter(|name| !exclude.contains(name))
+        .map(|s| s.as_str())
+        .collect();
+    println!("{}", filtered.join(" "));
+    Ok(())
 }
 
 /// List all workspace crates and their internal deps.

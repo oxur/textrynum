@@ -3,7 +3,7 @@
 use crate::crate_info::{CrateInfo, DepInfo};
 use crate::error::TextylError;
 use anyhow::{Context, Result};
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet, VecDeque};
 use std::path::{Path, PathBuf};
 
 /// Discover workspace root by walking up from `start` looking for a
@@ -125,6 +125,13 @@ fn scan_crate(
     // Resolve version: check for workspace inheritance or explicit version.
     let version = resolve_crate_version(&doc, workspace_version);
 
+    // Check publish status: defaults to true unless explicitly `publish = false`.
+    let publish = doc
+        .get("package")
+        .and_then(|p| p.get("publish"))
+        .and_then(|v| v.as_bool())
+        .unwrap_or(true);
+
     let mut internal_deps = Vec::new();
 
     for section in &DEP_SECTIONS {
@@ -170,6 +177,7 @@ fn scan_crate(
         name,
         path: rel_path,
         version,
+        publish,
         internal_deps,
     })
 }
@@ -213,6 +221,74 @@ pub fn scan_all_crates(root: &Path) -> Result<Vec<CrateInfo>> {
     Ok(crates)
 }
 
+/// Return publishable crates in dependency order (topological sort).
+///
+/// Crates with `publish = false` are excluded. Among crates at the same
+/// dependency level, names are sorted alphabetically for determinism.
+pub fn publish_order(root: &Path) -> Result<Vec<String>> {
+    let crates = scan_all_crates(root)?;
+
+    // Filter to publishable crates only.
+    let publishable: HashSet<String> = crates
+        .iter()
+        .filter(|c| c.publish)
+        .map(|c| c.name.clone())
+        .collect();
+
+    // Build adjacency list: edges go from dependency -> dependent.
+    // in_degree counts how many internal deps each crate has.
+    let mut in_degree: HashMap<String, usize> = HashMap::new();
+    let mut dependents: HashMap<String, Vec<String>> = HashMap::new();
+
+    for info in &crates {
+        if !publishable.contains(&info.name) {
+            continue;
+        }
+        in_degree.entry(info.name.clone()).or_insert(0);
+        for dep in &info.internal_deps {
+            if publishable.contains(&dep.name) {
+                *in_degree.entry(info.name.clone()).or_insert(0) += 1;
+                dependents
+                    .entry(dep.name.clone())
+                    .or_default()
+                    .push(info.name.clone());
+            }
+        }
+    }
+
+    // Kahn's algorithm with sorted queue for deterministic output.
+    let mut queue: VecDeque<String> = in_degree
+        .iter()
+        .filter(|(_, deg)| **deg == 0)
+        .map(|(name, _)| name.clone())
+        .collect();
+    // Sort initial queue for determinism.
+    let mut sorted: Vec<String> = queue.drain(..).collect();
+    sorted.sort();
+    queue.extend(sorted);
+
+    let mut order = Vec::new();
+    while let Some(name) = queue.pop_front() {
+        order.push(name.clone());
+        if let Some(deps) = dependents.get(&name) {
+            let mut ready = Vec::new();
+            for dep in deps {
+                if let Some(deg) = in_degree.get_mut(dep) {
+                    *deg -= 1;
+                    if *deg == 0 {
+                        ready.push(dep.clone());
+                    }
+                }
+            }
+            // Sort newly ready crates for determinism.
+            ready.sort();
+            queue.extend(ready);
+        }
+    }
+
+    Ok(order)
+}
+
 // ============================================================================
 // Tests
 // ============================================================================
@@ -228,7 +304,7 @@ mod tests {
             dir.join("Cargo.toml"),
             r#"[workspace]
 resolver = "2"
-members = ["crates/alpha", "crates/beta"]
+members = ["crates/alpha", "crates/beta", "crates/gamma", "crates/tool"]
 
 [workspace.package]
 version = "1.2.3"
@@ -266,6 +342,35 @@ alpha = { version = "1.0.0", path = "../alpha", optional = false }
 "#,
         )
         .expect("failed to write beta Cargo.toml");
+
+        let gamma_dir = dir.join("crates/gamma");
+        fs::create_dir_all(&gamma_dir).expect("failed to create gamma dir");
+        fs::write(
+            gamma_dir.join("Cargo.toml"),
+            r#"[package]
+name = "gamma"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+alpha = { version = "1.0.0", path = "../alpha" }
+beta = { version = "1.0.0", path = "../beta" }
+"#,
+        )
+        .expect("failed to write gamma Cargo.toml");
+
+        let tool_dir = dir.join("crates/tool");
+        fs::create_dir_all(&tool_dir).expect("failed to create tool dir");
+        fs::write(
+            tool_dir.join("Cargo.toml"),
+            r#"[package]
+name = "tool"
+version.workspace = true
+edition.workspace = true
+publish = false
+"#,
+        )
+        .expect("failed to write tool Cargo.toml");
     }
 
     #[test]
@@ -300,7 +405,7 @@ alpha = { version = "1.0.0", path = "../alpha", optional = false }
         create_workspace(tmp.path());
 
         let paths = list_member_paths(tmp.path()).expect("should list members");
-        assert_eq!(paths.len(), 2);
+        assert_eq!(paths.len(), 4);
         assert!(paths[0].ends_with("crates/alpha"));
         assert!(paths[1].ends_with("crates/beta"));
     }
@@ -311,9 +416,11 @@ alpha = { version = "1.0.0", path = "../alpha", optional = false }
         create_workspace(tmp.path());
 
         let names = collect_internal_crate_names(tmp.path()).expect("should collect names");
-        assert_eq!(names.len(), 2);
+        assert_eq!(names.len(), 4);
         assert!(names.contains("alpha"));
         assert!(names.contains("beta"));
+        assert!(names.contains("gamma"));
+        assert!(names.contains("tool"));
     }
 
     #[test]
@@ -322,11 +429,12 @@ alpha = { version = "1.0.0", path = "../alpha", optional = false }
         create_workspace(tmp.path());
 
         let crates = scan_all_crates(tmp.path()).expect("should scan crates");
-        assert_eq!(crates.len(), 2);
+        assert_eq!(crates.len(), 4);
 
         let alpha = crates.iter().find(|c| c.name == "alpha").expect("alpha");
         assert!(alpha.internal_deps.is_empty());
         assert_eq!(alpha.version, "1.2.3");
+        assert!(alpha.publish);
 
         let beta = crates.iter().find(|c| c.name == "beta").expect("beta");
         assert_eq!(beta.version, "1.2.3");
@@ -340,5 +448,36 @@ alpha = { version = "1.0.0", path = "../alpha", optional = false }
         assert_eq!(dep.name, "alpha");
         assert_eq!(dep.declared_version, "1.0.0");
         assert_eq!(dep.section, "dependencies");
+
+        let tool = crates.iter().find(|c| c.name == "tool").expect("tool");
+        assert!(!tool.publish);
+    }
+
+    #[test]
+    fn test_publish_order_excludes_unpublishable_crates() {
+        let tmp = TempDir::new().expect("failed to create tempdir");
+        create_workspace(tmp.path());
+
+        let order = publish_order(tmp.path()).expect("should get order");
+        assert!(!order.contains(&"tool".to_string()));
+    }
+
+    #[test]
+    fn test_publish_order_respects_dependency_order() {
+        let tmp = TempDir::new().expect("failed to create tempdir");
+        create_workspace(tmp.path());
+
+        let order = publish_order(tmp.path()).expect("should get order");
+        assert_eq!(order.len(), 3);
+
+        let alpha_pos = order.iter().position(|n| n == "alpha").expect("alpha");
+        let beta_pos = order.iter().position(|n| n == "beta").expect("beta");
+        let gamma_pos = order.iter().position(|n| n == "gamma").expect("gamma");
+
+        // alpha must come before beta and gamma
+        assert!(alpha_pos < beta_pos);
+        assert!(alpha_pos < gamma_pos);
+        // beta must come before gamma (gamma depends on both alpha and beta)
+        assert!(beta_pos < gamma_pos);
     }
 }

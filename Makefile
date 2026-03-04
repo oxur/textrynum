@@ -352,21 +352,13 @@ push:
 		echo "$(GREEN)✓ Pushed$(RESET)"; \
 	done
 
-# Crates in dependency order (leaf crates first, dependent crates later)
-# ECL crates: design, core -> steps -> workflows -> cli -> ecl
-# Fabryk auth: auth, auth-mcp -> auth-google
-# Fabryk crates: core -> (content, acl, fts, mcp) -> (graph, vector) ->
-#                (mcp-content, mcp-fts, mcp-graph) -> cli -> fabryk
-PUBLISH_ORDER := ecl-core ecl-steps ecl-workflows ecl-cli ecl \
-                 fabryk-auth fabryk-auth-mcp fabryk-auth-google \
-                 fabryk-core fabryk-content fabryk-acl fabryk-fts fabryk-mcp \
-                 fabryk-graph fabryk-vector \
-                 fabryk-mcp-content fabryk-mcp-fts fabryk-mcp-graph \
-                 fabryk-cli fabryk
+# Crates in dependency order — computed dynamically by textyl.
+# Requires `make build` first (publish and publish-dry-run handle this).
+PUBLISH_ORDER = $(shell ./bin/textyl crates --publish-order --exclude=ecl-design 2>/dev/null)
 # crates.io rate limit delay (seconds)
 PUBLISH_DELAY := 372
 .PHONY: publish
-publish:
+publish: build
 	@echo ""
 	@echo "$(CYAN)╔══════════════════════════════════════════════════════════╗$(RESET)"
 	@echo "$(CYAN)║$(RESET) $(BLUE)Publishing $(PROJECT_NAME) Crates to crates.io$(RESET)                 $(CYAN)║$(RESET)"
