@@ -162,6 +162,51 @@ impl KnowledgeEngine {
 }
 ```
 
+### RwLock Slot for Deferred Backend Wiring
+
+When a tool registry is constructed *before* a backend is ready, use a shared `RwLock<Option<...>>` slot instead of `OnceCell`. The `fabryk_mcp_semantic` crate exports a `VectorSlot` type alias for this:
+
+```rust
+use fabryk_mcp_semantic::{SemanticSearchTools, VectorSlot};
+
+// 1. Create the shared slot (initially empty)
+let vector_slot: VectorSlot = Arc::new(RwLock::new(None));
+
+// 2. Build the tool registry with the slot — it checks at call time
+let tools = SemanticSearchTools::with_vector_slot(fts_arc.clone(), vector_slot.clone());
+
+// 3. Background build populates the slot when ready
+spawn_with_retry(vector_svc, RetryConfig::default(), move || {
+    let slot = vector_slot.clone();
+    async move {
+        let backend = build_vector_backend(&config).await.map_err(|e| format!("{e}"))?;
+        let mut guard = slot.write().await;
+        *guard = Some(Arc::from(backend));
+        Ok(())
+    }
+});
+```
+
+**Why not `OnceCell`?** `OnceCell` works well when you hold the struct with `&mut self` access or when the consumer calls `get()` directly. The slot pattern is better when:
+- The tool registry is already wrapped in `Arc` / registered before the backend exists
+- You want `try_read()` (non-blocking) at call time to avoid stalling the async runtime
+- The backend could theoretically be swapped (e.g., hot-reload), though this is not common
+
+The `resolve_vector()` helper inside `SemanticSearchTools` checks the direct `vector` field first, then falls back to `try_read()` on the slot:
+
+```rust
+fn resolve_vector(&self) -> Option<Arc<dyn VectorBackend>> {
+    if let Some(ref v) = self.vector {
+        return Some(v.clone());
+    }
+    if let Some(ref slot) = self.vector_slot {
+        slot.try_read().ok().and_then(|guard| guard.clone())
+    } else {
+        None
+    }
+}
+```
+
 ### require_*() Guards
 
 Tools call `require_redis()`, `require_knowledge()`, etc. These return clear errors when a service isn't ready:
@@ -282,5 +327,5 @@ async fn worker_loop(
 
 ## Projects Using This Pattern
 
-- **ai-kasu**: `CompositeRegistry` + `ServiceAwareRegistry` with `ServiceHandle` lifecycle tracking
+- **ai-kasu**: `CompositeRegistry` + `ServiceAwareRegistry` with `ServiceHandle` lifecycle tracking, `spawn_with_retry` for all background builds (graph, FTS, vector), `VectorSlot` to wire vector backend into `SemanticSearchTools` after async build completes
 - **taproot**: `OnceCell` fields + `require_*()` guards + `fabryk_mcp::health_router`

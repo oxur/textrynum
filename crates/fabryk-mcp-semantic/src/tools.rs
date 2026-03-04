@@ -115,6 +115,13 @@ fn to_fts_results(results: &fabryk_fts::SearchResults) -> Vec<FtsResult> {
 }
 
 // ---------------------------------------------------------------------------
+// Type aliases
+// ---------------------------------------------------------------------------
+
+/// Shared slot for a vector backend that may be populated asynchronously.
+pub type VectorSlot = Arc<tokio::sync::RwLock<Option<Arc<dyn VectorBackend>>>>;
+
+// ---------------------------------------------------------------------------
 // SemanticSearchTools
 // ---------------------------------------------------------------------------
 
@@ -138,12 +145,17 @@ fn to_fts_results(results: &fabryk_fts::SearchResults) -> Vec<FtsResult> {
 pub struct SemanticSearchTools {
     fts: Arc<dyn SearchBackend>,
     vector: Option<Arc<dyn VectorBackend>>,
+    vector_slot: Option<VectorSlot>,
 }
 
 impl SemanticSearchTools {
     /// Create semantic search tools with FTS and optional vector backends.
     pub fn new(fts: Arc<dyn SearchBackend>, vector: Option<Arc<dyn VectorBackend>>) -> Self {
-        Self { fts, vector }
+        Self {
+            fts,
+            vector,
+            vector_slot: None,
+        }
     }
 
     /// Create semantic search tools from boxed backends.
@@ -151,6 +163,7 @@ impl SemanticSearchTools {
         Self {
             fts: Arc::from(fts),
             vector: vector.map(Arc::from),
+            vector_slot: None,
         }
     }
 
@@ -160,6 +173,34 @@ impl SemanticSearchTools {
         vector: Option<Arc<dyn VectorBackend>>,
     ) -> Self {
         Self::new(fts, vector)
+    }
+
+    /// Create with a shared slot that will be populated by a background build.
+    ///
+    /// The slot is checked at call time, so vector search becomes available
+    /// as soon as the background builder populates it.
+    pub fn with_vector_slot(
+        fts: Arc<dyn SearchBackend>,
+        vector_slot: VectorSlot,
+    ) -> Self {
+        Self {
+            fts,
+            vector: None,
+            vector_slot: Some(vector_slot),
+        }
+    }
+
+    /// Resolve the vector backend: prefer the direct field, then try the shared slot.
+    fn resolve_vector(&self) -> Option<Arc<dyn VectorBackend>> {
+        if let Some(ref v) = self.vector {
+            return Some(v.clone());
+        }
+        if let Some(ref slot) = self.vector_slot {
+            // try_read avoids blocking the async runtime; returns None if locked
+            slot.try_read().ok().and_then(|guard| guard.clone())
+        } else {
+            None
+        }
     }
 }
 
@@ -205,7 +246,7 @@ impl ToolRegistry for SemanticSearchTools {
         }
 
         let fts = self.fts.clone();
-        let vector = self.vector.clone();
+        let vector = self.resolve_vector();
 
         Some(Box::pin(async move {
             let args: SemanticSearchArgs = serde_json::from_value(args)
@@ -577,6 +618,86 @@ mod tests {
         let fts: Arc<dyn SearchBackend> = Arc::new(MockFts::empty());
         let tools = SemanticSearchTools::with_shared(fts, None);
         assert_eq!(tools.tool_count(), 1);
+    }
+
+    // -- vector_slot tests -------------------------------------------------
+
+    #[tokio::test]
+    async fn test_with_vector_slot_empty() {
+        let slot: VectorSlot =
+            Arc::new(tokio::sync::RwLock::new(None));
+        let tools = SemanticSearchTools::with_vector_slot(Arc::new(MockFts::empty()), slot);
+
+        // Hybrid mode should fall back to FTS-only when slot is empty
+        let result = tools
+            .call(
+                "semantic_search",
+                serde_json::json!({"query": "test", "mode": "hybrid"}),
+            )
+            .unwrap()
+            .await;
+        assert!(result.is_ok());
+    }
+
+    #[tokio::test]
+    async fn test_with_vector_slot_populated() {
+        let slot: VectorSlot =
+            Arc::new(tokio::sync::RwLock::new(Some(Arc::new(
+                MockVector::with_ids(&["vec-a", "vec-b"]),
+            ))));
+        let fts_items = vec![make_fts_result("fts-a", 0.9)];
+        let tools =
+            SemanticSearchTools::with_vector_slot(Arc::new(MockFts::new(fts_items)), slot);
+
+        // Hybrid mode should use vector backend from the slot
+        let result = tools
+            .call(
+                "semantic_search",
+                serde_json::json!({"query": "test", "mode": "hybrid"}),
+            )
+            .unwrap()
+            .await
+            .unwrap();
+        assert!(!result.is_error.unwrap_or(false));
+        // Should produce hybrid results (HybridResult format with rrf_score) rather than plain FTS
+        let json = serde_json::to_string(&result.content).unwrap();
+        assert!(json.contains("rrf_score"), "Expected hybrid result format with rrf_score, got: {json}");
+    }
+
+    #[tokio::test]
+    async fn test_with_vector_slot_vector_mode() {
+        let slot: VectorSlot =
+            Arc::new(tokio::sync::RwLock::new(Some(Arc::new(
+                MockVector::with_ids(&["vec-a"]),
+            ))));
+        let tools = SemanticSearchTools::with_vector_slot(Arc::new(MockFts::empty()), slot);
+
+        // Explicit vector mode should work via slot
+        let result = tools
+            .call(
+                "semantic_search",
+                serde_json::json!({"query": "test", "mode": "vector"}),
+            )
+            .unwrap()
+            .await;
+        assert!(result.is_ok());
+    }
+
+    #[tokio::test]
+    async fn test_with_vector_slot_vector_mode_empty() {
+        let slot: VectorSlot =
+            Arc::new(tokio::sync::RwLock::new(None));
+        let tools = SemanticSearchTools::with_vector_slot(Arc::new(MockFts::empty()), slot);
+
+        // Explicit vector mode should fail when slot is empty
+        let result = tools
+            .call(
+                "semantic_search",
+                serde_json::json!({"query": "test", "mode": "vector"}),
+            )
+            .unwrap()
+            .await;
+        assert!(result.is_err());
     }
 
     // -- FTS adapter tests -------------------------------------------------

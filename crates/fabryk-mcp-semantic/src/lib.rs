@@ -21,4 +21,4 @@
 pub mod tools;
 
 // Re-exports
-pub use tools::{HybridResult, SemanticSearchArgs, SemanticSearchTools};
+pub use tools::{HybridResult, SemanticSearchArgs, SemanticSearchTools, VectorSlot};
