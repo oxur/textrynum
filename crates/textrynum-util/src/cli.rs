@@ -50,6 +50,14 @@ pub struct CratesArgs {
     #[arg(long, default_value = "text")]
     pub format: OutputFormat,
 
+    /// Print publishable crates in dependency order (space-separated).
+    #[arg(long)]
+    pub publish_order: bool,
+
+    /// Comma-separated list of crate names to exclude from output.
+    #[arg(long, value_delimiter = ',')]
+    pub exclude: Vec<String>,
+
     /// Subcommand (e.g., update).
     #[command(subcommand)]
     pub action: Option<CratesAction>,
@@ -120,6 +128,31 @@ mod tests {
             Command::Crates(crates_args) => {
                 assert!(matches!(crates_args.format, OutputFormat::Text));
                 assert!(crates_args.action.is_none());
+            }
+            _ => panic!("Expected Crates command"),
+        }
+    }
+
+    #[test]
+    fn test_args_crates_publish_order() {
+        let args = Args::parse_from(["textyl", "crates", "--publish-order"]);
+        match args.command {
+            Command::Crates(crates_args) => {
+                assert!(crates_args.publish_order);
+                assert!(crates_args.action.is_none());
+            }
+            _ => panic!("Expected Crates command"),
+        }
+    }
+
+    #[test]
+    fn test_args_crates_publish_order_with_exclude() {
+        let args =
+            Args::parse_from(["textyl", "crates", "--publish-order", "--exclude=foo,bar"]);
+        match args.command {
+            Command::Crates(crates_args) => {
+                assert!(crates_args.publish_order);
+                assert_eq!(crates_args.exclude, vec!["foo", "bar"]);
             }
             _ => panic!("Expected Crates command"),
         }

@@ -12,6 +12,8 @@ pub struct CrateInfo {
     pub path: PathBuf,
     /// The crate's own version (resolved from workspace or explicit).
     pub version: String,
+    /// Whether this crate is publishable (not `publish = false`).
+    pub publish: bool,
     /// Internal (in-workspace) dependencies with their declared versions.
     pub internal_deps: Vec<DepInfo>,
 }

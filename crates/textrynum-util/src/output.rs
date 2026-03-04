@@ -65,12 +65,14 @@ mod tests {
                 name: "alpha".to_string(),
                 path: PathBuf::from("alpha"),
                 version: "0.1.1".to_string(),
+                publish: true,
                 internal_deps: vec![],
             },
             CrateInfo {
                 name: "beta".to_string(),
                 path: PathBuf::from("beta"),
                 version: "0.1.1".to_string(),
+                publish: true,
                 internal_deps: vec![
                     DepInfo {
                         name: "alpha".to_string(),
