@@ -147,8 +147,7 @@ mod tests {
 
     #[test]
     fn test_args_crates_publish_order_with_exclude() {
-        let args =
-            Args::parse_from(["textyl", "crates", "--publish-order", "--exclude=foo,bar"]);
+        let args = Args::parse_from(["textyl", "crates", "--publish-order", "--exclude=foo,bar"]);
         match args.command {
             Command::Crates(crates_args) => {
                 assert!(crates_args.publish_order);
