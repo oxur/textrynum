@@ -64,6 +64,10 @@ pub enum BaseCommand {
 
     /// Configuration operations.
     Config(ConfigCommand),
+
+    /// Vector database operations.
+    #[cfg(feature = "vector-fastembed")]
+    Vectordb(VectordbCommand),
 }
 
 /// Config-specific subcommands.
@@ -155,6 +159,35 @@ pub enum GraphSubcommand {
         /// Target node ID (for path queries).
         #[arg(long)]
         to: Option<String>,
+    },
+}
+
+// ============================================================================
+// Vectordb commands (feature-gated)
+// ============================================================================
+
+/// Vectordb-specific subcommands.
+#[cfg(feature = "vector-fastembed")]
+#[derive(Parser, Debug)]
+pub struct VectordbCommand {
+    /// Vectordb subcommand to execute.
+    #[command(subcommand)]
+    pub command: VectordbAction,
+}
+
+/// Available vectordb subcommands.
+#[cfg(feature = "vector-fastembed")]
+#[derive(Subcommand, Debug)]
+pub enum VectordbAction {
+    /// Download and cache the embedding model.
+    GetModel {
+        /// Embedding model name (e.g., "bge-small-en-v1.5").
+        #[arg(long)]
+        model: Option<String>,
+
+        /// Directory to cache the downloaded model.
+        #[arg(long)]
+        cache_dir: Option<String>,
     },
 }
 
@@ -450,6 +483,52 @@ mod tests {
                 assert!(docker_env);
             }
             _ => panic!("Expected Config Export command with docker_env"),
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Vectordb command tests (feature-gated)
+    // ------------------------------------------------------------------------
+
+    #[cfg(feature = "vector-fastembed")]
+    #[test]
+    fn test_vectordb_get_model_command() {
+        use crate::cli::{VectordbAction, VectordbCommand};
+
+        let args = CliArgs::parse_from(["test", "vectordb", "get-model"]);
+        match args.command {
+            Some(BaseCommand::Vectordb(VectordbCommand {
+                command: VectordbAction::GetModel { model, cache_dir },
+            })) => {
+                assert!(model.is_none());
+                assert!(cache_dir.is_none());
+            }
+            _ => panic!("Expected Vectordb GetModel command"),
+        }
+    }
+
+    #[cfg(feature = "vector-fastembed")]
+    #[test]
+    fn test_vectordb_get_model_with_overrides() {
+        use crate::cli::{VectordbAction, VectordbCommand};
+
+        let args = CliArgs::parse_from([
+            "test",
+            "vectordb",
+            "get-model",
+            "--model",
+            "bge-large-en-v1.5",
+            "--cache-dir",
+            "/tmp/models",
+        ]);
+        match args.command {
+            Some(BaseCommand::Vectordb(VectordbCommand {
+                command: VectordbAction::GetModel { model, cache_dir },
+            })) => {
+                assert_eq!(model.as_deref(), Some("bge-large-en-v1.5"));
+                assert_eq!(cache_dir.as_deref(), Some("/tmp/models"));
+            }
+            _ => panic!("Expected Vectordb GetModel command with overrides"),
         }
     }
 }

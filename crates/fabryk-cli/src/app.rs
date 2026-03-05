@@ -102,6 +102,10 @@ impl<C: ConfigProvider> FabrykCli<C> {
             Some(BaseCommand::Config(config_cmd)) => {
                 config_handlers::handle_config_command(args.config.as_deref(), config_cmd.command)
             }
+            #[cfg(feature = "vector-fastembed")]
+            Some(BaseCommand::Vectordb(cmd)) => {
+                crate::vectordb_handlers::handle_vectordb_command(cmd.command)
+            }
             None => {
                 println!("{} {} — use --help for usage", self.name, self.version);
                 Ok(())
