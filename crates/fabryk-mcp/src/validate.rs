@@ -83,8 +83,7 @@ pub fn validate_tool(tool: &Tool) -> Vec<ToolIssue> {
     if schema.is_empty() {
         issues.push(ToolIssue {
             tool_name: display_name.clone(),
-            message: "inputSchema is empty ({}); MUST have at least {\"type\": \"object\"}"
-                .into(),
+            message: "inputSchema is empty ({}); MUST have at least {\"type\": \"object\"}".into(),
         });
     } else {
         match schema.get("type") {
@@ -119,10 +118,7 @@ pub fn validate_tool(tool: &Tool) -> Vec<ToolIssue> {
             if !props.is_object() {
                 issues.push(ToolIssue {
                     tool_name: display_name.clone(),
-                    message: format!(
-                        "inputSchema \"properties\" is not an object: {}",
-                        props
-                    ),
+                    message: format!("inputSchema \"properties\" is not an object: {}", props),
                 });
             }
         }
@@ -286,10 +282,7 @@ mod tests {
             serde_json::json!({"type": "string", "description": "Search query"}),
         );
         m.insert("properties".to_string(), serde_json::Value::Object(props));
-        m.insert(
-            "required".to_string(),
-            serde_json::json!(["query"]),
-        );
+        m.insert("required".to_string(), serde_json::json!(["query"]));
         m
     }
 
@@ -314,7 +307,10 @@ mod tests {
         for name in ["get_user", "DATA_EXPORT_v2", "admin.tools.list", "my-tool"] {
             let tool = make_tool_with_schema(name, Some("A tool"), valid_schema());
             let issues = validate_tool(&tool);
-            assert!(issues.is_empty(), "Name '{name}' should be valid, got: {issues:?}");
+            assert!(
+                issues.is_empty(),
+                "Name '{name}' should be valid, got: {issues:?}"
+            );
         }
     }
 
@@ -337,7 +333,9 @@ mod tests {
         let tool = make_tool_with_schema("bad", Some("Bad tool"), schema);
         let issues = validate_tool(&tool);
         assert!(
-            issues.iter().any(|i| i.message.contains("missing \"type\"")),
+            issues
+                .iter()
+                .any(|i| i.message.contains("missing \"type\"")),
             "Expected missing type error, got: {issues:?}"
         );
     }
@@ -352,7 +350,9 @@ mod tests {
         let tool = make_tool_with_schema("bad", Some("Bad tool"), schema);
         let issues = validate_tool(&tool);
         assert!(
-            issues.iter().any(|i| i.message.contains("MUST be \"object\"")),
+            issues
+                .iter()
+                .any(|i| i.message.contains("MUST be \"object\"")),
             "Expected wrong type error, got: {issues:?}"
         );
     }
@@ -498,11 +498,7 @@ mod tests {
                     make_tool_with_schema("search", Some("Duplicate"), valid_schema()),
                 ]
             }
-            fn call(
-                &self,
-                _name: &str,
-                _args: serde_json::Value,
-            ) -> Option<crate::ToolResult> {
+            fn call(&self, _name: &str, _args: serde_json::Value) -> Option<crate::ToolResult> {
                 None
             }
         }
@@ -528,11 +524,7 @@ mod tests {
                     make_tool_with_schema("search", Some("Search"), schema_with_props()),
                 ]
             }
-            fn call(
-                &self,
-                _name: &str,
-                _args: serde_json::Value,
-            ) -> Option<crate::ToolResult> {
+            fn call(&self, _name: &str, _args: serde_json::Value) -> Option<crate::ToolResult> {
                 None
             }
         }
@@ -554,11 +546,7 @@ mod tests {
                     serde_json::Map::new(),
                 )]
             }
-            fn call(
-                &self,
-                _name: &str,
-                _args: serde_json::Value,
-            ) -> Option<crate::ToolResult> {
+            fn call(&self, _name: &str, _args: serde_json::Value) -> Option<crate::ToolResult> {
                 None
             }
         }
