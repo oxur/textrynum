@@ -87,7 +87,10 @@ pub mod model {
 /// An empty map `{}` is rejected by some clients (e.g. Claude Desktop).
 pub fn empty_input_schema() -> serde_json::Map<String, serde_json::Value> {
     let mut m = serde_json::Map::new();
-    m.insert("type".to_string(), serde_json::Value::String("object".to_string()));
+    m.insert(
+        "type".to_string(),
+        serde_json::Value::String("object".to_string()),
+    );
     m
 }
 
