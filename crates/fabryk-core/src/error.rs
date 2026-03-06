@@ -195,11 +195,11 @@ pub fn log_error_chain(err: &dyn std::error::Error) {
     while let Some(cause) = source {
         depth += 1;
         log::error!("  cause[{depth}]: {cause}");
-        log::error!("  cause[{depth}] debug: {cause:?}");
+        log::debug!("  cause[{depth}] debug: {cause:?}");
         source = cause.source();
     }
     if depth == 0 {
-        log::error!("  (no further error sources in chain)");
+        log::debug!("  (no further error sources in chain)");
     }
 }
 
