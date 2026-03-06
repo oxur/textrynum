@@ -27,6 +27,8 @@ members = [
     "crates/fabryk-auth",
     "crates/fabryk-auth-google",
     "crates/fabryk-auth-mcp",
+    # GCP utilities
+    "crates/fabryk-gcp",
     # Workspace utilities
     "crates/textrynum-util",
 ]

@@ -174,6 +174,35 @@ impl Error {
 /// Result type alias for Fabryk operations.
 pub type Result<T> = std::result::Result<T, Error>;
 
+/// Walk the full error chain and log each cause at ERROR level.
+///
+/// Useful for diagnosing authentication failures, database errors, and other
+/// deeply-nested error chains where the root cause is several layers deep.
+///
+/// # Example
+///
+/// ```rust,no_run
+/// use fabryk_core::log_error_chain;
+///
+/// fn handle_error(err: &dyn std::error::Error) {
+///     log::error!("Operation failed: {err}");
+///     log_error_chain(err);
+/// }
+/// ```
+pub fn log_error_chain(err: &dyn std::error::Error) {
+    let mut depth = 0;
+    let mut source = err.source();
+    while let Some(cause) = source {
+        depth += 1;
+        log::error!("  cause[{depth}]: {cause}");
+        log::error!("  cause[{depth}] debug: {cause:?}");
+        source = cause.source();
+    }
+    if depth == 0 {
+        log::error!("  (no further error sources in chain)");
+    }
+}
+
 // ============================================================================
 // Tests
 // ============================================================================
@@ -373,5 +402,33 @@ mod tests {
 
         let err: Result<i32> = Err(Error::config("bad"));
         assert!(err.is_err());
+    }
+
+    // ------------------------------------------------------------------------
+    // log_error_chain tests
+    // ------------------------------------------------------------------------
+
+    #[test]
+    fn test_log_error_chain_no_source() {
+        // Should not panic when error has no source
+        let err = Error::config("standalone error");
+        log_error_chain(&err);
+    }
+
+    #[test]
+    fn test_log_error_chain_with_source() {
+        // Should not panic when error has a source chain
+        let io_err = std::io::Error::new(std::io::ErrorKind::NotFound, "inner cause");
+        let err: Error = io_err.into();
+        log_error_chain(&err);
+    }
+
+    #[test]
+    fn test_log_error_chain_nested() {
+        // Two-level chain: Error::Io wraps std::io::Error
+        let inner = std::io::Error::new(std::io::ErrorKind::ConnectionRefused, "connection refused");
+        let err: Error = inner.into();
+        // Verify it doesn't panic with a chained error
+        log_error_chain(&err);
     }
 }
