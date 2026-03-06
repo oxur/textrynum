@@ -200,6 +200,11 @@ mod tests {
 
     // ── resolve_adc_path ────────────────────────────────────────────────
 
+    /// Mutex to serialize tests that manipulate environment variables.
+    /// `std::env::set_var` / `remove_var` are process-global and unsafe in
+    /// Rust 2024; concurrent tests must not race on the same env key.
+    static ENV_MUTEX: std::sync::Mutex<()> = std::sync::Mutex::new(());
+
     /// RAII guard that sets an env var and restores it on drop.
     struct EnvGuard {
         key: String,
@@ -228,6 +233,7 @@ mod tests {
 
     #[test]
     fn test_resolve_adc_path_from_env() {
+        let _lock = ENV_MUTEX.lock().unwrap();
         let dir = tempfile::tempdir().unwrap();
         let path = dir.path().join("adc.json");
         std::fs::write(&path, r#"{"type":"authorized_user"}"#).unwrap();
@@ -240,6 +246,7 @@ mod tests {
 
     #[test]
     fn test_resolve_adc_path_env_nonexistent_file() {
+        let _lock = ENV_MUTEX.lock().unwrap();
         let _guard = EnvGuard::new(
             "GOOGLE_APPLICATION_CREDENTIALS",
             "/tmp/fabryk-gcp-test-no-such-file-12345.json",
@@ -257,6 +264,7 @@ mod tests {
 
     #[test]
     fn test_resolve_adc_path_env_empty_string() {
+        let _lock = ENV_MUTEX.lock().unwrap();
         let _guard = EnvGuard::new("GOOGLE_APPLICATION_CREDENTIALS", "");
 
         // Empty string should be treated as unset — falls through to well-known
