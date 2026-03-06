@@ -20,7 +20,7 @@ pub mod traits;
 pub mod util;
 
 // Re-export key types at crate root for convenience
-pub use error::{Error, Result};
+pub use error::{Error, Result, log_error_chain};
 pub use service::{
     RetryConfig, ServiceHandle, ServiceState, Transition, spawn_with_retry, wait_all_ready,
 };
