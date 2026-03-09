@@ -9,10 +9,10 @@ repository.workspace = true
 description = "CLI framework for Fabryk-based applications"
 
 [dependencies]
-fabryk-core = { version = "0.1.3", path = "../fabryk-core" }
-fabryk-graph = { version = "0.1.3", path = "../fabryk-graph" }
-fabryk-content = { version = "0.1.3", path = "../fabryk-content" }
-fabryk-vector = { version = "0.1.3", path = "../fabryk-vector", optional = true, features = ["vector-fastembed"] }
+fabryk-core = { version = "0.2.0", path = "../fabryk-core" }
+fabryk-graph = { version = "0.2.0", path = "../fabryk-graph" }
+fabryk-content = { version = "0.2.0", path = "../fabryk-content" }
+fabryk-vector = { version = "0.2.0", path = "../fabryk-vector", optional = true, features = ["vector-fastembed"] }
 
 # CLI
 clap = { workspace = true }

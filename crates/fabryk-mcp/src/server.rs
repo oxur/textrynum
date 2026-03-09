@@ -259,16 +259,16 @@ impl FabrykMcpServer {
 
 impl ServerHandler for FabrykMcpServer {
     fn get_info(&self) -> ServerInfo {
-        ServerInfo {
-            protocol_version: ProtocolVersion::LATEST,
-            capabilities: ServerCapabilities::builder().enable_tools().build(),
-            server_info: Implementation {
-                name: self.config.name.clone(),
-                version: self.config.version.clone(),
-                ..Default::default()
-            },
-            instructions: self.config.description.clone(),
+        let mut info = ServerInfo::new(ServerCapabilities::builder().enable_tools().build())
+            .with_protocol_version(ProtocolVersion::LATEST)
+            .with_server_info(Implementation::new(
+                self.config.name.clone(),
+                self.config.version.clone(),
+            ));
+        if let Some(desc) = &self.config.description {
+            info = info.with_instructions(desc.clone());
         }
+        info
     }
 
     fn list_tools(
@@ -321,17 +321,7 @@ mod tests {
     use rmcp::model::Tool;
 
     fn make_tool(name: &str, description: &str) -> Tool {
-        Tool {
-            name: name.to_string().into(),
-            description: Some(description.to_string().into()),
-            input_schema: Arc::new(crate::empty_input_schema()),
-            title: None,
-            output_schema: None,
-            annotations: None,
-            icons: None,
-            execution: None,
-            meta: None,
-        }
+        Tool::new(name.to_string(), description.to_string(), crate::empty_input_schema())
     }
 
     struct MockRegistry;
@@ -548,17 +538,7 @@ mod http_tests {
 
     impl ToolRegistry for MockRegistry {
         fn tools(&self) -> Vec<Tool> {
-            vec![Tool {
-                name: "test_tool".to_string().into(),
-                description: Some("A test tool".to_string().into()),
-                input_schema: Arc::new(crate::empty_input_schema()),
-                title: None,
-                output_schema: None,
-                annotations: None,
-                icons: None,
-                execution: None,
-                meta: None,
-            }]
+            vec![Tool::new("test_tool", "A test tool", crate::empty_input_schema())]
         }
 
         fn call(&self, name: &str, _args: serde_json::Value) -> Option<ToolResult> {

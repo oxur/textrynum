@@ -34,7 +34,7 @@ members = [
 ]
 
 [workspace.package]
-version = "0.1.3"
+version = "0.2.0"
 edition = "2024"
 rust-version = "1.85"
 authors = ["Duncan McGreggor <oubiwann@gmail.com>"]
@@ -51,26 +51,14 @@ description = "Textrynum — Knowledge Fabric Workshop (Fabryk + ECL)"
 # Design documentation management
 oxur-odm = "0.3"
 
-# Database
-sqlx = { version = "0.8", features = [
-    "runtime-tokio",
-    "sqlite",
-    "postgres",
-    "chrono",
-    "uuid",
-] }
-
-# LLM
-llm = "1.3"
-
 # Resilience
 backon = "1"
 failsafe = "1"
 
 # HTTP
-axum = "0.8"
+axum = { version = "0.8", default-features = false, features = ["http1", "json", "tokio", "tracing"] }
 tower = "0.5"
-reqwest = { version = "0.13", features = ["json"] }
+reqwest = { version = "0.13", default-features = false, features = ["json", "rustls"] }
 
 # Tracing
 tracing = "0.1"
@@ -88,7 +76,7 @@ proptest = "1"
 # ============================================================
 
 # Async runtime
-tokio = { version = "1", features = ["full", "fs", "sync"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "io-util", "fs", "sync", "time"] }
 futures = "0.3"
 async-trait = "0.1"
 
@@ -119,13 +107,13 @@ tempfile = "3"
 # ============================================================
 
 # MCP SDK
-rmcp = { version = "0.17", features = ["server", "transport-io"] }
+rmcp = { version = "1.1", features = ["server", "transport-io"] }
 
 # Schema support
 schemars = "1.2"
 
 # Markdown and frontmatter
-pulldown-cmark = "0.13"
+pulldown-cmark = { version = "0.13", default-features = false }
 serde_yaml = "0.9"
 
 # File operations
@@ -153,10 +141,10 @@ arrow-schema = "57"
 fastembed = "5"
 
 # JWT/Auth
-jsonwebtoken = { version = "10", features = ["rust_crypto"] }
+jsonwebtoken = { version = "10", default-features = false, features = ["aws_lc_rs", "use_pem"] }
 
 # Redis
-redis = { version = "1.0", features = ["tokio-comp", "connection-manager"] }
+redis = { version = "1.0", default-features = false, features = ["tokio-comp", "connection-manager"] }
 
 # Graph database
 petgraph = "0.8"

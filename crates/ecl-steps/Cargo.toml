@@ -10,7 +10,7 @@ description = "Step execution framework for ECL workflow orchestration"
 
 [dependencies]
 # Internal dependencies
-ecl-core = { version = "0.1.3", path = "../ecl-core" }
+ecl-core = { version = "0.2.0", path = "../ecl-core" }
 
 # Workspace dependencies
 tokio = { workspace = true }

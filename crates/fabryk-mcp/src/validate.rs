@@ -246,24 +246,17 @@ pub fn warn_on_invalid_tools(registry: &dyn crate::ToolRegistry) -> usize {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::sync::Arc;
 
     fn make_tool_with_schema(
         name: &str,
         description: Option<&str>,
         schema: serde_json::Map<String, serde_json::Value>,
     ) -> Tool {
-        Tool {
-            name: name.to_string().into(),
-            description: description.map(|d| d.to_string().into()),
-            input_schema: Arc::new(schema),
-            title: None,
-            output_schema: None,
-            annotations: None,
-            icons: None,
-            execution: None,
-            meta: None,
-        }
+        Tool::new_with_raw(
+            name.to_string(),
+            description.map(|d| d.to_string().into()),
+            schema,
+        )
     }
 
     fn valid_schema() -> serde_json::Map<String, serde_json::Value> {
