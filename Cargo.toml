@@ -17,6 +17,7 @@ members = [
     "crates/fabryk-vector",
     "crates/fabryk-acl",
     "crates/fabryk-mcp",
+    "crates/fabryk-mcp-core",
     "crates/fabryk-mcp-content",
     "crates/fabryk-mcp-fts",
     "crates/fabryk-mcp-graph",
@@ -26,7 +27,7 @@ members = [
     # Fabryk auth crates
     "crates/fabryk-auth",
     "crates/fabryk-auth-google",
-    "crates/fabryk-auth-mcp",
+    "crates/fabryk-mcp-auth",
     # GCP utilities
     "crates/fabryk-gcp",
     # Workspace utilities

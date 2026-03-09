@@ -10,26 +10,17 @@ description = "Fabryk knowledge fabric — umbrella crate re-exporting all compo
 
 [dependencies]
 fabryk-core = { version = "0.2.0", path = "../fabryk-core" }
+fabryk-auth = { version = "0.2.0", path = "../fabryk-auth" }
+fabryk-acl = { version = "0.2.0", path = "../fabryk-acl" }
 fabryk-content = { version = "0.2.0", path = "../fabryk-content" }
-# Feature-gated dependencies
-fabryk-fts = { version = "0.2.0", path = "../fabryk-fts", optional = true }
-fabryk-graph = { version = "0.2.0", path = "../fabryk-graph", optional = true }
-fabryk-vector = { version = "0.2.0", path = "../fabryk-vector", optional = true }
-fabryk-mcp = { version = "0.2.0", path = "../fabryk-mcp", optional = true }
-fabryk-mcp-content = { version = "0.2.0", path = "../fabryk-mcp-content", optional = true }
-fabryk-mcp-fts = { version = "0.2.0", path = "../fabryk-mcp-fts", optional = true }
-fabryk-mcp-graph = { version = "0.2.0", path = "../fabryk-mcp-graph", optional = true }
-fabryk-cli = { version = "0.2.0", path = "../fabryk-cli", optional = true }
+fabryk-fts = { version = "0.2.0", path = "../fabryk-fts" }
+fabryk-graph = { version = "0.2.0", path = "../fabryk-graph" }
+fabryk-vector = { version = "0.2.0", path = "../fabryk-vector" }
 
 [features]
 default = []
-full = ["fts", "graph", "vector", "mcp", "cli"]
-fts = ["dep:fabryk-fts", "fts-tantivy"]
-fts-tantivy = ["fabryk-fts?/fts-tantivy"]
-graph = ["dep:fabryk-graph", "graph-rkyv-cache"]
-graph-rkyv-cache = ["fabryk-graph?/graph-rkyv-cache"]
-vector = ["dep:fabryk-vector", "vector-lancedb", "vector-fastembed"]
-vector-lancedb = ["fabryk-vector?/vector-lancedb"]
-vector-fastembed = ["fabryk-vector?/vector-fastembed"]
-mcp = ["dep:fabryk-mcp", "dep:fabryk-mcp-content", "dep:fabryk-mcp-fts", "dep:fabryk-mcp-graph"]
-cli = ["dep:fabryk-cli"]
+full = ["fts-tantivy", "graph-rkyv-cache", "vector-lancedb", "vector-fastembed"]
+fts-tantivy = ["fabryk-fts/fts-tantivy"]
+graph-rkyv-cache = ["fabryk-graph/graph-rkyv-cache"]
+vector-lancedb = ["fabryk-vector/vector-lancedb"]
+vector-fastembed = ["fabryk-vector/vector-fastembed"]

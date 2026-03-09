@@ -1,21 +1,18 @@
 [package]
-name = "fabryk-mcp-fts"
+name = "fabryk-mcp-core"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Full-text search MCP tools for Fabryk"
-
-[features]
-default = []
-fts-tantivy = ["fabryk-fts/fts-tantivy"]
+description = "Core MCP server infrastructure for Fabryk"
 
 [dependencies]
 fabryk-core = { version = "0.2.0", path = "../fabryk-core" }
-fabryk-fts = { version = "0.2.0", path = "../fabryk-fts" }
-fabryk-mcp-core = { version = "0.2.0", path = "../fabryk-mcp-core" }
+
+# MCP SDK
+rmcp = { workspace = true }
 
 # Async
 tokio = { workspace = true }
@@ -28,6 +25,18 @@ serde_json = { workspace = true }
 # Schema
 schemars = { workspace = true }
 
+# Logging
+log = { workspace = true }
+
+# HTTP transport (optional)
+axum = { workspace = true, optional = true }
+
+[features]
+default = []
+http = ["rmcp/transport-streamable-http-server", "dep:axum"]
+
 [dev-dependencies]
 tempfile = { workspace = true }
 tokio-test = { workspace = true }
+reqwest = { workspace = true }
+tower = { workspace = true }

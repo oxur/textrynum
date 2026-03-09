@@ -7,8 +7,8 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 use fabryk_fts::{SearchBackend, SearchParams};
-use fabryk_mcp::model::{CallToolResult, Content, ErrorData, Tool};
-use fabryk_mcp::registry::{ToolRegistry, ToolResult};
+use fabryk_mcp_core::model::{CallToolResult, Content, ErrorData, Tool};
+use fabryk_mcp_core::registry::{ToolRegistry, ToolResult};
 use fabryk_vector::{
     FtsResult, HybridSearchResult, VectorBackend, VectorSearchParams, reciprocal_rank_fusion,
 };

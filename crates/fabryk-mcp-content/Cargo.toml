@@ -11,7 +11,7 @@ description = "Content and source MCP tools for Fabryk (ContentItemProvider, Sou
 [dependencies]
 fabryk-core = { version = "0.2.0", path = "../fabryk-core" }
 fabryk-content = { version = "0.2.0", path = "../fabryk-content" }
-fabryk-mcp = { version = "0.2.0", path = "../fabryk-mcp" }
+fabryk-mcp-core = { version = "0.2.0", path = "../fabryk-mcp-core" }
 
 # Async
 tokio = { workspace = true }
