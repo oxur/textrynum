@@ -18,7 +18,9 @@ Textrynum is a workspace for building **knowledge systems**. It houses two compl
 
 ---
 
-![Textrynum Architecture](assets/images/architecture.png)
+![Textrynum Architecture](docs/arch/architecture.png)
+
+*(generated with [Dendryform](https://github.com/oxur/dendryform))*
 
 ---
 

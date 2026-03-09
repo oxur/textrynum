@@ -1,8 +1,8 @@
 diagram:
   title:
-    text: "framework architecture"
-    accent: "fabryk"
-  subtitle: "modular knowledge fabric — 15 crates, 12 extension traits, 3 search modalities"
+    text: "workspace architecture"
+    accent: "textrynum"
+  subtitle: "knowledge fabric + workflow orchestration — 24 crates, 3 search modalities, MCP tools"
   theme: dark
 
 layers:
@@ -54,21 +54,28 @@ layers:
               label: "Interface Layer"
               layout:
                 grid:
-                  columns: 2
+                  columns: 3
               nodes:
                 - id: fabryk-umbrella
                   kind: component
                   color: green
                   icon: "◈"
                   title: "fabryk"
-                  description: "Feature-gated umbrella crate — re-exports all sub-crates with selective compilation"
-                  tech: ["features: full, fts, graph, vector, mcp, cli"]
+                  description: "Umbrella crate re-exporting core, auth, acl, content, fts, graph, vector with feature-gated backends"
+                  tech: ["features: full, fts-tantivy, graph-rkyv-cache, vector-lancedb, vector-fastembed"]
+                - id: fabryk-mcp-umbrella
+                  kind: component
+                  color: green
+                  icon: "◈"
+                  title: "fabryk-mcp"
+                  description: "Umbrella crate re-exporting all MCP components — glob re-export of fabryk-mcp-core plus module aliases"
+                  tech: ["features: http, fts-tantivy, graph-rkyv-cache"]
                 - id: fabryk-cli
                   kind: component
                   color: green
                   icon: "◈"
                   title: "fabryk-cli"
-                  description: "Generic CLI framework with graph ops, config management, and CliExtension trait for domain commands"
+                  description: "Extensible CLI framework — graph ops, config management, vector DB commands, CliExtension trait for domain subcommands"
                   tech: ["clap", "confyg", "TOML"]
 
           - connector:
@@ -84,14 +91,14 @@ layers:
                 layers:
                   - tier:
                       id: mcp-server
-                      label: "MCP Server"
+                      label: "MCP Server Infrastructure"
                       layout: single
                       nodes:
-                        - id: fabryk-mcp
+                        - id: fabryk-mcp-core
                           kind: component
                           color: amber
-                          icon: "▣"
-                          title: "fabryk-mcp"
+                          icon: "⊕"
+                          title: "fabryk-mcp-core"
                           description: "ToolRegistry trait, CompositeRegistry builder, ServiceAwareRegistry readiness gating, FabrykMcpServer with rmcp ServerHandler"
                           tech: ["rmcp", "Tower"]
 
@@ -103,29 +110,36 @@ layers:
                       label: "Tool Registries"
                       layout:
                         grid:
-                          columns: 3
+                          columns: 4
                       nodes:
                         - id: fabryk-mcp-content
                           kind: component
                           color: amber
-                          icon: "▣"
+                          icon: "⊕"
                           title: "fabryk-mcp-content"
                           description: "ContentItemProvider and SourceProvider traits — list/get content items and source materials via MCP"
                           tech: ["ContentTools", "SourceTools"]
                         - id: fabryk-mcp-fts
                           kind: component
                           color: amber
-                          icon: "▣"
+                          icon: "⊕"
                           title: "fabryk-mcp-fts"
                           description: "FtsTools wrapping SearchBackend — search and search-status MCP tools"
                           tech: ["FtsTools"]
                         - id: fabryk-mcp-graph
                           kind: component
                           color: amber
-                          icon: "▣"
+                          icon: "⊕"
                           title: "fabryk-mcp-graph"
                           description: "GraphTools exposing 8 graph algorithms as MCP tools — related, path, prerequisites, neighborhood, info, validate, centrality, bridges"
                           tech: ["GraphTools", "8 tools"]
+                        - id: fabryk-mcp-semantic
+                          kind: component
+                          color: amber
+                          icon: "⊕"
+                          title: "fabryk-mcp-semantic"
+                          description: "SemanticSearchTools — keyword, vector, or hybrid RRF mode combining FTS and vector results"
+                          tech: ["SemanticSearchTools", "RRF"]
 
           - connector:
               style: dots
@@ -171,7 +185,7 @@ layers:
                           color: purple
                           icon: "◆"
                           title: "fabryk-vector"
-                          description: "Vector/semantic search — VectorExtractor trait, EmbeddingProvider, reciprocal rank fusion for hybrid search"
+                          description: "Vector/semantic search — VectorExtractor trait, EmbeddingProvider, LanceDB backend, fastembed local embeddings"
                           tech: ["LanceDB", "fastembed"]
 
           - connector:
@@ -226,13 +240,88 @@ layers:
           title: "fabryk-auth-google"
           description: "Google OAuth2 implementing TokenValidator — JWKS caching, JWT + userinfo dual validation, domain checking"
           tech: ["jsonwebtoken", "reqwest"]
-        - id: fabryk-auth-mcp
+        - id: fabryk-mcp-auth
           kind: component
           color: teal
           icon: "◈"
-          title: "fabryk-auth-mcp"
+          title: "fabryk-mcp-auth"
           description: "RFC 9728 protected resource metadata and RFC 8414 authorization server metadata discovery endpoints"
           tech: ["axum", "RFC 9728/8414"]
+
+  - connector:
+      style: line
+      label: "workflow orchestration (early stage)"
+
+  # --- ECL Workflow Engine ---
+  - tier:
+      id: ecl-engine
+      container:
+        label: "ecl · workflow orchestration engine"
+        border: solid
+        label_color: purple
+        layers:
+          - tier:
+              id: ecl-interface
+              label: "Interface"
+              layout:
+                grid:
+                  columns: 2
+              nodes:
+                - id: ecl-umbrella
+                  kind: component
+                  color: purple
+                  icon: "◈"
+                  title: "ecl"
+                  description: "Umbrella re-export crate for ECL components (stub, growing)"
+                  tech: ["placeholder"]
+                - id: ecl-cli
+                  kind: component
+                  color: purple
+                  icon: "◈"
+                  title: "ecl-cli"
+                  description: "CLI for ECL workflow management — framework placeholder for later stages"
+                  tech: ["clap", "confyg"]
+
+          - connector:
+              style: dots
+
+          - tier:
+              id: ecl-orchestration
+              label: "Orchestration"
+              layout:
+                grid:
+                  columns: 2
+              nodes:
+                - id: ecl-workflows
+                  kind: component
+                  color: purple
+                  icon: "◆"
+                  title: "ecl-workflows"
+                  description: "SimpleWorkflowService, CritiqueLoopWorkflow — bounded revision loops with graceful failure"
+                  tech: ["backon", "failsafe"]
+                - id: ecl-steps
+                  kind: component
+                  color: purple
+                  icon: "◆"
+                  title: "ecl-steps"
+                  description: "Step execution framework — typed input/output, validation, journaling (in progress)"
+                  tech: ["async-trait"]
+
+          - connector:
+              style: dots
+
+          - tier:
+              id: ecl-foundation
+              label: "Foundation"
+              layout: single
+              nodes:
+                - id: ecl-core
+                  kind: component
+                  color: purple
+                  icon: "◈"
+                  title: "ecl-core"
+                  description: "WorkflowId, StepId, StepResult, CritiqueDecision, LlmProvider trait, ClaudeProvider with retry"
+                  tech: ["tokio", "reqwest", "backon"]
 
   # Flow labels
   - flow_labels:
@@ -240,6 +329,32 @@ layers:
         - "content-hash freshness"
         - "feature-gated backends"
         - "trait-based extension points"
+
+  # --- Vendor / Utility Crates ---
+  - tier:
+      id: vendor
+      label: "Vendor & Utility Crates"
+      layout:
+        grid:
+          columns: 2
+      nodes:
+        - id: fabryk-gcp
+          kind: component
+          color: teal
+          icon: "◈"
+          title: "fabryk-gcp"
+          description: "GCP Application Default Credentials resolution and credential type detection"
+          tech: ["dirs", "serde_json"]
+        - id: fabryk-redis
+          kind: component
+          color: teal
+          icon: "◈"
+          title: "fabryk-redis"
+          description: "Redis client abstraction — RedisOps trait, JSON helpers, MockRedis for testing"
+          tech: ["redis", "tokio"]
+
+  - connector:
+      style: line
 
   # --- External Dependencies ---
   - tier:
@@ -252,28 +367,28 @@ layers:
         - id: tantivy-ext
           kind: infrastructure
           color: red
-          icon: "⬡"
+          icon: "◯"
           title: "Tantivy"
           description: "Rust full-text search engine — inverted index, BM25 scoring, schema-driven fields"
           tech: ["feature: fts-tantivy"]
         - id: petgraph-ext
           kind: infrastructure
           color: red
-          icon: "⬡"
+          icon: "◯"
           title: "petgraph + rkyv"
           description: "Directed graph library with zero-copy binary serialisation for fast graph persistence"
           tech: ["feature: graph-rkyv-cache"]
         - id: lancedb-ext
           kind: infrastructure
           color: red
-          icon: "⬡"
+          icon: "◯"
           title: "LanceDB + fastembed"
           description: "Columnar vector database with local embedding generation (bge-small-en-v1.5)"
           tech: ["features: vector-lancedb, vector-fastembed"]
         - id: rmcp-ext
           kind: infrastructure
           color: red
-          icon: "⬡"
+          icon: "◯"
           title: "rmcp"
           description: "Rust MCP SDK — ServerHandler trait, tool schema, stdio and HTTP transport"
           tech: ["server", "transport-io"]
@@ -286,9 +401,9 @@ legend:
   - color: amber
     label: "MCP Tool Layer"
   - color: purple
-    label: "Domain Engines"
+    label: "Domain Engines & ECL"
   - color: teal
-    label: "Foundation & Auth"
+    label: "Foundation, Auth & Vendor"
   - color: red
     label: "External Dependencies"
 
@@ -303,7 +418,7 @@ edges:
     kind: uses
     label: "CliExtension trait"
   - from: mcp-clients
-    to: fabryk-mcp
+    to: fabryk-mcp-core
     kind: uses
     label: "MCP protocol"
   - from: cli-users
@@ -311,42 +426,75 @@ edges:
     kind: uses
     label: "CLI commands"
 
-  # Umbrella → engines (feature-gated containment)
+  # Umbrella → core components (fabryk facade)
+  - from: fabryk-umbrella
+    to: fabryk-core
+    kind: contains
+    label: "re-exports"
+  - from: fabryk-umbrella
+    to: fabryk-auth
+    kind: contains
+    label: "re-exports"
+  - from: fabryk-umbrella
+    to: fabryk-acl
+    kind: contains
+    label: "re-exports"
   - from: fabryk-umbrella
     to: fabryk-content
     kind: contains
-    label: "always included"
+    label: "re-exports"
   - from: fabryk-umbrella
     to: fabryk-fts
     kind: contains
-    label: "feature: fts"
+    label: "re-exports"
   - from: fabryk-umbrella
     to: fabryk-graph
     kind: contains
-    label: "feature: graph"
+    label: "re-exports"
   - from: fabryk-umbrella
     to: fabryk-vector
     kind: contains
-    label: "feature: vector"
-  - from: fabryk-umbrella
-    to: fabryk-mcp
-    kind: contains
-    label: "feature: mcp"
-  - from: fabryk-umbrella
-    to: fabryk-cli
-    kind: contains
-    label: "feature: cli"
+    label: "re-exports"
 
-  # MCP server → tool registries
-  - from: fabryk-mcp
+  # Umbrella → MCP components (fabryk-mcp facade)
+  - from: fabryk-mcp-umbrella
+    to: fabryk-mcp-core
+    kind: contains
+    label: "pub use *"
+  - from: fabryk-mcp-umbrella
+    to: fabryk-mcp-auth
+    kind: contains
+    label: "re-exports"
+  - from: fabryk-mcp-umbrella
+    to: fabryk-mcp-content
+    kind: contains
+    label: "re-exports"
+  - from: fabryk-mcp-umbrella
+    to: fabryk-mcp-fts
+    kind: contains
+    label: "re-exports"
+  - from: fabryk-mcp-umbrella
+    to: fabryk-mcp-graph
+    kind: contains
+    label: "re-exports"
+  - from: fabryk-mcp-umbrella
+    to: fabryk-mcp-semantic
+    kind: contains
+    label: "re-exports"
+
+  # MCP core → tool registries
+  - from: fabryk-mcp-core
     to: fabryk-mcp-content
     kind: uses
     label: "CompositeRegistry"
-  - from: fabryk-mcp
+  - from: fabryk-mcp-core
     to: fabryk-mcp-fts
     kind: uses
-  - from: fabryk-mcp
+  - from: fabryk-mcp-core
     to: fabryk-mcp-graph
+    kind: uses
+  - from: fabryk-mcp-core
+    to: fabryk-mcp-semantic
     kind: uses
 
   # Tool registries → engines
@@ -362,6 +510,32 @@ edges:
     to: fabryk-graph
     kind: reads
     label: "GraphData + algorithms"
+  - from: fabryk-mcp-semantic
+    to: fabryk-fts
+    kind: reads
+    label: "SearchBackend"
+  - from: fabryk-mcp-semantic
+    to: fabryk-vector
+    kind: reads
+    label: "VectorBackend"
+
+  # Tool registries → MCP core
+  - from: fabryk-mcp-content
+    to: fabryk-mcp-core
+    kind: uses
+    label: "ToolRegistry"
+  - from: fabryk-mcp-fts
+    to: fabryk-mcp-core
+    kind: uses
+    label: "ToolRegistry"
+  - from: fabryk-mcp-graph
+    to: fabryk-mcp-core
+    kind: uses
+    label: "ToolRegistry"
+  - from: fabryk-mcp-semantic
+    to: fabryk-mcp-core
+    kind: uses
+    label: "ToolRegistry"
 
   # CLI → engines
   - from: fabryk-cli
@@ -372,6 +546,10 @@ edges:
     to: fabryk-content
     kind: uses
     label: "content utilities"
+  - from: fabryk-cli
+    to: fabryk-vector
+    kind: uses
+    label: "feature: vector-fastembed"
 
   # Engines → foundation
   - from: fabryk-content
@@ -394,7 +572,7 @@ edges:
     to: fabryk-content
     kind: uses
     label: "text extraction"
-  - from: fabryk-mcp
+  - from: fabryk-mcp-core
     to: fabryk-core
     kind: uses
     label: "ServiceHandle"
@@ -404,6 +582,26 @@ edges:
     to: fabryk-auth
     kind: uses
     label: "implements TokenValidator"
+
+  # ECL relationships
+  - from: ecl-cli
+    to: ecl-core
+    kind: uses
+  - from: ecl-cli
+    to: ecl-steps
+    kind: uses
+  - from: ecl-cli
+    to: ecl-workflows
+    kind: uses
+  - from: ecl-workflows
+    to: ecl-core
+    kind: uses
+  - from: ecl-workflows
+    to: ecl-steps
+    kind: uses
+  - from: ecl-steps
+    to: ecl-core
+    kind: uses
 
   # Engines → external deps
   - from: fabryk-fts
@@ -418,7 +616,7 @@ edges:
     to: lancedb-ext
     kind: uses
     label: "feature: vector-lancedb"
-  - from: fabryk-mcp
+  - from: fabryk-mcp-core
     to: rmcp-ext
     kind: uses
     label: "ServerHandler"

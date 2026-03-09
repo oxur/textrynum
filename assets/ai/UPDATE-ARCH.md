@@ -2,13 +2,16 @@
 
 ## Prerequisites
 
-Load the Dendryform YAML schema. If `assets/ai/DENDRYFORM-YAML-SCHEMA.md` exists, read it. Otherwise, fetch it:
+Load the Dendryform YAML schema. If `assets/ai/DENDRYFORM-YAML-SCHEMA.md` exists, read it. Otherwise, download it using `curl` via the Bash tool:
 
-```
-https://raw.githubusercontent.com/oxur/dendryform/refs/heads/main/assets/schema/DIAGRAM-YAML-SCHEMA.md
+```bash
+curl -sL https://raw.githubusercontent.com/oxur/dendryform/refs/heads/main/assets/schema/DIAGRAM-YAML-SCHEMA.md \
+  -o assets/ai/DENDRYFORM-YAML-SCHEMA.md
 ```
 
-Save the fetched content to `assets/ai/DENDRYFORM-YAML-SCHEMA.md` for future use.
+Do not use WebFetch for this — it summarizes content instead of returning it verbatim.
+
+The downloaded file is `.gitignore`d and serves as a local cache. Re-download if stale.
 
 Read the schema fully before proceeding. All YAML output must conform to it.
 
@@ -45,6 +48,7 @@ If the existing YAML already accurately represents the current architecture, rep
 Write an updated YAML file to the same path. Preserve the overall style and conventions of the existing file (theme, color scheme, icon choices, legend structure) while making it accurate.
 
 Guidelines:
+
 - Every crate/package/module in the project should be represented as a node
 - Every real dependency relationship should be represented as an edge
 - Descriptions should be specific and accurate — mention actual trait names, tool counts, algorithms, etc.
@@ -62,4 +66,8 @@ Run the update script:
 scripts/update-arch.sh
 ```
 
-If dendryform is not installed or the command fails, report the error and instruct the user to install it.
+If `dendryform` is not found, instruct the user to install it:
+
+```bash
+cargo install dendryform
+```
