@@ -262,6 +262,10 @@ fn flatten_toml_value(value: &toml::Value, prefix: &str, out: &mut Vec<(String, 
 mod tests {
     use super::*;
     use std::collections::HashMap;
+    use std::sync::Mutex;
+
+    /// Serializes tests that manipulate environment variables.
+    static ENV_MUTEX: Mutex<()> = Mutex::new(());
 
     /// RAII guard for env var manipulation in tests.
     struct EnvGuard {
@@ -394,6 +398,7 @@ mod tests {
 
     #[test]
     fn test_fabryk_config_load_env_overlay() {
+        let _lock = ENV_MUTEX.lock().unwrap();
         let dir = tempfile::TempDir::new().unwrap();
         let path = dir.path().join("config.toml");
         std::fs::write(
@@ -425,6 +430,7 @@ mod tests {
 
     #[test]
     fn test_fabryk_config_resolve_config_path_env() {
+        let _lock = ENV_MUTEX.lock().unwrap();
         let _guard = EnvGuard::new("FABRYK_CONFIG", "/env/config.toml");
         let path = FabrykConfig::resolve_config_path(None);
         assert_eq!(path, Some(PathBuf::from("/env/config.toml")));
@@ -432,6 +438,7 @@ mod tests {
 
     #[test]
     fn test_fabryk_config_resolve_config_path_default() {
+        let _lock = ENV_MUTEX.lock().unwrap();
         let _guard = EnvGuard::remove("FABRYK_CONFIG");
         let path = FabrykConfig::resolve_config_path(None);
         assert!(path.is_some());
