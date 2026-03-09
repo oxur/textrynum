@@ -32,7 +32,11 @@ fn serialize_response<T: serde::Serialize>(value: &T) -> Result<CallToolResult, 
 
 /// Build a `Tool` with a JSON schema.
 fn make_tool(name: &str, description: &str, schema: Value) -> Tool {
-    Tool::new(name.to_string(), description.to_string(), json_schema(schema))
+    Tool::new(
+        name.to_string(),
+        description.to_string(),
+        json_schema(schema),
+    )
 }
 
 // ---------------------------------------------------------------------------

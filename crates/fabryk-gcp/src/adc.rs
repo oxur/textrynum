@@ -129,8 +129,14 @@ mod tests {
 
     #[test]
     fn test_credential_type_display() {
-        assert_eq!(CredentialType::AuthorizedUser.to_string(), "authorized_user");
-        assert_eq!(CredentialType::ServiceAccount.to_string(), "service_account");
+        assert_eq!(
+            CredentialType::AuthorizedUser.to_string(),
+            "authorized_user"
+        );
+        assert_eq!(
+            CredentialType::ServiceAccount.to_string(),
+            "service_account"
+        );
         assert_eq!(
             CredentialType::Other("external_account".to_string()).to_string(),
             "external_account"

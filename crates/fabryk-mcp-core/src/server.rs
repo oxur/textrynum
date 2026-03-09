@@ -321,7 +321,11 @@ mod tests {
     use rmcp::model::Tool;
 
     fn make_tool(name: &str, description: &str) -> Tool {
-        Tool::new(name.to_string(), description.to_string(), crate::empty_input_schema())
+        Tool::new(
+            name.to_string(),
+            description.to_string(),
+            crate::empty_input_schema(),
+        )
     }
 
     struct MockRegistry;
@@ -538,7 +542,11 @@ mod http_tests {
 
     impl ToolRegistry for MockRegistry {
         fn tools(&self) -> Vec<Tool> {
-            vec![Tool::new("test_tool", "A test tool", crate::empty_input_schema())]
+            vec![Tool::new(
+                "test_tool",
+                "A test tool",
+                crate::empty_input_schema(),
+            )]
         }
 
         fn call(&self, name: &str, _args: serde_json::Value) -> Option<ToolResult> {
