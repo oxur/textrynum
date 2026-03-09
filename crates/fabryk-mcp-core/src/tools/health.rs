@@ -49,7 +49,11 @@ impl HealthTools {
 
 impl ToolRegistry for HealthTools {
     fn tools(&self) -> Vec<Tool> {
-        vec![Tool::new("health", "Check server health and status", crate::empty_input_schema())]
+        vec![Tool::new(
+            "health",
+            "Check server health and status",
+            crate::empty_input_schema(),
+        )]
     }
 
     fn call(&self, name: &str, _args: Value) -> Option<ToolResult> {

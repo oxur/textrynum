@@ -127,7 +127,11 @@ mod tests {
     use serde_json::json;
 
     fn make_tool(name: &str, description: &str) -> Tool {
-        Tool::new(name.to_string(), description.to_string(), crate::empty_input_schema())
+        Tool::new(
+            name.to_string(),
+            description.to_string(),
+            crate::empty_input_schema(),
+        )
     }
 
     struct TestRegistry {

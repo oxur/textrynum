@@ -18,7 +18,11 @@ use std::sync::Arc;
 // ---------------------------------------------------------------------------
 
 fn make_tool(name: &str, description: &str) -> Tool {
-    Tool::new(name.to_string(), description.to_string(), crate::empty_input_schema())
+    Tool::new(
+        name.to_string(),
+        description.to_string(),
+        crate::empty_input_schema(),
+    )
 }
 
 fn serialize_response<T: Serialize>(value: &T) -> Result<CallToolResult, ErrorData> {

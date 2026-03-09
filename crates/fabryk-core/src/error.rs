@@ -426,7 +426,8 @@ mod tests {
     #[test]
     fn test_log_error_chain_nested() {
         // Two-level chain: Error::Io wraps std::io::Error
-        let inner = std::io::Error::new(std::io::ErrorKind::ConnectionRefused, "connection refused");
+        let inner =
+            std::io::Error::new(std::io::ErrorKind::ConnectionRefused, "connection refused");
         let err: Error = inner.into();
         // Verify it doesn't panic with a chained error
         log_error_chain(&err);
