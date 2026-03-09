@@ -70,6 +70,15 @@ fabryk-gcp = "0.2"          # GCP credential detection
 
 See the [Fabryk README](crates/fabryk/README.md) for the full crate map and feature flags.
 
+### HOWTOs
+
+Step-by-step guides for common integration tasks with Fabryk MCP servers:
+
+- [Connecting Fabryk MCP Servers to Claude Code](docs/howtos/mcp-with-claude-code.md) — Set up Claude Code to talk to your Fabryk MCP server over Streamable HTTP
+- [MCP Async Startup Pattern](docs/howtos/mcp-async-startup.md) — Start MCP transport instantly while expensive services initialize in the background
+- [MCP Health Endpoint How-To](docs/howtos/mcp-health.md) — Add a service-aware `/health` endpoint to your Fabryk MCP server
+- [MCP Metadata & Discoverability How-To](docs/howtos/mcp-metadata.md) — Give AI agents rich metadata when connecting to your MCP server
+
 ---
 
 ## Project Status

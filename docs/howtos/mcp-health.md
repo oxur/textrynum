@@ -198,7 +198,7 @@ Router::new()
 | `handle.set_state(state)` | Update state, broadcast, record in audit trail |
 | `handle.state()` | Get current state |
 
-See [mcp-async-startup-howto.md](./mcp-async-startup-howto.md) for the full
+See [MCP Async Startup Pattern](./mcp-async-startup.md) for the full
 `ServiceHandle` lifecycle, retry patterns, and parallel wait APIs.
 
 ## FabrykMcpServer Built-in Usage
