@@ -9,17 +9,17 @@ repository.workspace = true
 description = "Fabryk knowledge fabric — umbrella crate re-exporting all components"
 
 [dependencies]
-fabryk-core = { version = "0.1.3", path = "../fabryk-core" }
-fabryk-content = { version = "0.1.3", path = "../fabryk-content" }
+fabryk-core = { version = "0.2.0", path = "../fabryk-core" }
+fabryk-content = { version = "0.2.0", path = "../fabryk-content" }
 # Feature-gated dependencies
-fabryk-fts = { version = "0.1.3", path = "../fabryk-fts", optional = true }
-fabryk-graph = { version = "0.1.3", path = "../fabryk-graph", optional = true }
-fabryk-vector = { version = "0.1.3", path = "../fabryk-vector", optional = true }
-fabryk-mcp = { version = "0.1.3", path = "../fabryk-mcp", optional = true }
-fabryk-mcp-content = { version = "0.1.3", path = "../fabryk-mcp-content", optional = true }
-fabryk-mcp-fts = { version = "0.1.3", path = "../fabryk-mcp-fts", optional = true }
-fabryk-mcp-graph = { version = "0.1.3", path = "../fabryk-mcp-graph", optional = true }
-fabryk-cli = { version = "0.1.3", path = "../fabryk-cli", optional = true }
+fabryk-fts = { version = "0.2.0", path = "../fabryk-fts", optional = true }
+fabryk-graph = { version = "0.2.0", path = "../fabryk-graph", optional = true }
+fabryk-vector = { version = "0.2.0", path = "../fabryk-vector", optional = true }
+fabryk-mcp = { version = "0.2.0", path = "../fabryk-mcp", optional = true }
+fabryk-mcp-content = { version = "0.2.0", path = "../fabryk-mcp-content", optional = true }
+fabryk-mcp-fts = { version = "0.2.0", path = "../fabryk-mcp-fts", optional = true }
+fabryk-mcp-graph = { version = "0.2.0", path = "../fabryk-mcp-graph", optional = true }
+fabryk-cli = { version = "0.2.0", path = "../fabryk-cli", optional = true }
 
 [features]
 default = []

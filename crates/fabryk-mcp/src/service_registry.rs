@@ -87,20 +87,9 @@ mod tests {
     use super::*;
     use fabryk_core::service::ServiceState;
     use rmcp::model::RawContent;
-    use std::sync::Arc;
 
     fn make_tool(name: &str, description: &str) -> Tool {
-        Tool {
-            name: name.to_string().into(),
-            description: Some(description.to_string().into()),
-            input_schema: Arc::new(crate::empty_input_schema()),
-            title: None,
-            output_schema: None,
-            annotations: None,
-            icons: None,
-            execution: None,
-            meta: None,
-        }
+        Tool::new(name.to_string(), description.to_string(), crate::empty_input_schema())
     }
 
     struct MockRegistry {

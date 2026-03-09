@@ -18,13 +18,10 @@ anyhow = { workspace = true }
 uuid = { workspace = true }
 chrono = { workspace = true }
 async-trait = { workspace = true }
-sqlx = { workspace = true }
 backon = { workspace = true }
 failsafe = { workspace = true }
 twyg = { workspace = true }
 tracing = { workspace = true }
-llm = { workspace = true }
-
 # HTTP client for Claude API
 reqwest = { version = "0.12", features = ["json"] }
 

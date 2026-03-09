@@ -9,9 +9,9 @@ repository.workspace = true
 description = "Content and source MCP tools for Fabryk (ContentItemProvider, SourceProvider)"
 
 [dependencies]
-fabryk-core = { version = "0.1.3", path = "../fabryk-core" }
-fabryk-content = { version = "0.1.3", path = "../fabryk-content" }
-fabryk-mcp = { version = "0.1.3", path = "../fabryk-mcp" }
+fabryk-core = { version = "0.2.0", path = "../fabryk-core" }
+fabryk-content = { version = "0.2.0", path = "../fabryk-content" }
+fabryk-mcp = { version = "0.2.0", path = "../fabryk-mcp" }
 
 # Async
 tokio = { workspace = true }

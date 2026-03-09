@@ -27,17 +27,7 @@ fn json_schema(value: Value) -> Arc<serde_json::Map<String, Value>> {
 }
 
 fn make_tool(name: &str, description: &str, schema: Value) -> Tool {
-    Tool {
-        name: name.to_string().into(),
-        description: Some(description.to_string().into()),
-        input_schema: json_schema(schema),
-        title: None,
-        output_schema: None,
-        annotations: None,
-        icons: None,
-        execution: None,
-        meta: None,
-    }
+    Tool::new(name.to_string(), description.to_string(), json_schema(schema))
 }
 
 fn serialize_response<T: serde::Serialize>(value: &T) -> Result<CallToolResult, ErrorData> {

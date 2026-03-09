@@ -48,10 +48,6 @@ pub enum Error {
         attempts: u32,
     },
 
-    /// Database error
-    #[error("Database error: {0}")]
-    Database(#[from] sqlx::Error),
-
     /// Configuration error
     #[error("Configuration error: {message}")]
     Config {
@@ -88,7 +84,6 @@ impl Error {
         match self {
             Error::Llm { .. } => true, // LLM errors are generally retryable
             Error::Io(_) => true,
-            Error::Database(_) => true, // Database errors may be transient
             Error::Timeout { .. } => true,
             Error::Validation { .. } => false, // Validation errors are permanent
             Error::MaxRevisionsExceeded { .. } => false,

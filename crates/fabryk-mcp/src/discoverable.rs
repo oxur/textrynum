@@ -40,8 +40,6 @@ use rmcp::model::{CallToolResult, Content, Tool};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::HashMap;
-use std::sync::Arc;
-
 /// Structured metadata for a single tool, used to auto-generate rich descriptions.
 ///
 /// When attached to a tool via [`DiscoverableRegistry::with_tool_meta`], the fields
@@ -170,29 +168,20 @@ impl<R: ToolRegistry> DiscoverableRegistry<R> {
     fn directory_tool_def(&self) -> Tool {
         let dir_name = self.directory_tool_name();
         let tool_count = self.inner.tools().len();
-        Tool {
-            name: dir_name.into(),
-            description: Some(
-                format!(
-                    "Describes all {count} {name} tools, connected external services, \
-                     data freshness, and the optimal query strategy.\n\
-                     WHEN TO USE: Call this at the start of every session to understand \
-                     what capabilities are available before doing any work.\n\
-                     RETURNS: Tool list with when-to-use guidance, external connector list, \
-                     optimal query strategy, and data freshness information.",
-                    count = tool_count,
-                    name = self.server_name,
-                )
-                .into(),
+        Tool::new(
+            dir_name,
+            format!(
+                "Describes all {count} {name} tools, connected external services, \
+                 data freshness, and the optimal query strategy.\n\
+                 WHEN TO USE: Call this at the start of every session to understand \
+                 what capabilities are available before doing any work.\n\
+                 RETURNS: Tool list with when-to-use guidance, external connector list, \
+                 optimal query strategy, and data freshness information.",
+                count = tool_count,
+                name = self.server_name,
             ),
-            input_schema: Arc::new(crate::empty_input_schema()),
-            title: None,
-            output_schema: None,
-            annotations: None,
-            icons: None,
-            execution: None,
-            meta: None,
-        }
+            crate::empty_input_schema(),
+        )
     }
 
     /// Handle a call to the directory tool, returning the JSON manifest.
@@ -337,17 +326,7 @@ mod tests {
     use serde_json::json;
 
     fn make_tool(name: &str, description: &str) -> Tool {
-        Tool {
-            name: name.to_string().into(),
-            description: Some(description.to_string().into()),
-            input_schema: Arc::new(crate::empty_input_schema()),
-            title: None,
-            output_schema: None,
-            annotations: None,
-            icons: None,
-            execution: None,
-            meta: None,
-        }
+        Tool::new(name.to_string(), description.to_string(), crate::empty_input_schema())
     }
 
     struct MockRegistry {

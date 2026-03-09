@@ -7,8 +7,6 @@ use crate::registry::{ToolRegistry, ToolResult};
 use rmcp::model::{CallToolResult, Content, ErrorData, Tool};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::sync::Arc;
-
 /// Health check response.
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct HealthResponse {
@@ -51,17 +49,7 @@ impl HealthTools {
 
 impl ToolRegistry for HealthTools {
     fn tools(&self) -> Vec<Tool> {
-        vec![Tool {
-            name: "health".into(),
-            description: Some("Check server health and status".into()),
-            input_schema: Arc::new(crate::empty_input_schema()),
-            title: None,
-            output_schema: None,
-            annotations: None,
-            icons: None,
-            execution: None,
-            meta: None,
-        }]
+        vec![Tool::new("health", "Check server health and status", crate::empty_input_schema())]
     }
 
     fn call(&self, name: &str, _args: Value) -> Option<ToolResult> {
