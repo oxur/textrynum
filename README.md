@@ -10,11 +10,11 @@
 
 ## What is Textrynum?
 
-Textrynum is a workspace for building **knowledge systems**. It currently houses two complementary layers:
+Textrynum is a workspace for building **knowledge systems**. It houses two complementary layers:
 
-1. **[Fabryk](README-fabryk.md)** — A modular knowledge fabric: ingest content, build knowledge graphs, index for full-text and semantic search, and serve it all via MCP tools. Production-ready, 24,000+ lines, 14 crates.
+1. **[Fabryk](crates/fabryk/README.md)** — A modular knowledge fabric: ingest content, build knowledge graphs, index for full-text and semantic search, and serve it all via MCP tools. Production-ready, 24,000+ lines, 20 crates.
 
-2. **[ECL](README-ecl.md)** (Extract, Cogitate, Load) — A workflow orchestration engine for durable AI agent pipelines with feedback loops, validation, and managed serialism. Early stage, building on solid foundations.
+2. **[ECL](crates/ecl/README.md)** (Extract, Cogitate, Load) — A workflow orchestration engine for durable AI agent pipelines with feedback loops, validation, and managed serialism. Early stage, building on solid foundations.
 
 ---
 
@@ -22,9 +22,59 @@ Textrynum is a workspace for building **knowledge systems**. It currently houses
 
 ---
 
+## Using Fabryk in Your Project
+
+Fabryk is designed around two umbrella crates. Most projects need only one or
+two `[dependencies]` lines:
+
+```toml
+[dependencies]
+# Core knowledge fabric — content, graph, search, auth, acl
+fabryk = { version = "0.2", features = ["full"] }
+
+# MCP server tools — all tool suites + server infrastructure
+fabryk-mcp = { version = "0.2", features = ["http"] }
+```
+
+### What each umbrella includes
+
+**`fabryk`** provides the core library:
+
+| Module | What it provides |
+|--------|------------------|
+| `fabryk::core` | Shared types, traits, error handling |
+| `fabryk::auth` | Token validation, Tower middleware |
+| `fabryk::acl` | Access control primitives |
+| `fabryk::content` | Markdown parsing, frontmatter extraction |
+| `fabryk::fts` | Full-text search (Tantivy backend) |
+| `fabryk::graph` | Knowledge graph (petgraph) |
+| `fabryk::vector` | Vector/semantic search (LanceDB) |
+
+**`fabryk-mcp`** provides the MCP toolkit:
+
+| Module | What it provides |
+|--------|------------------|
+| *(root)* | Server infrastructure, tool registry, health tools |
+| `fabryk_mcp::auth` | OAuth2 discovery endpoints (RFC 9728/8414) |
+| `fabryk_mcp::content` | Content and source MCP tools |
+| `fabryk_mcp::fts` | Full-text search MCP tools |
+| `fabryk_mcp::graph` | Graph query MCP tools |
+| `fabryk_mcp::semantic` | Hybrid search MCP tools |
+
+Vendor-specific crates are added separately as needed:
+
+```toml
+fabryk-auth-google = "0.2"  # Google OAuth2 / JWKS
+fabryk-gcp = "0.2"          # GCP credential detection
+```
+
+See the [Fabryk README](crates/fabryk/README.md) for the full crate map and feature flags.
+
+---
+
 ## Project Status
 
-**v0.1.0** — Fabryk is functional; ECL is in progress.
+**v0.2.0** — Fabryk is functional; ECL is in progress.
 
 ### Completed
 
@@ -36,6 +86,7 @@ Textrynum is a workspace for building **knowledge systems**. It currently houses
 - [x] OAuth2 authentication with Google provider (fabryk-auth-*)
 - [x] CLI framework with graph commands (fabryk-cli)
 - [x] Configuration infrastructure with TOML support
+- [x] Restructured crate hierarchy with two clean umbrella crates
 - [x] CI/CD pipeline
 
 ### In Progress
@@ -47,7 +98,6 @@ Textrynum is a workspace for building **knowledge systems**. It currently houses
 
 ### Planned
 
-- [ ] Access control layer (fabryk-acl)
 - [ ] Additional MCP tool suites
 - [ ] Example workflows
 - [ ] Published crate documentation
@@ -58,7 +108,7 @@ Textrynum is a workspace for building **knowledge systems**. It currently houses
 
 ### Prerequisites
 
-- Rust 1.75+
+- Rust 1.85+
 
 ### Building
 

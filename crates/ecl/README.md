@@ -5,7 +5,7 @@
 
 [![][logo]][logo-large]
 
-*Extract, Cogitate, Load*  • Part of the [Textrynum](README.md) project
+*Extract, Cogitate, Load*  • Part of the [Textrynum](../../README.md) project
 
 ECL addresses **workflows that require deliberate, validated sequencing** — where each step must complete before the next begins, and downstream steps can request revisions from upstream.
 
@@ -31,19 +31,21 @@ ECL addresses **workflows that require deliberate, validated sequencing** — wh
 
 | Component | Library | Purpose |
 |-----------|---------|---------|
-| LLM Integration | [llm](https://crates.io/crates/llm) | Claude API abstraction |
 | Resilience | [backon](https://crates.io/crates/backon) | Exponential backoff & retry |
-| Database | [sqlx](https://crates.io/crates/sqlx) | Async database access |
 | Observability | [tracing](https://crates.io/crates/tracing) | Structured logging |
 
 ## Status
 
 ECL is early stage. The core types and critique-loop workflow are implemented; the CLI, step library, and durable execution integration are planned.
 
+## License
+
+Apache-2.0
+
 [//]: ---Named-Links---
 
-[logo]: assets/images/ecl/v2-y250.png
-[logo-large]: assets/images/ecl/v2.png
+[logo]: assets/images/v2-y250.png
+[logo-large]: assets/images/v2.png
 [crate]: https://crates.io/crates/ecl
 [crate-badge]: https://img.shields.io/crates/v/ecl.svg
 [docs]: https://docs.rs/ecl/
