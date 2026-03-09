@@ -12,7 +12,7 @@ description = "Semantic (hybrid) search MCP tools for Fabryk"
 fabryk-core = { version = "0.2.0", path = "../fabryk-core" }
 fabryk-fts = { version = "0.2.0", path = "../fabryk-fts" }
 fabryk-vector = { version = "0.2.0", path = "../fabryk-vector" }
-fabryk-mcp = { version = "0.2.0", path = "../fabryk-mcp" }
+fabryk-mcp-core = { version = "0.2.0", path = "../fabryk-mcp-core" }
 
 # Async
 tokio = { workspace = true }

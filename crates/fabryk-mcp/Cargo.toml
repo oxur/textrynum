@@ -6,37 +6,18 @@ rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Core MCP server infrastructure for Fabryk"
+description = "Fabryk MCP — umbrella crate re-exporting all MCP components"
 
 [dependencies]
-fabryk-core = { version = "0.2.0", path = "../fabryk-core" }
-
-# MCP SDK
-rmcp = { workspace = true }
-
-# Async
-tokio = { workspace = true }
-async-trait = { workspace = true }
-
-# Serialization
-serde = { workspace = true }
-serde_json = { workspace = true }
-
-# Schema
-schemars = { workspace = true }
-
-# Logging
-log = { workspace = true }
-
-# HTTP transport (optional)
-axum = { workspace = true, optional = true }
+fabryk-mcp-core = { version = "0.2.0", path = "../fabryk-mcp-core" }
+fabryk-mcp-auth = { version = "0.2.0", path = "../fabryk-mcp-auth" }
+fabryk-mcp-content = { version = "0.2.0", path = "../fabryk-mcp-content" }
+fabryk-mcp-fts = { version = "0.2.0", path = "../fabryk-mcp-fts" }
+fabryk-mcp-graph = { version = "0.2.0", path = "../fabryk-mcp-graph" }
+fabryk-mcp-semantic = { version = "0.2.0", path = "../fabryk-mcp-semantic" }
 
 [features]
 default = []
-http = ["rmcp/transport-streamable-http-server", "dep:axum"]
-
-[dev-dependencies]
-tempfile = { workspace = true }
-tokio-test = { workspace = true }
-reqwest = { workspace = true }
-tower = { workspace = true }
+http = ["fabryk-mcp-core/http"]
+fts-tantivy = ["fabryk-mcp-fts/fts-tantivy"]
+graph-rkyv-cache = ["fabryk-mcp-graph/graph-rkyv-cache"]

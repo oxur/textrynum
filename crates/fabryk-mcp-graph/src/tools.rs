@@ -3,9 +3,9 @@
 //! Provides `GraphTools` that implements `ToolRegistry` by delegating
 //! queries to `fabryk_graph` algorithms.
 
-use fabryk_mcp::error::McpErrorExt;
-use fabryk_mcp::model::{CallToolResult, Content, ErrorData, Tool};
-use fabryk_mcp::registry::{ToolRegistry, ToolResult};
+use fabryk_mcp_core::error::McpErrorExt;
+use fabryk_mcp_core::model::{CallToolResult, Content, ErrorData, Tool};
+use fabryk_mcp_core::registry::{ToolRegistry, ToolResult};
 
 use fabryk_graph::{
     EdgeInfo, GraphData, NeighborInfo, NodeSummary, PathStep, Relationship, calculate_centrality,

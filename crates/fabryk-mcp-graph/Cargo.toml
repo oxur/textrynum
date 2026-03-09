@@ -15,7 +15,7 @@ graph-rkyv-cache = ["fabryk-graph/graph-rkyv-cache"]
 [dependencies]
 fabryk-core = { version = "0.2.0", path = "../fabryk-core" }
 fabryk-graph = { version = "0.2.0", path = "../fabryk-graph" }
-fabryk-mcp = { version = "0.2.0", path = "../fabryk-mcp" }
+fabryk-mcp-core = { version = "0.2.0", path = "../fabryk-mcp-core" }
 
 # Async
 tokio = { workspace = true }

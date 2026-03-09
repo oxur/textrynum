@@ -15,7 +15,7 @@ fts-tantivy = ["fabryk-fts/fts-tantivy"]
 [dependencies]
 fabryk-core = { version = "0.2.0", path = "../fabryk-core" }
 fabryk-fts = { version = "0.2.0", path = "../fabryk-fts" }
-fabryk-mcp = { version = "0.2.0", path = "../fabryk-mcp" }
+fabryk-mcp-core = { version = "0.2.0", path = "../fabryk-mcp-core" }
 
 # Async
 tokio = { workspace = true }

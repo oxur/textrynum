@@ -1,0 +1,42 @@
+[package]
+name = "fabryk-mcp-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Core MCP server infrastructure for Fabryk"
+
+[dependencies]
+fabryk-core = { version = "0.2.0", path = "../fabryk-core" }
+
+# MCP SDK
+rmcp = { workspace = true }
+
+# Async
+tokio = { workspace = true }
+async-trait = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Schema
+schemars = { workspace = true }
+
+# Logging
+log = { workspace = true }
+
+# HTTP transport (optional)
+axum = { workspace = true, optional = true }
+
+[features]
+default = []
+http = ["rmcp/transport-streamable-http-server", "dep:axum"]
+
+[dev-dependencies]
+tempfile = { workspace = true }
+tokio-test = { workspace = true }
+reqwest = { workspace = true }
+tower = { workspace = true }
