@@ -46,9 +46,12 @@
 
 pub mod discoverable;
 pub mod error;
+pub mod guidance;
 #[cfg(feature = "http")]
 pub mod health_router;
+pub mod notifier;
 pub mod registry;
+pub mod resource;
 pub mod server;
 pub mod service_registry;
 pub mod tools;
@@ -63,11 +66,20 @@ pub use service_registry::ServiceAwareRegistry;
 // Re-exports — server
 pub use server::{FabrykMcpServer, ServerConfig};
 
+// Re-exports — notifier
+pub use notifier::Notifier;
+
 // Re-exports — error
 pub use error::McpErrorExt;
 
+// Re-exports — guidance
+pub use guidance::ServerGuidance;
+
 // Re-exports — discoverable registry
 pub use discoverable::{DiscoverableRegistry, ExternalConnector, ToolMeta};
+
+// Re-exports — resource registry
+pub use resource::{ResourceFuture, ResourceRegistry};
 
 // Re-exports — built-in tools
 pub use tools::{DiagnosticTools, HealthResponse, HealthTools, handle_health};
@@ -78,7 +90,10 @@ pub use validate::{assert_tools_valid, validate_tools, warn_on_invalid_tools};
 // Re-exports — rmcp types used by downstream crates
 pub mod model {
     //! Re-exported rmcp model types.
-    pub use rmcp::model::{CallToolResult, Content, ErrorData, Tool};
+    pub use rmcp::model::{
+        Annotated, CallToolResult, Content, ErrorData, LoggingLevel, RawResource, Resource,
+        ResourceContents, Tool,
+    };
 }
 
 /// Return a minimal valid JSON Schema for a tool that takes no parameters.

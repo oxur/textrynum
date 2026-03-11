@@ -4,13 +4,16 @@
 //! tool dispatch. The server implements rmcp's `ServerHandler` trait,
 //! delegating tool listing and dispatch to the registry.
 
+use crate::notifier::Notifier;
 use crate::registry::ToolRegistry;
+use crate::resource::ResourceRegistry;
 use fabryk_core::service::{ServiceHandle, ServiceState};
 use rmcp::model::{
-    CallToolResult, Content, ErrorData, Implementation, ProtocolVersion, ServerCapabilities,
-    ServerInfo,
+    CallToolResult, Content, ErrorData, Implementation, ListResourcesResult, ProtocolVersion,
+    ReadResourceRequestParams, ReadResourceResult, ServerCapabilities,
+    ServerInfo, SubscribeRequestParams, UnsubscribeRequestParams,
 };
-use rmcp::service::RequestContext;
+use rmcp::service::{NotificationContext, RequestContext};
 use rmcp::transport;
 use rmcp::{RoleServer, ServerHandler, ServiceExt};
 use serde::{Deserialize, Serialize};
@@ -69,6 +72,8 @@ pub struct FabrykMcpServer {
     registry: Arc<dyn ToolRegistry>,
     config: ServerConfig,
     services: Vec<ServiceHandle>,
+    notifier: Notifier,
+    resource_registry: Option<Arc<dyn ResourceRegistry>>,
 }
 
 impl FabrykMcpServer {
@@ -78,6 +83,8 @@ impl FabrykMcpServer {
             registry: Arc::new(registry),
             config: ServerConfig::default(),
             services: Vec::new(),
+            notifier: Notifier::new(),
+            resource_registry: None,
         }
     }
 
@@ -151,6 +158,21 @@ impl FabrykMcpServer {
         self
     }
 
+    /// Set server guidance, populating the description/instructions.
+    pub fn with_guidance(mut self, guidance: &crate::guidance::ServerGuidance) -> Self {
+        self.config.description = Some(guidance.to_instructions());
+        self
+    }
+
+    /// Register a resource registry for MCP resource support.
+    ///
+    /// Enables `resources/list`, `resources/read`, `resources/subscribe`,
+    /// and `resources/unsubscribe` in the server capabilities.
+    pub fn with_resources<R: ResourceRegistry + 'static>(mut self, registry: R) -> Self {
+        self.resource_registry = Some(Arc::new(registry));
+        self
+    }
+
     /// Get the server configuration.
     pub fn config(&self) -> &ServerConfig {
         &self.config
@@ -159,6 +181,15 @@ impl FabrykMcpServer {
     /// Get the tool registry.
     pub fn registry(&self) -> &dyn ToolRegistry {
         &*self.registry
+    }
+
+    /// Get the notifier for broadcasting to connected clients.
+    ///
+    /// The returned `Notifier` is cheaply cloneable and can be stored
+    /// in any async context. Call this before `serve_stdio()` or
+    /// `serve_http()`, which consume the server.
+    pub fn notifier(&self) -> Notifier {
+        self.notifier.clone()
     }
 
     /// Run the server on stdio transport.
@@ -259,7 +290,22 @@ impl FabrykMcpServer {
 
 impl ServerHandler for FabrykMcpServer {
     fn get_info(&self) -> ServerInfo {
-        let mut info = ServerInfo::new(ServerCapabilities::builder().enable_tools().build())
+        let capabilities = if self.resource_registry.is_some() {
+            ServerCapabilities::builder()
+                .enable_tools()
+                .enable_logging()
+                .enable_resources()
+                .enable_resources_subscribe()
+                .enable_resources_list_changed()
+                .build()
+        } else {
+            ServerCapabilities::builder()
+                .enable_tools()
+                .enable_logging()
+                .build()
+        };
+
+        let mut info = ServerInfo::new(capabilities)
             .with_protocol_version(ProtocolVersion::LATEST)
             .with_server_info(Implementation::new(
                 self.config.name.clone(),
@@ -269,6 +315,20 @@ impl ServerHandler for FabrykMcpServer {
             info = info.with_instructions(desc.clone());
         }
         info
+    }
+
+    fn on_initialized(
+        &self,
+        context: NotificationContext<RoleServer>,
+    ) -> impl std::future::Future<Output = ()> + Send + '_ {
+        let peer = context.peer;
+        async move {
+            self.notifier.add_peer(peer).await;
+            log::info!(
+                "MCP client connected ({} active)",
+                self.notifier.client_count().await
+            );
+        }
     }
 
     fn list_tools(
@@ -305,6 +365,74 @@ impl ServerHandler for FabrykMcpServer {
                     "Unknown tool: {name}"
                 ))])),
             }
+        }
+    }
+
+    #[allow(clippy::manual_async_fn)]
+    fn list_resources(
+        &self,
+        _request: Option<rmcp::model::PaginatedRequestParams>,
+        _context: RequestContext<RoleServer>,
+    ) -> impl std::future::Future<Output = Result<ListResourcesResult, ErrorData>> + Send + '_ {
+        async move {
+            match &self.resource_registry {
+                Some(registry) => Ok(ListResourcesResult::with_all_items(registry.resources())),
+                None => Ok(ListResourcesResult::default()),
+            }
+        }
+    }
+
+    #[allow(clippy::manual_async_fn)]
+    fn read_resource(
+        &self,
+        request: ReadResourceRequestParams,
+        _context: RequestContext<RoleServer>,
+    ) -> impl std::future::Future<Output = Result<ReadResourceResult, ErrorData>> + Send + '_ {
+        async move {
+            let registry = self
+                .resource_registry
+                .as_ref()
+                .ok_or_else(|| ErrorData::invalid_params("Resources not enabled", None))?;
+
+            let uri = &request.uri;
+            match registry.read(uri) {
+                Some(future) => {
+                    let contents = future.await?;
+                    Ok(ReadResourceResult::new(contents))
+                }
+                None => Err(ErrorData::invalid_params(
+                    format!("Unknown resource: {uri}"),
+                    None,
+                )),
+            }
+        }
+    }
+
+    #[allow(clippy::manual_async_fn)]
+    fn subscribe(
+        &self,
+        request: SubscribeRequestParams,
+        context: RequestContext<RoleServer>,
+    ) -> impl std::future::Future<Output = Result<(), ErrorData>> + Send + '_ {
+        async move {
+            self.notifier
+                .subscribe_resource(&request.uri, context.peer)
+                .await;
+            log::debug!("Client subscribed to {}", request.uri);
+            Ok(())
+        }
+    }
+
+    #[allow(clippy::manual_async_fn)]
+    fn unsubscribe(
+        &self,
+        request: UnsubscribeRequestParams,
+        _context: RequestContext<RoleServer>,
+    ) -> impl std::future::Future<Output = Result<(), ErrorData>> + Send + '_ {
+        async move {
+            self.notifier.unsubscribe_resource(&request.uri).await;
+            log::debug!("Client unsubscribed from {}", request.uri);
+            Ok(())
         }
     }
 }
@@ -377,6 +505,13 @@ mod tests {
         assert_eq!(server.registry().tool_count(), 1);
     }
 
+    #[tokio::test]
+    async fn test_server_notifier_starts_empty() {
+        let server = FabrykMcpServer::new(CompositeRegistry::new());
+        let notifier = server.notifier();
+        assert_eq!(notifier.client_count().await, 0);
+    }
+
     #[test]
     fn test_server_get_info() {
         let server = FabrykMcpServer::new(MockRegistry)
@@ -389,6 +524,7 @@ mod tests {
         assert_eq!(info.server_info.version, "0.1.0");
         assert_eq!(info.instructions, Some("Test desc".to_string()));
         assert!(info.capabilities.tools.is_some());
+        assert!(info.capabilities.logging.is_some());
     }
 
     #[test]
@@ -515,6 +651,73 @@ mod tests {
 
         let result = server.wait_ready(Duration::from_millis(50)).await;
         assert!(result.is_ok());
+    }
+
+    #[test]
+    fn test_server_with_guidance() {
+        use crate::guidance::ServerGuidance;
+
+        let guidance = ServerGuidance::for_domain("nms")
+            .context("Galactic copilot")
+            .subscribe("nms://player", "Live tracking");
+
+        let server = FabrykMcpServer::new(CompositeRegistry::new()).with_guidance(&guidance);
+        let desc = server.config().description.as_deref().unwrap();
+        assert!(desc.contains("ALWAYS call nms_directory first"));
+        assert!(desc.contains("Galactic copilot"));
+        assert!(desc.contains("nms://player"));
+    }
+
+    #[test]
+    fn test_server_get_info_without_resources() {
+        let server = FabrykMcpServer::new(MockRegistry).with_name("test");
+        let info = server.get_info();
+        assert!(info.capabilities.resources.is_none());
+    }
+
+    #[test]
+    fn test_server_get_info_with_resources() {
+        use crate::resource::ResourceRegistry;
+        use rmcp::model::Resource;
+
+        struct EmptyResources;
+        impl ResourceRegistry for EmptyResources {
+            fn resources(&self) -> Vec<Resource> {
+                vec![]
+            }
+            fn read(&self, _uri: &str) -> Option<crate::resource::ResourceFuture> {
+                None
+            }
+        }
+
+        let server = FabrykMcpServer::new(MockRegistry)
+            .with_name("test")
+            .with_resources(EmptyResources);
+        let info = server.get_info();
+        assert!(info.capabilities.resources.is_some());
+    }
+
+    #[tokio::test]
+    async fn test_list_resources_delegates_to_registry() {
+        use crate::resource::ResourceRegistry;
+        use rmcp::model::{Annotated, RawResource, Resource};
+
+        struct TestResources;
+        impl ResourceRegistry for TestResources {
+            fn resources(&self) -> Vec<Resource> {
+                vec![Annotated::new(
+                    RawResource::new("test://res", "Test Resource"),
+                    None,
+                )]
+            }
+            fn read(&self, _uri: &str) -> Option<crate::resource::ResourceFuture> {
+                None
+            }
+        }
+
+        let server = FabrykMcpServer::new(MockRegistry).with_resources(TestResources);
+        let info = server.get_info();
+        assert!(info.capabilities.resources.is_some());
     }
 
     #[tokio::test]

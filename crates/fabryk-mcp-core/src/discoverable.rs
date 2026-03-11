@@ -88,6 +88,9 @@ pub struct DiscoverableRegistry<R: ToolRegistry> {
     external_connectors: Vec<ExternalConnector>,
     query_strategy: Vec<String>,
     data_freshness: HashMap<String, String>,
+    recommended_subscriptions: Vec<(String, String)>,
+    conventions: Vec<String>,
+    constraints: Vec<String>,
 }
 
 impl<R: ToolRegistry> DiscoverableRegistry<R> {
@@ -100,6 +103,28 @@ impl<R: ToolRegistry> DiscoverableRegistry<R> {
             external_connectors: Vec::new(),
             query_strategy: Vec::new(),
             data_freshness: HashMap::new(),
+            recommended_subscriptions: Vec::new(),
+            conventions: Vec::new(),
+            constraints: Vec::new(),
+        }
+    }
+
+    /// Create a discoverable registry from a [`ServerGuidance`](crate::ServerGuidance).
+    ///
+    /// Populates all fields from the guidance, including tool metadata,
+    /// workflow (as query strategy), connectors, subscriptions, conventions,
+    /// and constraints.
+    pub fn from_guidance(registry: R, guidance: &crate::guidance::ServerGuidance) -> Self {
+        Self {
+            inner: registry,
+            meta_map: guidance.tool_metas.clone(),
+            server_name: guidance.domain.clone(),
+            external_connectors: guidance.external_connectors.clone(),
+            query_strategy: guidance.workflow.clone(),
+            data_freshness: guidance.data_freshness.clone(),
+            recommended_subscriptions: guidance.recommended_subscriptions.clone(),
+            conventions: guidance.conventions.clone(),
+            constraints: guidance.constraints.clone(),
         }
     }
 
@@ -270,6 +295,44 @@ impl<R: ToolRegistry> DiscoverableRegistry<R> {
                     freshness
                         .iter()
                         .map(|(k, v)| (k.clone(), Value::String(v.clone())))
+                        .collect(),
+                ),
+            );
+        }
+
+        if !self.recommended_subscriptions.is_empty() {
+            let subs: Vec<Value> = self
+                .recommended_subscriptions
+                .iter()
+                .map(|(uri, reason)| {
+                    serde_json::json!({
+                        "uri": uri,
+                        "reason": reason,
+                    })
+                })
+                .collect();
+            response.insert("recommended_subscriptions".into(), Value::Array(subs));
+        }
+
+        if !self.conventions.is_empty() {
+            response.insert(
+                "conventions".into(),
+                Value::Array(
+                    self.conventions
+                        .iter()
+                        .map(|c| Value::String(c.clone()))
+                        .collect(),
+                ),
+            );
+        }
+
+        if !self.constraints.is_empty() {
+            response.insert(
+                "constraints".into(),
+                Value::Array(
+                    self.constraints
+                        .iter()
+                        .map(|c| Value::String(c.clone()))
                         .collect(),
                 ),
             );
@@ -681,6 +744,87 @@ mod tests {
 
         let cats = value.get("categories").expect("Should have categories key");
         assert_eq!(cats["general"], 1);
+    }
+
+    // ── from_guidance ─────────────────────────────────────────────────────
+
+    #[tokio::test]
+    async fn test_from_guidance_populates_all_fields() {
+        use crate::guidance::ServerGuidance;
+
+        let guidance = ServerGuidance::for_domain("test")
+            .context("Test context")
+            .workflow("Step 1")
+            .convention("Convention A")
+            .constraint("Constraint X")
+            .subscribe("test://res", "Live updates")
+            .tool_meta(
+                "search",
+                ToolMeta {
+                    summary: "Search things".into(),
+                    when_to_use: "Looking for stuff".into(),
+                    returns: "Results".into(),
+                    next: None,
+                    category: Some("search".into()),
+                },
+            );
+
+        let inner = MockRegistry {
+            tools: vec![make_tool("search", "Search")],
+        };
+        let registry = DiscoverableRegistry::from_guidance(inner, &guidance);
+
+        assert_eq!(registry.server_name, "test");
+        assert_eq!(registry.directory_tool_name(), "test_directory");
+
+        // Tool meta should be populated
+        let tools = registry.tools();
+        let search = tools.iter().find(|t| t.name == "search").unwrap();
+        let desc = search.description.as_deref().unwrap();
+        assert!(desc.contains("WHEN TO USE:"));
+
+        // Directory output should include new sections
+        let result = registry
+            .call("test_directory", json!({}))
+            .unwrap()
+            .await
+            .unwrap();
+        let text = extract_text(&result);
+        let value: Value = serde_json::from_str(&text).unwrap();
+
+        let subs = value["recommended_subscriptions"].as_array().unwrap();
+        assert_eq!(subs.len(), 1);
+        assert_eq!(subs[0]["uri"], "test://res");
+        assert_eq!(subs[0]["reason"], "Live updates");
+
+        let convs = value["conventions"].as_array().unwrap();
+        assert_eq!(convs.len(), 1);
+        assert_eq!(convs[0], "Convention A");
+
+        let cons = value["constraints"].as_array().unwrap();
+        assert_eq!(cons.len(), 1);
+        assert_eq!(cons[0], "Constraint X");
+    }
+
+    #[tokio::test]
+    async fn test_directory_omits_empty_new_sections() {
+        let inner = MockRegistry {
+            tools: vec![make_tool("search", "Search")],
+        };
+
+        // No subscriptions, conventions, or constraints
+        let registry = DiscoverableRegistry::new(inner, "myapp");
+        let result = registry
+            .call("myapp_directory", json!({}))
+            .unwrap()
+            .await
+            .unwrap();
+        let text = extract_text(&result);
+        let value: Value = serde_json::from_str(&text).unwrap();
+
+        assert!(value.get("recommended_subscriptions").is_none());
+        assert!(value.get("conventions").is_none());
+        assert!(value.get("constraints").is_none());
     }
 
     // ── ToolMeta default ─────────────────────────────────────────────────────
