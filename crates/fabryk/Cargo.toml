@@ -10,13 +10,13 @@ description = "Fabryk knowledge fabric — umbrella crate re-exporting all compo
 exclude = ["assets/"]
 
 [dependencies]
-fabryk-core = { version = "0.2.0", path = "../fabryk-core" }
-fabryk-auth = { version = "0.2.0", path = "../fabryk-auth" }
-fabryk-acl = { version = "0.2.0", path = "../fabryk-acl" }
-fabryk-content = { version = "0.2.0", path = "../fabryk-content" }
-fabryk-fts = { version = "0.2.0", path = "../fabryk-fts" }
-fabryk-graph = { version = "0.2.0", path = "../fabryk-graph" }
-fabryk-vector = { version = "0.2.0", path = "../fabryk-vector" }
+fabryk-core = { version = "0.3.0", path = "../fabryk-core" }
+fabryk-auth = { version = "0.3.0", path = "../fabryk-auth" }
+fabryk-acl = { version = "0.3.0", path = "../fabryk-acl" }
+fabryk-content = { version = "0.3.0", path = "../fabryk-content" }
+fabryk-fts = { version = "0.3.0", path = "../fabryk-fts" }
+fabryk-graph = { version = "0.3.0", path = "../fabryk-graph" }
+fabryk-vector = { version = "0.3.0", path = "../fabryk-vector" }
 
 [features]
 default = []
