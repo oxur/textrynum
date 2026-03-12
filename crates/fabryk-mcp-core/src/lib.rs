@@ -109,6 +109,9 @@ pub fn empty_input_schema() -> serde_json::Map<String, serde_json::Value> {
     m
 }
 
+// Re-exports — service lifecycle (from fabryk-core)
+pub use fabryk_core::service::{ServiceHandle, ServiceState};
+
 // Re-exports — HTTP health router (requires `http` feature)
 #[cfg(feature = "http")]
 pub use health_router::{ServiceHealthResponse, ServiceStatus, health_router};
@@ -118,3 +121,7 @@ pub use health_router::{ServiceHealthResponse, ServiceStatus, health_router};
 pub use rmcp::transport::streamable_http_server::{
     StreamableHttpServerConfig, StreamableHttpService, session::local::LocalSessionManager,
 };
+
+// Re-exports — axum types for custom HTTP composition (requires `http` feature)
+#[cfg(feature = "http")]
+pub use axum;

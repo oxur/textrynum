@@ -10,8 +10,8 @@ use crate::resource::ResourceRegistry;
 use fabryk_core::service::{ServiceHandle, ServiceState};
 use rmcp::model::{
     CallToolResult, Content, ErrorData, Implementation, ListResourcesResult, ProtocolVersion,
-    ReadResourceRequestParams, ReadResourceResult, ServerCapabilities,
-    ServerInfo, SubscribeRequestParams, UnsubscribeRequestParams,
+    ReadResourceRequestParams, ReadResourceResult, ServerCapabilities, ServerInfo,
+    SubscribeRequestParams, UnsubscribeRequestParams,
 };
 use rmcp::service::{NotificationContext, RequestContext};
 use rmcp::transport;
