@@ -355,8 +355,11 @@ push:
 # Crates in dependency order — computed dynamically by textyl.
 # Requires `make build` first (publish and publish-dry-run handle this).
 PUBLISH_ORDER = $(shell ./bin/textyl crates --publish-order --exclude=ecl-design 2>/dev/null)
-# crates.io rate limit delay (seconds)
-PUBLISH_DELAY := 372
+# crates.io rate limit delays (seconds)
+# Existing crates: 1 per minute, burst of 30. We add buffer for index propagation.
+PUBLISH_DELAY := 72
+# New crates: 1 per 10 minutes, burst of 5. We add buffer for initial indexing.
+PUBLISH_NEW_DELAY := 624
 .PHONY: publish
 publish: build
 	@echo ""
@@ -375,19 +378,30 @@ publish: build
 	fi
 	@echo ""
 	@echo "$(BLUE)Publishing crates in dependency order...$(RESET)"
-	@echo "$(YELLOW)Note: Publishing ~10 new crates/hour to avoid rate limits$(RESET)"
+	@echo "$(YELLOW)Note: Existing crates → $(PUBLISH_DELAY)s delay; new crates → $(PUBLISH_NEW_DELAY)s delay$(RESET)"
 	@echo ""
 	@for crate in $(PUBLISH_ORDER); do \
 		echo ""; \
-		echo "$(CYAN)• Publishing $$crate...$(RESET)"; \
+		is_new=false; \
+		if curl -sf "https://crates.io/api/v1/crates/$$crate" > /dev/null 2>&1; then \
+			echo "$(CYAN)• Publishing $$crate (existing crate)...$(RESET)"; \
+		else \
+			echo "$(CYAN)• Publishing $$crate (new crate)...$(RESET)"; \
+			is_new=true; \
+		fi; \
 		cd crates/$$crate && \
 		output=$$(cargo publish 2>&1); \
 		result=$$?; \
 		cd ../..; \
 		if [ $$result -eq 0 ]; then \
 			echo "  $(GREEN)✓$(RESET) $$crate published successfully"; \
-			echo "  $(YELLOW)→ Waiting 6 minutes for crates.io rate limit and index update...$(RESET)"; \
-			sleep $(PUBLISH_DELAY); \
+			if [ "$$is_new" = true ]; then \
+				echo "  $(YELLOW)→ New crate — waiting $(PUBLISH_NEW_DELAY)s for rate limit...$(RESET)"; \
+				sleep $(PUBLISH_NEW_DELAY); \
+			else \
+				echo "  $(YELLOW)→ Waiting $(PUBLISH_DELAY)s for rate limit...$(RESET)"; \
+				sleep $(PUBLISH_DELAY); \
+			fi; \
 		elif echo "$$output" | grep -q "already exists"; then \
 			echo "  $(YELLOW)⊙$(RESET) $$crate already published, skipping"; \
 		elif echo "$$output" | grep -q "429 Too Many Requests"; then \
