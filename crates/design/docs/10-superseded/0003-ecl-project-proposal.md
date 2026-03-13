@@ -5,10 +5,10 @@ author: "the original"
 component: All
 tags: [change-me]
 created: 2026-01-15
-updated: 2026-01-15
-state: Under Review
+updated: 2026-03-13
+state: Superseded
 supersedes: null
-superseded-by: null
+superseded-by: 17
 version: 1.0
 ---
 

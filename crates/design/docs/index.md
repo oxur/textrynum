@@ -6,6 +6,7 @@ This index is automatically generated. Do not edit manually.
 
 | Number | Title | State | Updated |
 |--------|-------|-------|----------|
+| 0017 | ECL Pipeline Runner: Unified Design Vision | Active | 2026-03-13 |
 | 0016 | Research - 2026 State of Rust Ecosystem for Workflow/Pipeline Frameworks | Final | 2026-03-13 |
 | 0015 | Restructure Fabryk Crate Hierarchy for Better Downstream UX | Final | 2026-03-09 |
 | 0014 | Fabryk Architecture - 2026-02-24 | Final | 2026-02-24 |
@@ -19,7 +20,7 @@ This index is automatically generated. Do not edit manually.
 | 0006 | Fabryk Project Proposal | Under Review | 2026-01-23 |
 | 0005 | ECL Ecosystem Vision Summary | Superseded | 2026-01-28 |
 | 0004 | ECL Project Plan | Active | 2026-01-22 |
-| 0003 | ECL Project Proposal | Under Review | 2026-01-15 |
+| 0003 | ECL Project Proposal | Superseded | 2026-03-13 |
 | 0002 | ECL Library Research & Recommendations | Final | 2026-01-15 |
 | 0001 | ECL Architecture Proposal | Under Review | 2026-01-15 |
 
@@ -34,11 +35,11 @@ This index is automatically generated. Do not edit manually.
 - [0008 - Fabryk-MCP Project Proposal](02-under-review/0008-fabryk-mcp-project-proposal.md)
 - [0007 - Fabryk File Management: Addendum](02-under-review/0007-fabryk-file-management-addendum.md)
 - [0006 - Fabryk Project Proposal](02-under-review/0006-fabryk-project-proposal.md)
-- [0003 - ECL Project Proposal](02-under-review/0003-ecl-project-proposal.md)
 - [0001 - ECL Architecture Proposal](02-under-review/0001-ecl-architecture-proposal.md)
 
 ### Active
 
+- [0017 - ECL Pipeline Runner: Unified Design Vision](05-active/0017-ecl-pipeline-runner-unified-design-vision.md)
 - [0013 - Fabryk Extraction: Project Plan Overview](05-active/0013-fabryk-extraction-project-plan-overview.md)
 - [0004 - ECL Project Plan](05-active/0004-ecl-project-plan.md)
 
@@ -55,3 +56,4 @@ This index is automatically generated. Do not edit manually.
 ### Superseded
 
 - [0005 - ECL Ecosystem Vision Summary](10-superseded/0005-ecl-ecosystem-vision-summary.md)
+- [0003 - ECL Project Proposal](10-superseded/0003-ecl-project-proposal.md)
