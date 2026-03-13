@@ -1577,22 +1577,22 @@ No logs. No dashboards. Just state.
 ## 7. Incrementality Flow
 
 ```
-                    ┌───────────────────┐
-                    │  Load prev hashes │
-                    │  from redb        │
-                    │  (last completed  │
-                    │   run)            │
-                    └────────┬──────────┘
+                    ┌────────────────────┐
+                    │  Load prev hashes  │
+                    │  from redb         │
+                    │  (last completed   │
+                    │   run)             │
+                    └────────┬───────────┘
                              │
-                             ▼
-┌──────────────┐    ┌────────────────┐    ┌──────────────────┐
-│  Enumerate   │───▶│  For each item │───▶│ Source provides   │
+                             V
+┌──────────────┐    ┌────────────────┐    ┌───────────────────┐
+│  Enumerate   │───>│  For each item │───>│ Source provides   │
 │  source      │    │                │    │ cheap hash?       │
-└──────────────┘    └────────────────┘    └────────┬─────────┘
+└──────────────┘    └────────────────┘    └────────┬──────────┘
                                                    │
                                          ┌─────────┴─────────┐
                                          │ YES               │ NO
-                                         ▼                   ▼
+                                         V                   V
                                   ┌─────────────┐   ┌──────────────┐
                                   │ Compare to  │   │ Mark as      │
                                   │ prev hash   │   │ Pending      │
@@ -1600,18 +1600,18 @@ No logs. No dashboards. Just state.
                                          │          │  compute     │
                                   ┌──────┴──────┐   │  blake3)     │
                                   │             │   └──────────────┘
-                                  ▼             ▼
-                          ┌────────────┐ ┌────────────┐
-                          │ UNCHANGED  │ │ PROCESS    │
-                          │ (skip)     │ │ (changed)  │
-                          └────────────┘ └─────┬──────┘
-                                               │
-                                               ▼
-                                       ┌──────────────┐
-                                       │ After fetch:  │
-                                       │ compute blake3│
-                                       │ save to state │
-                                       └──────────────┘
+                                  V             V
+                          ┌────────────┐  ┌────────────┐
+                          │ UNCHANGED  │  │ PROCESS    │
+                          │ (skip)     │  │ (changed)  │
+                          └────────────┘  └─────┬──────┘
+                                                │
+                                                V
+                                       ┌────────────────┐
+                                       │ After fetch:   │
+                                       │ compute blake3 │
+                                       │ save to state  │
+                                       └────────────────┘
 ```
 
 The two-tier hash strategy: use the source API's hash (Drive's `md5Checksum`,
