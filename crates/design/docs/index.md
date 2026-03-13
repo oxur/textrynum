@@ -6,6 +6,7 @@ This index is automatically generated. Do not edit manually.
 
 | Number | Title | State | Updated |
 |--------|-------|-------|----------|
+| 0018 | ECL Pipeline Runner — Multi-Phase Project Plan | Active | 2026-03-13 |
 | 0017 | ECL Pipeline Runner: Unified Design Vision | Active | 2026-03-13 |
 | 0016 | Research - 2026 State of Rust Ecosystem for Workflow/Pipeline Frameworks | Final | 2026-03-13 |
 | 0015 | Restructure Fabryk Crate Hierarchy for Better Downstream UX | Final | 2026-03-09 |
@@ -19,7 +20,7 @@ This index is automatically generated. Do not edit manually.
 | 0007 | Fabryk File Management: Addendum | Under Review | 2026-01-23 |
 | 0006 | Fabryk Project Proposal | Under Review | 2026-01-23 |
 | 0005 | ECL Ecosystem Vision Summary | Superseded | 2026-01-28 |
-| 0004 | ECL Project Plan | Active | 2026-01-22 |
+| 0004 | ECL Project Plan | Superseded | 2026-03-13 |
 | 0003 | ECL Project Proposal | Superseded | 2026-03-13 |
 | 0002 | ECL Library Research & Recommendations | Final | 2026-01-15 |
 | 0001 | ECL Architecture Proposal | Under Review | 2026-01-15 |
@@ -39,9 +40,9 @@ This index is automatically generated. Do not edit manually.
 
 ### Active
 
+- [0018 - ECL Pipeline Runner — Multi-Phase Project Plan](05-active/0018-ecl-pipeline-runner-multi-phase-project-plan.md)
 - [0017 - ECL Pipeline Runner: Unified Design Vision](05-active/0017-ecl-pipeline-runner-unified-design-vision.md)
 - [0013 - Fabryk Extraction: Project Plan Overview](05-active/0013-fabryk-extraction-project-plan-overview.md)
-- [0004 - ECL Project Plan](05-active/0004-ecl-project-plan.md)
 
 ### Final
 
@@ -56,4 +57,5 @@ This index is automatically generated. Do not edit manually.
 ### Superseded
 
 - [0005 - ECL Ecosystem Vision Summary](10-superseded/0005-ecl-ecosystem-vision-summary.md)
+- [0004 - ECL Project Plan](10-superseded/0004-ecl-project-plan.md)
 - [0003 - ECL Project Proposal](10-superseded/0003-ecl-project-proposal.md)
