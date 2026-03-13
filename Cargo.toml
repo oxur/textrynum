@@ -10,6 +10,7 @@ members = [
     "crates/ecl-cli",
     "crates/ecl-pipeline-spec",
     "crates/ecl-pipeline-state",
+    "crates/ecl-pipeline-topo",
     # Fabryk crates
     "crates/fabryk",
     "crates/fabryk-core",
