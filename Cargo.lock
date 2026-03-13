@@ -2448,6 +2448,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "ecl-pipeline-topo"
+version = "0.3.0"
+dependencies = [
+ "async-trait",
+ "blake3",
+ "chrono",
+ "ecl-pipeline-spec",
+ "ecl-pipeline-state",
+ "proptest",
+ "serde",
+ "serde_bytes",
+ "serde_json",
+ "tempfile",
+ "thiserror 2.0.18",
+ "tokio",
+ "tracing",
+]
+
+[[package]]
 name = "ecl-steps"
 version = "0.3.0"
 dependencies = [
