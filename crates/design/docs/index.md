@@ -6,6 +6,7 @@ This index is automatically generated. Do not edit manually.
 
 | Number | Title | State | Updated |
 |--------|-------|-------|----------|
+| 0016 | Research - 2026 State of Rust Ecosystem for Workflow/Pipeline Frameworks | Final | 2026-03-13 |
 | 0015 | Restructure Fabryk Crate Hierarchy for Better Downstream UX | Final | 2026-03-09 |
 | 0014 | Fabryk Architecture - 2026-02-24 | Final | 2026-02-24 |
 | 0013 | Fabryk Extraction: Project Plan Overview | Active | 2026-02-03 |
@@ -43,6 +44,7 @@ This index is automatically generated. Do not edit manually.
 
 ### Final
 
+- [0016 - Research - 2026 State of Rust Ecosystem for Workflow/Pipeline Frameworks](06-final/0016-research-2026-state-of-rust-ecosystem-for-workflowpipeline-frameworks.md)
 - [0015 - Restructure Fabryk Crate Hierarchy for Better Downstream UX](06-final/0015-restructure-fabryk-crate-hierarchy-for-better-downstream-ux.md)
 - [0014 - Fabryk Architecture - 2026-02-24](06-final/0014-fabryk-architecture-2026-02-24.md)
 - [0012 - Fabryk Extraction Audit: Amendment & Refinements](06-final/0012-fabryk-extraction-audit-amendment-refinements.md)
