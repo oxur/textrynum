@@ -14,6 +14,7 @@ pub mod checkpoint;
 pub mod error;
 pub mod ids;
 pub mod memory_store;
+pub mod redb_store;
 pub mod store;
 pub mod types;
 
@@ -21,6 +22,7 @@ pub use checkpoint::Checkpoint;
 pub use error::{Result, StateError};
 pub use ids::{Blake3Hash, RunId, StageId};
 pub use memory_store::InMemoryStateStore;
+pub use redb_store::RedbStateStore;
 pub use store::StateStore;
 pub use types::{
     CompletedStageRecord, ItemProvenance, ItemState, ItemStatus, PipelineStats, PipelineStatus,

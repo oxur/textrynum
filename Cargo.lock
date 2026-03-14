@@ -2439,6 +2439,7 @@ dependencies = [
  "chrono",
  "ecl-pipeline-spec",
  "proptest",
+ "redb",
  "serde",
  "serde_bytes",
  "serde_json",
@@ -6577,6 +6578,15 @@ checksum = "22e18b0f0062d30d4230b2e85ff77fdfe4326feb054b9783a3460d8435c8ab91"
 dependencies = [
  "crossbeam-deque",
  "crossbeam-utils",
+]
+
+[[package]]
+name = "redb"
+version = "3.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ef99362319c782aa4639ad3a306b64c3bb90e12874e99b8df124cb679d988611"
+dependencies = [
+ "libc",
 ]
 
 [[package]]
