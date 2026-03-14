@@ -53,7 +53,7 @@ pub trait VectorExtractor: Send + Sync {
         &self,
         base_path: &Path,
         file_path: &Path,
-        frontmatter: &serde_yaml::Value,
+        frontmatter: &yaml_serde::Value,
         content: &str,
     ) -> Result<VectorDocument>;
 
@@ -86,7 +86,7 @@ impl VectorExtractor for MockVectorExtractor {
         &self,
         _base_path: &Path,
         file_path: &Path,
-        frontmatter: &serde_yaml::Value,
+        frontmatter: &yaml_serde::Value,
         content: &str,
     ) -> Result<VectorDocument> {
         let id = fabryk_core::util::ids::id_from_path(file_path)
@@ -132,8 +132,8 @@ mod tests {
     use super::*;
     use std::path::PathBuf;
 
-    fn sample_frontmatter() -> serde_yaml::Value {
-        serde_yaml::from_str(
+    fn sample_frontmatter() -> yaml_serde::Value {
+        yaml_serde::from_str(
             r#"
 title: "Test Concept"
 category: "test-category"
@@ -166,7 +166,7 @@ tier: "beginner"
         let extractor = MockVectorExtractor;
         let base_path = PathBuf::from("/data");
         let file_path = PathBuf::from("/data/simple.md");
-        let frontmatter: serde_yaml::Value = serde_yaml::from_str("title: Simple").unwrap();
+        let frontmatter: yaml_serde::Value = yaml_serde::from_str("title: Simple").unwrap();
 
         let doc = extractor
             .extract_document(&base_path, &file_path, &frontmatter, "Content")
@@ -183,7 +183,7 @@ tier: "beginner"
         let extractor = MockVectorExtractor;
         let base_path = PathBuf::from("/data");
         let file_path = PathBuf::from("/data/no-title.md");
-        let frontmatter: serde_yaml::Value = serde_yaml::from_str("category: test").unwrap();
+        let frontmatter: yaml_serde::Value = yaml_serde::from_str("category: test").unwrap();
 
         let doc = extractor
             .extract_document(&base_path, &file_path, &frontmatter, "Content")

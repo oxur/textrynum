@@ -47,7 +47,7 @@ pub enum Error {
 
     /// YAML serialization/deserialization error.
     #[error("YAML error: {0}")]
-    Yaml(#[from] serde_yaml::Error),
+    Yaml(#[from] yaml_serde::Error),
 
     /// Resource not found (file, concept, source, etc.)
     #[error("{resource_type} not found: {id}")]

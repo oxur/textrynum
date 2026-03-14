@@ -8,7 +8,7 @@
 //!
 //! # Design Philosophy
 //!
-//! These utilities return generic types (`serde_yaml::Value`, `String`) rather
+//! These utilities return generic types (`yaml_serde::Value`, `String`) rather
 //! than domain-specific structs. Domain crates (music-theory, math, etc.)
 //! define their own metadata types and use these utilities to extract raw data.
 //!

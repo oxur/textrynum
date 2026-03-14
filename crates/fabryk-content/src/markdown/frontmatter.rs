@@ -36,7 +36,7 @@
 
 use fabryk_core::{Error, Result};
 use serde::de::DeserializeOwned;
-use serde_yaml::Value;
+use yaml_serde::Value;
 
 /// Result of frontmatter extraction.
 ///
@@ -129,7 +129,7 @@ impl<'a> FrontmatterResult<'a> {
     pub fn deserialize<T: DeserializeOwned>(&self) -> Result<Option<T>> {
         match &self.value {
             Some(value) => {
-                let parsed: T = serde_yaml::from_value(value.clone())
+                let parsed: T = yaml_serde::from_value(value.clone())
                     .map_err(|e| Error::parse(format!("Failed to deserialize frontmatter: {e}")))?;
                 Ok(Some(parsed))
             }
@@ -226,7 +226,7 @@ pub fn extract_frontmatter(content: &str) -> Result<FrontmatterResult<'_>> {
         .unwrap_or(body_after_closing);
 
     // Parse the YAML
-    match serde_yaml::from_str::<Value>(yaml_content) {
+    match yaml_serde::from_str::<Value>(yaml_content) {
         Ok(value) => Ok(FrontmatterResult::with_frontmatter(value, body)),
         Err(e) => {
             log::warn!("Failed to parse frontmatter YAML: {e}");

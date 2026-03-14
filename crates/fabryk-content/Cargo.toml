@@ -15,7 +15,7 @@ fabryk-core = { version = "0.3.0", path = "../fabryk-core" }
 pulldown-cmark = { workspace = true }
 
 # Frontmatter
-serde_yaml = { workspace = true }
+yaml_serde = { workspace = true }
 
 # Serialization
 serde = { workspace = true }

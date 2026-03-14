@@ -328,7 +328,7 @@ impl<E: GraphExtractor> GraphBuilder<E> {
         let frontmatter = fm_result
             .value()
             .cloned()
-            .unwrap_or(serde_yaml::Value::Null);
+            .unwrap_or(yaml_serde::Value::Null);
         let body = fm_result.body();
 
         let node_data = self

@@ -56,7 +56,7 @@ pub trait GraphExtractor: Send + Sync {
         &self,
         base_path: &Path,
         file_path: &Path,
-        frontmatter: &serde_yaml::Value,
+        frontmatter: &yaml_serde::Value,
         content: &str,
     ) -> Result<Self::NodeData>;
 
@@ -65,7 +65,7 @@ pub trait GraphExtractor: Send + Sync {
     /// Returns `Ok(None)` if no relationships found (valid for leaf nodes).
     fn extract_edges(
         &self,
-        frontmatter: &serde_yaml::Value,
+        frontmatter: &yaml_serde::Value,
         content: &str,
     ) -> Result<Option<Self::EdgeData>>;
 
@@ -138,7 +138,7 @@ pub mod mock {
             &self,
             _base_path: &Path,
             file_path: &Path,
-            frontmatter: &serde_yaml::Value,
+            frontmatter: &yaml_serde::Value,
             _content: &str,
         ) -> Result<Self::NodeData> {
             let id = fabryk_core::util::ids::id_from_path(file_path)
@@ -164,7 +164,7 @@ pub mod mock {
 
         fn extract_edges(
             &self,
-            frontmatter: &serde_yaml::Value,
+            frontmatter: &yaml_serde::Value,
             _content: &str,
         ) -> Result<Option<Self::EdgeData>> {
             let prerequisites: Vec<String> = frontmatter
@@ -238,8 +238,8 @@ mod tests {
     use crate::Relationship;
     use std::path::PathBuf;
 
-    fn sample_frontmatter() -> serde_yaml::Value {
-        serde_yaml::from_str(
+    fn sample_frontmatter() -> yaml_serde::Value {
+        yaml_serde::from_str(
             r#"
 title: "Test Concept"
 category: "test-category"
@@ -286,7 +286,7 @@ related:
     #[test]
     fn test_mock_extractor_extract_edges_none() {
         let extractor = MockExtractor;
-        let frontmatter = serde_yaml::from_str("title: Test").unwrap();
+        let frontmatter = yaml_serde::from_str("title: Test").unwrap();
 
         let edge_data = extractor.extract_edges(&frontmatter, "content").unwrap();
         assert!(edge_data.is_none());

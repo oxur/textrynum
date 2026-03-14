@@ -281,7 +281,7 @@ impl<E: VectorExtractor> VectorIndexBuilder<E> {
         let frontmatter = fm_result
             .value()
             .cloned()
-            .unwrap_or(serde_yaml::Value::Null);
+            .unwrap_or(yaml_serde::Value::Null);
         let body = fm_result.body();
 
         self.extractor

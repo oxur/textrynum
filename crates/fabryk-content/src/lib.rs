@@ -15,7 +15,7 @@
 //!
 //! **Generic utilities, domain-specific types.** This crate provides:
 //!
-//! - YAML frontmatter extraction → returns `serde_yaml::Value`
+//! - YAML frontmatter extraction → returns `yaml_serde::Value`
 //! - Markdown structure parsing → returns strings and enums
 //! - Content helpers → returns strings and lists
 //!
