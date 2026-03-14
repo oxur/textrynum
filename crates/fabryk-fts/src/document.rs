@@ -231,6 +231,9 @@ fn find_snippet(text: &str, query: &str, max_length: usize) -> Option<String> {
     let context = max_length / 4;
     let start = pos.saturating_sub(context);
 
+    // Snap to a valid char boundary so slicing never panics on multi-byte UTF-8
+    let start = text.floor_char_boundary(start);
+
     // Find word boundary near start
     let start = if start > 0 {
         text[..start]
@@ -241,8 +244,8 @@ fn find_snippet(text: &str, query: &str, max_length: usize) -> Option<String> {
         0
     };
 
-    // Calculate end position
-    let end = (start + max_length).min(text.len());
+    // Calculate end position and snap to a valid char boundary
+    let end = text.ceil_char_boundary((start + max_length).min(text.len()));
 
     // Find word boundary near end
     let end = if end < text.len() {
