@@ -9,6 +9,7 @@ ecosystem.
 exploration. Assumes familiarity with Rust async patterns and Cargo workspaces.
 
 **What you'll build:** An MCP server that:
+
 - Loads a markdown corpus with YAML frontmatter
 - Builds a full-text search index (Tantivy)
 - Constructs a knowledge graph with relationship extraction
@@ -49,31 +50,31 @@ need — the umbrella crates (`fabryk`, `fabryk-mcp`) aggregate them for
 convenience.
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    Your MCP Server Binary                    │
-├─────────────────────────────────────────────────────────────┤
-│  MCP Layer (fabryk-mcp)                                     │
+┌────────────────────────────────────────────────────────────┐
+│                   Your MCP Server Binary                   │
+├────────────────────────────────────────────────────────────┤
+│  MCP Layer (fabryk-mcp)                                    │
 │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌───────────────┐  │
 │  │ Content  │ │   FTS    │ │  Graph   │ │   Semantic    │  │
 │  │  Tools   │ │  Tools   │ │  Tools   │ │ Search Tools  │  │
 │  └────┬─────┘ └────┬─────┘ └────┬─────┘ └──────┬────────┘  │
-│       │             │            │               │           │
-│  ┌────┴─────────────┴────────────┴───────────────┴────────┐ │
-│  │  fabryk-mcp-core: FabrykMcpServer, CompositeRegistry,  │ │
-│  │  ServiceAwareRegistry, DiscoverableRegistry, Health     │ │
-│  └─────────────────────────────────────────────────────────┘ │
-├─────────────────────────────────────────────────────────────┤
-│  Domain Layer (fabryk)                                       │
+│       │            │            │              │           │
+│  ┌────┴────────────┴────────────┴──────────────┴────────┐  │
+│  │  fabryk-mcp-core: FabrykMcpServer, CompositeRegistry,│  │
+│  │  ServiceAwareRegistry, DiscoverableRegistry, Health  │  │
+│  └──────────────────────────────────────────────────────┘  │
+├────────────────────────────────────────────────────────────┤
+│  Domain Layer (fabryk)                                     │
 │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐       │
 │  │ Content  │ │   FTS    │ │  Graph   │ │  Vector  │       │
 │  │ (md/yaml)│ │(tantivy) │ │(petgraph)│ │(lancedb) │       │
 │  └──────────┘ └──────────┘ └──────────┘ └──────────┘       │
-├─────────────────────────────────────────────────────────────┤
-│  Core Layer: fabryk-core (ServiceHandle, ConfigManager,     │
-│  Error, AppState, PathResolver, spawn_with_retry)           │
-├─────────────────────────────────────────────────────────────┤
-│  Infrastructure: fabryk-auth, fabryk-redis, fabryk-gcp      │
-└─────────────────────────────────────────────────────────────┘
+├────────────────────────────────────────────────────────────┤
+│  Core Layer: fabryk-core (ServiceHandle, ConfigManager,    │
+│  Error, AppState, PathResolver, spawn_with_retry)          │
+├────────────────────────────────────────────────────────────┤
+│  Infrastructure: fabryk-auth, fabryk-redis, fabryk-gcp     │
+└────────────────────────────────────────────────────────────┘
 ```
 
 **Key design principles:**
