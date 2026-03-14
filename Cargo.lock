@@ -2332,11 +2332,11 @@ dependencies = [
 
 [[package]]
 name = "ecl"
-version = "0.3.0"
+version = "0.4.0"
 
 [[package]]
 name = "ecl-cli"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "anyhow",
  "clap",
@@ -2356,7 +2356,7 @@ dependencies = [
 
 [[package]]
 name = "ecl-core"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -2377,14 +2377,14 @@ dependencies = [
 
 [[package]]
 name = "ecl-design"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "oxur-odm",
 ]
 
 [[package]]
 name = "ecl-pipeline-spec"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "chrono",
  "proptest",
@@ -2397,7 +2397,7 @@ dependencies = [
 
 [[package]]
 name = "ecl-pipeline-state"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "async-trait",
  "blake3",
@@ -2415,7 +2415,7 @@ dependencies = [
 
 [[package]]
 name = "ecl-pipeline-topo"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "async-trait",
  "blake3",
@@ -2434,7 +2434,7 @@ dependencies = [
 
 [[package]]
 name = "ecl-steps"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -2450,7 +2450,7 @@ dependencies = [
 
 [[package]]
 name = "ecl-workflows"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -2587,7 +2587,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "fabryk-acl",
  "fabryk-auth",
@@ -2600,7 +2600,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-acl"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "async-trait",
  "fabryk-core",
@@ -2609,7 +2609,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-auth"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "axum",
  "http",
@@ -2623,7 +2623,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-auth-google"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "fabryk-auth",
  "jsonwebtoken",
@@ -2635,7 +2635,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-cli"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "clap",
  "confyg",
@@ -2655,7 +2655,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-content"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "fabryk-core",
  "log",
@@ -2668,7 +2668,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-core"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "async-trait",
  "async-walkdir",
@@ -2688,7 +2688,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-fts"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "async-trait",
  "async-walkdir",
@@ -2707,7 +2707,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-gcp"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "dirs 6.0.0",
  "log",
@@ -2718,7 +2718,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-graph"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "async-trait",
  "blake3",
@@ -2739,7 +2739,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-mcp"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "fabryk-mcp-auth",
  "fabryk-mcp-content",
@@ -2751,7 +2751,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-mcp-auth"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "axum",
  "serde_json",
@@ -2760,7 +2760,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-mcp-content"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "async-trait",
  "fabryk-content",
@@ -2776,7 +2776,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-mcp-core"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "async-trait",
  "axum",
@@ -2795,7 +2795,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-mcp-fts"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "async-trait",
  "fabryk-core",
@@ -2811,7 +2811,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-mcp-graph"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "async-trait",
  "fabryk-core",
@@ -2828,7 +2828,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-mcp-semantic"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "async-trait",
  "fabryk-core",
@@ -2846,7 +2846,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-redis"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "async-trait",
  "log",
@@ -2860,7 +2860,7 @@ dependencies = [
 
 [[package]]
 name = "fabryk-vector"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "arrow-array",
  "arrow-schema",
@@ -8129,7 +8129,7 @@ dependencies = [
 
 [[package]]
 name = "textrynum-util"
-version = "0.3.0"
+version = "0.4.0"
 dependencies = [
  "anyhow",
  "clap",
