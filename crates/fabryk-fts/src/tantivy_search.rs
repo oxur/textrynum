@@ -169,7 +169,8 @@ impl TantivySearch {
         // Fallback to description or content start
         description.clone().or_else(|| {
             if content.len() > max_len {
-                Some(format!("{}...", &content[..max_len]))
+                let trunc = content.floor_char_boundary(max_len);
+                Some(format!("{}...", &content[..trunc]))
             } else if !content.is_empty() {
                 Some(content.to_string())
             } else {
@@ -245,10 +246,10 @@ fn find_snippet_in_text(text: &str, query: &str, max_len: usize) -> Option<Strin
     // Try to find query in text
     let pos = text_lower.find(&query_lower)?;
 
-    // Calculate bounds
+    // Calculate bounds (use char boundaries to avoid panics on multi-byte UTF-8)
     let context = max_len / 4;
-    let start = pos.saturating_sub(context);
-    let end = (start + max_len).min(text.len());
+    let start = text.floor_char_boundary(pos.saturating_sub(context));
+    let end = text.ceil_char_boundary((start + max_len).min(text.len()));
 
     // Find word boundaries
     let start = if start > 0 {
