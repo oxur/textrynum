@@ -114,13 +114,13 @@ pub fn validate_tool(tool: &Tool) -> Vec<ToolIssue> {
         }
 
         // If "properties" is present, check it's an object
-        if let Some(props) = schema.get("properties") {
-            if !props.is_object() {
-                issues.push(ToolIssue {
-                    tool_name: display_name.clone(),
-                    message: format!("inputSchema \"properties\" is not an object: {}", props),
-                });
-            }
+        if let Some(props) = schema.get("properties")
+            && !props.is_object()
+        {
+            issues.push(ToolIssue {
+                tool_name: display_name.clone(),
+                message: format!("inputSchema \"properties\" is not an object: {}", props),
+            });
         }
 
         // If "required" is present, check it's an array of strings

@@ -20,13 +20,13 @@ pub fn validate(spec: &PipelineSpec) -> Result<()> {
 
     // Validate stage source references.
     for (stage_name, stage_spec) in &spec.stages {
-        if let Some(ref source_name) = stage_spec.source {
-            if !spec.sources.contains_key(source_name) {
-                return Err(SpecError::UnknownSource {
-                    stage: stage_name.clone(),
-                    source_name: source_name.clone(),
-                });
-            }
+        if let Some(ref source_name) = stage_spec.source
+            && !spec.sources.contains_key(source_name)
+        {
+            return Err(SpecError::UnknownSource {
+                stage: stage_name.clone(),
+                source_name: source_name.clone(),
+            });
         }
     }
 

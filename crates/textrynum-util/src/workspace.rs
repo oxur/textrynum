@@ -194,30 +194,31 @@ fn scan_crate(
         if let Some(deps) = doc.get(section).and_then(|d| d.as_table()) {
             for (dep_name, dep_value) in deps {
                 // Only include deps that have a path key and are known workspace members.
-                if let Some(table) = dep_value.as_table() {
-                    if table.contains_key("path") && internal_names.contains(dep_name) {
-                        let declared_version = table
-                            .get("version")
-                            .and_then(|v| v.as_str())
-                            .unwrap_or("")
-                            .to_string();
-                        let path = table
-                            .get("path")
-                            .and_then(|v| v.as_str())
-                            .unwrap_or("")
-                            .to_string();
-                        let optional = table
-                            .get("optional")
-                            .and_then(|v| v.as_bool())
-                            .unwrap_or(false);
-                        internal_deps.push(DepInfo {
-                            name: dep_name.clone(),
-                            declared_version,
-                            path,
-                            section: section.to_string(),
-                            optional,
-                        });
-                    }
+                if let Some(table) = dep_value.as_table()
+                    && table.contains_key("path")
+                    && internal_names.contains(dep_name)
+                {
+                    let declared_version = table
+                        .get("version")
+                        .and_then(|v| v.as_str())
+                        .unwrap_or("")
+                        .to_string();
+                    let path = table
+                        .get("path")
+                        .and_then(|v| v.as_str())
+                        .unwrap_or("")
+                        .to_string();
+                    let optional = table
+                        .get("optional")
+                        .and_then(|v| v.as_bool())
+                        .unwrap_or(false);
+                    internal_deps.push(DepInfo {
+                        name: dep_name.clone(),
+                        declared_version,
+                        path,
+                        section: section.to_string(),
+                        optional,
+                    });
                 }
             }
         }
@@ -251,13 +252,12 @@ fn resolve_crate_version(doc: &toml::Value, workspace_version: &str) -> String {
     }
 
     // Check for version.workspace = true (parsed as a table with workspace key).
-    if let Some(v) = pkg.get("version").and_then(|v| v.as_table()) {
-        if v.get("workspace")
+    if let Some(v) = pkg.get("version").and_then(|v| v.as_table())
+        && v.get("workspace")
             .and_then(|w| w.as_bool())
             .unwrap_or(false)
-        {
-            return workspace_version.to_string();
-        }
+    {
+        return workspace_version.to_string();
     }
 
     workspace_version.to_string()

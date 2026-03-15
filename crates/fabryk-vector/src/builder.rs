@@ -158,32 +158,31 @@ impl<E: VectorExtractor> VectorIndexBuilder<E> {
             .clone();
 
         // Check cache freshness (if cache configured and not skipped)
-        if let Some(ref cache_path) = self.cache_path {
-            if !self.skip_cache {
-                let content_hash = compute_content_hash(&content_path).await?;
-                if SimpleVectorBackend::is_cache_fresh(cache_path, &content_hash) {
-                    if let Ok(Some(backend)) =
-                        SimpleVectorBackend::load_cache(cache_path, provider.clone())
-                    {
-                        let doc_count = backend.document_count().unwrap_or(0);
-                        log::info!(
-                            "Vector cache is fresh, loaded {} documents from {}",
-                            doc_count,
-                            cache_path.display()
-                        );
-                        let stats = VectorIndexStats {
-                            documents_indexed: doc_count,
-                            files_processed: 0,
-                            files_skipped: 0,
-                            embedding_dimension: provider.dimension(),
-                            content_hash,
-                            build_duration_ms: start.elapsed().as_millis() as u64,
-                            errors: Vec::new(),
-                            from_cache: true,
-                        };
-                        return Ok((backend, stats));
-                    }
-                }
+        if let Some(ref cache_path) = self.cache_path
+            && !self.skip_cache
+        {
+            let content_hash = compute_content_hash(&content_path).await?;
+            if SimpleVectorBackend::is_cache_fresh(cache_path, &content_hash)
+                && let Ok(Some(backend)) =
+                    SimpleVectorBackend::load_cache(cache_path, provider.clone())
+            {
+                let doc_count = backend.document_count().unwrap_or(0);
+                log::info!(
+                    "Vector cache is fresh, loaded {} documents from {}",
+                    doc_count,
+                    cache_path.display()
+                );
+                let stats = VectorIndexStats {
+                    documents_indexed: doc_count,
+                    files_processed: 0,
+                    files_skipped: 0,
+                    embedding_dimension: provider.dimension(),
+                    content_hash,
+                    build_duration_ms: start.elapsed().as_millis() as u64,
+                    errors: Vec::new(),
+                    from_cache: true,
+                };
+                return Ok((backend, stats));
             }
         }
 
@@ -262,10 +261,10 @@ impl<E: VectorExtractor> VectorIndexBuilder<E> {
         };
 
         // Save to cache after successful build
-        if let Some(ref cache_path) = self.cache_path {
-            if let Err(e) = backend.save_cache(cache_path, &content_hash) {
-                log::warn!("Failed to save vector cache: {e}");
-            }
+        if let Some(ref cache_path) = self.cache_path
+            && let Err(e) = backend.save_cache(cache_path, &content_hash)
+        {
+            log::warn!("Failed to save vector cache: {e}");
         }
 
         Ok((backend, stats))

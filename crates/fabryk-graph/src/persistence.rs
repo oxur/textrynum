@@ -152,14 +152,12 @@ pub fn is_cache_fresh(cache_path: impl AsRef<Path>, content_hash: &str) -> bool 
         return false;
     }
 
-    if let Ok(json) = std::fs::read_to_string(path) {
-        if let Ok(serializable) = serde_json::from_str::<SerializableGraph>(&json) {
-            if let Some(metadata) = serializable.metadata {
-                if let Some(cached_hash) = metadata.content_hash {
-                    return cached_hash == content_hash;
-                }
-            }
-        }
+    if let Ok(json) = std::fs::read_to_string(path)
+        && let Ok(serializable) = serde_json::from_str::<SerializableGraph>(&json)
+        && let Some(metadata) = serializable.metadata
+        && let Some(cached_hash) = metadata.content_hash
+    {
+        return cached_hash == content_hash;
     }
 
     false

@@ -41,11 +41,9 @@ fn run_check(
     let mut mismatches = Vec::new();
 
     // Check internal path deps (workspace mode only, when project_version is set).
-    if is_workspace {
-        if let Some(pv) = project_version {
-            let crates = workspace::scan_all_crates(root)?;
-            mismatches.extend(collect_internal_mismatches(&crates, pv));
-        }
+    if is_workspace && let Some(pv) = project_version {
+        let crates = workspace::scan_all_crates(root)?;
+        mismatches.extend(collect_internal_mismatches(&crates, pv));
     }
 
     // Check fabryk-*/ecl-* deps.
@@ -103,35 +101,32 @@ fn run_update(
     }
 
     // Update internal path deps (workspace mode, when project_version is set).
-    if is_workspace {
-        if let Some(pv) = project_version {
-            let crates = workspace::scan_all_crates(root)?;
-            let member_paths = workspace::list_member_paths(root)?;
+    if is_workspace && let Some(pv) = project_version {
+        let crates = workspace::scan_all_crates(root)?;
+        let member_paths = workspace::list_member_paths(root)?;
 
-            for crate_info in &crates {
-                let crate_path = member_paths.iter().find(|p| {
-                    p.file_name()
-                        .and_then(|n| n.to_str())
-                        .map(|n| n == crate_info.name || p.ends_with(&crate_info.path))
-                        .unwrap_or(false)
-                });
+        for crate_info in &crates {
+            let crate_path = member_paths.iter().find(|p| {
+                p.file_name()
+                    .and_then(|n| n.to_str())
+                    .map(|n| n == crate_info.name || p.ends_with(&crate_info.path))
+                    .unwrap_or(false)
+            });
 
-                let Some(crate_path) = crate_path else {
-                    continue;
-                };
+            let Some(crate_path) = crate_path else {
+                continue;
+            };
 
-                let cargo_toml = crate_path.join("Cargo.toml");
+            let cargo_toml = crate_path.join("Cargo.toml");
 
-                for dep in &crate_info.internal_deps {
-                    let changed =
-                        editor::update_dep_version(&cargo_toml, &dep.section, &dep.name, pv)?;
-                    if changed {
-                        total_changes += 1;
-                        println!(
-                            "  Updated {} [{}] {} = \"{pv}\"",
-                            crate_info.name, dep.section, dep.name
-                        );
-                    }
+            for dep in &crate_info.internal_deps {
+                let changed = editor::update_dep_version(&cargo_toml, &dep.section, &dep.name, pv)?;
+                if changed {
+                    total_changes += 1;
+                    println!(
+                        "  Updated {} [{}] {} = \"{pv}\"",
+                        crate_info.name, dep.section, dep.name
+                    );
                 }
             }
         }
@@ -252,16 +247,16 @@ fn collect_dep_mismatches(
         let matches = workspace::scan_matching_deps(cargo_toml, prefixes)?;
         for (section, dep_name) in &matches {
             let declared = read_dep_version(cargo_toml, section, dep_name)?;
-            if let Some(declared) = declared {
-                if declared != expected_version {
-                    mismatches.push(VersionMismatch {
-                        crate_name: crate_name.to_string(),
-                        dep_name: dep_name.clone(),
-                        declared_version: declared,
-                        expected_version: expected_version.to_string(),
-                        section: section.clone(),
-                    });
-                }
+            if let Some(declared) = declared
+                && declared != expected_version
+            {
+                mismatches.push(VersionMismatch {
+                    crate_name: crate_name.to_string(),
+                    dep_name: dep_name.clone(),
+                    declared_version: declared,
+                    expected_version: expected_version.to_string(),
+                    section: section.clone(),
+                });
             }
         }
     }

@@ -10,6 +10,7 @@ use fabryk_mcp_core::registry::{ToolRegistry, ToolResult};
 use fabryk_fts::{SearchBackend, SearchParams};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use std::collections::HashMap;
 use std::sync::Arc;
 use std::time::Instant;
 
@@ -127,13 +128,22 @@ pub struct SearchStatusResponse {
 /// ```
 pub struct FtsTools {
     backend: Arc<dyn SearchBackend>,
+    custom_names: HashMap<String, String>,
+    custom_descriptions: HashMap<String, String>,
 }
 
 impl FtsTools {
+    /// Slot key for the search tool.
+    pub const SLOT_SEARCH: &str = "search";
+    /// Slot key for the search status tool.
+    pub const SLOT_STATUS: &str = "search_status";
+
     /// Create new FTS tools wrapping a search backend.
     pub fn new<B: SearchBackend + 'static>(backend: B) -> Self {
         Self {
             backend: Arc::new(backend),
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
         }
     }
 
@@ -141,12 +151,49 @@ impl FtsTools {
     pub fn from_boxed(backend: Box<dyn SearchBackend>) -> Self {
         Self {
             backend: Arc::from(backend),
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
         }
     }
 
     /// Create FTS tools with a shared backend reference.
     pub fn with_shared(backend: Arc<dyn SearchBackend>) -> Self {
-        Self { backend }
+        Self {
+            backend,
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
+        }
+    }
+
+    /// Override individual tool names.
+    ///
+    /// Keys are slot constants (`SLOT_SEARCH`, etc.), values are custom
+    /// MCP-visible names. Unspecified slots keep their default names.
+    pub fn with_names(mut self, names: HashMap<String, String>) -> Self {
+        self.custom_names = names;
+        self
+    }
+
+    /// Override individual tool descriptions.
+    ///
+    /// Keys are slot constants, values are custom descriptions.
+    pub fn with_descriptions(mut self, descriptions: HashMap<String, String>) -> Self {
+        self.custom_descriptions = descriptions;
+        self
+    }
+
+    fn tool_name(&self, slot: &str) -> String {
+        self.custom_names
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| slot.to_string())
+    }
+
+    fn tool_description(&self, slot: &str, default: &str) -> String {
+        self.custom_descriptions
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| default.to_string())
     }
 }
 
@@ -154,8 +201,8 @@ impl ToolRegistry for FtsTools {
     fn tools(&self) -> Vec<Tool> {
         vec![
             make_tool(
-                "search",
-                "Full-text search across all content",
+                &self.tool_name(Self::SLOT_SEARCH),
+                &self.tool_description(Self::SLOT_SEARCH, "Full-text search across all content"),
                 serde_json::json!({
                     "type": "object",
                     "properties": {
@@ -184,8 +231,8 @@ impl ToolRegistry for FtsTools {
                 }),
             ),
             make_tool(
-                "search_status",
-                "Get search backend status",
+                &self.tool_name(Self::SLOT_STATUS),
+                &self.tool_description(Self::SLOT_STATUS, "Get search backend status"),
                 serde_json::json!({
                     "type": "object",
                     "properties": {}
@@ -197,8 +244,8 @@ impl ToolRegistry for FtsTools {
     fn call(&self, name: &str, args: Value) -> Option<ToolResult> {
         let backend = Arc::clone(&self.backend);
 
-        match name {
-            "search" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_SEARCH) {
+            return Some(Box::pin(async move {
                 let args: SearchArgs = serde_json::from_value(args)
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
 
@@ -242,18 +289,20 @@ impl ToolRegistry for FtsTools {
                 };
 
                 serialize_response(&response)
-            })),
+            }));
+        }
 
-            "search_status" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_STATUS) {
+            return Some(Box::pin(async move {
                 let response = SearchStatusResponse {
                     backend: backend.name().to_string(),
                     ready: backend.is_ready(),
                 };
                 serialize_response(&response)
-            })),
-
-            _ => None,
+            }));
         }
+
+        None
     }
 }
 
@@ -469,5 +518,54 @@ mod tests {
         let backend: Box<dyn SearchBackend> = Box::new(MockSearchBackend::new());
         let tools = FtsTools::from_boxed(backend);
         assert_eq!(tools.tool_count(), 2);
+    }
+
+    #[test]
+    fn test_fts_tools_with_custom_names() {
+        let tools = FtsTools::new(MockSearchBackend::new()).with_names(HashMap::from([
+            ("search".to_string(), "search_concepts".to_string()),
+            ("search_status".to_string(), "fts_status".to_string()),
+        ]));
+        let tool_list = tools.tools();
+        assert_eq!(tool_list[0].name, "search_concepts");
+        assert_eq!(tool_list[1].name, "fts_status");
+    }
+
+    #[tokio::test]
+    async fn test_fts_tools_custom_names_dispatch() {
+        let tools = FtsTools::new(MockSearchBackend::new()).with_names(HashMap::from([(
+            "search".to_string(),
+            "search_concepts".to_string(),
+        )]));
+        // Old name should NOT work
+        assert!(
+            tools
+                .call("search", serde_json::json!({"query": "test"}))
+                .is_none()
+        );
+        // Custom name should work
+        let future = tools
+            .call("search_concepts", serde_json::json!({"query": "test"}))
+            .unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
+    }
+
+    #[test]
+    fn test_fts_tools_with_custom_descriptions() {
+        let tools = FtsTools::new(MockSearchBackend::new()).with_descriptions(HashMap::from([(
+            "search".to_string(),
+            "Custom search desc".to_string(),
+        )]));
+        let tool_list = tools.tools();
+        assert_eq!(
+            tool_list[0].description.as_ref().unwrap(),
+            "Custom search desc"
+        );
+        // Other tool keeps default
+        assert_eq!(
+            tool_list[1].description.as_ref().unwrap(),
+            "Get search backend status"
+        );
     }
 }

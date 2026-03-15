@@ -140,15 +140,22 @@ pub struct SemanticSearchTools {
     fts: Arc<dyn SearchBackend>,
     vector: Option<Arc<dyn VectorBackend>>,
     vector_slot: Option<VectorSlot>,
+    custom_names: HashMap<String, String>,
+    custom_descriptions: HashMap<String, String>,
 }
 
 impl SemanticSearchTools {
+    /// Slot key for the semantic search tool.
+    pub const SLOT_SEMANTIC_SEARCH: &str = "semantic_search";
+
     /// Create semantic search tools with FTS and optional vector backends.
     pub fn new(fts: Arc<dyn SearchBackend>, vector: Option<Arc<dyn VectorBackend>>) -> Self {
         Self {
             fts,
             vector,
             vector_slot: None,
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
         }
     }
 
@@ -158,6 +165,8 @@ impl SemanticSearchTools {
             fts: Arc::from(fts),
             vector: vector.map(Arc::from),
             vector_slot: None,
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
         }
     }
 
@@ -178,7 +187,35 @@ impl SemanticSearchTools {
             fts,
             vector: None,
             vector_slot: Some(vector_slot),
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
         }
+    }
+
+    /// Override tool names by slot key.
+    pub fn with_names(mut self, names: HashMap<String, String>) -> Self {
+        self.custom_names = names;
+        self
+    }
+
+    /// Override tool descriptions by slot key.
+    pub fn with_descriptions(mut self, descriptions: HashMap<String, String>) -> Self {
+        self.custom_descriptions = descriptions;
+        self
+    }
+
+    fn tool_name(&self, slot: &str) -> String {
+        self.custom_names
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| slot.to_string())
+    }
+
+    fn tool_description(&self, slot: &str, default: &str) -> String {
+        self.custom_descriptions
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| default.to_string())
     }
 
     /// Resolve the vector backend: prefer the direct field, then try the shared slot.
@@ -198,9 +235,12 @@ impl SemanticSearchTools {
 impl ToolRegistry for SemanticSearchTools {
     fn tools(&self) -> Vec<Tool> {
         vec![make_tool(
-            "semantic_search",
-            "Search concepts using semantic similarity. Supports 'vector' (embedding-based), \
-             'keyword' (FTS), or 'hybrid' (both via RRF, default).",
+            &self.tool_name(Self::SLOT_SEMANTIC_SEARCH),
+            &self.tool_description(
+                Self::SLOT_SEMANTIC_SEARCH,
+                "Search concepts using semantic similarity. Supports 'vector' (embedding-based), \
+                 'keyword' (FTS), or 'hybrid' (both via RRF, default).",
+            ),
             serde_json::json!({
                 "type": "object",
                 "properties": {
@@ -232,7 +272,7 @@ impl ToolRegistry for SemanticSearchTools {
     }
 
     fn call(&self, name: &str, args: Value) -> Option<ToolResult> {
-        if name != "semantic_search" {
+        if name != self.tool_name(Self::SLOT_SEMANTIC_SEARCH) {
             return None;
         }
 
@@ -465,6 +505,20 @@ mod tests {
     fn test_unknown_tool_returns_none() {
         let tools = make_tools_fts_only();
         assert!(tools.call("nonexistent", Value::Null).is_none());
+    }
+
+    // -- Custom name/description tests -------------------------------------
+
+    #[test]
+    fn test_custom_tool_name() {
+        let tools = make_tools_fts_only().with_names(HashMap::from([(
+            "semantic_search".to_string(),
+            "my_search".to_string(),
+        )]));
+        let tool_list = tools.tools();
+        assert_eq!(tool_list[0].name, "my_search");
+        assert!(!tools.has_tool("semantic_search"));
+        assert!(tools.has_tool("my_search"));
     }
 
     // -- Keyword mode tests ------------------------------------------------

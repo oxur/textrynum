@@ -140,10 +140,10 @@ impl SimpleVectorBackend {
         };
 
         // Ensure parent directory exists
-        if let Some(parent) = path.parent() {
-            if !parent.exists() {
-                std::fs::create_dir_all(parent).map_err(|e| Error::io_with_path(e, parent))?;
-            }
+        if let Some(parent) = path.parent()
+            && !parent.exists()
+        {
+            std::fs::create_dir_all(parent).map_err(|e| Error::io_with_path(e, parent))?;
         }
 
         let json = serde_json::to_string(&cache)
@@ -193,10 +193,10 @@ impl SimpleVectorBackend {
         }
 
         // Read only the content_hash field without deserializing the full document array
-        if let Ok(json) = std::fs::read_to_string(path) {
-            if let Ok(cache) = serde_json::from_str::<VectorCacheHeader>(&json) {
-                return cache.content_hash == content_hash;
-            }
+        if let Ok(json) = std::fs::read_to_string(path)
+            && let Ok(cache) = serde_json::from_str::<VectorCacheHeader>(&json)
+        {
+            return cache.content_hash == content_hash;
         }
 
         false

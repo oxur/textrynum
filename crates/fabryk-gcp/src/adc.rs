@@ -51,17 +51,15 @@ impl From<&str> for CredentialType {
 ///
 /// Returns `None` if no candidate file exists.
 pub fn resolve_adc_path() -> Option<PathBuf> {
-    if let Ok(env_path) = std::env::var("GOOGLE_APPLICATION_CREDENTIALS") {
-        if !env_path.is_empty() {
-            let p = PathBuf::from(&env_path);
-            if p.exists() {
-                log::debug!("ADC path from GOOGLE_APPLICATION_CREDENTIALS: {env_path}");
-                return Some(p);
-            }
-            log::warn!(
-                "GOOGLE_APPLICATION_CREDENTIALS set to '{env_path}' but file does not exist"
-            );
+    if let Ok(env_path) = std::env::var("GOOGLE_APPLICATION_CREDENTIALS")
+        && !env_path.is_empty()
+    {
+        let p = PathBuf::from(&env_path);
+        if p.exists() {
+            log::debug!("ADC path from GOOGLE_APPLICATION_CREDENTIALS: {env_path}");
+            return Some(p);
         }
+        log::warn!("GOOGLE_APPLICATION_CREDENTIALS set to '{env_path}' but file does not exist");
     }
 
     let home = dirs::home_dir()?;

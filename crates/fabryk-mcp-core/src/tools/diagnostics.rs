@@ -100,15 +100,15 @@ impl<C: Serialize + Send + Sync + 'static> ToolRegistry for DiagnosticTools<C> {
                         .map_err(|e| ErrorData::internal_error(e.to_string(), None))?;
 
                     // Redact sensitive fields under oauth
-                    if let Some(oauth) = config_json.get_mut("oauth") {
-                        if let Some(obj) = oauth.as_object_mut() {
-                            for key in &["client_id", "client_secret"] {
-                                if obj.contains_key(*key) {
-                                    obj.insert(
-                                        key.to_string(),
-                                        Value::String("***redacted***".to_string()),
-                                    );
-                                }
+                    if let Some(oauth) = config_json.get_mut("oauth")
+                        && let Some(obj) = oauth.as_object_mut()
+                    {
+                        for key in &["client_id", "client_secret"] {
+                            if obj.contains_key(*key) {
+                                obj.insert(
+                                    key.to_string(),
+                                    Value::String("***redacted***".to_string()),
+                                );
                             }
                         }
                     }

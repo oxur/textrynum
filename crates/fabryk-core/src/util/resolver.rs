@@ -116,25 +116,25 @@ impl PathResolver {
         }
 
         // 2. Walk up from binary location
-        if let (Some(bin_dir), Some(marker)) = (binary_dir(), &self.config_marker) {
-            if let Some(root) = find_dir_with_marker(&bin_dir, marker) {
-                // The marker might be nested (e.g., "config/default.toml")
-                // Return the directory containing the first component
-                if let Some(first_component) = marker.split('/').next() {
-                    let config_path = root.join(first_component);
-                    if config_path.exists() {
-                        return Some(config_path);
-                    }
+        if let (Some(bin_dir), Some(marker)) = (binary_dir(), &self.config_marker)
+            && let Some(root) = find_dir_with_marker(&bin_dir, marker)
+        {
+            // The marker might be nested (e.g., "config/default.toml")
+            // Return the directory containing the first component
+            if let Some(first_component) = marker.split('/').next() {
+                let config_path = root.join(first_component);
+                if config_path.exists() {
+                    return Some(config_path);
                 }
-                return Some(root);
             }
+            return Some(root);
         }
 
         // 3. Try fallback
-        if let Some(fallback) = &self.config_fallback {
-            if fallback.exists() {
-                return Some(fallback.clone());
-            }
+        if let Some(fallback) = &self.config_fallback
+            && fallback.exists()
+        {
+            return Some(fallback.clone());
         }
 
         None
@@ -166,10 +166,10 @@ impl PathResolver {
         }
 
         // 3. Try fallback
-        if let Some(fallback) = &self.project_fallback {
-            if fallback.exists() {
-                return Some(fallback.clone());
-            }
+        if let Some(fallback) = &self.project_fallback
+            && fallback.exists()
+        {
+            return Some(fallback.clone());
         }
 
         None
