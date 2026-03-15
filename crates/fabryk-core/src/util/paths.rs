@@ -68,10 +68,10 @@ pub fn find_dir_with_marker<P: AsRef<Path>>(start: P, marker: &str) -> Option<Pa
 /// ```
 pub fn expand_tilde<P: AsRef<Path>>(path: P) -> PathBuf {
     let path = path.as_ref();
-    if let Ok(stripped) = path.strip_prefix("~") {
-        if let Some(home) = dirs::home_dir() {
-            return home.join(stripped);
-        }
+    if let Ok(stripped) = path.strip_prefix("~")
+        && let Some(home) = dirs::home_dir()
+    {
+        return home.join(stripped);
     }
     path.to_path_buf()
 }

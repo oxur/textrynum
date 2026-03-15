@@ -108,12 +108,12 @@ impl FabrykConfig {
         let mut builder =
             Confygery::new().map_err(|e| Error::config(format!("config init: {e}")))?;
 
-        if let Some(path) = Self::resolve_config_path(config_path) {
-            if path.exists() {
-                builder
-                    .add_file(&path.to_string_lossy())
-                    .map_err(|e| Error::config(format!("config file: {e}")))?;
-            }
+        if let Some(path) = Self::resolve_config_path(config_path)
+            && path.exists()
+        {
+            builder
+                .add_file(&path.to_string_lossy())
+                .map_err(|e| Error::config(format!("config file: {e}")))?;
         }
 
         let mut env_opts = env::Options::with_top_level("FABRYK");

@@ -170,28 +170,28 @@ impl<E: GraphExtractor> GraphBuilder<E> {
             .clone();
 
         // Check cache freshness (if cache configured and not skipped)
-        if let Some(ref cache_path) = self.cache_path {
-            if !self.skip_cache {
-                let content_hash = compute_content_hash(&content_path)?;
-                if persistence::is_cache_fresh(cache_path, &content_hash) {
-                    log::info!(
-                        "Graph cache is fresh, loading from {}",
-                        cache_path.display()
-                    );
-                    let graph = persistence::load_graph(cache_path)?;
-                    let stats = BuildStats {
-                        nodes_created: graph.node_count(),
-                        edges_created: graph.edge_count(),
-                        files_processed: 0,
-                        files_skipped: 0,
-                        errors: Vec::new(),
-                        manual_edges_loaded: 0,
-                        dangling_refs: Vec::new(),
-                        deduped_edges: 0,
-                        from_cache: true,
-                    };
-                    return Ok((graph, stats));
-                }
+        if let Some(ref cache_path) = self.cache_path
+            && !self.skip_cache
+        {
+            let content_hash = compute_content_hash(&content_path)?;
+            if persistence::is_cache_fresh(cache_path, &content_hash) {
+                log::info!(
+                    "Graph cache is fresh, loading from {}",
+                    cache_path.display()
+                );
+                let graph = persistence::load_graph(cache_path)?;
+                let stats = BuildStats {
+                    nodes_created: graph.node_count(),
+                    edges_created: graph.edge_count(),
+                    files_processed: 0,
+                    files_skipped: 0,
+                    errors: Vec::new(),
+                    manual_edges_loaded: 0,
+                    dangling_refs: Vec::new(),
+                    deduped_edges: 0,
+                    from_cache: true,
+                };
+                return Ok((graph, stats));
             }
         }
 
@@ -301,10 +301,10 @@ impl<E: GraphExtractor> GraphBuilder<E> {
                 ..Default::default()
             };
             // Ensure parent directory exists
-            if let Some(parent) = cache_path.parent() {
-                if !parent.exists() {
-                    std::fs::create_dir_all(parent).map_err(|e| Error::io_with_path(e, parent))?;
-                }
+            if let Some(parent) = cache_path.parent()
+                && !parent.exists()
+            {
+                std::fs::create_dir_all(parent).map_err(|e| Error::io_with_path(e, parent))?;
             }
             if let Err(e) = persistence::save_graph(&graph, cache_path, Some(metadata)) {
                 log::warn!("Failed to save graph cache: {e}");

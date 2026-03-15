@@ -105,20 +105,19 @@ pub async fn find_file_by_id(base_path: &Path, id: &str, options: FindOptions) -
         }
 
         // Check extension if specified
-        if let Some(ext) = options.extension {
-            if path.extension().and_then(|e| e.to_str()) != Some(ext) {
-                continue;
-            }
+        if let Some(ext) = options.extension
+            && path.extension().and_then(|e| e.to_str()) != Some(ext)
+        {
+            continue;
         }
 
         // Match by file stem
-        if let Some(stem) = path.file_stem().and_then(|s| s.to_str()) {
-            if stem == id
+        if let Some(stem) = path.file_stem().and_then(|s| s.to_str())
+            && (stem == id
                 || stem.starts_with(&format!("{}-", id))
-                || stem.starts_with(&format!("{}_", id))
-            {
-                return Ok(path.to_path_buf());
-            }
+                || stem.starts_with(&format!("{}_", id)))
+        {
+            return Ok(path.to_path_buf());
         }
     }
 
@@ -181,10 +180,10 @@ pub async fn find_all_files(base_path: &Path, options: FindOptions) -> Result<Ve
         }
 
         // Check extension if specified
-        if let Some(ext) = options.extension {
-            if path.extension().and_then(|e| e.to_str()) != Some(ext) {
-                continue;
-            }
+        if let Some(ext) = options.extension
+            && path.extension().and_then(|e| e.to_str()) != Some(ext)
+        {
+            continue;
         }
 
         let stem = path

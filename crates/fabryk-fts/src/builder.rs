@@ -233,17 +233,16 @@ impl IndexBuilder {
         let content_hash = IndexMetadata::compute_hash(content_path).await?;
 
         // Check freshness (unless forced)
-        if !self.skip_freshness_check {
-            if let Ok(Some(metadata)) = IndexMetadata::load(index_path) {
-                if metadata.content_hash == content_hash {
-                    log::info!("Index is fresh, skipping rebuild");
-                    return Ok(IndexStats {
-                        documents_indexed: metadata.document_count,
-                        content_hash,
-                        ..Default::default()
-                    });
-                }
-            }
+        if !self.skip_freshness_check
+            && let Ok(Some(metadata)) = IndexMetadata::load(index_path)
+            && metadata.content_hash == content_hash
+        {
+            log::info!("Index is fresh, skipping rebuild");
+            return Ok(IndexStats {
+                documents_indexed: metadata.document_count,
+                content_hash,
+                ..Default::default()
+            });
         }
 
         log::info!("Building index from {:?}", content_path);
@@ -363,20 +362,20 @@ impl IndexBuilder {
         if !self.skip_freshness_check {
             let content_hash = IndexMetadata::compute_hash(content_path).await?;
             let append_key = format!("append:{}", content_path.to_string_lossy());
-            if let Ok(Some(metadata)) = AppendMetadata::load(index_path) {
-                if metadata.is_source_fresh(&append_key, &content_hash) {
-                    let cached_count = metadata.source_doc_count(&append_key);
-                    log::info!(
-                        "Append source {} is fresh, skipping ({} documents)",
-                        content_path.display(),
-                        cached_count
-                    );
-                    return Ok(IndexStats {
-                        documents_indexed: cached_count,
-                        content_hash,
-                        ..Default::default()
-                    });
-                }
+            if let Ok(Some(metadata)) = AppendMetadata::load(index_path)
+                && metadata.is_source_fresh(&append_key, &content_hash)
+            {
+                let cached_count = metadata.source_doc_count(&append_key);
+                log::info!(
+                    "Append source {} is fresh, skipping ({} documents)",
+                    content_path.display(),
+                    cached_count
+                );
+                return Ok(IndexStats {
+                    documents_indexed: cached_count,
+                    content_hash,
+                    ..Default::default()
+                });
             }
         }
 

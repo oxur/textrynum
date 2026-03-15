@@ -179,10 +179,10 @@ impl SearchDocument {
         let query_lower = query.to_lowercase();
 
         // Try description first
-        if let Some(ref desc) = self.description {
-            if let Some(snippet) = find_snippet(desc, &query_lower, max_length) {
-                return Some(snippet);
-            }
+        if let Some(ref desc) = self.description
+            && let Some(snippet) = find_snippet(desc, &query_lower, max_length)
+        {
+            return Some(snippet);
         }
 
         // Try content

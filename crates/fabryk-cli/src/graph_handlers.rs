@@ -266,10 +266,10 @@ async fn query_path(graph: &GraphData, from: &str, to: &str) -> Result<()> {
 
     println!("Path from '{from}' to '{to}':");
     for (i, node) in result.path.iter().enumerate() {
-        if i > 0 {
-            if let Some(edge) = result.edges.get(i - 1) {
-                println!("    --[{}]--> ", edge.relationship.name());
-            }
+        if i > 0
+            && let Some(edge) = result.edges.get(i - 1)
+        {
+            println!("    --[{}]--> ", edge.relationship.name());
         }
         println!("  {}. {} ({})", i + 1, node.id, node.title);
     }

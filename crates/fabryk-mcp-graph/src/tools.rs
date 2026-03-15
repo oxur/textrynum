@@ -13,6 +13,7 @@ use fabryk_graph::{
 };
 use serde::Deserialize;
 use serde_json::{Value, json};
+use std::collections::HashMap;
 use std::sync::Arc;
 use tokio::sync::RwLock;
 
@@ -123,19 +124,56 @@ pub struct NeighborhoodArgs {
 /// ```
 pub struct GraphTools {
     graph: Arc<RwLock<GraphData>>,
+    custom_names: HashMap<String, String>,
+    custom_descriptions: HashMap<String, String>,
 }
 
 impl GraphTools {
+    /// Slot key for the related nodes tool.
+    pub const SLOT_RELATED: &str = "graph_related";
+    /// Slot key for the shortest path tool.
+    pub const SLOT_PATH: &str = "graph_path";
+    /// Slot key for the prerequisites tool.
+    pub const SLOT_PREREQUISITES: &str = "graph_prerequisites";
+    /// Slot key for the neighborhood tool.
+    pub const SLOT_NEIGHBORHOOD: &str = "graph_neighborhood";
+    /// Slot key for the graph info/stats tool.
+    pub const SLOT_INFO: &str = "graph_info";
+    /// Slot key for the validation tool.
+    pub const SLOT_VALIDATE: &str = "graph_validate";
+    /// Slot key for the centrality tool.
+    pub const SLOT_CENTRALITY: &str = "graph_centrality";
+    /// Slot key for the bridges tool.
+    pub const SLOT_BRIDGES: &str = "graph_bridges";
+
     /// Create new graph tools with owned graph data.
     pub fn new(graph: GraphData) -> Self {
         Self {
             graph: Arc::new(RwLock::new(graph)),
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
         }
     }
 
     /// Create graph tools with a shared graph reference.
     pub fn with_shared(graph: Arc<RwLock<GraphData>>) -> Self {
-        Self { graph }
+        Self {
+            graph,
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
+        }
+    }
+
+    /// Override tool names by slot key.
+    pub fn with_names(mut self, names: HashMap<String, String>) -> Self {
+        self.custom_names = names;
+        self
+    }
+
+    /// Override tool descriptions by slot key.
+    pub fn with_descriptions(mut self, descriptions: HashMap<String, String>) -> Self {
+        self.custom_descriptions = descriptions;
+        self
     }
 
     /// Update the graph data (e.g., after rebuild).
@@ -143,14 +181,28 @@ impl GraphTools {
         let mut lock = self.graph.write().await;
         *lock = graph;
     }
+
+    fn tool_name(&self, slot: &str) -> String {
+        self.custom_names
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| slot.to_string())
+    }
+
+    fn tool_description(&self, slot: &str, default: &str) -> String {
+        self.custom_descriptions
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| default.to_string())
+    }
 }
 
 impl ToolRegistry for GraphTools {
     fn tools(&self) -> Vec<Tool> {
         vec![
             make_tool(
-                "graph_related",
-                "Find nodes related to a given node",
+                &self.tool_name(Self::SLOT_RELATED),
+                &self.tool_description(Self::SLOT_RELATED, "Find nodes related to a given node"),
                 json!({
                     "type": "object",
                     "properties": {
@@ -171,8 +223,8 @@ impl ToolRegistry for GraphTools {
                 }),
             ),
             make_tool(
-                "graph_path",
-                "Find the shortest path between two nodes",
+                &self.tool_name(Self::SLOT_PATH),
+                &self.tool_description(Self::SLOT_PATH, "Find the shortest path between two nodes"),
                 json!({
                     "type": "object",
                     "properties": {
@@ -189,8 +241,11 @@ impl ToolRegistry for GraphTools {
                 }),
             ),
             make_tool(
-                "graph_prerequisites",
-                "Get prerequisites for a node in learning order",
+                &self.tool_name(Self::SLOT_PREREQUISITES),
+                &self.tool_description(
+                    Self::SLOT_PREREQUISITES,
+                    "Get prerequisites for a node in learning order",
+                ),
                 json!({
                     "type": "object",
                     "properties": {
@@ -203,8 +258,11 @@ impl ToolRegistry for GraphTools {
                 }),
             ),
             make_tool(
-                "graph_neighborhood",
-                "Explore the neighborhood around a node",
+                &self.tool_name(Self::SLOT_NEIGHBORHOOD),
+                &self.tool_description(
+                    Self::SLOT_NEIGHBORHOOD,
+                    "Explore the neighborhood around a node",
+                ),
                 json!({
                     "type": "object",
                     "properties": {
@@ -225,24 +283,27 @@ impl ToolRegistry for GraphTools {
                 }),
             ),
             make_tool(
-                "graph_info",
-                "Get graph statistics and overview",
+                &self.tool_name(Self::SLOT_INFO),
+                &self.tool_description(Self::SLOT_INFO, "Get graph statistics and overview"),
                 json!({
                     "type": "object",
                     "properties": {}
                 }),
             ),
             make_tool(
-                "graph_validate",
-                "Validate graph structure and report issues",
+                &self.tool_name(Self::SLOT_VALIDATE),
+                &self.tool_description(
+                    Self::SLOT_VALIDATE,
+                    "Validate graph structure and report issues",
+                ),
                 json!({
                     "type": "object",
                     "properties": {}
                 }),
             ),
             make_tool(
-                "graph_centrality",
-                "Get most central/important nodes",
+                &self.tool_name(Self::SLOT_CENTRALITY),
+                &self.tool_description(Self::SLOT_CENTRALITY, "Get most central/important nodes"),
                 json!({
                     "type": "object",
                     "properties": {
@@ -254,8 +315,11 @@ impl ToolRegistry for GraphTools {
                 }),
             ),
             make_tool(
-                "graph_bridges",
-                "Find bridge nodes that connect different areas",
+                &self.tool_name(Self::SLOT_BRIDGES),
+                &self.tool_description(
+                    Self::SLOT_BRIDGES,
+                    "Find bridge nodes that connect different areas",
+                ),
                 json!({
                     "type": "object",
                     "properties": {
@@ -272,8 +336,8 @@ impl ToolRegistry for GraphTools {
     fn call(&self, name: &str, args: Value) -> Option<ToolResult> {
         let graph = Arc::clone(&self.graph);
 
-        match name {
-            "graph_related" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_RELATED) {
+            return Some(Box::pin(async move {
                 let args: RelatedArgs = serde_json::from_value(args)
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
                 let graph = graph.read().await;
@@ -300,9 +364,11 @@ impl ToolRegistry for GraphTools {
                     "count": count
                 });
                 serialize_response(&response)
-            })),
+            }));
+        }
 
-            "graph_path" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_PATH) {
+            return Some(Box::pin(async move {
                 let args: PathArgs = serde_json::from_value(args)
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
                 let graph = graph.read().await;
@@ -341,9 +407,11 @@ impl ToolRegistry for GraphTools {
                     });
                     serialize_response(&response)
                 }
-            })),
+            }));
+        }
 
-            "graph_prerequisites" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_PREREQUISITES) {
+            return Some(Box::pin(async move {
                 let args: PrerequisitesArgs = serde_json::from_value(args)
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
                 let graph = graph.read().await;
@@ -362,9 +430,11 @@ impl ToolRegistry for GraphTools {
                     "has_cycles": result.has_cycles
                 });
                 serialize_response(&response)
-            })),
+            }));
+        }
 
-            "graph_neighborhood" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_NEIGHBORHOOD) {
+            return Some(Box::pin(async move {
                 let args: NeighborhoodArgs = serde_json::from_value(args)
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
                 let graph = graph.read().await;
@@ -400,21 +470,27 @@ impl ToolRegistry for GraphTools {
                     "edge_count": edges.len()
                 });
                 serialize_response(&response)
-            })),
+            }));
+        }
 
-            "graph_info" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_INFO) {
+            return Some(Box::pin(async move {
                 let graph = graph.read().await;
                 let stats = compute_stats(&graph);
                 serialize_response(&stats)
-            })),
+            }));
+        }
 
-            "graph_validate" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_VALIDATE) {
+            return Some(Box::pin(async move {
                 let graph = graph.read().await;
                 let result = validate_graph(&graph);
                 serialize_response(&result)
-            })),
+            }));
+        }
 
-            "graph_centrality" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_CENTRALITY) {
+            return Some(Box::pin(async move {
                 let limit = args
                     .get("limit")
                     .and_then(|v| v.as_u64())
@@ -426,9 +502,11 @@ impl ToolRegistry for GraphTools {
 
                 let top: Vec<_> = scores.into_iter().take(limit).collect();
                 serialize_response(&top)
-            })),
+            }));
+        }
 
-            "graph_bridges" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_BRIDGES) {
+            return Some(Box::pin(async move {
                 let limit = args
                     .get("limit")
                     .and_then(|v| v.as_u64())
@@ -440,10 +518,10 @@ impl ToolRegistry for GraphTools {
 
                 let summaries: Vec<NodeSummary> = bridges.iter().map(NodeSummary::from).collect();
                 serialize_response(&summaries)
-            })),
-
-            _ => None,
+            }));
         }
+
+        None
     }
 }
 
@@ -693,6 +771,41 @@ mod tests {
             parse_relationship("extends"),
             Relationship::Extends
         ));
+    }
+
+    // -- Custom name/description tests -------------------------------------
+
+    #[test]
+    fn test_graph_tools_with_custom_names() {
+        let tools = GraphTools::new(GraphData::new()).with_names(HashMap::from([
+            (
+                "graph_related".to_string(),
+                "get_related_concepts".to_string(),
+            ),
+            ("graph_path".to_string(), "find_concept_path".to_string()),
+            ("graph_info".to_string(), "graph_stats".to_string()),
+        ]));
+        let tool_list = tools.tools();
+        let names: Vec<&str> = tool_list.iter().map(|t| t.name.as_ref()).collect();
+        assert!(names.contains(&"get_related_concepts"));
+        assert!(names.contains(&"find_concept_path"));
+        assert!(names.contains(&"graph_stats"));
+        // Unrenamed tools keep defaults
+        assert!(names.contains(&"graph_prerequisites"));
+    }
+
+    #[tokio::test]
+    async fn test_graph_tools_custom_names_dispatch() {
+        let tools = GraphTools::new(make_test_graph()).with_names(HashMap::from([(
+            "graph_info".to_string(),
+            "graph_stats".to_string(),
+        )]));
+        // Old name should NOT work
+        assert!(tools.call("graph_info", json!({})).is_none());
+        // Custom name should work
+        let future = tools.call("graph_stats", json!({})).unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
     }
 
     #[test]

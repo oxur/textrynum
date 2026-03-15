@@ -9,6 +9,7 @@ use fabryk_mcp_core::model::{CallToolResult, Content, ErrorData, Tool};
 use fabryk_mcp_core::registry::{ToolRegistry, ToolResult};
 use serde::Deserialize;
 use serde_json::Value;
+use std::collections::HashMap;
 use std::sync::Arc;
 
 // ---------------------------------------------------------------------------
@@ -97,14 +98,25 @@ pub struct ListChaptersArgs {
 pub struct ContentTools<P: ContentItemProvider> {
     provider: Arc<P>,
     tool_prefix: String,
+    custom_names: HashMap<String, String>,
+    custom_descriptions: HashMap<String, String>,
 }
 
 impl<P: ContentItemProvider + 'static> ContentTools<P> {
+    /// Slot key for the list tool.
+    pub const SLOT_LIST: &str = "list";
+    /// Slot key for the get tool.
+    pub const SLOT_GET: &str = "get";
+    /// Slot key for the categories tool.
+    pub const SLOT_CATEGORIES: &str = "categories";
+
     /// Create new content tools with the given provider.
     pub fn new(provider: P) -> Self {
         Self {
             provider: Arc::new(provider),
             tool_prefix: String::new(),
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
         }
     }
 
@@ -113,6 +125,8 @@ impl<P: ContentItemProvider + 'static> ContentTools<P> {
         Self {
             provider,
             tool_prefix: String::new(),
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
         }
     }
 
@@ -122,12 +136,39 @@ impl<P: ContentItemProvider + 'static> ContentTools<P> {
         self
     }
 
-    fn tool_name(&self, base: &str) -> String {
-        if self.tool_prefix.is_empty() {
-            base.to_string()
-        } else {
-            format!("{}_{}", self.tool_prefix, base)
+    /// Override individual tool names.
+    ///
+    /// Keys are slot constants (`SLOT_LIST`, etc.), values are custom
+    /// MCP-visible names. Unspecified slots keep their default names.
+    pub fn with_names(mut self, names: HashMap<String, String>) -> Self {
+        self.custom_names = names;
+        self
+    }
+
+    /// Override individual tool descriptions.
+    ///
+    /// Keys are slot constants, values are custom descriptions.
+    pub fn with_descriptions(mut self, descriptions: HashMap<String, String>) -> Self {
+        self.custom_descriptions = descriptions;
+        self
+    }
+
+    fn tool_name(&self, slot: &str) -> String {
+        if let Some(custom) = self.custom_names.get(slot) {
+            return custom.clone();
         }
+        if self.tool_prefix.is_empty() {
+            slot.to_string()
+        } else {
+            format!("{}_{}", self.tool_prefix, slot)
+        }
+    }
+
+    fn tool_description(&self, slot: &str, default: &str) -> String {
+        self.custom_descriptions
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| default.to_string())
     }
 }
 
@@ -139,7 +180,7 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
         vec![
             make_tool(
                 &self.tool_name("list"),
-                &format!("List all {type_plural} with optional category filter"),
+                &self.tool_description("list", &format!("List all {type_plural} with optional category filter")),
                 serde_json::json!({
                     "type": "object",
                     "properties": {
@@ -156,9 +197,9 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
             ),
             make_tool(
                 &self.tool_name("get"),
-                &format!(
+                &self.tool_description("get", &format!(
                     "Get a specific {type_name} by its slug identifier (the id field from {type_plural}_list results)"
-                ),
+                )),
                 serde_json::json!({
                     "type": "object",
                     "properties": {
@@ -176,7 +217,7 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
             ),
             make_tool(
                 &self.tool_name("categories"),
-                &format!("List available {type_name} categories"),
+                &self.tool_description("categories", &format!("List available {type_name} categories")),
                 serde_json::json!({
                     "type": "object",
                     "properties": {}
@@ -238,19 +279,65 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
 /// - `sources_get_chapter` — get content from a source chapter
 pub struct SourceTools<P: SourceProvider> {
     provider: Arc<P>,
+    custom_names: HashMap<String, String>,
+    custom_descriptions: HashMap<String, String>,
 }
 
 impl<P: SourceProvider + 'static> SourceTools<P> {
+    /// Slot key for the list sources tool.
+    pub const SLOT_LIST: &str = "sources_list";
+    /// Slot key for the list chapters tool.
+    pub const SLOT_CHAPTERS: &str = "sources_chapters";
+    /// Slot key for the get chapter tool.
+    pub const SLOT_GET_CHAPTER: &str = "sources_get_chapter";
+
     /// Create new source tools with the given provider.
     pub fn new(provider: P) -> Self {
         Self {
             provider: Arc::new(provider),
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
         }
     }
 
     /// Create source tools with a shared provider reference.
     pub fn with_shared(provider: Arc<P>) -> Self {
-        Self { provider }
+        Self {
+            provider,
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
+        }
+    }
+
+    /// Override individual tool names.
+    ///
+    /// Keys are slot constants (`SLOT_LIST`, etc.), values are custom
+    /// MCP-visible names. Unspecified slots keep their default names.
+    pub fn with_names(mut self, names: HashMap<String, String>) -> Self {
+        self.custom_names = names;
+        self
+    }
+
+    /// Override individual tool descriptions.
+    ///
+    /// Keys are slot constants, values are custom descriptions.
+    pub fn with_descriptions(mut self, descriptions: HashMap<String, String>) -> Self {
+        self.custom_descriptions = descriptions;
+        self
+    }
+
+    fn tool_name(&self, slot: &str) -> String {
+        self.custom_names
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| slot.to_string())
+    }
+
+    fn tool_description(&self, slot: &str, default: &str) -> String {
+        self.custom_descriptions
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| default.to_string())
     }
 }
 
@@ -258,16 +345,16 @@ impl<P: SourceProvider + 'static> ToolRegistry for SourceTools<P> {
     fn tools(&self) -> Vec<Tool> {
         vec![
             make_tool(
-                "sources_list",
-                "List all source materials",
+                &self.tool_name("sources_list"),
+                &self.tool_description("sources_list", "List all source materials"),
                 serde_json::json!({
                     "type": "object",
                     "properties": {}
                 }),
             ),
             make_tool(
-                "sources_chapters",
-                "List chapters in a source",
+                &self.tool_name("sources_chapters"),
+                &self.tool_description("sources_chapters", "List chapters in a source"),
                 serde_json::json!({
                     "type": "object",
                     "properties": {
@@ -280,8 +367,8 @@ impl<P: SourceProvider + 'static> ToolRegistry for SourceTools<P> {
                 }),
             ),
             make_tool(
-                "sources_get_chapter",
-                "Get content from a source chapter",
+                &self.tool_name("sources_get_chapter"),
+                &self.tool_description("sources_get_chapter", "Get content from a source chapter"),
                 serde_json::json!({
                     "type": "object",
                     "properties": {
@@ -307,16 +394,18 @@ impl<P: SourceProvider + 'static> ToolRegistry for SourceTools<P> {
     fn call(&self, name: &str, args: Value) -> Option<ToolResult> {
         let provider = Arc::clone(&self.provider);
 
-        match name {
-            "sources_list" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_LIST) {
+            return Some(Box::pin(async move {
                 let sources = provider
                     .list_sources()
                     .await
                     .map_err(|e| e.to_mcp_error())?;
                 serialize_response(&sources)
-            })),
+            }));
+        }
 
-            "sources_chapters" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_CHAPTERS) {
+            return Some(Box::pin(async move {
                 let args: ListChaptersArgs = serde_json::from_value(args)
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
                 let chapters = provider
@@ -324,9 +413,11 @@ impl<P: SourceProvider + 'static> ToolRegistry for SourceTools<P> {
                     .await
                     .map_err(|e| e.to_mcp_error())?;
                 serialize_response(&chapters)
-            })),
+            }));
+        }
 
-            "sources_get_chapter" => Some(Box::pin(async move {
+        if name == self.tool_name(Self::SLOT_GET_CHAPTER) {
+            return Some(Box::pin(async move {
                 let args: GetChapterArgs = serde_json::from_value(args)
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
                 let content = provider
@@ -334,10 +425,10 @@ impl<P: SourceProvider + 'static> ToolRegistry for SourceTools<P> {
                     .await
                     .map_err(|e| e.to_mcp_error())?;
                 Ok(CallToolResult::success(vec![Content::text(content)]))
-            })),
-
-            _ => None,
+            }));
         }
+
+        None
     }
 }
 
@@ -713,5 +804,90 @@ mod tests {
                 .call("sources_delete", serde_json::json!({}))
                 .is_none()
         );
+    }
+
+    // -- Custom names / descriptions tests ----------------------------------
+
+    #[test]
+    fn test_content_tools_with_custom_names() {
+        let tools = ContentTools::new(MockContentProvider).with_names(HashMap::from([
+            ("list".to_string(), "list_concepts".to_string()),
+            ("get".to_string(), "get_concept".to_string()),
+            ("categories".to_string(), "list_categories".to_string()),
+        ]));
+        let tool_list = tools.tools();
+        assert_eq!(tool_list[0].name, "list_concepts");
+        assert_eq!(tool_list[1].name, "get_concept");
+        assert_eq!(tool_list[2].name, "list_categories");
+    }
+
+    #[tokio::test]
+    async fn test_content_tools_custom_names_dispatch() {
+        let tools = ContentTools::new(MockContentProvider).with_names(HashMap::from([(
+            "list".to_string(),
+            "list_concepts".to_string(),
+        )]));
+        // Old name should NOT work
+        assert!(tools.call("list", serde_json::json!({})).is_none());
+        // Custom name should work
+        let future = tools.call("list_concepts", serde_json::json!({})).unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
+    }
+
+    #[test]
+    fn test_content_tools_with_custom_descriptions() {
+        let tools = ContentTools::new(MockContentProvider)
+            .with_prefix("concepts")
+            .with_descriptions(HashMap::from([(
+                "list".to_string(),
+                "My custom list description".to_string(),
+            )]));
+        let tool_list = tools.tools();
+        assert_eq!(
+            tool_list[0].description.as_ref().unwrap(),
+            "My custom list description"
+        );
+        // Other tools keep defaults
+        assert!(
+            tool_list[1]
+                .description
+                .as_ref()
+                .unwrap()
+                .contains("concept")
+        );
+    }
+
+    #[test]
+    fn test_source_tools_with_custom_names() {
+        let tools = SourceTools::new(MockSourceProvider).with_names(HashMap::from([
+            ("sources_list".to_string(), "list_sources".to_string()),
+            (
+                "sources_chapters".to_string(),
+                "get_source_chapters".to_string(),
+            ),
+            (
+                "sources_get_chapter".to_string(),
+                "get_chapter_content".to_string(),
+            ),
+        ]));
+        let tool_list = tools.tools();
+        assert_eq!(tool_list[0].name, "list_sources");
+        assert_eq!(tool_list[1].name, "get_source_chapters");
+        assert_eq!(tool_list[2].name, "get_chapter_content");
+    }
+
+    #[tokio::test]
+    async fn test_source_tools_custom_names_dispatch() {
+        let tools = SourceTools::new(MockSourceProvider).with_names(HashMap::from([(
+            "sources_list".to_string(),
+            "list_sources".to_string(),
+        )]));
+        // Old name should NOT work
+        assert!(tools.call("sources_list", serde_json::json!({})).is_none());
+        // Custom name should work
+        let future = tools.call("list_sources", serde_json::json!({})).unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
     }
 }

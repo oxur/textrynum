@@ -62,10 +62,10 @@ fn update_dep_in_doc(
         if !table.contains_key("path") {
             return false;
         }
-        if let Some(current) = table.get("version") {
-            if current.as_str() == Some(new_version) {
-                return false;
-            }
+        if let Some(current) = table.get("version")
+            && current.as_str() == Some(new_version)
+        {
+            return false;
         }
         table.insert("version", new_version.into());
         return true;
@@ -76,10 +76,10 @@ fn update_dep_in_doc(
         if !table.contains_key("path") {
             return false;
         }
-        if let Some(item) = table.get("version") {
-            if item.as_str() == Some(new_version) {
-                return false;
-            }
+        if let Some(item) = table.get("version")
+            && item.as_str() == Some(new_version)
+        {
+            return false;
         }
         table.insert("version", toml_edit::value(new_version));
         return true;
@@ -153,10 +153,10 @@ fn update_any_dep_in_doc(
 
     // Handle inline table: { version = "X", ... }
     if let Some(table) = dep.as_inline_table_mut() {
-        if let Some(current) = table.get("version") {
-            if current.as_str() == Some(new_version) {
-                return false;
-            }
+        if let Some(current) = table.get("version")
+            && current.as_str() == Some(new_version)
+        {
+            return false;
         }
         table.insert("version", new_version.into());
         return true;
@@ -164,10 +164,10 @@ fn update_any_dep_in_doc(
 
     // Handle standard table: [dependencies.dep-name]
     if let Some(table) = dep.as_table_like_mut() {
-        if let Some(item) = table.get("version") {
-            if item.as_str() == Some(new_version) {
-                return false;
-            }
+        if let Some(item) = table.get("version")
+            && item.as_str() == Some(new_version)
+        {
+            return false;
         }
         table.insert("version", toml_edit::value(new_version));
         return true;
@@ -201,17 +201,15 @@ pub fn update_package_version(cargo_toml_path: &Path, new_version: &str) -> Resu
         return Ok(false);
     }
 
-    if let Some(pkg) = doc.get_mut("package") {
-        if let Some(table) = pkg.as_table_like_mut() {
-            table.insert("version", toml_edit::value(new_version));
-            std::fs::write(cargo_toml_path, doc.to_string()).map_err(|e| {
-                TextylError::FileWrite {
-                    path: cargo_toml_path.to_path_buf(),
-                    source: e,
-                }
-            })?;
-            return Ok(true);
-        }
+    if let Some(pkg) = doc.get_mut("package")
+        && let Some(table) = pkg.as_table_like_mut()
+    {
+        table.insert("version", toml_edit::value(new_version));
+        std::fs::write(cargo_toml_path, doc.to_string()).map_err(|e| TextylError::FileWrite {
+            path: cargo_toml_path.to_path_buf(),
+            source: e,
+        })?;
+        return Ok(true);
     }
 
     Ok(false)
@@ -243,19 +241,16 @@ pub fn update_workspace_version(root_cargo_toml: &Path, new_version: &str) -> Re
         return Ok(false);
     }
 
-    if let Some(ws) = doc.get_mut("workspace") {
-        if let Some(pkg) = ws.get_mut("package") {
-            if let Some(table) = pkg.as_table_like_mut() {
-                table.insert("version", toml_edit::value(new_version));
-                std::fs::write(root_cargo_toml, doc.to_string()).map_err(|e| {
-                    TextylError::FileWrite {
-                        path: root_cargo_toml.to_path_buf(),
-                        source: e,
-                    }
-                })?;
-                return Ok(true);
-            }
-        }
+    if let Some(ws) = doc.get_mut("workspace")
+        && let Some(pkg) = ws.get_mut("package")
+        && let Some(table) = pkg.as_table_like_mut()
+    {
+        table.insert("version", toml_edit::value(new_version));
+        std::fs::write(root_cargo_toml, doc.to_string()).map_err(|e| TextylError::FileWrite {
+            path: root_cargo_toml.to_path_buf(),
+            source: e,
+        })?;
+        return Ok(true);
     }
 
     Ok(false)

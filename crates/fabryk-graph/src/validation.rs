@@ -229,12 +229,11 @@ fn check_prerequisite_cycles(graph: &GraphData, result: &mut ValidationResult) {
     }
 
     for edge in graph.iter_edges() {
-        if edge.relationship == Relationship::Prerequisite {
-            if let (Some(&from_idx), Some(&to_idx)) =
+        if edge.relationship == Relationship::Prerequisite
+            && let (Some(&from_idx), Some(&to_idx)) =
                 (indices.get(&edge.from), indices.get(&edge.to))
-            {
-                prereq_graph.add_edge(from_idx, to_idx, ());
-            }
+        {
+            prereq_graph.add_edge(from_idx, to_idx, ());
         }
     }
 

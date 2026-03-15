@@ -138,10 +138,10 @@ pub fn neighborhood(
         for edge_ref in graph.graph.edges_directed(current_idx, Direction::Outgoing) {
             let edge_weight = edge_ref.weight();
 
-            if let Some(filter) = relationship_filter {
-                if !filter.contains(&edge_weight.relationship) {
-                    continue;
-                }
+            if let Some(filter) = relationship_filter
+                && !filter.contains(&edge_weight.relationship)
+            {
+                continue;
             }
 
             let neighbor_idx = edge_ref.target();
@@ -158,10 +158,10 @@ pub fn neighborhood(
         for edge_ref in graph.graph.edges_directed(current_idx, Direction::Incoming) {
             let edge_weight = edge_ref.weight();
 
-            if let Some(filter) = relationship_filter {
-                if !filter.contains(&edge_weight.relationship) {
-                    continue;
-                }
+            if let Some(filter) = relationship_filter
+                && !filter.contains(&edge_weight.relationship)
+            {
+                continue;
             }
 
             let neighbor_idx = edge_ref.source();
@@ -224,10 +224,10 @@ pub fn shortest_path(graph: &GraphData, from_id: &str, to_id: &str) -> Result<Pa
 
             let mut edges = Vec::new();
             for window in path_indices.windows(2) {
-                if let [from, to] = window {
-                    if let Some(edge_idx) = graph.graph.find_edge(*from, *to) {
-                        edges.push(graph.graph[edge_idx].clone());
-                    }
+                if let [from, to] = window
+                    && let Some(edge_idx) = graph.graph.find_edge(*from, *to)
+                {
+                    edges.push(graph.graph[edge_idx].clone());
                 }
             }
 
