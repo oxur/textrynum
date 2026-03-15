@@ -91,8 +91,8 @@ pub use validate::{assert_tools_valid, validate_tools, warn_on_invalid_tools};
 pub mod model {
     //! Re-exported rmcp model types.
     pub use rmcp::model::{
-        Annotated, CallToolResult, Content, ErrorData, LoggingLevel, RawResource, Resource,
-        ResourceContents, Tool,
+        AnnotateAble, Annotated, CallToolResult, Content, ErrorCode, ErrorData, LoggingLevel,
+        RawResource, Resource, ResourceContents, Tool,
     };
 }
 
