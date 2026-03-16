@@ -22,6 +22,7 @@
 
 pub mod batch;
 pub mod error;
+pub mod registry;
 pub mod runner;
 
 pub use batch::{
@@ -29,4 +30,5 @@ pub use batch::{
     execute_with_retry,
 };
 pub use error::{PipelineError, Result};
+pub use registry::{AdapterRegistry, StageRegistry};
 pub use runner::PipelineRunner;
