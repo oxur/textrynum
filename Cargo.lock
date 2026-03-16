@@ -2644,6 +2644,7 @@ dependencies = [
  "fabryk-core",
  "fabryk-graph",
  "fabryk-vector",
+ "log",
  "serde",
  "serde_json",
  "tempfile",

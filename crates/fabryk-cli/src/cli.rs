@@ -84,10 +84,10 @@ pub enum ConfigAction {
     /// Show the resolved config file path.
     Path,
 
-    /// Get a configuration value by dotted key.
+    /// Show the full configuration, or a specific value by dotted key.
     Get {
-        /// Dotted key (e.g., "server.port").
-        key: String,
+        /// Dotted key (e.g., "server.port"). Omit to show full config as TOML.
+        key: Option<String>,
     },
 
     /// Set a configuration value by dotted key.
@@ -115,6 +115,10 @@ pub enum ConfigAction {
         /// Format as Docker --env flags.
         #[arg(long)]
         docker_env: bool,
+
+        /// Write output to a file (e.g., ".env") instead of stdout.
+        #[arg(long)]
+        file: Option<String>,
     },
 }
 
@@ -413,7 +417,20 @@ mod tests {
             Some(BaseCommand::Config(ConfigCommand {
                 command: ConfigAction::Get { key },
             })) => {
-                assert_eq!(key, "server.port");
+                assert_eq!(key, Some("server.port".to_string()));
+            }
+            _ => panic!("Expected Config Get command"),
+        }
+    }
+
+    #[test]
+    fn test_config_get_no_key_dumps_all() {
+        let args = CliArgs::parse_from(["test", "config", "get"]);
+        match args.command {
+            Some(BaseCommand::Config(ConfigCommand {
+                command: ConfigAction::Get { key },
+            })) => {
+                assert!(key.is_none());
             }
             _ => panic!("Expected Config Get command"),
         }
@@ -465,9 +482,10 @@ mod tests {
         let args = CliArgs::parse_from(["test", "config", "export"]);
         match args.command {
             Some(BaseCommand::Config(ConfigCommand {
-                command: ConfigAction::Export { docker_env },
+                command: ConfigAction::Export { docker_env, file },
             })) => {
                 assert!(!docker_env);
+                assert!(file.is_none());
             }
             _ => panic!("Expected Config Export command"),
         }
@@ -478,9 +496,10 @@ mod tests {
         let args = CliArgs::parse_from(["test", "config", "export", "--docker-env"]);
         match args.command {
             Some(BaseCommand::Config(ConfigCommand {
-                command: ConfigAction::Export { docker_env },
+                command: ConfigAction::Export { docker_env, file },
             })) => {
                 assert!(docker_env);
+                assert!(file.is_none());
             }
             _ => panic!("Expected Config Export command with docker_env"),
         }

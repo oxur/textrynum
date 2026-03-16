@@ -13,6 +13,9 @@ pub mod app;
 pub mod cli;
 pub mod config;
 pub mod config_handlers;
+pub mod config_loader;
+pub mod config_sections;
+pub mod config_utils;
 pub mod graph_handlers;
 #[cfg(feature = "vector-fastembed")]
 pub mod vectordb_handlers;
@@ -29,6 +32,8 @@ pub use app::FabrykCli;
 
 // Re-exports — configuration
 pub use config::FabrykConfig;
+pub use config_loader::ConfigLoaderBuilder;
+pub use config_sections::{OAuthConfig, TlsConfig};
 
 // Re-exports — graph handler types
 pub use graph_handlers::{BuildOptions, QueryOptions};

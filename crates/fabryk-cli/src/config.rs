@@ -162,7 +162,7 @@ impl FabrykConfig {
         let value: toml::Value =
             toml::Value::try_from(self).map_err(|e| Error::config(e.to_string()))?;
         let mut vars = Vec::new();
-        flatten_toml_value(&value, "FABRYK", &mut vars);
+        crate::config_utils::flatten_toml_value(&value, "FABRYK", &mut vars);
         Ok(vars)
     }
 }
@@ -214,42 +214,6 @@ impl ConfigProvider for FabrykConfig {
         match &self.content.path {
             Some(p) => Ok(PathBuf::from(p)),
             None => Ok(self.base_path()?.join(content_type)),
-        }
-    }
-}
-
-// ============================================================================
-// Helper: flatten TOML to env vars
-// ============================================================================
-
-/// Recursively flatten a TOML value into `KEY=value` pairs.
-fn flatten_toml_value(value: &toml::Value, prefix: &str, out: &mut Vec<(String, String)>) {
-    match value {
-        toml::Value::Table(table) => {
-            for (key, val) in table {
-                let env_key = format!("{}_{}", prefix, key.to_uppercase());
-                flatten_toml_value(val, &env_key, out);
-            }
-        }
-        toml::Value::Array(arr) => {
-            if let Ok(json) = serde_json::to_string(arr) {
-                out.push((prefix.to_string(), json));
-            }
-        }
-        toml::Value::String(s) => {
-            out.push((prefix.to_string(), s.clone()));
-        }
-        toml::Value::Integer(i) => {
-            out.push((prefix.to_string(), i.to_string()));
-        }
-        toml::Value::Float(f) => {
-            out.push((prefix.to_string(), f.to_string()));
-        }
-        toml::Value::Boolean(b) => {
-            out.push((prefix.to_string(), b.to_string()));
-        }
-        toml::Value::Datetime(dt) => {
-            out.push((prefix.to_string(), dt.to_string()));
         }
     }
 }
