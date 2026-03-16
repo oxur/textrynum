@@ -22,6 +22,11 @@ backon = { workspace = true }
 tracing = { workspace = true }
 
 [dev-dependencies]
+ecl-adapter-fs = { path = "../ecl-adapter-fs", version = "0.4.0" }
+ecl-stages = { path = "../ecl-stages", version = "0.4.0" }
+async-trait = { workspace = true }
+blake3 = { workspace = true }
+tempfile = { workspace = true }
 tokio = { workspace = true, features = ["test-util"] }
 
 [lints.rust]
