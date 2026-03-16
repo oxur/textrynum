@@ -169,7 +169,8 @@ impl SearchDocument {
         if query.is_empty() || query == "*" {
             return self.description.clone().or_else(|| {
                 if self.content.len() > max_length {
-                    Some(format!("{}...", &self.content[..max_length]))
+                    let end = self.content.floor_char_boundary(max_length);
+                    Some(format!("{}...", &self.content[..end]))
                 } else {
                     Some(self.content.clone())
                 }
@@ -193,7 +194,8 @@ impl SearchDocument {
         // Fallback to description or content start
         self.description.clone().or_else(|| {
             if self.content.len() > max_length {
-                Some(format!("{}...", &self.content[..max_length]))
+                let end = self.content.floor_char_boundary(max_length);
+                Some(format!("{}...", &self.content[..end]))
             } else {
                 Some(self.content.clone())
             }
