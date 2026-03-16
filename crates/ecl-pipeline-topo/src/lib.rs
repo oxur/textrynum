@@ -384,6 +384,7 @@ resources = { creates = ["docs"] }
 }
 
 #[cfg(test)]
+#[allow(clippy::unwrap_used)]
 mod proptests {
     use super::*;
     use proptest::prelude::*;
