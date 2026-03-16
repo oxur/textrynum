@@ -34,23 +34,32 @@ use std::collections::HashMap;
 #[derive(Clone, Debug, Default, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum Relationship {
     /// A must be understood before B.
+    #[serde(alias = "prerequisite")]
     Prerequisite,
     /// Understanding A naturally leads to B.
+    #[serde(alias = "leads_to")]
     LeadsTo,
     /// A and B are conceptually related.
     #[default]
+    #[serde(alias = "relates_to")]
     RelatesTo,
     /// A extends or generalises B.
+    #[serde(alias = "extends")]
     Extends,
     /// Source A introduces concept B.
+    #[serde(alias = "introduces")]
     Introduces,
     /// Source A covers concept B.
+    #[serde(alias = "covers")]
     Covers,
     /// A is a source-specific variant of canonical concept B.
+    #[serde(alias = "variant_of")]
     VariantOf,
     /// A contrasts with or is an alternative to B.
+    #[serde(alias = "contrasts_with")]
     ContrastsWith,
     /// A answers or addresses question B.
+    #[serde(alias = "answers_question")]
     AnswersQuestion,
     /// Domain-specific relationship not covered above.
     Custom(String),
@@ -104,12 +113,16 @@ impl Relationship {
 pub enum EdgeOrigin {
     /// Extracted from content frontmatter.
     #[default]
+    #[serde(alias = "extracted", alias = "frontmatter")]
     Frontmatter,
     /// Extracted from content body (markdown sections).
+    #[serde(alias = "content_body")]
     ContentBody,
     /// Loaded from manual_edges.json.
+    #[serde(alias = "manual")]
     Manual,
     /// Inferred by an algorithm (e.g., transitive closure).
+    #[serde(alias = "inferred")]
     Inferred,
 }
 
@@ -154,6 +167,7 @@ pub struct Node {
     /// Optional source identifier (e.g., "tymoczko", "dummit-foote").
     pub source_id: Option<String>,
     /// Whether this is a canonical node (vs. source-specific variant).
+    #[serde(default = "default_is_canonical")]
     pub is_canonical: bool,
     /// If not canonical, the ID of the canonical node this relates to.
     pub canonical_id: Option<String>,
@@ -161,7 +175,12 @@ pub struct Node {
     #[serde(default)]
     pub node_type: NodeType,
     /// Domain-specific metadata as key-value pairs.
+    #[serde(default)]
     pub metadata: HashMap<String, serde_json::Value>,
+}
+
+fn default_is_canonical() -> bool {
+    true
 }
 
 impl Node {
