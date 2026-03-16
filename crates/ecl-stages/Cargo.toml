@@ -1,0 +1,37 @@
+[package]
+name = "ecl-stages"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Built-in stage implementations for ECL pipeline runner"
+
+[dependencies]
+ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.0" }
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.0" }
+ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.0" }
+ecl-adapter-fs = { path = "../ecl-adapter-fs", version = "0.4.0" }
+tokio = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+async-trait = { workspace = true }
+glob = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+blake3 = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
+tokio = { workspace = true, features = ["test-util"] }
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "warn"
+panic = "deny"

@@ -2335,6 +2335,27 @@ name = "ecl"
 version = "0.4.0"
 
 [[package]]
+name = "ecl-adapter-fs"
+version = "0.4.0"
+dependencies = [
+ "async-trait",
+ "async-walkdir",
+ "blake3",
+ "chrono",
+ "ecl-pipeline-spec",
+ "ecl-pipeline-state",
+ "ecl-pipeline-topo",
+ "futures",
+ "glob",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "thiserror 2.0.18",
+ "tokio",
+ "tracing",
+]
+
+[[package]]
 name = "ecl-cli"
 version = "0.4.0"
 dependencies = [
@@ -2447,6 +2468,26 @@ dependencies = [
  "thiserror 2.0.18",
  "tokio",
  "toml 1.0.6+spec-1.1.0",
+ "tracing",
+]
+
+[[package]]
+name = "ecl-stages"
+version = "0.4.0"
+dependencies = [
+ "async-trait",
+ "blake3",
+ "chrono",
+ "ecl-adapter-fs",
+ "ecl-pipeline-spec",
+ "ecl-pipeline-state",
+ "ecl-pipeline-topo",
+ "glob",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "thiserror 2.0.18",
+ "tokio",
  "tracing",
 ]
 

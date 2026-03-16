@@ -12,6 +12,8 @@ members = [
     "crates/ecl-pipeline-state",
     "crates/ecl-pipeline-topo",
     "crates/ecl-pipeline",
+    "crates/ecl-adapter-fs",
+    "crates/ecl-stages",
     # Fabryk crates
     "crates/fabryk",
     "crates/fabryk-core",

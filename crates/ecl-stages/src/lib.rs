@@ -1,0 +1,23 @@
+//! Built-in stage implementations for the ECL pipeline runner.
+//!
+//! Provides four stages:
+//! - [`ExtractStage`] — delegates to a `SourceAdapter` to fetch content
+//! - [`NormalizeStage`] — passthrough (placeholder for future format conversion)
+//! - [`FilterStage`] — glob-based include/exclude filtering
+//! - [`EmitStage`] — writes pipeline items to the output directory
+
+#![forbid(unsafe_code)]
+#![warn(missing_docs)]
+#![deny(clippy::unwrap_used)]
+#![warn(clippy::expect_used)]
+#![deny(clippy::panic)]
+
+pub mod emit;
+pub mod extract;
+pub mod filter;
+pub mod normalize;
+
+pub use emit::EmitStage;
+pub use extract::ExtractStage;
+pub use filter::FilterStage;
+pub use normalize::NormalizeStage;

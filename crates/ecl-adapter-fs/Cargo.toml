@@ -1,0 +1,38 @@
+[package]
+name = "ecl-adapter-fs"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Filesystem source adapter for ECL pipeline runner"
+
+[dependencies]
+ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.0" }
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.0" }
+ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.0" }
+tokio = { workspace = true }
+blake3 = { workspace = true }
+async-walkdir = { workspace = true }
+futures = { workspace = true }
+glob = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+async-trait = { workspace = true }
+chrono = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
+tokio = { workspace = true, features = ["test-util"] }
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "warn"
+panic = "deny"
