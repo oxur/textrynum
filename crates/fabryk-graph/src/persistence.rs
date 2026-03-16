@@ -38,8 +38,10 @@ pub struct SerializableGraph {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct GraphMetadata {
     /// When the graph was built (unix timestamp).
+    #[serde(default)]
     pub built_at: String,
     /// Version of the builder.
+    #[serde(default)]
     pub builder_version: String,
     /// Content hash for freshness checking.
     pub content_hash: Option<String>,
