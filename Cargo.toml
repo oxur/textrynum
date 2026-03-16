@@ -13,6 +13,7 @@ members = [
     "crates/ecl-pipeline-topo",
     "crates/ecl-pipeline",
     "crates/ecl-adapter-fs",
+    "crates/ecl-adapter-gdrive",
     "crates/ecl-stages",
     # Fabryk crates
     "crates/fabryk",
