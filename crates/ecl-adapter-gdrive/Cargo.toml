@@ -22,6 +22,7 @@ thiserror = { workspace = true }
 jsonwebtoken = { workspace = true }
 glob = { workspace = true }
 dirs = { workspace = true }
+blake3 = { workspace = true }
 
 [dev-dependencies]
 tempfile = { workspace = true }

@@ -16,7 +16,7 @@ pub mod types;
 
 pub use error::DriveAdapterError;
 
-use std::collections::VecDeque;
+use std::collections::{BTreeMap, VecDeque};
 
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
@@ -25,11 +25,15 @@ use tracing::debug;
 
 use ecl_pipeline_spec::SourceSpec;
 use ecl_pipeline_spec::source::{FileTypeFilter, FilterAction, FilterRule, GoogleDriveSourceSpec};
+use ecl_pipeline_state::{Blake3Hash, ItemProvenance};
 use ecl_pipeline_topo::error::{ResolveError, SourceError};
 use ecl_pipeline_topo::{ExtractedDocument, SourceAdapter, SourceItem};
 
 use crate::auth::TokenProvider;
-use crate::types::{DRIVE_API_BASE_URL, DriveFile, FileListResponse};
+use crate::types::{
+    DRIVE_API_BASE_URL, DriveFile, FileListResponse, MIME_DOCUMENT, MIME_PRESENTATION,
+    MIME_SPREADSHEET,
+};
 
 /// Google Drive source adapter.
 ///
@@ -303,6 +307,107 @@ impl GoogleDriveAdapter {
 
         true
     }
+
+    /// Download file content from Drive.
+    ///
+    /// Google Workspace documents (Docs, Sheets, Slides) are exported via
+    /// the export API. Regular files are downloaded via `Files.get?alt=media`.
+    async fn download_content(
+        &self,
+        token: &str,
+        item: &SourceItem,
+    ) -> Result<Vec<u8>, SourceError> {
+        let (url, is_export) = match item.mime_type.as_str() {
+            MIME_DOCUMENT => (
+                format!("{}/drive/v3/files/{}/export", self.base_url, item.id),
+                true,
+            ),
+            MIME_SPREADSHEET => (
+                format!("{}/drive/v3/files/{}/export", self.base_url, item.id),
+                true,
+            ),
+            MIME_PRESENTATION => (
+                format!("{}/drive/v3/files/{}/export", self.base_url, item.id),
+                true,
+            ),
+            _ => (
+                format!("{}/drive/v3/files/{}", self.base_url, item.id),
+                false,
+            ),
+        };
+
+        let mut request = self.http_client.get(&url).bearer_auth(token);
+
+        if is_export {
+            let export_mime = export_mime_type(&item.mime_type);
+            request = request.query(&[("mimeType", export_mime)]);
+        } else {
+            request = request.query(&[("alt", "media")]);
+        }
+
+        let response = request.send().await.map_err(|e| SourceError::Transient {
+            source_name: self.source_name.clone(),
+            message: format!("Drive download failed: {e}"),
+        })?;
+
+        let status = response.status();
+
+        if status.as_u16() == 401 {
+            return Err(SourceError::AuthError {
+                source_name: self.source_name.clone(),
+                message: "Drive API authentication failed during fetch".to_string(),
+            });
+        }
+
+        if status.as_u16() == 429 {
+            let retry_after = response
+                .headers()
+                .get("retry-after")
+                .and_then(|v| v.to_str().ok())
+                .and_then(|v| v.parse().ok())
+                .unwrap_or(60);
+            return Err(SourceError::RateLimited {
+                source_name: self.source_name.clone(),
+                retry_after_secs: retry_after,
+            });
+        }
+
+        if status.as_u16() == 404 {
+            return Err(SourceError::NotFound {
+                source_name: self.source_name.clone(),
+                item_id: item.id.clone(),
+            });
+        }
+
+        if !status.is_success() {
+            let body = response.text().await.unwrap_or_default();
+            return Err(SourceError::Permanent {
+                source_name: self.source_name.clone(),
+                message: format!("Drive download error ({status}): {body}"),
+            });
+        }
+
+        response
+            .bytes()
+            .await
+            .map(|b| b.to_vec())
+            .map_err(|e| SourceError::Transient {
+                source_name: self.source_name.clone(),
+                message: format!("failed to read response body: {e}"),
+            })
+    }
+}
+
+/// Determine the export MIME type for a Google Workspace document.
+///
+/// Google Docs → text/markdown, Sheets → text/csv, Slides → text/plain.
+fn export_mime_type(source_mime: &str) -> &'static str {
+    match source_mime {
+        MIME_DOCUMENT => "text/markdown",
+        MIME_SPREADSHEET => "text/csv",
+        MIME_PRESENTATION => "text/plain",
+        _ => "text/plain",
+    }
 }
 
 /// Compile filter rules into glob patterns.
@@ -344,14 +449,49 @@ impl SourceAdapter for GoogleDriveAdapter {
     }
 
     async fn fetch(&self, item: &SourceItem) -> Result<ExtractedDocument, SourceError> {
-        // Fetch is not implemented in milestone 4.1.
-        // Will be implemented in milestone 4.2.
-        Err(SourceError::Permanent {
-            source_name: self.source_name.clone(),
-            message: format!(
-                "fetch not yet implemented for Google Drive (item: {})",
-                item.id
-            ),
+        let token = self
+            .token_provider
+            .get_token()
+            .await
+            .map_err(|e| SourceError::AuthError {
+                source_name: self.source_name.clone(),
+                message: e.to_string(),
+            })?;
+
+        let content = self.download_content(&token, item).await?;
+
+        let content_hash = Blake3Hash::new(blake3::hash(&content).to_hex().as_str());
+
+        let mut prov_metadata = BTreeMap::new();
+        prov_metadata.insert(
+            "file_id".to_string(),
+            serde_json::Value::String(item.id.clone()),
+        );
+        prov_metadata.insert(
+            "path".to_string(),
+            serde_json::Value::String(item.path.clone()),
+        );
+        if let Some(hash) = &item.source_hash {
+            prov_metadata.insert(
+                "md5_checksum".to_string(),
+                serde_json::Value::String(hash.clone()),
+            );
+        }
+
+        let provenance = ItemProvenance {
+            source_kind: "google_drive".to_string(),
+            metadata: prov_metadata,
+            source_modified: item.modified_at,
+            extracted_at: Utc::now(),
+        };
+
+        Ok(ExtractedDocument {
+            id: item.id.clone(),
+            display_name: item.display_name.clone(),
+            content,
+            mime_type: item.mime_type.clone(),
+            provenance,
+            content_hash,
         })
     }
 }
@@ -864,19 +1004,347 @@ mod tests {
         assert!(matches!(result, Err(SourceError::Permanent { .. })));
     }
 
+    // ── Fetch tests (wiremock) ─────────────────────────────────────
+
     #[tokio::test]
-    async fn test_fetch_not_implemented() {
-        let adapter = make_test_adapter("http://unused");
+    async fn test_fetch_regular_file() {
+        let server = MockServer::start().await;
+
+        // Enumerate mock (needed for the adapter to have items).
+        Mock::given(method("GET"))
+            .and(path("/drive/v3/files/file-abc"))
+            .and(query_param("alt", "media"))
+            .respond_with(
+                ResponseTemplate::new(200)
+                    .set_body_bytes(b"Hello, World!" as &[u8])
+                    .insert_header("content-type", "application/pdf"),
+            )
+            .mount(&server)
+            .await;
+
+        let adapter = make_test_adapter(&server.uri());
         let item = SourceItem {
-            id: "f1".to_string(),
+            id: "file-abc".to_string(),
             display_name: "doc.pdf".to_string(),
             mime_type: "application/pdf".to_string(),
             path: "doc.pdf".to_string(),
             modified_at: None,
+            source_hash: Some("md5-abc".to_string()),
+        };
+
+        let doc = adapter.fetch(&item).await.unwrap();
+        assert_eq!(doc.id, "file-abc");
+        assert_eq!(doc.display_name, "doc.pdf");
+        assert_eq!(doc.content, b"Hello, World!");
+        assert_eq!(doc.mime_type, "application/pdf");
+        assert_eq!(doc.provenance.source_kind, "google_drive");
+        assert_eq!(
+            doc.provenance.metadata.get("file_id"),
+            Some(&serde_json::Value::String("file-abc".to_string()))
+        );
+        assert_eq!(
+            doc.provenance.metadata.get("md5_checksum"),
+            Some(&serde_json::Value::String("md5-abc".to_string()))
+        );
+    }
+
+    #[tokio::test]
+    async fn test_fetch_computes_blake3_hash() {
+        let server = MockServer::start().await;
+        let content = b"hash me please";
+
+        Mock::given(method("GET"))
+            .and(path("/drive/v3/files/f1"))
+            .respond_with(ResponseTemplate::new(200).set_body_bytes(content as &[u8]))
+            .mount(&server)
+            .await;
+
+        let adapter = make_test_adapter(&server.uri());
+        let item = SourceItem {
+            id: "f1".to_string(),
+            display_name: "test.txt".to_string(),
+            mime_type: "text/plain".to_string(),
+            path: "test.txt".to_string(),
+            modified_at: None,
             source_hash: None,
         };
+
+        let doc = adapter.fetch(&item).await.unwrap();
+        let expected_hash = blake3::hash(content).to_hex().to_string();
+        assert_eq!(doc.content_hash.as_str(), expected_hash);
+    }
+
+    #[tokio::test]
+    async fn test_fetch_google_doc_exports_as_markdown() {
+        let server = MockServer::start().await;
+
+        Mock::given(method("GET"))
+            .and(path("/drive/v3/files/doc-id/export"))
+            .and(query_param("mimeType", "text/markdown"))
+            .respond_with(
+                ResponseTemplate::new(200).set_body_string("# Exported Document\n\nContent here."),
+            )
+            .mount(&server)
+            .await;
+
+        let adapter = make_test_adapter(&server.uri());
+        let item = SourceItem {
+            id: "doc-id".to_string(),
+            display_name: "My Doc".to_string(),
+            mime_type: "application/vnd.google-apps.document".to_string(),
+            path: "My Doc".to_string(),
+            modified_at: None,
+            source_hash: None,
+        };
+
+        let doc = adapter.fetch(&item).await.unwrap();
+        assert_eq!(
+            std::str::from_utf8(&doc.content).unwrap(),
+            "# Exported Document\n\nContent here."
+        );
+    }
+
+    #[tokio::test]
+    async fn test_fetch_google_sheet_exports_as_csv() {
+        let server = MockServer::start().await;
+
+        Mock::given(method("GET"))
+            .and(path("/drive/v3/files/sheet-id/export"))
+            .and(query_param("mimeType", "text/csv"))
+            .respond_with(ResponseTemplate::new(200).set_body_string("name,value\nfoo,42\n"))
+            .mount(&server)
+            .await;
+
+        let adapter = make_test_adapter(&server.uri());
+        let item = SourceItem {
+            id: "sheet-id".to_string(),
+            display_name: "My Sheet".to_string(),
+            mime_type: "application/vnd.google-apps.spreadsheet".to_string(),
+            path: "My Sheet".to_string(),
+            modified_at: None,
+            source_hash: None,
+        };
+
+        let doc = adapter.fetch(&item).await.unwrap();
+        assert!(
+            std::str::from_utf8(&doc.content)
+                .unwrap()
+                .contains("foo,42")
+        );
+    }
+
+    #[tokio::test]
+    async fn test_fetch_google_slides_exports_as_text() {
+        let server = MockServer::start().await;
+
+        Mock::given(method("GET"))
+            .and(path("/drive/v3/files/slides-id/export"))
+            .and(query_param("mimeType", "text/plain"))
+            .respond_with(ResponseTemplate::new(200).set_body_string("Slide 1: Title"))
+            .mount(&server)
+            .await;
+
+        let adapter = make_test_adapter(&server.uri());
+        let item = SourceItem {
+            id: "slides-id".to_string(),
+            display_name: "My Slides".to_string(),
+            mime_type: "application/vnd.google-apps.presentation".to_string(),
+            path: "My Slides".to_string(),
+            modified_at: None,
+            source_hash: None,
+        };
+
+        let doc = adapter.fetch(&item).await.unwrap();
+        assert!(
+            std::str::from_utf8(&doc.content)
+                .unwrap()
+                .contains("Slide 1")
+        );
+    }
+
+    #[tokio::test]
+    async fn test_fetch_binary_content() {
+        let server = MockServer::start().await;
+        let binary = vec![0x00, 0x01, 0x02, 0xFF, 0xFE, 0xFD];
+
+        Mock::given(method("GET"))
+            .and(path("/drive/v3/files/bin-id"))
+            .respond_with(ResponseTemplate::new(200).set_body_bytes(binary.clone()))
+            .mount(&server)
+            .await;
+
+        let adapter = make_test_adapter(&server.uri());
+        let item = SourceItem {
+            id: "bin-id".to_string(),
+            display_name: "data.bin".to_string(),
+            mime_type: "application/octet-stream".to_string(),
+            path: "data.bin".to_string(),
+            modified_at: None,
+            source_hash: None,
+        };
+
+        let doc = adapter.fetch(&item).await.unwrap();
+        assert_eq!(doc.content, binary);
+    }
+
+    #[tokio::test]
+    async fn test_fetch_auth_error() {
+        let server = MockServer::start().await;
+
+        Mock::given(method("GET"))
+            .and(path("/drive/v3/files/f1"))
+            .respond_with(ResponseTemplate::new(401))
+            .mount(&server)
+            .await;
+
+        let adapter = make_test_adapter(&server.uri());
+        let item = SourceItem {
+            id: "f1".to_string(),
+            display_name: "test.txt".to_string(),
+            mime_type: "text/plain".to_string(),
+            path: "test.txt".to_string(),
+            modified_at: None,
+            source_hash: None,
+        };
+
+        let result = adapter.fetch(&item).await;
+        assert!(matches!(result, Err(SourceError::AuthError { .. })));
+    }
+
+    #[tokio::test]
+    async fn test_fetch_rate_limited() {
+        let server = MockServer::start().await;
+
+        Mock::given(method("GET"))
+            .and(path("/drive/v3/files/f1"))
+            .respond_with(ResponseTemplate::new(429).insert_header("retry-after", "45"))
+            .mount(&server)
+            .await;
+
+        let adapter = make_test_adapter(&server.uri());
+        let item = SourceItem {
+            id: "f1".to_string(),
+            display_name: "test.txt".to_string(),
+            mime_type: "text/plain".to_string(),
+            path: "test.txt".to_string(),
+            modified_at: None,
+            source_hash: None,
+        };
+
+        let result = adapter.fetch(&item).await;
+        assert!(matches!(
+            result,
+            Err(SourceError::RateLimited {
+                retry_after_secs: 45,
+                ..
+            })
+        ));
+    }
+
+    #[tokio::test]
+    async fn test_fetch_not_found() {
+        let server = MockServer::start().await;
+
+        Mock::given(method("GET"))
+            .and(path("/drive/v3/files/gone"))
+            .respond_with(ResponseTemplate::new(404))
+            .mount(&server)
+            .await;
+
+        let adapter = make_test_adapter(&server.uri());
+        let item = SourceItem {
+            id: "gone".to_string(),
+            display_name: "deleted.txt".to_string(),
+            mime_type: "text/plain".to_string(),
+            path: "deleted.txt".to_string(),
+            modified_at: None,
+            source_hash: None,
+        };
+
+        let result = adapter.fetch(&item).await;
+        assert!(matches!(result, Err(SourceError::NotFound { .. })));
+    }
+
+    #[tokio::test]
+    async fn test_fetch_server_error() {
+        let server = MockServer::start().await;
+
+        Mock::given(method("GET"))
+            .and(path("/drive/v3/files/f1"))
+            .respond_with(ResponseTemplate::new(500).set_body_string("Internal Server Error"))
+            .mount(&server)
+            .await;
+
+        let adapter = make_test_adapter(&server.uri());
+        let item = SourceItem {
+            id: "f1".to_string(),
+            display_name: "test.txt".to_string(),
+            mime_type: "text/plain".to_string(),
+            path: "test.txt".to_string(),
+            modified_at: None,
+            source_hash: None,
+        };
+
         let result = adapter.fetch(&item).await;
         assert!(matches!(result, Err(SourceError::Permanent { .. })));
+    }
+
+    #[tokio::test]
+    async fn test_fetch_provenance_includes_path() {
+        let server = MockServer::start().await;
+
+        Mock::given(method("GET"))
+            .and(path("/drive/v3/files/f1"))
+            .respond_with(ResponseTemplate::new(200).set_body_string("content"))
+            .mount(&server)
+            .await;
+
+        let adapter = make_test_adapter(&server.uri());
+        let item = SourceItem {
+            id: "f1".to_string(),
+            display_name: "test.txt".to_string(),
+            mime_type: "text/plain".to_string(),
+            path: "Docs/Sub/test.txt".to_string(),
+            modified_at: None,
+            source_hash: None,
+        };
+
+        let doc = adapter.fetch(&item).await.unwrap();
+        assert_eq!(
+            doc.provenance.metadata.get("path"),
+            Some(&serde_json::Value::String("Docs/Sub/test.txt".to_string()))
+        );
+    }
+
+    // ── Export MIME type mapping tests ──────────────────────────────
+
+    #[test]
+    fn test_export_mime_type_document() {
+        assert_eq!(
+            super::export_mime_type("application/vnd.google-apps.document"),
+            "text/markdown"
+        );
+    }
+
+    #[test]
+    fn test_export_mime_type_spreadsheet() {
+        assert_eq!(
+            super::export_mime_type("application/vnd.google-apps.spreadsheet"),
+            "text/csv"
+        );
+    }
+
+    #[test]
+    fn test_export_mime_type_presentation() {
+        assert_eq!(
+            super::export_mime_type("application/vnd.google-apps.presentation"),
+            "text/plain"
+        );
+    }
+
+    #[test]
+    fn test_export_mime_type_unknown_defaults_to_text() {
+        assert_eq!(super::export_mime_type("something/unknown"), "text/plain");
     }
 
     // ── Source kind test ───────────────────────────────────────────
