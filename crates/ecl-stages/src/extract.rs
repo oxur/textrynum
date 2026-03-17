@@ -75,6 +75,7 @@ impl Stage for ExtractStage {
             source_content_hash: doc.content_hash,
             provenance: doc.provenance,
             metadata: BTreeMap::new(),
+            record: None,
         };
 
         Ok(vec![extracted])
@@ -155,6 +156,7 @@ mod tests {
                 extracted_at: chrono::Utc::now(),
             },
             metadata: BTreeMap::new(),
+            record: None,
         }
     }
 

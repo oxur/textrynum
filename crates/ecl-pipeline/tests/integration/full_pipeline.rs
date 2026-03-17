@@ -96,6 +96,7 @@ impl Stage for ExtractAndEmitStage {
             source_content_hash: doc.content_hash,
             provenance: doc.provenance,
             metadata: BTreeMap::new(),
+            record: None,
         }])
     }
 }

@@ -1,7 +1,8 @@
 //! Built-in stage implementations for the ECL pipeline runner.
 //!
-//! Provides four stages:
+//! Provides five stages:
 //! - [`ExtractStage`] — delegates to a `SourceAdapter` to fetch content
+//! - [`CsvParseStage`] — parses CSV content into structured records (fan-out)
 //! - [`NormalizeStage`] — passthrough (placeholder for future format conversion)
 //! - [`FilterStage`] — glob-based include/exclude filtering
 //! - [`EmitStage`] — writes pipeline items to the output directory
@@ -12,11 +13,13 @@
 #![warn(clippy::expect_used)]
 #![deny(clippy::panic)]
 
+pub mod csv_parse;
 pub mod emit;
 pub mod extract;
 pub mod filter;
 pub mod normalize;
 
+pub use csv_parse::CsvParseStage;
 pub use emit::EmitStage;
 pub use extract::ExtractStage;
 pub use filter::FilterStage;

@@ -2581,6 +2581,7 @@ dependencies = [
  "async-trait",
  "blake3",
  "chrono",
+ "csv",
  "ecl-adapter-fs",
  "ecl-pipeline-spec",
  "ecl-pipeline-state",
