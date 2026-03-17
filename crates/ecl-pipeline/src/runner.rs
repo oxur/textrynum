@@ -131,6 +131,10 @@ impl PipelineRunner {
     ///
     /// Returns a reference to the final pipeline state.
     pub async fn run(&mut self) -> Result<&PipelineState> {
+        let pipeline_name = self.state.pipeline_name.clone();
+        let run_start = std::time::Instant::now();
+        tracing::info!(pipeline = %pipeline_name, run_id = %self.state.run_id, "pipeline run starting");
+
         // Phase 1: Enumerate items from all sources (if not already done).
         if self.state.current_batch == 0 && self.state.stats.total_items_discovered == 0 {
             self.enumerate_sources().await?;
@@ -158,6 +162,16 @@ impl PipelineRunner {
         };
         self.checkpoint().await?;
 
+        let duration_ms = run_start.elapsed().as_millis() as u64;
+        tracing::info!(
+            pipeline = %pipeline_name,
+            duration_ms,
+            discovered = self.state.stats.total_items_discovered,
+            processed = self.state.stats.total_items_processed,
+            failed = self.state.stats.total_items_failed,
+            "pipeline run completed"
+        );
+
         Ok(&self.state)
     }
 
@@ -166,7 +180,9 @@ impl PipelineRunner {
     /// Builds an immutable `StageContext` snapshot before execution.
     /// Each stage in the batch gets the same view. After all stages
     /// complete, their results are merged into the shared state.
-    async fn execute_batch(&mut self, _batch_idx: usize, stages: &[StageId]) -> Result<()> {
+    async fn execute_batch(&mut self, batch_idx: usize, stages: &[StageId]) -> Result<()> {
+        tracing::info!(batch = batch_idx, stages = stages.len(), "executing batch");
+
         // Filter out stages whose conditions are not met.
         let active_stages: Vec<&StageId> = stages
             .iter()
@@ -218,6 +234,7 @@ impl PipelineRunner {
     /// discovered item.
     async fn enumerate_sources(&mut self) -> Result<()> {
         for (name, adapter) in &self.topology.sources {
+            tracing::info!(source = %name, "enumerating source");
             let items =
                 adapter
                     .enumerate()
@@ -226,6 +243,7 @@ impl PipelineRunner {
                         source_name: name.clone(),
                         detail: e.to_string(),
                     })?;
+            tracing::info!(source = %name, items = items.len(), "source enumeration complete");
 
             let source_state = self.state.sources.entry(name.clone()).or_default();
 
@@ -388,7 +406,7 @@ impl PipelineRunner {
                         .push(ecl_pipeline_state::CompletedStageRecord {
                             stage: stage_id.clone(),
                             completed_at: Utc::now(),
-                            duration_ms: 0, // TODO: track actual duration
+                            duration_ms: success.duration_ms,
                         });
                 }
             }
@@ -415,7 +433,7 @@ impl PipelineRunner {
                     item_state.status = ItemStatus::Failed {
                         stage: stage_id.as_str().to_string(),
                         error: failure.error.to_string(),
-                        attempts: 0, // TODO: track actual attempts
+                        attempts: failure.attempts,
                     };
                 }
             }

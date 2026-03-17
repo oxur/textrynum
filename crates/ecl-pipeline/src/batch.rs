@@ -7,6 +7,7 @@ use std::sync::Arc;
 
 use ecl_pipeline_state::StageId;
 use ecl_pipeline_topo::{PipelineItem, ResolvedStage, Stage, StageContext, StageError};
+use tracing::Instrument;
 
 use crate::error::PipelineError;
 
@@ -30,6 +31,8 @@ pub struct StageItemSuccess {
     pub item_id: String,
     /// The output items produced by the stage.
     pub outputs: Vec<PipelineItem>,
+    /// Processing duration in milliseconds.
+    pub duration_ms: u64,
 }
 
 /// An item that was skipped due to `skip_on_error`.
@@ -48,6 +51,8 @@ pub struct StageItemFailure {
     pub item_id: String,
     /// The error.
     pub error: StageError,
+    /// Number of attempts made (including the initial attempt).
+    pub attempts: u32,
 }
 
 impl StageResult {
@@ -62,8 +67,17 @@ impl StageResult {
     }
 
     /// Record a successful item processing.
-    pub fn record_success(&mut self, item_id: String, outputs: Vec<PipelineItem>) {
-        self.successes.push(StageItemSuccess { item_id, outputs });
+    pub fn record_success(
+        &mut self,
+        item_id: String,
+        outputs: Vec<PipelineItem>,
+        duration_ms: u64,
+    ) {
+        self.successes.push(StageItemSuccess {
+            item_id,
+            outputs,
+            duration_ms,
+        });
     }
 
     /// Record a skipped item (due to `skip_on_error`).
@@ -72,8 +86,12 @@ impl StageResult {
     }
 
     /// Record a failed item.
-    pub fn record_failure(&mut self, item_id: String, error: StageError) {
-        self.failures.push(StageItemFailure { item_id, error });
+    pub fn record_failure(&mut self, item_id: String, error: StageError, attempts: u32) {
+        self.failures.push(StageItemFailure {
+            item_id,
+            error,
+            attempts,
+        });
     }
 
     /// Returns true if any items failed (not skipped — actually failed).
@@ -100,29 +118,65 @@ pub async fn execute_stage_items(
     let semaphore = Arc::new(tokio::sync::Semaphore::new(concurrency));
     let mut join_set = tokio::task::JoinSet::new();
 
+    let stage_name = stage.id.as_str().to_string();
+    let item_count = items.len();
+    tracing::info!(stage = %stage_name, items = item_count, "starting stage");
+
     for item in items {
         let permit = semaphore.clone().acquire_owned().await?;
         let handler = stage.handler.clone();
         let ctx = ctx.clone();
         let retry = stage.retry.clone();
         let skip_on_error = stage.skip_on_error;
+        let s_name = stage_name.clone();
+        let item_id = item.id.clone();
 
-        join_set.spawn(async move {
-            let _permit = permit; // held until task completes
-            let result = execute_with_retry(&handler, item.clone(), &ctx, &retry).await;
-            (item.id.clone(), result, skip_on_error)
-        });
+        let item_span = tracing::info_span!("item", stage = %s_name, item_id = %item_id);
+        join_set.spawn(
+            async move {
+                let _permit = permit; // held until task completes
+                let start = std::time::Instant::now();
+                let retry_result = execute_with_retry(&handler, item.clone(), &ctx, &retry).await;
+                let duration_ms = start.elapsed().as_millis() as u64;
+                (
+                    item.id.clone(),
+                    retry_result.result,
+                    retry_result.attempts,
+                    skip_on_error,
+                    duration_ms,
+                )
+            }
+            .instrument(item_span),
+        );
     }
 
     let mut stage_result = StageResult::new(stage.id.clone());
     while let Some(result) = join_set.join_next().await {
-        let (item_id, result, skip_on_error) = result?;
+        let (item_id, result, attempts, skip_on_error, duration_ms) = result?;
         match result {
-            Ok(outputs) => stage_result.record_success(item_id, outputs),
-            Err(e) if skip_on_error => stage_result.record_skipped(item_id, e),
-            Err(e) => stage_result.record_failure(item_id, e),
+            Ok(outputs) => {
+                tracing::debug!(item_id = %item_id, duration_ms, attempts, status = "ok", "item completed");
+                stage_result.record_success(item_id, outputs, duration_ms);
+            }
+            Err(e) if skip_on_error => {
+                tracing::warn!(item_id = %item_id, duration_ms, attempts, error = %e, "item skipped");
+                stage_result.record_skipped(item_id, e);
+            }
+            Err(e) => {
+                tracing::error!(item_id = %item_id, duration_ms, attempts, error = %e, "item failed");
+                stage_result.record_failure(item_id, e, attempts);
+            }
         }
     }
+
+    tracing::info!(
+        stage = %stage_name,
+        succeeded = stage_result.successes.len(),
+        skipped = stage_result.skipped.len(),
+        failed = stage_result.failures.len(),
+        "stage completed"
+    );
+
     Ok(stage_result)
 }
 
@@ -133,13 +187,33 @@ pub async fn execute_stage_items(
 /// retry configuration merged with global defaults.
 ///
 /// Only retries on error — successful results are returned immediately.
+/// Result of a retried execution, including the attempt count.
+pub struct RetryResult {
+    /// The outcome (success or final error).
+    pub result: std::result::Result<Vec<PipelineItem>, StageError>,
+    /// Number of attempts made (1 = succeeded on first try).
+    pub attempts: u32,
+}
+
+/// Execute a stage handler with retry and exponential backoff.
+///
+/// Uses the `backon` crate for retry logic. The backoff parameters
+/// come from the `RetryPolicy` which was resolved from the stage's
+/// retry configuration merged with global defaults.
+///
+/// Only retries on error — successful results are returned immediately.
+/// Returns both the result and the number of attempts made.
 pub async fn execute_with_retry(
     handler: &Arc<dyn Stage>,
     item: PipelineItem,
     ctx: &StageContext,
     retry: &ecl_pipeline_topo::RetryPolicy,
-) -> std::result::Result<Vec<PipelineItem>, StageError> {
+) -> RetryResult {
     use backon::{ExponentialBuilder, Retryable};
+    use std::sync::atomic::{AtomicU32, Ordering};
+
+    let attempts = Arc::new(AtomicU32::new(0));
+    let attempts_clone = attempts.clone();
 
     let backoff = ExponentialBuilder::default()
         .with_min_delay(retry.initial_backoff)
@@ -147,9 +221,17 @@ pub async fn execute_with_retry(
         .with_max_delay(retry.max_backoff)
         .with_max_times(retry.max_attempts.saturating_sub(1) as usize);
 
-    (|| async { handler.process(item.clone(), ctx).await })
-        .retry(backoff)
-        .await
+    let result = (|| async {
+        attempts_clone.fetch_add(1, Ordering::SeqCst);
+        handler.process(item.clone(), ctx).await
+    })
+    .retry(backoff)
+    .await;
+
+    RetryResult {
+        result,
+        attempts: attempts.load(Ordering::SeqCst),
+    }
 }
 
 #[cfg(test)]
@@ -350,9 +432,10 @@ mod tests {
     #[test]
     fn test_stage_result_record_success() {
         let mut result = StageResult::new(StageId::new("test"));
-        result.record_success("item-1".to_string(), vec![]);
+        result.record_success("item-1".to_string(), vec![], 42);
         assert_eq!(result.successes.len(), 1);
         assert_eq!(result.successes[0].item_id, "item-1");
+        assert_eq!(result.successes[0].duration_ms, 42);
     }
 
     #[test]
@@ -376,9 +459,10 @@ mod tests {
             item_id: "i".to_string(),
             message: "fail".to_string(),
         };
-        result.record_failure("item-1".to_string(), err);
+        result.record_failure("item-1".to_string(), err, 3);
         assert_eq!(result.failures.len(), 1);
         assert_eq!(result.failures[0].item_id, "item-1");
+        assert_eq!(result.failures[0].attempts, 3);
     }
 
     #[test]
@@ -395,7 +479,7 @@ mod tests {
             item_id: "i".to_string(),
             message: "fail".to_string(),
         };
-        result.record_failure("item-1".to_string(), err);
+        result.record_failure("item-1".to_string(), err, 1);
         assert!(result.has_failures());
     }
 
@@ -420,9 +504,10 @@ mod tests {
         let ctx = make_stage_context();
         let retry = fast_retry_policy();
 
-        let result = execute_with_retry(&handler, item, &ctx, &retry).await;
-        assert!(result.is_ok());
-        assert_eq!(result.unwrap().len(), 1);
+        let retry_result = execute_with_retry(&handler, item, &ctx, &retry).await;
+        assert!(retry_result.result.is_ok());
+        assert_eq!(retry_result.attempts, 1);
+        assert_eq!(retry_result.result.unwrap().len(), 1);
     }
 
     #[tokio::test]
@@ -432,8 +517,9 @@ mod tests {
         let ctx = make_stage_context();
         let retry = fast_retry_policy(); // max_attempts=3
 
-        let result = execute_with_retry(&handler, item, &ctx, &retry).await;
-        assert!(result.is_ok(), "should succeed on 3rd attempt");
+        let retry_result = execute_with_retry(&handler, item, &ctx, &retry).await;
+        assert!(retry_result.result.is_ok(), "should succeed on 3rd attempt");
+        assert_eq!(retry_result.attempts, 3);
     }
 
     #[tokio::test]
@@ -443,8 +529,9 @@ mod tests {
         let ctx = make_stage_context();
         let retry = fast_retry_policy(); // max_attempts=3, so fails
 
-        let result = execute_with_retry(&handler, item, &ctx, &retry).await;
-        assert!(result.is_err(), "should fail after 3 attempts");
+        let retry_result = execute_with_retry(&handler, item, &ctx, &retry).await;
+        assert!(retry_result.result.is_err(), "should fail after 3 attempts");
+        assert_eq!(retry_result.attempts, 3);
     }
 
     // ── execute_stage_items tests ───────────────────────────────────────

@@ -3,7 +3,7 @@
 //! Eliminates the boilerplate that every Fabryk-based project duplicates:
 //! `Confygery::new()` → `add_file()` → `add_env(sections)` → `build()`.
 
-use confyg::{env, Confygery};
+use confyg::{Confygery, env};
 use fabryk_core::{Error, Result};
 use serde::de::DeserializeOwned;
 use std::path::PathBuf;

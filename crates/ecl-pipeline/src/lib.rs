@@ -26,8 +26,8 @@ pub mod registry;
 pub mod runner;
 
 pub use batch::{
-    StageItemFailure, StageItemSkipped, StageItemSuccess, StageResult, execute_stage_items,
-    execute_with_retry,
+    RetryResult, StageItemFailure, StageItemSkipped, StageItemSuccess, StageResult,
+    execute_stage_items, execute_with_retry,
 };
 pub use error::{PipelineError, Result};
 pub use registry::{AdapterRegistry, StageRegistry};

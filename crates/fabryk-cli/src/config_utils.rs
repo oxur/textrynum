@@ -124,11 +124,7 @@ pub fn flatten_toml_value(value: &toml::Value, prefix: &str, out: &mut Vec<(Stri
     match value {
         toml::Value::Table(table) => {
             for (key, val) in table {
-                let env_key = format!(
-                    "{}_{}",
-                    prefix,
-                    key.to_uppercase().replace('-', "_")
-                );
+                let env_key = format!("{}_{}", prefix, key.to_uppercase().replace('-', "_"));
                 flatten_toml_value(val, &env_key, out);
             }
         }
@@ -351,8 +347,7 @@ mod tests {
 
     #[test]
     fn test_flatten_toml_value_hyphen_to_underscore() {
-        let val: toml::Value =
-            toml::from_str("[my-section]\nmy-key = \"value\"").unwrap();
+        let val: toml::Value = toml::from_str("[my-section]\nmy-key = \"value\"").unwrap();
         let mut out = Vec::new();
         flatten_toml_value(&val, "APP", &mut out);
         assert_eq!(

@@ -38,6 +38,18 @@ pub enum PipelineStatus {
     },
 }
 
+impl std::fmt::Display for PipelineStatus {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Pending => write!(f, "Pending"),
+            Self::Running { current_stage } => write!(f, "Running ({current_stage})"),
+            Self::Completed { finished_at } => write!(f, "Completed ({finished_at})"),
+            Self::Failed { error, failed_at } => write!(f, "Failed at {failed_at}: {error}"),
+            Self::Interrupted { interrupted_at } => write!(f, "Interrupted ({interrupted_at})"),
+        }
+    }
+}
+
 /// Per-source state: what items were discovered, accepted, and processed.
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct SourceState {
@@ -113,6 +125,23 @@ pub enum ItemStatus {
     Unchanged,
 }
 
+impl std::fmt::Display for ItemStatus {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Pending => write!(f, "Pending"),
+            Self::Processing { stage } => write!(f, "Processing ({stage})"),
+            Self::Completed => write!(f, "Completed"),
+            Self::Failed {
+                stage,
+                error,
+                attempts,
+            } => write!(f, "Failed at {stage} after {attempts} attempt(s): {error}"),
+            Self::Skipped { stage, reason } => write!(f, "Skipped ({stage}): {reason}"),
+            Self::Unchanged => write!(f, "Unchanged"),
+        }
+    }
+}
+
 /// Record of a completed stage for an item.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CompletedStageRecord {
@@ -178,6 +207,18 @@ pub enum StageStatus {
         /// Error description.
         error: String,
     },
+}
+
+impl std::fmt::Display for StageStatus {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Pending => write!(f, "Pending"),
+            Self::Running => write!(f, "Running"),
+            Self::Completed => write!(f, "Completed"),
+            Self::Skipped { reason } => write!(f, "Skipped: {reason}"),
+            Self::Failed { error } => write!(f, "Failed: {error}"),
+        }
+    }
 }
 
 /// Summary statistics for the pipeline run.
@@ -367,6 +408,7 @@ mod tests {
 }
 
 #[cfg(test)]
+#[allow(clippy::unwrap_used)]
 mod proptests {
     use super::*;
     use proptest::prelude::*;
