@@ -258,7 +258,17 @@ impl ServiceHandle {
     /// All subscribers are notified of the change. The transition is
     /// recorded in the audit trail with a monotonic timestamp.
     pub fn set_state(&self, state: ServiceState) {
-        log::info!("Service '{}' → {state}", self.inner.name);
+        match &state {
+            ServiceState::Failed(_) => {
+                log::error!("Service '{}' → {state}", self.inner.name);
+            }
+            ServiceState::Degraded(_) => {
+                log::warn!("Service '{}' → {state}", self.inner.name);
+            }
+            _ => {
+                log::info!("Service '{}' → {state}", self.inner.name);
+            }
+        }
         if let Ok(mut log) = self.inner.transitions.lock() {
             log.push(Transition {
                 state: state.clone(),
