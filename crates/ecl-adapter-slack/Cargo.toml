@@ -1,0 +1,24 @@
+[package]
+name = "ecl-adapter-slack"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Slack stub source adapter for the ECL pipeline runner (validation)"
+
+[dependencies]
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec" }
+ecl-pipeline-topo = { path = "../ecl-pipeline-topo" }
+ecl-pipeline-state = { path = "../ecl-pipeline-state" }
+async-trait = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+tracing = { workspace = true }
+thiserror = { workspace = true }
+blake3 = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
+tempfile = { workspace = true }

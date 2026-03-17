@@ -2407,6 +2407,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "ecl-adapter-slack"
+version = "0.4.0"
+dependencies = [
+ "async-trait",
+ "blake3",
+ "chrono",
+ "ecl-pipeline-spec",
+ "ecl-pipeline-state",
+ "ecl-pipeline-topo",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "thiserror 2.0.18",
+ "tokio",
+ "tracing",
+]
+
+[[package]]
 name = "ecl-cli"
 version = "0.4.0"
 dependencies = [
@@ -2416,6 +2434,7 @@ dependencies = [
  "clap",
  "ecl-adapter-fs",
  "ecl-adapter-gdrive",
+ "ecl-adapter-slack",
  "ecl-core",
  "ecl-pipeline",
  "ecl-pipeline-spec",

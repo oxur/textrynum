@@ -21,6 +21,7 @@ ecl-pipeline-state = { version = "0.4.0", path = "../ecl-pipeline-state" }
 ecl-pipeline-topo = { version = "0.4.0", path = "../ecl-pipeline-topo" }
 ecl-adapter-fs = { version = "0.4.0", path = "../ecl-adapter-fs" }
 ecl-adapter-gdrive = { version = "0.4.0", path = "../ecl-adapter-gdrive" }
+ecl-adapter-slack = { version = "0.4.0", path = "../ecl-adapter-slack" }
 ecl-stages = { version = "0.4.0", path = "../ecl-stages" }
 
 # Workspace dependencies

@@ -9,6 +9,7 @@ use std::sync::Arc;
 
 use ecl_adapter_fs::FilesystemAdapter;
 use ecl_adapter_gdrive::GoogleDriveAdapter;
+use ecl_adapter_slack::SlackAdapter;
 use ecl_pipeline_spec::{PipelineSpec, SourceSpec, StageSpec};
 use ecl_pipeline_topo::error::ResolveError;
 use ecl_pipeline_topo::{SourceAdapter, Stage};
@@ -32,12 +33,7 @@ pub fn resolve_adapters(
             SourceSpec::GoogleDrive(_) => {
                 Arc::new(GoogleDriveAdapter::from_spec(name, source_spec)?)
             }
-            SourceSpec::Slack(_) => {
-                return Err(ResolveError::UnknownAdapter {
-                    stage: name.clone(),
-                    adapter: "slack".to_string(),
-                });
-            }
+            SourceSpec::Slack(_) => Arc::new(SlackAdapter::from_spec(name, source_spec)?),
         };
         adapters.insert(name.clone(), adapter);
     }
