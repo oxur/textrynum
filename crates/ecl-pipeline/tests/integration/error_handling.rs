@@ -145,6 +145,7 @@ fn build_single_stage_topo(
                 condition: None,
             },
         )]),
+        push_sources: BTreeMap::new(),
         schedule: vec![vec![stage_id]],
         output_dir: output_dir.to_path_buf(),
     }

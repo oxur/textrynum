@@ -22,7 +22,10 @@ pub mod schedule;
 pub mod traits;
 
 pub use error::{ResolveError, ResolveResult, SourceError, StageError};
-pub use traits::{ExtractedDocument, PipelineItem, SourceAdapter, SourceItem, Stage, StageContext};
+pub use traits::{
+    ExtractedDocument, PipelineItem, PushSourceAdapter, SourceAdapter, SourceItem, Stage,
+    StageContext,
+};
 
 use std::collections::BTreeMap;
 use std::path::PathBuf;
@@ -47,6 +50,12 @@ pub struct PipelineTopology {
 
     /// Resolved source adapters, keyed by source name from the spec.
     pub sources: BTreeMap<String, Arc<dyn SourceAdapter>>,
+
+    /// Resolved push-based source adapters, keyed by source name from the spec.
+    /// Push sources receive data via external events (webhooks, etc.) rather
+    /// than polling. Separated from `sources` to avoid disrupting the existing
+    /// pull-based pipeline flow.
+    pub push_sources: BTreeMap<String, Arc<dyn PushSourceAdapter>>,
 
     /// Resolved stage implementations, keyed by stage name from the spec.
     pub stages: BTreeMap<String, ResolvedStage>,
@@ -292,6 +301,7 @@ resources = { creates = ["docs"] }
             spec: spec.clone(),
             spec_hash: Blake3Hash::new("abc123"),
             sources,
+            push_sources: BTreeMap::new(),
             stages: stages_map,
             schedule: vec![vec![StageId::new("extract")]],
             output_dir: PathBuf::from("./out"),

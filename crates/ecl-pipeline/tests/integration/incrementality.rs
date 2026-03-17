@@ -157,6 +157,7 @@ fn build_extract_emit_topo(
                 condition: None,
             },
         )]),
+        push_sources: BTreeMap::new(),
         schedule: vec![vec![StageId::new("process")]],
         output_dir: output_dir.to_path_buf(),
     }

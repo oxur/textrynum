@@ -15,6 +15,7 @@ members = [
     "crates/ecl-adapter-fs",
     "crates/ecl-adapter-gdrive",
     "crates/ecl-adapter-slack",
+    "crates/ecl-adapter-zapier",
     "crates/ecl-stages",
     # Fabryk crates
     "crates/fabryk",
@@ -166,6 +167,12 @@ redb = "3"
 
 # Binary serialization
 serde_bytes = "0.11"
+
+# Base64 encoding (webhook auth)
+base64 = "0.22"
+
+# Async stream wrappers
+tokio-stream = "0.1"
 
 # Dev dependencies
 tokio-test = "0.4"

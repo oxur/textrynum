@@ -1,0 +1,30 @@
+[package]
+name = "ecl-adapter-zapier"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Zapier webhook push source adapter for ECL pipeline runner"
+
+[dependencies]
+ecl-pipeline-topo = { version = "0.4.0", path = "../ecl-pipeline-topo" }
+ecl-pipeline-spec = { version = "0.4.0", path = "../ecl-pipeline-spec" }
+ecl-pipeline-state = { version = "0.4.0", path = "../ecl-pipeline-state" }
+axum = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+blake3 = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+async-trait = { workspace = true }
+base64 = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["test-util"] }
+reqwest = { workspace = true }
+tempfile = { workspace = true }

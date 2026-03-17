@@ -53,6 +53,15 @@ pub enum PipelineError {
     #[error("semaphore acquire error: {0}")]
     SemaphoreError(#[from] tokio::sync::AcquireError),
 
+    /// Push source error (webhook receiver, message queue, etc.).
+    #[error("push source '{source_name}' error: {detail}")]
+    PushSource {
+        /// The push source that failed.
+        source_name: String,
+        /// Error detail.
+        detail: String,
+    },
+
     /// A batch contained a stage that failed and was not configured with
     /// skip_on_error.
     #[error("stage '{stage}' failed for item '{item_id}': {error}")]

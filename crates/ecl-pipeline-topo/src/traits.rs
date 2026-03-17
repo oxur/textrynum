@@ -69,6 +69,45 @@ pub trait SourceAdapter: Send + Sync + std::fmt::Debug {
     async fn fetch(&self, item: &SourceItem) -> Result<ExtractedDocument, SourceError>;
 }
 
+/// A push-based source adapter that receives data via external events
+/// (webhooks, message queues, etc.) rather than polling.
+///
+/// Unlike `SourceAdapter` which enumerates and fetches on demand,
+/// `PushSourceAdapter` starts a listener that yields documents as they
+/// arrive. The canonical example is a webhook receiver.
+///
+/// Object-safe by design: stored as `Arc<dyn PushSourceAdapter>`.
+///
+/// Note: `async_trait` is required here for object safety, same as
+/// `SourceAdapter`. See the note on `SourceAdapter` for details.
+#[async_trait]
+pub trait PushSourceAdapter: Send + Sync + std::fmt::Debug {
+    /// Human-readable name of the source type (e.g., "Zapier webhook").
+    fn source_kind(&self) -> &str;
+
+    /// Start receiving documents.
+    ///
+    /// Spawns the internal listener (e.g., HTTP server) and returns the
+    /// receiving half of a bounded channel. Documents are sent through
+    /// the channel as they arrive.
+    ///
+    /// The bounded channel provides natural backpressure: if the pipeline
+    /// falls behind, the sender blocks, which propagates to the listener
+    /// (e.g., webhook handler returns 429).
+    ///
+    /// The returned receiver yields documents until `shutdown()` is called
+    /// or the adapter is dropped.
+    async fn start(
+        &self,
+    ) -> Result<tokio::sync::mpsc::Receiver<ExtractedDocument>, SourceError>;
+
+    /// Signal the adapter to stop accepting new events and drain.
+    ///
+    /// After this call, the receiver returned by `start()` will eventually
+    /// close once all buffered items have been consumed.
+    async fn shutdown(&self) -> Result<(), SourceError>;
+}
+
 /// Lightweight item descriptor returned by `SourceAdapter::enumerate()`.
 /// Contains enough metadata for filtering and hash comparison,
 /// but does NOT contain the actual content.
@@ -333,6 +372,33 @@ mod tests {
     fn test_source_adapter_is_object_safe() {
         let adapter: Arc<dyn SourceAdapter> = Arc::new(MockSourceAdapter);
         assert_eq!(adapter.source_kind(), "mock");
+    }
+
+    #[derive(Debug)]
+    struct MockPushSourceAdapter;
+
+    #[async_trait]
+    impl PushSourceAdapter for MockPushSourceAdapter {
+        fn source_kind(&self) -> &str {
+            "mock-push"
+        }
+
+        async fn start(
+            &self,
+        ) -> Result<tokio::sync::mpsc::Receiver<ExtractedDocument>, SourceError> {
+            let (_tx, rx) = tokio::sync::mpsc::channel(1);
+            Ok(rx)
+        }
+
+        async fn shutdown(&self) -> Result<(), SourceError> {
+            Ok(())
+        }
+    }
+
+    #[test]
+    fn test_push_source_adapter_is_object_safe() {
+        let adapter: Arc<dyn PushSourceAdapter> = Arc::new(MockPushSourceAdapter);
+        assert_eq!(adapter.source_kind(), "mock-push");
     }
 
     #[test]

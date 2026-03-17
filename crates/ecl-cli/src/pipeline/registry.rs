@@ -10,9 +10,10 @@ use std::sync::Arc;
 use ecl_adapter_fs::FilesystemAdapter;
 use ecl_adapter_gdrive::GoogleDriveAdapter;
 use ecl_adapter_slack::SlackAdapter;
+use ecl_adapter_zapier::ZapierAdapter;
 use ecl_pipeline_spec::{PipelineSpec, SourceSpec, StageSpec};
 use ecl_pipeline_topo::error::ResolveError;
-use ecl_pipeline_topo::{SourceAdapter, Stage};
+use ecl_pipeline_topo::{PushSourceAdapter, SourceAdapter, Stage};
 use ecl_stages::{EmitStage, ExtractStage, FilterStage, NormalizeStage};
 
 /// Pre-resolve all source adapters from the spec.
@@ -34,6 +35,7 @@ pub fn resolve_adapters(
                 Arc::new(GoogleDriveAdapter::from_spec(name, source_spec)?)
             }
             SourceSpec::Slack(_) => Arc::new(SlackAdapter::from_spec(name, source_spec)?),
+            SourceSpec::Zapier(_) => continue, // Push sources resolved separately
         };
         adapters.insert(name.clone(), adapter);
     }
@@ -96,4 +98,30 @@ pub fn stage_lookup_fn(
             }),
         }
     }
+}
+
+/// Pre-resolve all push-based source adapters from the spec.
+///
+/// Returns a map of source_name -> concrete push adapter.
+/// Currently only Zapier sources are push-based.
+///
+/// # Errors
+///
+/// Returns `ResolveError` if adapter creation fails.
+pub fn resolve_push_adapters(
+    spec: &PipelineSpec,
+) -> Result<BTreeMap<String, Arc<dyn PushSourceAdapter>>, ResolveError> {
+    let mut adapters = BTreeMap::new();
+
+    for (name, source_spec) in &spec.sources {
+        if let SourceSpec::Zapier(_) = source_spec {
+            let adapter = ZapierAdapter::from_spec(name, source_spec)?;
+            adapters.insert(
+                name.clone(),
+                Arc::new(adapter) as Arc<dyn PushSourceAdapter>,
+            );
+        }
+    }
+
+    Ok(adapters)
 }

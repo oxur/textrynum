@@ -63,9 +63,14 @@ where
     let spec_hash = Blake3Hash::new(blake3::hash(spec_bytes.as_bytes()).to_hex().to_string());
     let spec = Arc::new(spec);
 
-    // 2. Resolve each source into a concrete adapter.
+    // 2. Resolve each pull-based source into a concrete adapter.
+    //    Push sources (e.g., Zapier webhooks) are resolved separately —
+    //    they implement PushSourceAdapter, not SourceAdapter.
     let mut sources: BTreeMap<String, Arc<dyn SourceAdapter>> = BTreeMap::new();
     for (name, source_spec) in &spec.sources {
+        if matches!(source_spec, SourceSpec::Zapier(_)) {
+            continue; // Push sources resolved separately via push_sources field
+        }
         let kind = source_kind(source_spec);
         let adapter = adapter_lookup(name, source_spec).map_err(|e| match e {
             ResolveError::UnknownAdapter { .. } => ResolveError::UnknownAdapter {
@@ -103,6 +108,7 @@ where
         spec,
         spec_hash,
         sources,
+        push_sources: BTreeMap::new(), // Resolved separately by the caller
         stages,
         schedule,
         output_dir,
@@ -120,6 +126,7 @@ fn source_kind(spec: &SourceSpec) -> &'static str {
         SourceSpec::GoogleDrive(_) => "google_drive",
         SourceSpec::Slack(_) => "slack",
         SourceSpec::Filesystem(_) => "filesystem",
+        SourceSpec::Zapier(_) => "zapier",
     }
 }
 
@@ -248,6 +255,7 @@ mod tests {
             SourceSpec::GoogleDrive(_) => "google_drive",
             SourceSpec::Slack(_) => "slack",
             SourceSpec::Filesystem(_) => "filesystem",
+            SourceSpec::Zapier(_) => "zapier",
         };
         Ok(Arc::new(MockSourceAdapter::new(kind)))
     }

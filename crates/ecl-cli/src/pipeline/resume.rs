@@ -60,7 +60,9 @@ pub async fn execute(output_dir: PathBuf, force: bool) -> Result<()> {
     let adapter_fn = registry::adapter_lookup_fn(&adapters);
     let stage_fn = registry::stage_lookup_fn(&adapters);
 
-    let topology = resolve(spec, adapter_fn, stage_fn).await?;
+    let push_adapters = registry::resolve_push_adapters(&spec)?;
+    let mut topology = resolve(spec, adapter_fn, stage_fn).await?;
+    topology.push_sources = push_adapters;
 
     let store = Box::new(RedbStateStore::open(&store_path)?);
     let mut runner = PipelineRunner::new(topology, store).await?;

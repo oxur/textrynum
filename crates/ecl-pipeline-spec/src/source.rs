@@ -19,6 +19,10 @@ pub enum SourceSpec {
     /// Local filesystem source.
     #[serde(rename = "filesystem")]
     Filesystem(FilesystemSourceSpec),
+
+    /// Zapier webhook push source.
+    #[serde(rename = "zapier")]
+    Zapier(ZapierSourceSpec),
 }
 
 /// Google Drive source configuration.
@@ -73,6 +77,51 @@ pub struct FilesystemSourceSpec {
     /// File extensions to include (empty = all).
     #[serde(default)]
     pub extensions: Vec<String>,
+}
+
+/// Zapier webhook push source configuration.
+///
+/// Configures an HTTP webhook receiver that accepts push events from Zapier.
+/// Supports both Basic Auth and Bearer token authentication.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ZapierSourceSpec {
+    /// Address to bind the webhook HTTP server (e.g., "127.0.0.1:9090").
+    pub bind_addr: String,
+
+    /// Username for Basic Auth (plain string — not sensitive).
+    pub auth_username: String,
+
+    /// Secret (password for Basic Auth, or Bearer token) resolved via CredentialRef.
+    /// No secrets stored in TOML.
+    pub credentials: CredentialRef,
+
+    /// Maximum items to accumulate before flushing a batch.
+    #[serde(default = "default_batch_max_items")]
+    pub batch_max_items: usize,
+
+    /// Maximum seconds to wait before flushing an incomplete batch.
+    #[serde(default = "default_batch_timeout_secs")]
+    pub batch_timeout_secs: u64,
+
+    /// Bounded channel capacity for backpressure between HTTP handler and pipeline.
+    #[serde(default = "default_channel_capacity")]
+    pub channel_capacity: usize,
+
+    /// Default source hint if `X-Zapier-Source` header is absent.
+    #[serde(default)]
+    pub default_source_hint: Option<String>,
+}
+
+fn default_batch_max_items() -> usize {
+    50
+}
+
+fn default_batch_timeout_secs() -> u64 {
+    30
+}
+
+fn default_channel_capacity() -> usize {
+    1000
 }
 
 /// How to resolve credentials for a source.
@@ -182,6 +231,44 @@ mod tests {
         let deserialized: SourceSpec = serde_json::from_str(&json).unwrap();
         let json2 = serde_json::to_string(&deserialized).unwrap();
         assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_source_spec_zapier_serde_roundtrip() {
+        let source = SourceSpec::Zapier(ZapierSourceSpec {
+            bind_addr: "127.0.0.1:9090".to_string(),
+            auth_username: "ecl-webhook".to_string(),
+            credentials: CredentialRef::EnvVar {
+                env: "ZAPIER_SECRET".to_string(),
+            },
+            batch_max_items: 50,
+            batch_timeout_secs: 30,
+            channel_capacity: 1000,
+            default_source_hint: Some("granola".to_string()),
+        });
+        let json = serde_json::to_string(&source).unwrap();
+        let deserialized: SourceSpec = serde_json::from_str(&json).unwrap();
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_zapier_source_spec_defaults() {
+        let json = r#"{
+            "kind": "zapier",
+            "bind_addr": "127.0.0.1:9090",
+            "auth_username": "ecl",
+            "credentials": {"type": "env", "env": "SECRET"}
+        }"#;
+        let spec: SourceSpec = serde_json::from_str(json).unwrap();
+        if let SourceSpec::Zapier(zapier) = spec {
+            assert_eq!(zapier.batch_max_items, 50);
+            assert_eq!(zapier.batch_timeout_secs, 30);
+            assert_eq!(zapier.channel_capacity, 1000);
+            assert!(zapier.default_source_hint.is_none());
+        } else {
+            panic!("expected Zapier variant");
+        }
     }
 
     #[test]

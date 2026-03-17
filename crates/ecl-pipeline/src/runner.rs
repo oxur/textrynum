@@ -8,12 +8,13 @@ use std::collections::BTreeMap;
 use std::sync::Arc;
 
 use chrono::Utc;
+use tokio::sync::Notify;
 
 use ecl_pipeline_state::{
     Blake3Hash, Checkpoint, ItemProvenance, ItemState, ItemStatus, PipelineState, PipelineStats,
     PipelineStatus, RunId, StageId, StageState, StageStatus, StateStore,
 };
-use ecl_pipeline_topo::{PipelineItem, PipelineTopology, StageContext};
+use ecl_pipeline_topo::{ExtractedDocument, PipelineItem, PipelineTopology, StageContext};
 
 use crate::batch::{StageResult, execute_stage_items};
 use crate::error::{PipelineError, Result};
@@ -29,6 +30,10 @@ pub struct PipelineRunner {
     store: Box<dyn StateStore>,
     /// Monotonically increasing sequence number for checkpoints.
     checkpoint_sequence: u64,
+    /// Shutdown signal for push-source long-running mode.
+    /// Cloned into push-source adapters and can be signalled externally
+    /// via `shutdown_handle()`.
+    shutdown: Arc<Notify>,
 }
 
 impl std::fmt::Debug for PipelineRunner {
@@ -38,6 +43,7 @@ impl std::fmt::Debug for PipelineRunner {
             .field("state", &self.state)
             .field("store", &"<dyn StateStore>")
             .field("checkpoint_sequence", &self.checkpoint_sequence)
+            .field("shutdown", &"<Notify>")
             .finish()
     }
 }
@@ -118,6 +124,7 @@ impl PipelineRunner {
             state,
             store,
             checkpoint_sequence: 0,
+            shutdown: Arc::new(Notify::new()),
         })
     }
 
@@ -155,7 +162,12 @@ impl PipelineRunner {
             self.checkpoint().await?;
         }
 
-        // Phase 3: Finalize.
+        // Phase 3: Push source loop (if any push sources are configured).
+        if !self.topology.push_sources.is_empty() {
+            self.run_push_sources().await?;
+        }
+
+        // Phase 4: Finalize.
         self.save_completed_hashes().await?;
         self.state.status = PipelineStatus::Completed {
             finished_at: Utc::now(),
@@ -481,6 +493,127 @@ impl PipelineRunner {
     pub fn topology(&self) -> &PipelineTopology {
         &self.topology
     }
+
+    /// Get a handle to the shutdown signal.
+    ///
+    /// Calling `notify_one()` on the returned `Notify` will cause
+    /// `run_push_sources()` to stop accepting new events and drain.
+    pub fn shutdown_handle(&self) -> Arc<Notify> {
+        self.shutdown.clone()
+    }
+
+    /// Run push-based source adapters.
+    ///
+    /// Starts each push source, then enters a loop that receives
+    /// `ExtractedDocument`s and feeds them through the stage pipeline.
+    /// The loop runs until the shutdown signal is received or all
+    /// push sources close their channels.
+    async fn run_push_sources(&mut self) -> Result<()> {
+        let mut receivers = Vec::new();
+
+        // Start all push source adapters.
+        for (name, adapter) in &self.topology.push_sources {
+            tracing::info!(source = %name, "starting push source");
+            let rx = adapter.start().await.map_err(|e| PipelineError::PushSource {
+                source_name: name.clone(),
+                detail: e.to_string(),
+            })?;
+            receivers.push((name.clone(), rx));
+        }
+
+        tracing::info!(
+            sources = receivers.len(),
+            "push sources started, entering receive loop"
+        );
+
+        // Process incoming documents until shutdown or all channels close.
+        let shutdown = self.shutdown.clone();
+        let mut shutdown_signalled = false;
+
+        loop {
+            // Collect a batch of documents.
+            let mut batch: Vec<(String, ExtractedDocument)> = Vec::new();
+
+            tokio::select! {
+                _ = shutdown.notified(), if !shutdown_signalled => {
+                    tracing::info!("push source shutdown signal received");
+                    shutdown_signalled = true;
+                    // Drain remaining items from all receivers.
+                    for (name, rx) in &mut receivers {
+                        while let Ok(doc) = rx.try_recv() {
+                            batch.push((name.clone(), doc));
+                        }
+                    }
+                }
+                // Try to receive from any source (round-robin).
+                _ = async {
+                    for (name, rx) in &mut receivers {
+                        if let Some(doc) = rx.recv().await {
+                            batch.push((name.clone(), doc));
+                            // Drain any additional ready items up to batch limit.
+                            while batch.len() < 100 {
+                                match rx.try_recv() {
+                                    Ok(doc) => batch.push((name.clone(), doc)),
+                                    Err(_) => break,
+                                }
+                            }
+                            return;
+                        }
+                    }
+                    // All channels closed — return to break the loop.
+                } => {}
+            }
+
+            if batch.is_empty() {
+                if shutdown_signalled || receivers.iter_mut().all(|(_, rx)| rx.try_recv().is_err()) {
+                    break;
+                }
+                continue;
+            }
+
+            // Convert documents to item states and pipeline items.
+            for (source_name, doc) in &batch {
+                let source_state = self.state.sources.entry(source_name.clone()).or_default();
+                source_state.items_discovered += 1;
+                source_state.items_accepted += 1;
+                source_state.items.insert(
+                    doc.id.clone(),
+                    ItemState {
+                        display_name: doc.display_name.clone(),
+                        source_id: doc.id.clone(),
+                        source_name: source_name.clone(),
+                        content_hash: doc.content_hash.clone(),
+                        status: ItemStatus::Pending,
+                        completed_stages: vec![],
+                        provenance: doc.provenance.clone(),
+                    },
+                );
+            }
+            self.state.update_stats();
+
+            // Execute the batch through all stage batches.
+            let schedule = self.topology.schedule.clone();
+            for (batch_idx, stage_batch) in schedule.iter().enumerate() {
+                self.execute_batch(batch_idx, stage_batch).await?;
+            }
+            self.checkpoint().await?;
+
+            tracing::info!(items = batch.len(), "push source batch processed");
+
+            if shutdown_signalled {
+                break;
+            }
+        }
+
+        // Shutdown all push source adapters.
+        for (name, adapter) in &self.topology.push_sources {
+            if let Err(e) = adapter.shutdown().await {
+                tracing::warn!(source = %name, "push source shutdown error: {e}");
+            }
+        }
+
+        Ok(())
+    }
 }
 
 #[cfg(test)]
@@ -707,6 +840,7 @@ mod tests {
             spec,
             spec_hash: Blake3Hash::new("test-hash-abc123"),
             sources: topo_sources,
+            push_sources: BTreeMap::new(),
             stages: resolved_stages,
             schedule,
             output_dir: PathBuf::from("/tmp/test-output"),

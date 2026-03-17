@@ -148,6 +148,7 @@ fn build_simple_topo(
                 },
             ),
         ]),
+        push_sources: BTreeMap::new(),
         schedule: vec![
             vec![StageId::new("extract")],
             vec![StageId::new("normalize")],

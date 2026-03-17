@@ -162,6 +162,7 @@ fn build_fs_pipeline(
                 condition: None,
             },
         )]),
+        push_sources: BTreeMap::new(),
         schedule: vec![vec![StageId::new("process")]],
         output_dir: output_dir.to_path_buf(),
     }
@@ -341,6 +342,7 @@ async fn test_full_pipeline_with_extension_filter() {
                 condition: None,
             },
         )]),
+        push_sources: BTreeMap::new(),
         schedule: vec![vec![StageId::new("process")]],
         output_dir: output.path().to_path_buf(),
     };
@@ -417,6 +419,7 @@ async fn test_multi_stage_extract_then_passthrough() {
                 condition: None,
             },
         )]),
+        push_sources: BTreeMap::new(),
         schedule: vec![vec![StageId::new("extract")]],
         output_dir: output.path().to_path_buf(),
     };
