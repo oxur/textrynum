@@ -1,4 +1,4 @@
-# 0029 — Phase 2 Detailed Implementation Plan: "Make Giant Eagle Work"
+# Phase 2 Detailed Implementation Plan: "Make Giant Eagle Work"
 
 **Date:** 2026-03-17
 **Status:** Draft
@@ -413,6 +413,7 @@ Wait — looking at the current code more carefully: `collect_items_for_stage` o
 **The fix:** In Phase 1, this was already an issue (csv_parse → field_map → validate → kafka_sink is 4 stages). The current runner marks items Completed after the *first* stage, so they'd be invisible to stage 2.
 
 **Looking more carefully at the runner:** The schedule has batches, and within a batch, stages run in parallel. The FULL pipeline flows through batches sequentially. So the model is:
+
 - Batch 0: [extract] — produces items, marks originals Completed
 - Batch 1: [normalize] — needs to see extract's output items
 - etc.
@@ -595,6 +596,7 @@ fn source_stream(spec: &SourceSpec) -> Option<String> {
 11. `test_backward_compat_no_streams_all_stages_see_all_items`
 
 **Rust patterns:**
+
 - AP-14: Don't collect into Vec unnecessarily — use iterators where possible
 - CA-06: Consider cancellation safety for JoinSet batch execution
 - TR-10: Minimal bounds — `matches_stream` takes `&[String]` not `&Vec<String>`
@@ -869,6 +871,7 @@ impl Stage for JoinStage {
 ```
 
 **Memory considerations:**
+
 - Right-side index is `HashMap<String, Vec<&Record>>` — borrows from items, no cloning
 - For Giant Eagle, the right side (products) is typically smaller than left (items)
 - For very large datasets (>1M rows), consider a streaming merge or spill-to-disk strategy in a future milestone
@@ -1258,6 +1261,7 @@ pub struct TimezoneConfig {
 **Simpler approach for Phase 2:** Ship a static `HashMap<String, String>` of US ZIP prefixes → timezone strings (the first 3 digits of a ZIP determine the timezone with high accuracy). ~1000 entries covers all US ZIPs.
 
 **Dependencies:**
+
 ```toml
 chrono-tz = "0.10"  # IANA timezone support
 ```
@@ -1265,6 +1269,7 @@ chrono-tz = "0.10"  # IANA timezone support
 ### 6.4 Tests
 
 **DateParse:**
+
 1. `test_date_parse_mm_dd_yyyy`
 2. `test_date_parse_iso8601`
 3. `test_date_parse_iso8601_millis` — digital file timestamps
@@ -1272,6 +1277,7 @@ chrono-tz = "0.10"  # IANA timezone support
 5. `test_date_parse_assume_timezone`
 
 **Timezone:**
+
 1. `test_timezone_us_eastern_to_utc`
 2. `test_timezone_us_pacific_to_utc`
 3. `test_timezone_override_store_5995` — store ID → UTC
@@ -1372,6 +1378,7 @@ impl DecompressStage {
 ```
 
 **Dependencies:**
+
 ```toml
 zip = "2"
 flate2 = "1"  # for gzip
@@ -1617,6 +1624,7 @@ All fields are `String` and `u64`, so this is trivially derivable.
 ### 10.2 New Dependencies
 
 **Root `Cargo.toml` workspace deps:**
+
 ```toml
 zip = "2"
 flate2 = "1"
@@ -1624,6 +1632,7 @@ chrono-tz = "0.10"
 ```
 
 **`ecl-stages/Cargo.toml` additions:**
+
 ```toml
 zip = { workspace = true }
 flate2 = { workspace = true }
@@ -1635,6 +1644,7 @@ chrono-tz = { workspace = true }
 #### File: `crates/ecl-cli/src/pipeline/registry.rs`
 
 Add to `stage_lookup_fn`:
+
 ```rust
 "join" => {
     let stage = ecl_stages::JoinStage::from_params(&spec.params)?;
@@ -1690,6 +1700,7 @@ pub use assemble::AssembleStage;
 ### 10.5 Backward Compatibility
 
 All changes are additive:
+
 - `PipelineItem` gains `stream: Option<String>` with `#[serde(default)]`
 - `StageSpec` gains `input_streams: Vec<String>` and `output_stream: Option<String>` with `#[serde(default)]`
 - `Stage` trait gains `requires_batch()` and `process_batch()` with defaults
@@ -1753,6 +1764,7 @@ All changes are additive:
 ```
 
 **Parallelizable work:**
+
 - 8.2, 8.3, 8.4, 8.5, 8.6 can ALL proceed in parallel after 8.1
 - 8.7 depends on 8.2 + 8.3 (uses batch mode + multi-stream assembly)
 - 8.8 depends on all prior milestones
@@ -1760,6 +1772,7 @@ All changes are additive:
 ## Appendix B: Files Changed/Created Summary
 
 ### New Files
+
 | File | Milestone |
 |------|-----------|
 | `crates/ecl-stages/src/join.rs` | 8.2 |
@@ -1774,6 +1787,7 @@ All changes are additive:
 | `tests/integration/giant_eagle_e2e.rs` | 8.8 |
 
 ### Modified Files
+
 | File | Milestone | Change |
 |------|-----------|--------|
 | `crates/ecl-pipeline-topo/src/traits.rs` | 8.1, 8.2 | Add `stream` to PipelineItem, add `requires_batch`/`process_batch` to Stage |

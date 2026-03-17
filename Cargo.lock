@@ -2587,6 +2587,7 @@ dependencies = [
  "ecl-pipeline-state",
  "ecl-pipeline-topo",
  "glob",
+ "regex",
  "serde",
  "serde_json",
  "tempfile",

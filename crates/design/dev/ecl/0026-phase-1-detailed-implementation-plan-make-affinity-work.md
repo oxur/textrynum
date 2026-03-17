@@ -1,4 +1,4 @@
-# 0028 — Phase 1 Detailed Implementation Plan: "Make Affinity Work"
+# Phase 1 Detailed Implementation Plan: "Make Affinity Work"
 
 **Date:** 2026-03-17
 **Status:** Draft
@@ -160,6 +160,7 @@ pub struct PipelineItem {
 ```
 
 **Rationale:**
+
 - `serde_json::Map<String, Value>` is already in our dependency tree
 - Preserves insertion order (important for CSV column ordering)
 - Serializable (embedded in checkpoints)
@@ -167,6 +168,7 @@ pub struct PipelineItem {
 - ID-01: Type alias keeps API simple; no need for `#[non_exhaustive]` on a type alias
 
 **Tests to add:**
+
 - `test_pipeline_item_with_record_serde_roundtrip` — serialize/deserialize with populated record
 - `test_pipeline_item_record_none_omitted_in_json` — `skip_serializing_if` works
 - `test_pipeline_item_record_field_access` — get/set fields on Record
@@ -257,6 +259,7 @@ impl Stage for CsvParseStage {
 ```
 
 **Type conversion logic:**
+
 ```rust
 fn convert_value(raw: &str, col_type: &str) -> serde_json::Value {
     match col_type {
@@ -277,11 +280,13 @@ fn convert_value(raw: &str, col_type: &str) -> serde_json::Value {
 ```
 
 **Dependencies to add to `ecl-stages/Cargo.toml`:**
+
 ```toml
 csv = "1"
 ```
 
 **Tests (in `csv_parse.rs`):**
+
 1. `test_csv_parse_basic_three_columns` — 3 rows, 3 string columns
 2. `test_csv_parse_type_conversion` — integer, float, boolean columns
 3. `test_csv_parse_type_conversion_fallback` — invalid integer stays string
@@ -298,6 +303,7 @@ csv = "1"
 14. `test_csv_parse_from_params_invalid` — bad config → StageError::Permanent
 
 **Rust patterns enforced:**
+
 - AP-02: `content: &[u8]` not `&Vec<u8>` for CSV reader input
 - AP-06: No `.unwrap()` — all errors mapped to `StageError`
 - EH-01: `From` impls or `.map_err()` for csv::Error → StageError
@@ -310,6 +316,7 @@ csv = "1"
 #### File: `crates/ecl-cli/src/pipeline/registry.rs`
 
 Add to `stage_lookup_fn` match:
+
 ```rust
 "csv_parse" => {
     let stage = ecl_stages::CsvParseStage::from_params(&spec.params)?;
@@ -322,6 +329,7 @@ Add to `stage_lookup_fn` match:
 #### File: `crates/ecl-stages/src/lib.rs`
 
 Add:
+
 ```rust
 pub mod csv_parse;
 pub use csv_parse::CsvParseStage;
@@ -491,12 +499,14 @@ impl Stage for FieldMapStage {
 8. **Drop:** `record.remove("field")` for each
 
 **Dependencies to add to `ecl-stages/Cargo.toml`:**
+
 ```toml
 regex = "1"
 chrono = { workspace = true }
 ```
 
 **Tests:**
+
 1. `test_field_map_rename_basic`
 2. `test_field_map_rename_missing_field_no_error` — skip silently
 3. `test_field_map_drop_fields`
@@ -515,6 +525,7 @@ chrono = { workspace = true }
 16. `test_field_map_from_params_invalid`
 
 **Rust patterns:**
+
 - PF-01: Compile regexes once in constructor, reuse per item
 - AP-08: Accept `&serde_json::Value` not `&serde_json::Map` for params
 - EH-02: Use `?` throughout, never unwrap
@@ -664,11 +675,13 @@ impl SourceAdapter for GcsAdapter {
 ```
 
 **Auth strategy:**
+
 - `ApplicationDefault`: Use ADC (works on GCE, Cloud Run, local with `gcloud auth application-default login`)
 - `EnvVar`: Read service account JSON from env var, parse, build credentials
 - `File`: Read service account JSON from file path
 
 **Error mapping:**
+
 - 401/403 → `SourceError::AuthError`
 - 404 → `SourceError::NotFound`
 - 429 → `SourceError::RateLimited`
@@ -676,6 +689,7 @@ impl SourceAdapter for GcsAdapter {
 - Other → `SourceError::Permanent`
 
 **Tests:**
+
 1. `test_gcs_adapter_from_spec_default_credentials`
 2. `test_gcs_adapter_enumerate_filters_by_pattern`
 3. `test_gcs_adapter_enumerate_no_pattern_returns_all`
@@ -690,6 +704,7 @@ Note: Real GCS tests require either a test bucket or a mock. For unit tests, con
 #### File: `crates/ecl-cli/src/pipeline/registry.rs`
 
 In `resolve_adapters`:
+
 ```rust
 SourceSpec::Gcs(gcs_spec) => {
     let adapter = ecl_adapter_gcs::GcsAdapter::from_spec(gcs_spec).await
@@ -702,6 +717,7 @@ SourceSpec::Gcs(gcs_spec) => {
 ```
 
 In `source_kind`:
+
 ```rust
 SourceSpec::Gcs(_) => "gcs",
 ```
@@ -709,6 +725,7 @@ SourceSpec::Gcs(_) => "gcs",
 ### 4.7 Workspace Wiring
 
 Add to root `Cargo.toml`:
+
 ```toml
 [workspace]
 members = [
@@ -718,6 +735,7 @@ members = [
 ```
 
 Add to `ecl-cli/Cargo.toml`:
+
 ```toml
 ecl-adapter-gcs = { path = "../ecl-adapter-gcs" }
 ```
@@ -868,6 +886,7 @@ impl ValidateStage {
 ```
 
 **Tests:**
+
 1. `test_validate_required_present` — passes
 2. `test_validate_required_missing` — fails with error
 3. `test_validate_required_null` — fails
@@ -1062,6 +1081,7 @@ impl Stage for KafkaSinkStage {
 ```
 
 **Env var interpolation helper:**
+
 ```rust
 fn interpolate_env(s: &str) -> String {
     // Replace ${VAR_NAME} with std::env::var("VAR_NAME")
@@ -1074,6 +1094,7 @@ fn interpolate_env(s: &str) -> String {
 ```
 
 **Tests:**
+
 1. `test_kafka_sink_config_deserialize`
 2. `test_kafka_sink_filter_valid_only_skips_failed`
 3. `test_kafka_sink_filter_errors_only_skips_passed`
@@ -1121,6 +1142,7 @@ pub struct GcsSinkConfig {
 ```
 
 **Key behavior:**
+
 - Collects all items from a batch, groups by filter criteria
 - Writes one file per batch (all items serialized together)
 - For `json_lines`: one JSON object per line
@@ -1132,6 +1154,7 @@ pub struct GcsSinkConfig {
 **Simpler approach (recommended for Phase 1):** Write one small JSON file per failed record. Path: `{prefix}/{timestamp}/{item_id}.json`. This avoids batch accumulation complexity.
 
 **Tests:**
+
 1. `test_gcs_sink_config_deserialize`
 2. `test_gcs_sink_filter_errors_only`
 3. `test_gcs_sink_json_format`
@@ -1222,6 +1245,7 @@ impl PipelineRunner {
 **Phase 1 simplification:** Since the runner doesn't currently own a GCS client, the lifecycle operations can be implemented as a special "lifecycle" stage that runs at the end of the pipeline. Or: the runner can construct a minimal GCS client from the lifecycle spec credentials. Recommend the latter for cleanliness.
 
 **Tests:**
+
 1. `test_lifecycle_spec_serde_roundtrip`
 2. `test_lifecycle_defaults`
 3. `test_runner_calls_lifecycle_on_success` (mock GCS)
@@ -1295,6 +1319,7 @@ Full TOML spec using filesystem source (substituting for GCS in tests), csv_pars
 ### 10.1 Workspace Dependencies
 
 Add to root `Cargo.toml` `[workspace.dependencies]`:
+
 ```toml
 csv = "1"
 regex = "1"
@@ -1307,6 +1332,7 @@ google-cloud-auth = { version = "0.19", features = ["default-tls"] }
 ### 10.2 Linting Rules
 
 All new crates inherit workspace linting:
+
 ```toml
 [lints.clippy]
 unwrap_used = "deny"
@@ -1318,6 +1344,7 @@ All `#[cfg(test)]` modules use `#[allow(clippy::unwrap_used)]` per existing conv
 ### 10.3 Error Handling Pattern
 
 All new stages follow the established pattern:
+
 - Parse errors → `StageError::Permanent` (config is wrong, won't fix itself)
 - Network/transient errors → `StageError::Transient` (retry will help)
 - Missing record → `StageError::Permanent` (pipeline is misconfigured)
@@ -1326,6 +1353,7 @@ All new stages follow the established pattern:
 ### 10.4 Documentation
 
 Each new public type gets a doc comment per TR-09 / DC-01:
+
 - Types: one-line summary + field documentation
 - Trait impls: note any non-obvious behavior
 - Modules: `//!` header explaining purpose
@@ -1335,6 +1363,7 @@ Each new public type gets a doc comment per TR-09 / DC-01:
 Per `CLAUDE-CODE-COVERAGE.md`: ≥95% coverage on all new code.
 
 Each milestone's test list above is designed to cover:
+
 - Happy path
 - Error paths (invalid config, missing data, type conversion failures)
 - Edge cases (empty input, single row, large input)
@@ -1344,6 +1373,7 @@ Each milestone's test list above is designed to cover:
 ### 10.6 Backward Compatibility
 
 **No breaking changes to existing types:**
+
 - `PipelineItem` gains `record: Option<Record>` with `#[serde(default)]` — existing serialized checkpoints deserialize with `record: None`
 - `SourceSpec` gains `Gcs` variant — existing TOML specs are unaffected
 - `PipelineSpec` gains `lifecycle: Option<LifecycleSpec>` with `#[serde(default)]`
@@ -1403,6 +1433,7 @@ Each milestone's test list above is designed to cover:
 ```
 
 **Parallelizable work:**
+
 - 7.2 + 7.3 can proceed in parallel after 7.1
 - 7.4 can proceed in parallel with 7.3
 - 7.5 + 7.6 can proceed in parallel with 7.2-7.4
@@ -1412,6 +1443,7 @@ Each milestone's test list above is designed to cover:
 ## Appendix B: Files Changed/Created Summary
 
 ### New Files
+
 | File | Milestone |
 |------|-----------|
 | `crates/ecl-stages/src/csv_parse.rs` | 7.1 |
@@ -1431,6 +1463,7 @@ Each milestone's test list above is designed to cover:
 | `tests/integration/affinity_e2e.rs` | 7.8 |
 
 ### Modified Files
+
 | File | Milestone | Change |
 |------|-----------|--------|
 | `Cargo.toml` (workspace) | 7.3, 7.5, 7.6 | Add new crate members + deps |

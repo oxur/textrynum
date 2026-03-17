@@ -14,7 +14,7 @@ use ecl_adapter_zapier::ZapierAdapter;
 use ecl_pipeline_spec::{PipelineSpec, SourceSpec, StageSpec};
 use ecl_pipeline_topo::error::ResolveError;
 use ecl_pipeline_topo::{PushSourceAdapter, SourceAdapter, Stage};
-use ecl_stages::{CsvParseStage, EmitStage, ExtractStage, FilterStage, NormalizeStage};
+use ecl_stages::{CsvParseStage, EmitStage, ExtractStage, FieldMapStage, FilterStage, NormalizeStage};
 
 /// Pre-resolve all source adapters from the spec.
 ///
@@ -96,6 +96,15 @@ pub fn stage_lookup_fn(
                     ResolveError::Io(std::io::Error::new(
                         std::io::ErrorKind::InvalidInput,
                         format!("csv_parse stage '{name}': {e}"),
+                    ))
+                })?;
+                Ok(Arc::new(stage))
+            }
+            "field_map" => {
+                let stage = FieldMapStage::from_params(&spec.params).map_err(|e| {
+                    ResolveError::Io(std::io::Error::new(
+                        std::io::ErrorKind::InvalidInput,
+                        format!("field_map stage '{name}': {e}"),
                     ))
                 })?;
                 Ok(Arc::new(stage))

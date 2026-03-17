@@ -16,11 +16,13 @@
 pub mod csv_parse;
 pub mod emit;
 pub mod extract;
+pub mod field_map;
 pub mod filter;
 pub mod normalize;
 
 pub use csv_parse::CsvParseStage;
 pub use emit::EmitStage;
 pub use extract::ExtractStage;
+pub use field_map::FieldMapStage;
 pub use filter::FilterStage;
 pub use normalize::NormalizeStage;
