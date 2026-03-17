@@ -23,7 +23,7 @@ pub mod traits;
 
 pub use error::{ResolveError, ResolveResult, SourceError, StageError};
 pub use traits::{
-    ExtractedDocument, PipelineItem, PushSourceAdapter, SourceAdapter, SourceItem, Stage,
+    ExtractedDocument, PipelineItem, PushSourceAdapter, Record, SourceAdapter, SourceItem, Stage,
     StageContext,
 };
 
@@ -360,6 +360,7 @@ resources = { creates = ["docs"] }
                 extracted_at: chrono::Utc::now(),
             },
             metadata: BTreeMap::new(),
+            record: None,
         };
 
         let ctx = StageContext {

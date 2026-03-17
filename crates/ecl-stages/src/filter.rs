@@ -136,6 +136,7 @@ mod tests {
                 extracted_at: chrono::Utc::now(),
             },
             metadata: BTreeMap::new(),
+            record: None,
         }
     }
 

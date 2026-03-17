@@ -371,6 +371,7 @@ impl PipelineRunner {
                         source_content_hash: item_state.content_hash.clone(),
                         provenance: item_state.provenance.clone(),
                         metadata: BTreeMap::new(),
+                        record: None,
                     });
                 }
             }

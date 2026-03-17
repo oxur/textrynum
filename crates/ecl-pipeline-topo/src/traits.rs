@@ -13,6 +13,13 @@ use ecl_pipeline_state::{Blake3Hash, ItemProvenance};
 
 use crate::error::{SourceError, StageError};
 
+/// A structured data record flowing through the pipeline.
+/// Stages that process tabular/structured data use this instead of raw `content`.
+/// Backed by `serde_json::Map` for maximum flexibility — fields can be strings,
+/// numbers, booleans, arrays, or nested objects. Preserves insertion order
+/// (important for CSV column ordering).
+pub type Record = serde_json::Map<String, serde_json::Value>;
+
 /// Custom serde module for `Arc<[u8]>` using serde_bytes for efficient
 /// binary serialization. `serde_bytes` doesn't natively support `Arc<[u8]>`,
 /// so we serialize via `&[u8]` and deserialize via `Vec<u8>` then convert.
@@ -194,6 +201,11 @@ pub struct PipelineItem {
     /// Structured as `serde_json::Value` for flexibility without losing
     /// serializability.
     pub metadata: BTreeMap<String, serde_json::Value>,
+
+    /// Structured record for tabular data. Set by CSV parse, consumed by
+    /// field map, validate, and sink stages. `None` for document-oriented items.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub record: Option<Record>,
 }
 
 /// A pipeline stage transforms items.
@@ -306,11 +318,78 @@ mod tests {
             source_content_hash: Blake3Hash::new("aabb"),
             provenance: make_provenance(),
             metadata: BTreeMap::new(),
+            record: None,
         };
         let json = serde_json::to_string(&item).unwrap();
         let deserialized: PipelineItem = serde_json::from_str(&json).unwrap();
         let json2 = serde_json::to_string(&deserialized).unwrap();
         assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_pipeline_item_record_serde_roundtrip() {
+        let mut record = Record::new();
+        record.insert("name".to_string(), serde_json::Value::String("Alice".to_string()));
+        record.insert("age".to_string(), serde_json::json!(30));
+        record.insert("active".to_string(), serde_json::Value::Bool(true));
+
+        let item = PipelineItem {
+            id: "item-002".to_string(),
+            display_name: "row.csv".to_string(),
+            content: Arc::from(b"" as &[u8]),
+            mime_type: "application/x-ecl-record".to_string(),
+            source_name: "local".to_string(),
+            source_content_hash: Blake3Hash::new("ccdd"),
+            provenance: make_provenance(),
+            metadata: BTreeMap::new(),
+            record: Some(record),
+        };
+        let json = serde_json::to_string(&item).unwrap();
+        let deserialized: PipelineItem = serde_json::from_str(&json).unwrap();
+        assert_eq!(deserialized.record.as_ref().unwrap()["name"], "Alice");
+        assert_eq!(deserialized.record.as_ref().unwrap()["age"], 30);
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_pipeline_item_record_none_skipped_in_json() {
+        let item = PipelineItem {
+            id: "item-003".to_string(),
+            display_name: "doc.pdf".to_string(),
+            content: Arc::from(b"bytes" as &[u8]),
+            mime_type: "text/plain".to_string(),
+            source_name: "local".to_string(),
+            source_content_hash: Blake3Hash::new("eeff"),
+            provenance: make_provenance(),
+            metadata: BTreeMap::new(),
+            record: None,
+        };
+        let json = serde_json::to_string(&item).unwrap();
+        assert!(!json.contains("record"), "record: None should be skipped in JSON");
+    }
+
+    #[test]
+    fn test_pipeline_item_deserialize_without_record_field() {
+        // JSON from older code that lacks the "record" field entirely
+        // should deserialize with record: None (backward compat via #[serde(default)])
+        let json = r#"{
+            "id": "item-004",
+            "display_name": "old.txt",
+            "content": [104, 105],
+            "mime_type": "text/plain",
+            "source_name": "local",
+            "source_content_hash": "0000",
+            "provenance": {
+                "source_kind": "filesystem",
+                "metadata": {},
+                "source_modified": null,
+                "extracted_at": "2026-03-13T10:00:00Z"
+            },
+            "metadata": {}
+        }"#;
+        let item: PipelineItem = serde_json::from_str(json).unwrap();
+        assert!(item.record.is_none());
     }
 
     #[test]
@@ -324,6 +403,7 @@ mod tests {
             source_content_hash: Blake3Hash::new("aabb"),
             provenance: make_provenance(),
             metadata: BTreeMap::new(),
+            record: None,
         };
         let cloned = item.clone();
         assert!(Arc::ptr_eq(&item.content, &cloned.content));
