@@ -2,28 +2,50 @@
 
 //! ECL CLI
 //!
-//! Command-line interface for ECL.
+//! Command-line interface for ECL workflow management and pipeline execution.
+
+mod pipeline;
 
 use anyhow::Result;
-use clap::Parser;
+use clap::{Parser, Subcommand};
 
 /// ECL Command-Line Interface
 #[derive(Parser, Debug)]
-#[command(author, version, about, long_about = None)]
-struct Args {
+#[command(author, version, about = "ECL — Extract, Curate, Load")]
+struct Cli {
     /// Enable verbose output
-    #[arg(short, long)]
+    #[arg(short, long, global = true)]
     verbose: bool,
+
+    /// Subcommand to execute
+    #[command(subcommand)]
+    command: Commands,
+}
+
+/// Top-level commands.
+#[derive(Subcommand, Debug)]
+enum Commands {
+    /// Pipeline execution and inspection commands.
+    Pipeline {
+        #[command(subcommand)]
+        command: pipeline::PipelineCommand,
+    },
 }
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let _args = Args::parse();
+    let cli = Cli::parse();
 
-    // Initialize tracing
-    tracing_subscriber::fmt::init();
+    // Initialize tracing based on verbosity.
+    let filter = if cli.verbose { "debug" } else { "info" };
+    tracing_subscriber::fmt()
+        .with_env_filter(
+            tracing_subscriber::EnvFilter::try_from_default_env()
+                .unwrap_or_else(|_| tracing_subscriber::EnvFilter::new(filter)),
+        )
+        .init();
 
-    println!("ECL CLI - Coming in later stages!");
-
-    Ok(())
+    match cli.command {
+        Commands::Pipeline { command } => pipeline::execute(command).await,
+    }
 }

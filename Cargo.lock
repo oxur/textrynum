@@ -2411,9 +2411,17 @@ name = "ecl-cli"
 version = "0.4.0"
 dependencies = [
  "anyhow",
+ "blake3",
+ "chrono",
  "clap",
- "confyg",
+ "ecl-adapter-fs",
+ "ecl-adapter-gdrive",
  "ecl-core",
+ "ecl-pipeline",
+ "ecl-pipeline-spec",
+ "ecl-pipeline-state",
+ "ecl-pipeline-topo",
+ "ecl-stages",
  "ecl-steps",
  "ecl-workflows",
  "serde",
@@ -2423,7 +2431,6 @@ dependencies = [
  "tokio",
  "tracing",
  "tracing-subscriber",
- "twyg",
 ]
 
 [[package]]

@@ -9,10 +9,19 @@ repository.workspace = true
 description = "Command-line interface for ECL workflow management"
 
 [dependencies]
-# Internal dependencies
+# Internal dependencies — legacy ECL
 ecl-core = { version = "0.4.0", path = "../ecl-core" }
 ecl-steps = { version = "0.4.0", path = "../ecl-steps" }
 ecl-workflows = { version = "0.4.0", path = "../ecl-workflows" }
+
+# Internal dependencies — pipeline runner
+ecl-pipeline = { version = "0.4.0", path = "../ecl-pipeline" }
+ecl-pipeline-spec = { version = "0.4.0", path = "../ecl-pipeline-spec" }
+ecl-pipeline-state = { version = "0.4.0", path = "../ecl-pipeline-state" }
+ecl-pipeline-topo = { version = "0.4.0", path = "../ecl-pipeline-topo" }
+ecl-adapter-fs = { version = "0.4.0", path = "../ecl-adapter-fs" }
+ecl-adapter-gdrive = { version = "0.4.0", path = "../ecl-adapter-gdrive" }
+ecl-stages = { version = "0.4.0", path = "../ecl-stages" }
 
 # Workspace dependencies
 tokio = { workspace = true }
@@ -23,8 +32,8 @@ anyhow = { workspace = true }
 clap = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
-confyg = { workspace = true }
-twyg = { workspace = true }
+chrono = { workspace = true }
+blake3 = { workspace = true }
 
 [dev-dependencies]
 tempfile = { workspace = true }
