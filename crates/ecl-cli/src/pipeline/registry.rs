@@ -15,6 +15,7 @@ use ecl_adapter_zapier::ZapierAdapter;
 use ecl_pipeline_spec::{PipelineSpec, SourceSpec, StageSpec};
 use ecl_pipeline_topo::error::ResolveError;
 use ecl_pipeline_topo::{PushSourceAdapter, SourceAdapter, Stage};
+use ecl_sink_kafka::KafkaSinkStage;
 use ecl_stages::{CsvParseStage, EmitStage, ExtractStage, FieldMapStage, FilterStage, NormalizeStage, ValidateStage};
 
 /// Pre-resolve all source adapters from the spec.
@@ -116,6 +117,15 @@ pub fn stage_lookup_fn(
                     ResolveError::Io(std::io::Error::new(
                         std::io::ErrorKind::InvalidInput,
                         format!("validate stage '{name}': {e}"),
+                    ))
+                })?;
+                Ok(Arc::new(stage))
+            }
+            "kafka_sink" => {
+                let stage = KafkaSinkStage::from_params(&spec.params).map_err(|e| {
+                    ResolveError::Io(std::io::Error::new(
+                        std::io::ErrorKind::InvalidInput,
+                        format!("kafka_sink stage '{name}': {e}"),
                     ))
                 })?;
                 Ok(Arc::new(stage))

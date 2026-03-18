@@ -1,0 +1,53 @@
+[package]
+name = "ecl-sink-kafka"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Kafka sink stage for the ECL pipeline runner (Avro + Schema Registry)"
+
+[dependencies]
+ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.0" }
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.0" }
+ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.0" }
+
+# Kafka
+rdkafka = { workspace = true }
+
+# Avro
+apache-avro = { workspace = true }
+
+# Schema Registry HTTP client
+reqwest = { workspace = true }
+
+# Async
+tokio = { workspace = true }
+async-trait = { workspace = true }
+
+# Serde
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Logging
+tracing = { workspace = true }
+
+# Error handling
+thiserror = { workspace = true }
+
+# Regex for env var interpolation
+regex = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["test-util"] }
+wiremock = "0.6"
+tempfile = { workspace = true }
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "warn"
+panic = "deny"
