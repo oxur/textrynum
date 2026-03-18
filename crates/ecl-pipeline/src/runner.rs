@@ -174,6 +174,21 @@ impl PipelineRunner {
         };
         self.checkpoint().await?;
 
+        // Phase 5: File lifecycle management (if configured).
+        if let Some(ref lifecycle_spec) = self.topology.spec.lifecycle {
+            let source_objects = self.collect_source_object_ids();
+            let manager = crate::lifecycle::LifecycleManager::new(lifecycle_spec);
+            let run_id = self.state.run_id.as_str();
+
+            if self.state.stats.total_items_failed == 0 {
+                if let Err(e) = manager.on_success(run_id, &source_objects).await {
+                    tracing::warn!(error = %e, "lifecycle on_success failed (non-fatal)");
+                }
+            } else if let Err(e) = manager.on_failure(&source_objects).await {
+                tracing::warn!(error = %e, "lifecycle on_failure failed (non-fatal)");
+            }
+        }
+
         let duration_ms = run_start.elapsed().as_millis() as u64;
         tracing::info!(
             pipeline = %pipeline_name,
@@ -483,6 +498,18 @@ impl PipelineRunner {
 
         self.state.update_stats();
         Ok(())
+    }
+
+    /// Collect source object IDs (e.g., GCS object names) from all sources.
+    ///
+    /// Returns the original source IDs for all discovered items. Used by
+    /// the lifecycle manager to move processed files.
+    fn collect_source_object_ids(&self) -> Vec<String> {
+        self.state
+            .sources
+            .values()
+            .flat_map(|source| source.items.values().map(|item| item.source_id.clone()))
+            .collect()
     }
 
     /// Get a reference to the current pipeline state.
@@ -809,6 +836,7 @@ mod tests {
             sources: spec_sources,
             stages: spec_stages,
             defaults: DefaultsSpec::default(),
+            lifecycle: None,
         });
 
         let topo_sources: BTreeMap<String, Arc<dyn SourceAdapter>> = sources.into_iter().collect();

@@ -6,12 +6,14 @@
 
 pub mod defaults;
 pub mod error;
+pub mod lifecycle;
 pub mod source;
 pub mod stage;
 pub mod validation;
 
 pub use defaults::{CheckpointStrategy, DefaultsSpec, RetrySpec};
 pub use error::{Result, SpecError};
+pub use lifecycle::LifecycleSpec;
 pub use source::{
     CredentialRef, FileTypeFilter, FilesystemSourceSpec, FilterAction, FilterRule,
     GcsSourceSpec, GoogleDriveSourceSpec, SlackSourceSpec, SourceSpec,
@@ -47,6 +49,12 @@ pub struct PipelineSpec {
     /// Global defaults that apply across all sources/stages.
     #[serde(default)]
     pub defaults: DefaultsSpec,
+
+    /// Optional file lifecycle management for cloud storage sources.
+    /// When set, the runner moves processed files (e.g., staging → historical)
+    /// after pipeline completion or failure.
+    #[serde(default)]
+    pub lifecycle: Option<LifecycleSpec>,
 }
 
 impl PipelineSpec {

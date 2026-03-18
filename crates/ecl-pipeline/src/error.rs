@@ -62,6 +62,13 @@ pub enum PipelineError {
         detail: String,
     },
 
+    /// File lifecycle management operation failed.
+    #[error("lifecycle error: {message}")]
+    Lifecycle {
+        /// Error detail.
+        message: String,
+    },
+
     /// A batch contained a stage that failed and was not configured with
     /// skip_on_error.
     #[error("stage '{stage}' failed for item '{item_id}': {error}")]

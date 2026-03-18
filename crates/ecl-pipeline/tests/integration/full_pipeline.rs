@@ -142,6 +142,7 @@ fn build_fs_pipeline(
             },
         )]),
         defaults: DefaultsSpec::default(),
+        lifecycle: None,
     });
 
     let spec_hash_bytes = serde_json::to_string(&*spec).unwrap();
@@ -324,6 +325,7 @@ async fn test_full_pipeline_with_extension_filter() {
             },
         )]),
         defaults: DefaultsSpec::default(),
+        lifecycle: None,
     });
 
     let spec_hash = Blake3Hash::new("test-hash");
@@ -401,6 +403,7 @@ async fn test_multi_stage_extract_then_passthrough() {
             },
         )]),
         defaults: DefaultsSpec::default(),
+        lifecycle: None,
     });
 
     let spec_hash = Blake3Hash::new("test-hash");

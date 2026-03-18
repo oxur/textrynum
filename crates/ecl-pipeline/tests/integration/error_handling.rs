@@ -123,6 +123,7 @@ fn build_single_stage_topo(
             },
         )]),
         defaults: DefaultsSpec::default(),
+        lifecycle: None,
     });
 
     let spec_hash_bytes = serde_json::to_string(&*spec).unwrap();

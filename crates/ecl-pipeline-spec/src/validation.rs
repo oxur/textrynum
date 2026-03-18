@@ -76,6 +76,7 @@ mod tests {
             sources,
             stages,
             defaults: Default::default(),
+            lifecycle: None,
         }
     }
 

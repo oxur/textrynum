@@ -2568,16 +2568,19 @@ dependencies = [
  "blake3",
  "chrono",
  "ecl-adapter-fs",
+ "ecl-adapter-gcs",
  "ecl-pipeline-spec",
  "ecl-pipeline-state",
  "ecl-pipeline-topo",
  "ecl-stages",
+ "reqwest 0.13.2",
  "serde",
  "serde_json",
  "tempfile",
  "thiserror 2.0.18",
  "tokio",
  "tracing",
+ "wiremock",
 ]
 
 [[package]]

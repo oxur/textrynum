@@ -101,6 +101,7 @@ fn build_simple_topo(
             ),
         ]),
         defaults: DefaultsSpec::default(),
+        lifecycle: None,
     });
 
     let spec_hash_bytes = serde_json::to_string(&*spec).unwrap();

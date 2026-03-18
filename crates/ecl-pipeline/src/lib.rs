@@ -22,6 +22,7 @@
 
 pub mod batch;
 pub mod error;
+pub mod lifecycle;
 pub mod registry;
 pub mod runner;
 

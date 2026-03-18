@@ -388,6 +388,7 @@ mod tests {
                 sources: BTreeMap::new(),
                 stages: BTreeMap::new(),
                 defaults: DefaultsSpec::default(),
+                lifecycle: None,
             }),
             output_dir: PathBuf::from("/tmp/test"),
             params: serde_json::Value::Null,
