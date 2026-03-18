@@ -19,6 +19,7 @@ members = [
     "crates/ecl-adapter-gcs",
     "crates/ecl-stages",
     "crates/ecl-sink-kafka",
+    "crates/ecl-sink-gcs",
     # Fabryk crates
     "crates/fabryk",
     "crates/fabryk-core",

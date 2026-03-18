@@ -11,6 +11,12 @@ pub const GCS_DOWNLOAD_BASE_URL: &str = "https://storage.googleapis.com/storage/
 /// Google OAuth2 scope for read-only GCS access.
 pub const GCS_READONLY_SCOPE: &str = "https://www.googleapis.com/auth/devstorage.read_only";
 
+/// Google OAuth2 scope for read-write GCS access.
+pub const GCS_READWRITE_SCOPE: &str = "https://www.googleapis.com/auth/devstorage.read_write";
+
+/// GCS JSON API upload URL base (for object uploads).
+pub const GCS_UPLOAD_BASE_URL: &str = "https://storage.googleapis.com/upload/storage/v1";
+
 /// Google OAuth2 token endpoint.
 pub const GOOGLE_TOKEN_URL: &str = "https://oauth2.googleapis.com/token";
 
