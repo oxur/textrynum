@@ -1,0 +1,4 @@
+Channel_Aggregator_ID,Program_ID,Account_ID,Card_BIN,Card_Last_Four,Account_Postal_Code,Merchant_Location_MID,Merchant_Location_Name,Merchant_Location_Street,Merchant_Location_City,Merchant_Location_State,Merchant_Location_Postal_Code,Merchant_Location_Category_Code,Transaction_ID,Transaction_Date,Transaction_Settlement_Date,Transaction_Code,Transaction_Amount,Transaction_Auth_Code
+AGG001,PRG001,ACCT-001,411111,1234,90210,MID-001,ACME INC. #1234,123 Main St,Los Angeles,CA,90001,5912,TXN-001,03/15/2026,03/16/2026,PUR,25.99,123
+AGG001,PRG001,ACCT-002,422222,5678,10001,MID-002,CVS PHARMACY,456 Oak Ave,New York,NY,10002,5912,TXN-002,03/15/2026,03/16/2026,PUR,12.50,456
+AGG001,PRG001,ACCT-003,433333,,90210,MID-003,ACME INC. #5678,789 Pine Rd,Chicago,IL,60601,5912,,03/15/2026,03/16/2026,PUR,8.75,789012
