@@ -31,6 +31,8 @@ pub struct TokenProvider {
     cached: Arc<RwLock<Option<CachedToken>>>,
     /// Override token endpoint URL (for testing).
     token_url_override: Option<String>,
+    /// OAuth2 scope to request. Defaults to GCS read-only.
+    scope: String,
 }
 
 /// A cached access token with expiry tracking.
@@ -58,6 +60,7 @@ impl TokenProvider {
             http_client,
             cached: Arc::new(RwLock::new(None)),
             token_url_override: None,
+            scope: GCS_READONLY_SCOPE.to_string(),
         }
     }
 
@@ -73,12 +76,19 @@ impl TokenProvider {
             http_client: reqwest::Client::new(),
             cached: Arc::new(RwLock::new(Some(cached))),
             token_url_override: None,
+            scope: GCS_READONLY_SCOPE.to_string(),
         }
     }
 
     /// Override the token endpoint URL (for testing with wiremock).
     pub fn with_token_url(mut self, url: String) -> Self {
         self.token_url_override = Some(url);
+        self
+    }
+
+    /// Override the OAuth2 scope (e.g., for read-write access in sinks).
+    pub fn with_scope(mut self, scope: String) -> Self {
+        self.scope = scope;
         self
     }
 
@@ -133,7 +143,7 @@ impl TokenProvider {
             })?;
 
         let token_url = self.token_url_override.as_deref().unwrap_or(&key.token_uri);
-        let jwt = Self::create_service_account_jwt(&key, token_url)?;
+        let jwt = Self::create_service_account_jwt(&key, token_url, &self.scope)?;
         self.exchange_jwt_for_token(&jwt, token_url).await
     }
 
@@ -141,11 +151,12 @@ impl TokenProvider {
     fn create_service_account_jwt(
         key: &ServiceAccountKey,
         token_url: &str,
+        scope: &str,
     ) -> Result<String, GcsAdapterError> {
         let now = Utc::now();
         let claims = JwtClaims {
             iss: key.client_email.clone(),
-            scope: GCS_READONLY_SCOPE.to_string(),
+            scope: scope.to_string(),
             aud: token_url.to_string(),
             iat: now.timestamp(),
             exp: (now + chrono::Duration::seconds(3600)).timestamp(),
@@ -256,7 +267,7 @@ impl TokenProvider {
         // Try parsing as service account key first.
         if let Ok(key) = serde_json::from_str::<ServiceAccountKey>(&content) {
             let token_url = self.token_url_override.as_deref().unwrap_or(&key.token_uri);
-            let jwt = Self::create_service_account_jwt(&key, token_url)?;
+            let jwt = Self::create_service_account_jwt(&key, token_url, &self.scope)?;
             return self.exchange_jwt_for_token(&jwt, token_url).await;
         }
 

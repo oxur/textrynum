@@ -1,0 +1,49 @@
+[package]
+name = "ecl-sink-gcs"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "GCS sink stage for the ECL pipeline runner (error/rejected item output)"
+
+[dependencies]
+ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.0" }
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.0" }
+ecl-adapter-gcs = { path = "../ecl-adapter-gcs", version = "0.4.0" }
+
+# HTTP
+reqwest = { workspace = true }
+
+# Async
+tokio = { workspace = true }
+async-trait = { workspace = true }
+
+# Serde
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Time
+chrono = { workspace = true }
+
+# Logging
+tracing = { workspace = true }
+
+# Error handling
+thiserror = { workspace = true }
+
+[dev-dependencies]
+ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.0" }
+tokio = { workspace = true, features = ["test-util"] }
+wiremock = "0.6"
+tempfile = { workspace = true }
+tracing = { workspace = true }
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "warn"
+panic = "deny"

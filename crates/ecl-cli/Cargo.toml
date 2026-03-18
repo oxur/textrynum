@@ -26,6 +26,7 @@ ecl-adapter-slack = { version = "0.4.0", path = "../ecl-adapter-slack" }
 ecl-adapter-zapier = { version = "0.4.0", path = "../ecl-adapter-zapier" }
 ecl-stages = { version = "0.4.0", path = "../ecl-stages" }
 ecl-sink-kafka = { version = "0.4.0", path = "../ecl-sink-kafka" }
+ecl-sink-gcs = { version = "0.4.0", path = "../ecl-sink-gcs" }
 
 # Workspace dependencies
 tokio = { workspace = true }
