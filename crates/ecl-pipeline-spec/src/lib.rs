@@ -14,7 +14,7 @@ pub use defaults::{CheckpointStrategy, DefaultsSpec, RetrySpec};
 pub use error::{Result, SpecError};
 pub use source::{
     CredentialRef, FileTypeFilter, FilesystemSourceSpec, FilterAction, FilterRule,
-    GoogleDriveSourceSpec, SlackSourceSpec, SourceSpec,
+    GcsSourceSpec, GoogleDriveSourceSpec, SlackSourceSpec, SourceSpec,
 };
 pub use stage::{ResourceSpec, StageSpec};
 

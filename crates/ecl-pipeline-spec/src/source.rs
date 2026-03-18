@@ -23,6 +23,10 @@ pub enum SourceSpec {
     /// Zapier webhook push source.
     #[serde(rename = "zapier")]
     Zapier(ZapierSourceSpec),
+
+    /// Google Cloud Storage source.
+    #[serde(rename = "gcs")]
+    Gcs(GcsSourceSpec),
 }
 
 /// Google Drive source configuration.
@@ -110,6 +114,29 @@ pub struct ZapierSourceSpec {
     /// Default source hint if `X-Zapier-Source` header is absent.
     #[serde(default)]
     pub default_source_hint: Option<String>,
+}
+
+/// Google Cloud Storage source configuration.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct GcsSourceSpec {
+    /// GCS bucket name (without gs:// prefix).
+    pub bucket: String,
+
+    /// Object prefix to filter listing (e.g., "staging/").
+    #[serde(default)]
+    pub prefix: String,
+
+    /// Glob pattern to match object names (e.g., "*.csv").
+    #[serde(default)]
+    pub pattern: Option<String>,
+
+    /// Credentials for authentication.
+    #[serde(default = "default_adc")]
+    pub credentials: CredentialRef,
+}
+
+fn default_adc() -> CredentialRef {
+    CredentialRef::ApplicationDefault
 }
 
 fn default_batch_max_items() -> usize {
@@ -268,6 +295,39 @@ mod tests {
             assert!(zapier.default_source_hint.is_none());
         } else {
             panic!("expected Zapier variant");
+        }
+    }
+
+    #[test]
+    fn test_source_spec_gcs_serde_roundtrip() {
+        let source = SourceSpec::Gcs(GcsSourceSpec {
+            bucket: "my-fintech-bucket".to_string(),
+            prefix: "staging/".to_string(),
+            pattern: Some("Banyan-txn-file*.csv".to_string()),
+            credentials: CredentialRef::File {
+                path: PathBuf::from("/etc/gcs-key.json"),
+            },
+        });
+        let json = serde_json::to_string(&source).unwrap();
+        let deserialized: SourceSpec = serde_json::from_str(&json).unwrap();
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_gcs_source_spec_defaults() {
+        let json = r#"{
+            "kind": "gcs",
+            "bucket": "my-bucket"
+        }"#;
+        let spec: SourceSpec = serde_json::from_str(json).unwrap();
+        if let SourceSpec::Gcs(gcs) = spec {
+            assert_eq!(gcs.bucket, "my-bucket");
+            assert_eq!(gcs.prefix, "");
+            assert!(gcs.pattern.is_none());
+            assert!(matches!(gcs.credentials, CredentialRef::ApplicationDefault));
+        } else {
+            panic!("expected Gcs variant");
         }
     }
 

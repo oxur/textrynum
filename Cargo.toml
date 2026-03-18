@@ -16,6 +16,7 @@ members = [
     "crates/ecl-adapter-gdrive",
     "crates/ecl-adapter-slack",
     "crates/ecl-adapter-zapier",
+    "crates/ecl-adapter-gcs",
     "crates/ecl-stages",
     # Fabryk crates
     "crates/fabryk",

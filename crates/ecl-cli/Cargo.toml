@@ -20,6 +20,7 @@ ecl-pipeline-spec = { version = "0.4.0", path = "../ecl-pipeline-spec" }
 ecl-pipeline-state = { version = "0.4.0", path = "../ecl-pipeline-state" }
 ecl-pipeline-topo = { version = "0.4.0", path = "../ecl-pipeline-topo" }
 ecl-adapter-fs = { version = "0.4.0", path = "../ecl-adapter-fs" }
+ecl-adapter-gcs = { version = "0.4.0", path = "../ecl-adapter-gcs" }
 ecl-adapter-gdrive = { version = "0.4.0", path = "../ecl-adapter-gdrive" }
 ecl-adapter-slack = { version = "0.4.0", path = "../ecl-adapter-slack" }
 ecl-adapter-zapier = { version = "0.4.0", path = "../ecl-adapter-zapier" }

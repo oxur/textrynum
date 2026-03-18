@@ -127,6 +127,7 @@ fn source_kind(spec: &SourceSpec) -> &'static str {
         SourceSpec::Slack(_) => "slack",
         SourceSpec::Filesystem(_) => "filesystem",
         SourceSpec::Zapier(_) => "zapier",
+        SourceSpec::Gcs(_) => "gcs",
     }
 }
 
@@ -256,6 +257,7 @@ mod tests {
             SourceSpec::Slack(_) => "slack",
             SourceSpec::Filesystem(_) => "filesystem",
             SourceSpec::Zapier(_) => "zapier",
+            SourceSpec::Gcs(_) => "gcs",
         };
         Ok(Arc::new(MockSourceAdapter::new(kind)))
     }

@@ -2384,6 +2384,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "ecl-adapter-gcs"
+version = "0.4.0"
+dependencies = [
+ "async-trait",
+ "blake3",
+ "chrono",
+ "dirs 6.0.0",
+ "ecl-pipeline-spec",
+ "ecl-pipeline-state",
+ "ecl-pipeline-topo",
+ "glob",
+ "jsonwebtoken",
+ "reqwest 0.13.2",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "thiserror 2.0.18",
+ "tokio",
+ "tracing",
+ "wiremock",
+]
+
+[[package]]
 name = "ecl-adapter-gdrive"
 version = "0.4.0"
 dependencies = [
@@ -2454,6 +2477,7 @@ dependencies = [
  "chrono",
  "clap",
  "ecl-adapter-fs",
+ "ecl-adapter-gcs",
  "ecl-adapter-gdrive",
  "ecl-adapter-slack",
  "ecl-adapter-zapier",

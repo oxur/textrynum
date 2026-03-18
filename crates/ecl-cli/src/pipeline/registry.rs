@@ -8,6 +8,7 @@ use std::collections::BTreeMap;
 use std::sync::Arc;
 
 use ecl_adapter_fs::FilesystemAdapter;
+use ecl_adapter_gcs::GcsAdapter;
 use ecl_adapter_gdrive::GoogleDriveAdapter;
 use ecl_adapter_slack::SlackAdapter;
 use ecl_adapter_zapier::ZapierAdapter;
@@ -36,6 +37,7 @@ pub fn resolve_adapters(
             }
             SourceSpec::Slack(_) => Arc::new(SlackAdapter::from_spec(name, source_spec)?),
             SourceSpec::Zapier(_) => continue, // Push sources resolved separately
+            SourceSpec::Gcs(_) => Arc::new(GcsAdapter::from_spec(name, source_spec)?),
         };
         adapters.insert(name.clone(), adapter);
     }
