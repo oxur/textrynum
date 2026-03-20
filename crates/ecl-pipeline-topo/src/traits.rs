@@ -236,6 +236,26 @@ pub trait Stage: Send + Sync + std::fmt::Debug {
         item: PipelineItem,
         ctx: &StageContext,
     ) -> Result<Vec<PipelineItem>, StageError>;
+
+    /// Whether this stage requires all items at once (join, aggregate).
+    /// Default: false (per-item processing).
+    fn requires_batch(&self) -> bool {
+        false
+    }
+
+    /// Process all items as a batch. Default calls `process()` per item.
+    /// Override for join/aggregate stages that need cross-item visibility.
+    async fn process_batch(
+        &self,
+        items: Vec<PipelineItem>,
+        ctx: &StageContext,
+    ) -> Result<Vec<PipelineItem>, StageError> {
+        let mut results = Vec::new();
+        for item in items {
+            results.extend(self.process(item, ctx).await?);
+        }
+        Ok(results)
+    }
 }
 
 /// Read-only context provided to stages during execution.

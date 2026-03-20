@@ -1,10 +1,13 @@
 //! Built-in stage implementations for the ECL pipeline runner.
 //!
-//! Provides five stages:
+//! Provides stages for extraction, transformation, and output:
 //! - [`ExtractStage`] — delegates to a `SourceAdapter` to fetch content
 //! - [`CsvParseStage`] — parses CSV content into structured records (fan-out)
 //! - [`NormalizeStage`] — passthrough (placeholder for future format conversion)
 //! - [`FilterStage`] — glob-based include/exclude filtering
+//! - [`FieldMapStage`] — field renaming, date parsing, padding, regex extraction
+//! - [`ValidateStage`] — field-level validation with hard/soft severity
+//! - [`JoinStage`] — batch join of two streams by key (inner/left/full)
 //! - [`EmitStage`] — writes pipeline items to the output directory
 
 #![forbid(unsafe_code)]
@@ -18,6 +21,7 @@ pub mod emit;
 pub mod extract;
 pub mod field_map;
 pub mod filter;
+pub mod join;
 pub mod normalize;
 pub mod validate;
 
@@ -26,5 +30,6 @@ pub use emit::EmitStage;
 pub use extract::ExtractStage;
 pub use field_map::FieldMapStage;
 pub use filter::FilterStage;
+pub use join::JoinStage;
 pub use normalize::NormalizeStage;
 pub use validate::ValidateStage;

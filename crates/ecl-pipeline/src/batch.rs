@@ -180,6 +180,60 @@ pub async fn execute_stage_items(
     Ok(stage_result)
 }
 
+/// Execute a batch stage: all items processed together.
+///
+/// Unlike `execute_stage_items` which processes items concurrently,
+/// this passes ALL items to the stage's `process_batch` method at once.
+/// Used for join and aggregation stages that need cross-item visibility.
+pub async fn execute_stage_batch(
+    stage: ResolvedStage,
+    items: Vec<PipelineItem>,
+    ctx: StageContext,
+) -> std::result::Result<StageResult, PipelineError> {
+    let stage_name = stage.id.as_str().to_string();
+    let item_count = items.len();
+    tracing::info!(stage = %stage_name, items = item_count, "starting batch stage");
+
+    let start = std::time::Instant::now();
+    let item_ids: Vec<String> = items.iter().map(|i| i.id.clone()).collect();
+
+    let mut stage_result = StageResult::new(stage.id.clone());
+
+    match stage.handler.process_batch(items, &ctx).await {
+        Ok(outputs) => {
+            let duration_ms = start.elapsed().as_millis() as u64;
+            tracing::info!(
+                stage = %stage_name,
+                input_items = item_count,
+                output_items = outputs.len(),
+                duration_ms,
+                "batch stage completed"
+            );
+            // First input item gets all outputs; remaining get empty vec.
+            // This preserves per-item success tracking in the StageResult model.
+            if let Some(first_id) = item_ids.first() {
+                stage_result.record_success(first_id.clone(), outputs, duration_ms);
+            }
+            for id in item_ids.iter().skip(1) {
+                stage_result.record_success(id.clone(), vec![], duration_ms);
+            }
+        }
+        Err(e) => {
+            let duration_ms = start.elapsed().as_millis() as u64;
+            tracing::error!(stage = %stage_name, duration_ms, error = %e, "batch stage failed");
+            for id in &item_ids {
+                if stage.skip_on_error {
+                    stage_result.record_skipped(id.clone(), e.clone());
+                } else {
+                    stage_result.record_failure(id.clone(), e.clone(), 1);
+                }
+            }
+        }
+    }
+
+    Ok(stage_result)
+}
+
 /// Execute a stage handler with retry and exponential backoff.
 ///
 /// Uses the `backon` crate for retry logic. The backoff parameters
@@ -643,5 +697,113 @@ mod tests {
         assert_eq!(result.successes.len(), 6);
         let max = tracker.max_active.load(Ordering::SeqCst);
         assert!(max <= 2, "max concurrent should be <= 2, was {max}");
+    }
+
+    // ── execute_stage_batch tests ─────────────────────────────────────
+
+    /// A batch stage that concatenates all item contents.
+    #[derive(Debug)]
+    struct BatchConcatStage;
+
+    #[async_trait::async_trait]
+    impl Stage for BatchConcatStage {
+        fn name(&self) -> &str {
+            "batch-concat"
+        }
+
+        fn requires_batch(&self) -> bool {
+            true
+        }
+
+        async fn process(
+            &self,
+            _item: PipelineItem,
+            _ctx: &StageContext,
+        ) -> std::result::Result<Vec<PipelineItem>, StageError> {
+            Err(StageError::Permanent {
+                stage: "batch-concat".to_string(),
+                item_id: String::new(),
+                message: "use process_batch".to_string(),
+            })
+        }
+
+        async fn process_batch(
+            &self,
+            items: Vec<PipelineItem>,
+            _ctx: &StageContext,
+        ) -> std::result::Result<Vec<PipelineItem>, StageError> {
+            if items.is_empty() {
+                return Ok(vec![]);
+            }
+            let mut combined = Vec::new();
+            for item in &items {
+                combined.extend_from_slice(&item.content);
+            }
+            let first = items.into_iter().next().expect("non-empty checked above");
+            Ok(vec![PipelineItem {
+                id: "combined".to_string(),
+                display_name: "Combined".to_string(),
+                content: Arc::from(combined.as_slice()),
+                ..first
+            }])
+        }
+    }
+
+    #[tokio::test]
+    async fn test_execute_stage_batch_success() {
+        let handler: Arc<dyn Stage> = Arc::new(BatchConcatStage);
+        let stage = make_resolved_stage("batch-concat", handler, false);
+        let items = vec![
+            make_pipeline_item("a"),
+            make_pipeline_item("b"),
+            make_pipeline_item("c"),
+        ];
+        let ctx = make_stage_context();
+
+        let result = execute_stage_batch(stage, items, ctx).await.unwrap();
+        // All 3 inputs recorded as successes.
+        assert_eq!(result.successes.len(), 3);
+        // First success has the combined output.
+        assert_eq!(result.successes[0].outputs.len(), 1);
+        assert_eq!(result.successes[0].outputs[0].id, "combined");
+        // Remaining successes have empty outputs (to avoid duplication).
+        assert!(result.successes[1].outputs.is_empty());
+        assert!(result.successes[2].outputs.is_empty());
+    }
+
+    #[tokio::test]
+    async fn test_execute_stage_batch_failure_propagates() {
+        let handler: Arc<dyn Stage> = Arc::new(AlwaysFailingStage::new("fail"));
+        let stage = make_resolved_stage("fail", handler, false);
+        let items = vec![make_pipeline_item("a"), make_pipeline_item("b")];
+        let ctx = make_stage_context();
+
+        let result = execute_stage_batch(stage, items, ctx).await.unwrap();
+        assert!(result.successes.is_empty());
+        assert_eq!(result.failures.len(), 2); // All items fail
+    }
+
+    #[tokio::test]
+    async fn test_execute_stage_batch_skip_on_error() {
+        let handler: Arc<dyn Stage> = Arc::new(AlwaysFailingStage::new("fail"));
+        let stage = make_resolved_stage("fail", handler, true); // skip_on_error
+        let items = vec![make_pipeline_item("a")];
+        let ctx = make_stage_context();
+
+        let result = execute_stage_batch(stage, items, ctx).await.unwrap();
+        assert!(result.successes.is_empty());
+        assert_eq!(result.skipped.len(), 1);
+        assert!(result.failures.is_empty());
+    }
+
+    #[tokio::test]
+    async fn test_execute_stage_batch_empty_items() {
+        let handler: Arc<dyn Stage> = Arc::new(BatchConcatStage);
+        let stage = make_resolved_stage("batch-concat", handler, false);
+        let ctx = make_stage_context();
+
+        let result = execute_stage_batch(stage, vec![], ctx).await.unwrap();
+        assert!(result.successes.is_empty());
+        assert!(result.failures.is_empty());
     }
 }

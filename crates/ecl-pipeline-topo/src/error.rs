@@ -114,7 +114,7 @@ pub enum SourceError {
 }
 
 /// Errors that occur during stage execution.
-#[derive(Debug, Error)]
+#[derive(Debug, Clone, Error)]
 #[non_exhaustive]
 pub enum StageError {
     /// The stage received content it cannot process.

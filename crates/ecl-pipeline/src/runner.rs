@@ -16,7 +16,7 @@ use ecl_pipeline_state::{
 };
 use ecl_pipeline_topo::{ExtractedDocument, PipelineItem, PipelineTopology, StageContext};
 
-use crate::batch::{StageResult, execute_stage_items};
+use crate::batch::{StageResult, execute_stage_batch, execute_stage_items};
 use crate::error::{PipelineError, Result};
 
 /// The pipeline runner: orchestrates enumeration, incrementality,
@@ -248,8 +248,16 @@ impl PipelineRunner {
                 stage_state.started_at = Some(Utc::now());
             }
 
-            join_set
-                .spawn(async move { execute_stage_items(stage, items, ctx, concurrency).await });
+            let is_batch = stage.handler.requires_batch();
+            if is_batch {
+                join_set
+                    .spawn(async move { execute_stage_batch(stage, items, ctx).await });
+            } else {
+                join_set
+                    .spawn(
+                        async move { execute_stage_items(stage, items, ctx, concurrency).await },
+                    );
+            }
         }
 
         // Collect results and merge into state.
