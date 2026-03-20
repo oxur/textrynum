@@ -206,6 +206,13 @@ pub enum CredentialRef {
     /// Use application default credentials.
     #[serde(rename = "application_default")]
     ApplicationDefault,
+    /// Secret from a secret management provider (GCP Secret Manager, etc.).
+    /// Resolved at runtime by the SecretResolver.
+    #[serde(rename = "secret")]
+    Secret {
+        /// Secret name in the configured provider.
+        name: String,
+    },
 }
 
 /// A filter rule for include/exclude patterns.
@@ -398,6 +405,19 @@ mod tests {
         let cred = CredentialRef::ApplicationDefault;
         let json = serde_json::to_string(&cred).unwrap();
         assert!(json.contains(r#""type":"application_default"#));
+        let deserialized: CredentialRef = serde_json::from_str(&json).unwrap();
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_credential_ref_secret_serde() {
+        let cred = CredentialRef::Secret {
+            name: "pgp-key-327".to_string(),
+        };
+        let json = serde_json::to_string(&cred).unwrap();
+        assert!(json.contains(r#""type":"secret"#));
+        assert!(json.contains(r#""name":"pgp-key-327"#));
         let deserialized: CredentialRef = serde_json::from_str(&json).unwrap();
         let json2 = serde_json::to_string(&deserialized).unwrap();
         assert_eq!(json, json2);

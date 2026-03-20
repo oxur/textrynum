@@ -17,6 +17,7 @@ members = [
     "crates/ecl-adapter-slack",
     "crates/ecl-adapter-zapier",
     "crates/ecl-adapter-gcs",
+    "crates/ecl-secrets",
     "crates/ecl-stages",
     "crates/ecl-sink-kafka",
     "crates/ecl-sink-gcs",

@@ -182,6 +182,9 @@ fn make_context(output_dir: PathBuf, params: serde_json::Value) -> StageContext 
             stages: BTreeMap::new(),
             defaults: DefaultsSpec::default(),
             lifecycle: None,
+            secrets: Default::default(),
+            triggers: None,
+            schedule: None,
         }),
         output_dir,
         params,
@@ -585,6 +588,9 @@ fn build_affinity_topo(
         )]),
         defaults: DefaultsSpec::default(),
         lifecycle: None,
+        secrets: Default::default(),
+        triggers: None,
+        schedule: None,
     });
 
     let spec_hash_bytes = serde_json::to_string(&*spec).unwrap();

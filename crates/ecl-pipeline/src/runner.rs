@@ -927,6 +927,9 @@ mod tests {
             stages: spec_stages,
             defaults: DefaultsSpec::default(),
             lifecycle: None,
+            secrets: Default::default(),
+            triggers: None,
+            schedule: None,
         });
 
         let topo_sources: BTreeMap<String, Arc<dyn SourceAdapter>> = sources.into_iter().collect();

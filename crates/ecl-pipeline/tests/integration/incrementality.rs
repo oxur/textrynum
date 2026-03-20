@@ -142,6 +142,9 @@ fn build_extract_emit_topo(
         )]),
         defaults: DefaultsSpec::default(),
         lifecycle: None,
+        secrets: Default::default(),
+        triggers: None,
+        schedule: None,
     });
 
     let spec_hash_bytes = serde_json::to_string(&*spec).unwrap();

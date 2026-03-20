@@ -112,6 +112,10 @@ impl ZapierAdapter {
                 source_name: self.source_name.clone(),
                 message: "ApplicationDefault not supported for Zapier adapter".to_string(),
             }),
+            CredentialRef::Secret { name } => Err(SourceError::AuthError {
+                source_name: self.source_name.clone(),
+                message: format!("secret '{name}' must be resolved before adapter construction"),
+            }),
         }
     }
 }

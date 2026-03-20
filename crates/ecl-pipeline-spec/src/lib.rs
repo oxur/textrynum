@@ -24,6 +24,40 @@ use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 use std::path::PathBuf;
 
+/// Configuration for secret resolution.
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+#[serde(tag = "provider")]
+pub enum SecretsConfig {
+    /// No secret management — only env vars and files.
+    #[default]
+    #[serde(rename = "none")]
+    None,
+    /// GCP Secret Manager.
+    #[serde(rename = "gcp_secret_manager")]
+    GcpSecretManager {
+        /// GCP project ID.
+        project: String,
+    },
+}
+
+/// Pipeline trigger configuration for chaining pipelines.
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct TriggersSpec {
+    /// Pipeline TOML config paths to trigger on success.
+    #[serde(default)]
+    pub on_success: Vec<String>,
+    /// Pipeline TOML config paths to trigger on failure.
+    #[serde(default)]
+    pub on_failure: Vec<String>,
+}
+
+/// Schedule configuration for cron-based pipeline execution.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ScheduleSpec {
+    /// Cron expression (5 or 7 fields). Example: "30 21 * * *"
+    pub cron: String,
+}
+
 /// The root configuration, deserialized from TOML.
 /// Immutable after load. This is the "what do you want to happen" layer.
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -55,6 +89,18 @@ pub struct PipelineSpec {
     /// after pipeline completion or failure.
     #[serde(default)]
     pub lifecycle: Option<LifecycleSpec>,
+
+    /// Secret management configuration.
+    #[serde(default)]
+    pub secrets: SecretsConfig,
+
+    /// Pipeline chaining: trigger other pipelines on completion.
+    #[serde(default)]
+    pub triggers: Option<TriggersSpec>,
+
+    /// Optional schedule configuration for cron-based execution.
+    #[serde(default)]
+    pub schedule: Option<ScheduleSpec>,
 }
 
 impl PipelineSpec {
@@ -207,5 +253,86 @@ resources = { reads = ["raw-docs"] }
         assert!(result.is_err());
         let err = result.unwrap_err();
         assert!(matches!(err, SpecError::ParseError { .. }));
+    }
+
+    #[test]
+    fn test_secrets_config_serde_none() {
+        let config = SecretsConfig::None;
+        let json = serde_json::to_string(&config).unwrap();
+        assert!(json.contains(r#""provider":"none"#));
+        let deserialized: SecretsConfig = serde_json::from_str(&json).unwrap();
+        assert!(matches!(deserialized, SecretsConfig::None));
+    }
+
+    #[test]
+    fn test_secrets_config_serde_gcp() {
+        let config = SecretsConfig::GcpSecretManager {
+            project: "my-project".to_string(),
+        };
+        let json = serde_json::to_string(&config).unwrap();
+        assert!(json.contains(r#""provider":"gcp_secret_manager"#));
+        assert!(json.contains(r#""project":"my-project"#));
+        let deserialized: SecretsConfig = serde_json::from_str(&json).unwrap();
+        assert!(matches!(deserialized, SecretsConfig::GcpSecretManager { .. }));
+    }
+
+    #[test]
+    fn test_triggers_spec_serde() {
+        let triggers = TriggersSpec {
+            on_success: vec!["pipeline-b.toml".to_string()],
+            on_failure: vec!["alert-pipeline.toml".to_string()],
+        };
+        let json = serde_json::to_string(&triggers).unwrap();
+        let deserialized: TriggersSpec = serde_json::from_str(&json).unwrap();
+        assert_eq!(deserialized.on_success, vec!["pipeline-b.toml"]);
+        assert_eq!(deserialized.on_failure, vec!["alert-pipeline.toml"]);
+    }
+
+    #[test]
+    fn test_schedule_spec_serde() {
+        let schedule = ScheduleSpec {
+            cron: "30 21 * * *".to_string(),
+        };
+        let json = serde_json::to_string(&schedule).unwrap();
+        let deserialized: ScheduleSpec = serde_json::from_str(&json).unwrap();
+        assert_eq!(deserialized.cron, "30 21 * * *");
+    }
+
+    #[test]
+    fn test_pipeline_spec_with_secrets_and_triggers() {
+        let toml_str = r#"
+name = "acme-inc-327"
+version = 1
+output_dir = "./output/acme-inc"
+
+[secrets]
+provider = "gcp_secret_manager"
+project = "my-gcp-project"
+
+[triggers]
+on_success = ["acme-inc-transformation.toml"]
+
+[schedule]
+cron = "30 21 * * *"
+
+[sources.local]
+kind = "filesystem"
+root = "/tmp/test"
+
+[stages.extract]
+adapter = "extract"
+source = "local"
+resources = { creates = ["raw"] }
+
+[stages.emit]
+adapter = "emit"
+resources = { reads = ["raw"] }
+"#;
+        let spec = PipelineSpec::from_toml(toml_str).unwrap();
+        assert!(matches!(spec.secrets, SecretsConfig::GcpSecretManager { .. }));
+        let triggers = spec.triggers.unwrap();
+        assert_eq!(triggers.on_success, vec!["acme-inc-transformation.toml"]);
+        let schedule = spec.schedule.unwrap();
+        assert_eq!(schedule.cron, "30 21 * * *");
     }
 }

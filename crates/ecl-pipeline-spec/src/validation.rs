@@ -80,6 +80,9 @@ mod tests {
             stages,
             defaults: Default::default(),
             lifecycle: None,
+            secrets: Default::default(),
+            triggers: None,
+            schedule: None,
         }
     }
 
