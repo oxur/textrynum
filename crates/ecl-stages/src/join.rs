@@ -127,9 +127,7 @@ impl Stage for JoinStage {
         let mut right_index: HashMap<String, Vec<&Record>> = HashMap::new();
         for item in &right_items {
             if let Some(record) = &item.record {
-                if let Some(serde_json::Value::String(key)) =
-                    record.get(&self.config.right_key)
-                {
+                if let Some(serde_json::Value::String(key)) = record.get(&self.config.right_key) {
                     right_index.entry(key.clone()).or_default().push(record);
                 }
             }
@@ -168,10 +166,7 @@ impl Stage for JoinStage {
                     if let Some(right_record) = right_records.first() {
                         for (key, value) in *right_record {
                             if key != &self.config.right_key {
-                                merged.insert(
-                                    format!("{right_prefix}{key}"),
-                                    value.clone(),
-                                );
+                                merged.insert(format!("{right_prefix}{key}"), value.clone());
                             }
                         }
                     }
@@ -301,11 +296,7 @@ mod tests {
     #[tokio::test]
     async fn test_join_process_returns_error() {
         let stage = make_join_stage("inner");
-        let item = make_item(
-            "x",
-            "items",
-            make_record(&[("upc", json!("123"))]),
-        );
+        let item = make_item("x", "items", make_record(&[("upc", json!("123"))]));
         let ctx = make_context();
         let result = stage.process(item, &ctx).await;
         assert!(result.is_err());
@@ -317,16 +308,40 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("l1", "items", make_record(&[("upc", json!("A")), ("qty", json!(10))])),
-            make_item("l2", "items", make_record(&[("upc", json!("B")), ("qty", json!(20))])),
-            make_item("l3", "items", make_record(&[("upc", json!("C")), ("qty", json!(30))])),
-            make_item("r1", "products", make_record(&[("upc", json!("A")), ("brand", json!("Acme"))])),
-            make_item("r2", "products", make_record(&[("upc", json!("B")), ("brand", json!("Beta"))])),
+            make_item(
+                "l1",
+                "items",
+                make_record(&[("upc", json!("A")), ("qty", json!(10))]),
+            ),
+            make_item(
+                "l2",
+                "items",
+                make_record(&[("upc", json!("B")), ("qty", json!(20))]),
+            ),
+            make_item(
+                "l3",
+                "items",
+                make_record(&[("upc", json!("C")), ("qty", json!(30))]),
+            ),
+            make_item(
+                "r1",
+                "products",
+                make_record(&[("upc", json!("A")), ("brand", json!("Acme"))]),
+            ),
+            make_item(
+                "r2",
+                "products",
+                make_record(&[("upc", json!("B")), ("brand", json!("Beta"))]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
         assert_eq!(result.len(), 2); // C has no match → dropped
-        assert!(result.iter().all(|i| i.record.as_ref().unwrap().contains_key("products_brand")));
+        assert!(
+            result
+                .iter()
+                .all(|i| i.record.as_ref().unwrap().contains_key("products_brand"))
+        );
     }
 
     #[tokio::test]
@@ -335,17 +350,43 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("l1", "items", make_record(&[("upc", json!("A")), ("qty", json!(10))])),
-            make_item("l2", "items", make_record(&[("upc", json!("B")), ("qty", json!(20))])),
-            make_item("l3", "items", make_record(&[("upc", json!("C")), ("qty", json!(30))])),
-            make_item("r1", "products", make_record(&[("upc", json!("A")), ("brand", json!("Acme"))])),
-            make_item("r2", "products", make_record(&[("upc", json!("B")), ("brand", json!("Beta"))])),
+            make_item(
+                "l1",
+                "items",
+                make_record(&[("upc", json!("A")), ("qty", json!(10))]),
+            ),
+            make_item(
+                "l2",
+                "items",
+                make_record(&[("upc", json!("B")), ("qty", json!(20))]),
+            ),
+            make_item(
+                "l3",
+                "items",
+                make_record(&[("upc", json!("C")), ("qty", json!(30))]),
+            ),
+            make_item(
+                "r1",
+                "products",
+                make_record(&[("upc", json!("A")), ("brand", json!("Acme"))]),
+            ),
+            make_item(
+                "r2",
+                "products",
+                make_record(&[("upc", json!("B")), ("brand", json!("Beta"))]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
         assert_eq!(result.len(), 3); // C kept with no right fields
         let c_item = result.iter().find(|i| i.id == "l3").unwrap();
-        assert!(!c_item.record.as_ref().unwrap().contains_key("products_brand"));
+        assert!(
+            !c_item
+                .record
+                .as_ref()
+                .unwrap()
+                .contains_key("products_brand")
+        );
     }
 
     #[tokio::test]
@@ -354,10 +395,26 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("l1", "items", make_record(&[("upc", json!("A")), ("qty", json!(10))])),
-            make_item("l2", "items", make_record(&[("upc", json!("C")), ("qty", json!(30))])),
-            make_item("r1", "products", make_record(&[("upc", json!("A")), ("brand", json!("Acme"))])),
-            make_item("r2", "products", make_record(&[("upc", json!("D")), ("brand", json!("Delta"))])),
+            make_item(
+                "l1",
+                "items",
+                make_record(&[("upc", json!("A")), ("qty", json!(10))]),
+            ),
+            make_item(
+                "l2",
+                "items",
+                make_record(&[("upc", json!("C")), ("qty", json!(30))]),
+            ),
+            make_item(
+                "r1",
+                "products",
+                make_record(&[("upc", json!("A")), ("brand", json!("Acme"))]),
+            ),
+            make_item(
+                "r2",
+                "products",
+                make_record(&[("upc", json!("D")), ("brand", json!("Delta"))]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
@@ -382,14 +439,34 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("l1", "items", make_record(&[("upc", json!("A")), ("qty", json!(10))])),
-            make_item("r1", "products", make_record(&[("upc", json!("A")), ("brand", json!("Acme"))])),
+            make_item(
+                "l1",
+                "items",
+                make_record(&[("upc", json!("A")), ("qty", json!(10))]),
+            ),
+            make_item(
+                "r1",
+                "products",
+                make_record(&[("upc", json!("A")), ("brand", json!("Acme"))]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
         assert_eq!(result.len(), 1);
-        assert!(result[0].record.as_ref().unwrap().contains_key("prod_brand"));
-        assert!(!result[0].record.as_ref().unwrap().contains_key("products_brand"));
+        assert!(
+            result[0]
+                .record
+                .as_ref()
+                .unwrap()
+                .contains_key("prod_brand")
+        );
+        assert!(
+            !result[0]
+                .record
+                .as_ref()
+                .unwrap()
+                .contains_key("products_brand")
+        );
     }
 
     #[tokio::test]
@@ -400,7 +477,11 @@ mod tests {
         let items = vec![
             make_item("l1", "items", make_record(&[("upc", json!("X"))])),
             make_item("l2", "items", make_record(&[("upc", json!("Y"))])),
-            make_item("r1", "products", make_record(&[("upc", json!("A")), ("brand", json!("Acme"))])),
+            make_item(
+                "r1",
+                "products",
+                make_record(&[("upc", json!("A")), ("brand", json!("Acme"))]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
@@ -427,9 +508,21 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("l1", "items", make_record(&[("upc", json!("A")), ("qty", json!(10))])),
-            make_item("r1", "products", make_record(&[("upc", json!("A")), ("brand", json!("First"))])),
-            make_item("r2", "products", make_record(&[("upc", json!("A")), ("brand", json!("Second"))])),
+            make_item(
+                "l1",
+                "items",
+                make_record(&[("upc", json!("A")), ("qty", json!(10))]),
+            ),
+            make_item(
+                "r1",
+                "products",
+                make_record(&[("upc", json!("A")), ("brand", json!("First"))]),
+            ),
+            make_item(
+                "r2",
+                "products",
+                make_record(&[("upc", json!("A")), ("brand", json!("Second"))]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
@@ -530,7 +623,10 @@ mod tests {
         let item1 = result.iter().find(|i| i.id == "item-1").unwrap();
         let record1 = item1.record.as_ref().unwrap();
         assert_eq!(record1["products_brand"], json!("Coca-Cola"));
-        assert_eq!(record1["products_description"], json!("Coca-Cola Classic 12oz"));
+        assert_eq!(
+            record1["products_description"],
+            json!("Coca-Cola Classic 12oz")
+        );
         assert_eq!(record1["qty"], json!(24));
         assert_eq!(record1["store_id"], json!("GE-1234"));
 

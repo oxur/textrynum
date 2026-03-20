@@ -273,7 +273,10 @@ resources = { reads = ["raw-docs"] }
         assert!(json.contains(r#""provider":"gcp_secret_manager"#));
         assert!(json.contains(r#""project":"my-project"#));
         let deserialized: SecretsConfig = serde_json::from_str(&json).unwrap();
-        assert!(matches!(deserialized, SecretsConfig::GcpSecretManager { .. }));
+        assert!(matches!(
+            deserialized,
+            SecretsConfig::GcpSecretManager { .. }
+        ));
     }
 
     #[test]
@@ -329,7 +332,10 @@ adapter = "emit"
 resources = { reads = ["raw"] }
 "#;
         let spec = PipelineSpec::from_toml(toml_str).unwrap();
-        assert!(matches!(spec.secrets, SecretsConfig::GcpSecretManager { .. }));
+        assert!(matches!(
+            spec.secrets,
+            SecretsConfig::GcpSecretManager { .. }
+        ));
         let triggers = spec.triggers.unwrap();
         assert_eq!(triggers.on_success, vec!["walgreens-transformation.toml"]);
         let schedule = spec.schedule.unwrap();

@@ -89,10 +89,7 @@ impl LookupStage {
     /// Apply all lookup operations to a record.
     fn apply_lookups(&self, record: &mut Record) {
         for (i, op) in self.config.lookups.iter().enumerate() {
-            let input_value = record
-                .get(&op.field)
-                .and_then(|v| v.as_str())
-                .unwrap_or("");
+            let input_value = record.get(&op.field).and_then(|v| v.as_str()).unwrap_or("");
 
             let lookup_key = if op.case_insensitive {
                 input_value.to_lowercase()
@@ -327,7 +324,12 @@ mod tests {
         rec.insert("tender_type".into(), json!("03"));
         let result = stage.process(make_item("i1", rec), &ctx()).await.unwrap();
         assert_eq!(
-            result[0].record.as_ref().unwrap().get("payment_method").unwrap(),
+            result[0]
+                .record
+                .as_ref()
+                .unwrap()
+                .get("payment_method")
+                .unwrap(),
             "Credit Card"
         );
 
@@ -336,7 +338,12 @@ mod tests {
         rec.insert("tender_type".into(), json!("99"));
         let result = stage.process(make_item("i2", rec), &ctx()).await.unwrap();
         assert_eq!(
-            result[0].record.as_ref().unwrap().get("payment_method").unwrap(),
+            result[0]
+                .record
+                .as_ref()
+                .unwrap()
+                .get("payment_method")
+                .unwrap(),
             "Other"
         );
     }
@@ -363,7 +370,12 @@ mod tests {
         rec.insert("card_scheme".into(), json!("VISA"));
         let result = stage.process(make_item("i1", rec), &ctx()).await.unwrap();
         assert_eq!(
-            result[0].record.as_ref().unwrap().get("scheme_abbrev").unwrap(),
+            result[0]
+                .record
+                .as_ref()
+                .unwrap()
+                .get("scheme_abbrev")
+                .unwrap(),
             "VI"
         );
 
@@ -371,7 +383,12 @@ mod tests {
         rec.insert("card_scheme".into(), json!("mastercard"));
         let result = stage.process(make_item("i2", rec), &ctx()).await.unwrap();
         assert_eq!(
-            result[0].record.as_ref().unwrap().get("scheme_abbrev").unwrap(),
+            result[0]
+                .record
+                .as_ref()
+                .unwrap()
+                .get("scheme_abbrev")
+                .unwrap(),
             "MC"
         );
     }

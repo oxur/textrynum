@@ -235,13 +235,13 @@ impl SourceAdapter for SftpAdapter {
     async fn enumerate(&self) -> Result<Vec<SourceItem>, SourceError> {
         let sftp = self.connect().await?;
 
-        let entries = sftp
-            .read_dir(&self.remote_path)
-            .await
-            .map_err(|e| SourceError::Transient {
-                source_name: self.source_name.clone(),
-                message: format!("failed to list directory '{}': {e}", self.remote_path),
-            })?;
+        let entries =
+            sftp.read_dir(&self.remote_path)
+                .await
+                .map_err(|e| SourceError::Transient {
+                    source_name: self.source_name.clone(),
+                    message: format!("failed to list directory '{}': {e}", self.remote_path),
+                })?;
 
         let mut items = Vec::new();
         for entry in entries {
@@ -354,12 +354,15 @@ async fn resolve_credential(
     source_name: &str,
 ) -> Result<Vec<u8>, SourceError> {
     match cred {
-        CredentialRef::Secret { name } => resolver.resolve(name).await.map_err(|e| {
-            SourceError::AuthError {
-                source_name: source_name.to_string(),
-                message: e.to_string(),
-            }
-        }),
+        CredentialRef::Secret { name } => {
+            resolver
+                .resolve(name)
+                .await
+                .map_err(|e| SourceError::AuthError {
+                    source_name: source_name.to_string(),
+                    message: e.to_string(),
+                })
+        }
         CredentialRef::File { path } => {
             tokio::fs::read(path)
                 .await
@@ -368,12 +371,14 @@ async fn resolve_credential(
                     message: format!("failed to read credential file '{}': {e}", path.display()),
                 })
         }
-        CredentialRef::EnvVar { env } => std::env::var(env)
-            .map(|v| v.into_bytes())
-            .map_err(|_| SourceError::AuthError {
-                source_name: source_name.to_string(),
-                message: format!("environment variable '{env}' not set"),
-            }),
+        CredentialRef::EnvVar { env } => {
+            std::env::var(env)
+                .map(|v| v.into_bytes())
+                .map_err(|_| SourceError::AuthError {
+                    source_name: source_name.to_string(),
+                    message: format!("environment variable '{env}' not set"),
+                })
+        }
         CredentialRef::ApplicationDefault => Err(SourceError::AuthError {
             source_name: source_name.to_string(),
             message: "application_default credentials not supported for SFTP".to_string(),
@@ -407,7 +412,8 @@ mod tests {
 
     #[test]
     fn test_is_private_key_detection() {
-        let rsa_key = b"-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEA...\n-----END RSA PRIVATE KEY-----";
+        let rsa_key =
+            b"-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEA...\n-----END RSA PRIVATE KEY-----";
         assert!(is_private_key(rsa_key));
 
         let openssh_key = b"-----BEGIN OPENSSH PRIVATE KEY-----\nb3BlbnNzaC1...\n-----END OPENSSH PRIVATE KEY-----";
@@ -416,7 +422,8 @@ mod tests {
         let password = b"my-sftp-password";
         assert!(!is_private_key(password));
 
-        let ed25519_key = b"-----BEGIN PRIVATE KEY-----\nMC4CAQAwBQYDK...\n-----END PRIVATE KEY-----";
+        let ed25519_key =
+            b"-----BEGIN PRIVATE KEY-----\nMC4CAQAwBQYDK...\n-----END PRIVATE KEY-----";
         assert!(is_private_key(ed25519_key));
     }
 

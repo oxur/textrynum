@@ -298,10 +298,7 @@ mod tests {
             ]),
         );
 
-        let result = stage
-            .process_batch(vec![txn, store], &ctx())
-            .await
-            .unwrap();
+        let result = stage.process_batch(vec![txn, store], &ctx()).await.unwrap();
         assert_eq!(result.len(), 1);
         assert_eq!(result[0].id, "receipt:T001");
         let rec = result[0].record.as_ref().unwrap();
@@ -333,18 +330,12 @@ mod tests {
         let item1 = make_item(
             "item1",
             "items",
-            make_record(&[
-                ("txn_id", json!("T001")),
-                ("product", json!("Milk")),
-            ]),
+            make_record(&[("txn_id", json!("T001")), ("product", json!("Milk"))]),
         );
         let item2 = make_item(
             "item2",
             "items",
-            make_record(&[
-                ("txn_id", json!("T001")),
-                ("product", json!("Bread")),
-            ]),
+            make_record(&[("txn_id", json!("T001")), ("product", json!("Bread"))]),
         );
 
         let result = stage
@@ -392,10 +383,7 @@ mod tests {
             make_item(
                 "txn1",
                 "transactions",
-                make_record(&[
-                    ("txn_id", json!("T001")),
-                    ("store_id", json!("S01")),
-                ]),
+                make_record(&[("txn_id", json!("T001")), ("store_id", json!("S01"))]),
             ),
             make_item(
                 "store1",
@@ -408,10 +396,7 @@ mod tests {
             make_item(
                 "item1",
                 "items",
-                make_record(&[
-                    ("txn_id", json!("T001")),
-                    ("product", json!("Milk")),
-                ]),
+                make_record(&[("txn_id", json!("T001")), ("product", json!("Milk"))]),
             ),
             make_item(
                 "pay1",

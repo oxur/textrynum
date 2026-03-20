@@ -54,21 +54,19 @@ impl DecompressStage {
     /// Extract files from a ZIP archive.
     fn decompress_zip(&self, item: PipelineItem) -> Result<Vec<PipelineItem>, StageError> {
         let cursor = Cursor::new(item.content.as_ref());
-        let mut archive =
-            zip::ZipArchive::new(cursor).map_err(|e| StageError::Permanent {
-                stage: "decompress".into(),
-                item_id: item.id.clone(),
-                message: format!("invalid ZIP archive: {e}"),
-            })?;
+        let mut archive = zip::ZipArchive::new(cursor).map_err(|e| StageError::Permanent {
+            stage: "decompress".into(),
+            item_id: item.id.clone(),
+            message: format!("invalid ZIP archive: {e}"),
+        })?;
 
         let mut results = Vec::new();
         for i in 0..archive.len() {
-            let mut file =
-                archive.by_index(i).map_err(|e| StageError::Permanent {
-                    stage: "decompress".into(),
-                    item_id: item.id.clone(),
-                    message: format!("failed to read ZIP entry {i}: {e}"),
-                })?;
+            let mut file = archive.by_index(i).map_err(|e| StageError::Permanent {
+                stage: "decompress".into(),
+                item_id: item.id.clone(),
+                message: format!("failed to read ZIP entry {i}: {e}"),
+            })?;
 
             if file.is_dir() {
                 continue;
@@ -88,11 +86,12 @@ impl DecompressStage {
             }
 
             let mut content = Vec::new();
-            file.read_to_end(&mut content).map_err(|e| StageError::Permanent {
-                stage: "decompress".into(),
-                item_id: item.id.clone(),
-                message: format!("failed to read ZIP entry '{name}': {e}"),
-            })?;
+            file.read_to_end(&mut content)
+                .map_err(|e| StageError::Permanent {
+                    stage: "decompress".into(),
+                    item_id: item.id.clone(),
+                    message: format!("failed to read ZIP entry '{name}': {e}"),
+                })?;
 
             results.push(PipelineItem {
                 id: format!("{}:{}", item.id, name),
@@ -122,11 +121,13 @@ impl DecompressStage {
         let cursor = Cursor::new(item.content.as_ref());
         let mut decoder = flate2::read::GzDecoder::new(cursor);
         let mut content = Vec::new();
-        decoder.read_to_end(&mut content).map_err(|e| StageError::Permanent {
-            stage: "decompress".into(),
-            item_id: item.id.clone(),
-            message: format!("failed to decompress GZIP: {e}"),
-        })?;
+        decoder
+            .read_to_end(&mut content)
+            .map_err(|e| StageError::Permanent {
+                stage: "decompress".into(),
+                item_id: item.id.clone(),
+                message: format!("failed to decompress GZIP: {e}"),
+            })?;
 
         // Strip .gz extension from the display name for the output.
         let output_name = item
@@ -271,8 +272,8 @@ mod tests {
 
     /// Create a GZIP compressed buffer.
     fn create_test_gzip(content: &[u8]) -> Vec<u8> {
-        use flate2::write::GzEncoder;
         use flate2::Compression;
+        use flate2::write::GzEncoder;
         let mut encoder = GzEncoder::new(Vec::new(), Compression::default());
         encoder.write_all(content).unwrap();
         encoder.finish().unwrap()
@@ -350,10 +351,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_decompress_zip_fan_out_ids() {
-        let zip_data = create_test_zip(&[
-            ("stores.csv", b"s"),
-            ("transactions.csv", b"t"),
-        ]);
+        let zip_data = create_test_zip(&[("stores.csv", b"s"), ("transactions.csv", b"t")]);
         let params = json!({ "format": "zip" });
         let stage = DecompressStage::from_params(&params).unwrap();
         let item = make_item("ge_data.zip", &zip_data);
