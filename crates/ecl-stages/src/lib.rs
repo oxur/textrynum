@@ -9,6 +9,7 @@
 //! - [`ValidateStage`] — field-level validation with hard/soft severity
 //! - [`JoinStage`] — batch join of two streams by key (inner/left/full)
 //! - [`AggregateStage`] — batch grouping with aggregate functions (sum/max/min/count/avg/first/last)
+//! - [`LookupStage`] — static value mapping through lookup tables
 //! - [`EmitStage`] — writes pipeline items to the output directory
 
 #![forbid(unsafe_code)]
@@ -24,6 +25,7 @@ pub mod extract;
 pub mod field_map;
 pub mod filter;
 pub mod join;
+pub mod lookup;
 pub mod normalize;
 pub mod validate;
 
@@ -34,5 +36,6 @@ pub use extract::ExtractStage;
 pub use field_map::FieldMapStage;
 pub use filter::FilterStage;
 pub use join::JoinStage;
+pub use lookup::LookupStage;
 pub use normalize::NormalizeStage;
 pub use validate::ValidateStage;
