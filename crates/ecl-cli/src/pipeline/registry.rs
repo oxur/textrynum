@@ -17,7 +17,10 @@ use ecl_pipeline_topo::error::ResolveError;
 use ecl_pipeline_topo::{PushSourceAdapter, SourceAdapter, Stage};
 use ecl_sink_gcs::GcsSinkStage;
 use ecl_sink_kafka::KafkaSinkStage;
-use ecl_stages::{CsvParseStage, EmitStage, ExtractStage, FieldMapStage, FilterStage, NormalizeStage, ValidateStage};
+use ecl_stages::{
+    CsvParseStage, EmitStage, ExtractStage, FieldMapStage, FilterStage, NormalizeStage,
+    ValidateStage,
+};
 
 /// Pre-resolve all source adapters from the spec.
 ///

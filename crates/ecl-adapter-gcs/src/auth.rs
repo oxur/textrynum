@@ -124,10 +124,7 @@ impl TokenProvider {
     }
 
     /// Service account flow: read key file → sign JWT → exchange for token.
-    async fn service_account_flow(
-        &self,
-        path: &PathBuf,
-    ) -> Result<CachedToken, GcsAdapterError> {
+    async fn service_account_flow(&self, path: &PathBuf) -> Result<CachedToken, GcsAdapterError> {
         let key_json = tokio::fs::read_to_string(path).await.map_err(|e| {
             GcsAdapterError::InvalidCredentials {
                 message: format!(
@@ -168,10 +165,8 @@ impl TokenProvider {
             })?;
 
         let header = jsonwebtoken::Header::new(jsonwebtoken::Algorithm::RS256);
-        jsonwebtoken::encode(&header, &claims, &encoding_key).map_err(|e| {
-            GcsAdapterError::Auth {
-                message: format!("JWT encoding failed: {e}"),
-            }
+        jsonwebtoken::encode(&header, &claims, &encoding_key).map_err(|e| GcsAdapterError::Auth {
+            message: format!("JWT encoding failed: {e}"),
         })
     }
 

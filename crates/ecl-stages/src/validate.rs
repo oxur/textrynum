@@ -122,10 +122,7 @@ impl ValidateStage {
     }
 
     /// Check that a field is present, not null, and not empty.
-    fn check_required(
-        rule: &ValidationRule,
-        value: Option<&Value>,
-    ) -> Option<serde_json::Value> {
+    fn check_required(rule: &ValidationRule, value: Option<&Value>) -> Option<serde_json::Value> {
         match value {
             None | Some(Value::Null) => Some(serde_json::json!({
                 "field": rule.field,
@@ -174,10 +171,7 @@ impl ValidateStage {
     }
 
     /// Check that a date field is within a range.
-    fn check_date_range(
-        rule: &ValidationRule,
-        value: Option<&Value>,
-    ) -> Option<serde_json::Value> {
+    fn check_date_range(rule: &ValidationRule, value: Option<&Value>) -> Option<serde_json::Value> {
         let s = match value.and_then(|v| v.as_str()) {
             Some(s) => s,
             None => {
@@ -238,10 +232,7 @@ impl ValidateStage {
     }
 
     /// Check that a string field's length is within a range.
-    fn check_length(
-        rule: &ValidationRule,
-        value: Option<&Value>,
-    ) -> Option<serde_json::Value> {
+    fn check_length(rule: &ValidationRule, value: Option<&Value>) -> Option<serde_json::Value> {
         let s = value.and_then(|v| v.as_str()).unwrap_or("");
         let len = s.len();
 
@@ -398,10 +389,10 @@ impl Stage for ValidateStage {
 #[allow(clippy::unwrap_used)]
 mod tests {
     use super::*;
-    use std::collections::BTreeMap;
-    use std::sync::Arc;
     use ecl_pipeline_state::{Blake3Hash, ItemProvenance};
     use serde_json::json;
+    use std::collections::BTreeMap;
+    use std::sync::Arc;
 
     fn make_record(fields: &[(&str, serde_json::Value)]) -> Record {
         let mut record = Record::new();
@@ -565,7 +556,12 @@ resources = { creates = ["validated"] }
         let result = run_validate(params, record);
         assert_eq!(result[0].metadata["_validation_status"], "failed");
         let errors = result[0].metadata["_validation_errors"].as_array().unwrap();
-        assert!(errors[0]["message"].as_str().unwrap().contains("before minimum"));
+        assert!(
+            errors[0]["message"]
+                .as_str()
+                .unwrap()
+                .contains("before minimum")
+        );
     }
 
     #[test]
@@ -699,7 +695,12 @@ resources = { creates = ["validated"] }
         let result = run_validate(params, record);
         assert_eq!(result[0].metadata["_validation_status"], "failed");
         let errors = result[0].metadata["_validation_errors"].as_array().unwrap();
-        assert!(errors[0]["message"].as_str().unwrap().contains("below minimum"));
+        assert!(
+            errors[0]["message"]
+                .as_str()
+                .unwrap()
+                .contains("below minimum")
+        );
     }
 
     #[test]
@@ -751,6 +752,11 @@ resources = { creates = ["validated"] }
         let result = run_validate(params, record);
         assert_eq!(result[0].metadata["_validation_status"], "failed");
         let errors = result[0].metadata["_validation_errors"].as_array().unwrap();
-        assert!(errors[0]["message"].as_str().unwrap().contains("not numeric"));
+        assert!(
+            errors[0]["message"]
+                .as_str()
+                .unwrap()
+                .contains("not numeric")
+        );
     }
 }

@@ -115,7 +115,10 @@ mod tests {
         assert_eq!(spec.error_prefix, "error/");
         assert_eq!(spec.on_success, LifecycleAction::MoveToHistorical);
         assert_eq!(spec.on_failure, LifecycleAction::MoveToInput);
-        assert!(matches!(spec.credentials, CredentialRef::ApplicationDefault));
+        assert!(matches!(
+            spec.credentials,
+            CredentialRef::ApplicationDefault
+        ));
     }
 
     #[test]

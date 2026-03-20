@@ -35,11 +35,7 @@ pub fn make_content_hash(raw_bytes: &[u8]) -> Blake3Hash {
 /// * `raw_bytes` — The raw JSON body bytes from the webhook POST.
 /// * `source_hint` — The source type hint (from `X-Zapier-Source` header or config default).
 /// * `id` — Unique identifier for this document.
-pub fn resolve_payload(
-    raw_bytes: &[u8],
-    source_hint: &str,
-    id: String,
-) -> ExtractedDocument {
+pub fn resolve_payload(raw_bytes: &[u8], source_hint: &str, id: String) -> ExtractedDocument {
     match source_hint {
         "granola" => {
             if let Ok(note) = serde_json::from_slice::<GranolaMeetingNote>(raw_bytes) {
@@ -69,11 +65,7 @@ pub fn resolve_payload(
 }
 
 /// Fallback handler: stores the raw JSON payload as an `ExtractedDocument`.
-fn raw_json_fallback(
-    raw_bytes: &[u8],
-    source_hint: &str,
-    id: String,
-) -> ExtractedDocument {
+fn raw_json_fallback(raw_bytes: &[u8], source_hint: &str, id: String) -> ExtractedDocument {
     let content_hash = make_content_hash(raw_bytes);
 
     let mut metadata = BTreeMap::new();

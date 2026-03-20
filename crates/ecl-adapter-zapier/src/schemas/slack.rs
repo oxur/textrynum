@@ -39,11 +39,7 @@ impl SlackMessage {
     ///
     /// Content is the message text.
     /// Metadata includes channel, user, timestamps, and team info.
-    pub fn into_extracted_document(
-        self,
-        id: String,
-        raw_bytes: &[u8],
-    ) -> ExtractedDocument {
+    pub fn into_extracted_document(self, id: String, raw_bytes: &[u8]) -> ExtractedDocument {
         let content = self.text.as_bytes().to_vec();
         let content_hash = make_content_hash(raw_bytes);
 
@@ -56,10 +52,7 @@ impl SlackMessage {
             "user".to_string(),
             serde_json::Value::String(self.user.clone()),
         );
-        metadata.insert(
-            "ts".to_string(),
-            serde_json::Value::String(self.ts.clone()),
-        );
+        metadata.insert("ts".to_string(), serde_json::Value::String(self.ts.clone()));
 
         if let Some(ref tts) = self.thread_ts {
             metadata.insert(
@@ -69,10 +62,7 @@ impl SlackMessage {
         }
 
         if let Some(ref team) = self.team {
-            metadata.insert(
-                "team".to_string(),
-                serde_json::Value::String(team.clone()),
-            );
+            metadata.insert("team".to_string(), serde_json::Value::String(team.clone()));
         }
 
         let display_name = format!("#{} — {}", self.channel, self.user);

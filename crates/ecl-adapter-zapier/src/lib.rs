@@ -32,8 +32,8 @@ use tokio::sync::{Mutex, Notify, mpsc};
 use ecl_pipeline_spec::SourceSpec;
 use ecl_pipeline_spec::source::ZapierSourceSpec;
 use ecl_pipeline_topo::ExtractedDocument;
-use ecl_pipeline_topo::error::{ResolveError, SourceError};
 use ecl_pipeline_topo::PushSourceAdapter;
+use ecl_pipeline_topo::error::{ResolveError, SourceError};
 
 use crate::server::{WebhookState, run_server};
 
@@ -62,14 +62,17 @@ impl ZapierAdapter {
     /// # Errors
     ///
     /// Returns `ResolveError` if the spec is not a `Zapier` variant.
-    pub fn from_spec(source_name: &str, spec: &SourceSpec) -> std::result::Result<Self, ResolveError> {
+    pub fn from_spec(
+        source_name: &str,
+        spec: &SourceSpec,
+    ) -> std::result::Result<Self, ResolveError> {
         let zapier_spec = match spec {
             SourceSpec::Zapier(s) => s.clone(),
             _ => {
                 return Err(ResolveError::UnknownAdapter {
                     stage: source_name.to_string(),
                     adapter: "expected zapier source spec".to_string(),
-                })
+                });
             }
         };
 
@@ -93,20 +96,18 @@ impl ZapierAdapter {
         use ecl_pipeline_spec::source::CredentialRef;
 
         match &self.spec.credentials {
-            CredentialRef::EnvVar { env } => std::env::var(env).map_err(|_| {
-                SourceError::AuthError {
+            CredentialRef::EnvVar { env } => {
+                std::env::var(env).map_err(|_| SourceError::AuthError {
                     source_name: self.source_name.clone(),
                     message: format!("environment variable '{env}' not set"),
-                }
-            }),
-            CredentialRef::File { path } => {
-                std::fs::read_to_string(path).map(|s| s.trim().to_string()).map_err(|e| {
-                    SourceError::AuthError {
-                        source_name: self.source_name.clone(),
-                        message: format!("failed to read credentials file {}: {e}", path.display()),
-                    }
                 })
             }
+            CredentialRef::File { path } => std::fs::read_to_string(path)
+                .map(|s| s.trim().to_string())
+                .map_err(|e| SourceError::AuthError {
+                    source_name: self.source_name.clone(),
+                    message: format!("failed to read credentials file {}: {e}", path.display()),
+                }),
             CredentialRef::ApplicationDefault => Err(SourceError::AuthError {
                 source_name: self.source_name.clone(),
                 message: "ApplicationDefault not supported for Zapier adapter".to_string(),
@@ -121,9 +122,7 @@ impl PushSourceAdapter for ZapierAdapter {
         "zapier"
     }
 
-    async fn start(
-        &self,
-    ) -> std::result::Result<mpsc::Receiver<ExtractedDocument>, SourceError> {
+    async fn start(&self) -> std::result::Result<mpsc::Receiver<ExtractedDocument>, SourceError> {
         // Take the receiver (can only start once).
         let receiver = self
             .receiver

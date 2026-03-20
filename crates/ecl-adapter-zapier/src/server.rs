@@ -6,11 +6,11 @@
 
 use std::sync::Arc;
 
+use axum::Router;
 use axum::body::Bytes;
 use axum::extract::State;
 use axum::http::{HeaderMap, StatusCode};
 use axum::routing::post;
-use axum::Router;
 use base64::Engine;
 use base64::engine::general_purpose::STANDARD as BASE64;
 use tokio::sync::{Notify, mpsc};
@@ -50,13 +50,12 @@ pub async fn run_server(
         .route("/webhook", post(webhook_handler))
         .with_state(state);
 
-    let listener =
-        tokio::net::TcpListener::bind(bind_addr)
-            .await
-            .map_err(|e| SourceError::Permanent {
-                source_name: "zapier".to_string(),
-                message: format!("failed to bind {bind_addr}: {e}"),
-            })?;
+    let listener = tokio::net::TcpListener::bind(bind_addr)
+        .await
+        .map_err(|e| SourceError::Permanent {
+            source_name: "zapier".to_string(),
+            message: format!("failed to bind {bind_addr}: {e}"),
+        })?;
 
     let local_addr = listener.local_addr().map_err(|e| SourceError::Permanent {
         source_name: "zapier".to_string(),
@@ -227,10 +226,7 @@ mod tests {
     #[test]
     fn test_validate_auth_unknown_scheme() {
         let mut headers = HeaderMap::new();
-        headers.insert(
-            "authorization",
-            HeaderValue::from_static("Digest abc123"),
-        );
+        headers.insert("authorization", HeaderValue::from_static("Digest abc123"));
         assert!(!validate_auth(&headers, "user", "pass"));
     }
 
@@ -250,12 +246,11 @@ mod tests {
             "authorization",
             HeaderValue::from_str(&make_basic_auth("user", "pass")).unwrap(),
         );
-        headers.insert(
-            "x-zapier-source",
-            HeaderValue::from_static("granola"),
-        );
+        headers.insert("x-zapier-source", HeaderValue::from_static("granola"));
 
-        let body = Bytes::from(r#"{"title":"Test","creator":{"name":"A","email":"a@b.com"},"summary":"S","transcript":"T","link":"L"}"#);
+        let body = Bytes::from(
+            r#"{"title":"Test","creator":{"name":"A","email":"a@b.com"},"summary":"S","transcript":"T","link":"L"}"#,
+        );
 
         let status = webhook_handler(State(state), headers, body).await;
         assert_eq!(status, StatusCode::OK);
@@ -351,7 +346,9 @@ mod tests {
         );
         // No X-Zapier-Source header — should use default "granola"
 
-        let body = Bytes::from(r#"{"title":"Test","creator":{"name":"A","email":"a@b.com"},"summary":"S","transcript":"T","link":"L"}"#);
+        let body = Bytes::from(
+            r#"{"title":"Test","creator":{"name":"A","email":"a@b.com"},"summary":"S","transcript":"T","link":"L"}"#,
+        );
 
         let status = webhook_handler(State(state), headers, body).await;
         assert_eq!(status, StatusCode::OK);

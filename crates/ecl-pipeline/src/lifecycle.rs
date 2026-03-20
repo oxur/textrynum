@@ -27,9 +27,8 @@ impl LifecycleManager {
     /// Create a new lifecycle manager from a `LifecycleSpec`.
     pub fn new(spec: &LifecycleSpec) -> Self {
         let http_client = reqwest::Client::new();
-        let token_provider =
-            TokenProvider::new(spec.credentials.clone(), http_client.clone())
-                .with_scope(GCS_READWRITE_SCOPE.to_string());
+        let token_provider = TokenProvider::new(spec.credentials.clone(), http_client.clone())
+            .with_scope(GCS_READWRITE_SCOPE.to_string());
 
         Self {
             spec: spec.clone(),
@@ -104,13 +103,12 @@ impl LifecycleManager {
                 // "input" lives. For Phase 1, we treat it as moving objects to the
                 // same name without the staging prefix — i.e., the object stays in
                 // place. This is a no-op since the pipeline reads from staging.
-                debug!("lifecycle on_failure: move_to_input is a no-op in Phase 1 (files stay in staging for retry)");
+                debug!(
+                    "lifecycle on_failure: move_to_input is a no-op in Phase 1 (files stay in staging for retry)"
+                );
             }
             LifecycleAction::MoveToError => {
-                let error_prefix = format!(
-                    "{}/",
-                    self.spec.error_prefix.trim_end_matches('/')
-                );
+                let error_prefix = format!("{}/", self.spec.error_prefix.trim_end_matches('/'));
                 self.move_objects(source_objects, &error_prefix).await?;
             }
             LifecycleAction::None => {
@@ -128,10 +126,7 @@ impl LifecycleManager {
         let token = self.get_token().await?;
 
         for object_name in objects {
-            let filename = object_name
-                .rsplit('/')
-                .next()
-                .unwrap_or(object_name);
+            let filename = object_name.rsplit('/').next().unwrap_or(object_name);
             let dest_name = format!("{dest_prefix}{filename}");
 
             self.copy_object(object_name, &dest_name, &token).await?;
@@ -160,12 +155,7 @@ impl LifecycleManager {
     }
 
     /// Copy a GCS object to a new name within the same bucket.
-    async fn copy_object(
-        &self,
-        source: &str,
-        dest: &str,
-        token: &str,
-    ) -> Result<()> {
+    async fn copy_object(&self, source: &str, dest: &str, token: &str) -> Result<()> {
         let url = format!(
             "{}/b/{}/o/{}/copyTo/b/{}/o/{}",
             self.base_url,
@@ -260,8 +250,8 @@ fn urlencoded(input: &str) -> String {
 #[allow(clippy::unwrap_used)]
 mod tests {
     use super::*;
-    use ecl_pipeline_spec::lifecycle::LifecycleAction;
     use ecl_pipeline_spec::CredentialRef;
+    use ecl_pipeline_spec::lifecycle::LifecycleAction;
 
     fn test_spec() -> LifecycleSpec {
         LifecycleSpec {
@@ -306,7 +296,10 @@ mod tests {
             .with_base_url(mock_server.uri())
             .with_token_provider(TokenProvider::static_token("test-token".to_string()));
 
-        let objects = vec!["staging/file1.csv".to_string(), "staging/file2.csv".to_string()];
+        let objects = vec![
+            "staging/file1.csv".to_string(),
+            "staging/file2.csv".to_string(),
+        ];
         manager.on_success("run-001", &objects).await.unwrap();
     }
 
@@ -380,10 +373,7 @@ mod tests {
         let mock_server = wiremock::MockServer::start().await;
 
         wiremock::Mock::given(wiremock::matchers::method("POST"))
-            .respond_with(
-                wiremock::ResponseTemplate::new(403)
-                    .set_body_string("Access Denied"),
-            )
+            .respond_with(wiremock::ResponseTemplate::new(403).set_body_string("Access Denied"))
             .mount(&mock_server)
             .await;
 
@@ -395,7 +385,10 @@ mod tests {
         let result = manager.on_success("run-001", &objects).await;
         assert!(result.is_err());
         let err = result.unwrap_err();
-        assert!(err.to_string().contains("403"), "error should contain status: {err}");
+        assert!(
+            err.to_string().contains("403"),
+            "error should contain status: {err}"
+        );
     }
 
     #[tokio::test]
@@ -414,8 +407,7 @@ mod tests {
 
         wiremock::Mock::given(wiremock::matchers::method("DELETE"))
             .respond_with(
-                wiremock::ResponseTemplate::new(500)
-                    .set_body_string("Internal Server Error"),
+                wiremock::ResponseTemplate::new(500).set_body_string("Internal Server Error"),
             )
             .mount(&mock_server)
             .await;

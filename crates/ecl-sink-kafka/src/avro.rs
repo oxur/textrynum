@@ -3,8 +3,8 @@
 //! Converts `serde_json::Map` records to Avro binary with the Confluent
 //! wire format header: `[0x00][4-byte schema ID big-endian][avro datum]`.
 
-use apache_avro::types::Value as AvroValue;
 use apache_avro::Schema;
+use apache_avro::types::Value as AvroValue;
 use thiserror::Error;
 
 /// Errors during Avro serialization.
@@ -44,8 +44,8 @@ pub fn serialize_record_avro(
     let avro_value = json_to_avro_record(record, schema)?;
 
     // Encode to Avro binary datum.
-    let datum =
-        apache_avro::to_avro_datum(schema, avro_value).map_err(|e| AvroError::EncodingError(Box::new(e)))?;
+    let datum = apache_avro::to_avro_datum(schema, avro_value)
+        .map_err(|e| AvroError::EncodingError(Box::new(e)))?;
 
     // Build Confluent wire format: magic byte + schema ID + datum.
     let mut buf = Vec::with_capacity(5 + datum.len());
@@ -103,9 +103,7 @@ fn json_value_to_avro(
             Some(serde_json::Value::Number(n)) => {
                 Ok(AvroValue::Int(n.as_i64().unwrap_or(0) as i32))
             }
-            Some(serde_json::Value::String(s)) => {
-                Ok(AvroValue::Int(s.parse::<i32>().unwrap_or(0)))
-            }
+            Some(serde_json::Value::String(s)) => Ok(AvroValue::Int(s.parse::<i32>().unwrap_or(0))),
             _ => Ok(AvroValue::Int(0)),
         },
         Schema::Long => match value {
@@ -122,9 +120,7 @@ fn json_value_to_avro(
             _ => Ok(AvroValue::Float(0.0)),
         },
         Schema::Double => match value {
-            Some(serde_json::Value::Number(n)) => {
-                Ok(AvroValue::Double(n.as_f64().unwrap_or(0.0)))
-            }
+            Some(serde_json::Value::Number(n)) => Ok(AvroValue::Double(n.as_f64().unwrap_or(0.0))),
             _ => Ok(AvroValue::Double(0.0)),
         },
         Schema::String => match value {

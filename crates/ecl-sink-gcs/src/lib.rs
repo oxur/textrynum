@@ -85,9 +85,8 @@ impl GcsSinkStage {
             })?;
 
         let http_client = reqwest::Client::new();
-        let token_provider =
-            TokenProvider::new(config.credentials.clone(), http_client.clone())
-                .with_scope(GCS_READWRITE_SCOPE.to_string());
+        let token_provider = TokenProvider::new(config.credentials.clone(), http_client.clone())
+            .with_scope(GCS_READWRITE_SCOPE.to_string());
 
         Ok(Self {
             config,
@@ -251,13 +250,12 @@ impl Stage for GcsSinkStage {
 
         // Build JSON payload.
         let payload = Self::build_payload(&item);
-        let payload_bytes = serde_json::to_vec_pretty(&payload).map_err(|e| {
-            StageError::Permanent {
+        let payload_bytes =
+            serde_json::to_vec_pretty(&payload).map_err(|e| StageError::Permanent {
                 stage: "gcs_sink".to_string(),
                 item_id: item.id.clone(),
                 message: format!("JSON serialization error: {e}"),
-            }
-        })?;
+            })?;
 
         // Upload to GCS.
         let object_path = self.object_path(&item.id);
@@ -295,7 +293,10 @@ mod tests {
         assert_eq!(config.bucket, "my-errors-bucket");
         assert_eq!(config.prefix, "errors/affinity/");
         assert_eq!(config.filter, "errors_only");
-        assert!(matches!(config.credentials, CredentialRef::ApplicationDefault));
+        assert!(matches!(
+            config.credentials,
+            CredentialRef::ApplicationDefault
+        ));
     }
 
     #[test]
@@ -307,7 +308,10 @@ mod tests {
 
         let config: GcsSinkConfig = serde_json::from_value(params).unwrap();
         assert_eq!(config.filter, "all");
-        assert!(matches!(config.credentials, CredentialRef::ApplicationDefault));
+        assert!(matches!(
+            config.credentials,
+            CredentialRef::ApplicationDefault
+        ));
     }
 
     #[test]
@@ -315,9 +319,7 @@ mod tests {
         let mut metadata = BTreeMap::new();
         metadata.insert("_validation_status".to_string(), json!("passed"));
 
-        let status = metadata
-            .get("_validation_status")
-            .and_then(|v| v.as_str());
+        let status = metadata.get("_validation_status").and_then(|v| v.as_str());
         let should = status == Some("failed");
         assert!(!should, "errors_only should skip passed items");
     }
@@ -327,9 +329,7 @@ mod tests {
         let mut metadata = BTreeMap::new();
         metadata.insert("_validation_status".to_string(), json!("failed"));
 
-        let status = metadata
-            .get("_validation_status")
-            .and_then(|v| v.as_str());
+        let status = metadata.get("_validation_status").and_then(|v| v.as_str());
         let should = status == Some("failed");
         assert!(should, "errors_only should pass failed items");
     }
@@ -339,9 +339,7 @@ mod tests {
         let mut metadata = BTreeMap::new();
         metadata.insert("_validation_status".to_string(), json!("failed"));
 
-        let status = metadata
-            .get("_validation_status")
-            .and_then(|v| v.as_str());
+        let status = metadata.get("_validation_status").and_then(|v| v.as_str());
         let should = status != Some("failed");
         assert!(!should, "valid_only should skip failed items");
     }
@@ -505,8 +503,7 @@ mod tests {
         wiremock::Mock::given(wiremock::matchers::method("POST"))
             .and(wiremock::matchers::path_regex("/b/test-bucket/o.*"))
             .respond_with(
-                wiremock::ResponseTemplate::new(500)
-                    .set_body_string("Internal Server Error"),
+                wiremock::ResponseTemplate::new(500).set_body_string("Internal Server Error"),
             )
             .mount(&mock_server)
             .await;

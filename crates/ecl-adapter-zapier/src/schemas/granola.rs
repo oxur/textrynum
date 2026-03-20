@@ -68,11 +68,7 @@ impl GranolaMeetingNote {
     ///
     /// Content is the summary + transcript formatted as Markdown.
     /// Metadata includes attendees, calendar event, and link.
-    pub fn into_extracted_document(
-        self,
-        id: String,
-        raw_bytes: &[u8],
-    ) -> ExtractedDocument {
+    pub fn into_extracted_document(self, id: String, raw_bytes: &[u8]) -> ExtractedDocument {
         // Build markdown content: summary then transcript
         let content = format!(
             "# {}\n\n## Summary\n\n{}\n\n## Transcript\n\n{}\n",

@@ -104,9 +104,7 @@ pub trait PushSourceAdapter: Send + Sync + std::fmt::Debug {
     ///
     /// The returned receiver yields documents until `shutdown()` is called
     /// or the adapter is dropped.
-    async fn start(
-        &self,
-    ) -> Result<tokio::sync::mpsc::Receiver<ExtractedDocument>, SourceError>;
+    async fn start(&self) -> Result<tokio::sync::mpsc::Receiver<ExtractedDocument>, SourceError>;
 
     /// Signal the adapter to stop accepting new events and drain.
     ///
@@ -337,7 +335,10 @@ mod tests {
     #[test]
     fn test_pipeline_item_record_serde_roundtrip() {
         let mut record = Record::new();
-        record.insert("name".to_string(), serde_json::Value::String("Alice".to_string()));
+        record.insert(
+            "name".to_string(),
+            serde_json::Value::String("Alice".to_string()),
+        );
         record.insert("age".to_string(), serde_json::json!(30));
         record.insert("active".to_string(), serde_json::Value::Bool(true));
 
@@ -376,7 +377,10 @@ mod tests {
             stream: None,
         };
         let json = serde_json::to_string(&item).unwrap();
-        assert!(!json.contains("record"), "record: None should be skipped in JSON");
+        assert!(
+            !json.contains("record"),
+            "record: None should be skipped in JSON"
+        );
     }
 
     #[test]

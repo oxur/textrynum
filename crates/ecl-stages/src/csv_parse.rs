@@ -197,9 +197,9 @@ impl Stage for CsvParseStage {
 #[allow(clippy::unwrap_used)]
 mod tests {
     use super::*;
-    use std::collections::BTreeMap;
     use ecl_pipeline_state::{Blake3Hash, ItemProvenance};
     use serde_json::json;
+    use std::collections::BTreeMap;
 
     fn make_test_item(csv_content: &str) -> PipelineItem {
         PipelineItem {
@@ -392,10 +392,7 @@ mod tests {
         let result = stage.process(item, &ctx).await.unwrap();
         assert_eq!(result.len(), 2);
         assert_eq!(result[0].id, "file-1:row:1");
-        assert_eq!(
-            result[0].record.as_ref().unwrap()["col_a"],
-            json!("val1")
-        );
+        assert_eq!(result[0].record.as_ref().unwrap()["col_a"], json!("val1"));
     }
 
     #[tokio::test]

@@ -81,10 +81,12 @@ impl GcsAdapter {
             .pattern
             .as_ref()
             .map(|p| {
-                glob::Pattern::new(p).map_err(|e| ResolveError::Io(std::io::Error::new(
-                    std::io::ErrorKind::InvalidInput,
-                    format!("invalid glob pattern '{p}': {e}"),
-                )))
+                glob::Pattern::new(p).map_err(|e| {
+                    ResolveError::Io(std::io::Error::new(
+                        std::io::ErrorKind::InvalidInput,
+                        format!("invalid glob pattern '{p}': {e}"),
+                    ))
+                })
             })
             .transpose()?;
 
@@ -115,10 +117,7 @@ impl GcsAdapter {
     }
 
     /// List objects in the bucket with pagination.
-    async fn list_objects(
-        &self,
-        token: &str,
-    ) -> Result<Vec<GcsObject>, GcsAdapterError> {
+    async fn list_objects(&self, token: &str) -> Result<Vec<GcsObject>, GcsAdapterError> {
         let mut all_objects = Vec::new();
         let mut page_token: Option<String> = None;
 
@@ -147,12 +146,7 @@ impl GcsAdapter {
                 url.push_str(&pairs.join("&"));
             }
 
-            let response = self
-                .http_client
-                .get(&url)
-                .bearer_auth(token)
-                .send()
-                .await?;
+            let response = self.http_client.get(&url).bearer_auth(token).send().await?;
 
             let status = response.status();
             if !status.is_success() {
@@ -188,12 +182,7 @@ impl GcsAdapter {
             self.base_url, self.bucket, encoded_name
         );
 
-        let response = self
-            .http_client
-            .get(&url)
-            .bearer_auth(token)
-            .send()
-            .await?;
+        let response = self.http_client.get(&url).bearer_auth(token).send().await?;
 
         let status = response.status();
         if !status.is_success() {
@@ -297,11 +286,7 @@ impl SourceAdapter for GcsAdapter {
             // Skip "directory" markers (names ending in /).
             .filter(|obj| !obj.name.ends_with('/'))
             // Apply glob pattern filter.
-            .filter(|obj| {
-                self.pattern
-                    .as_ref()
-                    .map_or(true, |p| p.matches(&obj.name))
-            })
+            .filter(|obj| self.pattern.as_ref().map_or(true, |p| p.matches(&obj.name)))
             .map(|obj| {
                 let modified_at = obj
                     .updated
@@ -314,12 +299,7 @@ impl SourceAdapter for GcsAdapter {
 
                 SourceItem {
                     id: obj.name.clone(),
-                    display_name: obj
-                        .name
-                        .rsplit('/')
-                        .next()
-                        .unwrap_or(&obj.name)
-                        .to_string(),
+                    display_name: obj.name.rsplit('/').next().unwrap_or(&obj.name).to_string(),
                     mime_type,
                     path: obj.name,
                     modified_at,
@@ -401,8 +381,8 @@ impl SourceAdapter for GcsAdapter {
 #[allow(clippy::unwrap_used)]
 mod tests {
     use super::*;
-    use ecl_pipeline_spec::source::GcsSourceSpec;
     use ecl_pipeline_spec::CredentialRef;
+    use ecl_pipeline_spec::source::GcsSourceSpec;
 
     fn make_gcs_spec() -> GcsSourceSpec {
         GcsSourceSpec {
@@ -479,8 +459,8 @@ mod tests {
         // Mock the objects listing endpoint.
         wiremock::Mock::given(wiremock::matchers::method("GET"))
             .and(wiremock::matchers::path("/b/test-bucket/o"))
-            .respond_with(wiremock::ResponseTemplate::new(200).set_body_json(
-                serde_json::json!({
+            .respond_with(
+                wiremock::ResponseTemplate::new(200).set_body_json(serde_json::json!({
                     "items": [
                         {
                             "name": "staging/transactions-001.csv",
@@ -507,8 +487,8 @@ mod tests {
                             "bucket": "test-bucket"
                         }
                     ]
-                }),
-            ))
+                })),
+            )
             .mount(&mock_server)
             .await;
 
@@ -544,14 +524,14 @@ mod tests {
 
         wiremock::Mock::given(wiremock::matchers::method("GET"))
             .and(wiremock::matchers::path("/b/test-bucket/o"))
-            .respond_with(wiremock::ResponseTemplate::new(200).set_body_json(
-                serde_json::json!({
+            .respond_with(
+                wiremock::ResponseTemplate::new(200).set_body_json(serde_json::json!({
                     "items": [
                         {"name": "a.csv", "bucket": "test-bucket", "contentType": "text/csv"},
                         {"name": "b.txt", "bucket": "test-bucket", "contentType": "text/plain"}
                     ]
-                }),
-            ))
+                })),
+            )
             .mount(&mock_server)
             .await;
 
@@ -702,10 +682,7 @@ mod tests {
 
         let result = adapter.enumerate().await;
         assert!(result.is_err());
-        assert!(matches!(
-            result.unwrap_err(),
-            SourceError::AuthError { .. }
-        ));
+        assert!(matches!(result.unwrap_err(), SourceError::AuthError { .. }));
     }
 
     #[test]
@@ -733,14 +710,14 @@ mod tests {
         wiremock::Mock::given(wiremock::matchers::method("GET"))
             .and(wiremock::matchers::path("/b/test-bucket/o"))
             .and(wiremock::matchers::query_param_is_missing("pageToken"))
-            .respond_with(wiremock::ResponseTemplate::new(200).set_body_json(
-                serde_json::json!({
+            .respond_with(
+                wiremock::ResponseTemplate::new(200).set_body_json(serde_json::json!({
                     "items": [
                         {"name": "a.csv", "bucket": "test-bucket", "contentType": "text/csv"}
                     ],
                     "nextPageToken": "page2"
-                }),
-            ))
+                })),
+            )
             .mount(&mock_server)
             .await;
 
@@ -748,13 +725,13 @@ mod tests {
         wiremock::Mock::given(wiremock::matchers::method("GET"))
             .and(wiremock::matchers::path("/b/test-bucket/o"))
             .and(wiremock::matchers::query_param("pageToken", "page2"))
-            .respond_with(wiremock::ResponseTemplate::new(200).set_body_json(
-                serde_json::json!({
+            .respond_with(
+                wiremock::ResponseTemplate::new(200).set_body_json(serde_json::json!({
                     "items": [
                         {"name": "b.csv", "bucket": "test-bucket", "contentType": "text/csv"}
                     ]
-                }),
-            ))
+                })),
+            )
             .mount(&mock_server)
             .await;
 

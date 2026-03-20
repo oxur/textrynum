@@ -151,14 +151,14 @@ mod tests {
         wiremock::Mock::given(wiremock::matchers::method("POST"))
             .and(wiremock::matchers::path("/subjects/test-value/versions"))
             .respond_with(
-                wiremock::ResponseTemplate::new(200)
-                    .set_body_json(serde_json::json!({ "id": 42 })),
+                wiremock::ResponseTemplate::new(200).set_body_json(serde_json::json!({ "id": 42 })),
             )
             .mount(&mock_server)
             .await;
 
         let registry = SchemaRegistry::new(&mock_server.uri());
-        let schema_json = r#"{"type":"record","name":"Test","fields":[{"name":"id","type":"string"}]}"#;
+        let schema_json =
+            r#"{"type":"record","name":"Test","fields":[{"name":"id","type":"string"}]}"#;
         let id = registry
             .register_schema("test-value", schema_json)
             .await
@@ -180,11 +180,12 @@ mod tests {
             .await;
 
         let registry = SchemaRegistry::new(&mock_server.uri());
-        let result = registry
-            .register_schema("bad-value", "invalid")
-            .await;
+        let result = registry.register_schema("bad-value", "invalid").await;
         assert!(result.is_err());
-        assert!(matches!(result.unwrap_err(), RegistryError::ApiError { status: 422, .. }));
+        assert!(matches!(
+            result.unwrap_err(),
+            RegistryError::ApiError { status: 422, .. }
+        ));
     }
 
     #[tokio::test]

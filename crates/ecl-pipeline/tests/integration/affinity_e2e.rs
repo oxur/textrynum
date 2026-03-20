@@ -248,11 +248,7 @@ async fn test_affinity_e2e_happy_path() {
         .metadata
         .get("_validation_status")
         .and_then(|v| v.as_str());
-    assert_eq!(
-        row3_status,
-        Some("failed"),
-        "Row 3 should fail validation"
-    );
+    assert_eq!(row3_status, Some("failed"), "Row 3 should fail validation");
 
     // Row 3 should have validation errors
     let row3_errors = items[2]
@@ -264,7 +260,11 @@ async fn test_affinity_e2e_happy_path() {
         "Row 3 should have _validation_errors"
     );
     let errors = row3_errors.unwrap();
-    assert!(errors.len() >= 2, "Row 3 should have at least 2 validation errors (required + regex), got {}", errors.len());
+    assert!(
+        errors.len() >= 2,
+        "Row 3 should have at least 2 validation errors (required + regex), got {}",
+        errors.len()
+    );
 }
 
 #[tokio::test]
@@ -296,7 +296,10 @@ async fn test_affinity_e2e_field_mapping_correctness() {
     );
 
     // Settlement date parsed
-    let settlement_ts = record.get("settlement_ts").and_then(|v| v.as_str()).unwrap();
+    let settlement_ts = record
+        .get("settlement_ts")
+        .and_then(|v| v.as_str())
+        .unwrap();
     assert!(
         settlement_ts.contains("2026-03-16"),
         "settlement_ts should contain 2026-03-16, got: {settlement_ts}"
@@ -304,9 +307,7 @@ async fn test_affinity_e2e_field_mapping_correctness() {
 
     // Transaction_Auth_Code → padded to 6 digits
     assert_eq!(
-        record
-            .get("Transaction_Auth_Code")
-            .and_then(|v| v.as_str()),
+        record.get("Transaction_Auth_Code").and_then(|v| v.as_str()),
         Some("000123"),
         "Auth code 123 should be left-padded to 000123"
     );
@@ -319,24 +320,30 @@ async fn test_affinity_e2e_field_mapping_correctness() {
     );
 
     // Set constants
-    assert_eq!(
-        record.get("country").and_then(|v| v.as_str()),
-        Some("US")
-    );
-    assert_eq!(
-        record.get("currency").and_then(|v| v.as_str()),
-        Some("USD")
-    );
+    assert_eq!(record.get("country").and_then(|v| v.as_str()), Some("US"));
+    assert_eq!(record.get("currency").and_then(|v| v.as_str()), Some("USD"));
     assert_eq!(
         record.get("byn_partner_id").and_then(|v| v.as_i64()),
         Some(290)
     );
 
     // Dropped fields should be absent
-    assert!(record.get("Channel_Aggregator_ID").is_none(), "Dropped field should be absent");
-    assert!(record.get("Program_ID").is_none(), "Dropped field should be absent");
-    assert!(record.get("Account_Postal_Code").is_none(), "Dropped field should be absent");
-    assert!(record.get("Transaction_Date").is_none(), "Dropped field should be absent");
+    assert!(
+        record.get("Channel_Aggregator_ID").is_none(),
+        "Dropped field should be absent"
+    );
+    assert!(
+        record.get("Program_ID").is_none(),
+        "Dropped field should be absent"
+    );
+    assert!(
+        record.get("Account_Postal_Code").is_none(),
+        "Dropped field should be absent"
+    );
+    assert!(
+        record.get("Transaction_Date").is_none(),
+        "Dropped field should be absent"
+    );
 
     // Renamed fields
     assert_eq!(
@@ -365,9 +372,7 @@ async fn test_affinity_e2e_row2_field_mapping() {
 
     // Auth code "456" padded to "000456"
     assert_eq!(
-        record
-            .get("Transaction_Auth_Code")
-            .and_then(|v| v.as_str()),
+        record.get("Transaction_Auth_Code").and_then(|v| v.as_str()),
         Some("000456")
     );
 }
@@ -558,10 +563,7 @@ fn build_affinity_topo(
         name: "affinity-e2e".to_string(),
         version: 1,
         output_dir: output_dir.to_path_buf(),
-        sources: BTreeMap::from([(
-            "local".to_string(),
-            SourceSpec::Filesystem(fs_spec),
-        )]),
+        sources: BTreeMap::from([("local".to_string(), SourceSpec::Filesystem(fs_spec))]),
         stages: BTreeMap::from([(
             "affinity-pipeline".to_string(),
             StageSpec {
@@ -687,9 +689,7 @@ async fn test_affinity_e2e_row3_auth_code_no_padding_needed() {
 
     // Row 3 auth code is "789012" (already 6 digits) — no padding needed
     assert_eq!(
-        record
-            .get("Transaction_Auth_Code")
-            .and_then(|v| v.as_str()),
+        record.get("Transaction_Auth_Code").and_then(|v| v.as_str()),
         Some("789012"),
         "Auth code 789012 needs no padding"
     );

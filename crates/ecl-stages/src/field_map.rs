@@ -230,10 +230,7 @@ impl FieldMapStage {
                 .and_then(|s| NaiveDate::parse_from_str(s, &op.format).ok())
                 .map(|d| {
                     // Convert to RFC 3339 date string (midnight UTC)
-                    let dt = d
-                        .and_hms_opt(0, 0, 0)
-                        .unwrap_or_default()
-                        .and_utc();
+                    let dt = d.and_hms_opt(0, 0, 0).unwrap_or_default().and_utc();
                     serde_json::Value::String(dt.to_rfc3339())
                 });
 
@@ -257,7 +254,8 @@ impl FieldMapStage {
                     s.to_string()
                 } else {
                     let padding_needed = op.width - s.len();
-                    let pad_str: String = std::iter::repeat(pad_char).take(padding_needed).collect();
+                    let pad_str: String =
+                        std::iter::repeat(pad_char).take(padding_needed).collect();
                     if op.side == "right" {
                         format!("{s}{pad_str}")
                     } else {
@@ -273,7 +271,11 @@ impl FieldMapStage {
     }
 
     /// Apply all regex extract operations to the record.
-    fn apply_regex_extracts(record: &mut Record, ops: &[RegexExtractOp], compiled: &[(usize, Regex)]) {
+    fn apply_regex_extracts(
+        record: &mut Record,
+        ops: &[RegexExtractOp],
+        compiled: &[(usize, Regex)],
+    ) {
         for (idx, re) in compiled {
             let op = &ops[*idx];
             let extracted = record
@@ -352,9 +354,9 @@ impl Stage for FieldMapStage {
 #[allow(clippy::unwrap_used)]
 mod tests {
     use super::*;
-    use std::sync::Arc;
     use ecl_pipeline_state::{Blake3Hash, ItemProvenance};
     use serde_json::json;
+    use std::sync::Arc;
 
     fn make_record(fields: &[(&str, serde_json::Value)]) -> Record {
         let mut record = Record::new();
@@ -618,7 +620,10 @@ resources = { creates = ["mapped"] }
             }]
         });
         let stage = FieldMapStage::from_params(&params).unwrap();
-        let record = make_record(&[("Merchant_Location_Name", json!("ACME INC. #1234 CHICAGO IL"))]);
+        let record = make_record(&[(
+            "Merchant_Location_Name",
+            json!("ACME INC. #1234 CHICAGO IL"),
+        )]);
         let item = make_item_with_record(record);
         let ctx = make_context();
 
@@ -762,7 +767,10 @@ resources = { creates = ["mapped"] }
         let stage = FieldMapStage::from_params(&params).unwrap();
         let record = make_record(&[
             ("Transaction_Date", json!("03/15/2026")),
-            ("Merchant_Location_Name", json!("ACME INC. #5678 PITTSBURGH PA")),
+            (
+                "Merchant_Location_Name",
+                json!("ACME INC. #5678 PITTSBURGH PA"),
+            ),
             ("Total_Amount", json!(42.50)),
             ("Auth_Code", json!("123")),
             ("Card_Number", json!("****1234")),

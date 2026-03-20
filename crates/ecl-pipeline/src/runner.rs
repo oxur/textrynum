@@ -598,10 +598,13 @@ impl PipelineRunner {
         // Start all push source adapters.
         for (name, adapter) in &self.topology.push_sources {
             tracing::info!(source = %name, "starting push source");
-            let rx = adapter.start().await.map_err(|e| PipelineError::PushSource {
-                source_name: name.clone(),
-                detail: e.to_string(),
-            })?;
+            let rx = adapter
+                .start()
+                .await
+                .map_err(|e| PipelineError::PushSource {
+                    source_name: name.clone(),
+                    detail: e.to_string(),
+                })?;
             receivers.push((name.clone(), rx));
         }
 
@@ -649,7 +652,8 @@ impl PipelineRunner {
             }
 
             if batch.is_empty() {
-                if shutdown_signalled || receivers.iter_mut().all(|(_, rx)| rx.try_recv().is_err()) {
+                if shutdown_signalled || receivers.iter_mut().all(|(_, rx)| rx.try_recv().is_err())
+                {
                     break;
                 }
                 continue;
@@ -1805,10 +1809,7 @@ mod tests {
     #[test]
     fn test_matches_stream_tagged_item_does_not_match_wrong_stream() {
         let input_streams = vec!["txn".to_string()];
-        assert!(!matches_stream(
-            &input_streams,
-            &Some("other".to_string())
-        ));
+        assert!(!matches_stream(&input_streams, &Some("other".to_string())));
     }
 
     // ── Stream-aware routing tests ────────────────────────────────────
@@ -1863,10 +1864,7 @@ mod tests {
 
         runner.enumerate_sources().await.unwrap();
         assert_eq!(runner.active_items.len(), 1);
-        assert_eq!(
-            runner.active_items[0].stream,
-            Some("txn".to_string())
-        );
+        assert_eq!(runner.active_items[0].stream, Some("txn".to_string()));
     }
 
     #[tokio::test]
@@ -2040,10 +2038,7 @@ mod tests {
         runner.merge_stage_result(result).unwrap();
 
         assert_eq!(runner.active_items.len(), 1);
-        assert_eq!(
-            runner.active_items[0].stream,
-            Some("parsed".to_string())
-        );
+        assert_eq!(runner.active_items[0].stream, Some("parsed".to_string()));
     }
 
     #[tokio::test]

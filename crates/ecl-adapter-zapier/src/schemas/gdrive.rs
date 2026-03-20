@@ -37,11 +37,7 @@ impl GDriveFileChange {
     /// Content is the raw JSON payload (file metadata only — the actual file
     /// content would need a separate fetch via Google Drive API).
     /// Metadata includes file ID, MIME type, and web link.
-    pub fn into_extracted_document(
-        self,
-        id: String,
-        raw_bytes: &[u8],
-    ) -> ExtractedDocument {
+    pub fn into_extracted_document(self, id: String, raw_bytes: &[u8]) -> ExtractedDocument {
         let content_hash = make_content_hash(raw_bytes);
 
         let mut metadata = BTreeMap::new();

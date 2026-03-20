@@ -143,12 +143,10 @@ impl KafkaSinkStage {
             (Some(inline), _) => inline.clone(),
             (None, Some(path)) => {
                 let interpolated_path = interpolate_env(path);
-                std::fs::read_to_string(&interpolated_path).map_err(|e| {
-                    StageError::Permanent {
-                        stage: "kafka_sink".to_string(),
-                        item_id: String::new(),
-                        message: format!("cannot read schema file '{interpolated_path}': {e}"),
-                    }
+                std::fs::read_to_string(&interpolated_path).map_err(|e| StageError::Permanent {
+                    stage: "kafka_sink".to_string(),
+                    item_id: String::new(),
+                    message: format!("cannot read schema file '{interpolated_path}': {e}"),
                 })?
             }
             (None, None) => {
@@ -185,13 +183,11 @@ impl KafkaSinkStage {
         }
 
         let producer: FutureProducer =
-            kafka_config
-                .create()
-                .map_err(|e| StageError::Permanent {
-                    stage: "kafka_sink".to_string(),
-                    item_id: String::new(),
-                    message: format!("cannot create Kafka producer: {e}"),
-                })?;
+            kafka_config.create().map_err(|e| StageError::Permanent {
+                stage: "kafka_sink".to_string(),
+                item_id: String::new(),
+                message: format!("cannot create Kafka producer: {e}"),
+            })?;
 
         Ok(Self {
             config,
@@ -267,14 +263,13 @@ impl Stage for KafkaSinkStage {
         })?;
 
         // Serialize to Avro wire format.
-        let payload =
-            serialize_record_avro(record, &self.schema, schema_id).map_err(|e| {
-                StageError::Permanent {
-                    stage: "kafka_sink".to_string(),
-                    item_id: item.id.clone(),
-                    message: format!("Avro serialization error: {e}"),
-                }
-            })?;
+        let payload = serialize_record_avro(record, &self.schema, schema_id).map_err(|e| {
+            StageError::Permanent {
+                stage: "kafka_sink".to_string(),
+                item_id: item.id.clone(),
+                message: format!("Avro serialization error: {e}"),
+            }
+        })?;
 
         // Use item.id as the Kafka message key.
         let key = item.id.as_bytes();
@@ -359,9 +354,7 @@ mod tests {
         let mut metadata = BTreeMap::new();
         metadata.insert("_validation_status".to_string(), json!("failed"));
 
-        let status = metadata
-            .get("_validation_status")
-            .and_then(|v| v.as_str());
+        let status = metadata.get("_validation_status").and_then(|v| v.as_str());
 
         // valid_only → skip items with status == "failed"
         let should = match "valid_only" {
@@ -377,9 +370,7 @@ mod tests {
         let mut metadata = BTreeMap::new();
         metadata.insert("_validation_status".to_string(), json!("passed"));
 
-        let status = metadata
-            .get("_validation_status")
-            .and_then(|v| v.as_str());
+        let status = metadata.get("_validation_status").and_then(|v| v.as_str());
 
         // errors_only → only produce if status == "failed"
         let should = status == Some("failed");
@@ -402,9 +393,7 @@ mod tests {
         let mut metadata = BTreeMap::new();
         metadata.insert("_validation_status".to_string(), json!("passed"));
 
-        let status = metadata
-            .get("_validation_status")
-            .and_then(|v| v.as_str());
+        let status = metadata.get("_validation_status").and_then(|v| v.as_str());
         let should = match "valid_only" {
             "valid_only" => status != Some("failed"),
             _ => true,
@@ -416,9 +405,7 @@ mod tests {
     fn test_kafka_sink_filter_no_status_treated_as_valid() {
         let metadata: BTreeMap<String, serde_json::Value> = BTreeMap::new();
 
-        let status = metadata
-            .get("_validation_status")
-            .and_then(|v| v.as_str());
+        let status = metadata.get("_validation_status").and_then(|v| v.as_str());
         let should = match "valid_only" {
             "valid_only" => status != Some("failed"),
             _ => true,
@@ -441,8 +428,7 @@ mod tests {
         let input = "keep-${VERY_UNLIKELY_ECL_TEST_VAR_12345}-as-is";
         let result = interpolate_env(input);
         assert_eq!(
-            result,
-            "keep-${VERY_UNLIKELY_ECL_TEST_VAR_12345}-as-is",
+            result, "keep-${VERY_UNLIKELY_ECL_TEST_VAR_12345}-as-is",
             "missing env vars should be left as-is"
         );
     }

@@ -49,11 +49,7 @@ impl GmailMessage {
     ///
     /// Content is the plain text body (preferred) or HTML body.
     /// Metadata includes sender, recipient, subject, labels, and thread info.
-    pub fn into_extracted_document(
-        self,
-        id: String,
-        raw_bytes: &[u8],
-    ) -> ExtractedDocument {
+    pub fn into_extracted_document(self, id: String, raw_bytes: &[u8]) -> ExtractedDocument {
         let (content, mime_type) = if let Some(ref plain) = self.body_plain {
             (plain.as_bytes().to_vec(), "text/plain".to_string())
         } else if let Some(ref html) = self.body_html {
@@ -69,10 +65,7 @@ impl GmailMessage {
             "from".to_string(),
             serde_json::Value::String(self.from.clone()),
         );
-        metadata.insert(
-            "to".to_string(),
-            serde_json::Value::String(self.to.clone()),
-        );
+        metadata.insert("to".to_string(), serde_json::Value::String(self.to.clone()));
         metadata.insert(
             "subject".to_string(),
             serde_json::Value::String(self.subject.clone()),
