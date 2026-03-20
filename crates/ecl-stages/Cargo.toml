@@ -22,6 +22,7 @@ csv = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 chrono = { workspace = true }
+chrono-tz = { workspace = true }
 blake3 = { workspace = true }
 regex = { workspace = true }
 

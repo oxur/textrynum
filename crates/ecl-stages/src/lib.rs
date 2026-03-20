@@ -10,6 +10,8 @@
 //! - [`JoinStage`] — batch join of two streams by key (inner/left/full)
 //! - [`AggregateStage`] — batch grouping with aggregate functions (sum/max/min/count/avg/first/last)
 //! - [`LookupStage`] — static value mapping through lookup tables
+//! - [`DateParseStage`] — date string parsing to RFC3339 format
+//! - [`TimezoneStage`] — local datetime to UTC conversion via ZIP code lookup
 //! - [`EmitStage`] — writes pipeline items to the output directory
 
 #![forbid(unsafe_code)]
@@ -20,6 +22,7 @@
 
 pub mod aggregate;
 pub mod csv_parse;
+pub mod date_parse;
 pub mod emit;
 pub mod extract;
 pub mod field_map;
@@ -27,10 +30,12 @@ pub mod filter;
 pub mod join;
 pub mod lookup;
 pub mod normalize;
+pub mod timezone;
 pub mod validate;
 
 pub use aggregate::AggregateStage;
 pub use csv_parse::CsvParseStage;
+pub use date_parse::DateParseStage;
 pub use emit::EmitStage;
 pub use extract::ExtractStage;
 pub use field_map::FieldMapStage;
@@ -38,4 +43,5 @@ pub use filter::FilterStage;
 pub use join::JoinStage;
 pub use lookup::LookupStage;
 pub use normalize::NormalizeStage;
+pub use timezone::TimezoneStage;
 pub use validate::ValidateStage;
