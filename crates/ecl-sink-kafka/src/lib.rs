@@ -286,11 +286,11 @@ impl Stage for KafkaSinkStage {
             .await;
 
         match delivery_result {
-            Ok((partition, offset)) => {
+            Ok(delivery) => {
                 debug!(
                     item_id = %item.id,
-                    partition,
-                    offset,
+                    partition = delivery.partition,
+                    offset = delivery.offset,
                     "produced to Kafka"
                 );
             }

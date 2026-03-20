@@ -23,7 +23,7 @@ failsafe = { workspace = true }
 twyg = { workspace = true }
 tracing = { workspace = true }
 # HTTP client for Claude API
-reqwest = { version = "0.12", features = ["json"] }
+reqwest = { version = "0.13", features = ["json"] }
 
 [dev-dependencies]
 proptest = { workspace = true }

@@ -113,10 +113,10 @@ zip = "2"
 flate2 = "1"
 
 # Kafka
-rdkafka = { version = "0.36", features = ["cmake-build"] }
+rdkafka = { version = "0.39", features = ["cmake-build"] }
 
 # Avro
-apache-avro = "0.17"
+apache-avro = "0.21"
 
 # Error handling
 thiserror = "2"
@@ -162,7 +162,7 @@ stop-words = "0.10"
 strsim = "0.11"
 
 # Vector database
-lancedb = "0.26"
+lancedb = "0.27"
 arrow-array = "57"
 arrow-schema = "57"
 
@@ -194,7 +194,7 @@ base64 = "0.22"
 tokio-stream = "0.1"
 
 # PGP
-pgp = "0.14"
+pgp = "0.19"
 
 # SSH/SFTP
 russh = "0.46"
