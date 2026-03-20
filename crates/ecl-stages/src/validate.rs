@@ -196,36 +196,34 @@ impl ValidateStage {
             }
         };
 
-        if let Some(min_str) = &rule.min {
-            if let Ok(min_dt) = min_str.parse::<DateTime<chrono::Utc>>() {
-                if dt < min_dt {
-                    return Some(serde_json::json!({
-                        "field": rule.field,
-                        "check": "date_range",
-                        "severity": rule.severity,
-                        "message": format!(
-                            "field '{}' date {} is before minimum {}",
-                            rule.field, s, min_str
-                        ),
-                    }));
-                }
-            }
+        if let Some(min_str) = &rule.min
+            && let Ok(min_dt) = min_str.parse::<DateTime<chrono::Utc>>()
+            && dt < min_dt
+        {
+            return Some(serde_json::json!({
+                "field": rule.field,
+                "check": "date_range",
+                "severity": rule.severity,
+                "message": format!(
+                    "field '{}' date {} is before minimum {}",
+                    rule.field, s, min_str
+                ),
+            }));
         }
 
-        if let Some(max_str) = &rule.max {
-            if let Ok(max_dt) = max_str.parse::<DateTime<chrono::Utc>>() {
-                if dt > max_dt {
-                    return Some(serde_json::json!({
-                        "field": rule.field,
-                        "check": "date_range",
-                        "severity": rule.severity,
-                        "message": format!(
-                            "field '{}' date {} is after maximum {}",
-                            rule.field, s, max_str
-                        ),
-                    }));
-                }
-            }
+        if let Some(max_str) = &rule.max
+            && let Ok(max_dt) = max_str.parse::<DateTime<chrono::Utc>>()
+            && dt > max_dt
+        {
+            return Some(serde_json::json!({
+                "field": rule.field,
+                "check": "date_range",
+                "severity": rule.severity,
+                "message": format!(
+                    "field '{}' date {} is after maximum {}",
+                    rule.field, s, max_str
+                ),
+            }));
         }
 
         None
@@ -236,36 +234,34 @@ impl ValidateStage {
         let s = value.and_then(|v| v.as_str()).unwrap_or("");
         let len = s.len();
 
-        if let Some(min_str) = &rule.min {
-            if let Ok(min) = min_str.parse::<usize>() {
-                if len < min {
-                    return Some(serde_json::json!({
-                        "field": rule.field,
-                        "check": "length",
-                        "severity": rule.severity,
-                        "message": format!(
-                            "field '{}' length {} is below minimum {}",
-                            rule.field, len, min
-                        ),
-                    }));
-                }
-            }
+        if let Some(min_str) = &rule.min
+            && let Ok(min) = min_str.parse::<usize>()
+            && len < min
+        {
+            return Some(serde_json::json!({
+                "field": rule.field,
+                "check": "length",
+                "severity": rule.severity,
+                "message": format!(
+                    "field '{}' length {} is below minimum {}",
+                    rule.field, len, min
+                ),
+            }));
         }
 
-        if let Some(max_str) = &rule.max {
-            if let Ok(max) = max_str.parse::<usize>() {
-                if len > max {
-                    return Some(serde_json::json!({
-                        "field": rule.field,
-                        "check": "length",
-                        "severity": rule.severity,
-                        "message": format!(
-                            "field '{}' length {} exceeds maximum {}",
-                            rule.field, len, max
-                        ),
-                    }));
-                }
-            }
+        if let Some(max_str) = &rule.max
+            && let Ok(max) = max_str.parse::<usize>()
+            && len > max
+        {
+            return Some(serde_json::json!({
+                "field": rule.field,
+                "check": "length",
+                "severity": rule.severity,
+                "message": format!(
+                    "field '{}' length {} exceeds maximum {}",
+                    rule.field, len, max
+                ),
+            }));
         }
 
         None
@@ -294,36 +290,34 @@ impl ValidateStage {
             }
         };
 
-        if let Some(min_str) = &rule.min {
-            if let Ok(min) = min_str.parse::<f64>() {
-                if num < min {
-                    return Some(serde_json::json!({
-                        "field": rule.field,
-                        "check": "numeric_range",
-                        "severity": rule.severity,
-                        "message": format!(
-                            "field '{}' value {} is below minimum {}",
-                            rule.field, num, min
-                        ),
-                    }));
-                }
-            }
+        if let Some(min_str) = &rule.min
+            && let Ok(min) = min_str.parse::<f64>()
+            && num < min
+        {
+            return Some(serde_json::json!({
+                "field": rule.field,
+                "check": "numeric_range",
+                "severity": rule.severity,
+                "message": format!(
+                    "field '{}' value {} is below minimum {}",
+                    rule.field, num, min
+                ),
+            }));
         }
 
-        if let Some(max_str) = &rule.max {
-            if let Ok(max) = max_str.parse::<f64>() {
-                if num > max {
-                    return Some(serde_json::json!({
-                        "field": rule.field,
-                        "check": "numeric_range",
-                        "severity": rule.severity,
-                        "message": format!(
-                            "field '{}' value {} exceeds maximum {}",
-                            rule.field, num, max
-                        ),
-                    }));
-                }
-            }
+        if let Some(max_str) = &rule.max
+            && let Ok(max) = max_str.parse::<f64>()
+            && num > max
+        {
+            return Some(serde_json::json!({
+                "field": rule.field,
+                "check": "numeric_range",
+                "severity": rule.severity,
+                "message": format!(
+                    "field '{}' value {} exceeds maximum {}",
+                    rule.field, num, max
+                ),
+            }));
         }
 
         None

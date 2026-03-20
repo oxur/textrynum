@@ -254,8 +254,7 @@ impl FieldMapStage {
                     s.to_string()
                 } else {
                     let padding_needed = op.width - s.len();
-                    let pad_str: String =
-                        std::iter::repeat(pad_char).take(padding_needed).collect();
+                    let pad_str: String = std::iter::repeat_n(pad_char, padding_needed).collect();
                     if op.side == "right" {
                         format!("{s}{pad_str}")
                     } else {

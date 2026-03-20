@@ -49,13 +49,12 @@ pub fn resolve_base_dir(env_var_name: &str, config_path: Option<&Path>) -> PathB
     }
 
     // 2. Config file's parent directory
-    if let Some(cfg) = config_path {
-        if let Some(parent) = cfg.parent() {
-            if !parent.as_os_str().is_empty() {
-                log::debug!("base_dir from config file parent: {}", parent.display());
-                return parent.to_path_buf();
-            }
-        }
+    if let Some(cfg) = config_path
+        && let Some(parent) = cfg.parent()
+        && !parent.as_os_str().is_empty()
+    {
+        log::debug!("base_dir from config file parent: {}", parent.display());
+        return parent.to_path_buf();
     }
 
     // 3. CWD fallback
@@ -85,13 +84,13 @@ pub fn resolve_path(base: &Path, path: &str) -> String {
 /// Leaves `None` and empty strings unchanged. Resolves relative paths
 /// against `base` and logs the transformation at debug level.
 pub fn resolve_opt_path(field: &mut Option<String>, base: &Path, field_name: &str) {
-    if let Some(val) = field {
-        if !val.is_empty() {
-            let resolved = resolve_path(base, val);
-            if resolved != *val {
-                log::debug!("resolved {field_name}: {val} → {resolved}");
-                *val = resolved;
-            }
+    if let Some(val) = field
+        && !val.is_empty()
+    {
+        let resolved = resolve_path(base, val);
+        if resolved != *val {
+            log::debug!("resolved {field_name}: {val} → {resolved}");
+            *val = resolved;
         }
     }
 }
