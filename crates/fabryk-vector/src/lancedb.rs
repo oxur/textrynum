@@ -23,7 +23,8 @@ use crate::backend::VectorBackend;
 use crate::embedding::EmbeddingProvider;
 use crate::types::{EmbeddedDocument, VectorSearchParams, VectorSearchResult, VectorSearchResults};
 use arrow_array::{
-    Array, FixedSizeListArray, Float32Array, RecordBatch, RecordBatchIterator, StringArray,
+    Array, FixedSizeListArray, Float32Array, RecordBatch, RecordBatchIterator, RecordBatchReader,
+    StringArray,
 };
 use arrow_schema::{DataType, Field, Schema};
 use async_trait::async_trait;
@@ -76,7 +77,10 @@ impl LancedbBackend {
 
             // Create or overwrite the table
             connection
-                .create_table(table_name, Box::new(batches))
+                .create_table(
+                    table_name,
+                    Box::new(batches) as Box<dyn RecordBatchReader + Send>,
+                )
                 .mode(lancedb::database::CreateTableMode::Overwrite)
                 .execute()
                 .await
