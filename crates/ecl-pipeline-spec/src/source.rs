@@ -27,6 +27,10 @@ pub enum SourceSpec {
     /// Google Cloud Storage source.
     #[serde(rename = "gcs")]
     Gcs(GcsSourceSpec),
+
+    /// SFTP file server source.
+    #[serde(rename = "sftp")]
+    Sftp(SftpSourceSpec),
 }
 
 /// Google Drive source configuration.
@@ -155,6 +159,43 @@ pub struct GcsSourceSpec {
     pub stream: Option<String>,
 }
 
+/// SFTP file server source configuration.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SftpSourceSpec {
+    /// SFTP server hostname.
+    pub host: String,
+
+    /// SFTP server port. Default: 22.
+    #[serde(default = "default_ssh_port")]
+    pub port: u16,
+
+    /// SSH username.
+    pub username: String,
+
+    /// Credentials for authentication (private key or password).
+    pub credentials: CredentialRef,
+
+    /// Remote directory to list.
+    #[serde(default = "default_remote_root")]
+    pub remote_path: String,
+
+    /// Glob pattern to match filenames.
+    #[serde(default)]
+    pub pattern: Option<String>,
+
+    /// Named data stream for items from this source.
+    #[serde(default)]
+    pub stream: Option<String>,
+}
+
+fn default_ssh_port() -> u16 {
+    22
+}
+
+fn default_remote_root() -> String {
+    "/".to_string()
+}
+
 impl SourceSpec {
     /// Get the named data stream for this source, if configured.
     pub fn stream(&self) -> Option<&str> {
@@ -164,6 +205,7 @@ impl SourceSpec {
             SourceSpec::Filesystem(s) => s.stream.as_deref(),
             SourceSpec::Zapier(s) => s.stream.as_deref(),
             SourceSpec::Gcs(s) => s.stream.as_deref(),
+            SourceSpec::Sftp(s) => s.stream.as_deref(),
         }
     }
 }
@@ -440,5 +482,43 @@ mod tests {
         let json = serde_json::to_string(&exclude_rule).unwrap();
         let deserialized: FilterRule = serde_json::from_str(&json).unwrap();
         assert_eq!(deserialized.action, FilterAction::Exclude);
+    }
+
+    #[test]
+    fn test_source_spec_sftp_serde_roundtrip() {
+        let source = SourceSpec::Sftp(SftpSourceSpec {
+            host: "sftp.example.com".to_string(),
+            port: 22,
+            username: "acme-inc-sftp".to_string(),
+            credentials: CredentialRef::Secret {
+                name: "sftp-key-327".to_string(),
+            },
+            remote_path: "/data".to_string(),
+            pattern: Some("wag_banyan_*.csv*".to_string()),
+            stream: Some("raw-files".to_string()),
+        });
+        let json = serde_json::to_string(&source).unwrap();
+        let deserialized: SourceSpec = serde_json::from_str(&json).unwrap();
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_sftp_source_spec_defaults() {
+        let json = r#"{
+            "kind": "sftp",
+            "host": "sftp.example.com",
+            "username": "user",
+            "credentials": {"type": "env", "env": "SFTP_KEY"}
+        }"#;
+        let spec: SourceSpec = serde_json::from_str(json).unwrap();
+        if let SourceSpec::Sftp(sftp) = spec {
+            assert_eq!(sftp.port, 22);
+            assert_eq!(sftp.remote_path, "/");
+            assert!(sftp.pattern.is_none());
+            assert!(sftp.stream.is_none());
+        } else {
+            panic!("expected Sftp variant");
+        }
     }
 }

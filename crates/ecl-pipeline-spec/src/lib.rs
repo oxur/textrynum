@@ -16,7 +16,7 @@ pub use error::{Result, SpecError};
 pub use lifecycle::LifecycleSpec;
 pub use source::{
     CredentialRef, FileTypeFilter, FilesystemSourceSpec, FilterAction, FilterRule, GcsSourceSpec,
-    GoogleDriveSourceSpec, SlackSourceSpec, SourceSpec,
+    GoogleDriveSourceSpec, SftpSourceSpec, SlackSourceSpec, SourceSpec,
 };
 pub use stage::{ResourceSpec, StageSpec};
 

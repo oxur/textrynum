@@ -43,6 +43,7 @@ pub fn resolve_adapters(
             SourceSpec::Slack(_) => Arc::new(SlackAdapter::from_spec(name, source_spec)?),
             SourceSpec::Zapier(_) => continue, // Push sources resolved separately
             SourceSpec::Gcs(_) => Arc::new(GcsAdapter::from_spec(name, source_spec)?),
+            SourceSpec::Sftp(_) => continue, // SFTP requires async + SecretResolver; resolved separately
         };
         adapters.insert(name.clone(), adapter);
     }

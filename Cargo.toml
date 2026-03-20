@@ -18,6 +18,7 @@ members = [
     "crates/ecl-adapter-zapier",
     "crates/ecl-adapter-gcs",
     "crates/ecl-secrets",
+    "crates/ecl-adapter-sftp",
     "crates/ecl-stages",
     "crates/ecl-sink-kafka",
     "crates/ecl-sink-gcs",
@@ -191,6 +192,11 @@ base64 = "0.22"
 
 # Async stream wrappers
 tokio-stream = "0.1"
+
+# SSH/SFTP
+russh = "0.46"
+russh-sftp = "2"
+russh-keys = "0.46"
 
 # Dev dependencies
 tokio-test = "0.4"
