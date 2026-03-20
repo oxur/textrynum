@@ -193,6 +193,9 @@ base64 = "0.22"
 # Async stream wrappers
 tokio-stream = "0.1"
 
+# PGP
+pgp = "0.14"
+
 # SSH/SFTP
 russh = "0.46"
 russh-sftp = "2"
