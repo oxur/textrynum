@@ -91,10 +91,10 @@ impl DateParseStage {
         let tz = self.timezones[conv_index];
 
         // Try parsing as datetime first.
-        if let Ok(naive_dt) = NaiveDateTime::parse_from_str(value, &conv.format) {
-            if let Some(dt) = tz.from_local_datetime(&naive_dt).earliest() {
-                return Some(dt.to_rfc3339());
-            }
+        if let Ok(naive_dt) = NaiveDateTime::parse_from_str(value, &conv.format)
+            && let Some(dt) = tz.from_local_datetime(&naive_dt).earliest()
+        {
+            return Some(dt.to_rfc3339());
         }
 
         // Try parsing as date-only (assume midnight).

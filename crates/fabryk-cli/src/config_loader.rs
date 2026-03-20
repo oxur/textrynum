@@ -96,12 +96,12 @@ impl ConfigLoaderBuilder {
             Confygery::new().map_err(|e| Error::config(format!("config init: {e}")))?;
 
         // Load config file if it exists
-        if let Some(ref path) = resolved_path {
-            if path.exists() {
-                builder
-                    .add_file(&path.to_string_lossy())
-                    .map_err(|e| Error::config(format!("config file: {e}")))?;
-            }
+        if let Some(ref path) = resolved_path
+            && path.exists()
+        {
+            builder
+                .add_file(&path.to_string_lossy())
+                .map_err(|e| Error::config(format!("config file: {e}")))?;
         }
 
         // Load environment variables with prefix and sections

@@ -126,10 +126,10 @@ impl Stage for JoinStage {
         // Build right-side lookup: key → records.
         let mut right_index: HashMap<String, Vec<&Record>> = HashMap::new();
         for item in &right_items {
-            if let Some(record) = &item.record {
-                if let Some(serde_json::Value::String(key)) = record.get(&self.config.right_key) {
-                    right_index.entry(key.clone()).or_default().push(record);
-                }
+            if let Some(record) = &item.record
+                && let Some(serde_json::Value::String(key)) = record.get(&self.config.right_key)
+            {
+                right_index.entry(key.clone()).or_default().push(record);
             }
         }
 

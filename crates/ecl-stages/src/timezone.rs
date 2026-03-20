@@ -104,24 +104,22 @@ impl TimezoneStage {
     /// Resolve the timezone for this record.
     fn resolve_timezone(&self, record: &Record) -> Tz {
         // Check overrides first.
-        if let Some(override_field) = &self.config.override_key_field {
-            if let Some(key_value) = record.get(override_field).and_then(|v| v.as_str()) {
-                if let Some(tz) = self.override_tzs.get(key_value) {
-                    return *tz;
-                }
-            }
+        if let Some(override_field) = &self.config.override_key_field
+            && let Some(key_value) = record.get(override_field).and_then(|v| v.as_str())
+            && let Some(tz) = self.override_tzs.get(key_value)
+        {
+            return *tz;
         }
 
         // ZIP code lookup.
         if let Some(zip) = record
             .get(&self.config.zipcode_field)
             .and_then(|v| v.as_str())
+            && zip.len() >= 3
         {
-            if zip.len() >= 3 {
-                let prefix = &zip[..3];
-                if let Some(tz) = self.zip_prefix_table.get(prefix) {
-                    return *tz;
-                }
+            let prefix = &zip[..3];
+            if let Some(tz) = self.zip_prefix_table.get(prefix) {
+                return *tz;
             }
         }
 
@@ -138,19 +136,19 @@ impl TimezoneStage {
         }
 
         // Try parsing as naive datetime (no timezone — apply the resolved tz).
-        if let Ok(naive) = NaiveDateTime::parse_from_str(datetime_str, "%Y-%m-%dT%H:%M:%S") {
-            if let Some(local) = tz.from_local_datetime(&naive).earliest() {
-                let utc = local.with_timezone(&chrono::Utc);
-                return Some(utc.to_rfc3339());
-            }
+        if let Ok(naive) = NaiveDateTime::parse_from_str(datetime_str, "%Y-%m-%dT%H:%M:%S")
+            && let Some(local) = tz.from_local_datetime(&naive).earliest()
+        {
+            let utc = local.with_timezone(&chrono::Utc);
+            return Some(utc.to_rfc3339());
         }
 
         // Try with fractional seconds.
-        if let Ok(naive) = NaiveDateTime::parse_from_str(datetime_str, "%Y-%m-%dT%H:%M:%S%.f") {
-            if let Some(local) = tz.from_local_datetime(&naive).earliest() {
-                let utc = local.with_timezone(&chrono::Utc);
-                return Some(utc.to_rfc3339());
-            }
+        if let Ok(naive) = NaiveDateTime::parse_from_str(datetime_str, "%Y-%m-%dT%H:%M:%S%.f")
+            && let Some(local) = tz.from_local_datetime(&naive).earliest()
+        {
+            let utc = local.with_timezone(&chrono::Utc);
+            return Some(utc.to_rfc3339());
         }
 
         None
