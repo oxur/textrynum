@@ -8,6 +8,7 @@
 //! - [`FieldMapStage`] — field renaming, date parsing, padding, regex extraction
 //! - [`ValidateStage`] — field-level validation with hard/soft severity
 //! - [`JoinStage`] — batch join of two streams by key (inner/left/full)
+//! - [`AggregateStage`] — batch grouping with aggregate functions (sum/max/min/count/avg/first/last)
 //! - [`EmitStage`] — writes pipeline items to the output directory
 
 #![forbid(unsafe_code)]
@@ -16,6 +17,7 @@
 #![warn(clippy::expect_used)]
 #![deny(clippy::panic)]
 
+pub mod aggregate;
 pub mod csv_parse;
 pub mod emit;
 pub mod extract;
@@ -25,6 +27,7 @@ pub mod join;
 pub mod normalize;
 pub mod validate;
 
+pub use aggregate::AggregateStage;
 pub use csv_parse::CsvParseStage;
 pub use emit::EmitStage;
 pub use extract::ExtractStage;
