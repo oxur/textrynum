@@ -114,9 +114,7 @@ impl TokenProvider {
             CredentialRef::EnvVar { env } => Self::env_var_flow(env),
             CredentialRef::ApplicationDefault => self.adc_flow().await,
             CredentialRef::Secret { name } => Err(DriveAdapterError::InvalidCredentials {
-                message: format!(
-                    "secret '{name}' must be resolved before adapter construction"
-                ),
+                message: format!("secret '{name}' must be resolved before adapter construction"),
             }),
         }
     }

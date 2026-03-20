@@ -74,10 +74,7 @@ impl DateParseStage {
                     .map_err(|e| StageError::Permanent {
                         stage: "date_parse".into(),
                         item_id: String::new(),
-                        message: format!(
-                            "invalid timezone '{}': {e}",
-                            conv.assume_timezone
-                        ),
+                        message: format!("invalid timezone '{}': {e}", conv.assume_timezone),
                     })
             })
             .collect();

@@ -14,9 +14,11 @@ pub struct FileResolver;
 #[async_trait]
 impl SecretResolver for FileResolver {
     async fn resolve(&self, name: &str) -> Result<Vec<u8>, SecretError> {
-        tokio::fs::read(name).await.map_err(|e| SecretError::NotFound {
-            name: format!("{name}: {e}"),
-        })
+        tokio::fs::read(name)
+            .await
+            .map_err(|e| SecretError::NotFound {
+                name: format!("{name}: {e}"),
+            })
     }
 }
 

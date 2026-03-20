@@ -116,7 +116,10 @@ mod tests {
         // SAFETY: test-only, single-threaded test context.
         unsafe { std::env::set_var("ECL_TEST_SECRET_UTF8", "hello-world") };
         let resolver = env::EnvResolver;
-        let result = resolver.resolve_string("ECL_TEST_SECRET_UTF8").await.unwrap();
+        let result = resolver
+            .resolve_string("ECL_TEST_SECRET_UTF8")
+            .await
+            .unwrap();
         assert_eq!(result, "hello-world");
         unsafe { std::env::remove_var("ECL_TEST_SECRET_UTF8") };
     }

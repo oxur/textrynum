@@ -250,13 +250,11 @@ impl PipelineRunner {
 
             let is_batch = stage.handler.requires_batch();
             if is_batch {
-                join_set
-                    .spawn(async move { execute_stage_batch(stage, items, ctx).await });
+                join_set.spawn(async move { execute_stage_batch(stage, items, ctx).await });
             } else {
-                join_set
-                    .spawn(
-                        async move { execute_stage_items(stage, items, ctx, concurrency).await },
-                    );
+                join_set.spawn(
+                    async move { execute_stage_items(stage, items, ctx, concurrency).await },
+                );
             }
         }
 

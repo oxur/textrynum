@@ -260,7 +260,12 @@ fn receipt_assemble_params() -> serde_json::Value {
 
 /// Parse a headerless CSV through CsvParseStage, tagging each output item
 /// with the given stream name.
-async fn parse_csv(csv_content: &str, file_id: &str, stream: &str, params: &serde_json::Value) -> Vec<PipelineItem> {
+async fn parse_csv(
+    csv_content: &str,
+    file_id: &str,
+    stream: &str,
+    params: &serde_json::Value,
+) -> Vec<PipelineItem> {
     let stage = CsvParseStage::from_params(params).unwrap();
     let item = make_csv_item(file_id, csv_content, stream);
     let ctx = make_context(params.clone());
@@ -273,7 +278,10 @@ async fn parse_csv(csv_content: &str, file_id: &str, stream: &str, params: &serd
 }
 
 /// Apply FieldMapStage to each item in the list.
-async fn apply_field_map(items: Vec<PipelineItem>, params: &serde_json::Value) -> Vec<PipelineItem> {
+async fn apply_field_map(
+    items: Vec<PipelineItem>,
+    params: &serde_json::Value,
+) -> Vec<PipelineItem> {
     let stage = FieldMapStage::from_params(params).unwrap();
     let ctx = make_context(params.clone());
     let mut results = Vec::new();
@@ -300,9 +308,21 @@ async fn apply_lookup(items: Vec<PipelineItem>, params: &serde_json::Value) -> V
 async fn run_full_pipeline() -> Vec<PipelineItem> {
     // Step 1: Parse all CSV files
     let stores = parse_csv(STORES_CSV, "stores.csv", "stores", &stores_csv_params()).await;
-    let mut transactions = parse_csv(TRANSACTIONS_CSV, "transactions.csv", "transactions", &transactions_csv_params()).await;
+    let mut transactions = parse_csv(
+        TRANSACTIONS_CSV,
+        "transactions.csv",
+        "transactions",
+        &transactions_csv_params(),
+    )
+    .await;
     let mut items = parse_csv(ITEMS_CSV, "items.csv", "items", &items_csv_params()).await;
-    let products = parse_csv(PRODUCTS_CSV, "products.csv", "products", &products_csv_params()).await;
+    let products = parse_csv(
+        PRODUCTS_CSV,
+        "products.csv",
+        "products",
+        &products_csv_params(),
+    )
+    .await;
     let mut tenders = parse_csv(TENDERS_CSV, "tenders.csv", "tenders", &tenders_csv_params()).await;
 
     assert_eq!(stores.len(), 3, "should parse 3 stores");
@@ -347,7 +367,10 @@ async fn run_full_pipeline() -> Vec<PipelineItem> {
     }
 
     let assemble_stage = AssembleStage::from_params(&receipt_assemble_params()).unwrap();
-    assemble_stage.process_batch(assemble_input, &ctx).await.unwrap()
+    assemble_stage
+        .process_batch(assemble_input, &ctx)
+        .await
+        .unwrap()
 }
 
 // ── Tests ────────────────────────────────────────────────────────────
@@ -395,7 +418,11 @@ async fn test_ge_e2e_full_pipeline() {
     let t001_items = t001_rec["line_items"].as_array().unwrap();
     assert_eq!(t001_items.len(), 2, "T001 should have 2 line items");
     let t001_payments = t001_rec["payments"].as_array().unwrap();
-    assert_eq!(t001_payments.len(), 1, "T001 should have 1 aggregated payment record");
+    assert_eq!(
+        t001_payments.len(),
+        1,
+        "T001 should have 1 aggregated payment record"
+    );
     // The aggregated tender record should show tender_count=2 (split payment)
     let t001_pay = &t001_payments[0];
     assert_eq!(
@@ -439,17 +466,20 @@ async fn test_ge_e2e_full_pipeline() {
         Some("Giant Eagle #0101"),
         "T001 should be at Giant Eagle #0101"
     );
-    assert_eq!(
-        store.get("zip").and_then(|v| v.as_str()),
-        Some("15213"),
-    );
+    assert_eq!(store.get("zip").and_then(|v| v.as_str()), Some("15213"),);
 }
 
 #[tokio::test]
 async fn test_ge_e2e_left_join_unmatched_products() {
     // Parse items and products, then left join
     let items = parse_csv(ITEMS_CSV, "items.csv", "items", &items_csv_params()).await;
-    let products = parse_csv(PRODUCTS_CSV, "products.csv", "products", &products_csv_params()).await;
+    let products = parse_csv(
+        PRODUCTS_CSV,
+        "products.csv",
+        "products",
+        &products_csv_params(),
+    )
+    .await;
 
     let join_stage = JoinStage::from_params(&items_products_join_params()).unwrap();
     let ctx = make_context(json!(null));
@@ -539,10 +569,17 @@ async fn test_ge_e2e_split_payment_aggregation() {
         })
         .expect("should find T001");
     let t001_rec = t001.record.as_ref().unwrap();
-    assert_eq!(t001_rec["tender_count"], json!(2), "T001 should have 2 tenders");
+    assert_eq!(
+        t001_rec["tender_count"],
+        json!(2),
+        "T001 should have 2 tenders"
+    );
     // 50.00 + 37.32 = 87.32
     let total = t001_rec["total_tendered"].as_f64().unwrap();
-    assert!((total - 87.32).abs() < 0.01, "T001 total should be ~87.32, got {total}");
+    assert!(
+        (total - 87.32).abs() < 0.01,
+        "T001 total should be ~87.32, got {total}"
+    );
 
     // T005 has 2 tenders (Debit Card 10.00 + Credit Card 5.99)
     let t005 = agg
@@ -557,9 +594,16 @@ async fn test_ge_e2e_split_payment_aggregation() {
         })
         .expect("should find T005");
     let t005_rec = t005.record.as_ref().unwrap();
-    assert_eq!(t005_rec["tender_count"], json!(2), "T005 should have 2 tenders");
+    assert_eq!(
+        t005_rec["tender_count"],
+        json!(2),
+        "T005 should have 2 tenders"
+    );
     let total5 = t005_rec["total_tendered"].as_f64().unwrap();
-    assert!((total5 - 15.99).abs() < 0.01, "T005 total should be ~15.99, got {total5}");
+    assert!(
+        (total5 - 15.99).abs() < 0.01,
+        "T005 total should be ~15.99, got {total5}"
+    );
 
     // T002 has only 1 tender
     let t002 = agg
@@ -582,8 +626,14 @@ async fn test_ge_e2e_split_payment_aggregation() {
         .iter()
         .filter_map(|d| d.get("payment_method").and_then(|v| v.as_str()))
         .collect();
-    assert!(methods.contains(&"Credit Card"), "T001 should have Credit Card payment");
-    assert!(methods.contains(&"Gift Card"), "T001 should have Gift Card payment");
+    assert!(
+        methods.contains(&"Credit Card"),
+        "T001 should have Credit Card payment"
+    );
+    assert!(
+        methods.contains(&"Gift Card"),
+        "T001 should have Gift Card payment"
+    );
 }
 
 #[tokio::test]
@@ -591,7 +641,13 @@ async fn test_ge_e2e_stream_isolation() {
     // Verify that stream tagging keeps data separated.
     let stores = parse_csv(STORES_CSV, "stores.csv", "stores", &stores_csv_params()).await;
     let items = parse_csv(ITEMS_CSV, "items.csv", "items", &items_csv_params()).await;
-    let transactions = parse_csv(TRANSACTIONS_CSV, "transactions.csv", "transactions", &transactions_csv_params()).await;
+    let transactions = parse_csv(
+        TRANSACTIONS_CSV,
+        "transactions.csv",
+        "transactions",
+        &transactions_csv_params(),
+    )
+    .await;
 
     // All stores should have stream = "stores"
     for store in &stores {

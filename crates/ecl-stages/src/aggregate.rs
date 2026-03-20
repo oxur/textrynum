@@ -76,12 +76,7 @@ impl AggregateStage {
         self.config
             .group_by
             .iter()
-            .map(|f| {
-                record
-                    .get(f)
-                    .and_then(|v| v.as_str())
-                    .unwrap_or("")
-            })
+            .map(|f| record.get(f).and_then(|v| v.as_str()).unwrap_or(""))
             .collect::<Vec<_>>()
             .join("|")
     }
@@ -219,7 +214,11 @@ impl Stage for AggregateStage {
             });
         }
 
-        debug!(groups = groups.len(), output_items = results.len(), "aggregate stage complete");
+        debug!(
+            groups = groups.len(),
+            output_items = results.len(),
+            "aggregate stage complete"
+        );
         Ok(results)
     }
 }
@@ -298,18 +297,33 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("r1", make_record(&[("store", json!("A")), ("amount", json!(10.0))])),
-            make_item("r2", make_record(&[("store", json!("A")), ("amount", json!(20.0))])),
-            make_item("r3", make_record(&[("store", json!("B")), ("amount", json!(30.0))])),
+            make_item(
+                "r1",
+                make_record(&[("store", json!("A")), ("amount", json!(10.0))]),
+            ),
+            make_item(
+                "r2",
+                make_record(&[("store", json!("A")), ("amount", json!(20.0))]),
+            ),
+            make_item(
+                "r3",
+                make_record(&[("store", json!("B")), ("amount", json!(30.0))]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
         assert_eq!(result.len(), 2);
 
-        let a = result.iter().find(|i| i.record.as_ref().unwrap()["store"] == "A").unwrap();
+        let a = result
+            .iter()
+            .find(|i| i.record.as_ref().unwrap()["store"] == "A")
+            .unwrap();
         assert_eq!(a.record.as_ref().unwrap()["total"], json!(30.0));
 
-        let b = result.iter().find(|i| i.record.as_ref().unwrap()["store"] == "B").unwrap();
+        let b = result
+            .iter()
+            .find(|i| i.record.as_ref().unwrap()["store"] == "B")
+            .unwrap();
         assert_eq!(b.record.as_ref().unwrap()["total"], json!(30.0));
     }
 
@@ -327,8 +341,14 @@ mod tests {
 
         let items = vec![
             make_item("r1", make_record(&[("g", json!("X")), ("val", json!(5.0))])),
-            make_item("r2", make_record(&[("g", json!("X")), ("val", json!(15.0))])),
-            make_item("r3", make_record(&[("g", json!("X")), ("val", json!(10.0))])),
+            make_item(
+                "r2",
+                make_record(&[("g", json!("X")), ("val", json!(15.0))]),
+            ),
+            make_item(
+                "r3",
+                make_record(&[("g", json!("X")), ("val", json!(10.0))]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
@@ -370,9 +390,18 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("r1", make_record(&[("g", json!("X")), ("name", json!("Alice"))])),
-            make_item("r2", make_record(&[("g", json!("X")), ("name", json!("Bob"))])),
-            make_item("r3", make_record(&[("g", json!("X")), ("name", json!("Charlie"))])),
+            make_item(
+                "r1",
+                make_record(&[("g", json!("X")), ("name", json!("Alice"))]),
+            ),
+            make_item(
+                "r2",
+                make_record(&[("g", json!("X")), ("name", json!("Bob"))]),
+            ),
+            make_item(
+                "r3",
+                make_record(&[("g", json!("X")), ("name", json!("Charlie"))]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
@@ -391,9 +420,18 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("r1", make_record(&[("g", json!("X")), ("val", json!(10.0))])),
-            make_item("r2", make_record(&[("g", json!("X")), ("val", json!(20.0))])),
-            make_item("r3", make_record(&[("g", json!("X")), ("val", json!(30.0))])),
+            make_item(
+                "r1",
+                make_record(&[("g", json!("X")), ("val", json!(10.0))]),
+            ),
+            make_item(
+                "r2",
+                make_record(&[("g", json!("X")), ("val", json!(20.0))]),
+            ),
+            make_item(
+                "r3",
+                make_record(&[("g", json!("X")), ("val", json!(30.0))]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
@@ -410,13 +448,29 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("r1", make_record(&[("store", json!("S1")), ("sku", json!("A")), ("qty", json!(2))])),
-            make_item("r2", make_record(&[("store", json!("S1")), ("sku", json!("B")), ("qty", json!(5))])),
+            make_item(
+                "r1",
+                make_record(&[
+                    ("store", json!("S1")),
+                    ("sku", json!("A")),
+                    ("qty", json!(2)),
+                ]),
+            ),
+            make_item(
+                "r2",
+                make_record(&[
+                    ("store", json!("S1")),
+                    ("sku", json!("B")),
+                    ("qty", json!(5)),
+                ]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
         assert_eq!(result.len(), 1);
-        let arr = result[0].record.as_ref().unwrap()["items"].as_array().unwrap();
+        let arr = result[0].record.as_ref().unwrap()["items"]
+            .as_array()
+            .unwrap();
         assert_eq!(arr.len(), 2);
         assert_eq!(arr[0]["sku"], json!("A"));
         assert_eq!(arr[1]["sku"], json!("B"));
@@ -432,18 +486,45 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("r1", make_record(&[("store", json!("S1")), ("dept", json!("D1")), ("amount", json!(10.0))])),
-            make_item("r2", make_record(&[("store", json!("S1")), ("dept", json!("D1")), ("amount", json!(20.0))])),
-            make_item("r3", make_record(&[("store", json!("S1")), ("dept", json!("D2")), ("amount", json!(30.0))])),
+            make_item(
+                "r1",
+                make_record(&[
+                    ("store", json!("S1")),
+                    ("dept", json!("D1")),
+                    ("amount", json!(10.0)),
+                ]),
+            ),
+            make_item(
+                "r2",
+                make_record(&[
+                    ("store", json!("S1")),
+                    ("dept", json!("D1")),
+                    ("amount", json!(20.0)),
+                ]),
+            ),
+            make_item(
+                "r3",
+                make_record(&[
+                    ("store", json!("S1")),
+                    ("dept", json!("D2")),
+                    ("amount", json!(30.0)),
+                ]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
         assert_eq!(result.len(), 2); // Two groups: S1|D1 and S1|D2
 
-        let d1 = result.iter().find(|i| i.record.as_ref().unwrap()["dept"] == "D1").unwrap();
+        let d1 = result
+            .iter()
+            .find(|i| i.record.as_ref().unwrap()["dept"] == "D1")
+            .unwrap();
         assert_eq!(d1.record.as_ref().unwrap()["total"], json!(30.0));
 
-        let d2 = result.iter().find(|i| i.record.as_ref().unwrap()["dept"] == "D2").unwrap();
+        let d2 = result
+            .iter()
+            .find(|i| i.record.as_ref().unwrap()["dept"] == "D2")
+            .unwrap();
         assert_eq!(d2.record.as_ref().unwrap()["total"], json!(30.0));
     }
 
@@ -457,8 +538,14 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("r1", make_record(&[("g", json!("X")), ("price", json!("25.99"))])),
-            make_item("r2", make_record(&[("g", json!("X")), ("price", json!("14.01"))])),
+            make_item(
+                "r1",
+                make_record(&[("g", json!("X")), ("price", json!("25.99"))]),
+            ),
+            make_item(
+                "r2",
+                make_record(&[("g", json!("X")), ("price", json!("14.01"))]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
@@ -491,9 +578,18 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("r1", make_record(&[("g", json!("same")), ("val", json!(10.0))])),
-            make_item("r2", make_record(&[("g", json!("same")), ("val", json!(20.0))])),
-            make_item("r3", make_record(&[("g", json!("same")), ("val", json!(30.0))])),
+            make_item(
+                "r1",
+                make_record(&[("g", json!("same")), ("val", json!(10.0))]),
+            ),
+            make_item(
+                "r2",
+                make_record(&[("g", json!("same")), ("val", json!(20.0))]),
+            ),
+            make_item(
+                "r3",
+                make_record(&[("g", json!("same")), ("val", json!(30.0))]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
@@ -521,28 +617,49 @@ mod tests {
         let ctx = make_context();
 
         let items = vec![
-            make_item("t1-cash", make_record(&[
-                ("txn_id", json!("T1")), ("tender_type", json!("cash")), ("amount", json!(20.0)),
-            ])),
-            make_item("t1-card", make_record(&[
-                ("txn_id", json!("T1")), ("tender_type", json!("card")), ("amount", json!(30.0)),
-            ])),
-            make_item("t2-cash", make_record(&[
-                ("txn_id", json!("T2")), ("tender_type", json!("cash")), ("amount", json!(15.0)),
-            ])),
+            make_item(
+                "t1-cash",
+                make_record(&[
+                    ("txn_id", json!("T1")),
+                    ("tender_type", json!("cash")),
+                    ("amount", json!(20.0)),
+                ]),
+            ),
+            make_item(
+                "t1-card",
+                make_record(&[
+                    ("txn_id", json!("T1")),
+                    ("tender_type", json!("card")),
+                    ("amount", json!(30.0)),
+                ]),
+            ),
+            make_item(
+                "t2-cash",
+                make_record(&[
+                    ("txn_id", json!("T2")),
+                    ("tender_type", json!("cash")),
+                    ("amount", json!(15.0)),
+                ]),
+            ),
         ];
 
         let result = stage.process_batch(items, &ctx).await.unwrap();
         assert_eq!(result.len(), 2);
 
-        let t1 = result.iter().find(|i| i.record.as_ref().unwrap()["txn_id"] == "T1").unwrap();
+        let t1 = result
+            .iter()
+            .find(|i| i.record.as_ref().unwrap()["txn_id"] == "T1")
+            .unwrap();
         let t1_rec = t1.record.as_ref().unwrap();
         assert_eq!(t1_rec["total_amount"], json!(50.0));
         assert_eq!(t1_rec["tender_count"], json!(2));
         let tenders = t1_rec["tenders"].as_array().unwrap();
         assert_eq!(tenders.len(), 2);
 
-        let t2 = result.iter().find(|i| i.record.as_ref().unwrap()["txn_id"] == "T2").unwrap();
+        let t2 = result
+            .iter()
+            .find(|i| i.record.as_ref().unwrap()["txn_id"] == "T2")
+            .unwrap();
         assert_eq!(t2.record.as_ref().unwrap()["total_amount"], json!(15.0));
     }
 }
