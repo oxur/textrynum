@@ -427,6 +427,7 @@ mod tests {
             },
             metadata: BTreeMap::new(),
             record: Some(record),
+            stream: None,
         }
     }
 
@@ -643,6 +644,7 @@ resources = { creates = ["validated"] }
             },
             metadata: BTreeMap::new(),
             record: None,
+            stream: None,
         };
         let ctx = make_context();
         let rt = tokio::runtime::Builder::new_current_thread()

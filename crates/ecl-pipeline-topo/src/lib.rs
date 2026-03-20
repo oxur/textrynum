@@ -361,6 +361,7 @@ resources = { creates = ["docs"] }
             },
             metadata: BTreeMap::new(),
             record: None,
+            stream: None,
         };
 
         let ctx = StageContext {

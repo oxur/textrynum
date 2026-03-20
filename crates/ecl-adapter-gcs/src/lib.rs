@@ -412,6 +412,7 @@ mod tests {
             credentials: CredentialRef::EnvVar {
                 env: "GCS_TOKEN".to_string(),
             },
+            stream: None,
         }
     }
 
@@ -428,6 +429,7 @@ mod tests {
             root: std::path::PathBuf::from("/tmp"),
             filters: vec![],
             extensions: vec![],
+            stream: None,
         });
         let result = GcsAdapter::from_spec("test", &fs_spec);
         assert!(result.is_err());
@@ -517,6 +519,7 @@ mod tests {
             credentials: CredentialRef::EnvVar {
                 env: "GCS_TOKEN".to_string(),
             },
+            stream: None,
         };
 
         let adapter = GcsAdapter::from_gcs_spec("gcs-test", &spec)
@@ -559,6 +562,7 @@ mod tests {
             credentials: CredentialRef::EnvVar {
                 env: "GCS_TOKEN".to_string(),
             },
+            stream: None,
         };
 
         let adapter = GcsAdapter::from_gcs_spec("gcs-test", &spec)
@@ -594,6 +598,7 @@ mod tests {
             credentials: CredentialRef::EnvVar {
                 env: "GCS_TOKEN".to_string(),
             },
+            stream: None,
         };
 
         let adapter = GcsAdapter::from_gcs_spec("gcs-test", &spec)
@@ -645,6 +650,7 @@ mod tests {
             credentials: CredentialRef::EnvVar {
                 env: "GCS_TOKEN".to_string(),
             },
+            stream: None,
         };
 
         let adapter = GcsAdapter::from_gcs_spec("gcs-test", &spec)
@@ -686,6 +692,7 @@ mod tests {
             credentials: CredentialRef::EnvVar {
                 env: "GCS_TOKEN".to_string(),
             },
+            stream: None,
         };
 
         let adapter = GcsAdapter::from_gcs_spec("gcs-test", &spec)
@@ -710,6 +717,7 @@ mod tests {
             credentials: CredentialRef::EnvVar {
                 env: "GCS_TOKEN".to_string(),
             },
+            stream: None,
         });
         let json = serde_json::to_string(&spec).unwrap();
         let deserialized: SourceSpec = serde_json::from_str(&json).unwrap();
@@ -757,6 +765,7 @@ mod tests {
             credentials: CredentialRef::EnvVar {
                 env: "GCS_TOKEN".to_string(),
             },
+            stream: None,
         };
 
         let adapter = GcsAdapter::from_gcs_spec("gcs-test", &spec)

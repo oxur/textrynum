@@ -96,6 +96,7 @@ fn build_single_stage_topo(
         root: input_dir.to_path_buf(),
         filters: vec![],
         extensions: vec![],
+        stream: None,
     };
     let adapter: Arc<dyn SourceAdapter> =
         Arc::new(FilesystemAdapter::from_fs_spec("local", &fs_spec).unwrap());
@@ -120,6 +121,8 @@ fn build_single_stage_topo(
                 timeout_secs: None,
                 skip_on_error,
                 condition: None,
+                input_streams: vec![],
+                output_stream: None,
             },
         )]),
         defaults: DefaultsSpec::default(),

@@ -93,6 +93,7 @@ impl Stage for ExtractAndEmitStage {
             provenance: doc.provenance,
             metadata: BTreeMap::new(),
             record: None,
+            stream: None,
         }])
     }
 }
@@ -105,6 +106,7 @@ fn build_extract_emit_topo(
         root: input_dir.to_path_buf(),
         filters: vec![],
         extensions: vec![],
+        stream: None,
     };
     let adapter: Arc<dyn SourceAdapter> =
         Arc::new(FilesystemAdapter::from_fs_spec("local", &fs_spec).unwrap());
@@ -134,6 +136,8 @@ fn build_extract_emit_topo(
                 timeout_secs: None,
                 skip_on_error: false,
                 condition: None,
+                input_streams: vec![],
+                output_stream: None,
             },
         )]),
         defaults: DefaultsSpec::default(),

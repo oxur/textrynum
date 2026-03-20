@@ -199,6 +199,7 @@ mod tests {
             batch_timeout_secs: 5,
             channel_capacity: 100,
             default_source_hint: Some("granola".to_string()),
+            stream: None,
         })
     }
 
@@ -217,6 +218,7 @@ mod tests {
             root: std::path::PathBuf::from("/tmp"),
             filters: vec![],
             extensions: vec![],
+            stream: None,
         });
         let result = ZapierAdapter::from_spec("test", &fs_spec);
         assert!(result.is_err());
@@ -254,6 +256,7 @@ mod tests {
             batch_timeout_secs: 5,
             channel_capacity: 10,
             default_source_hint: None,
+            stream: None,
         });
 
         let adapter = ZapierAdapter::from_spec("test", &spec).unwrap();
@@ -281,6 +284,7 @@ mod tests {
             batch_timeout_secs: 5,
             channel_capacity: 10,
             default_source_hint: None,
+            stream: None,
         });
 
         let adapter = ZapierAdapter::from_spec("test", &spec).unwrap();
@@ -305,6 +309,7 @@ mod tests {
             batch_timeout_secs: 5,
             channel_capacity: 10,
             default_source_hint: None,
+            stream: None,
         });
 
         let adapter = ZapierAdapter::from_spec("test", &spec).unwrap();

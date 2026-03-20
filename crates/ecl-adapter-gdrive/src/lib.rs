@@ -513,6 +513,7 @@ mod tests {
             filters: vec![],
             file_types: vec![],
             modified_after: None,
+            stream: None,
         }
     }
 
@@ -561,6 +562,7 @@ mod tests {
             root: std::path::PathBuf::from("/tmp"),
             filters: vec![],
             extensions: vec![],
+            stream: None,
         });
         let result = GoogleDriveAdapter::from_spec("drive", &spec);
         assert!(result.is_err());

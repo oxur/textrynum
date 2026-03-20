@@ -139,6 +139,8 @@ mod tests {
             timeout_secs: None,
             skip_on_error: false,
             condition: None,
+            input_streams: vec![],
+            output_stream: None,
         }
     }
 

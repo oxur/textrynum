@@ -591,6 +591,7 @@ mod tests {
                 extracted_at: Utc::now(),
             },
             record,
+            stream: None,
         }
     }
 

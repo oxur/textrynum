@@ -457,6 +457,7 @@ subdir = "normalized"
             root: PathBuf::from("/tmp"),
             filters: vec![],
             extensions: vec![],
+            stream: None,
         });
         assert_eq!(source_kind(&spec), "filesystem");
     }

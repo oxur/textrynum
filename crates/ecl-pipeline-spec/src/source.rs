@@ -49,6 +49,10 @@ pub struct GoogleDriveSourceSpec {
     /// Only process files modified after this timestamp.
     /// Supports "last_run" as a magic value for incrementality.
     pub modified_after: Option<String>,
+
+    /// Named data stream for items from this source.
+    #[serde(default)]
+    pub stream: Option<String>,
 }
 
 /// Slack workspace source configuration.
@@ -66,6 +70,10 @@ pub struct SlackSourceSpec {
 
     /// Only process messages after this timestamp.
     pub modified_after: Option<String>,
+
+    /// Named data stream for items from this source.
+    #[serde(default)]
+    pub stream: Option<String>,
 }
 
 /// Local filesystem source configuration.
@@ -81,6 +89,10 @@ pub struct FilesystemSourceSpec {
     /// File extensions to include (empty = all).
     #[serde(default)]
     pub extensions: Vec<String>,
+
+    /// Named data stream for items from this source.
+    #[serde(default)]
+    pub stream: Option<String>,
 }
 
 /// Zapier webhook push source configuration.
@@ -114,6 +126,10 @@ pub struct ZapierSourceSpec {
     /// Default source hint if `X-Zapier-Source` header is absent.
     #[serde(default)]
     pub default_source_hint: Option<String>,
+
+    /// Named data stream for items from this source.
+    #[serde(default)]
+    pub stream: Option<String>,
 }
 
 /// Google Cloud Storage source configuration.
@@ -133,6 +149,23 @@ pub struct GcsSourceSpec {
     /// Credentials for authentication.
     #[serde(default = "default_adc")]
     pub credentials: CredentialRef,
+
+    /// Named data stream for items from this source.
+    #[serde(default)]
+    pub stream: Option<String>,
+}
+
+impl SourceSpec {
+    /// Get the named data stream for this source, if configured.
+    pub fn stream(&self) -> Option<&str> {
+        match self {
+            SourceSpec::GoogleDrive(s) => s.stream.as_deref(),
+            SourceSpec::Slack(s) => s.stream.as_deref(),
+            SourceSpec::Filesystem(s) => s.stream.as_deref(),
+            SourceSpec::Zapier(s) => s.stream.as_deref(),
+            SourceSpec::Gcs(s) => s.stream.as_deref(),
+        }
+    }
 }
 
 fn default_adc() -> CredentialRef {
@@ -223,6 +256,7 @@ mod tests {
                 mime: None,
             }],
             modified_after: Some("last_run".to_string()),
+            stream: None,
         });
         let json = serde_json::to_string(&source).unwrap();
         let deserialized: SourceSpec = serde_json::from_str(&json).unwrap();
@@ -240,6 +274,7 @@ mod tests {
             channels: vec!["C123".to_string(), "C456".to_string()],
             thread_depth: 3,
             modified_after: Some("2026-01-01T00:00:00Z".to_string()),
+            stream: None,
         });
         let json = serde_json::to_string(&source).unwrap();
         let deserialized: SourceSpec = serde_json::from_str(&json).unwrap();
@@ -253,6 +288,7 @@ mod tests {
             root: PathBuf::from("/tmp/data"),
             filters: vec![],
             extensions: vec!["md".to_string()],
+            stream: None,
         });
         let json = serde_json::to_string(&source).unwrap();
         let deserialized: SourceSpec = serde_json::from_str(&json).unwrap();
@@ -272,6 +308,7 @@ mod tests {
             batch_timeout_secs: 30,
             channel_capacity: 1000,
             default_source_hint: Some("granola".to_string()),
+            stream: None,
         });
         let json = serde_json::to_string(&source).unwrap();
         let deserialized: SourceSpec = serde_json::from_str(&json).unwrap();
@@ -307,6 +344,7 @@ mod tests {
             credentials: CredentialRef::File {
                 path: PathBuf::from("/etc/gcs-key.json"),
             },
+            stream: None,
         });
         let json = serde_json::to_string(&source).unwrap();
         let deserialized: SourceSpec = serde_json::from_str(&json).unwrap();

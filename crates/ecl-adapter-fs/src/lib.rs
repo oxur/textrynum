@@ -298,6 +298,7 @@ mod tests {
             root: root.to_path_buf(),
             filters: vec![],
             extensions: vec![],
+            stream: None,
         }
     }
 
@@ -322,6 +323,7 @@ mod tests {
             root: PathBuf::from("/tmp"),
             filters: vec![],
             extensions: vec![],
+            stream: None,
         });
         let adapter = FilesystemAdapter::from_spec("local", &spec).unwrap();
         assert_eq!(adapter.source_kind(), "filesystem");
@@ -335,6 +337,7 @@ mod tests {
             channels: vec![],
             thread_depth: 0,
             modified_after: None,
+            stream: None,
         });
         let result = FilesystemAdapter::from_spec("local", &spec);
         assert!(result.is_err());
@@ -346,6 +349,7 @@ mod tests {
             root: PathBuf::from("/tmp"),
             filters: vec![],
             extensions: vec!["md".to_string(), "txt".to_string()],
+            stream: None,
         };
         let adapter = FilesystemAdapter::from_fs_spec("local", &spec).unwrap();
         assert_eq!(adapter.extensions, vec!["md", "txt"]);
@@ -366,6 +370,7 @@ mod tests {
                 },
             ],
             extensions: vec![],
+            stream: None,
         };
         let adapter = FilesystemAdapter::from_fs_spec("local", &spec).unwrap();
         assert_eq!(adapter.filters.len(), 2);
@@ -380,6 +385,7 @@ mod tests {
                 action: FilterAction::Include,
             }],
             extensions: vec![],
+            stream: None,
         };
         let result = FilesystemAdapter::from_fs_spec("local", &spec);
         assert!(result.is_err());
@@ -446,6 +452,7 @@ mod tests {
                 action: FilterAction::Exclude,
             }],
             extensions: vec![],
+            stream: None,
         };
         let adapter = FilesystemAdapter::from_fs_spec("test", &spec).unwrap();
         assert!(!adapter.passes_filters("Archive/old.md"));
@@ -467,6 +474,7 @@ mod tests {
                 },
             ],
             extensions: vec![],
+            stream: None,
         };
         let adapter = FilesystemAdapter::from_fs_spec("test", &spec).unwrap();
         // First rule excludes all .md, but second re-includes important/*.md
@@ -531,6 +539,7 @@ mod tests {
             root: tmp.path().to_path_buf(),
             filters: vec![],
             extensions: vec!["md".to_string()],
+            stream: None,
         };
         let adapter = FilesystemAdapter::from_fs_spec("test", &spec).unwrap();
         let items = adapter.enumerate().await.unwrap();
@@ -549,6 +558,7 @@ mod tests {
                 action: FilterAction::Exclude,
             }],
             extensions: vec![],
+            stream: None,
         };
         let adapter = FilesystemAdapter::from_fs_spec("test", &spec).unwrap();
         let items = adapter.enumerate().await.unwrap();

@@ -72,6 +72,7 @@ mod tests {
             },
             metadata: BTreeMap::new(),
             record: None,
+            stream: None,
         }
     }
 

@@ -76,6 +76,7 @@ impl Stage for ExtractStage {
             provenance: doc.provenance,
             metadata: BTreeMap::new(),
             record: None,
+            stream: item.stream.clone(),
         };
 
         Ok(vec![extracted])
@@ -157,6 +158,7 @@ mod tests {
             },
             metadata: BTreeMap::new(),
             record: None,
+            stream: None,
         }
     }
 

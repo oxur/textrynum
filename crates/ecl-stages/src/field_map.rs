@@ -380,6 +380,7 @@ mod tests {
             },
             metadata: BTreeMap::new(),
             record: Some(record),
+            stream: None,
         }
     }
 
@@ -705,6 +706,7 @@ resources = { creates = ["mapped"] }
             },
             metadata: BTreeMap::new(),
             record: None,
+            stream: None,
         };
         let ctx = make_context();
 

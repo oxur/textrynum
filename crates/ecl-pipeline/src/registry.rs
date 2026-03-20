@@ -280,6 +280,7 @@ mod tests {
             root: std::path::PathBuf::from("/tmp"),
             filters: vec![],
             extensions: vec![],
+            stream: None,
         });
         let result = registry.resolve("nonexistent", "my-source", &spec);
         assert!(result.is_err());
@@ -302,6 +303,7 @@ mod tests {
             root: std::path::PathBuf::from("/tmp"),
             filters: vec![],
             extensions: vec![],
+            stream: None,
         });
         let adapter = registry.resolve("filesystem", "local", &spec).unwrap();
         assert_eq!(adapter.source_kind(), "filesystem");
@@ -362,6 +364,8 @@ mod tests {
             timeout_secs: None,
             skip_on_error: false,
             condition: None,
+            input_streams: vec![],
+            output_stream: None,
         };
         let result = registry.resolve("nonexistent", "my-stage", &spec);
         assert!(result.is_err());
@@ -389,6 +393,8 @@ mod tests {
             timeout_secs: None,
             skip_on_error: false,
             condition: None,
+            input_streams: vec![],
+            output_stream: None,
         };
         let stage = registry.resolve("extract", "my-stage", &spec).unwrap();
         assert_eq!(stage.name(), "extract");
@@ -423,6 +429,8 @@ mod tests {
             timeout_secs: None,
             skip_on_error: false,
             condition: None,
+            input_streams: vec![],
+            output_stream: None,
         };
         let stage = registry.resolve("extract", "my-stage", &spec).unwrap();
         assert_eq!(

@@ -206,6 +206,13 @@ pub struct PipelineItem {
     /// field map, validate, and sink stages. `None` for document-oriented items.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub record: Option<Record>,
+
+    /// Named data stream this item belongs to. Items with no stream (`None`)
+    /// are visible to all stages (backward compatible with Phase 1 pipelines).
+    /// Set by source (from source spec's `stream` field) or by the runner
+    /// when a stage has `output_stream` configured.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub stream: Option<String>,
 }
 
 /// A pipeline stage transforms items.
@@ -319,6 +326,7 @@ mod tests {
             provenance: make_provenance(),
             metadata: BTreeMap::new(),
             record: None,
+            stream: None,
         };
         let json = serde_json::to_string(&item).unwrap();
         let deserialized: PipelineItem = serde_json::from_str(&json).unwrap();
@@ -343,6 +351,7 @@ mod tests {
             provenance: make_provenance(),
             metadata: BTreeMap::new(),
             record: Some(record),
+            stream: None,
         };
         let json = serde_json::to_string(&item).unwrap();
         let deserialized: PipelineItem = serde_json::from_str(&json).unwrap();
@@ -364,6 +373,7 @@ mod tests {
             provenance: make_provenance(),
             metadata: BTreeMap::new(),
             record: None,
+            stream: None,
         };
         let json = serde_json::to_string(&item).unwrap();
         assert!(!json.contains("record"), "record: None should be skipped in JSON");
@@ -404,6 +414,7 @@ mod tests {
             provenance: make_provenance(),
             metadata: BTreeMap::new(),
             record: None,
+            stream: None,
         };
         let cloned = item.clone();
         assert!(Arc::ptr_eq(&item.content, &cloned.content));

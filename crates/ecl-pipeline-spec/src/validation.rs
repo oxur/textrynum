@@ -51,6 +51,7 @@ mod tests {
                 root: PathBuf::from("/tmp/data"),
                 filters: vec![],
                 extensions: vec![],
+                stream: None,
             }),
         );
 
@@ -66,6 +67,8 @@ mod tests {
                 timeout_secs: None,
                 skip_on_error: false,
                 condition: None,
+                input_streams: vec![],
+                output_stream: None,
             },
         );
 
@@ -110,6 +113,8 @@ mod tests {
                 timeout_secs: None,
                 skip_on_error: false,
                 condition: None,
+                input_streams: vec![],
+                output_stream: None,
             },
         );
         let err = validate(&spec).unwrap_err();

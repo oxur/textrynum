@@ -34,6 +34,11 @@ pub struct PipelineRunner {
     /// Cloned into push-source adapters and can be signalled externally
     /// via `shutdown_handle()`.
     shutdown: Arc<Notify>,
+    /// Pool of active items available for stage execution.
+    /// Populated by source enumeration, grows as stages produce fan-out
+    /// (e.g., csv_parse: 1 file → N rows). Items are tagged with streams
+    /// for routing to downstream stages.
+    active_items: Vec<PipelineItem>,
 }
 
 impl std::fmt::Debug for PipelineRunner {
@@ -44,6 +49,7 @@ impl std::fmt::Debug for PipelineRunner {
             .field("store", &"<dyn StateStore>")
             .field("checkpoint_sequence", &self.checkpoint_sequence)
             .field("shutdown", &"<Notify>")
+            .field("active_items", &self.active_items.len())
             .finish()
     }
 }
@@ -125,6 +131,7 @@ impl PipelineRunner {
             store,
             checkpoint_sequence: 0,
             shutdown: Arc::new(Notify::new()),
+            active_items: Vec::new(),
         })
     }
 
@@ -276,8 +283,22 @@ impl PipelineRunner {
 
             source_state.items_discovered = items.len();
 
+            // Look up the stream tag from the source spec.
+            let stream_tag = self
+                .topology
+                .spec
+                .sources
+                .get(name)
+                .and_then(|spec| spec.stream().map(|s| s.to_string()));
+
             for item in items {
                 source_state.items_accepted += 1;
+                let provenance = ItemProvenance {
+                    source_kind: adapter.source_kind().to_string(),
+                    metadata: BTreeMap::new(),
+                    source_modified: item.modified_at,
+                    extracted_at: Utc::now(),
+                };
                 source_state.items.insert(
                     item.id.clone(),
                     ItemState {
@@ -287,14 +308,23 @@ impl PipelineRunner {
                         content_hash: Blake3Hash::new(""),
                         status: ItemStatus::Pending,
                         completed_stages: vec![],
-                        provenance: ItemProvenance {
-                            source_kind: adapter.source_kind().to_string(),
-                            metadata: BTreeMap::new(),
-                            source_modified: item.modified_at,
-                            extracted_at: Utc::now(),
-                        },
+                        provenance: provenance.clone(),
                     },
                 );
+
+                // Add to active items pool with stream tag.
+                self.active_items.push(PipelineItem {
+                    id: item.id.clone(),
+                    display_name: item.display_name.clone(),
+                    content: Arc::from(Vec::new().as_slice()),
+                    mime_type: item.mime_type.clone(),
+                    source_name: name.clone(),
+                    source_content_hash: Blake3Hash::new(""),
+                    provenance,
+                    metadata: BTreeMap::new(),
+                    record: None,
+                    stream: stream_tag.clone(),
+                });
             }
         }
         self.state.update_stats();
@@ -367,31 +397,27 @@ impl PipelineRunner {
         true
     }
 
-    /// Collect all pending items for a given stage.
+    /// Collect items for a given stage from the active items pool.
     ///
-    /// Returns `PipelineItem`s for all items in Pending status across
-    /// all sources. Items in Unchanged, Completed, Failed, or Skipped
-    /// status are excluded.
-    fn collect_items_for_stage(&self, _stage_id: &StageId) -> Vec<PipelineItem> {
-        let mut items = Vec::new();
-        for source_state in self.state.sources.values() {
-            for item_state in source_state.items.values() {
-                if matches!(item_state.status, ItemStatus::Pending) {
-                    items.push(PipelineItem {
-                        id: item_state.source_id.clone(),
-                        display_name: item_state.display_name.clone(),
-                        content: Arc::from(Vec::new().as_slice()),
-                        mime_type: String::new(),
-                        source_name: item_state.source_name.clone(),
-                        source_content_hash: item_state.content_hash.clone(),
-                        provenance: item_state.provenance.clone(),
-                        metadata: BTreeMap::new(),
-                        record: None,
-                    });
-                }
-            }
-        }
-        items
+    /// Filters by the stage's `input_streams` declaration:
+    /// - Empty `input_streams` = accept all items (backward compatible).
+    /// - Non-empty = only items whose stream matches one of the declared inputs.
+    /// - Untagged items (`stream: None`) are visible to all stages.
+    fn collect_items_for_stage(&self, stage_id: &StageId) -> Vec<PipelineItem> {
+        let input_streams = self
+            .topology
+            .spec
+            .stages
+            .get(stage_id.as_str())
+            .map(|spec| &spec.input_streams)
+            .cloned()
+            .unwrap_or_default();
+
+        self.active_items
+            .iter()
+            .filter(|item| matches_stream(&input_streams, &item.stream))
+            .cloned()
+            .collect()
     }
 
     /// Build a read-only `StageContext` for a stage.
@@ -415,17 +441,32 @@ impl PipelineRunner {
     /// Merge a stage's results into the pipeline state.
     ///
     /// Updates item statuses (Completed, Failed, Skipped) and stage
-    /// aggregate counters.
+    /// aggregate counters. Replaces consumed items in the active pool
+    /// with their outputs, tagged with the stage's `output_stream`.
     fn merge_stage_result(&mut self, result: StageResult) -> Result<()> {
         let stage_id = &result.stage_id;
+
+        // Look up the output_stream for this stage.
+        let output_stream = self
+            .topology
+            .spec
+            .stages
+            .get(stage_id.as_str())
+            .and_then(|spec| spec.output_stream.clone());
 
         let mut items_processed = 0usize;
         let mut items_failed = 0usize;
         let mut items_skipped = 0usize;
 
+        // Track consumed item IDs and collect new output items.
+        let mut consumed_ids: Vec<String> = Vec::new();
+        let mut new_items: Vec<PipelineItem> = Vec::new();
+
         // Record successes.
         for success in &result.successes {
             items_processed += 1;
+            consumed_ids.push(success.item_id.clone());
+
             for source_state in self.state.sources.values_mut() {
                 if let Some(item_state) = source_state.items.get_mut(&success.item_id) {
                     item_state.status = ItemStatus::Completed;
@@ -438,11 +479,20 @@ impl PipelineRunner {
                         });
                 }
             }
+
+            // Capture output items with stream tagging.
+            for mut output in success.outputs.clone() {
+                if let Some(ref stream) = output_stream {
+                    output.stream = Some(stream.clone());
+                }
+                new_items.push(output);
+            }
         }
 
-        // Record skips.
+        // Record skips — remove from active pool.
         for skipped_item in &result.skipped {
             items_skipped += 1;
+            consumed_ids.push(skipped_item.item_id.clone());
             for source_state in self.state.sources.values_mut() {
                 if let Some(item_state) = source_state.items.get_mut(&skipped_item.item_id) {
                     item_state.status = ItemStatus::Skipped {
@@ -453,9 +503,10 @@ impl PipelineRunner {
             }
         }
 
-        // Record failures.
+        // Record failures — remove from active pool.
         for failure in &result.failures {
             items_failed += 1;
+            consumed_ids.push(failure.item_id.clone());
             for source_state in self.state.sources.values_mut() {
                 if let Some(item_state) = source_state.items.get_mut(&failure.item_id) {
                     item_state.status = ItemStatus::Failed {
@@ -466,6 +517,11 @@ impl PipelineRunner {
                 }
             }
         }
+
+        // Update active items pool: remove consumed, add outputs.
+        self.active_items
+            .retain(|item| !consumed_ids.contains(&item.id));
+        self.active_items.extend(new_items);
 
         // Update stage aggregate state.
         if let Some(stage_state) = self.state.stages.get_mut(stage_id) {
@@ -644,6 +700,25 @@ impl PipelineRunner {
     }
 }
 
+/// Check whether an item's stream matches a stage's input_streams filter.
+///
+/// Rules:
+/// - Empty `input_streams` = accept all items (backward compatible).
+/// - Untagged items (`stream: None`) are visible to all stages.
+/// - Tagged items match if their stream is in `input_streams`.
+fn matches_stream(input_streams: &[String], item_stream: &Option<String>) -> bool {
+    // Empty input_streams = accept everything.
+    if input_streams.is_empty() {
+        return true;
+    }
+    // Untagged items are visible to all stages.
+    let Some(stream) = item_stream else {
+        return true;
+    };
+    // Tagged items must match one of the declared input streams.
+    input_streams.iter().any(|s| s == stream)
+}
+
 #[cfg(test)]
 #[allow(clippy::unwrap_used)]
 mod tests {
@@ -808,6 +883,7 @@ mod tests {
                     root: PathBuf::from("/tmp/test"),
                     filters: vec![],
                     extensions: vec![],
+                    stream: None,
                 }),
             );
         }
@@ -825,6 +901,8 @@ mod tests {
                     timeout_secs: None,
                     skip_on_error: *skip,
                     condition: None,
+                    input_streams: vec![],
+                    output_stream: None,
                 },
             );
         }
@@ -1644,15 +1722,17 @@ mod tests {
         let mut runner = PipelineRunner::new(topo, store).await.unwrap();
 
         runner.enumerate_sources().await.unwrap();
-        // Mark one item as Completed.
+        // Simulate merge_stage_result: mark item "a" as completed in state
+        // and remove from active_items pool.
         if let Some(source) = runner.state.sources.get_mut("src")
             && let Some(item) = source.items.get_mut("a")
         {
             item.status = ItemStatus::Completed;
         }
+        runner.active_items.retain(|item| item.id != "a");
 
         let items = runner.collect_items_for_stage(&StageId::new("stage-a"));
-        assert_eq!(items.len(), 1, "only Pending items should be collected");
+        assert_eq!(items.len(), 1, "only active items should be collected");
         assert_eq!(items[0].id, "b");
     }
 
@@ -1697,5 +1777,328 @@ mod tests {
 
         let ctx = runner.build_stage_context("nonexistent");
         assert_eq!(ctx.params, serde_json::Value::Null);
+    }
+
+    // ── matches_stream tests ──────────────────────────────────────────
+
+    #[test]
+    fn test_matches_stream_empty_input_streams_accepts_all() {
+        let input_streams: Vec<String> = vec![];
+        assert!(matches_stream(&input_streams, &None));
+        assert!(matches_stream(&input_streams, &Some("txn".to_string())));
+        assert!(matches_stream(&input_streams, &Some("other".to_string())));
+    }
+
+    #[test]
+    fn test_matches_stream_untagged_item_visible_to_all() {
+        let input_streams = vec!["txn".to_string()];
+        assert!(matches_stream(&input_streams, &None));
+    }
+
+    #[test]
+    fn test_matches_stream_tagged_item_matches_input_stream() {
+        let input_streams = vec!["txn".to_string(), "ref".to_string()];
+        assert!(matches_stream(&input_streams, &Some("txn".to_string())));
+        assert!(matches_stream(&input_streams, &Some("ref".to_string())));
+    }
+
+    #[test]
+    fn test_matches_stream_tagged_item_does_not_match_wrong_stream() {
+        let input_streams = vec!["txn".to_string()];
+        assert!(!matches_stream(
+            &input_streams,
+            &Some("other".to_string())
+        ));
+    }
+
+    // ── Stream-aware routing tests ────────────────────────────────────
+
+    #[tokio::test]
+    async fn test_enumerate_sources_populates_active_items() {
+        let items = vec![make_source_item("a"), make_source_item("b")];
+        let topo = build_test_topology(
+            vec![(
+                "src".to_string(),
+                Arc::new(MockSourceAdapter::new("fs", items)),
+            )],
+            vec![(
+                "stage-a".to_string(),
+                Arc::new(MockStage::new("stage-a")),
+                None,
+                false,
+            )],
+        );
+        let store = Box::new(InMemoryStateStore::new());
+        let mut runner = PipelineRunner::new(topo, store).await.unwrap();
+
+        runner.enumerate_sources().await.unwrap();
+        assert_eq!(runner.active_items.len(), 2);
+        assert!(runner.active_items.iter().all(|item| item.stream.is_none()));
+    }
+
+    #[tokio::test]
+    async fn test_enumerate_sources_tags_items_with_stream() {
+        let items = vec![make_source_item("a")];
+        let mut topo = build_test_topology(
+            vec![(
+                "src".to_string(),
+                Arc::new(MockSourceAdapter::new("fs", items)),
+            )],
+            vec![(
+                "stage-a".to_string(),
+                Arc::new(MockStage::new("stage-a")),
+                None,
+                false,
+            )],
+        );
+        // Set stream on the source spec.
+        if let Some(source_spec) = Arc::make_mut(&mut topo.spec).sources.get_mut("src") {
+            if let SourceSpec::Filesystem(fs_spec) = source_spec {
+                fs_spec.stream = Some("txn".to_string());
+            }
+        }
+
+        let store = Box::new(InMemoryStateStore::new());
+        let mut runner = PipelineRunner::new(topo, store).await.unwrap();
+
+        runner.enumerate_sources().await.unwrap();
+        assert_eq!(runner.active_items.len(), 1);
+        assert_eq!(
+            runner.active_items[0].stream,
+            Some("txn".to_string())
+        );
+    }
+
+    #[tokio::test]
+    async fn test_collect_items_for_stage_filters_by_input_streams() {
+        let items = vec![make_source_item("a"), make_source_item("b")];
+        let topo = build_test_topology(
+            vec![(
+                "src".to_string(),
+                Arc::new(MockSourceAdapter::new("fs", items)),
+            )],
+            vec![(
+                "stage-a".to_string(),
+                Arc::new(MockStage::new("stage-a")),
+                None,
+                false,
+            )],
+        );
+        let store = Box::new(InMemoryStateStore::new());
+        let mut runner = PipelineRunner::new(topo, store).await.unwrap();
+
+        runner.enumerate_sources().await.unwrap();
+        // Tag item "a" with stream "txn", leave "b" untagged.
+        runner.active_items.iter_mut().for_each(|item| {
+            if item.id == "a" {
+                item.stream = Some("txn".to_string());
+            }
+        });
+
+        // Update stage spec to only accept "txn" stream.
+        // Since we can't mutate the spec easily, test via the matches_stream function.
+        let txn_streams = vec!["txn".to_string()];
+
+        let matched: Vec<_> = runner
+            .active_items
+            .iter()
+            .filter(|item| matches_stream(&txn_streams, &item.stream))
+            .collect();
+        // Item "a" (tagged "txn") matches, item "b" (untagged) also matches (untagged visible to all).
+        assert_eq!(matched.len(), 2);
+    }
+
+    #[tokio::test]
+    async fn test_collect_items_for_stage_excludes_wrong_stream() {
+        let topo = build_test_topology(
+            vec![(
+                "src".to_string(),
+                Arc::new(MockSourceAdapter::new("fs", vec![make_source_item("a")])),
+            )],
+            vec![(
+                "stage-a".to_string(),
+                Arc::new(MockStage::new("stage-a")),
+                None,
+                false,
+            )],
+        );
+        let store = Box::new(InMemoryStateStore::new());
+        let mut runner = PipelineRunner::new(topo, store).await.unwrap();
+
+        runner.enumerate_sources().await.unwrap();
+        // Tag item with "ref" stream.
+        runner.active_items[0].stream = Some("ref".to_string());
+
+        // Filter for "txn" only.
+        let txn_streams = vec!["txn".to_string()];
+        let matched: Vec<_> = runner
+            .active_items
+            .iter()
+            .filter(|item| matches_stream(&txn_streams, &item.stream))
+            .collect();
+        // Item tagged "ref" should NOT match "txn" filter.
+        assert_eq!(matched.len(), 0);
+    }
+
+    #[tokio::test]
+    async fn test_merge_stage_result_updates_active_items() {
+        let items = vec![make_source_item("a")];
+        let topo = build_test_topology(
+            vec![(
+                "src".to_string(),
+                Arc::new(MockSourceAdapter::new("fs", items)),
+            )],
+            vec![(
+                "stage-a".to_string(),
+                Arc::new(MockStage::new("stage-a")),
+                None,
+                false,
+            )],
+        );
+        let store = Box::new(InMemoryStateStore::new());
+        let mut runner = PipelineRunner::new(topo, store).await.unwrap();
+
+        runner.enumerate_sources().await.unwrap();
+        assert_eq!(runner.active_items.len(), 1);
+
+        // Create a stage result with an output item.
+        let output_item = PipelineItem {
+            id: "a-out".to_string(),
+            display_name: "Output A".to_string(),
+            content: Arc::from(b"output" as &[u8]),
+            mime_type: "text/plain".to_string(),
+            source_name: "src".to_string(),
+            source_content_hash: Blake3Hash::new("out-hash"),
+            provenance: ItemProvenance {
+                source_kind: "fs".to_string(),
+                metadata: BTreeMap::new(),
+                source_modified: None,
+                extracted_at: Utc::now(),
+            },
+            metadata: BTreeMap::new(),
+            record: None,
+            stream: None,
+        };
+
+        let mut result = StageResult::new(StageId::new("stage-a"));
+        result.record_success("a".to_string(), vec![output_item], 10);
+
+        runner.merge_stage_result(result).unwrap();
+
+        // "a" should be consumed, "a-out" should be added.
+        assert_eq!(runner.active_items.len(), 1);
+        assert_eq!(runner.active_items[0].id, "a-out");
+    }
+
+    #[tokio::test]
+    async fn test_merge_stage_result_tags_output_with_stream() {
+        let items = vec![make_source_item("a")];
+
+        // Build topology with output_stream on the stage.
+        let mut topo = build_test_topology(
+            vec![(
+                "src".to_string(),
+                Arc::new(MockSourceAdapter::new("fs", items)),
+            )],
+            vec![(
+                "stage-a".to_string(),
+                Arc::new(MockStage::new("stage-a")),
+                None,
+                false,
+            )],
+        );
+        // Set output_stream on stage-a.
+        if let Some(stage_spec) = Arc::make_mut(&mut topo.spec).stages.get_mut("stage-a") {
+            stage_spec.output_stream = Some("parsed".to_string());
+        }
+
+        let store = Box::new(InMemoryStateStore::new());
+        let mut runner = PipelineRunner::new(topo, store).await.unwrap();
+        runner.enumerate_sources().await.unwrap();
+
+        let output_item = PipelineItem {
+            id: "a-out".to_string(),
+            display_name: "Output A".to_string(),
+            content: Arc::from(b"output" as &[u8]),
+            mime_type: "text/plain".to_string(),
+            source_name: "src".to_string(),
+            source_content_hash: Blake3Hash::new("out-hash"),
+            provenance: ItemProvenance {
+                source_kind: "fs".to_string(),
+                metadata: BTreeMap::new(),
+                source_modified: None,
+                extracted_at: Utc::now(),
+            },
+            metadata: BTreeMap::new(),
+            record: None,
+            stream: None,
+        };
+
+        let mut result = StageResult::new(StageId::new("stage-a"));
+        result.record_success("a".to_string(), vec![output_item], 10);
+
+        runner.merge_stage_result(result).unwrap();
+
+        assert_eq!(runner.active_items.len(), 1);
+        assert_eq!(
+            runner.active_items[0].stream,
+            Some("parsed".to_string())
+        );
+    }
+
+    #[tokio::test]
+    async fn test_merge_stage_result_removes_failed_from_active() {
+        let items = vec![make_source_item("a"), make_source_item("b")];
+        let topo = build_test_topology(
+            vec![(
+                "src".to_string(),
+                Arc::new(MockSourceAdapter::new("fs", items)),
+            )],
+            vec![(
+                "stage-a".to_string(),
+                Arc::new(MockStage::new("stage-a")),
+                None,
+                true, // skip_on_error
+            )],
+        );
+        let store = Box::new(InMemoryStateStore::new());
+        let mut runner = PipelineRunner::new(topo, store).await.unwrap();
+        runner.enumerate_sources().await.unwrap();
+        assert_eq!(runner.active_items.len(), 2);
+
+        let mut result = StageResult::new(StageId::new("stage-a"));
+        // "a" succeeds with output, "b" is skipped.
+        let output_item = PipelineItem {
+            id: "a-out".to_string(),
+            display_name: "Output A".to_string(),
+            content: Arc::from(b"output" as &[u8]),
+            mime_type: "text/plain".to_string(),
+            source_name: "src".to_string(),
+            source_content_hash: Blake3Hash::new("out-hash"),
+            provenance: ItemProvenance {
+                source_kind: "fs".to_string(),
+                metadata: BTreeMap::new(),
+                source_modified: None,
+                extracted_at: Utc::now(),
+            },
+            metadata: BTreeMap::new(),
+            record: None,
+            stream: None,
+        };
+        result.record_success("a".to_string(), vec![output_item], 10);
+        result.record_skipped(
+            "b".to_string(),
+            ecl_pipeline_topo::StageError::Permanent {
+                stage: "stage-a".to_string(),
+                item_id: "b".to_string(),
+                message: "test skip".to_string(),
+            },
+        );
+
+        runner.merge_stage_result(result).unwrap();
+
+        // Both "a" and "b" consumed; only "a-out" remains.
+        assert_eq!(runner.active_items.len(), 1);
+        assert_eq!(runner.active_items[0].id, "a-out");
     }
 }

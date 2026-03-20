@@ -35,6 +35,16 @@ pub struct StageSpec {
 
     /// Optional predicate expression. When false, the stage is skipped.
     pub condition: Option<String>,
+
+    /// Input stream(s) this stage reads from.
+    /// Empty = reads from all streams (backward compatible with Phase 1).
+    #[serde(default)]
+    pub input_streams: Vec<String>,
+
+    /// Output stream produced by this stage.
+    /// `None` = items retain their current stream tag.
+    #[serde(default)]
+    pub output_stream: Option<String>,
 }
 
 /// Resource access declarations in TOML-friendly form.
@@ -76,6 +86,8 @@ mod tests {
             timeout_secs: Some(300),
             skip_on_error: true,
             condition: Some("source.items_discovered > 0".to_string()),
+            input_streams: vec![],
+            output_stream: None,
         };
         let json = serde_json::to_string(&stage).unwrap();
         let deserialized: StageSpec = serde_json::from_str(&json).unwrap();
@@ -106,6 +118,8 @@ mod tests {
             timeout_secs: None,
             skip_on_error: false,
             condition: None,
+            input_streams: vec![],
+            output_stream: None,
         };
         let json = serde_json::to_string(&stage).unwrap();
         let deserialized: StageSpec = serde_json::from_str(&json).unwrap();

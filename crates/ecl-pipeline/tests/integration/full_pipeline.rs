@@ -97,6 +97,7 @@ impl Stage for ExtractAndEmitStage {
             provenance: doc.provenance,
             metadata: BTreeMap::new(),
             record: None,
+            stream: None,
         }])
     }
 }
@@ -110,6 +111,7 @@ fn build_fs_pipeline(
         root: input_dir.to_path_buf(),
         filters: vec![],
         extensions: vec![],
+        stream: None,
     };
     let adapter: Arc<dyn SourceAdapter> =
         Arc::new(FilesystemAdapter::from_fs_spec("local", &fs_spec).unwrap());
@@ -139,6 +141,8 @@ fn build_fs_pipeline(
                 timeout_secs: None,
                 skip_on_error: false,
                 condition: None,
+                input_streams: vec![],
+                output_stream: None,
             },
         )]),
         defaults: DefaultsSpec::default(),
@@ -293,6 +297,7 @@ async fn test_full_pipeline_with_extension_filter() {
         root: input.path().to_path_buf(),
         filters: vec![],
         extensions: vec!["md".to_string()],
+        stream: None,
     };
     let adapter: Arc<dyn SourceAdapter> =
         Arc::new(FilesystemAdapter::from_fs_spec("local", &fs_spec).unwrap());
@@ -322,6 +327,8 @@ async fn test_full_pipeline_with_extension_filter() {
                 timeout_secs: None,
                 skip_on_error: false,
                 condition: None,
+                input_streams: vec![],
+                output_stream: None,
             },
         )]),
         defaults: DefaultsSpec::default(),
@@ -373,6 +380,7 @@ async fn test_multi_stage_extract_then_passthrough() {
         root: input.path().to_path_buf(),
         filters: vec![],
         extensions: vec![],
+        stream: None,
     };
     let adapter: Arc<dyn SourceAdapter> =
         Arc::new(FilesystemAdapter::from_fs_spec("local", &fs_spec).unwrap());
@@ -400,6 +408,8 @@ async fn test_multi_stage_extract_then_passthrough() {
                 timeout_secs: None,
                 skip_on_error: false,
                 condition: None,
+                input_streams: vec![],
+                output_stream: None,
             },
         )]),
         defaults: DefaultsSpec::default(),

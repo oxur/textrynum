@@ -185,6 +185,7 @@ impl Stage for CsvParseStage {
                 provenance: item.provenance.clone(),
                 metadata,
                 record: Some(record),
+                stream: item.stream.clone(),
             });
         }
 
@@ -216,6 +217,7 @@ mod tests {
             },
             metadata: BTreeMap::new(),
             record: None,
+            stream: None,
         }
     }
 

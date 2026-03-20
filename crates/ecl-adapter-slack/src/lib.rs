@@ -284,6 +284,7 @@ mod tests {
             channels: vec!["C001".to_string(), "C002".to_string()],
             thread_depth: 0,
             modified_after: None,
+            stream: None,
         }
     }
 
@@ -330,6 +331,7 @@ mod tests {
             root: "/tmp".into(),
             extensions: vec![],
             filters: vec![],
+            stream: None,
         });
         let result = SlackAdapter::from_spec("test", &spec);
         assert!(result.is_err());
