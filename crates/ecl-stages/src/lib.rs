@@ -12,6 +12,7 @@
 //! - [`LookupStage`] — static value mapping through lookup tables
 //! - [`DateParseStage`] — date string parsing to RFC3339 format
 //! - [`TimezoneStage`] — local datetime to UTC conversion via ZIP code lookup
+//! - [`DecompressStage`] — ZIP/GZIP archive extraction (fan-out)
 //! - [`EmitStage`] — writes pipeline items to the output directory
 
 #![forbid(unsafe_code)]
@@ -23,6 +24,7 @@
 pub mod aggregate;
 pub mod csv_parse;
 pub mod date_parse;
+pub mod decompress;
 pub mod emit;
 pub mod extract;
 pub mod field_map;
@@ -36,6 +38,7 @@ pub mod validate;
 pub use aggregate::AggregateStage;
 pub use csv_parse::CsvParseStage;
 pub use date_parse::DateParseStage;
+pub use decompress::DecompressStage;
 pub use emit::EmitStage;
 pub use extract::ExtractStage;
 pub use field_map::FieldMapStage;

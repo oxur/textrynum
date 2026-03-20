@@ -106,6 +106,10 @@ toml = "1"
 # CSV parsing
 csv = "1"
 
+# Archive / compression
+zip = "2"
+flate2 = "1"
+
 # Kafka
 rdkafka = { version = "0.36", features = ["cmake-build"] }
 

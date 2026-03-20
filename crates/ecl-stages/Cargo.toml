@@ -25,6 +25,8 @@ chrono = { workspace = true }
 chrono-tz = { workspace = true }
 blake3 = { workspace = true }
 regex = { workspace = true }
+zip = { workspace = true }
+flate2 = { workspace = true }
 
 [dev-dependencies]
 tempfile = { workspace = true }
