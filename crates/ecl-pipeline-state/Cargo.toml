@@ -6,6 +6,7 @@ rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
+homepage.workspace = true
 description = "Pipeline execution state types and checkpoint logic for ECL pipeline runner"
 
 [dependencies]

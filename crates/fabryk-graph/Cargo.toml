@@ -6,6 +6,7 @@ rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
+homepage.workspace = true
 description = "Knowledge graph infrastructure for Fabryk (petgraph + rkyv persistence)"
 
 [features]

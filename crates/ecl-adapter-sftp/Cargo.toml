@@ -2,6 +2,12 @@
 name = "ecl-adapter-sftp"
 version.workspace = true
 edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "SFTP source adapter for the ECL pipeline runner"
 
 [lints.clippy]
 unwrap_used = "deny"
@@ -11,10 +17,10 @@ unwrap_used = "deny"
 unsafe_code = "deny"
 
 [dependencies]
-ecl-pipeline-topo = { path = "../ecl-pipeline-topo" }
-ecl-pipeline-spec = { path = "../ecl-pipeline-spec" }
-ecl-pipeline-state = { path = "../ecl-pipeline-state" }
-ecl-secrets = { path = "../ecl-secrets" }
+ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.0" }
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.0" }
+ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.0" }
+ecl-secrets = { path = "../ecl-secrets", version = "0.4.0" }
 
 # SSH/SFTP
 russh = { workspace = true }
