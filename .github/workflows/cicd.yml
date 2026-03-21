@@ -31,9 +31,12 @@ jobs:
       with:
         components: clippy, rustfmt
 
-    # Install protoc (required by lance-encoding, a transitive dep of lancedb)
-    - name: Install protoc
-      run: sudo apt-get install -y protobuf-compiler
+    # rdkafka-sys builds librdkafka 2.12.1 from source via cmake (pre-installed
+    # on ubuntu-latest). That version has a bug: rdkafka_conf.c uses
+    # #ifdef WITH_OAUTHBEARER_OIDC instead of #if, so curl/curl.h is included
+    # unconditionally even when WITH_CURL=0. Install the dev headers to satisfy it.
+    - name: Install system dependencies
+      run: sudo apt-get update && sudo apt-get install -y libcurl4-openssl-dev
 
     # Smart Cargo caching — replaces manual actions/cache steps
     - uses: Swatinem/rust-cache@v2
