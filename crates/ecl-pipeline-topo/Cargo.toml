@@ -6,6 +6,7 @@ rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
+homepage.workspace = true
 description = "Pipeline topology, resource graph, and core traits for ECL pipeline runner"
 
 [dependencies]

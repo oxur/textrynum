@@ -5,12 +5,14 @@ edition.workspace = true
 rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
 description = "Google Drive source adapter for the ECL pipeline runner"
 
 [dependencies]
-ecl-pipeline-spec = { path = "../ecl-pipeline-spec" }
-ecl-pipeline-topo = { path = "../ecl-pipeline-topo" }
-ecl-pipeline-state = { path = "../ecl-pipeline-state" }
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.0" }
+ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.0" }
+ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.0" }
 async-trait = { workspace = true }
 reqwest = { workspace = true, features = ["form", "query"] }
 serde = { workspace = true }

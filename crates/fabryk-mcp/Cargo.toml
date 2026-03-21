@@ -6,6 +6,7 @@ rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
+homepage.workspace = true
 description = "Fabryk MCP — umbrella crate re-exporting all MCP components"
 exclude = ["assets/"]
 

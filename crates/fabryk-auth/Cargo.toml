@@ -2,7 +2,10 @@
 name = "fabryk-auth"
 version.workspace = true
 edition.workspace = true
+authors.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
 description = "Generic auth primitives for Fabryk — AuthenticatedUser, TokenValidator trait, Tower middleware"
 
 [dependencies]
