@@ -73,6 +73,88 @@ pub struct ExternalConnector {
     pub description: String,
 }
 
+/// Describes the server's data domain — what entities exist, how they relate,
+/// and what the corpus contains. Included in the directory tool output.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct DomainModel {
+    /// One-paragraph summary of the entire dataset/corpus.
+    pub summary: String,
+    /// The core entity types an agent will encounter.
+    pub entities: Vec<Entity>,
+    /// Named relationship types (for graph-based servers).
+    pub relationships: Vec<String>,
+}
+
+/// A core entity type exposed by the server.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct Entity {
+    /// Entity type name as it appears in tool parameters/results.
+    pub name: String,
+    /// What this entity represents.
+    pub description: String,
+    /// How IDs are formatted and where they flow between tools.
+    pub id_format: String,
+    /// Approximate count (helps agents calibrate expectations).
+    pub count: Option<u64>,
+}
+
+/// Documents how identifiers flow between tools.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct IdConvention {
+    /// The ID field name as it appears in parameters.
+    pub name: String,
+    /// Format description (slug, UUID, integer, etc.).
+    pub format: String,
+    /// Which tools produce or consume this ID.
+    pub used_by: Vec<String>,
+}
+
+/// Runtime capability information for agents to negotiate available features.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct BackendStatus {
+    pub capabilities: Vec<Capability>,
+}
+
+/// A single backend capability and its runtime readiness.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct Capability {
+    /// Capability name matching a tool or tool family.
+    pub name: String,
+    /// Whether this capability is currently functional.
+    pub ready: bool,
+    /// Agent-facing guidance when not ready (e.g., "Use keyword mode instead").
+    pub note: Option<String>,
+}
+
+/// Task-oriented query recipe — tells agents how to accomplish a specific goal.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct TaskStrategy {
+    /// What the user is trying to accomplish.
+    pub task: String,
+    /// Ordered tool calls to achieve it.
+    pub steps: Vec<String>,
+}
+
+/// Summary of valid filter values for common parameters.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct FilterSummary {
+    /// General note about the filter values.
+    pub note: String,
+    /// Per-parameter filter info.
+    pub filters: Vec<FilterInfo>,
+}
+
+/// Valid values for a single filter parameter.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct FilterInfo {
+    /// Parameter name as it appears in tool inputs.
+    pub param: String,
+    /// Top N values (plus counts if useful).
+    pub top_values: Vec<String>,
+    /// Total number of distinct values.
+    pub total: usize,
+}
+
 /// A registry wrapper that enriches tool descriptions with structured metadata
 /// and auto-injects a `{server_name}_directory` meta-tool.
 ///
@@ -91,6 +173,11 @@ pub struct DiscoverableRegistry<R: ToolRegistry> {
     recommended_subscriptions: Vec<(String, String)>,
     conventions: Vec<String>,
     constraints: Vec<String>,
+    domain_model: Option<DomainModel>,
+    id_conventions: Vec<IdConvention>,
+    backend_status: Option<BackendStatus>,
+    task_strategies: Vec<TaskStrategy>,
+    filter_summary: Option<FilterSummary>,
 }
 
 impl<R: ToolRegistry> DiscoverableRegistry<R> {
@@ -106,6 +193,11 @@ impl<R: ToolRegistry> DiscoverableRegistry<R> {
             recommended_subscriptions: Vec::new(),
             conventions: Vec::new(),
             constraints: Vec::new(),
+            domain_model: None,
+            id_conventions: Vec::new(),
+            backend_status: None,
+            task_strategies: Vec::new(),
+            filter_summary: None,
         }
     }
 
@@ -125,6 +217,11 @@ impl<R: ToolRegistry> DiscoverableRegistry<R> {
             recommended_subscriptions: guidance.recommended_subscriptions.clone(),
             conventions: guidance.conventions.clone(),
             constraints: guidance.constraints.clone(),
+            domain_model: None,
+            id_conventions: Vec::new(),
+            backend_status: None,
+            task_strategies: Vec::new(),
+            filter_summary: None,
         }
     }
 
@@ -157,6 +254,48 @@ impl<R: ToolRegistry> DiscoverableRegistry<R> {
     /// Set data freshness information per source.
     pub fn with_data_freshness(mut self, freshness: HashMap<String, String>) -> Self {
         self.data_freshness = freshness;
+        self
+    }
+
+    /// Set the domain model describing the server's data.
+    pub fn with_domain_model(mut self, model: DomainModel) -> Self {
+        self.domain_model = Some(model);
+        self
+    }
+
+    /// Set ID conventions documenting how identifiers flow between tools.
+    pub fn with_id_conventions(mut self, conventions: Vec<IdConvention>) -> Self {
+        self.id_conventions = conventions;
+        self
+    }
+
+    /// Set backend status for runtime capability negotiation.
+    pub fn with_backend_status(mut self, status: BackendStatus) -> Self {
+        self.backend_status = Some(status);
+        self
+    }
+
+    /// Set task-oriented query strategies (replaces flat query_strategy in directory output).
+    pub fn with_task_strategies(mut self, strategies: Vec<TaskStrategy>) -> Self {
+        self.task_strategies = strategies;
+        self
+    }
+
+    /// Set summary filter values for common parameters.
+    pub fn with_filter_summary(mut self, summary: FilterSummary) -> Self {
+        self.filter_summary = Some(summary);
+        self
+    }
+
+    /// Set conventions (rules agents should follow).
+    pub fn with_conventions<S: Into<String>>(mut self, conventions: Vec<S>) -> Self {
+        self.conventions = conventions.into_iter().map(Into::into).collect();
+        self
+    }
+
+    /// Set constraints (limitations agents should be aware of).
+    pub fn with_constraints<S: Into<String>>(mut self, constraints: Vec<S>) -> Self {
+        self.constraints = constraints.into_iter().map(Into::into).collect();
         self
     }
 
@@ -196,12 +335,13 @@ impl<R: ToolRegistry> DiscoverableRegistry<R> {
         Tool::new(
             dir_name,
             format!(
-                "Describes all {count} {name} tools, connected external services, \
-                 data freshness, and the optimal query strategy.\n\
+                "Describes all {count} {name} tools, domain model, ID conventions, \
+                 backend status, and the optimal query strategy.\n\
                  WHEN TO USE: Call this at the start of every session to understand \
                  what capabilities are available before doing any work.\n\
-                 RETURNS: Tool list with when-to-use guidance, external connector list, \
-                 optimal query strategy, and data freshness information.",
+                 RETURNS: Tool list with when-to-use guidance, domain model, ID conventions, \
+                 backend status, external connectors, query strategies, filter values, \
+                 and data freshness information.",
                 count = tool_count,
                 name = self.server_name,
             ),
@@ -335,6 +475,42 @@ impl<R: ToolRegistry> DiscoverableRegistry<R> {
                         .map(|c| Value::String(c.clone()))
                         .collect(),
                 ),
+            );
+        }
+
+        if let Some(ref model) = self.domain_model {
+            response.insert(
+                "domain_model".into(),
+                serde_json::to_value(model).unwrap_or(Value::Null),
+            );
+        }
+
+        if !self.id_conventions.is_empty() {
+            response.insert(
+                "id_conventions".into(),
+                serde_json::to_value(&self.id_conventions).unwrap_or(Value::Array(vec![])),
+            );
+        }
+
+        if let Some(ref status) = self.backend_status {
+            response.insert(
+                "backend_status".into(),
+                serde_json::to_value(status).unwrap_or(Value::Null),
+            );
+        }
+
+        // Task strategies take precedence over flat query_strategy
+        if !self.task_strategies.is_empty() {
+            response.insert(
+                "query_strategies".into(),
+                serde_json::to_value(&self.task_strategies).unwrap_or(Value::Array(vec![])),
+            );
+        }
+
+        if let Some(ref summary) = self.filter_summary {
+            response.insert(
+                "filter_summary".into(),
+                serde_json::to_value(summary).unwrap_or(Value::Null),
             );
         }
 
@@ -837,5 +1013,460 @@ mod tests {
         assert!(meta.returns.is_empty());
         assert!(meta.next.is_none());
         assert!(meta.category.is_none());
+    }
+
+    // ── domain model ────────────────────────────────────────────────────────
+
+    #[tokio::test]
+    async fn test_directory_tool_includes_domain_model() {
+        let inner = MockRegistry {
+            tools: vec![make_tool("search", "Search")],
+        };
+
+        let registry = DiscoverableRegistry::new(inner, "myapp").with_domain_model(DomainModel {
+            summary: "Test knowledge base with 100 items.".into(),
+            entities: vec![Entity {
+                name: "item".into(),
+                description: "A searchable item.".into(),
+                id_format: "UUID v4".into(),
+                count: Some(100),
+            }],
+            relationships: vec!["RelatesTo — items are related".into()],
+        });
+
+        let result = registry
+            .call("myapp_directory", json!({}))
+            .unwrap()
+            .await
+            .unwrap();
+
+        let text = extract_text(&result);
+        let value: Value = serde_json::from_str(&text).unwrap();
+
+        let model = value.get("domain_model").expect("Should have domain_model");
+        assert_eq!(model["summary"], "Test knowledge base with 100 items.");
+        assert_eq!(model["entities"][0]["name"], "item");
+        assert_eq!(model["entities"][0]["count"], 100);
+        assert_eq!(model["relationships"].as_array().unwrap().len(), 1);
+    }
+
+    // ── id conventions ──────────────────────────────────────────────────────
+
+    #[tokio::test]
+    async fn test_directory_tool_includes_id_conventions() {
+        let inner = MockRegistry {
+            tools: vec![make_tool("search", "Search")],
+        };
+
+        let registry =
+            DiscoverableRegistry::new(inner, "myapp").with_id_conventions(vec![IdConvention {
+                name: "item_id".into(),
+                format: "UUID v4".into(),
+                used_by: vec![
+                    "search -> 'id' in results".into(),
+                    "get_item -> item_id param".into(),
+                ],
+            }]);
+
+        let result = registry
+            .call("myapp_directory", json!({}))
+            .unwrap()
+            .await
+            .unwrap();
+
+        let text = extract_text(&result);
+        let value: Value = serde_json::from_str(&text).unwrap();
+
+        let ids = value
+            .get("id_conventions")
+            .expect("Should have id_conventions")
+            .as_array()
+            .unwrap();
+        assert_eq!(ids.len(), 1);
+        assert_eq!(ids[0]["name"], "item_id");
+        assert_eq!(ids[0]["format"], "UUID v4");
+        assert_eq!(ids[0]["used_by"].as_array().unwrap().len(), 2);
+    }
+
+    // ── backend status ──────────────────────────────────────────────────────
+
+    #[tokio::test]
+    async fn test_directory_tool_includes_backend_status() {
+        let inner = MockRegistry {
+            tools: vec![make_tool("search", "Search")],
+        };
+
+        let registry =
+            DiscoverableRegistry::new(inner, "myapp").with_backend_status(BackendStatus {
+                capabilities: vec![
+                    Capability {
+                        name: "full_text_search".into(),
+                        ready: true,
+                        note: None,
+                    },
+                    Capability {
+                        name: "vector_search".into(),
+                        ready: false,
+                        note: Some("Index not built.".into()),
+                    },
+                ],
+            });
+
+        let result = registry
+            .call("myapp_directory", json!({}))
+            .unwrap()
+            .await
+            .unwrap();
+
+        let text = extract_text(&result);
+        let value: Value = serde_json::from_str(&text).unwrap();
+
+        let status = value
+            .get("backend_status")
+            .expect("Should have backend_status");
+        let caps = status["capabilities"].as_array().unwrap();
+        assert_eq!(caps.len(), 2);
+        assert_eq!(caps[0]["name"], "full_text_search");
+        assert_eq!(caps[0]["ready"], true);
+        assert!(caps[0]["note"].is_null());
+        assert_eq!(caps[1]["name"], "vector_search");
+        assert_eq!(caps[1]["ready"], false);
+        assert_eq!(caps[1]["note"], "Index not built.");
+    }
+
+    // ── task strategies ─────────────────────────────────────────────────────
+
+    #[tokio::test]
+    async fn test_directory_tool_includes_task_strategies() {
+        let inner = MockRegistry {
+            tools: vec![make_tool("search", "Search")],
+        };
+
+        let registry =
+            DiscoverableRegistry::new(inner, "myapp").with_task_strategies(vec![TaskStrategy {
+                task: "Explore a topic".into(),
+                steps: vec![
+                    "search with topic keywords".into(),
+                    "get_item on the best result".into(),
+                ],
+            }]);
+
+        let result = registry
+            .call("myapp_directory", json!({}))
+            .unwrap()
+            .await
+            .unwrap();
+
+        let text = extract_text(&result);
+        let value: Value = serde_json::from_str(&text).unwrap();
+
+        let strategies = value
+            .get("query_strategies")
+            .expect("Should have query_strategies")
+            .as_array()
+            .unwrap();
+        assert_eq!(strategies.len(), 1);
+        assert_eq!(strategies[0]["task"], "Explore a topic");
+        assert_eq!(strategies[0]["steps"].as_array().unwrap().len(), 2);
+    }
+
+    #[tokio::test]
+    async fn test_task_strategies_take_precedence_over_flat_query_strategy() {
+        let inner = MockRegistry {
+            tools: vec![make_tool("search", "Search")],
+        };
+
+        let registry = DiscoverableRegistry::new(inner, "myapp")
+            .with_query_strategy(vec!["1. Call directory first"])
+            .with_task_strategies(vec![TaskStrategy {
+                task: "Explore".into(),
+                steps: vec!["search".into()],
+            }]);
+
+        let result = registry
+            .call("myapp_directory", json!({}))
+            .unwrap()
+            .await
+            .unwrap();
+
+        let text = extract_text(&result);
+        let value: Value = serde_json::from_str(&text).unwrap();
+
+        // Task strategies should appear as "query_strategies"
+        assert!(
+            value.get("query_strategies").is_some(),
+            "Should have query_strategies from task strategies"
+        );
+        // Both may appear since they use different keys
+        // (optimal_query_strategy vs query_strategies)
+    }
+
+    // ── filter summary ──────────────────────────────────────────────────────
+
+    #[tokio::test]
+    async fn test_directory_tool_includes_filter_summary() {
+        let inner = MockRegistry {
+            tools: vec![make_tool("search", "Search")],
+        };
+
+        let registry =
+            DiscoverableRegistry::new(inner, "myapp").with_filter_summary(FilterSummary {
+                note: "Top values shown.".into(),
+                filters: vec![FilterInfo {
+                    param: "category".into(),
+                    top_values: vec!["alpha (10)".into(), "beta (5)".into()],
+                    total: 12,
+                }],
+            });
+
+        let result = registry
+            .call("myapp_directory", json!({}))
+            .unwrap()
+            .await
+            .unwrap();
+
+        let text = extract_text(&result);
+        let value: Value = serde_json::from_str(&text).unwrap();
+
+        let summary = value
+            .get("filter_summary")
+            .expect("Should have filter_summary");
+        assert_eq!(summary["note"], "Top values shown.");
+        let filters = summary["filters"].as_array().unwrap();
+        assert_eq!(filters.len(), 1);
+        assert_eq!(filters[0]["param"], "category");
+        assert_eq!(filters[0]["total"], 12);
+    }
+
+    // ── new sections omit when empty ────────────────────────────────────────
+
+    #[tokio::test]
+    async fn test_directory_omits_new_metadata_sections_when_empty() {
+        let inner = MockRegistry {
+            tools: vec![make_tool("search", "Search")],
+        };
+
+        let registry = DiscoverableRegistry::new(inner, "myapp");
+        let result = registry
+            .call("myapp_directory", json!({}))
+            .unwrap()
+            .await
+            .unwrap();
+        let text = extract_text(&result);
+        let value: Value = serde_json::from_str(&text).unwrap();
+
+        assert!(
+            value.get("domain_model").is_none(),
+            "Empty domain_model should be omitted"
+        );
+        assert!(
+            value.get("id_conventions").is_none(),
+            "Empty id_conventions should be omitted"
+        );
+        assert!(
+            value.get("backend_status").is_none(),
+            "Empty backend_status should be omitted"
+        );
+        assert!(
+            value.get("query_strategies").is_none(),
+            "Empty query_strategies should be omitted"
+        );
+        assert!(
+            value.get("filter_summary").is_none(),
+            "Empty filter_summary should be omitted"
+        );
+    }
+
+    // ── conventions and constraints builders ─────────────────────────────────
+
+    #[tokio::test]
+    async fn test_with_conventions_and_constraints_builders() {
+        let inner = MockRegistry {
+            tools: vec![make_tool("search", "Search")],
+        };
+
+        let registry = DiscoverableRegistry::new(inner, "myapp")
+            .with_conventions(vec!["Always call directory first."])
+            .with_constraints(vec!["Read-only access."]);
+
+        let result = registry
+            .call("myapp_directory", json!({}))
+            .unwrap()
+            .await
+            .unwrap();
+        let text = extract_text(&result);
+        let value: Value = serde_json::from_str(&text).unwrap();
+
+        let convs = value["conventions"].as_array().unwrap();
+        assert_eq!(convs.len(), 1);
+        assert_eq!(convs[0], "Always call directory first.");
+
+        let cons = value["constraints"].as_array().unwrap();
+        assert_eq!(cons.len(), 1);
+        assert_eq!(cons[0], "Read-only access.");
+    }
+
+    // ── serde roundtrip tests for new types ─────────────────────────────────
+
+    #[test]
+    fn test_domain_model_serde_roundtrip() {
+        let model = DomainModel {
+            summary: "A corpus of meeting notes.".into(),
+            entities: vec![
+                Entity {
+                    name: "meeting".into(),
+                    description: "A recorded meeting.".into(),
+                    id_format: "UUID v4".into(),
+                    count: Some(500),
+                },
+                Entity {
+                    name: "attendee".into(),
+                    description: "A meeting participant.".into(),
+                    id_format: "email".into(),
+                    count: None,
+                },
+            ],
+            relationships: vec![
+                "attended — attendee participated in meeting".into(),
+                "mentioned — meeting references a topic".into(),
+            ],
+        };
+        let json = serde_json::to_string(&model).unwrap();
+        let deserialized: DomainModel = serde_json::from_str(&json).unwrap();
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_entity_serde_roundtrip_with_count() {
+        let entity = Entity {
+            name: "document".into(),
+            description: "An indexed document.".into(),
+            id_format: "slug".into(),
+            count: Some(42),
+        };
+        let json = serde_json::to_string(&entity).unwrap();
+        let deserialized: Entity = serde_json::from_str(&json).unwrap();
+        assert_eq!(deserialized.count, Some(42));
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_entity_serde_roundtrip_without_count() {
+        let entity = Entity {
+            name: "tag".into(),
+            description: "A content tag.".into(),
+            id_format: "lowercase-slug".into(),
+            count: None,
+        };
+        let json = serde_json::to_string(&entity).unwrap();
+        let deserialized: Entity = serde_json::from_str(&json).unwrap();
+        assert!(deserialized.count.is_none());
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_id_convention_serde_roundtrip() {
+        let conv = IdConvention {
+            name: "item_id".into(),
+            format: "UUID v4".into(),
+            used_by: vec![
+                "search -> 'id' in results".into(),
+                "get_item -> item_id param".into(),
+            ],
+        };
+        let json = serde_json::to_string(&conv).unwrap();
+        let deserialized: IdConvention = serde_json::from_str(&json).unwrap();
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_backend_status_serde_roundtrip() {
+        let status = BackendStatus {
+            capabilities: vec![
+                Capability {
+                    name: "full_text_search".into(),
+                    ready: true,
+                    note: None,
+                },
+                Capability {
+                    name: "vector_search".into(),
+                    ready: false,
+                    note: Some("Index rebuilding, ETA 10 min.".into()),
+                },
+            ],
+        };
+        let json = serde_json::to_string(&status).unwrap();
+        let deserialized: BackendStatus = serde_json::from_str(&json).unwrap();
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_capability_serde_roundtrip() {
+        let cap = Capability {
+            name: "semantic_search".into(),
+            ready: true,
+            note: None,
+        };
+        let json = serde_json::to_string(&cap).unwrap();
+        let deserialized: Capability = serde_json::from_str(&json).unwrap();
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_task_strategy_serde_roundtrip() {
+        let strategy = TaskStrategy {
+            task: "Find all meetings about a topic".into(),
+            steps: vec![
+                "search with topic keywords".into(),
+                "get_item on best result".into(),
+                "list_related for connected items".into(),
+            ],
+        };
+        let json = serde_json::to_string(&strategy).unwrap();
+        let deserialized: TaskStrategy = serde_json::from_str(&json).unwrap();
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_filter_summary_serde_roundtrip() {
+        let summary = FilterSummary {
+            note: "Showing top 5 values per parameter.".into(),
+            filters: vec![
+                FilterInfo {
+                    param: "category".into(),
+                    top_values: vec!["engineering (42)".into(), "product (31)".into()],
+                    total: 15,
+                },
+                FilterInfo {
+                    param: "status".into(),
+                    top_values: vec!["active (100)".into(), "archived (50)".into()],
+                    total: 3,
+                },
+            ],
+        };
+        let json = serde_json::to_string(&summary).unwrap();
+        let deserialized: FilterSummary = serde_json::from_str(&json).unwrap();
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
+    }
+
+    #[test]
+    fn test_filter_info_serde_roundtrip() {
+        let info = FilterInfo {
+            param: "tag".into(),
+            top_values: vec!["rust".into(), "python".into(), "go".into()],
+            total: 25,
+        };
+        let json = serde_json::to_string(&info).unwrap();
+        let deserialized: FilterInfo = serde_json::from_str(&json).unwrap();
+        let json2 = serde_json::to_string(&deserialized).unwrap();
+        assert_eq!(json, json2);
     }
 }

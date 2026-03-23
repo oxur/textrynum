@@ -76,7 +76,10 @@ pub use error::McpErrorExt;
 pub use guidance::ServerGuidance;
 
 // Re-exports — discoverable registry
-pub use discoverable::{DiscoverableRegistry, ExternalConnector, ToolMeta};
+pub use discoverable::{
+    BackendStatus, Capability, DiscoverableRegistry, DomainModel, Entity, ExternalConnector,
+    FilterInfo, FilterSummary, IdConvention, TaskStrategy, ToolMeta,
+};
 
 // Re-exports — resource registry
 pub use resource::{ResourceFuture, ResourceRegistry};
