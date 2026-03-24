@@ -25,7 +25,6 @@ ecl-secrets = { path = "../ecl-secrets", version = "0.4.2" }
 # SSH/SFTP
 russh = { workspace = true }
 russh-sftp = { workspace = true }
-russh-keys = { workspace = true }
 
 # Async
 tokio = { workspace = true }
