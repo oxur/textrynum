@@ -10,9 +10,9 @@ homepage.workspace = true
 description = "Zapier webhook push source adapter for ECL pipeline runner"
 
 [dependencies]
-ecl-pipeline-topo = { version = "0.4.1", path = "../ecl-pipeline-topo" }
-ecl-pipeline-spec = { version = "0.4.1", path = "../ecl-pipeline-spec" }
-ecl-pipeline-state = { version = "0.4.1", path = "../ecl-pipeline-state" }
+ecl-pipeline-topo = { version = "0.4.2", path = "../ecl-pipeline-topo" }
+ecl-pipeline-spec = { version = "0.4.2", path = "../ecl-pipeline-spec" }
+ecl-pipeline-state = { version = "0.4.2", path = "../ecl-pipeline-state" }
 axum = { workspace = true }
 tokio = { workspace = true }
 serde = { workspace = true }

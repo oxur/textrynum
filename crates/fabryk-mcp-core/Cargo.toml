@@ -10,7 +10,7 @@ homepage.workspace = true
 description = "Core MCP server infrastructure for Fabryk"
 
 [dependencies]
-fabryk-core = { version = "0.4.1", path = "../fabryk-core" }
+fabryk-core = { version = "0.4.2", path = "../fabryk-core" }
 
 # MCP SDK
 rmcp = { workspace = true }

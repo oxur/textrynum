@@ -10,9 +10,9 @@ homepage.workspace = true
 description = "Filesystem source adapter for ECL pipeline runner"
 
 [dependencies]
-ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.1" }
-ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.1" }
-ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.1" }
+ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.2" }
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.2" }
+ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.2" }
 tokio = { workspace = true }
 blake3 = { workspace = true }
 async-walkdir = { workspace = true }
