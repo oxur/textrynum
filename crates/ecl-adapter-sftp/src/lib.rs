@@ -16,7 +16,7 @@ use std::sync::Arc;
 use async_trait::async_trait;
 use chrono::Utc;
 use russh::client;
-use russh_keys::key;
+use russh::keys::{self, PrivateKeyWithHashAlg};
 use serde_json::json;
 use tracing::debug;
 
@@ -59,13 +59,12 @@ pub struct SftpAdapter {
 #[derive(Debug)]
 struct SshHandler;
 
-#[async_trait]
 impl client::Handler for SshHandler {
     type Error = russh::Error;
 
     async fn check_server_key(
         &mut self,
-        _server_public_key: &key::PublicKey,
+        _server_public_key: &keys::ssh_key::PublicKey,
     ) -> Result<bool, Self::Error> {
         // Accept all server keys for now.
         // TODO: Add known_hosts verification for production.
@@ -147,24 +146,25 @@ impl SftpAdapter {
         // Authenticate.
         match &self.auth_type {
             AuthType::PrivateKey => {
-                let key_pair = russh_keys::decode_secret_key(
-                    &String::from_utf8_lossy(&self.auth_material),
-                    None,
-                )
-                .map_err(|e| SourceError::AuthError {
-                    source_name: self.source_name.clone(),
-                    message: format!("failed to parse SSH private key: {e}"),
-                })?;
+                let key_pair =
+                    keys::decode_secret_key(&String::from_utf8_lossy(&self.auth_material), None)
+                        .map_err(|e| SourceError::AuthError {
+                            source_name: self.source_name.clone(),
+                            message: format!("failed to parse SSH private key: {e}"),
+                        })?;
 
                 let auth_result = session
-                    .authenticate_publickey(&self.username, Arc::new(key_pair))
+                    .authenticate_publickey(
+                        &self.username,
+                        PrivateKeyWithHashAlg::new(Arc::new(key_pair), None),
+                    )
                     .await
                     .map_err(|e| SourceError::AuthError {
                         source_name: self.source_name.clone(),
                         message: format!("SSH public key auth failed: {e}"),
                     })?;
 
-                if !auth_result {
+                if !auth_result.success() {
                     return Err(SourceError::AuthError {
                         source_name: self.source_name.clone(),
                         message: "SSH public key authentication rejected".to_string(),
@@ -181,7 +181,7 @@ impl SftpAdapter {
                         message: format!("SSH password auth failed: {e}"),
                     })?;
 
-                if !auth_result {
+                if !auth_result.success() {
                     return Err(SourceError::AuthError {
                         source_name: self.source_name.clone(),
                         message: "SSH password authentication rejected".to_string(),
