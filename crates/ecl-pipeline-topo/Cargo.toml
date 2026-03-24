@@ -10,8 +10,8 @@ homepage.workspace = true
 description = "Pipeline topology, resource graph, and core traits for ECL pipeline runner"
 
 [dependencies]
-ecl-pipeline-spec = { path = "../ecl-pipeline-spec" , version = "0.4.1" }
-ecl-pipeline-state = { path = "../ecl-pipeline-state" , version = "0.4.1" }
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec" , version = "0.4.2" }
+ecl-pipeline-state = { path = "../ecl-pipeline-state" , version = "0.4.2" }
 serde = { workspace = true }
 serde_json = { workspace = true }
 serde_bytes = { workspace = true }

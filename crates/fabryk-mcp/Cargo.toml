@@ -11,12 +11,12 @@ description = "Fabryk MCP — umbrella crate re-exporting all MCP components"
 exclude = ["assets/"]
 
 [dependencies]
-fabryk-mcp-core = { version = "0.4.1", path = "../fabryk-mcp-core" }
-fabryk-mcp-auth = { version = "0.4.1", path = "../fabryk-mcp-auth" }
-fabryk-mcp-content = { version = "0.4.1", path = "../fabryk-mcp-content" }
-fabryk-mcp-fts = { version = "0.4.1", path = "../fabryk-mcp-fts" }
-fabryk-mcp-graph = { version = "0.4.1", path = "../fabryk-mcp-graph" }
-fabryk-mcp-semantic = { version = "0.4.1", path = "../fabryk-mcp-semantic" }
+fabryk-mcp-core = { version = "0.4.2", path = "../fabryk-mcp-core" }
+fabryk-mcp-auth = { version = "0.4.2", path = "../fabryk-mcp-auth" }
+fabryk-mcp-content = { version = "0.4.2", path = "../fabryk-mcp-content" }
+fabryk-mcp-fts = { version = "0.4.2", path = "../fabryk-mcp-fts" }
+fabryk-mcp-graph = { version = "0.4.2", path = "../fabryk-mcp-graph" }
+fabryk-mcp-semantic = { version = "0.4.2", path = "../fabryk-mcp-semantic" }
 
 [features]
 default = []

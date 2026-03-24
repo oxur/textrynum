@@ -17,10 +17,10 @@ unwrap_used = "deny"
 unsafe_code = "deny"
 
 [dependencies]
-ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.1" }
-ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.1" }
-ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.1" }
-ecl-secrets = { path = "../ecl-secrets", version = "0.4.1" }
+ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.2" }
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.2" }
+ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.2" }
+ecl-secrets = { path = "../ecl-secrets", version = "0.4.2" }
 
 # SSH/SFTP
 russh = { workspace = true }

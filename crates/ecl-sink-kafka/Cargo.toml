@@ -10,9 +10,9 @@ homepage.workspace = true
 description = "Kafka sink stage for the ECL pipeline runner (Avro + Schema Registry)"
 
 [dependencies]
-ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.1" }
-ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.1" }
-ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.1" }
+ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.2" }
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.2" }
+ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.2" }
 
 # Kafka
 rdkafka = { workspace = true }

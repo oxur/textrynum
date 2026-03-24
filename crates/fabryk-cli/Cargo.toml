@@ -10,10 +10,10 @@ homepage.workspace = true
 description = "CLI framework for Fabryk-based applications"
 
 [dependencies]
-fabryk-core = { version = "0.4.1", path = "../fabryk-core" }
-fabryk-graph = { version = "0.4.1", path = "../fabryk-graph" }
-fabryk-content = { version = "0.4.1", path = "../fabryk-content" }
-fabryk-vector = { version = "0.4.1", path = "../fabryk-vector", optional = true, features = ["vector-fastembed"] }
+fabryk-core = { version = "0.4.2", path = "../fabryk-core" }
+fabryk-graph = { version = "0.4.2", path = "../fabryk-graph" }
+fabryk-content = { version = "0.4.2", path = "../fabryk-content" }
+fabryk-vector = { version = "0.4.2", path = "../fabryk-vector", optional = true, features = ["vector-fastembed"] }
 
 # CLI
 clap = { workspace = true }

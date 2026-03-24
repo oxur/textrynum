@@ -10,9 +10,9 @@ homepage.workspace = true
 description = "GCS sink stage for the ECL pipeline runner (error/rejected item output)"
 
 [dependencies]
-ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.1" }
-ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.1" }
-ecl-adapter-gcs = { path = "../ecl-adapter-gcs", version = "0.4.1" }
+ecl-pipeline-topo = { path = "../ecl-pipeline-topo", version = "0.4.2" }
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec", version = "0.4.2" }
+ecl-adapter-gcs = { path = "../ecl-adapter-gcs", version = "0.4.2" }
 
 # HTTP
 reqwest = { workspace = true }
@@ -35,7 +35,7 @@ tracing = { workspace = true }
 thiserror = { workspace = true }
 
 [dev-dependencies]
-ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.1" }
+ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.4.2" }
 tokio = { workspace = true, features = ["test-util"] }
 wiremock = "0.6"
 tempfile = { workspace = true }

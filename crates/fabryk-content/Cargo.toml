@@ -10,7 +10,7 @@ homepage.workspace = true
 description = "Markdown parsing, frontmatter extraction, and content utilities for Fabryk"
 
 [dependencies]
-fabryk-core = { version = "0.4.1", path = "../fabryk-core" }
+fabryk-core = { version = "0.4.2", path = "../fabryk-core" }
 
 # Markdown parsing
 pulldown-cmark = { workspace = true }

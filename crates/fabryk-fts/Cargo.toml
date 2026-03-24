@@ -14,7 +14,7 @@ default = []
 fts-tantivy = ["dep:tantivy", "dep:stop-words"]
 
 [dependencies]
-fabryk-core = { version = "0.4.1", path = "../fabryk-core" }
+fabryk-core = { version = "0.4.2", path = "../fabryk-core" }
 
 # Async
 tokio = { workspace = true }

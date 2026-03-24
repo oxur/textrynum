@@ -11,23 +11,23 @@ description = "Command-line interface for ECL workflow management"
 
 [dependencies]
 # Internal dependencies — legacy ECL
-ecl-core = { version = "0.4.1", path = "../ecl-core" }
-ecl-steps = { version = "0.4.1", path = "../ecl-steps" }
-ecl-workflows = { version = "0.4.1", path = "../ecl-workflows" }
+ecl-core = { version = "0.4.2", path = "../ecl-core" }
+ecl-steps = { version = "0.4.2", path = "../ecl-steps" }
+ecl-workflows = { version = "0.4.2", path = "../ecl-workflows" }
 
 # Internal dependencies — pipeline runner
-ecl-pipeline = { version = "0.4.1", path = "../ecl-pipeline" }
-ecl-pipeline-spec = { version = "0.4.1", path = "../ecl-pipeline-spec" }
-ecl-pipeline-state = { version = "0.4.1", path = "../ecl-pipeline-state" }
-ecl-pipeline-topo = { version = "0.4.1", path = "../ecl-pipeline-topo" }
-ecl-adapter-fs = { version = "0.4.1", path = "../ecl-adapter-fs" }
-ecl-adapter-gcs = { version = "0.4.1", path = "../ecl-adapter-gcs" }
-ecl-adapter-gdrive = { version = "0.4.1", path = "../ecl-adapter-gdrive" }
-ecl-adapter-slack = { version = "0.4.1", path = "../ecl-adapter-slack" }
-ecl-adapter-zapier = { version = "0.4.1", path = "../ecl-adapter-zapier" }
-ecl-stages = { version = "0.4.1", path = "../ecl-stages" }
-ecl-sink-kafka = { version = "0.4.1", path = "../ecl-sink-kafka" }
-ecl-sink-gcs = { version = "0.4.1", path = "../ecl-sink-gcs" }
+ecl-pipeline = { version = "0.4.2", path = "../ecl-pipeline" }
+ecl-pipeline-spec = { version = "0.4.2", path = "../ecl-pipeline-spec" }
+ecl-pipeline-state = { version = "0.4.2", path = "../ecl-pipeline-state" }
+ecl-pipeline-topo = { version = "0.4.2", path = "../ecl-pipeline-topo" }
+ecl-adapter-fs = { version = "0.4.2", path = "../ecl-adapter-fs" }
+ecl-adapter-gcs = { version = "0.4.2", path = "../ecl-adapter-gcs" }
+ecl-adapter-gdrive = { version = "0.4.2", path = "../ecl-adapter-gdrive" }
+ecl-adapter-slack = { version = "0.4.2", path = "../ecl-adapter-slack" }
+ecl-adapter-zapier = { version = "0.4.2", path = "../ecl-adapter-zapier" }
+ecl-stages = { version = "0.4.2", path = "../ecl-stages" }
+ecl-sink-kafka = { version = "0.4.2", path = "../ecl-sink-kafka" }
+ecl-sink-gcs = { version = "0.4.2", path = "../ecl-sink-gcs" }
 
 # Workspace dependencies
 tokio = { workspace = true }
