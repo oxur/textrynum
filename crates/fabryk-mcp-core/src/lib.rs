@@ -103,11 +103,17 @@ pub mod model {
 ///
 /// MCP requires `inputSchema` to have at least `{"type": "object"}`.
 /// An empty map `{}` is rejected by some clients (e.g. Claude Desktop).
+/// Including an explicit `"properties": {}` improves compatibility with
+/// clients that validate or filter tools based on schema completeness.
 pub fn empty_input_schema() -> serde_json::Map<String, serde_json::Value> {
     let mut m = serde_json::Map::new();
     m.insert(
         "type".to_string(),
         serde_json::Value::String("object".to_string()),
+    );
+    m.insert(
+        "properties".to_string(),
+        serde_json::Value::Object(serde_json::Map::new()),
     );
     m
 }
