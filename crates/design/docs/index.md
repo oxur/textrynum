@@ -6,6 +6,7 @@ This index is automatically generated. Do not edit manually.
 
 | Number | Title | State | Updated |
 |--------|-------|-------|----------|
+| 0021 | Building a trait-based event bus in Rust: ecosystem landscape and design patterns | Final | 2026-03-25 |
 | 0020 | Sygnum: Event-Driven Architecture for Keystone | Under Review | 2026-03-25 |
 | 0019 | Theorem provers for Rust-based MCP integration | Final | 2026-03-19 |
 | 0018 | ECL Pipeline Runner — Multi-Phase Project Plan | Active | 2026-03-13 |
@@ -49,6 +50,7 @@ This index is automatically generated. Do not edit manually.
 
 ### Final
 
+- [0021 - Building a trait-based event bus in Rust: ecosystem landscape and design patterns](06-final/0021-building-a-trait-based-event-bus-in-rust-ecosystem-landscape-and-design-patterns.md)
 - [0019 - Theorem provers for Rust-based MCP integration](06-final/0019-theorem-provers-for-rust-based-mcp-integration.md)
 - [0016 - Research - 2026 State of Rust Ecosystem for Workflow/Pipeline Frameworks](06-final/0016-research-2026-state-of-rust-ecosystem-for-workflowpipeline-frameworks.md)
 - [0015 - Restructure Fabryk Crate Hierarchy for Better Downstream UX](06-final/0015-restructure-fabryk-crate-hierarchy-for-better-downstream-ux.md)
