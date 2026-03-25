@@ -6,6 +6,7 @@ This index is automatically generated. Do not edit manually.
 
 | Number | Title | State | Updated |
 |--------|-------|-------|----------|
+| 0020 | Sygnum: Event-Driven Architecture for Keystone | Under Review | 2026-03-25 |
 | 0019 | Theorem provers for Rust-based MCP integration | Final | 2026-03-19 |
 | 0018 | ECL Pipeline Runner — Multi-Phase Project Plan | Active | 2026-03-13 |
 | 0017 | ECL Pipeline Runner: Unified Design Vision | Active | 2026-03-13 |
@@ -34,6 +35,7 @@ This index is automatically generated. Do not edit manually.
 
 ### Under Review
 
+- [0020 - Sygnum: Event-Driven Architecture for Keystone](02-under-review/0020-sygnum-event-driven-architecture-for-keystone.md)
 - [0008 - Fabryk-MCP Project Proposal](02-under-review/0008-fabryk-mcp-project-proposal.md)
 - [0007 - Fabryk File Management: Addendum](02-under-review/0007-fabryk-file-management-addendum.md)
 - [0006 - Fabryk Project Proposal](02-under-review/0006-fabryk-project-proposal.md)
