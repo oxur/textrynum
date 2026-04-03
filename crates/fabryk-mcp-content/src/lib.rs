@@ -29,7 +29,7 @@ pub mod tools;
 pub mod traits;
 
 // Re-exports — traits
-pub use traits::{CategoryInfo, ChapterInfo, ContentItemProvider, SourceProvider};
+pub use traits::{CategoryInfo, ChapterInfo, ContentItemProvider, FilterMap, SourceProvider};
 
 // Re-exports — tools
 pub use tools::{ContentTools, GetChapterArgs, GetItemArgs, ListItemsArgs, SourceTools};
