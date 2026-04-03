@@ -7,7 +7,7 @@ use crate::traits::{ContentItemProvider, SourceProvider};
 use fabryk_mcp_core::error::McpErrorExt;
 use fabryk_mcp_core::model::{CallToolResult, Content, ErrorData, Tool};
 use fabryk_mcp_core::registry::{ToolRegistry, ToolResult};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -78,6 +78,20 @@ pub struct ListChaptersArgs {
     pub source_id: String,
 }
 
+/// Arguments for check_availability tool.
+#[derive(Debug, Deserialize)]
+pub struct CheckAvailabilityArgs {
+    /// Source identifier.
+    pub source_id: String,
+}
+
+/// Arguments for get_path tool.
+#[derive(Debug, Deserialize)]
+pub struct GetPathArgs {
+    /// Source identifier.
+    pub source_id: String,
+}
+
 // ---------------------------------------------------------------------------
 // ContentTools<P>
 // ---------------------------------------------------------------------------
@@ -100,6 +114,7 @@ pub struct ContentTools<P: ContentItemProvider> {
     tool_prefix: String,
     custom_names: HashMap<String, String>,
     custom_descriptions: HashMap<String, String>,
+    extra_list_schema: Option<serde_json::Value>,
 }
 
 impl<P: ContentItemProvider + 'static> ContentTools<P> {
@@ -117,6 +132,7 @@ impl<P: ContentItemProvider + 'static> ContentTools<P> {
             tool_prefix: String::new(),
             custom_names: HashMap::new(),
             custom_descriptions: HashMap::new(),
+            extra_list_schema: None,
         }
     }
 
@@ -127,6 +143,7 @@ impl<P: ContentItemProvider + 'static> ContentTools<P> {
             tool_prefix: String::new(),
             custom_names: HashMap::new(),
             custom_descriptions: HashMap::new(),
+            extra_list_schema: None,
         }
     }
 
@@ -150,6 +167,19 @@ impl<P: ContentItemProvider + 'static> ContentTools<P> {
     /// Keys are slot constants, values are custom descriptions.
     pub fn with_descriptions(mut self, descriptions: HashMap<String, String>) -> Self {
         self.custom_descriptions = descriptions;
+        self
+    }
+
+    /// Provide extra JSON Schema properties to merge into the "list" tool schema.
+    ///
+    /// The value should be a JSON object whose keys are property names and
+    /// values are JSON Schema definitions (e.g., `{"tier": {"type": "string"}}`).
+    /// These are merged into the `properties` of the list tool's input schema
+    /// and are forwarded to
+    /// [`ContentItemProvider::list_items_filtered`](crate::traits::ContentItemProvider::list_items_filtered)
+    /// at call time.
+    pub fn with_extra_list_schema(mut self, schema: serde_json::Value) -> Self {
+        self.extra_list_schema = Some(schema);
         self
     }
 
@@ -177,23 +207,36 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
         let type_name = self.provider.content_type_name();
         let type_plural = self.provider.content_type_name_plural();
 
+        let mut list_schema = serde_json::json!({
+            "type": "object",
+            "properties": {
+                "category": {
+                    "type": "string",
+                    "description": "Filter by category"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number of results"
+                }
+            }
+        });
+
+        // Merge extra schema properties into the list tool's properties.
+        if let Some(extra) = &self.extra_list_schema
+            && let (Some(props), Some(extra_props)) =
+                (list_schema.pointer_mut("/properties"), extra.as_object())
+            && let Some(map) = props.as_object_mut()
+        {
+            for (key, value) in extra_props {
+                map.insert(key.clone(), value.clone());
+            }
+        }
+
         vec![
             make_tool(
                 &self.tool_name("list"),
                 &self.tool_description("list", &format!("List all {type_plural} with optional category filter")),
-                serde_json::json!({
-                    "type": "object",
-                    "properties": {
-                        "category": {
-                            "type": "string",
-                            "description": "Filter by category"
-                        },
-                        "limit": {
-                            "type": "integer",
-                            "description": "Maximum number of results"
-                        }
-                    }
-                }),
+                list_schema,
             ),
             make_tool(
                 &self.tool_name("get"),
@@ -231,10 +274,27 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
 
         if name == self.tool_name("list") {
             return Some(Box::pin(async move {
-                let args: ListItemsArgs = serde_json::from_value(args)
-                    .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
+                let mut obj = match args {
+                    Value::Object(map) => map,
+                    _ => serde_json::Map::new(),
+                };
+
+                let category = obj
+                    .remove("category")
+                    .and_then(|v| v.as_str().map(String::from));
+                let limit = obj
+                    .remove("limit")
+                    .and_then(|v| v.as_u64().map(|n| n as usize));
+
+                // Remaining fields become the extra filter map.
+                let extra_filters = obj;
+
                 let items = provider
-                    .list_items(args.category.as_deref(), args.limit)
+                    .list_items_filtered(
+                        category.as_deref(),
+                        limit,
+                        &extra_filters,
+                    )
                     .await
                     .map_err(|e| e.to_mcp_error())?;
                 serialize_response(&items)
@@ -268,15 +328,35 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
 }
 
 // ---------------------------------------------------------------------------
+// Source response types
+// ---------------------------------------------------------------------------
+
+/// Response for the check-availability tool.
+#[derive(Debug, Serialize)]
+struct AvailabilityResponse {
+    source_id: String,
+    available: bool,
+}
+
+/// Response for the get-path tool.
+#[derive(Debug, Serialize)]
+struct PathResponse {
+    source_id: String,
+    path: Option<String>,
+}
+
+// ---------------------------------------------------------------------------
 // SourceTools<P>
 // ---------------------------------------------------------------------------
 
 /// MCP tools backed by a `SourceProvider`.
 ///
-/// Generates three tools:
+/// Generates five tools:
 /// - `sources_list` — list all source materials
 /// - `sources_chapters` — list chapters in a source
 /// - `sources_get_chapter` — get content from a source chapter
+/// - `sources_check_availability` — check if a source is available
+/// - `sources_get_path` — get filesystem path to a source
 pub struct SourceTools<P: SourceProvider> {
     provider: Arc<P>,
     custom_names: HashMap<String, String>,
@@ -290,6 +370,10 @@ impl<P: SourceProvider + 'static> SourceTools<P> {
     pub const SLOT_CHAPTERS: &str = "sources_chapters";
     /// Slot key for the get chapter tool.
     pub const SLOT_GET_CHAPTER: &str = "sources_get_chapter";
+    /// Slot key for the check availability tool.
+    pub const SLOT_CHECK_AVAILABILITY: &str = "sources_check_availability";
+    /// Slot key for the get path tool.
+    pub const SLOT_GET_PATH: &str = "sources_get_path";
 
     /// Create new source tools with the given provider.
     pub fn new(provider: P) -> Self {
@@ -388,6 +472,34 @@ impl<P: SourceProvider + 'static> ToolRegistry for SourceTools<P> {
                     "required": ["source_id", "chapter"]
                 }),
             ),
+            make_tool(
+                &self.tool_name("sources_check_availability"),
+                &self.tool_description("sources_check_availability", "Check if a source is available"),
+                serde_json::json!({
+                    "type": "object",
+                    "properties": {
+                        "source_id": {
+                            "type": "string",
+                            "description": "Source identifier"
+                        }
+                    },
+                    "required": ["source_id"]
+                }),
+            ),
+            make_tool(
+                &self.tool_name("sources_get_path"),
+                &self.tool_description("sources_get_path", "Get filesystem path to a source"),
+                serde_json::json!({
+                    "type": "object",
+                    "properties": {
+                        "source_id": {
+                            "type": "string",
+                            "description": "Source identifier"
+                        }
+                    },
+                    "required": ["source_id"]
+                }),
+            ),
         ]
     }
 
@@ -428,6 +540,36 @@ impl<P: SourceProvider + 'static> ToolRegistry for SourceTools<P> {
             }));
         }
 
+        if name == self.tool_name(Self::SLOT_CHECK_AVAILABILITY) {
+            return Some(Box::pin(async move {
+                let args: CheckAvailabilityArgs = serde_json::from_value(args)
+                    .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
+                let available = provider
+                    .is_available(&args.source_id)
+                    .await
+                    .map_err(|e| e.to_mcp_error())?;
+                serialize_response(&AvailabilityResponse {
+                    source_id: args.source_id,
+                    available,
+                })
+            }));
+        }
+
+        if name == self.tool_name(Self::SLOT_GET_PATH) {
+            return Some(Box::pin(async move {
+                let args: GetPathArgs = serde_json::from_value(args)
+                    .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
+                let path = provider
+                    .get_source_path(&args.source_id)
+                    .await
+                    .map_err(|e| e.to_mcp_error())?;
+                serialize_response(&PathResponse {
+                    source_id: args.source_id,
+                    path: path.map(|p| p.display().to_string()),
+                })
+            }));
+        }
+
         None
     }
 }
@@ -443,6 +585,11 @@ mod tests {
     use async_trait::async_trait;
     use serde::Serialize;
     use std::path::PathBuf;
+
+    /// Serialize a `CallToolResult`'s content to a string for test assertions.
+    fn result_to_string(result: &CallToolResult) -> String {
+        serde_json::to_string(&result.content).unwrap()
+    }
 
     // -- Mock content types -------------------------------------------------
 
@@ -728,7 +875,7 @@ mod tests {
     #[test]
     fn test_source_tools_creation() {
         let tools = SourceTools::new(MockSourceProvider);
-        assert_eq!(tools.tool_count(), 3);
+        assert_eq!(tools.tool_count(), 5);
     }
 
     #[test]
@@ -738,6 +885,8 @@ mod tests {
         assert_eq!(tool_list[0].name, "sources_list");
         assert_eq!(tool_list[1].name, "sources_chapters");
         assert_eq!(tool_list[2].name, "sources_get_chapter");
+        assert_eq!(tool_list[3].name, "sources_check_availability");
+        assert_eq!(tool_list[4].name, "sources_get_path");
     }
 
     #[test]
@@ -746,6 +895,8 @@ mod tests {
         assert!(tools.has_tool("sources_list"));
         assert!(tools.has_tool("sources_chapters"));
         assert!(tools.has_tool("sources_get_chapter"));
+        assert!(tools.has_tool("sources_check_availability"));
+        assert!(tools.has_tool("sources_get_path"));
         assert!(!tools.has_tool("sources_delete"));
     }
 
@@ -794,6 +945,51 @@ mod tests {
             .unwrap();
         let result = future.await;
         assert!(result.is_err());
+    }
+
+    #[test]
+    fn test_source_tools_has_five_tools() {
+        let tools = SourceTools::new(MockSourceProvider);
+        assert_eq!(tools.tool_count(), 5);
+    }
+
+    #[tokio::test]
+    async fn test_source_tools_check_availability() {
+        let tools = SourceTools::new(MockSourceProvider);
+        let future = tools
+            .call(
+                "sources_check_availability",
+                serde_json::json!({"source_id": "book-1"}),
+            )
+            .unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
+        // MockSourceProvider returns None from get_source_path, so
+        // the default is_available returns false.
+        let text = result_to_string(&result);
+        assert!(text.contains("available"));
+    }
+
+    #[tokio::test]
+    async fn test_source_tools_get_path() {
+        let tools = SourceTools::new(MockSourceProvider);
+        let future = tools
+            .call(
+                "sources_get_path",
+                serde_json::json!({"source_id": "book-1"}),
+            )
+            .unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
+        // MockSourceProvider returns Ok(None) for get_source_path.
+        let text = result_to_string(&result);
+        assert!(text.contains("path"));
+    }
+
+    #[test]
+    fn test_source_tools_check_availability_has_tool() {
+        let tools = SourceTools::new(MockSourceProvider);
+        assert!(tools.has_tool("sources_check_availability"));
     }
 
     #[test]
@@ -877,6 +1073,28 @@ mod tests {
         assert_eq!(tool_list[2].name, "get_chapter_content");
     }
 
+    #[test]
+    fn test_source_tools_custom_names_for_new_slots() {
+        let tools = SourceTools::new(MockSourceProvider).with_names(HashMap::from([
+            (
+                "sources_check_availability".to_string(),
+                "check_source_availability".to_string(),
+            ),
+            (
+                "sources_get_path".to_string(),
+                "get_source_pdf_path".to_string(),
+            ),
+        ]));
+        let tool_list = tools.tools();
+        // Original slots keep defaults.
+        assert_eq!(tool_list[0].name, "sources_list");
+        assert_eq!(tool_list[1].name, "sources_chapters");
+        assert_eq!(tool_list[2].name, "sources_get_chapter");
+        // New slots use custom names.
+        assert_eq!(tool_list[3].name, "check_source_availability");
+        assert_eq!(tool_list[4].name, "get_source_pdf_path");
+    }
+
     #[tokio::test]
     async fn test_source_tools_custom_names_dispatch() {
         let tools = SourceTools::new(MockSourceProvider).with_names(HashMap::from([(
@@ -889,5 +1107,149 @@ mod tests {
         let future = tools.call("list_sources", serde_json::json!({})).unwrap();
         let result = future.await.unwrap();
         assert_eq!(result.is_error, Some(false));
+    }
+
+    // -- Extra list schema / filter tests --------------------------------------
+
+    #[test]
+    fn test_content_tools_with_extra_list_schema() {
+        let tools = ContentTools::new(MockContentProvider)
+            .with_prefix("concepts")
+            .with_extra_list_schema(serde_json::json!({
+                "tier": {"type": "string"}
+            }));
+        let tool_list = tools.tools();
+        let list_tool = &tool_list[0];
+        assert_eq!(list_tool.name, "concepts_list");
+
+        // The list tool schema should contain the extra "tier" property.
+        let schema_value = serde_json::to_value(&list_tool.input_schema).unwrap();
+        let properties = schema_value
+            .get("properties")
+            .expect("schema should have properties");
+        assert!(
+            properties.get("category").is_some(),
+            "should still have category"
+        );
+        assert!(
+            properties.get("limit").is_some(),
+            "should still have limit"
+        );
+        assert!(
+            properties.get("tier").is_some(),
+            "should have extra tier property"
+        );
+        let tier = properties.get("tier").unwrap();
+        assert_eq!(
+            tier.get("type").and_then(|v| v.as_str()),
+            Some("string"),
+            "tier should be a string type"
+        );
+    }
+
+    /// Mock provider that records extra filters passed to `list_items_filtered`.
+    struct FilterCapturingProvider {
+        captured: std::sync::Mutex<Option<crate::traits::FilterMap>>,
+    }
+
+    impl FilterCapturingProvider {
+        fn new() -> Self {
+            Self {
+                captured: std::sync::Mutex::new(None),
+            }
+        }
+    }
+
+    #[async_trait]
+    impl ContentItemProvider for FilterCapturingProvider {
+        type ItemSummary = MockItemSummary;
+        type ItemDetail = MockItemDetail;
+
+        async fn list_items(
+            &self,
+            category: Option<&str>,
+            limit: Option<usize>,
+        ) -> fabryk_core::Result<Vec<Self::ItemSummary>> {
+            // Delegate to the same mock data as MockContentProvider.
+            let mut items = vec![
+                MockItemSummary {
+                    id: "item-1".to_string(),
+                    title: "First Item".to_string(),
+                    category: Some("alpha".to_string()),
+                },
+                MockItemSummary {
+                    id: "item-2".to_string(),
+                    title: "Second Item".to_string(),
+                    category: Some("beta".to_string()),
+                },
+            ];
+            if let Some(cat) = category {
+                items.retain(|i| i.category.as_deref() == Some(cat));
+            }
+            if let Some(max) = limit {
+                items.truncate(max);
+            }
+            Ok(items)
+        }
+
+        async fn get_item(&self, id: &str) -> fabryk_core::Result<Self::ItemDetail> {
+            Ok(MockItemDetail {
+                id: id.to_string(),
+                title: "Detail".to_string(),
+                content: "Content".to_string(),
+            })
+        }
+
+        async fn list_categories(&self) -> fabryk_core::Result<Vec<CategoryInfo>> {
+            Ok(vec![])
+        }
+
+        async fn list_items_filtered(
+            &self,
+            category: Option<&str>,
+            limit: Option<usize>,
+            extra_filters: &crate::traits::FilterMap,
+        ) -> fabryk_core::Result<Vec<Self::ItemSummary>> {
+            // Capture the extra filters for test assertions.
+            *self.captured.lock().unwrap() = Some(extra_filters.clone());
+            self.list_items(category, limit).await
+        }
+    }
+
+    #[tokio::test]
+    async fn test_content_tools_list_passes_extra_filters() {
+        let provider = Arc::new(FilterCapturingProvider::new());
+        let tools = ContentTools::with_shared(Arc::clone(&provider))
+            .with_prefix("concepts")
+            .with_extra_list_schema(serde_json::json!({
+                "tier": {"type": "string"}
+            }));
+
+        let future = tools
+            .call(
+                "concepts_list",
+                serde_json::json!({"category": "alpha", "tier": "advanced"}),
+            )
+            .unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
+
+        // Verify the provider received the extra filter.
+        let captured = provider.captured.lock().unwrap();
+        let filters = captured.as_ref().expect("filters should have been captured");
+        assert_eq!(
+            filters.get("tier").and_then(|v| v.as_str()),
+            Some("advanced"),
+            "tier filter should be passed through"
+        );
+        // category and limit should NOT appear in extra filters.
+        assert!(
+            filters.get("category").is_none(),
+            "category should be extracted, not in extra filters"
+        );
+        assert!(
+            filters.get("limit").is_none(),
+            "limit should be extracted, not in extra filters"
+        );
     }
 }

@@ -8,6 +8,13 @@ use fabryk_core::Result;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
+/// A map of extra domain-specific filter key-value pairs.
+///
+/// Used by [`ContentItemProvider::list_items_filtered`] to pass
+/// arbitrary filters (tier, subcategory, confidence, etc.) without
+/// making the trait domain-specific.
+pub type FilterMap = serde_json::Map<String, serde_json::Value>;
+
 /// Information about a content category.
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct CategoryInfo {
@@ -102,6 +109,20 @@ pub trait ContentItemProvider: Send + Sync {
     /// Returns the plural content type name (e.g., "concepts").
     fn content_type_name_plural(&self) -> &str {
         "items"
+    }
+
+    /// List items with extended domain-specific filters.
+    ///
+    /// The default implementation ignores extra filters and delegates to
+    /// [`list_items`](Self::list_items). Domain implementations override
+    /// this to apply filters like tier, subcategory, confidence, etc.
+    async fn list_items_filtered(
+        &self,
+        category: Option<&str>,
+        limit: Option<usize>,
+        _extra_filters: &FilterMap,
+    ) -> Result<Vec<Self::ItemSummary>> {
+        self.list_items(category, limit).await
     }
 }
 
