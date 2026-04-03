@@ -61,6 +61,11 @@ pub struct SearchParams {
     /// Snippet length in characters.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub snippet_length: Option<usize>,
+
+    /// Domain-specific extra filters passed through from MCP tool arguments.
+    /// Search backends can use these for post-filtering or query refinement.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub extra_filters: Option<serde_json::Value>,
 }
 
 /// A single search result.
@@ -346,5 +351,48 @@ mod tests {
 
         let backend = create_search_backend(&config).await.unwrap();
         assert_eq!(backend.name(), "simple");
+    }
+
+    #[test]
+    fn test_search_params_extra_filters_default_none() {
+        let params = SearchParams::default();
+        assert!(params.extra_filters.is_none());
+    }
+
+    #[test]
+    fn test_search_params_with_extra_filters() {
+        let params = SearchParams {
+            query: "chord voicings".to_string(),
+            extra_filters: Some(serde_json::json!({"tier": "advanced", "min_confidence": 0.8})),
+            ..Default::default()
+        };
+        assert!(params.extra_filters.is_some());
+        let filters = params.extra_filters.unwrap();
+        assert_eq!(filters["tier"], "advanced");
+        assert_eq!(filters["min_confidence"], 0.8);
+    }
+
+    #[test]
+    fn test_search_params_extra_filters_serialization() {
+        let params = SearchParams {
+            query: "test".to_string(),
+            extra_filters: Some(serde_json::json!({"tier": "basic"})),
+            ..Default::default()
+        };
+        let json = serde_json::to_string(&params).unwrap();
+        assert!(json.contains("extra_filters"));
+        assert!(json.contains("basic"));
+
+        // Round-trip
+        let deserialized: SearchParams = serde_json::from_str(&json).unwrap();
+        assert_eq!(deserialized.extra_filters.unwrap()["tier"], "basic");
+    }
+
+    #[test]
+    fn test_search_params_extra_filters_absent_in_json() {
+        // Deserializing JSON without extra_filters should yield None.
+        let json = r#"{"query": "test"}"#;
+        let params: SearchParams = serde_json::from_str(json).unwrap();
+        assert!(params.extra_filters.is_none());
     }
 }

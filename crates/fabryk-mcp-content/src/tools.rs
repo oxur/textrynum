@@ -3,7 +3,7 @@
 //! Provides `ContentTools<P>` and `SourceTools<P>` that implement
 //! `ToolRegistry` by delegating to domain-specific providers.
 
-use crate::traits::{ContentItemProvider, SourceProvider};
+use crate::traits::{ContentItemProvider, GuideProvider, SourceProvider};
 use fabryk_mcp_core::error::McpErrorExt;
 use fabryk_mcp_core::model::{CallToolResult, Content, ErrorData, Tool};
 use fabryk_mcp_core::registry::{ToolRegistry, ToolResult};
@@ -90,6 +90,13 @@ pub struct CheckAvailabilityArgs {
 pub struct GetPathArgs {
     /// Source identifier.
     pub source_id: String,
+}
+
+/// Arguments for get_guide tool.
+#[derive(Debug, Deserialize)]
+pub struct GetGuideArgs {
+    /// Guide identifier.
+    pub id: String,
 }
 
 // ---------------------------------------------------------------------------
@@ -567,6 +574,147 @@ impl<P: SourceProvider + 'static> ToolRegistry for SourceTools<P> {
                     source_id: args.source_id,
                     path: path.map(|p| p.display().to_string()),
                 })
+            }));
+        }
+
+        None
+    }
+}
+
+// ---------------------------------------------------------------------------
+// GuideTools<P>
+// ---------------------------------------------------------------------------
+
+/// MCP tools backed by a `GuideProvider`.
+///
+/// Generates two tools:
+/// - `list_guides` — list all available guides
+/// - `get_guide` — get a guide's full markdown content by ID
+pub struct GuideTools<P: GuideProvider> {
+    provider: Arc<P>,
+    custom_names: HashMap<String, String>,
+    custom_descriptions: HashMap<String, String>,
+}
+
+impl<P: GuideProvider + 'static> GuideTools<P> {
+    /// Slot key for the list guides tool.
+    pub const SLOT_LIST: &str = "list_guides";
+    /// Slot key for the get guide tool.
+    pub const SLOT_GET: &str = "get_guide";
+
+    /// Create new guide tools with the given provider.
+    pub fn new(provider: P) -> Self {
+        Self {
+            provider: Arc::new(provider),
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
+        }
+    }
+
+    /// Create guide tools with a shared provider reference.
+    pub fn with_shared(provider: Arc<P>) -> Self {
+        Self {
+            provider,
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
+        }
+    }
+
+    /// Override individual tool names.
+    ///
+    /// Keys are slot constants (`SLOT_LIST`, etc.), values are custom
+    /// MCP-visible names. Unspecified slots keep their default names.
+    pub fn with_names(mut self, names: HashMap<String, String>) -> Self {
+        self.custom_names = names;
+        self
+    }
+
+    /// Override individual tool descriptions.
+    ///
+    /// Keys are slot constants, values are custom descriptions.
+    pub fn with_descriptions(mut self, descriptions: HashMap<String, String>) -> Self {
+        self.custom_descriptions = descriptions;
+        self
+    }
+
+    fn tool_name(&self, slot: &str) -> String {
+        self.custom_names
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| slot.to_string())
+    }
+
+    fn tool_description(&self, slot: &str, default: &str) -> String {
+        self.custom_descriptions
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| default.to_string())
+    }
+}
+
+impl<P: GuideProvider + 'static> ToolRegistry for GuideTools<P> {
+    fn tools(&self) -> Vec<Tool> {
+        let type_name = self.provider.guide_type_name();
+        let type_plural = self.provider.guide_type_name_plural();
+
+        vec![
+            make_tool(
+                &self.tool_name(Self::SLOT_LIST),
+                &self.tool_description(
+                    Self::SLOT_LIST,
+                    &format!("List all available {type_plural}"),
+                ),
+                serde_json::json!({
+                    "type": "object",
+                    "properties": {}
+                }),
+            ),
+            make_tool(
+                &self.tool_name(Self::SLOT_GET),
+                &self.tool_description(
+                    Self::SLOT_GET,
+                    &format!(
+                        "Get a {type_name}'s full content by its identifier (the id field from {type_plural} list results)"
+                    ),
+                ),
+                serde_json::json!({
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "description": format!(
+                                "{type_name} identifier (use the id values returned by the list {type_plural} tool)",
+                            )
+                        }
+                    },
+                    "required": ["id"]
+                }),
+            ),
+        ]
+    }
+
+    fn call(&self, name: &str, args: Value) -> Option<ToolResult> {
+        let provider = Arc::clone(&self.provider);
+
+        if name == self.tool_name(Self::SLOT_LIST) {
+            return Some(Box::pin(async move {
+                let guides = provider
+                    .list_guides()
+                    .await
+                    .map_err(|e| e.to_mcp_error())?;
+                serialize_response(&guides)
+            }));
+        }
+
+        if name == self.tool_name(Self::SLOT_GET) {
+            return Some(Box::pin(async move {
+                let args: GetGuideArgs = serde_json::from_value(args)
+                    .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
+                let content = provider
+                    .get_guide(&args.id)
+                    .await
+                    .map_err(|e| e.to_mcp_error())?;
+                Ok(CallToolResult::success(vec![Content::text(content)]))
             }));
         }
 
@@ -1251,5 +1399,132 @@ mod tests {
             filters.get("limit").is_none(),
             "limit should be extracted, not in extra filters"
         );
+    }
+
+    // -- Mock guide types -----------------------------------------------------
+
+    #[derive(Clone, Debug, Serialize)]
+    struct MockGuideSummary {
+        id: String,
+        title: String,
+    }
+
+    // -- Mock guide provider --------------------------------------------------
+
+    struct MockGuideProvider;
+
+    #[async_trait]
+    impl GuideProvider for MockGuideProvider {
+        type GuideSummary = MockGuideSummary;
+
+        async fn list_guides(&self) -> fabryk_core::Result<Vec<Self::GuideSummary>> {
+            Ok(vec![MockGuideSummary {
+                id: "intro".to_string(),
+                title: "Introduction".to_string(),
+            }])
+        }
+
+        async fn get_guide(&self, id: &str) -> fabryk_core::Result<String> {
+            if id == "intro" {
+                Ok("# Introduction\nWelcome to the guide.".to_string())
+            } else {
+                Err(fabryk_core::Error::not_found("guide", id))
+            }
+        }
+    }
+
+    // -- GuideTools tests -----------------------------------------------------
+
+    #[test]
+    fn test_guide_tools_creation() {
+        let tools = GuideTools::new(MockGuideProvider);
+        assert_eq!(tools.tool_count(), 2);
+    }
+
+    #[test]
+    fn test_guide_tools_tool_names() {
+        let tools = GuideTools::new(MockGuideProvider);
+        let tool_list = tools.tools();
+        assert_eq!(tool_list[0].name, "list_guides");
+        assert_eq!(tool_list[1].name, "get_guide");
+    }
+
+    #[test]
+    fn test_guide_tools_has_tool() {
+        let tools = GuideTools::new(MockGuideProvider);
+        assert!(tools.has_tool("list_guides"));
+        assert!(tools.has_tool("get_guide"));
+        assert!(!tools.has_tool("delete_guide"));
+    }
+
+    #[tokio::test]
+    async fn test_guide_tools_list() {
+        let tools = GuideTools::new(MockGuideProvider);
+        let future = tools.call("list_guides", serde_json::json!({})).unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
+        assert!(!result.content.is_empty());
+        let text = result_to_string(&result);
+        assert!(text.contains("intro"));
+        assert!(text.contains("Introduction"));
+    }
+
+    #[tokio::test]
+    async fn test_guide_tools_get() {
+        let tools = GuideTools::new(MockGuideProvider);
+        let future = tools
+            .call("get_guide", serde_json::json!({"id": "intro"}))
+            .unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
+        let text = result_to_string(&result);
+        assert!(text.contains("Welcome to the guide"));
+    }
+
+    #[tokio::test]
+    async fn test_guide_tools_get_not_found() {
+        let tools = GuideTools::new(MockGuideProvider);
+        let future = tools
+            .call("get_guide", serde_json::json!({"id": "missing"}))
+            .unwrap();
+        let result = future.await;
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn test_guide_tools_unknown_tool() {
+        let tools = GuideTools::new(MockGuideProvider);
+        assert!(
+            tools
+                .call("delete_guide", serde_json::json!({}))
+                .is_none()
+        );
+    }
+
+    #[test]
+    fn test_guide_tools_custom_names() {
+        let tools = GuideTools::new(MockGuideProvider).with_names(HashMap::from([
+            ("list_guides".to_string(), "guides_list".to_string()),
+            ("get_guide".to_string(), "guides_get".to_string()),
+        ]));
+        let tool_list = tools.tools();
+        assert_eq!(tool_list[0].name, "guides_list");
+        assert_eq!(tool_list[1].name, "guides_get");
+    }
+
+    #[tokio::test]
+    async fn test_guide_tools_custom_names_dispatch() {
+        let tools = GuideTools::new(MockGuideProvider).with_names(HashMap::from([(
+            "list_guides".to_string(),
+            "my_list_guides".to_string(),
+        )]));
+        // Old name should NOT work
+        assert!(tools.call("list_guides", serde_json::json!({})).is_none());
+        // Custom name should work
+        let future = tools
+            .call("my_list_guides", serde_json::json!({}))
+            .unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
     }
 }
