@@ -9,12 +9,13 @@
 //!
 //! All algorithms are generic and operate on `GraphData`.
 
-use crate::{Edge, GraphData, Node, Relationship};
+use crate::{Edge, GraphData, Node, NodeSummary, Relationship};
 use fabryk_core::Result;
 use petgraph::Direction;
 use petgraph::algo::toposort;
 use petgraph::graph::NodeIndex;
 use petgraph::visit::EdgeRef;
+use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet, VecDeque};
 
 /// Maximum allowed BFS depth to prevent runaway traversals.
@@ -84,6 +85,32 @@ pub struct CentralityScore {
     pub in_degree: f32,
     /// Out-degree centrality (how many nodes this points to).
     pub out_degree: f32,
+}
+
+/// A single step in a learning path.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct LearningStep {
+    /// 1-based step number.
+    pub step: usize,
+    /// Node ID.
+    pub node_id: String,
+    /// Node title.
+    pub title: String,
+    /// Optional category.
+    pub category: Option<String>,
+}
+
+/// Result of a learning path query.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct LearningPathResult {
+    /// The target node.
+    pub target: NodeSummary,
+    /// Ordered learning steps (prerequisites first, target last).
+    pub steps: Vec<LearningStep>,
+    /// Total number of steps.
+    pub total_steps: usize,
+    /// Whether cycles were detected in the prerequisite graph.
+    pub has_cycles: bool,
 }
 
 // ============================================================================
@@ -385,6 +412,51 @@ pub fn find_bridges(graph: &GraphData, limit: usize) -> Vec<Node> {
         .collect()
 }
 
+/// Find all nodes that depend on the given node (reverse prerequisite traversal).
+///
+/// Follows incoming `Prerequisite` edges up to `max_depth` hops via BFS.
+/// Returns nodes in BFS order (closest dependents first), excluding the
+/// start node itself.
+///
+/// This is the reverse of `prerequisites_sorted`: while prerequisites answers
+/// "what must I learn before X?", dependents answers "what depends on X?".
+pub fn dependents(graph: &GraphData, id: &str, max_depth: usize) -> Result<Vec<Node>> {
+    // Validate node exists before traversal.
+    let start_idx = graph
+        .get_index(id)
+        .ok_or_else(|| fabryk_core::Error::not_found("node", id))?;
+
+    let max_depth = max_depth.min(MAX_BFS_DEPTH);
+
+    let mut visited: HashSet<NodeIndex> = HashSet::new();
+    let mut queue: VecDeque<(NodeIndex, usize)> = VecDeque::new();
+    let mut result_nodes: Vec<Node> = Vec::new();
+
+    visited.insert(start_idx);
+    queue.push_back((start_idx, 0));
+
+    while let Some((current_idx, current_dist)) = queue.pop_front() {
+        if current_dist >= max_depth {
+            continue;
+        }
+
+        // Follow INCOMING Prerequisite edges: if edge is A -> current (Prerequisite),
+        // then A depends on current (A requires current as a prerequisite).
+        for edge_ref in graph.graph.edges_directed(current_idx, Direction::Incoming) {
+            if edge_ref.weight().relationship == Relationship::Prerequisite {
+                let source_idx = edge_ref.source();
+                if visited.insert(source_idx) {
+                    let node = graph.graph[source_idx].clone();
+                    result_nodes.push(node);
+                    queue.push_back((source_idx, current_dist + 1));
+                }
+            }
+        }
+    }
+
+    Ok(result_nodes)
+}
+
 /// Get nodes related to a given node by specific relationship types.
 pub fn get_related(
     graph: &GraphData,
@@ -412,6 +484,160 @@ pub fn get_related(
             };
             let neighbor = graph.graph[neighbor_idx].clone();
             results.push((neighbor, edge.relationship.clone()));
+        }
+    }
+
+    Ok(results)
+}
+
+/// Find all source nodes that introduce or cover a given concept.
+///
+/// Looks for incoming edges of type `Introduces` or `Covers` targeting
+/// `concept_id` and returns the source (from) nodes.
+pub fn concept_sources(graph: &GraphData, concept_id: &str) -> Result<Vec<Node>> {
+    // Validate that the concept node exists.
+    let _idx = graph
+        .get_index(concept_id)
+        .ok_or_else(|| fabryk_core::Error::not_found("node", concept_id))?;
+
+    let mut results = Vec::new();
+    for edge in graph.iter_edges() {
+        if edge.to == concept_id
+            && matches!(edge.relationship, Relationship::Introduces | Relationship::Covers)
+            && let Some(node) = graph.get_node(&edge.from)
+        {
+            results.push(node.clone());
+        }
+    }
+    Ok(results)
+}
+
+/// Find all source-specific variants of a canonical concept.
+///
+/// Looks for nodes connected to `canonical_id` via incoming `VariantOf`
+/// edges and returns the variant (from) nodes.
+pub fn concept_variants(graph: &GraphData, canonical_id: &str) -> Result<Vec<Node>> {
+    // Validate that the canonical node exists.
+    let _idx = graph
+        .get_index(canonical_id)
+        .ok_or_else(|| fabryk_core::Error::not_found("node", canonical_id))?;
+
+    let mut results = Vec::new();
+    for edge in graph.iter_edges() {
+        if edge.to == canonical_id
+            && edge.relationship == Relationship::VariantOf
+            && let Some(node) = graph.get_node(&edge.from)
+        {
+            results.push(node.clone());
+        }
+    }
+    Ok(results)
+}
+
+/// Find all concepts that a given source introduces or covers.
+///
+/// Looks for outgoing edges of type `Introduces` or `Covers` from
+/// `source_id` and returns the target (to) nodes.
+pub fn source_coverage(graph: &GraphData, source_id: &str) -> Result<Vec<Node>> {
+    // Validate that the source node exists.
+    let _idx = graph
+        .get_index(source_id)
+        .ok_or_else(|| fabryk_core::Error::not_found("node", source_id))?;
+
+    let mut results = Vec::new();
+    for edge in graph.iter_edges() {
+        if edge.from == source_id
+            && matches!(edge.relationship, Relationship::Introduces | Relationship::Covers)
+            && let Some(node) = graph.get_node(&edge.to)
+        {
+            results.push(node.clone());
+        }
+    }
+    Ok(results)
+}
+
+/// Produce a step-numbered learning path to reach a target concept.
+///
+/// Wraps `prerequisites_sorted` with step numbering and summary formatting.
+/// The target node itself is included as the final step.
+pub fn learning_path(graph: &GraphData, target_id: &str) -> Result<LearningPathResult> {
+    let result = prerequisites_sorted(graph, target_id)?;
+
+    let target_summary = NodeSummary::from(&result.target);
+
+    let mut steps: Vec<LearningStep> = result
+        .ordered
+        .iter()
+        .enumerate()
+        .map(|(i, node)| LearningStep {
+            step: i + 1,
+            node_id: node.id.clone(),
+            title: node.title.clone(),
+            category: node.category.clone(),
+        })
+        .collect();
+
+    // Add the target itself as the final step.
+    steps.push(LearningStep {
+        step: steps.len() + 1,
+        node_id: result.target.id.clone(),
+        title: result.target.title.clone(),
+        category: result.target.category.clone(),
+    });
+
+    let total_steps = steps.len();
+
+    Ok(LearningPathResult {
+        target: target_summary,
+        steps,
+        total_steps,
+        has_cycles: result.has_cycles,
+    })
+}
+
+/// Find nodes that bridge two categories (have neighbors in both).
+///
+/// A bridge node has at least one neighbor (via any edge direction) in
+/// `category_a` and at least one neighbor in `category_b`. The bridge
+/// node itself may belong to any category (or none).
+pub fn bridge_between_categories(
+    graph: &GraphData,
+    category_a: &str,
+    category_b: &str,
+    limit: usize,
+) -> Result<Vec<Node>> {
+    let mut results = Vec::new();
+
+    for node in graph.iter_nodes() {
+        let idx = match graph.get_index(&node.id) {
+            Some(idx) => idx,
+            None => continue,
+        };
+
+        let mut has_cat_a = false;
+        let mut has_cat_b = false;
+
+        // Check all neighbors in both directions.
+        for neighbor_idx in graph.graph.neighbors_undirected(idx) {
+            let neighbor = &graph.graph[neighbor_idx];
+            if let Some(ref cat) = neighbor.category {
+                if cat == category_a {
+                    has_cat_a = true;
+                }
+                if cat == category_b {
+                    has_cat_b = true;
+                }
+                if has_cat_a && has_cat_b {
+                    break;
+                }
+            }
+        }
+
+        if has_cat_a && has_cat_b {
+            results.push(node.clone());
+            if results.len() >= limit {
+                break;
+            }
         }
     }
 
@@ -743,6 +969,82 @@ mod tests {
     }
 
     // ------------------------------------------------------------------------
+    // Dependents tests
+    // ------------------------------------------------------------------------
+
+    fn create_chain_graph() -> GraphData {
+        // Chain: A -> B -> C (all Prerequisite edges)
+        // Edge semantics: from is prerequisite of to.
+        // So A is prereq of B, B is prereq of C.
+        let mut graph = GraphData::new();
+        graph.add_node(Node::new("a", "Node A"));
+        graph.add_node(Node::new("b", "Node B"));
+        graph.add_node(Node::new("c", "Node C"));
+
+        graph
+            .add_edge(Edge::new("a", "b", Relationship::Prerequisite))
+            .unwrap();
+        graph
+            .add_edge(Edge::new("b", "c", Relationship::Prerequisite))
+            .unwrap();
+
+        graph
+    }
+
+    #[test]
+    fn test_dependents_chain_full_depth() {
+        let graph = create_chain_graph();
+        // dependents of C: follows incoming prereq edges from C.
+        // B->C found, then A->B found. Result: [B, A] in BFS order.
+        let result = dependents(&graph, "c", 3).unwrap();
+        assert_eq!(result.len(), 2);
+        assert_eq!(result[0].id, "b");
+        assert_eq!(result[1].id, "a");
+    }
+
+    #[test]
+    fn test_dependents_chain_depth_1() {
+        let graph = create_chain_graph();
+        // With depth=1, only immediate incoming prereqs: [B]
+        let result = dependents(&graph, "c", 1).unwrap();
+        assert_eq!(result.len(), 1);
+        assert_eq!(result[0].id, "b");
+    }
+
+    #[test]
+    fn test_dependents_leaf_node() {
+        let graph = create_chain_graph();
+        // A has no incoming prereq edges, so dependents = []
+        let result = dependents(&graph, "a", 3).unwrap();
+        assert!(result.is_empty());
+    }
+
+    #[test]
+    fn test_dependents_max_depth_respected() {
+        let graph = create_chain_graph();
+        // depth=0 means no traversal at all
+        let result = dependents(&graph, "c", 0).unwrap();
+        assert!(result.is_empty());
+    }
+
+    #[test]
+    fn test_dependents_node_not_found() {
+        let graph = create_chain_graph();
+        let result = dependents(&graph, "nonexistent", 3);
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn test_dependents_only_follows_prerequisite_edges() {
+        // Use the test graph which has mixed relationship types
+        let graph = create_test_graph();
+        // Node D has incoming edges: A->D (RelatesTo), B->D (LeadsTo)
+        // Neither is Prerequisite, so dependents should be empty
+        let result = dependents(&graph, "d", 3).unwrap();
+        assert!(result.is_empty());
+    }
+
+    // ------------------------------------------------------------------------
     // Typed convenience method tests
     // ------------------------------------------------------------------------
 
@@ -770,5 +1072,308 @@ mod tests {
         let related = graph.related_by("a", &Relationship::RelatesTo).unwrap();
         assert_eq!(related.len(), 1);
         assert_eq!(related[0].id, "d");
+    }
+
+    // ------------------------------------------------------------------------
+    // Source-concept relationship helpers
+    // ------------------------------------------------------------------------
+
+    fn create_source_concept_graph() -> GraphData {
+        let mut graph = GraphData::new();
+
+        // Source nodes
+        graph.add_node(
+            Node::new("book-alpha", "Book Alpha")
+                .with_node_type(NodeType::Custom("source".to_string())),
+        );
+        graph.add_node(
+            Node::new("book-beta", "Book Beta")
+                .with_node_type(NodeType::Custom("source".to_string())),
+        );
+
+        // Canonical concept nodes
+        graph.add_node(Node::new("concept-x", "Concept X").with_category("math"));
+        graph.add_node(Node::new("concept-y", "Concept Y").with_category("math"));
+
+        // Variant nodes
+        graph.add_node(
+            Node::new("concept-x-alpha", "Concept X (Alpha)")
+                .as_variant_of("concept-x")
+                .with_node_type(NodeType::Custom("source".to_string())),
+        );
+        graph.add_node(
+            Node::new("concept-x-beta", "Concept X (Beta)")
+                .as_variant_of("concept-x")
+                .with_node_type(NodeType::Custom("source".to_string())),
+        );
+
+        // Edges: book-alpha introduces concept-x, covers concept-y
+        graph
+            .add_edge(Edge::new(
+                "book-alpha",
+                "concept-x",
+                Relationship::Introduces,
+            ))
+            .unwrap();
+        graph
+            .add_edge(Edge::new(
+                "book-alpha",
+                "concept-y",
+                Relationship::Covers,
+            ))
+            .unwrap();
+
+        // Edges: book-beta covers concept-x
+        graph
+            .add_edge(Edge::new(
+                "book-beta",
+                "concept-x",
+                Relationship::Covers,
+            ))
+            .unwrap();
+
+        // Variant edges
+        graph
+            .add_edge(Edge::new(
+                "concept-x-alpha",
+                "concept-x",
+                Relationship::VariantOf,
+            ))
+            .unwrap();
+        graph
+            .add_edge(Edge::new(
+                "concept-x-beta",
+                "concept-x",
+                Relationship::VariantOf,
+            ))
+            .unwrap();
+
+        graph
+    }
+
+    // -- concept_sources tests ------------------------------------------------
+
+    #[test]
+    fn test_concept_sources_multiple() {
+        let graph = create_source_concept_graph();
+        let sources = concept_sources(&graph, "concept-x").unwrap();
+        // book-alpha (Introduces) and book-beta (Covers)
+        assert_eq!(sources.len(), 2);
+        let ids: Vec<&str> = sources.iter().map(|n| n.id.as_str()).collect();
+        assert!(ids.contains(&"book-alpha"));
+        assert!(ids.contains(&"book-beta"));
+    }
+
+    #[test]
+    fn test_concept_sources_single() {
+        let graph = create_source_concept_graph();
+        let sources = concept_sources(&graph, "concept-y").unwrap();
+        // Only book-alpha covers concept-y
+        assert_eq!(sources.len(), 1);
+        assert_eq!(sources[0].id, "book-alpha");
+    }
+
+    #[test]
+    fn test_concept_sources_none() {
+        let graph = create_source_concept_graph();
+        // concept-x-alpha has no incoming Introduces/Covers edges
+        let sources = concept_sources(&graph, "concept-x-alpha").unwrap();
+        assert!(sources.is_empty());
+    }
+
+    #[test]
+    fn test_concept_sources_not_found() {
+        let graph = create_source_concept_graph();
+        let result = concept_sources(&graph, "nonexistent");
+        assert!(result.is_err());
+    }
+
+    // -- concept_variants tests -----------------------------------------------
+
+    #[test]
+    fn test_concept_variants_multiple() {
+        let graph = create_source_concept_graph();
+        let variants = concept_variants(&graph, "concept-x").unwrap();
+        assert_eq!(variants.len(), 2);
+        let ids: Vec<&str> = variants.iter().map(|n| n.id.as_str()).collect();
+        assert!(ids.contains(&"concept-x-alpha"));
+        assert!(ids.contains(&"concept-x-beta"));
+    }
+
+    #[test]
+    fn test_concept_variants_none() {
+        let graph = create_source_concept_graph();
+        // concept-y has no VariantOf edges
+        let variants = concept_variants(&graph, "concept-y").unwrap();
+        assert!(variants.is_empty());
+    }
+
+    #[test]
+    fn test_concept_variants_not_found() {
+        let graph = create_source_concept_graph();
+        let result = concept_variants(&graph, "nonexistent");
+        assert!(result.is_err());
+    }
+
+    // -- source_coverage tests ------------------------------------------------
+
+    #[test]
+    fn test_source_coverage_multiple() {
+        let graph = create_source_concept_graph();
+        let concepts = source_coverage(&graph, "book-alpha").unwrap();
+        // book-alpha introduces concept-x, covers concept-y
+        assert_eq!(concepts.len(), 2);
+        let ids: Vec<&str> = concepts.iter().map(|n| n.id.as_str()).collect();
+        assert!(ids.contains(&"concept-x"));
+        assert!(ids.contains(&"concept-y"));
+    }
+
+    #[test]
+    fn test_source_coverage_single() {
+        let graph = create_source_concept_graph();
+        let concepts = source_coverage(&graph, "book-beta").unwrap();
+        // book-beta only covers concept-x
+        assert_eq!(concepts.len(), 1);
+        assert_eq!(concepts[0].id, "concept-x");
+    }
+
+    #[test]
+    fn test_source_coverage_none() {
+        let graph = create_source_concept_graph();
+        // concept-x is not a source, has no outgoing Introduces/Covers
+        let concepts = source_coverage(&graph, "concept-x").unwrap();
+        assert!(concepts.is_empty());
+    }
+
+    #[test]
+    fn test_source_coverage_not_found() {
+        let graph = create_source_concept_graph();
+        let result = source_coverage(&graph, "nonexistent");
+        assert!(result.is_err());
+    }
+
+    // ------------------------------------------------------------------------
+    // Learning path tests
+    // ------------------------------------------------------------------------
+
+    #[test]
+    fn test_learning_path_basic() {
+        let graph = create_test_graph();
+        let result = learning_path(&graph, "c").unwrap();
+
+        assert_eq!(result.target.id, "c");
+        assert!(!result.has_cycles);
+        // Prerequisites a, b plus target c = 3 steps.
+        assert_eq!(result.total_steps, 3);
+        assert_eq!(result.steps.len(), 3);
+
+        // First steps should be prerequisites in order, last step is target.
+        assert_eq!(result.steps.last().unwrap().node_id, "c");
+        assert_eq!(result.steps.last().unwrap().step, 3);
+
+        // a should come before b in the learning path.
+        let a_step = result.steps.iter().find(|s| s.node_id == "a").unwrap();
+        let b_step = result.steps.iter().find(|s| s.node_id == "b").unwrap();
+        assert!(a_step.step < b_step.step);
+    }
+
+    #[test]
+    fn test_learning_path_no_prerequisites() {
+        let graph = create_test_graph();
+        let result = learning_path(&graph, "a").unwrap();
+
+        assert_eq!(result.target.id, "a");
+        // Only the target itself.
+        assert_eq!(result.total_steps, 1);
+        assert_eq!(result.steps[0].node_id, "a");
+        assert_eq!(result.steps[0].step, 1);
+    }
+
+    #[test]
+    fn test_learning_path_not_found() {
+        let graph = create_test_graph();
+        let result = learning_path(&graph, "nonexistent");
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn test_learning_path_step_numbering() {
+        let graph = create_test_graph();
+        let result = learning_path(&graph, "c").unwrap();
+
+        // Steps should be 1-based and sequential.
+        for (i, step) in result.steps.iter().enumerate() {
+            assert_eq!(step.step, i + 1);
+        }
+    }
+
+    #[test]
+    fn test_learning_path_categories_populated() {
+        let graph = create_test_graph();
+        let result = learning_path(&graph, "c").unwrap();
+
+        // Node C has category "cat2".
+        let target_step = result.steps.last().unwrap();
+        assert_eq!(target_step.category.as_deref(), Some("cat2"));
+    }
+
+    // ------------------------------------------------------------------------
+    // Bridge between categories tests
+    // ------------------------------------------------------------------------
+
+    #[test]
+    fn test_bridge_between_categories_basic() {
+        // In create_test_graph:
+        //   a (cat1) -> b (cat1) -> c (cat2), a -> d (cat2), b -> d (cat2)
+        // Node b has neighbors: a (cat1), c (cat2), d (cat2) — bridges cat1 and cat2.
+        // Node a has neighbors: b (cat1), d (cat2) — bridges cat1 and cat2.
+        let graph = create_test_graph();
+        let bridges = bridge_between_categories(&graph, "cat1", "cat2", 10).unwrap();
+
+        assert!(!bridges.is_empty());
+        let ids: Vec<&str> = bridges.iter().map(|n| n.id.as_str()).collect();
+        // Both a and b bridge cat1 and cat2.
+        assert!(ids.contains(&"a") || ids.contains(&"b"));
+    }
+
+    #[test]
+    fn test_bridge_between_categories_limit() {
+        let graph = create_test_graph();
+        let bridges = bridge_between_categories(&graph, "cat1", "cat2", 1).unwrap();
+
+        assert_eq!(bridges.len(), 1);
+    }
+
+    #[test]
+    fn test_bridge_between_categories_no_match() {
+        let graph = create_test_graph();
+        let bridges =
+            bridge_between_categories(&graph, "cat1", "nonexistent_category", 10).unwrap();
+
+        assert!(bridges.is_empty());
+    }
+
+    #[test]
+    fn test_bridge_between_categories_empty_graph() {
+        let graph = GraphData::new();
+        let bridges = bridge_between_categories(&graph, "cat1", "cat2", 10).unwrap();
+
+        assert!(bridges.is_empty());
+    }
+
+    #[test]
+    fn test_bridge_between_categories_same_category() {
+        // When both categories are the same, a bridge needs at least 2 neighbors
+        // in that category. In test graph: a has neighbor b (cat1), that's only 1
+        // in cat1, but since cat_a == cat_b, having 1 neighbor satisfies both.
+        let graph = create_test_graph();
+        let bridges = bridge_between_categories(&graph, "cat1", "cat1", 10).unwrap();
+
+        // Any node with at least one cat1 neighbor qualifies.
+        let ids: Vec<&str> = bridges.iter().map(|n| n.id.as_str()).collect();
+        // b has neighbor a (cat1), c has neighbor b (cat1) via incoming.
+        assert!(!bridges.is_empty());
+        // a has neighbor b (cat1).
+        assert!(ids.contains(&"a") || ids.contains(&"c"));
     }
 }

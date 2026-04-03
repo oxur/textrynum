@@ -12,6 +12,15 @@
 //! - `graph_validate` — structure validation
 //! - `graph_centrality` — most important nodes
 //! - `graph_bridges` — gateway nodes
+//! - `graph_get_node` — detailed information about a single node
+//! - `graph_get_node_edges` — edges connected to a node
+//! - `graph_dependents` — nodes that depend on a given node
+//! - `graph_status` — whether graph is loaded with basic stats
+//! - `graph_concept_sources` — find sources that introduce or cover a concept
+//! - `graph_concept_variants` — find source-specific variants of a canonical concept
+//! - `graph_source_coverage` — find concepts that a source introduces or covers
+//! - `graph_learning_path` — step-numbered learning path to a target concept
+//! - `graph_bridge_categories` — find nodes connecting two specific categories
 //!
 //! # Example
 //!
@@ -29,4 +38,7 @@
 pub mod tools;
 
 // Re-exports
-pub use tools::{GraphTools, NeighborhoodArgs, PathArgs, PrerequisitesArgs, RelatedArgs};
+pub use tools::{
+    BridgeCategoriesArgs, DependentsArgs, GetNodeArgs, GetNodeEdgesArgs, GraphNodeFilter,
+    GraphTools, LearningPathArgs, NeighborhoodArgs, PathArgs, PrerequisitesArgs, RelatedArgs,
+};

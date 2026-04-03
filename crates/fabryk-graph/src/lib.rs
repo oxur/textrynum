@@ -29,8 +29,10 @@ pub mod validation;
 
 // Re-exports — algorithms
 pub use algorithms::{
-    CentralityScore, NeighborhoodResult, PathResult, PrerequisitesResult, calculate_centrality,
-    find_bridges, get_related, neighborhood, prerequisites_sorted, shortest_path,
+    CentralityScore, LearningPathResult, LearningStep, NeighborhoodResult, PathResult,
+    PrerequisitesResult, bridge_between_categories, calculate_centrality, concept_sources,
+    concept_variants, dependents, find_bridges, get_related, learning_path, neighborhood,
+    prerequisites_sorted, shortest_path, source_coverage,
 };
 
 // Re-exports — builder
@@ -46,9 +48,9 @@ pub use persistence::{
 
 // Re-exports — query
 pub use query::{
-    CategoryCount, EdgeInfo, GraphInfoResponse, NeighborInfo, NeighborhoodResponse, NodeSummary,
-    PathResponse, PathStep, PrerequisiteInfo, PrerequisitesResponse, RelatedConceptsResponse,
-    RelatedGroup, RelationshipCount,
+    CategoryCount, EdgeInfo, GraphInfoResponse, NeighborInfo, NeighborhoodResponse, NodeDetail,
+    NodeEdgesResult, NodeSummary, PathResponse, PathStep, PrerequisiteInfo, PrerequisitesResponse,
+    RelatedConceptsResponse, RelatedGroup, RelationshipCount, get_node_detail, get_node_edges,
 };
 
 // Re-exports — stats
