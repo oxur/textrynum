@@ -188,6 +188,51 @@ pub trait SourceProvider: Send + Sync {
     }
 }
 
+/// Trait for providing guide/tutorial/reference document access.
+///
+/// Guides are standalone markdown documents (topic overviews, tutorials,
+/// reference sheets) that complement the primary content items.
+///
+/// # Example
+///
+/// ```rust,ignore
+/// struct MyGuideProvider { /* ... */ }
+///
+/// #[async_trait]
+/// impl GuideProvider for MyGuideProvider {
+///     type GuideSummary = MyGuideSummary;
+///
+///     async fn list_guides(&self) -> Result<Vec<Self::GuideSummary>> {
+///         // Return guide summaries
+///     }
+///
+///     async fn get_guide(&self, id: &str) -> Result<String> {
+///         // Return full markdown content
+///     }
+/// }
+/// ```
+#[async_trait]
+pub trait GuideProvider: Send + Sync {
+    /// Summary type returned when listing guides.
+    type GuideSummary: Serialize + Send + Sync;
+
+    /// List all available guides.
+    async fn list_guides(&self) -> Result<Vec<Self::GuideSummary>>;
+
+    /// Get a guide's full content by ID.
+    async fn get_guide(&self, id: &str) -> Result<String>;
+
+    /// Returns the guide type name (e.g., "guide", "tutorial").
+    fn guide_type_name(&self) -> &str {
+        "guide"
+    }
+
+    /// Returns the plural guide type name.
+    fn guide_type_name_plural(&self) -> &str {
+        "guides"
+    }
+}
+
 // ============================================================================
 // Tests
 // ============================================================================
@@ -254,5 +299,47 @@ mod tests {
         let json = serde_json::to_string(&chapter).unwrap();
         let deserialized: ChapterInfo = serde_json::from_str(&json).unwrap();
         assert!(deserialized.number.is_none());
+    }
+
+    // -- GuideProvider summary serialization tests ----------------------------
+
+    #[derive(Clone, Debug, Serialize, Deserialize)]
+    struct MockGuideSummary {
+        id: String,
+        title: String,
+    }
+
+    #[test]
+    fn test_guide_summary_serialization() {
+        let summary = MockGuideSummary {
+            id: "intro".to_string(),
+            title: "Introduction".to_string(),
+        };
+        let json = serde_json::to_string(&summary).unwrap();
+        assert!(json.contains("intro"));
+        assert!(json.contains("Introduction"));
+
+        let deserialized: MockGuideSummary = serde_json::from_str(&json).unwrap();
+        assert_eq!(deserialized.id, "intro");
+        assert_eq!(deserialized.title, "Introduction");
+    }
+
+    #[test]
+    fn test_guide_summary_list_serialization() {
+        let summaries = vec![
+            MockGuideSummary {
+                id: "intro".to_string(),
+                title: "Introduction".to_string(),
+            },
+            MockGuideSummary {
+                id: "advanced".to_string(),
+                title: "Advanced Topics".to_string(),
+            },
+        ];
+        let json = serde_json::to_string(&summaries).unwrap();
+        let deserialized: Vec<MockGuideSummary> = serde_json::from_str(&json).unwrap();
+        assert_eq!(deserialized.len(), 2);
+        assert_eq!(deserialized[0].id, "intro");
+        assert_eq!(deserialized[1].id, "advanced");
     }
 }

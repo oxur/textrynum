@@ -4,8 +4,10 @@
 //!
 //! - `ContentItemProvider` — list and retrieve domain content items
 //! - `SourceProvider` — access source materials (books, papers)
+//! - `GuideProvider` — access guides, tutorials, and reference documents
 //! - `ContentTools<P>` — MCP tools backed by a content provider
 //! - `SourceTools<P>` — MCP tools for source access
+//! - `GuideTools<P>` — MCP tools for guide access
 //!
 //! # Example
 //!
@@ -29,7 +31,12 @@ pub mod tools;
 pub mod traits;
 
 // Re-exports — traits
-pub use traits::{CategoryInfo, ChapterInfo, ContentItemProvider, FilterMap, SourceProvider};
+pub use traits::{
+    CategoryInfo, ChapterInfo, ContentItemProvider, FilterMap, GuideProvider, SourceProvider,
+};
 
 // Re-exports — tools
-pub use tools::{ContentTools, GetChapterArgs, GetItemArgs, ListItemsArgs, SourceTools};
+pub use tools::{
+    ContentTools, GetChapterArgs, GetGuideArgs, GetItemArgs, GuideTools, ListItemsArgs,
+    SourceTools,
+};
