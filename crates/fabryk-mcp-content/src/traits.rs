@@ -233,6 +233,67 @@ pub trait GuideProvider: Send + Sync {
     }
 }
 
+/// A single match from a question-based search.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct QuestionMatch {
+    /// Item identifier (slug or file stem).
+    pub item_id: String,
+    /// Human-readable title.
+    pub item_title: String,
+    /// The specific question that matched the query.
+    pub matched_question: String,
+    /// Item category.
+    pub category: String,
+    /// Optional tier/level.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tier: Option<String>,
+    /// Similarity score between 0.0 and 1.0 (higher is better).
+    pub similarity: f64,
+}
+
+/// Response from a question-based search.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct QuestionSearchResponse {
+    /// Matching items sorted by descending similarity.
+    pub matches: Vec<QuestionMatch>,
+    /// Total number of matches found (before applying limit).
+    pub total: usize,
+    /// The original query string.
+    pub query: String,
+}
+
+/// Trait for searching content items by competency questions.
+///
+/// Content items can declare questions they answer via frontmatter
+/// (e.g., `answers_questions: ["What is X?", "How does Y work?"]`).
+/// This trait enables fuzzy matching of user queries against those questions.
+///
+/// # Example
+///
+/// ```rust,ignore
+/// struct MyQuestionProvider { /* ... */ }
+///
+/// #[async_trait]
+/// impl QuestionSearchProvider for MyQuestionProvider {
+///     async fn search_by_question(
+///         &self,
+///         question: &str,
+///         limit: usize,
+///     ) -> Result<QuestionSearchResponse> {
+///         // Scan items, fuzzy-match question against answers_questions field
+///     }
+/// }
+/// ```
+#[async_trait]
+pub trait QuestionSearchProvider: Send + Sync {
+    /// Search for items whose competency questions match the given query.
+    async fn search_by_question(
+        &self,
+        question: &str,
+        limit: usize,
+    ) -> Result<QuestionSearchResponse>;
+}
+
 // ============================================================================
 // Tests
 // ============================================================================
@@ -341,5 +402,95 @@ mod tests {
         assert_eq!(deserialized.len(), 2);
         assert_eq!(deserialized[0].id, "intro");
         assert_eq!(deserialized[1].id, "advanced");
+    }
+
+    // -- QuestionMatch / QuestionSearchResponse serialization tests -----------
+
+    #[test]
+    fn test_question_match_serialization() {
+        let m = QuestionMatch {
+            item_id: "voice-leading".to_string(),
+            item_title: "Voice Leading".to_string(),
+            matched_question: "What is voice leading?".to_string(),
+            category: "harmony".to_string(),
+            tier: Some("foundational".to_string()),
+            similarity: 0.92,
+        };
+        let json = serde_json::to_string(&m).unwrap();
+        assert!(json.contains("voice-leading"));
+        assert!(json.contains("0.92"));
+        assert!(json.contains("foundational"));
+
+        let deserialized: QuestionMatch = serde_json::from_str(&json).unwrap();
+        assert_eq!(deserialized.item_id, "voice-leading");
+        assert_eq!(deserialized.similarity, 0.92);
+        assert_eq!(deserialized.tier, Some("foundational".to_string()));
+    }
+
+    #[test]
+    fn test_question_match_without_tier() {
+        let m = QuestionMatch {
+            item_id: "item-1".to_string(),
+            item_title: "Item One".to_string(),
+            matched_question: "What is item one?".to_string(),
+            category: "general".to_string(),
+            tier: None,
+            similarity: 0.75,
+        };
+        let json = serde_json::to_string(&m).unwrap();
+        // tier should be omitted via skip_serializing_if
+        assert!(!json.contains("tier"));
+
+        let deserialized: QuestionMatch = serde_json::from_str(&json).unwrap();
+        assert!(deserialized.tier.is_none());
+    }
+
+    #[test]
+    fn test_question_search_response_serialization() {
+        let response = QuestionSearchResponse {
+            matches: vec![
+                QuestionMatch {
+                    item_id: "item-1".to_string(),
+                    item_title: "First".to_string(),
+                    matched_question: "What is first?".to_string(),
+                    category: "alpha".to_string(),
+                    tier: Some("advanced".to_string()),
+                    similarity: 0.95,
+                },
+                QuestionMatch {
+                    item_id: "item-2".to_string(),
+                    item_title: "Second".to_string(),
+                    matched_question: "What is second?".to_string(),
+                    category: "beta".to_string(),
+                    tier: None,
+                    similarity: 0.80,
+                },
+            ],
+            total: 2,
+            query: "What is?".to_string(),
+        };
+        let json = serde_json::to_string(&response).unwrap();
+        assert!(json.contains("item-1"));
+        assert!(json.contains("item-2"));
+        assert!(json.contains("\"total\":2"));
+        assert!(json.contains("What is?"));
+
+        let deserialized: QuestionSearchResponse = serde_json::from_str(&json).unwrap();
+        assert_eq!(deserialized.matches.len(), 2);
+        assert_eq!(deserialized.total, 2);
+        assert_eq!(deserialized.query, "What is?");
+    }
+
+    #[test]
+    fn test_question_search_response_empty() {
+        let response = QuestionSearchResponse {
+            matches: vec![],
+            total: 0,
+            query: "nothing".to_string(),
+        };
+        let json = serde_json::to_string(&response).unwrap();
+        let deserialized: QuestionSearchResponse = serde_json::from_str(&json).unwrap();
+        assert!(deserialized.matches.is_empty());
+        assert_eq!(deserialized.total, 0);
     }
 }
