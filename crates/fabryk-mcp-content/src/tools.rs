@@ -3,7 +3,7 @@
 //! Provides `ContentTools<P>` and `SourceTools<P>` that implement
 //! `ToolRegistry` by delegating to domain-specific providers.
 
-use crate::traits::{ContentItemProvider, GuideProvider, SourceProvider};
+use crate::traits::{ContentItemProvider, GuideProvider, QuestionSearchProvider, SourceProvider};
 use fabryk_mcp_core::error::McpErrorExt;
 use fabryk_mcp_core::model::{CallToolResult, Content, ErrorData, Tool};
 use fabryk_mcp_core::registry::{ToolRegistry, ToolResult};
@@ -108,6 +108,15 @@ pub struct GetPathArgs {
 pub struct GetGuideArgs {
     /// Guide identifier.
     pub id: String,
+}
+
+/// Arguments for the search_by_question tool.
+#[derive(Debug, Deserialize)]
+pub struct SearchByQuestionArgs {
+    /// The question to search for.
+    pub question: String,
+    /// Maximum number of results (default: 10).
+    pub limit: Option<usize>,
 }
 
 // ---------------------------------------------------------------------------
@@ -751,6 +760,119 @@ impl<P: GuideProvider + 'static> ToolRegistry for GuideTools<P> {
                     .await
                     .map_err(|e| e.to_mcp_error())?;
                 Ok(CallToolResult::success(vec![Content::text(content)]))
+            }));
+        }
+
+        None
+    }
+}
+
+// ---------------------------------------------------------------------------
+// QuestionSearchTools<P>
+// ---------------------------------------------------------------------------
+
+/// MCP tools backed by a `QuestionSearchProvider`.
+///
+/// Generates one tool:
+/// - `search_by_question` — fuzzy-match a query against competency questions
+pub struct QuestionSearchTools<P: QuestionSearchProvider> {
+    provider: Arc<P>,
+    custom_names: HashMap<String, String>,
+    custom_descriptions: HashMap<String, String>,
+}
+
+impl<P: QuestionSearchProvider + 'static> QuestionSearchTools<P> {
+    /// Slot key for the search tool.
+    pub const SLOT_SEARCH: &str = "search_by_question";
+
+    /// Create new question search tools with the given provider.
+    pub fn new(provider: P) -> Self {
+        Self {
+            provider: Arc::new(provider),
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
+        }
+    }
+
+    /// Create question search tools with a shared provider reference.
+    pub fn with_shared(provider: Arc<P>) -> Self {
+        Self {
+            provider,
+            custom_names: HashMap::new(),
+            custom_descriptions: HashMap::new(),
+        }
+    }
+
+    /// Override individual tool names.
+    ///
+    /// Keys are slot constants (`SLOT_SEARCH`), values are custom
+    /// MCP-visible names. Unspecified slots keep their default names.
+    pub fn with_names(mut self, names: HashMap<String, String>) -> Self {
+        self.custom_names = names;
+        self
+    }
+
+    /// Override individual tool descriptions.
+    ///
+    /// Keys are slot constants, values are custom descriptions.
+    pub fn with_descriptions(mut self, descriptions: HashMap<String, String>) -> Self {
+        self.custom_descriptions = descriptions;
+        self
+    }
+
+    fn tool_name(&self, slot: &str) -> String {
+        self.custom_names
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| slot.to_string())
+    }
+
+    fn tool_description(&self, slot: &str, default: &str) -> String {
+        self.custom_descriptions
+            .get(slot)
+            .cloned()
+            .unwrap_or_else(|| default.to_string())
+    }
+}
+
+impl<P: QuestionSearchProvider + 'static> ToolRegistry for QuestionSearchTools<P> {
+    fn tools(&self) -> Vec<Tool> {
+        vec![make_tool(
+            &self.tool_name(Self::SLOT_SEARCH),
+            &self.tool_description(
+                Self::SLOT_SEARCH,
+                "Search for content items by matching a query against competency questions",
+            ),
+            serde_json::json!({
+                "type": "object",
+                "properties": {
+                    "question": {
+                        "type": "string",
+                        "description": "The question to search for"
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "description": "Maximum results (default: 10)"
+                    }
+                },
+                "required": ["question"]
+            }),
+        )]
+    }
+
+    fn call(&self, name: &str, args: Value) -> Option<ToolResult> {
+        let provider = Arc::clone(&self.provider);
+
+        if name == self.tool_name(Self::SLOT_SEARCH) {
+            return Some(Box::pin(async move {
+                let args: SearchByQuestionArgs = serde_json::from_value(args)
+                    .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
+                let limit = args.limit.unwrap_or(10);
+                let response = provider
+                    .search_by_question(&args.question, limit)
+                    .await
+                    .map_err(|e| e.to_mcp_error())?;
+                serialize_response(&response)
             }));
         }
 
@@ -1648,5 +1770,138 @@ mod tests {
             desc.contains("concept_id"),
             "description should reference the custom id field name, got: {desc}"
         );
+    }
+
+    // -- Mock question provider -----------------------------------------------
+
+    struct MockQuestionProvider;
+
+    #[async_trait]
+    impl QuestionSearchProvider for MockQuestionProvider {
+        async fn search_by_question(
+            &self,
+            question: &str,
+            limit: usize,
+        ) -> fabryk_core::Result<crate::traits::QuestionSearchResponse> {
+            use crate::traits::{QuestionMatch, QuestionSearchResponse};
+
+            let matches = if question.contains("test") {
+                vec![QuestionMatch {
+                    item_id: "item-1".into(),
+                    item_title: "Test Item".into(),
+                    matched_question: "What is a test?".into(),
+                    category: "testing".into(),
+                    tier: Some("foundational".into()),
+                    similarity: 0.95,
+                }]
+            } else {
+                vec![]
+            };
+            let total = matches.len();
+            Ok(QuestionSearchResponse {
+                matches: matches.into_iter().take(limit).collect(),
+                total,
+                query: question.to_string(),
+            })
+        }
+    }
+
+    // -- QuestionSearchTools tests --------------------------------------------
+
+    #[test]
+    fn test_question_search_tools_creation() {
+        let tools = QuestionSearchTools::new(MockQuestionProvider);
+        assert_eq!(tools.tool_count(), 1);
+    }
+
+    #[test]
+    fn test_question_search_tools_tool_name() {
+        let tools = QuestionSearchTools::new(MockQuestionProvider);
+        let tool_list = tools.tools();
+        assert_eq!(tool_list[0].name, "search_by_question");
+    }
+
+    #[test]
+    fn test_question_search_tools_has_tool() {
+        let tools = QuestionSearchTools::new(MockQuestionProvider);
+        assert!(tools.has_tool("search_by_question"));
+        assert!(!tools.has_tool("list_questions"));
+    }
+
+    #[tokio::test]
+    async fn test_question_search_tools_search() {
+        let tools = QuestionSearchTools::new(MockQuestionProvider);
+        let future = tools
+            .call(
+                "search_by_question",
+                serde_json::json!({"question": "test query"}),
+            )
+            .unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
+        assert!(!result.content.is_empty());
+        let text = result_to_string(&result);
+        assert!(text.contains("item-1"));
+        assert!(text.contains("Test Item"));
+        assert!(text.contains("0.95"));
+    }
+
+    #[tokio::test]
+    async fn test_question_search_tools_no_results() {
+        let tools = QuestionSearchTools::new(MockQuestionProvider);
+        let future = tools
+            .call(
+                "search_by_question",
+                serde_json::json!({"question": "nothing"}),
+            )
+            .unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
+        let text = result_to_string(&result);
+        assert!(text.contains("matches"), "Expected 'matches' in: {text}");
+        assert!(text.contains("total"), "Expected 'total' in: {text}");
+    }
+
+    #[test]
+    fn test_question_search_tools_unknown_tool() {
+        let tools = QuestionSearchTools::new(MockQuestionProvider);
+        assert!(
+            tools
+                .call("unknown_tool", serde_json::json!({}))
+                .is_none()
+        );
+    }
+
+    #[test]
+    fn test_question_search_tools_custom_names() {
+        let tools = QuestionSearchTools::new(MockQuestionProvider).with_names(HashMap::from([(
+            "search_by_question".to_string(),
+            "find_by_question".to_string(),
+        )]));
+        let tool_list = tools.tools();
+        assert_eq!(tool_list[0].name, "find_by_question");
+    }
+
+    #[tokio::test]
+    async fn test_question_search_tools_custom_names_dispatch() {
+        let tools = QuestionSearchTools::new(MockQuestionProvider).with_names(HashMap::from([(
+            "search_by_question".to_string(),
+            "my_search".to_string(),
+        )]));
+        // Old name should NOT work
+        assert!(
+            tools
+                .call("search_by_question", serde_json::json!({}))
+                .is_none()
+        );
+        // Custom name should work
+        let future = tools
+            .call(
+                "my_search",
+                serde_json::json!({"question": "test query"}),
+            )
+            .unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
     }
 }

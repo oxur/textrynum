@@ -5,9 +5,11 @@
 //! - `ContentItemProvider` — list and retrieve domain content items
 //! - `SourceProvider` — access source materials (books, papers)
 //! - `GuideProvider` — access guides, tutorials, and reference documents
+//! - `QuestionSearchProvider` — search items by competency questions
 //! - `ContentTools<P>` — MCP tools backed by a content provider
 //! - `SourceTools<P>` — MCP tools for source access
 //! - `GuideTools<P>` — MCP tools for guide access
+//! - `QuestionSearchTools<P>` — MCP tools for question-based search
 //!
 //! # Example
 //!
@@ -32,11 +34,12 @@ pub mod traits;
 
 // Re-exports — traits
 pub use traits::{
-    CategoryInfo, ChapterInfo, ContentItemProvider, FilterMap, GuideProvider, SourceProvider,
+    CategoryInfo, ChapterInfo, ContentItemProvider, FilterMap, GuideProvider, QuestionMatch,
+    QuestionSearchProvider, QuestionSearchResponse, SourceProvider,
 };
 
 // Re-exports — tools
 pub use tools::{
     ContentTools, GetChapterArgs, GetGuideArgs, GetItemArgs, GuideTools, ListItemsArgs,
-    SourceTools,
+    QuestionSearchTools, SearchByQuestionArgs, SourceTools,
 };
