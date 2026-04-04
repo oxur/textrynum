@@ -53,6 +53,7 @@ pub mod notifier;
 pub mod registry;
 pub mod resource;
 pub mod server;
+pub mod static_resources;
 pub mod service_registry;
 pub mod tools;
 pub mod validate;
@@ -83,6 +84,9 @@ pub use discoverable::{
 
 // Re-exports — resource registry
 pub use resource::{ResourceFuture, ResourceRegistry};
+
+// Re-exports — static resources
+pub use static_resources::{StaticResourceDef, StaticResources};
 
 // Re-exports — built-in tools
 pub use tools::{
