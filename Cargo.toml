@@ -155,7 +155,7 @@ async-walkdir = "2"
 regex = "1"
 
 # Full-text search
-tantivy = "0.25"
+tantivy = "0.26"
 stop-words = "0.10"
 
 # String matching (for source resolution)
@@ -173,7 +173,7 @@ fastembed = "5"
 jsonwebtoken = { version = "10", default-features = false, features = ["aws_lc_rs", "use_pem"] }
 
 # Redis
-redis = { version = "1.1", default-features = false, features = ["tokio-comp", "connection-manager"] }
+redis = { version = "1.2", default-features = false, features = ["tokio-comp", "connection-manager"] }
 
 # Graph database
 petgraph = "0.8"
@@ -197,7 +197,7 @@ tokio-stream = "0.1"
 pgp = "0.19"
 
 # SSH/SFTP
-russh = "0.54"
+russh = "0.60"
 russh-sftp = "2"
 russh-keys = "0.49"
 
