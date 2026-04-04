@@ -62,13 +62,13 @@ struct SshHandler;
 impl client::Handler for SshHandler {
     type Error = russh::Error;
 
-    async fn check_server_key(
+    fn check_server_key(
         &mut self,
         _server_public_key: &keys::ssh_key::PublicKey,
-    ) -> Result<bool, Self::Error> {
+    ) -> impl std::future::Future<Output = Result<bool, Self::Error>> + Send {
         // Accept all server keys for now.
         // TODO: Add known_hosts verification for production.
-        Ok(true)
+        std::future::ready(Ok(true))
     }
 }
 
