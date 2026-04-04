@@ -31,6 +31,17 @@ fn serialize_response<T: serde::Serialize>(value: &T) -> Result<CallToolResult, 
     Ok(CallToolResult::success(vec![Content::text(json)]))
 }
 
+/// Extract a required string field from a JSON `Value`, returning an MCP error
+/// if the field is missing or not a string.
+fn extract_string_field(args: &Value, field: &str) -> Result<String, ErrorData> {
+    args.get(field)
+        .and_then(|v| v.as_str())
+        .map(String::from)
+        .ok_or_else(|| {
+            ErrorData::invalid_params(format!("Missing required parameter: {field}"), None)
+        })
+}
+
 /// Build a `Tool` with a JSON schema.
 fn make_tool(name: &str, description: &str, schema: Value) -> Tool {
     Tool::new(
@@ -122,6 +133,7 @@ pub struct ContentTools<P: ContentItemProvider> {
     custom_names: HashMap<String, String>,
     custom_descriptions: HashMap<String, String>,
     extra_list_schema: Option<serde_json::Value>,
+    get_id_field: Option<String>,
 }
 
 impl<P: ContentItemProvider + 'static> ContentTools<P> {
@@ -140,6 +152,7 @@ impl<P: ContentItemProvider + 'static> ContentTools<P> {
             custom_names: HashMap::new(),
             custom_descriptions: HashMap::new(),
             extra_list_schema: None,
+            get_id_field: None,
         }
     }
 
@@ -151,6 +164,7 @@ impl<P: ContentItemProvider + 'static> ContentTools<P> {
             custom_names: HashMap::new(),
             custom_descriptions: HashMap::new(),
             extra_list_schema: None,
+            get_id_field: None,
         }
     }
 
@@ -188,6 +202,22 @@ impl<P: ContentItemProvider + 'static> ContentTools<P> {
     pub fn with_extra_list_schema(mut self, schema: serde_json::Value) -> Self {
         self.extra_list_schema = Some(schema);
         self
+    }
+
+    /// Override the JSON property name used by the "get" tool.
+    ///
+    /// By default the get tool expects an `"id"` property in its input
+    /// schema. Use this to change it to a domain-specific name such as
+    /// `"concept_id"`. Both the schema and the call handler will use
+    /// this name.
+    pub fn with_get_id_field(mut self, field_name: impl Into<String>) -> Self {
+        self.get_id_field = Some(field_name.into());
+        self
+    }
+
+    /// Returns the configured get-tool ID field name, defaulting to `"id"`.
+    fn get_id_field_name(&self) -> &str {
+        self.get_id_field.as_deref().unwrap_or("id")
     }
 
     fn tool_name(&self, slot: &str) -> String {
@@ -245,26 +275,32 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
                 &self.tool_description("list", &format!("List all {type_plural} with optional category filter")),
                 list_schema,
             ),
-            make_tool(
-                &self.tool_name("get"),
-                &self.tool_description("get", &format!(
-                    "Get a specific {type_name} by its slug identifier (the id field from {type_plural}_list results)"
-                )),
-                serde_json::json!({
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "string",
-                            "description": format!(
-                                "{type_name} slug identifier, e.g. \"voice-leading\" (use the id values returned by {type_plural}_list)",
-                                type_name = type_name,
-                                type_plural = type_plural,
-                            )
-                        }
-                    },
-                    "required": ["id"]
-                }),
-            ),
+            {
+                let id_field = self.get_id_field_name();
+                let mut props = serde_json::Map::new();
+                props.insert(
+                    id_field.to_string(),
+                    serde_json::json!({
+                        "type": "string",
+                        "description": format!(
+                            "{type_name} slug identifier, e.g. \"voice-leading\" (use the id values returned by {type_plural}_list)",
+                            type_name = type_name,
+                            type_plural = type_plural,
+                        )
+                    }),
+                );
+                make_tool(
+                    &self.tool_name("get"),
+                    &self.tool_description("get", &format!(
+                        "Get a specific {type_name} by its slug identifier (the {id_field} field from {type_plural}_list results)"
+                    )),
+                    serde_json::json!({
+                        "type": "object",
+                        "properties": props,
+                        "required": [id_field]
+                    }),
+                )
+            },
             make_tool(
                 &self.tool_name("categories"),
                 &self.tool_description("categories", &format!("List available {type_name} categories")),
@@ -309,11 +345,11 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
         }
 
         if name == self.tool_name("get") {
+            let id_field = self.get_id_field_name().to_string();
             return Some(Box::pin(async move {
-                let args: GetItemArgs = serde_json::from_value(args)
-                    .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
+                let id = extract_string_field(&args, &id_field)?;
                 let item = provider
-                    .get_item(&args.id)
+                    .get_item(&id)
                     .await
                     .map_err(|e| e.to_mcp_error())?;
                 serialize_response(&item)
@@ -1526,5 +1562,91 @@ mod tests {
             .unwrap();
         let result = future.await.unwrap();
         assert_eq!(result.is_error, Some(false));
+    }
+
+    // -- with_get_id_field tests ----------------------------------------------
+
+    #[test]
+    fn test_content_tools_default_get_id_field() {
+        let tools = ContentTools::new(MockContentProvider).with_prefix("concepts");
+        let tool_list = tools.tools();
+        let get_tool = &tool_list[1];
+
+        let schema_value = serde_json::to_value(&get_tool.input_schema).unwrap();
+        let properties = schema_value
+            .get("properties")
+            .expect("schema should have properties");
+        assert!(
+            properties.get("id").is_some(),
+            "default id field should be 'id'"
+        );
+        let required = schema_value.get("required").unwrap().as_array().unwrap();
+        assert_eq!(required[0].as_str(), Some("id"));
+    }
+
+    #[test]
+    fn test_content_tools_custom_get_id_field_schema() {
+        let tools = ContentTools::new(MockContentProvider)
+            .with_prefix("concepts")
+            .with_get_id_field("concept_id");
+        let tool_list = tools.tools();
+        let get_tool = &tool_list[1];
+
+        let schema_value = serde_json::to_value(&get_tool.input_schema).unwrap();
+        let properties = schema_value
+            .get("properties")
+            .expect("schema should have properties");
+        assert!(
+            properties.get("concept_id").is_some(),
+            "custom id field should be 'concept_id'"
+        );
+        assert!(
+            properties.get("id").is_none(),
+            "default 'id' field should not be present"
+        );
+        let required = schema_value.get("required").unwrap().as_array().unwrap();
+        assert_eq!(required[0].as_str(), Some("concept_id"));
+    }
+
+    #[tokio::test]
+    async fn test_content_tools_custom_get_id_field_dispatch() {
+        let tools = ContentTools::new(MockContentProvider)
+            .with_prefix("concepts")
+            .with_get_id_field("concept_id");
+        let future = tools
+            .call(
+                "concepts_get",
+                serde_json::json!({"concept_id": "item-1"}),
+            )
+            .unwrap();
+        let result = future.await.unwrap();
+        assert_eq!(result.is_error, Some(false));
+    }
+
+    #[tokio::test]
+    async fn test_content_tools_custom_get_id_field_missing() {
+        let tools = ContentTools::new(MockContentProvider)
+            .with_prefix("concepts")
+            .with_get_id_field("concept_id");
+        // Passing "id" instead of "concept_id" should fail.
+        let future = tools
+            .call("concepts_get", serde_json::json!({"id": "item-1"}))
+            .unwrap();
+        let result = future.await;
+        assert!(result.is_err(), "should fail when custom id field is missing");
+    }
+
+    #[test]
+    fn test_content_tools_custom_get_id_field_description() {
+        let tools = ContentTools::new(MockContentProvider)
+            .with_prefix("concepts")
+            .with_get_id_field("concept_id");
+        let tool_list = tools.tools();
+        let get_tool = &tool_list[1];
+        let desc = get_tool.description.as_deref().unwrap_or("");
+        assert!(
+            desc.contains("concept_id"),
+            "description should reference the custom id field name, got: {desc}"
+        );
     }
 }
