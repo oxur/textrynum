@@ -7,4 +7,7 @@ pub mod diagnostics;
 pub mod health;
 
 pub use diagnostics::DiagnosticTools;
-pub use health::{HealthResponse, HealthTools, handle_health};
+pub use health::{
+    BackendInfo, BackendsInfo, FieldBoosts, HealthResponse, HealthTools, SearchConfigInfo,
+    handle_health, handle_health_enriched,
+};
