@@ -85,7 +85,10 @@ pub use discoverable::{
 pub use resource::{ResourceFuture, ResourceRegistry};
 
 // Re-exports — built-in tools
-pub use tools::{DiagnosticTools, HealthResponse, HealthTools, handle_health};
+pub use tools::{
+    BackendInfo, BackendsInfo, DiagnosticTools, FieldBoosts, HealthResponse, HealthTools,
+    SearchConfigInfo, handle_health, handle_health_enriched,
+};
 
 // Re-exports — validation
 pub use validate::{assert_tools_valid, validate_tools, warn_on_invalid_tools};

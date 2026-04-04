@@ -6,6 +6,7 @@
 //! # Modules
 //!
 //! - [`error`]: Error types and Result alias
+//! - [`probe`]: Backend diagnostic probe trait
 //! - [`state`]: Generic application state container
 //! - [`traits`]: Core traits for domain abstraction
 //! - [`util`]: File, path, and ID utilities
@@ -14,6 +15,7 @@
 
 pub mod deploy;
 pub mod error;
+pub mod probe;
 pub mod service;
 pub mod state;
 pub mod traits;
@@ -25,6 +27,7 @@ pub use service::{
     RetryConfig, ServiceHandle, ServiceState, Transition, spawn_with_retry, wait_all_ready,
 };
 pub use state::AppState;
+pub use probe::BackendProbe;
 pub use traits::ConfigManager;
 pub use traits::ConfigProvider;
 

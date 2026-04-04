@@ -56,6 +56,7 @@
 // Core modules (always available)
 pub mod backend;
 pub mod embedding;
+pub mod probe;
 pub mod types;
 
 // Builder and extractor modules (always available)
@@ -83,6 +84,7 @@ pub use types::{
 pub use backend::{SimpleVectorBackend, VectorBackend};
 pub use embedding::{EmbeddingProvider, MockEmbeddingProvider};
 pub use extractor::VectorExtractor;
+pub use probe::{VectorProbe, vector_probe};
 
 // Re-exports — builder
 pub use builder::VectorIndexBuilder;

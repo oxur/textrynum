@@ -78,6 +78,7 @@
 // Core modules (always available)
 pub mod backend;
 pub mod document;
+pub mod probe;
 pub mod types;
 
 // Feature-gated Tantivy modules
@@ -105,6 +106,7 @@ pub mod tantivy_search;
 // Re-exports
 pub use backend::{SearchBackend, SearchParams, SearchResult, SearchResults};
 pub use document::SearchDocument;
+pub use probe::{SearchProbe, search_probe};
 pub use types::{QueryMode, SearchConfig};
 
 #[cfg(feature = "fts-tantivy")]
