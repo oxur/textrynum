@@ -55,6 +55,7 @@
 
 // Core modules (always available)
 pub mod backend;
+pub mod concept_card_extractor;
 pub mod embedding;
 pub mod probe;
 pub mod types;
@@ -82,6 +83,7 @@ pub use types::{
 
 // Re-exports — traits
 pub use backend::{SimpleVectorBackend, VectorBackend};
+pub use concept_card_extractor::ConceptCardVectorExtractor;
 pub use embedding::{EmbeddingProvider, MockEmbeddingProvider};
 pub use extractor::VectorExtractor;
 pub use probe::{VectorProbe, vector_probe};
