@@ -20,6 +20,7 @@
 
 pub mod algorithms;
 pub mod builder;
+pub mod concept_card_extractor;
 pub mod extractor;
 pub mod persistence;
 pub mod query;
@@ -37,6 +38,11 @@ pub use algorithms::{
 
 // Re-exports — builder
 pub use builder::{BuildError, BuildStats, ErrorHandling, GraphBuilder, ManualEdge};
+
+// Re-exports — concept card extractor
+pub use concept_card_extractor::{
+    ConceptCardEdgeData, ConceptCardGraphExtractor, ConceptCardNodeData,
+};
 
 // Re-exports — extractor
 pub use extractor::GraphExtractor;
