@@ -41,9 +41,11 @@
 //! assert_eq!(meta.unwrap().title, "Hello");
 //! ```
 
+pub mod concept_card;
 pub mod markdown;
 
 // Re-export commonly used types
+pub use concept_card::ConceptCardFrontmatter;
 pub use markdown::{
     FrontmatterResult, extract_all_list_items, extract_first_heading, extract_first_paragraph,
     extract_frontmatter, extract_list_from_section, extract_section_content, extract_text_content,
