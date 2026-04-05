@@ -109,7 +109,7 @@ toml = "1"
 csv = "1"
 
 # Archive / compression
-zip = "2"
+zip = "8"
 flate2 = "1"
 
 # Kafka
@@ -163,8 +163,8 @@ strsim = "0.11"
 
 # Vector database
 lancedb = "0.27"
-arrow-array = "57"
-arrow-schema = "57"
+arrow-array = "58"
+arrow-schema = "58"
 
 # Local embedding generation
 fastembed = "5"
@@ -182,7 +182,7 @@ memmap2 = "0.9"
 blake3 = "1.8"
 
 # Pipeline state storage
-redb = "3"
+redb = "4"
 
 # Binary serialization
 serde_bytes = "0.11"
