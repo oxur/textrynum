@@ -269,14 +269,8 @@ pub fn get_node_detail(graph: &GraphData, id: &str) -> Result<NodeDetail> {
         .get_index(id)
         .ok_or_else(|| fabryk_core::Error::not_found("node index", id))?;
 
-    let in_degree = graph
-        .graph
-        .edges_directed(idx, Direction::Incoming)
-        .count();
-    let out_degree = graph
-        .graph
-        .edges_directed(idx, Direction::Outgoing)
-        .count();
+    let in_degree = graph.graph.edges_directed(idx, Direction::Incoming).count();
+    let out_degree = graph.graph.edges_directed(idx, Direction::Outgoing).count();
 
     // Serialize NodeType to its snake_case string representation.
     let node_type = serde_json::to_value(&node.node_type)

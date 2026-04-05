@@ -205,8 +205,11 @@ mod tests {
     #[tokio::test]
     async fn test_static_resources_read_no_fallback_no_file() {
         let dir = tempfile::tempdir().unwrap();
-        let sr =
-            StaticResources::new(dir.path()).with_resource(sample_def("skill://gone", "gone.md", None));
+        let sr = StaticResources::new(dir.path()).with_resource(sample_def(
+            "skill://gone",
+            "gone.md",
+            None,
+        ));
 
         let result = sr.read("skill://gone").unwrap().await;
         assert!(result.is_err());
@@ -217,8 +220,11 @@ mod tests {
 
     #[test]
     fn test_static_resources_read_unknown_uri() {
-        let sr =
-            StaticResources::new("/tmp").with_resource(sample_def("skill://known", "known.md", None));
+        let sr = StaticResources::new("/tmp").with_resource(sample_def(
+            "skill://known",
+            "known.md",
+            None,
+        ));
         assert!(sr.read("skill://unknown").is_none());
     }
 
