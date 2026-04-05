@@ -43,6 +43,7 @@
 
 pub mod concept_card;
 pub mod markdown;
+pub mod metadata;
 
 // Re-export commonly used types
 pub use concept_card::ConceptCardFrontmatter;
@@ -51,6 +52,8 @@ pub use markdown::{
     extract_frontmatter, extract_list_from_section, extract_section_content, extract_text_content,
     normalize_id, parse_comma_list, parse_keyword_list, strip_frontmatter,
 };
+
+pub use metadata::{ContentMetadata, ContentType, detect_content_type, extract_metadata};
 
 // Re-export HeadingLevel for convenience
 pub use pulldown_cmark::HeadingLevel;
