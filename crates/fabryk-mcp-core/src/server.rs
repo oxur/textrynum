@@ -245,10 +245,7 @@ impl FabrykMcpServer {
 
     /// Build a streamable HTTP service with custom config.
     #[cfg(feature = "http")]
-    pub fn into_http_service_with_config(
-        self,
-        config: StreamableHttpServerConfig,
-    ) -> HttpService {
+    pub fn into_http_service_with_config(self, config: StreamableHttpServerConfig) -> HttpService {
         log::info!(
             "Building HTTP service for {} v{} with {} tools",
             self.config.name,
