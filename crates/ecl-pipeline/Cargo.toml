@@ -10,10 +10,10 @@ homepage.workspace = true
 description = "Pipeline execution engine for ECL pipeline runner"
 
 [dependencies]
-ecl-pipeline-spec = { path = "../ecl-pipeline-spec" , version = "0.4.2" }
-ecl-pipeline-state = { path = "../ecl-pipeline-state" , version = "0.4.2" }
-ecl-pipeline-topo = { path = "../ecl-pipeline-topo" , version = "0.4.2" }
-ecl-adapter-gcs = { path = "../ecl-adapter-gcs", version = "0.4.2" }
+ecl-pipeline-spec = { path = "../ecl-pipeline-spec" , version = "0.5.0" }
+ecl-pipeline-state = { path = "../ecl-pipeline-state" , version = "0.5.0" }
+ecl-pipeline-topo = { path = "../ecl-pipeline-topo" , version = "0.5.0" }
+ecl-adapter-gcs = { path = "../ecl-adapter-gcs", version = "0.5.0" }
 tokio = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
@@ -25,8 +25,8 @@ tracing = { workspace = true }
 reqwest = { workspace = true }
 
 [dev-dependencies]
-ecl-adapter-fs = { path = "../ecl-adapter-fs", version = "0.4.2" }
-ecl-stages = { path = "../ecl-stages", version = "0.4.2" }
+ecl-adapter-fs = { path = "../ecl-adapter-fs", version = "0.5.0" }
+ecl-stages = { path = "../ecl-stages", version = "0.5.0" }
 async-trait = { workspace = true }
 blake3 = { workspace = true }
 serde_json = { workspace = true }
