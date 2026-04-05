@@ -93,7 +93,7 @@ impl TantivySearch {
     ) -> Result<Vec<(f32, tantivy::DocAddress)>> {
         let searcher = self.reader.searcher();
         let top_docs = searcher
-            .search(query, &TopDocs::with_limit(limit))
+            .search(query, &TopDocs::with_limit(limit).order_by_score())
             .map_err(|e| Error::operation(format!("Search failed: {e}")))?;
 
         Ok(top_docs)
