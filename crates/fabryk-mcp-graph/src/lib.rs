@@ -35,9 +35,11 @@
 //! let registry = CompositeRegistry::new().add(graph_tools);
 //! ```
 
+pub mod filter;
 pub mod tools;
 
 // Re-exports
+pub use filter::MetadataNodeFilter;
 pub use tools::{
     BridgeCategoriesArgs, DependentsArgs, GetNodeArgs, GetNodeEdgesArgs, GraphNodeFilter,
     GraphTools, LearningPathArgs, NeighborhoodArgs, PathArgs, PrerequisitesArgs, RelatedArgs,
