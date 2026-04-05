@@ -25,6 +25,10 @@ use rmcp::transport::streamable_http_server::{
     StreamableHttpServerConfig, StreamableHttpService, session::local::LocalSessionManager,
 };
 
+/// HTTP service type alias — hides the session-manager generic (API-01).
+#[cfg(feature = "http")]
+pub type HttpService = StreamableHttpService<FabrykMcpServer, LocalSessionManager>;
+
 /// Configuration for the MCP server.
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct ServerConfig {
@@ -235,7 +239,7 @@ impl FabrykMcpServer {
     ///     .nest_service("/mcp", mcp_service);
     /// ```
     #[cfg(feature = "http")]
-    pub fn into_http_service(self) -> StreamableHttpService<Self> {
+    pub fn into_http_service(self) -> HttpService {
         self.into_http_service_with_config(StreamableHttpServerConfig::default())
     }
 
@@ -244,7 +248,7 @@ impl FabrykMcpServer {
     pub fn into_http_service_with_config(
         self,
         config: StreamableHttpServerConfig,
-    ) -> StreamableHttpService<Self> {
+    ) -> HttpService {
         log::info!(
             "Building HTTP service for {} v{} with {} tools",
             self.config.name,
