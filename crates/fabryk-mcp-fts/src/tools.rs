@@ -634,8 +634,8 @@ mod tests {
 
     #[test]
     fn test_fts_tools_with_extra_schema() {
-        let tools = FtsTools::new(MockSearchBackend::new())
-            .with_extra_search_schema(serde_json::json!({
+        let tools =
+            FtsTools::new(MockSearchBackend::new()).with_extra_search_schema(serde_json::json!({
                 "tier": {"type": "string"}
             }));
         let tool_list = tools.tools();
@@ -670,8 +670,8 @@ mod tests {
 
     #[tokio::test]
     async fn test_fts_search_passes_extra_filters() {
-        let tools = FtsTools::new(MockSearchBackend::new())
-            .with_extra_search_schema(serde_json::json!({
+        let tools =
+            FtsTools::new(MockSearchBackend::new()).with_extra_search_schema(serde_json::json!({
                 "tier": {"type": "string"}
             }));
 

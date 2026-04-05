@@ -431,10 +431,7 @@ mod tests {
         assert_eq!(fts.kind, "fts");
         assert!(fts.ready);
         assert_eq!(fts.document_count, Some(150));
-        assert_eq!(
-            fts.last_indexed,
-            Some("2026-04-01T12:00:00Z".to_string())
-        );
+        assert_eq!(fts.last_indexed, Some("2026-04-01T12:00:00Z".to_string()));
 
         let vector = &backends.services[1];
         assert_eq!(vector.name, "simple-vector");
@@ -558,8 +555,9 @@ mod tests {
 
     #[tokio::test]
     async fn test_handle_health_enriched() {
-        let probes: Vec<Arc<dyn BackendProbe>> =
-            vec![Arc::new(MockProbe::new("tantivy", "fts").with_document_count(100))];
+        let probes: Vec<Arc<dyn BackendProbe>> = vec![Arc::new(
+            MockProbe::new("tantivy", "fts").with_document_count(100),
+        )];
 
         let config = SearchConfigInfo {
             query_mode: "smart".to_string(),
@@ -643,11 +641,7 @@ mod tests {
         assert_eq!(deserialized.server_name, "roundtrip-server");
         assert_eq!(deserialized.backends.as_ref().unwrap().services.len(), 2);
         assert_eq!(
-            deserialized
-                .search_config
-                .as_ref()
-                .unwrap()
-                .query_mode,
+            deserialized.search_config.as_ref().unwrap().query_mode,
             "smart"
         );
     }

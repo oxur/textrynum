@@ -281,7 +281,10 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
         vec![
             make_tool(
                 &self.tool_name("list"),
-                &self.tool_description("list", &format!("List all {type_plural} with optional category filter")),
+                &self.tool_description(
+                    "list",
+                    &format!("List all {type_plural} with optional category filter"),
+                ),
                 list_schema,
             ),
             {
@@ -312,7 +315,10 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
             },
             make_tool(
                 &self.tool_name("categories"),
-                &self.tool_description("categories", &format!("List available {type_name} categories")),
+                &self.tool_description(
+                    "categories",
+                    &format!("List available {type_name} categories"),
+                ),
                 serde_json::json!({
                     "type": "object",
                     "properties": {}
@@ -342,11 +348,7 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
                 let extra_filters = obj;
 
                 let items = provider
-                    .list_items_filtered(
-                        category.as_deref(),
-                        limit,
-                        &extra_filters,
-                    )
+                    .list_items_filtered(category.as_deref(), limit, &extra_filters)
                     .await
                     .map_err(|e| e.to_mcp_error())?;
                 serialize_response(&items)
@@ -357,10 +359,7 @@ impl<P: ContentItemProvider + 'static> ToolRegistry for ContentTools<P> {
             let id_field = self.get_id_field_name().to_string();
             return Some(Box::pin(async move {
                 let id = extract_string_field(&args, &id_field)?;
-                let item = provider
-                    .get_item(&id)
-                    .await
-                    .map_err(|e| e.to_mcp_error())?;
+                let item = provider.get_item(&id).await.map_err(|e| e.to_mcp_error())?;
                 serialize_response(&item)
             }));
         }
@@ -526,7 +525,10 @@ impl<P: SourceProvider + 'static> ToolRegistry for SourceTools<P> {
             ),
             make_tool(
                 &self.tool_name("sources_check_availability"),
-                &self.tool_description("sources_check_availability", "Check if a source is available"),
+                &self.tool_description(
+                    "sources_check_availability",
+                    "Check if a source is available",
+                ),
                 serde_json::json!({
                     "type": "object",
                     "properties": {
@@ -743,10 +745,7 @@ impl<P: GuideProvider + 'static> ToolRegistry for GuideTools<P> {
 
         if name == self.tool_name(Self::SLOT_LIST) {
             return Some(Box::pin(async move {
-                let guides = provider
-                    .list_guides()
-                    .await
-                    .map_err(|e| e.to_mcp_error())?;
+                let guides = provider.list_guides().await.map_err(|e| e.to_mcp_error())?;
                 serialize_response(&guides)
             }));
         }
@@ -1437,10 +1436,7 @@ mod tests {
             properties.get("category").is_some(),
             "should still have category"
         );
-        assert!(
-            properties.get("limit").is_some(),
-            "should still have limit"
-        );
+        assert!(properties.get("limit").is_some(), "should still have limit");
         assert!(
             properties.get("tier").is_some(),
             "should have extra tier property"
@@ -1542,7 +1538,9 @@ mod tests {
 
         // Verify the provider received the extra filter.
         let captured = provider.captured.lock().unwrap();
-        let filters = captured.as_ref().expect("filters should have been captured");
+        let filters = captured
+            .as_ref()
+            .expect("filters should have been captured");
         assert_eq!(
             filters.get("tier").and_then(|v| v.as_str()),
             Some("advanced"),
@@ -1652,11 +1650,7 @@ mod tests {
     #[test]
     fn test_guide_tools_unknown_tool() {
         let tools = GuideTools::new(MockGuideProvider);
-        assert!(
-            tools
-                .call("delete_guide", serde_json::json!({}))
-                .is_none()
-        );
+        assert!(tools.call("delete_guide", serde_json::json!({})).is_none());
     }
 
     #[test]
@@ -1679,9 +1673,7 @@ mod tests {
         // Old name should NOT work
         assert!(tools.call("list_guides", serde_json::json!({})).is_none());
         // Custom name should work
-        let future = tools
-            .call("my_list_guides", serde_json::json!({}))
-            .unwrap();
+        let future = tools.call("my_list_guides", serde_json::json!({})).unwrap();
         let result = future.await.unwrap();
         assert_eq!(result.is_error, Some(false));
     }
@@ -1736,10 +1728,7 @@ mod tests {
             .with_prefix("concepts")
             .with_get_id_field("concept_id");
         let future = tools
-            .call(
-                "concepts_get",
-                serde_json::json!({"concept_id": "item-1"}),
-            )
+            .call("concepts_get", serde_json::json!({"concept_id": "item-1"}))
             .unwrap();
         let result = future.await.unwrap();
         assert_eq!(result.is_error, Some(false));
@@ -1755,7 +1744,10 @@ mod tests {
             .call("concepts_get", serde_json::json!({"id": "item-1"}))
             .unwrap();
         let result = future.await;
-        assert!(result.is_err(), "should fail when custom id field is missing");
+        assert!(
+            result.is_err(),
+            "should fail when custom id field is missing"
+        );
     }
 
     #[test]
@@ -1865,11 +1857,7 @@ mod tests {
     #[test]
     fn test_question_search_tools_unknown_tool() {
         let tools = QuestionSearchTools::new(MockQuestionProvider);
-        assert!(
-            tools
-                .call("unknown_tool", serde_json::json!({}))
-                .is_none()
-        );
+        assert!(tools.call("unknown_tool", serde_json::json!({})).is_none());
     }
 
     #[test]
@@ -1896,10 +1884,7 @@ mod tests {
         );
         // Custom name should work
         let future = tools
-            .call(
-                "my_search",
-                serde_json::json!({"question": "test query"}),
-            )
+            .call("my_search", serde_json::json!({"question": "test query"}))
             .unwrap();
         let result = future.await.unwrap();
         assert_eq!(result.is_error, Some(false));

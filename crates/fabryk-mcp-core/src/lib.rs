@@ -53,8 +53,8 @@ pub mod notifier;
 pub mod registry;
 pub mod resource;
 pub mod server;
-pub mod static_resources;
 pub mod service_registry;
+pub mod static_resources;
 pub mod tools;
 pub mod validate;
 

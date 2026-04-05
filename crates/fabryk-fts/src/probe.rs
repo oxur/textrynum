@@ -62,7 +62,7 @@ pub fn search_probe(backend: Arc<dyn SearchBackend>) -> Arc<dyn BackendProbe> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::backend::{SimpleSearch, SearchBackend};
+    use crate::backend::{SearchBackend, SimpleSearch};
     use crate::types::SearchConfig;
     use fabryk_core::BackendProbe;
 

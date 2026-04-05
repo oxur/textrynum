@@ -503,7 +503,10 @@ pub fn concept_sources(graph: &GraphData, concept_id: &str) -> Result<Vec<Node>>
     let mut results = Vec::new();
     for edge in graph.iter_edges() {
         if edge.to == concept_id
-            && matches!(edge.relationship, Relationship::Introduces | Relationship::Covers)
+            && matches!(
+                edge.relationship,
+                Relationship::Introduces | Relationship::Covers
+            )
             && let Some(node) = graph.get_node(&edge.from)
         {
             results.push(node.clone());
@@ -547,7 +550,10 @@ pub fn source_coverage(graph: &GraphData, source_id: &str) -> Result<Vec<Node>> 
     let mut results = Vec::new();
     for edge in graph.iter_edges() {
         if edge.from == source_id
-            && matches!(edge.relationship, Relationship::Introduces | Relationship::Covers)
+            && matches!(
+                edge.relationship,
+                Relationship::Introduces | Relationship::Covers
+            )
             && let Some(node) = graph.get_node(&edge.to)
         {
             results.push(node.clone());
@@ -1116,20 +1122,12 @@ mod tests {
             ))
             .unwrap();
         graph
-            .add_edge(Edge::new(
-                "book-alpha",
-                "concept-y",
-                Relationship::Covers,
-            ))
+            .add_edge(Edge::new("book-alpha", "concept-y", Relationship::Covers))
             .unwrap();
 
         // Edges: book-beta covers concept-x
         graph
-            .add_edge(Edge::new(
-                "book-beta",
-                "concept-x",
-                Relationship::Covers,
-            ))
+            .add_edge(Edge::new("book-beta", "concept-x", Relationship::Covers))
             .unwrap();
 
         // Variant edges

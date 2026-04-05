@@ -698,8 +698,7 @@ impl ToolRegistry for GraphTools {
                     .map_err(|e| e.to_mcp_error())?;
 
                 let filtered = apply_node_filter(result.nodes, &raw_args, &node_filter);
-                let mut nodes: Vec<NodeSummary> =
-                    filtered.iter().map(NodeSummary::from).collect();
+                let mut nodes: Vec<NodeSummary> = filtered.iter().map(NodeSummary::from).collect();
 
                 if let Some(limit) = args.limit {
                     nodes.truncate(limit);
@@ -770,8 +769,7 @@ impl ToolRegistry for GraphTools {
                     prerequisites_sorted(&graph, &args.id).map_err(|e| e.to_mcp_error())?;
 
                 let filtered = apply_node_filter(result.ordered, &raw_args, &node_filter);
-                let prereqs: Vec<NodeSummary> =
-                    filtered.iter().map(NodeSummary::from).collect();
+                let prereqs: Vec<NodeSummary> = filtered.iter().map(NodeSummary::from).collect();
 
                 let count = prereqs.len();
                 let response = json!({
@@ -897,8 +895,7 @@ impl ToolRegistry for GraphTools {
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
                 let graph = graph.read().await;
 
-                let detail =
-                    get_node_detail(&graph, &args.id).map_err(|e| e.to_mcp_error())?;
+                let detail = get_node_detail(&graph, &args.id).map_err(|e| e.to_mcp_error())?;
                 serialize_response(&detail)
             }));
         }
@@ -909,12 +906,8 @@ impl ToolRegistry for GraphTools {
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
                 let graph = graph.read().await;
 
-                let result = get_node_edges(
-                    &graph,
-                    &args.id,
-                    args.direction.as_deref(),
-                )
-                .map_err(|e| e.to_mcp_error())?;
+                let result = get_node_edges(&graph, &args.id, args.direction.as_deref())
+                    .map_err(|e| e.to_mcp_error())?;
                 serialize_response(&result)
             }));
         }
@@ -967,8 +960,7 @@ impl ToolRegistry for GraphTools {
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
                 let graph = graph.read().await;
 
-                let nodes =
-                    concept_sources(&graph, &args.id).map_err(|e| e.to_mcp_error())?;
+                let nodes = concept_sources(&graph, &args.id).map_err(|e| e.to_mcp_error())?;
 
                 let filtered = apply_node_filter(nodes, &raw_args, &node_filter);
                 let summaries: Vec<NodeSummary> = filtered.iter().map(NodeSummary::from).collect();
@@ -990,8 +982,7 @@ impl ToolRegistry for GraphTools {
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
                 let graph = graph.read().await;
 
-                let nodes =
-                    concept_variants(&graph, &args.id).map_err(|e| e.to_mcp_error())?;
+                let nodes = concept_variants(&graph, &args.id).map_err(|e| e.to_mcp_error())?;
 
                 let filtered = apply_node_filter(nodes, &raw_args, &node_filter);
                 let summaries: Vec<NodeSummary> = filtered.iter().map(NodeSummary::from).collect();
@@ -1013,8 +1004,7 @@ impl ToolRegistry for GraphTools {
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
                 let graph = graph.read().await;
 
-                let nodes =
-                    source_coverage(&graph, &args.id).map_err(|e| e.to_mcp_error())?;
+                let nodes = source_coverage(&graph, &args.id).map_err(|e| e.to_mcp_error())?;
 
                 let filtered = apply_node_filter(nodes, &raw_args, &node_filter);
                 let summaries: Vec<NodeSummary> = filtered.iter().map(NodeSummary::from).collect();
@@ -1036,8 +1026,7 @@ impl ToolRegistry for GraphTools {
                     .map_err(|e| ErrorData::invalid_params(e.to_string(), None))?;
                 let graph = graph.read().await;
 
-                let mut result =
-                    learning_path(&graph, &args.id).map_err(|e| e.to_mcp_error())?;
+                let mut result = learning_path(&graph, &args.id).map_err(|e| e.to_mcp_error())?;
 
                 if let Some(filter) = &node_filter {
                     result.steps.retain(|step| {
@@ -1061,13 +1050,9 @@ impl ToolRegistry for GraphTools {
                 let graph = graph.read().await;
 
                 let limit = args.limit.unwrap_or(10);
-                let nodes = bridge_between_categories(
-                    &graph,
-                    &args.category_a,
-                    &args.category_b,
-                    limit,
-                )
-                .map_err(|e| e.to_mcp_error())?;
+                let nodes =
+                    bridge_between_categories(&graph, &args.category_a, &args.category_b, limit)
+                        .map_err(|e| e.to_mcp_error())?;
 
                 let filtered = apply_node_filter(nodes, &raw_args, &node_filter);
                 let summaries: Vec<NodeSummary> = filtered.iter().map(NodeSummary::from).collect();
@@ -1672,16 +1657,8 @@ mod tests {
             "concept-x",
             Relationship::Introduces,
         ));
-        let _ = graph.add_edge(Edge::new(
-            "book-alpha",
-            "concept-y",
-            Relationship::Covers,
-        ));
-        let _ = graph.add_edge(Edge::new(
-            "book-beta",
-            "concept-x",
-            Relationship::Covers,
-        ));
+        let _ = graph.add_edge(Edge::new("book-alpha", "concept-y", Relationship::Covers));
+        let _ = graph.add_edge(Edge::new("book-beta", "concept-x", Relationship::Covers));
 
         // Variant edges
         let _ = graph.add_edge(Edge::new(
@@ -1975,8 +1952,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_graph_tools_with_node_filter() {
-        let tools = GraphTools::new(make_test_graph())
-            .with_node_filter(Arc::new(TierFilter));
+        let tools = GraphTools::new(make_test_graph()).with_node_filter(Arc::new(TierFilter));
 
         // Call graph_dependents for node-b. node-a is the only dependent
         // and has tier "foundational". Filter for "advanced" should exclude it.
@@ -2000,8 +1976,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_graph_tools_with_node_filter_matching() {
-        let tools = GraphTools::new(make_test_graph())
-            .with_node_filter(Arc::new(TierFilter));
+        let tools = GraphTools::new(make_test_graph()).with_node_filter(Arc::new(TierFilter));
 
         // Call graph_dependents for node-b. Filter for "foundational" should
         // include node-a.
@@ -2025,8 +2000,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_graph_tools_with_node_filter_no_tier_arg() {
-        let tools = GraphTools::new(make_test_graph())
-            .with_node_filter(Arc::new(TierFilter));
+        let tools = GraphTools::new(make_test_graph()).with_node_filter(Arc::new(TierFilter));
 
         // Without a tier arg the filter passes everything through.
         let future = tools
@@ -2064,7 +2038,10 @@ mod tests {
         let schema_value: serde_json::Value =
             serde_json::to_value(&*dep_tool.input_schema).unwrap();
         let props = schema_value["properties"].as_object().unwrap();
-        assert!(props.contains_key("tier"), "Schema should contain 'tier' property");
+        assert!(
+            props.contains_key("tier"),
+            "Schema should contain 'tier' property"
+        );
         assert_eq!(props["tier"]["type"], "string");
         assert!(
             props.contains_key("id"),
@@ -2089,8 +2066,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_graph_tools_filter_does_not_affect_single_node() {
-        let tools = GraphTools::new(make_test_graph())
-            .with_node_filter(Arc::new(TierFilter));
+        let tools = GraphTools::new(make_test_graph()).with_node_filter(Arc::new(TierFilter));
 
         // graph_get_node returns a single node detail, not a list.
         // The filter should NOT prevent it from returning node-a
@@ -2115,8 +2091,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_graph_tools_filter_on_bridges() {
-        let tools = GraphTools::new(make_test_graph())
-            .with_node_filter(Arc::new(TierFilter));
+        let tools = GraphTools::new(make_test_graph()).with_node_filter(Arc::new(TierFilter));
 
         let future = tools
             .call(

@@ -23,11 +23,11 @@ pub mod util;
 
 // Re-export key types at crate root for convenience
 pub use error::{Error, Result, log_error_chain};
+pub use probe::BackendProbe;
 pub use service::{
     RetryConfig, ServiceHandle, ServiceState, Transition, spawn_with_retry, wait_all_ready,
 };
 pub use state::AppState;
-pub use probe::BackendProbe;
 pub use traits::ConfigManager;
 pub use traits::ConfigProvider;
 
