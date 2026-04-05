@@ -10,10 +10,10 @@ homepage.workspace = true
 description = "Semantic (hybrid) search MCP tools for Fabryk"
 
 [dependencies]
-fabryk-core = { version = "0.4.2", path = "../fabryk-core" }
-fabryk-fts = { version = "0.4.2", path = "../fabryk-fts" }
-fabryk-vector = { version = "0.4.2", path = "../fabryk-vector" }
-fabryk-mcp-core = { version = "0.4.2", path = "../fabryk-mcp-core" }
+fabryk-core = { version = "0.5.0", path = "../fabryk-core" }
+fabryk-fts = { version = "0.5.0", path = "../fabryk-fts" }
+fabryk-vector = { version = "0.5.0", path = "../fabryk-vector" }
+fabryk-mcp-core = { version = "0.5.0", path = "../fabryk-mcp-core" }
 
 # Async
 tokio = { workspace = true }

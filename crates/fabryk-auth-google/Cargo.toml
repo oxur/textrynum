@@ -9,7 +9,7 @@ homepage.workspace = true
 description = "Google OAuth2 provider for fabryk-auth — JWKS cache, JWT validation, userinfo"
 
 [dependencies]
-fabryk-auth = { version = "0.4.2", path = "../fabryk-auth" }
+fabryk-auth = { version = "0.5.0", path = "../fabryk-auth" }
 jsonwebtoken = { workspace = true }
 reqwest = { workspace = true }
 serde = { workspace = true }
