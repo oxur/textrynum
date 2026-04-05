@@ -38,6 +38,7 @@
 
 use std::collections::HashSet;
 use std::path::{Path, PathBuf};
+use std::sync::Arc;
 
 use async_walkdir::WalkDir;
 use fabryk_core::{Error, Result};
@@ -63,6 +64,25 @@ pub struct IndexStats {
     pub bytes_processed: usize,
     /// Content hash for freshness checking.
     pub content_hash: String,
+    /// Per-label document counts (e.g., "concept_cards" -> 42).
+    pub label_counts: std::collections::HashMap<String, usize>,
+}
+
+impl std::ops::AddAssign for IndexStats {
+    fn add_assign(&mut self, other: Self) {
+        self.documents_indexed += other.documents_indexed;
+        self.files_processed += other.files_processed;
+        self.files_skipped += other.files_skipped;
+        self.errors += other.errors;
+        self.bytes_processed += other.bytes_processed;
+        // Keep the last non-empty content hash.
+        if !other.content_hash.is_empty() {
+            self.content_hash = other.content_hash;
+        }
+        for (label, count) in other.label_counts {
+            *self.label_counts.entry(label).or_insert(0) += count;
+        }
+    }
 }
 
 /// Trait for extracting `SearchDocument`s from raw content.
@@ -471,6 +491,66 @@ impl Default for IndexBuilder {
     }
 }
 
+/// Build an index from multiple content directories.
+///
+/// Each directory is indexed with the given extractor. The first directory
+/// creates the index; subsequent directories append to it. The `label` in
+/// each tuple is recorded in [`IndexStats::label_counts`].
+///
+/// # Arguments
+///
+/// * `content_dirs` - Slice of `(directory_path, label)` pairs.
+/// * `index_path` - Destination index directory.
+/// * `extractor` - Shared document extractor for all directories.
+///
+/// # Errors
+///
+/// Returns the first fatal error encountered. Non-fatal errors within
+/// individual directories are accumulated in the returned stats.
+pub async fn build_index_multi<P: AsRef<Path>>(
+    content_dirs: &[(P, &str)],
+    index_path: &Path,
+    extractor: Box<dyn DocumentExtractor>,
+) -> Result<IndexStats> {
+    let extractor: Arc<dyn DocumentExtractor> = Arc::from(extractor);
+    let mut combined = IndexStats::default();
+
+    for (i, (dir, label)) in content_dirs.iter().enumerate() {
+        let dir = dir.as_ref();
+
+        // Clone the Arc into a new Box for each IndexBuilder.
+        let ext_clone: Box<dyn DocumentExtractor> = Box::new(ArcExtractor(Arc::clone(&extractor)));
+
+        let builder = IndexBuilder::new().with_extractor(ext_clone).force_rebuild();
+
+        let mut stats = if i == 0 {
+            builder.build(dir, index_path).await?
+        } else {
+            builder.build_append(dir, index_path).await?
+        };
+
+        stats
+            .label_counts
+            .insert(label.to_string(), stats.documents_indexed);
+        combined += stats;
+    }
+
+    Ok(combined)
+}
+
+/// Wrapper that implements [`DocumentExtractor`] by delegating to an `Arc`.
+struct ArcExtractor(Arc<dyn DocumentExtractor>);
+
+impl DocumentExtractor for ArcExtractor {
+    fn extract(&self, path: &Path, content: &str) -> Option<SearchDocument> {
+        self.0.extract(path, content)
+    }
+
+    fn supported_extensions(&self) -> &[&str] {
+        self.0.supported_extensions()
+    }
+}
+
 impl std::fmt::Debug for IndexBuilder {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.debug_struct("IndexBuilder")
@@ -838,5 +918,118 @@ mod tests {
             .await
             .unwrap();
         assert!(stats.files_processed > 0);
+    }
+
+    // ------------------------------------------------------------------------
+    // IndexStats AddAssign tests
+    // ------------------------------------------------------------------------
+
+    #[test]
+    fn test_index_stats_add_assign() {
+        let mut a = IndexStats {
+            documents_indexed: 10,
+            files_processed: 12,
+            files_skipped: 1,
+            errors: 0,
+            bytes_processed: 5000,
+            content_hash: "hash_a".to_string(),
+            label_counts: [("cards".to_string(), 10)].into_iter().collect(),
+        };
+
+        let b = IndexStats {
+            documents_indexed: 5,
+            files_processed: 6,
+            files_skipped: 0,
+            errors: 1,
+            bytes_processed: 2000,
+            content_hash: "hash_b".to_string(),
+            label_counts: [("sources".to_string(), 5)].into_iter().collect(),
+        };
+
+        a += b;
+
+        assert_eq!(a.documents_indexed, 15);
+        assert_eq!(a.files_processed, 18);
+        assert_eq!(a.files_skipped, 1);
+        assert_eq!(a.errors, 1);
+        assert_eq!(a.bytes_processed, 7000);
+        assert_eq!(a.content_hash, "hash_b");
+        assert_eq!(a.label_counts.len(), 2);
+        assert_eq!(a.label_counts["cards"], 10);
+        assert_eq!(a.label_counts["sources"], 5);
+    }
+
+    #[test]
+    fn test_index_stats_add_assign_empty_hash_preserved() {
+        let mut a = IndexStats {
+            content_hash: "original".to_string(),
+            ..Default::default()
+        };
+
+        let b = IndexStats::default(); // empty content_hash
+
+        a += b;
+
+        assert_eq!(a.content_hash, "original");
+    }
+
+    #[test]
+    fn test_index_stats_label_counts_accumulate() {
+        let mut a = IndexStats {
+            label_counts: [("cards".to_string(), 10)].into_iter().collect(),
+            ..Default::default()
+        };
+
+        let b = IndexStats {
+            label_counts: [("cards".to_string(), 5)].into_iter().collect(),
+            ..Default::default()
+        };
+
+        a += b;
+
+        assert_eq!(a.label_counts["cards"], 15);
+    }
+
+    // ------------------------------------------------------------------------
+    // build_index_multi tests
+    // ------------------------------------------------------------------------
+
+    #[tokio::test]
+    async fn test_build_index_multi() {
+        let dir_a = TempDir::new().unwrap();
+        let dir_b = TempDir::new().unwrap();
+        let index_dir = TempDir::new().unwrap();
+
+        create_test_file(dir_a.path(), "a1.md", "# Alpha 1\n\nContent alpha one");
+        create_test_file(dir_a.path(), "a2.md", "# Alpha 2\n\nContent alpha two");
+        create_test_file(dir_b.path(), "b1.md", "# Beta 1\n\nContent beta one");
+
+        let dirs: Vec<(&Path, &str)> = vec![
+            (dir_a.path(), "alpha"),
+            (dir_b.path(), "beta"),
+        ];
+
+        let extractor = Box::new(DefaultExtractor::default());
+        let stats = build_index_multi(&dirs, index_dir.path(), extractor)
+            .await
+            .unwrap();
+
+        assert_eq!(stats.documents_indexed, 3);
+        assert_eq!(stats.label_counts["alpha"], 2);
+        assert_eq!(stats.label_counts["beta"], 1);
+    }
+
+    #[tokio::test]
+    async fn test_build_index_multi_empty() {
+        let index_dir = TempDir::new().unwrap();
+        let dirs: Vec<(&Path, &str)> = vec![];
+
+        let extractor = Box::new(DefaultExtractor::default());
+        let stats = build_index_multi(&dirs, index_dir.path(), extractor)
+            .await
+            .unwrap();
+
+        assert_eq!(stats.documents_indexed, 0);
+        assert!(stats.label_counts.is_empty());
     }
 }

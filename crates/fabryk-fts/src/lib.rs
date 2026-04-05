@@ -105,7 +105,7 @@ pub mod stopwords;
 pub mod tantivy_search;
 
 // Re-exports
-pub use backend::{SearchBackend, SearchParams, SearchResult, SearchResults};
+pub use backend::{SearchBackend, SearchParams, SearchResult, SearchResults, SimpleDocumentExtractor};
 pub use concept_card_extractor::ConceptCardDocumentExtractor;
 pub use document::SearchDocument;
 pub use probe::{SearchProbe, search_probe};
@@ -121,7 +121,7 @@ pub use query::QueryBuilder;
 pub use indexer::Indexer;
 
 #[cfg(feature = "fts-tantivy")]
-pub use builder::{DocumentExtractor, IndexBuilder, IndexStats};
+pub use builder::{DocumentExtractor, IndexBuilder, IndexStats, build_index_multi};
 
 #[cfg(feature = "fts-tantivy")]
 pub use freshness::{AppendMetadata, IndexMetadata, is_index_fresh};

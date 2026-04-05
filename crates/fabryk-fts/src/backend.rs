@@ -30,6 +30,8 @@ use async_trait::async_trait;
 use fabryk_core::Result;
 use serde::{Deserialize, Serialize};
 
+use crate::concept_card_extractor::ConceptCardDocumentExtractor;
+use crate::document::SearchDocument;
 use crate::types::{QueryMode, SearchConfig};
 
 /// Parameters for a search request.
@@ -189,45 +191,108 @@ pub async fn create_search_backend(config: &SearchConfig) -> Result<Box<dyn Sear
                 }
             }
             // Fall through to simple search
-            Ok(Box::new(SimpleSearch::new(config)))
+            Ok(Box::new(SimpleSearch::with_default_extractor(config)))
         }
-        _ => Ok(Box::new(SimpleSearch::new(config))),
+        _ => Ok(Box::new(SimpleSearch::with_default_extractor(config))),
+    }
+}
+
+/// Trait for extracting [`SearchDocument`]s from file content.
+///
+/// This is the non-feature-gated version of document extraction, usable by
+/// [`SimpleSearch`] without requiring the `fts-tantivy` feature.
+///
+/// # Example
+///
+/// ```rust,ignore
+/// struct MyExtractor;
+///
+/// impl SimpleDocumentExtractor for MyExtractor {
+///     fn extract(&self, path: &std::path::Path, content: &str) -> Option<SearchDocument> {
+///         Some(SearchDocument::builder()
+///             .id("doc")
+///             .title("Title")
+///             .content(content)
+///             .category("general")
+///             .build())
+///     }
+/// }
+/// ```
+pub trait SimpleDocumentExtractor: Send + Sync {
+    /// Extract a [`SearchDocument`] from file content.
+    ///
+    /// Returns `None` if the content cannot be parsed.
+    fn extract(&self, path: &std::path::Path, content: &str) -> Option<SearchDocument>;
+}
+
+/// Blanket implementation so [`ConceptCardDocumentExtractor`] satisfies the trait
+/// via its inherent `extract()` method.
+impl SimpleDocumentExtractor for ConceptCardDocumentExtractor {
+    fn extract(&self, path: &std::path::Path, content: &str) -> Option<SearchDocument> {
+        ConceptCardDocumentExtractor::extract(self, path, content)
     }
 }
 
 /// Simple linear-scan search backend.
 ///
-/// Used as a fallback when Tantivy is not available or for small collections
-/// where indexing overhead isn't justified.
+/// Scans markdown files in the configured `content_path`, extracts documents
+/// via a [`SimpleDocumentExtractor`], and performs substring matching with
+/// weighted relevance scoring.
 ///
 /// # Limitations
 ///
-/// - O(n) search time
+/// - O(n) search time per query
 /// - No stemming or fuzzy matching
 /// - Substring matching only
 pub struct SimpleSearch {
     config: SearchConfig,
+    extractor: Box<dyn SimpleDocumentExtractor>,
 }
 
 impl SimpleSearch {
-    /// Create a new simple search backend.
-    pub fn new(config: &SearchConfig) -> Self {
+    /// Create a new simple search backend with a custom extractor.
+    pub fn new(config: &SearchConfig, extractor: Box<dyn SimpleDocumentExtractor>) -> Self {
         Self {
             config: config.clone(),
+            extractor,
         }
+    }
+
+    /// Create a new simple search backend with the default
+    /// [`ConceptCardDocumentExtractor`].
+    pub fn with_default_extractor(config: &SearchConfig) -> Self {
+        Self::new(config, Box::new(ConceptCardDocumentExtractor::new()))
+    }
+
+    /// Apply optional filters (category, source, content_types) to a document.
+    ///
+    /// Returns `true` if the document passes all active filters.
+    fn passes_filters(&self, doc: &SearchDocument, params: &SearchParams) -> bool {
+        if let Some(ref cat) = params.category {
+            if !doc.matches_category(cat) {
+                return false;
+            }
+        }
+        if let Some(ref src) = params.source {
+            if !doc.matches_source(src) {
+                return false;
+            }
+        }
+        if let Some(ref types) = params.content_types {
+            if !types.iter().any(|ct| doc.matches_content_type(ct)) {
+                return false;
+            }
+        }
+        true
     }
 }
 
 #[async_trait]
 impl SearchBackend for SimpleSearch {
     async fn search(&self, params: SearchParams) -> Result<SearchResults> {
-        // Simple search requires loading documents from content_path
-        // This is a minimal implementation - full version loads from filesystem
-
         let limit = params.limit.unwrap_or(self.config.default_limit);
+        let snippet_length = params.snippet_length.unwrap_or(self.config.snippet_length);
 
-        // For now, return empty results
-        // Full implementation will scan content_path and match documents
         log::debug!(
             "SimpleSearch: query='{}', limit={}, category={:?}",
             params.query,
@@ -235,7 +300,89 @@ impl SearchBackend for SimpleSearch {
             params.category
         );
 
-        Ok(SearchResults::empty(self.name()))
+        // If no content_path configured, return empty results.
+        let content_path = match self.config.content_path {
+            Some(ref p) => std::path::PathBuf::from(p),
+            None => return Ok(SearchResults::empty(self.name())),
+        };
+
+        if !content_path.exists() {
+            log::warn!(
+                "SimpleSearch: content_path does not exist: {}",
+                content_path.display()
+            );
+            return Ok(SearchResults::empty(self.name()));
+        }
+
+        // Discover all markdown files.
+        let files = fabryk_core::util::files::find_all_files(
+            &content_path,
+            fabryk_core::util::files::FindOptions::markdown(),
+        )
+        .await?;
+
+        let mut results: Vec<SearchResult> = Vec::new();
+
+        for file_info in &files {
+            // Read file content.
+            let content = match fabryk_core::util::files::read_file(&file_info.path).await {
+                Ok(c) => c,
+                Err(e) => {
+                    log::warn!("SimpleSearch: failed to read {:?}: {}", file_info.path, e);
+                    continue;
+                }
+            };
+
+            // Extract document.
+            let doc = match self.extractor.extract(&file_info.path, &content) {
+                Some(d) => d,
+                None => continue,
+            };
+
+            // Check query match.
+            if !doc.matches_query(&params.query) {
+                continue;
+            }
+
+            // Apply filters.
+            if !self.passes_filters(&doc, &params) {
+                continue;
+            }
+
+            // Score and build result.
+            let relevance = doc.relevance(&params.query);
+            let snippet = doc.extract_snippet(&params.query, snippet_length);
+
+            results.push(SearchResult {
+                id: doc.id.clone(),
+                title: doc.title.clone(),
+                description: doc.description.clone(),
+                category: doc.category.clone(),
+                source: doc.source.clone(),
+                snippet,
+                relevance,
+                content_type: doc.content_type.clone(),
+                path: Some(doc.path.clone()),
+                chapter: doc.chapter.clone(),
+                section: doc.section.clone(),
+            });
+        }
+
+        // Sort by relevance descending.
+        results.sort_by(|a, b| {
+            b.relevance
+                .partial_cmp(&a.relevance)
+                .unwrap_or(std::cmp::Ordering::Equal)
+        });
+
+        let total = results.len();
+        results.truncate(limit);
+
+        Ok(SearchResults {
+            items: results,
+            total,
+            backend: self.name().to_string(),
+        })
     }
 
     fn name(&self) -> &str {
@@ -323,15 +470,23 @@ mod tests {
     #[test]
     fn test_simple_search_creation() {
         let config = SearchConfig::default();
-        let backend = SimpleSearch::new(&config);
+        let backend = SimpleSearch::with_default_extractor(&config);
         assert_eq!(backend.name(), "simple");
         assert!(backend.is_ready());
     }
 
-    #[tokio::test]
-    async fn test_simple_search_empty_result() {
+    #[test]
+    fn test_simple_search_creation_custom_extractor() {
         let config = SearchConfig::default();
-        let backend = SimpleSearch::new(&config);
+        let extractor = Box::new(ConceptCardDocumentExtractor::new());
+        let backend = SimpleSearch::new(&config, extractor);
+        assert_eq!(backend.name(), "simple");
+    }
+
+    #[tokio::test]
+    async fn test_simple_search_empty_result_no_content_path() {
+        let config = SearchConfig::default();
+        let backend = SimpleSearch::with_default_extractor(&config);
 
         let params = SearchParams {
             query: "test".to_string(),
@@ -340,6 +495,139 @@ mod tests {
 
         let results = backend.search(params).await.unwrap();
         assert_eq!(results.backend, "simple");
+        assert_eq!(results.total, 0);
+    }
+
+    #[tokio::test]
+    async fn test_simple_search_with_real_files() {
+        let temp_dir = tempfile::TempDir::new().unwrap();
+        let root = temp_dir.path();
+
+        // Create category directory structure.
+        let harmony_dir = root.join("harmony");
+        std::fs::create_dir_all(&harmony_dir).unwrap();
+
+        std::fs::write(
+            harmony_dir.join("major-triad.md"),
+            "---\ntitle: Major Triad\ncategory: harmony\n---\n\nThe major triad consists of a root, major third, and perfect fifth.",
+        )
+        .unwrap();
+
+        std::fs::write(
+            harmony_dir.join("minor-scale.md"),
+            "---\ntitle: Minor Scale\ncategory: harmony\n---\n\nThe natural minor scale follows a specific pattern of whole and half steps.",
+        )
+        .unwrap();
+
+        let rhythm_dir = root.join("rhythm");
+        std::fs::create_dir_all(&rhythm_dir).unwrap();
+
+        std::fs::write(
+            rhythm_dir.join("time-signatures.md"),
+            "---\ntitle: Time Signatures\ncategory: rhythm\n---\n\nTime signatures indicate the meter of a piece.",
+        )
+        .unwrap();
+
+        let config = SearchConfig {
+            backend: "simple".to_string(),
+            content_path: Some(root.to_string_lossy().to_string()),
+            ..Default::default()
+        };
+        let backend = SimpleSearch::with_default_extractor(&config);
+
+        // Search for "triad" -- should find major-triad.
+        let params = SearchParams {
+            query: "triad".to_string(),
+            ..Default::default()
+        };
+        let results = backend.search(params).await.unwrap();
+        assert_eq!(results.total, 1);
+        assert_eq!(results.items[0].id, "major-triad");
+        assert!(results.items[0].relevance > 0.0);
+
+        // Search with category filter.
+        let params = SearchParams {
+            query: "".to_string(),
+            category: Some("rhythm".to_string()),
+            ..Default::default()
+        };
+        let results = backend.search(params).await.unwrap();
+        assert_eq!(results.total, 1);
+        assert_eq!(results.items[0].id, "time-signatures");
+
+        // Wildcard search returns all 3.
+        let params = SearchParams {
+            query: "*".to_string(),
+            ..Default::default()
+        };
+        let results = backend.search(params).await.unwrap();
+        assert_eq!(results.total, 3);
+    }
+
+    #[tokio::test]
+    async fn test_simple_search_limit() {
+        let temp_dir = tempfile::TempDir::new().unwrap();
+        let root = temp_dir.path();
+
+        for i in 0..5 {
+            std::fs::write(
+                root.join(format!("doc-{i}.md")),
+                format!("---\ntitle: Doc {i}\ncategory: test\n---\n\nContent about harmony {i}."),
+            )
+            .unwrap();
+        }
+
+        let config = SearchConfig {
+            backend: "simple".to_string(),
+            content_path: Some(root.to_string_lossy().to_string()),
+            ..Default::default()
+        };
+        let backend = SimpleSearch::with_default_extractor(&config);
+
+        let params = SearchParams {
+            query: "*".to_string(),
+            limit: Some(2),
+            ..Default::default()
+        };
+        let results = backend.search(params).await.unwrap();
+        assert_eq!(results.total, 5);
+        assert_eq!(results.items.len(), 2);
+    }
+
+    #[tokio::test]
+    async fn test_simple_search_relevance_ordering() {
+        let temp_dir = tempfile::TempDir::new().unwrap();
+        let root = temp_dir.path();
+
+        // "triad" appears only in content.
+        std::fs::write(
+            root.join("content-only.md"),
+            "---\ntitle: Something Else\ncategory: test\n---\n\nThe triad is important.",
+        )
+        .unwrap();
+
+        // "triad" appears in both title and content.
+        std::fs::write(
+            root.join("title-and-content.md"),
+            "---\ntitle: Triad Fundamentals\ncategory: test\n---\n\nA triad has three notes.",
+        )
+        .unwrap();
+
+        let config = SearchConfig {
+            backend: "simple".to_string(),
+            content_path: Some(root.to_string_lossy().to_string()),
+            ..Default::default()
+        };
+        let backend = SimpleSearch::with_default_extractor(&config);
+
+        let params = SearchParams {
+            query: "triad".to_string(),
+            ..Default::default()
+        };
+        let results = backend.search(params).await.unwrap();
+        assert_eq!(results.total, 2);
+        // Title + content match should score higher.
+        assert_eq!(results.items[0].id, "title-and-content");
     }
 
     #[tokio::test]
