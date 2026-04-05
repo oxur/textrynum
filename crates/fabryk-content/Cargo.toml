@@ -24,6 +24,12 @@ serde = { workspace = true }
 # Regex for content extraction
 regex = { workspace = true }
 
+# Fuzzy string matching
+strsim = { workspace = true }
+
+# Async filesystem operations
+tokio = { workspace = true }
+
 # Logging
 log = { workspace = true }
 

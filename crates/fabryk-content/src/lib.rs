@@ -44,6 +44,7 @@
 pub mod concept_card;
 pub mod markdown;
 pub mod metadata;
+pub mod sources;
 
 // Re-export commonly used types
 pub use concept_card::ConceptCardFrontmatter;
@@ -54,6 +55,13 @@ pub use markdown::{
 };
 
 pub use metadata::{ContentMetadata, ContentType, detect_content_type, extract_metadata};
+
+pub use sources::{
+    MissingFile, MissingSource, ResolutionMethod, ScanStats, SourceCategory, SourceReference,
+    SourceResolver, SourceSuggestion, ValidationMode, ValidationReport, ValidationStats,
+    extract_title_from_filename, scan_content_for_sources, scan_content_for_sources_with_stats,
+    validate_sources,
+};
 
 // Re-export HeadingLevel for convenience
 pub use pulldown_cmark::HeadingLevel;
