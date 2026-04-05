@@ -29,6 +29,8 @@
 //! let tools = ContentTools::new(provider).with_prefix("concepts");
 //! ```
 
+pub mod fs_content_provider;
+pub mod fs_guide_provider;
 pub mod tools;
 pub mod traits;
 
@@ -37,6 +39,10 @@ pub use traits::{
     CategoryInfo, ChapterInfo, ContentItemProvider, FilterMap, GuideProvider, QuestionMatch,
     QuestionSearchProvider, QuestionSearchResponse, SourceProvider,
 };
+
+// Re-exports — filesystem providers
+pub use fs_content_provider::{ContentItemDetail, ContentItemSummary, FsContentItemProvider};
+pub use fs_guide_provider::{FsGuideProvider, GuideSummary};
 
 // Re-exports — tools
 pub use tools::{
