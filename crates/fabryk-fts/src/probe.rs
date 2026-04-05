@@ -19,7 +19,7 @@ use crate::backend::SearchBackend;
 /// use fabryk_fts::{SearchProbe, search_probe, SimpleSearch, SearchConfig};
 ///
 /// let config = SearchConfig::default();
-/// let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::new(&config));
+/// let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::with_default_extractor(&config));
 /// let probe = search_probe(backend);
 /// assert_eq!(probe.probe_kind(), "fts");
 /// ```
@@ -69,7 +69,7 @@ mod tests {
     #[test]
     fn test_search_probe_name() {
         let config = SearchConfig::default();
-        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::new(&config));
+        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::with_default_extractor(&config));
         let probe = SearchProbe::new(backend);
         assert_eq!(probe.probe_name(), "simple");
     }
@@ -77,7 +77,7 @@ mod tests {
     #[test]
     fn test_search_probe_ready() {
         let config = SearchConfig::default();
-        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::new(&config));
+        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::with_default_extractor(&config));
         let probe = SearchProbe::new(backend);
         assert!(probe.probe_ready());
     }
@@ -85,7 +85,7 @@ mod tests {
     #[test]
     fn test_search_probe_kind() {
         let config = SearchConfig::default();
-        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::new(&config));
+        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::with_default_extractor(&config));
         let probe = SearchProbe::new(backend);
         assert_eq!(probe.probe_kind(), "fts");
     }
@@ -93,7 +93,7 @@ mod tests {
     #[test]
     fn test_search_probe_document_count_default() {
         let config = SearchConfig::default();
-        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::new(&config));
+        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::with_default_extractor(&config));
         let probe = SearchProbe::new(backend);
         assert!(probe.probe_document_count().is_none());
     }
@@ -101,7 +101,7 @@ mod tests {
     #[test]
     fn test_search_probe_last_indexed_default() {
         let config = SearchConfig::default();
-        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::new(&config));
+        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::with_default_extractor(&config));
         let probe = SearchProbe::new(backend);
         assert!(probe.probe_last_indexed().is_none());
     }
@@ -109,7 +109,7 @@ mod tests {
     #[test]
     fn test_search_probe_convenience_function() {
         let config = SearchConfig::default();
-        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::new(&config));
+        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::with_default_extractor(&config));
         let probe = search_probe(backend);
         assert_eq!(probe.probe_name(), "simple");
         assert_eq!(probe.probe_kind(), "fts");
@@ -119,7 +119,7 @@ mod tests {
     #[test]
     fn test_search_probe_as_arc_dyn_backend_probe() {
         let config = SearchConfig::default();
-        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::new(&config));
+        let backend: Arc<dyn SearchBackend> = Arc::new(SimpleSearch::with_default_extractor(&config));
         let probe: Arc<dyn BackendProbe> = Arc::new(SearchProbe::new(backend));
         assert_eq!(probe.probe_name(), "simple");
     }
