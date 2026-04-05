@@ -137,6 +137,8 @@ pub use health_router::{ServiceHealthResponse, ServiceStatus, health_router};
 pub use rmcp::transport::streamable_http_server::{
     StreamableHttpServerConfig, StreamableHttpService, session::local::LocalSessionManager,
 };
+#[cfg(feature = "http")]
+pub use server::HttpService;
 
 // Re-exports — axum types for custom HTTP composition (requires `http` feature)
 #[cfg(feature = "http")]
