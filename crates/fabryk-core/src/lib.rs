@@ -15,6 +15,7 @@
 
 pub mod deploy;
 pub mod error;
+pub mod orchestration;
 pub mod probe;
 pub mod service;
 pub mod state;
@@ -23,6 +24,7 @@ pub mod util;
 
 // Re-export key types at crate root for convenience
 pub use error::{Error, Result, log_error_chain};
+pub use orchestration::{ManagedService, ServiceOrchestrator, ServiceStatus};
 pub use probe::BackendProbe;
 pub use service::{
     RetryConfig, ServiceHandle, ServiceState, Transition, spawn_with_retry, wait_all_ready,
