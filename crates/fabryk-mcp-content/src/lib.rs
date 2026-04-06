@@ -31,6 +31,8 @@
 
 pub mod fs_content_provider;
 pub mod fs_guide_provider;
+pub mod fs_question_provider;
+pub mod fs_source_provider;
 pub mod tools;
 pub mod traits;
 
@@ -43,6 +45,11 @@ pub use traits::{
 // Re-exports — filesystem providers
 pub use fs_content_provider::{ContentItemDetail, ContentItemSummary, FsContentItemProvider};
 pub use fs_guide_provider::{FsGuideProvider, GuideSummary};
+pub use fs_question_provider::FsQuestionSearchProvider;
+pub use fs_source_provider::{
+    humanize_source_id, FsSourceProvider, SourceFormat, SourceStatus, SourceSummary,
+    UnconvertedSource,
+};
 
 // Re-exports — tools
 pub use tools::{

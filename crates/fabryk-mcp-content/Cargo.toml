@@ -22,6 +22,9 @@ async-trait = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 
+# String similarity
+strsim = { workspace = true }
+
 # Schema
 schemars = { workspace = true }
 
