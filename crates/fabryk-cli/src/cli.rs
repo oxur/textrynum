@@ -7,6 +7,8 @@
 
 use clap::{Parser, Subcommand};
 
+use crate::sources_handlers::SourcesCommand;
+
 // ============================================================================
 // CLI argument types
 // ============================================================================
@@ -64,6 +66,9 @@ pub enum BaseCommand {
 
     /// Configuration operations.
     Config(ConfigCommand),
+
+    /// Source management operations.
+    Sources(SourcesCommand),
 
     /// Vector database operations.
     #[cfg(feature = "vector-fastembed")]

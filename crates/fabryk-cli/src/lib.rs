@@ -17,6 +17,7 @@ pub mod config_loader;
 pub mod config_sections;
 pub mod config_utils;
 pub mod graph_handlers;
+pub mod sources_handlers;
 #[cfg(feature = "vector-fastembed")]
 pub mod vectordb_handlers;
 
@@ -24,6 +25,7 @@ pub mod vectordb_handlers;
 pub use cli::{
     BaseCommand, CliArgs, CliExtension, ConfigAction, ConfigCommand, GraphCommand, GraphSubcommand,
 };
+pub use sources_handlers::SourcesCommand;
 #[cfg(feature = "vector-fastembed")]
 pub use cli::{VectordbAction, VectordbCommand};
 

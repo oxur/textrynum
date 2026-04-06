@@ -102,6 +102,14 @@ impl<C: ConfigProvider> FabrykCli<C> {
             Some(BaseCommand::Config(config_cmd)) => {
                 config_handlers::handle_config_command(args.config.as_deref(), config_cmd.command)
             }
+            Some(BaseCommand::Sources(_)) => {
+                println!(
+                    "Sources commands require domain-specific configuration. \
+                     Override run() in your domain CLI to call \
+                     sources_handlers::handle_sources()."
+                );
+                Ok(())
+            }
             #[cfg(feature = "vector-fastembed")]
             Some(BaseCommand::Vectordb(cmd)) => {
                 crate::vectordb_handlers::handle_vectordb_command(cmd.command)
