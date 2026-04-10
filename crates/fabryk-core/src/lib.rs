@@ -18,6 +18,7 @@ pub mod error;
 pub mod orchestration;
 pub mod probe;
 pub mod service;
+pub mod slot;
 pub mod state;
 pub mod traits;
 pub mod util;
@@ -29,6 +30,7 @@ pub use probe::BackendProbe;
 pub use service::{
     RetryConfig, ServiceHandle, ServiceState, Transition, spawn_with_retry, wait_all_ready,
 };
+pub use slot::BackendSlot;
 pub use state::AppState;
 pub use traits::ConfigManager;
 pub use traits::ConfigProvider;
