@@ -173,7 +173,8 @@ impl FsSourceProvider {
         // Fall back to humanizing the filename stem
         let stem = filename.strip_suffix(".md").unwrap_or(filename);
         // Strip leading digits and separators
-        let title_part = stem.trim_start_matches(|c: char| c.is_ascii_digit() || c == '-' || c == '_');
+        let title_part =
+            stem.trim_start_matches(|c: char| c.is_ascii_digit() || c == '-' || c == '_');
         if title_part.is_empty() {
             humanize_source_id(stem)
         } else {
@@ -232,7 +233,10 @@ impl SourceProvider for FsSourceProvider {
         chapter: &str,
         section: Option<&str>,
     ) -> Result<String> {
-        let chapter_path = self.sources_md_path.join(source_id).join(format!("{chapter}.md"));
+        let chapter_path = self
+            .sources_md_path
+            .join(source_id)
+            .join(format!("{chapter}.md"));
 
         if !chapter_path.exists() {
             return Err(fabryk_core::Error::not_found(
@@ -279,7 +283,11 @@ impl SourceProvider for FsSourceProvider {
 
         for path in &files {
             let filename = path.file_name().unwrap_or_default().to_string_lossy();
-            let stem = path.file_stem().unwrap_or_default().to_string_lossy().to_string();
+            let stem = path
+                .file_stem()
+                .unwrap_or_default()
+                .to_string_lossy()
+                .to_string();
             let content = tokio::fs::read_to_string(path).await?;
 
             let title = Self::extract_chapter_title(&content, &filename);
@@ -329,7 +337,7 @@ impl SourceProvider for FsSourceProvider {
 /// assert_eq!(humanize_source_id("jazz_theory_book"), "Jazz Theory Book");
 /// ```
 pub fn humanize_source_id(id: &str) -> String {
-    id.split(|c: char| c == '-' || c == '_')
+    id.split(['-', '_'])
         .filter(|s| !s.is_empty())
         .map(|word| {
             let mut chars = word.chars();
@@ -389,14 +397,13 @@ mod tests {
     async fn test_list_sources_converted_and_unconverted() {
         let temp = setup_sources_dir().await;
 
-        let provider = FsSourceProvider::new(temp.path()).with_unconverted_source(
-            UnconvertedSource {
+        let provider =
+            FsSourceProvider::new(temp.path()).with_unconverted_source(UnconvertedSource {
                 id: "berklee-harmony".to_string(),
                 title: "Berklee Harmony".to_string(),
                 path: PathBuf::from("/tmp/berklee-harmony.pdf"),
                 format: SourceFormat::Pdf,
-            },
-        );
+            });
 
         let sources = provider.list_sources().await.unwrap();
 
@@ -415,7 +422,10 @@ mod tests {
         let provider = FsSourceProvider::new(temp.path());
 
         let sources = provider.list_sources().await.unwrap();
-        let omt = sources.iter().find(|s| s.id == "open-music-theory").unwrap();
+        let omt = sources
+            .iter()
+            .find(|s| s.id == "open-music-theory")
+            .unwrap();
         let jt = sources.iter().find(|s| s.id == "jazz-theory").unwrap();
 
         assert_eq!(omt.chapters, Some(2));
@@ -426,14 +436,13 @@ mod tests {
     async fn test_list_sources_unconverted_has_no_chapters() {
         let temp = TempDir::new().unwrap();
 
-        let provider = FsSourceProvider::new(temp.path()).with_unconverted_source(
-            UnconvertedSource {
+        let provider =
+            FsSourceProvider::new(temp.path()).with_unconverted_source(UnconvertedSource {
                 id: "some-book".to_string(),
                 title: "Some Book".to_string(),
                 path: PathBuf::from("/tmp/some-book.epub"),
                 format: SourceFormat::Epub,
-            },
-        );
+            });
 
         let sources = provider.list_sources().await.unwrap();
         assert_eq!(sources.len(), 1);
@@ -460,7 +469,11 @@ mod tests {
         let provider = FsSourceProvider::new(temp.path());
 
         let content = provider
-            .get_chapter("open-music-theory", "02-intervals", Some("Simple Intervals"))
+            .get_chapter(
+                "open-music-theory",
+                "02-intervals",
+                Some("Simple Intervals"),
+            )
             .await
             .unwrap();
 
@@ -536,10 +549,7 @@ mod tests {
         let temp = setup_sources_dir().await;
         let provider = FsSourceProvider::new(temp.path());
 
-        let path = provider
-            .get_source_path("open-music-theory")
-            .await
-            .unwrap();
+        let path = provider.get_source_path("open-music-theory").await.unwrap();
 
         assert!(path.is_some());
         assert!(path.unwrap().ends_with("open-music-theory"));
@@ -550,14 +560,13 @@ mod tests {
         let temp = TempDir::new().unwrap();
         let pdf_path = PathBuf::from("/tmp/berklee.pdf");
 
-        let provider = FsSourceProvider::new(temp.path()).with_unconverted_source(
-            UnconvertedSource {
+        let provider =
+            FsSourceProvider::new(temp.path()).with_unconverted_source(UnconvertedSource {
                 id: "berklee".to_string(),
                 title: "Berklee".to_string(),
                 path: pdf_path.clone(),
                 format: SourceFormat::Pdf,
-            },
-        );
+            });
 
         let path = provider.get_source_path("berklee").await.unwrap();
         assert_eq!(path, Some(pdf_path));
@@ -576,10 +585,7 @@ mod tests {
     async fn test_humanize_source_id() {
         assert_eq!(humanize_source_id("open-music-theory"), "Open Music Theory");
         assert_eq!(humanize_source_id("jazz_theory_book"), "Jazz Theory Book");
-        assert_eq!(
-            humanize_source_id("some--double-dash"),
-            "Some Double Dash"
-        );
+        assert_eq!(humanize_source_id("some--double-dash"), "Some Double Dash");
         assert_eq!(humanize_source_id("single"), "Single");
         assert_eq!(humanize_source_id(""), "");
     }
@@ -656,10 +662,7 @@ mod tests {
             FsSourceProvider::extract_chapter_number("12-advanced.md"),
             Some("12".to_string())
         );
-        assert_eq!(
-            FsSourceProvider::extract_chapter_number("preface.md"),
-            None
-        );
+        assert_eq!(FsSourceProvider::extract_chapter_number("preface.md"), None);
     }
 
     #[tokio::test]

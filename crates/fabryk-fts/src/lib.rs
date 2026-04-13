@@ -105,7 +105,9 @@ pub mod stopwords;
 pub mod tantivy_search;
 
 // Re-exports
-pub use backend::{SearchBackend, SearchParams, SearchResult, SearchResults, SimpleDocumentExtractor, SimpleSearch};
+pub use backend::{
+    SearchBackend, SearchParams, SearchResult, SearchResults, SimpleDocumentExtractor, SimpleSearch,
+};
 pub use concept_card_extractor::ConceptCardDocumentExtractor;
 pub use document::SearchDocument;
 pub use probe::{SearchProbe, search_probe};

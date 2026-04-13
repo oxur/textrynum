@@ -359,8 +359,7 @@ related_concepts:
     #[test]
     fn test_extract_edges_only_prerequisites() {
         let extractor = ConceptCardGraphExtractor::new();
-        let fm: yaml_serde::Value =
-            yaml_serde::from_str("prerequisites:\n  - pitch").unwrap();
+        let fm: yaml_serde::Value = yaml_serde::from_str("prerequisites:\n  - pitch").unwrap();
 
         let edge_data = extractor.extract_edges(&fm, "").unwrap().unwrap();
         assert_eq!(edge_data.prerequisites, vec!["pitch"]);
@@ -475,15 +474,21 @@ aliases:
         let edges = extractor.to_graph_edges("from-node", &edge_data);
         assert_eq!(edges.len(), 3);
 
-        assert!(edges
-            .iter()
-            .any(|e| e.to == "a" && e.relationship == Relationship::Prerequisite));
-        assert!(edges
-            .iter()
-            .any(|e| e.to == "b" && e.relationship == Relationship::Prerequisite));
-        assert!(edges
-            .iter()
-            .any(|e| e.to == "x" && e.relationship == Relationship::RelatesTo));
+        assert!(
+            edges
+                .iter()
+                .any(|e| e.to == "a" && e.relationship == Relationship::Prerequisite)
+        );
+        assert!(
+            edges
+                .iter()
+                .any(|e| e.to == "b" && e.relationship == Relationship::Prerequisite)
+        );
+        assert!(
+            edges
+                .iter()
+                .any(|e| e.to == "x" && e.relationship == Relationship::RelatesTo)
+        );
 
         assert!(edges.iter().all(|e| e.from == "from-node"));
     }
@@ -528,19 +533,24 @@ related:
 
         let edges = extractor.to_graph_edges("source-node", &edge_data);
         assert_eq!(edges.len(), 4);
-        assert!(edges
-            .iter()
-            .any(|e| e.to == "harmonic-series" && e.relationship == Relationship::Prerequisite));
-        assert!(edges
-            .iter()
-            .any(|e| e.to == "interval-quality" && e.relationship == Relationship::Extends));
-        assert!(edges
-            .iter()
-            .any(|e| e.to == "acoustic-dissonance"
-                && e.relationship == Relationship::ContrastsWith));
-        assert!(edges
-            .iter()
-            .any(|e| e.to == "roughness" && e.relationship == Relationship::RelatesTo));
+        assert!(
+            edges
+                .iter()
+                .any(|e| e.to == "harmonic-series" && e.relationship == Relationship::Prerequisite)
+        );
+        assert!(
+            edges
+                .iter()
+                .any(|e| e.to == "interval-quality" && e.relationship == Relationship::Extends)
+        );
+        assert!(edges.iter().any(
+            |e| e.to == "acoustic-dissonance" && e.relationship == Relationship::ContrastsWith
+        ));
+        assert!(
+            edges
+                .iter()
+                .any(|e| e.to == "roughness" && e.relationship == Relationship::RelatesTo)
+        );
     }
 
     #[test]

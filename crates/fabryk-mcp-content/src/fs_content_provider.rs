@@ -32,11 +32,9 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::path::PathBuf;
 
-use fabryk_content::{
-    ConceptCardFrontmatter, extract_first_heading, extract_frontmatter,
-};
-use fabryk_core::util::files::{find_all_files, find_file_by_id, read_file, FindOptions};
+use fabryk_content::{ConceptCardFrontmatter, extract_first_heading, extract_frontmatter};
 use fabryk_core::Result;
+use fabryk_core::util::files::{FindOptions, find_all_files, find_file_by_id, read_file};
 
 use crate::traits::{CategoryInfo, ContentItemProvider, FilterMap};
 
@@ -182,7 +180,11 @@ impl FsContentItemProvider {
             summaries.push(summary);
         }
 
-        summaries.sort_by(|a, b| a.category.cmp(&b.category).then_with(|| a.title.cmp(&b.title)));
+        summaries.sort_by(|a, b| {
+            a.category
+                .cmp(&b.category)
+                .then_with(|| a.title.cmp(&b.title))
+        });
 
         Ok(summaries)
     }
@@ -442,7 +444,11 @@ mod tests {
             .unwrap();
 
         assert_eq!(items.len(), 2);
-        assert!(items.iter().all(|i| i.tier.as_deref() == Some("foundational")));
+        assert!(
+            items
+                .iter()
+                .all(|i| i.tier.as_deref() == Some("foundational"))
+        );
     }
 
     #[tokio::test]
@@ -623,8 +629,8 @@ mod tests {
 
     #[tokio::test]
     async fn test_content_type_names() {
-        let provider = FsContentItemProvider::new("/tmp/test")
-            .with_content_type_name("concept", "concepts");
+        let provider =
+            FsContentItemProvider::new("/tmp/test").with_content_type_name("concept", "concepts");
 
         assert_eq!(provider.content_type_name(), "concept");
         assert_eq!(provider.content_type_name_plural(), "concepts");

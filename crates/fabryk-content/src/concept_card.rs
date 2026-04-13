@@ -26,7 +26,6 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize, Default)]
 pub struct ConceptCardFrontmatter {
     // -- Core identity ----------------------------------------------------------
-
     /// Human-readable title of the concept card.
     pub title: Option<String>,
     /// Machine-friendly URL slug.
@@ -35,7 +34,6 @@ pub struct ConceptCardFrontmatter {
     pub concept: Option<String>,
 
     // -- Classification ---------------------------------------------------------
-
     /// Top-level category (e.g. "harmony", "rhythm").
     pub category: Option<String>,
     /// Narrower classification within the category.
@@ -44,7 +42,6 @@ pub struct ConceptCardFrontmatter {
     pub tier: Option<String>,
 
     // -- Content ----------------------------------------------------------------
-
     /// Short description or summary of the concept.
     pub description: Option<String>,
     /// Free-form tags for search and filtering.
@@ -58,7 +55,6 @@ pub struct ConceptCardFrontmatter {
     pub answers_questions: Vec<String>,
 
     // -- Provenance -------------------------------------------------------------
-
     /// Source publication or reference work.
     pub source: Option<String>,
     /// URL-friendly slug identifying the source.
@@ -73,7 +69,6 @@ pub struct ConceptCardFrontmatter {
     pub date: Option<String>,
 
     // -- Relationships ----------------------------------------------------------
-
     /// Concepts that should be understood before this one.
     #[serde(default)]
     pub prerequisites: Vec<String>,
@@ -88,7 +83,6 @@ pub struct ConceptCardFrontmatter {
     pub contrasts_with: Vec<String>,
 
     // -- Bibliographic ----------------------------------------------------------
-
     /// Chapter title in the source work.
     pub chapter: Option<String>,
     /// Section title or identifier.

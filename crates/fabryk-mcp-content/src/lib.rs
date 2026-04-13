@@ -47,8 +47,8 @@ pub use fs_content_provider::{ContentItemDetail, ContentItemSummary, FsContentIt
 pub use fs_guide_provider::{FsGuideProvider, GuideSummary};
 pub use fs_question_provider::FsQuestionSearchProvider;
 pub use fs_source_provider::{
-    humanize_source_id, FsSourceProvider, SourceFormat, SourceStatus, SourceSummary,
-    UnconvertedSource,
+    FsSourceProvider, SourceFormat, SourceStatus, SourceSummary, UnconvertedSource,
+    humanize_source_id,
 };
 
 // Re-exports — tools

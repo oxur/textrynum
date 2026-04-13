@@ -247,7 +247,10 @@ mod tests {
         assert!(orch.handle("nonexistent").is_none());
 
         assert!(orch.service("fts").is_some());
-        assert_eq!(orch.service("fts").unwrap().description(), "Full-text search");
+        assert_eq!(
+            orch.service("fts").unwrap().description(),
+            "Full-text search"
+        );
 
         assert_eq!(orch.handles().len(), 2);
     }

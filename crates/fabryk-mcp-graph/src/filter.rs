@@ -146,7 +146,10 @@ impl GraphNodeFilter for MetadataNodeFilter {
             };
 
             // Get the node metadata value; if absent, the node fails.
-            let node_value = match node.metadata.get(&filter.metadata_key).and_then(|v| v.as_str())
+            let node_value = match node
+                .metadata
+                .get(&filter.metadata_key)
+                .and_then(|v| v.as_str())
             {
                 Some(v) => v,
                 None => return false,

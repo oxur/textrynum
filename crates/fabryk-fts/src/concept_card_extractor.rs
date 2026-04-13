@@ -51,11 +51,7 @@ impl ConceptCardDocumentExtractor {
 
         // Parse frontmatter (gracefully handle failures).
         let result = extract_frontmatter(content).ok()?;
-        let fm: ConceptCardFrontmatter = result
-            .deserialize()
-            .ok()
-            .flatten()
-            .unwrap_or_default();
+        let fm: ConceptCardFrontmatter = result.deserialize().ok().flatten().unwrap_or_default();
         let body = result.body();
 
         // Title: fm.title -> fm.concept -> first heading -> file stem
@@ -311,18 +307,20 @@ The phenomenon of stability."#;
 
         // Tags include enriched facets
         assert!(doc.tags.contains(&"tier:foundational".to_string()));
-        assert!(doc
-            .tags
-            .contains(&"subcategory:consonance-dissonance".to_string()));
+        assert!(
+            doc.tags
+                .contains(&"subcategory:consonance-dissonance".to_string())
+        );
         assert!(doc.tags.contains(&"confidence:high".to_string()));
         assert!(doc.tags.contains(&"acoustics".to_string()));
 
         // Content includes aliases and competency questions
         assert!(doc.content.contains("sensory consonance"));
         assert!(doc.content.contains("tonal consonance"));
-        assert!(doc
-            .content
-            .contains("What makes two tones sound consonant?"));
+        assert!(
+            doc.content
+                .contains("What makes two tones sound consonant?")
+        );
         assert!(doc.content.contains("The phenomenon of stability."));
     }
 

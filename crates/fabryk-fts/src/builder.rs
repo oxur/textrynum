@@ -521,7 +521,9 @@ pub async fn build_index_multi<P: AsRef<Path>>(
         // Clone the Arc into a new Box for each IndexBuilder.
         let ext_clone: Box<dyn DocumentExtractor> = Box::new(ArcExtractor(Arc::clone(&extractor)));
 
-        let builder = IndexBuilder::new().with_extractor(ext_clone).force_rebuild();
+        let builder = IndexBuilder::new()
+            .with_extractor(ext_clone)
+            .force_rebuild();
 
         let mut stats = if i == 0 {
             builder.build(dir, index_path).await?
@@ -1004,10 +1006,7 @@ mod tests {
         create_test_file(dir_a.path(), "a2.md", "# Alpha 2\n\nContent alpha two");
         create_test_file(dir_b.path(), "b1.md", "# Beta 1\n\nContent beta one");
 
-        let dirs: Vec<(&Path, &str)> = vec![
-            (dir_a.path(), "alpha"),
-            (dir_b.path(), "beta"),
-        ];
+        let dirs: Vec<(&Path, &str)> = vec![(dir_a.path(), "alpha"), (dir_b.path(), "beta")];
 
         let extractor = Box::new(DefaultExtractor::default());
         let stats = build_index_multi(&dirs, index_dir.path(), extractor)

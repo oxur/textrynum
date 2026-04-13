@@ -120,10 +120,9 @@ pub async fn handle_sources(
     config_path: Option<&Path>,
 ) -> Result<()> {
     match cmd.command {
-        SourcesSubcommand::Scan {
-            output,
-            show_cards,
-        } => handle_scan(content_path, &output, show_cards).await,
+        SourcesSubcommand::Scan { output, show_cards } => {
+            handle_scan(content_path, &output, show_cards).await
+        }
         SourcesSubcommand::Validate {
             mode,
             suggest_matches,
@@ -240,7 +239,10 @@ fn print_scan_json(sources: &HashMap<String, SourceReference>, stats: &ScanStats
         "sources": json_sources,
     });
 
-    println!("{}", serde_json::to_string_pretty(&output).unwrap_or_default());
+    println!(
+        "{}",
+        serde_json::to_string_pretty(&output).unwrap_or_default()
+    );
 }
 
 // ============================================================================
@@ -269,7 +271,8 @@ async fn handle_validate(
     threshold: f32,
     json: bool,
 ) -> Result<()> {
-    let report = validate_sources(content_path, categories, mode, suggest_matches, threshold).await?;
+    let report =
+        validate_sources(content_path, categories, mode, suggest_matches, threshold).await?;
 
     if json {
         print_validation_json(&report);
@@ -291,33 +294,27 @@ async fn handle_validate(
 fn print_validation_table(report: &ValidationReport) {
     println!("Source Validation Report");
     println!("========================");
-    println!("  Cards scanned:       {}", report.stats.total_cards_scanned);
+    println!(
+        "  Cards scanned:       {}",
+        report.stats.total_cards_scanned
+    );
     println!(
         "  Unique sources:      {}",
         report.stats.unique_sources_found
     );
-    println!(
-        "  Sources in config:   {}",
-        report.stats.sources_in_config
-    );
+    println!("  Sources in config:   {}", report.stats.sources_in_config);
     println!("  Resolved:            {}", report.stats.sources_resolved);
     println!("  On disk:             {}", report.stats.sources_on_disk);
     println!(
         "  Missing from config: {}",
         report.stats.missing_from_config
     );
-    println!(
-        "  Missing from disk:   {}",
-        report.stats.missing_from_disk
-    );
+    println!("  Missing from disk:   {}", report.stats.missing_from_disk);
 
     if !report.missing_from_config.is_empty() {
         println!("\nSources in cards but NOT in config:");
         for missing in &report.missing_from_config {
-            println!(
-                "  - \"{}\" ({} card(s))",
-                missing.title, missing.card_count
-            );
+            println!("  - \"{}\" ({} card(s))", missing.title, missing.card_count);
             if !missing.sample_card_ids.is_empty() {
                 let ids = missing.sample_card_ids.join(", ");
                 println!("    Cards: {ids}");
@@ -394,7 +391,10 @@ fn print_validation_json(report: &ValidationReport) {
         "missing_from_filesystem": missing_fs,
     });
 
-    println!("{}", serde_json::to_string_pretty(&output).unwrap_or_default());
+    println!(
+        "{}",
+        serde_json::to_string_pretty(&output).unwrap_or_default()
+    );
 }
 
 // ============================================================================
@@ -497,9 +497,7 @@ async fn handle_alias_add(
     let aliases_array = ensure_alias_array(&mut doc, category, file_id);
 
     // Check for duplicates.
-    let already_exists = aliases_array
-        .iter()
-        .any(|v| v.as_str() == Some(alias));
+    let already_exists = aliases_array.iter().any(|v| v.as_str() == Some(alias));
     if already_exists {
         println!("Alias '{alias}' already exists for '{source_id}'.");
         return Ok(());
@@ -585,7 +583,9 @@ fn ensure_alias_array<'a>(
     if !sources.contains_key(category) {
         sources[category] = toml_edit::Item::Table(toml_edit::Table::new());
     }
-    let cat = sources[category].as_table_mut().expect("category is a table");
+    let cat = sources[category]
+        .as_table_mut()
+        .expect("category is a table");
 
     // Ensure [sources.<category>.aliases]
     if !cat.contains_key("aliases") {
@@ -631,14 +631,14 @@ fn parse_source_id<'a>(
 ) -> Result<(&'a str, &'a str)> {
     // Sort by length descending so longer category names match first.
     let mut sorted: Vec<&str> = known_categories.to_vec();
-    sorted.sort_by(|a, b| b.len().cmp(&a.len()));
+    sorted.sort_by_key(|b| std::cmp::Reverse(b.len()));
 
     for category in &sorted {
         let prefix = format!("{category}-");
-        if let Some(file_id) = source_id.strip_prefix(&prefix) {
-            if !file_id.is_empty() {
-                return Ok((&source_id[..category.len()], file_id));
-            }
+        if let Some(file_id) = source_id.strip_prefix(&prefix)
+            && !file_id.is_empty()
+        {
+            return Ok((&source_id[..category.len()], file_id));
         }
     }
 
@@ -826,10 +826,7 @@ mod tests {
     fn test_clap_scan_defaults() {
         let cmd = parse_sources(&["scan"]);
         match cmd.command {
-            SourcesSubcommand::Scan {
-                output,
-                show_cards,
-            } => {
+            SourcesSubcommand::Scan { output, show_cards } => {
                 assert_eq!(output, "table");
                 assert!(!show_cards);
             }
@@ -841,10 +838,7 @@ mod tests {
     fn test_clap_scan_json_with_cards() {
         let cmd = parse_sources(&["scan", "--output", "json", "--show-cards"]);
         match cmd.command {
-            SourcesSubcommand::Scan {
-                output,
-                show_cards,
-            } => {
+            SourcesSubcommand::Scan { output, show_cards } => {
                 assert_eq!(output, "json");
                 assert!(show_cards);
             }
