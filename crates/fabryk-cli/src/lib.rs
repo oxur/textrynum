@@ -25,9 +25,9 @@ pub mod vectordb_handlers;
 pub use cli::{
     BaseCommand, CliArgs, CliExtension, ConfigAction, ConfigCommand, GraphCommand, GraphSubcommand,
 };
-pub use sources_handlers::SourcesCommand;
 #[cfg(feature = "vector-fastembed")]
 pub use cli::{VectordbAction, VectordbCommand};
+pub use sources_handlers::SourcesCommand;
 
 // Re-exports — application
 pub use app::FabrykCli;

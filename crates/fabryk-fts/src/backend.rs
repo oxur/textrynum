@@ -268,20 +268,20 @@ impl SimpleSearch {
     ///
     /// Returns `true` if the document passes all active filters.
     fn passes_filters(&self, doc: &SearchDocument, params: &SearchParams) -> bool {
-        if let Some(ref cat) = params.category {
-            if !doc.matches_category(cat) {
-                return false;
-            }
+        if let Some(ref cat) = params.category
+            && !doc.matches_category(cat)
+        {
+            return false;
         }
-        if let Some(ref src) = params.source {
-            if !doc.matches_source(src) {
-                return false;
-            }
+        if let Some(ref src) = params.source
+            && !doc.matches_source(src)
+        {
+            return false;
         }
-        if let Some(ref types) = params.content_types {
-            if !types.iter().any(|ct| doc.matches_content_type(ct)) {
-                return false;
-            }
+        if let Some(ref types) = params.content_types
+            && !types.iter().any(|ct| doc.matches_content_type(ct))
+        {
+            return false;
         }
         true
     }

@@ -31,8 +31,8 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
 use fabryk_content::{extract_first_heading, extract_first_paragraph, extract_frontmatter};
-use fabryk_core::util::files::{find_all_files, find_file_by_id, read_file, FindOptions};
 use fabryk_core::Result;
+use fabryk_core::util::files::{FindOptions, find_all_files, find_file_by_id, read_file};
 
 use crate::traits::GuideProvider;
 
@@ -88,12 +88,11 @@ impl FsGuideProvider {
     /// Priority: frontmatter title -> first heading -> filename stem.
     fn extract_title(content: &str, fallback: &str) -> String {
         // Try frontmatter title
-        if let Ok(result) = extract_frontmatter(content) {
-            if let Ok(Some(fm)) = result.deserialize::<GuideFrontmatter>() {
-                if let Some(title) = fm.title {
-                    return title;
-                }
-            }
+        if let Ok(result) = extract_frontmatter(content)
+            && let Ok(Some(fm)) = result.deserialize::<GuideFrontmatter>()
+            && let Some(title) = fm.title
+        {
+            return title;
         }
 
         // Try first heading
@@ -109,12 +108,11 @@ impl FsGuideProvider {
     /// Priority: frontmatter description -> first paragraph.
     fn extract_description(content: &str) -> Option<String> {
         // Try frontmatter description
-        if let Ok(result) = extract_frontmatter(content) {
-            if let Ok(Some(fm)) = result.deserialize::<GuideFrontmatter>() {
-                if fm.description.is_some() {
-                    return fm.description;
-                }
-            }
+        if let Ok(result) = extract_frontmatter(content)
+            && let Ok(Some(fm)) = result.deserialize::<GuideFrontmatter>()
+            && fm.description.is_some()
+        {
+            return fm.description;
         }
 
         // Try first paragraph (limited to 200 chars)
@@ -422,8 +420,8 @@ mod tests {
         .await
         .unwrap();
 
-        let provider = FsGuideProvider::new(temp.path())
-            .with_patterns(vec!["{id}/guide.md".to_string()]);
+        let provider =
+            FsGuideProvider::new(temp.path()).with_patterns(vec!["{id}/guide.md".to_string()]);
 
         let content = provider.get_guide("custom").await.unwrap();
         assert!(content.contains("Custom Guide"));

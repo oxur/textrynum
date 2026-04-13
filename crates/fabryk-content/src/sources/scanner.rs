@@ -6,8 +6,8 @@
 use std::collections::HashMap;
 use std::path::Path;
 
-use fabryk_core::util::files::{find_all_files, FindOptions};
 use fabryk_core::Result;
+use fabryk_core::util::files::{FindOptions, find_all_files};
 
 use crate::concept_card::ConceptCardFrontmatter;
 use crate::sources::types::SourceReference;

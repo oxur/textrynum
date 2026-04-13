@@ -145,9 +145,7 @@ fn extract_metadata_from_content(
 ) -> Result<ContentMetadata, fabryk_core::Error> {
     // -- Frontmatter ---------------------------------------------------------
     let fm_result = crate::extract_frontmatter(content)?;
-    let fm: ConceptCardFrontmatter = fm_result
-        .deserialize()?
-        .unwrap_or_default();
+    let fm: ConceptCardFrontmatter = fm_result.deserialize()?.unwrap_or_default();
 
     // -- ID (always from filename) -------------------------------------------
     let id = file_path
@@ -265,10 +263,10 @@ fn resolve_title(
         return c.clone();
     }
     // SourceChapter additionally tries `chapter` before heading fallback.
-    if content_type == ContentType::SourceChapter {
-        if let Some(ref ch) = fm.chapter {
-            return ch.clone();
-        }
+    if content_type == ContentType::SourceChapter
+        && let Some(ref ch) = fm.chapter
+    {
+        return ch.clone();
     }
     if let Some((_level, heading)) = crate::extract_first_heading(content) {
         return heading;
@@ -278,7 +276,7 @@ fn resolve_title(
 
 /// Convert a kebab-case or snake_case identifier into a title-cased string.
 fn humanize_id(id: &str) -> String {
-    id.split(|c: char| c == '-' || c == '_')
+    id.split(['-', '_'])
         .filter(|s| !s.is_empty())
         .map(|word| {
             let mut chars = word.chars();
@@ -435,7 +433,10 @@ Body text here.
         assert_eq!(meta.category, "harmony");
         assert_eq!(meta.content_type, ContentType::ConceptCard);
         assert_eq!(meta.tags, vec!["jazz", "reharmonization"]);
-        assert_eq!(meta.description.as_deref(), Some("Replacing a dominant chord with one a tritone away"));
+        assert_eq!(
+            meta.description.as_deref(),
+            Some("Replacing a dominant chord with one a tritone away")
+        );
         assert_eq!(meta.author.as_deref(), Some("Test Author"));
         // ConceptCard should NOT include section
         assert!(meta.section.is_none());
@@ -476,8 +477,7 @@ Body.
         let base = Path::new("/content/guides");
         let file = Path::new("/content/guides/getting-started.md");
 
-        let meta =
-            extract_metadata_from_content(base, file, ContentType::Guide, content).unwrap();
+        let meta = extract_metadata_from_content(base, file, ContentType::Guide, content).unwrap();
 
         assert_eq!(meta.section.as_deref(), Some("Introduction"));
     }
@@ -489,13 +489,8 @@ Body.
         let base = Path::new("/content");
         let file = Path::new("/content/misc/bare-document.md");
 
-        let meta = extract_metadata_from_content(
-            base,
-            file,
-            ContentType::UnifiedConcept,
-            content,
-        )
-        .unwrap();
+        let meta = extract_metadata_from_content(base, file, ContentType::UnifiedConcept, content)
+            .unwrap();
 
         assert_eq!(meta.id, "bare-document");
         assert_eq!(meta.title, "A Bare Document");
@@ -510,13 +505,8 @@ Body.
         let base = Path::new("/content");
         let file = Path::new("/content/some-topic.md");
 
-        let meta = extract_metadata_from_content(
-            base,
-            file,
-            ContentType::ConceptCard,
-            content,
-        )
-        .unwrap();
+        let meta =
+            extract_metadata_from_content(base, file, ContentType::ConceptCard, content).unwrap();
 
         assert_eq!(meta.id, "some-topic");
         // Should humanize the id

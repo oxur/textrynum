@@ -7,8 +7,8 @@
 use std::fmt;
 use std::sync::{Arc, RwLock, RwLockReadGuard};
 
-use crate::service::{ServiceHandle, ServiceState};
 use crate::Error;
+use crate::service::{ServiceHandle, ServiceState};
 
 /// A managed backend slot with integrated service lifecycle.
 ///

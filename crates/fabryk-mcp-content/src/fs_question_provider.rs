@@ -33,9 +33,9 @@
 use async_trait::async_trait;
 use std::path::PathBuf;
 
-use fabryk_content::{extract_frontmatter, ConceptCardFrontmatter};
-use fabryk_core::util::files::{find_all_files, read_file, FindOptions};
+use fabryk_content::{ConceptCardFrontmatter, extract_frontmatter};
 use fabryk_core::Result;
+use fabryk_core::util::files::{FindOptions, find_all_files, read_file};
 
 use crate::traits::{QuestionMatch, QuestionSearchProvider, QuestionSearchResponse};
 
@@ -127,8 +127,7 @@ impl QuestionSearchProvider for FsQuestionSearchProvider {
 
             for q in &fm.answers_questions {
                 let q_lower = q.to_lowercase();
-                let mut similarity =
-                    strsim::normalized_damerau_levenshtein(&query_lower, &q_lower);
+                let mut similarity = strsim::normalized_damerau_levenshtein(&query_lower, &q_lower);
 
                 // Apply substring boost
                 if query_lower.contains(&q_lower) || q_lower.contains(&query_lower) {
@@ -243,15 +242,7 @@ mod tests {
         .await;
 
         // Card with no questions (should be skipped)
-        write_card(
-            &rhythm,
-            "tempo.md",
-            "Tempo",
-            "rhythm",
-            None,
-            &[],
-        )
-        .await;
+        write_card(&rhythm, "tempo.md", "Tempo", "rhythm", None, &[]).await;
 
         temp
     }
@@ -289,7 +280,10 @@ mod tests {
             .iter()
             .find(|m| m.item_id == "voice-leading" && m.matched_question.contains("What is voice"));
 
-        assert!(vl_match.is_some(), "Should find voice leading via substring");
+        assert!(
+            vl_match.is_some(),
+            "Should find voice leading via substring"
+        );
     }
 
     #[tokio::test]
@@ -332,10 +326,7 @@ mod tests {
         let temp = setup_content_dir().await;
         let provider = FsQuestionSearchProvider::new(temp.path()).with_threshold(0.1);
 
-        let response = provider
-            .search_by_question("What is", 2)
-            .await
-            .unwrap();
+        let response = provider.search_by_question("What is", 2).await.unwrap();
 
         assert!(response.matches.len() <= 2);
         // Total may be larger than the returned matches
@@ -347,10 +338,7 @@ mod tests {
         let temp = setup_content_dir().await;
         let provider = FsQuestionSearchProvider::new(temp.path());
 
-        let response = provider
-            .search_by_question("tempo", 100)
-            .await
-            .unwrap();
+        let response = provider.search_by_question("tempo", 100).await.unwrap();
 
         // "tempo" card has no answers_questions, so it should never appear
         assert!(
@@ -375,10 +363,7 @@ mod tests {
         let temp = TempDir::new().unwrap();
         let provider = FsQuestionSearchProvider::new(temp.path());
 
-        let response = provider
-            .search_by_question("anything", 10)
-            .await
-            .unwrap();
+        let response = provider.search_by_question("anything", 10).await.unwrap();
 
         assert!(response.matches.is_empty());
         assert_eq!(response.total, 0);

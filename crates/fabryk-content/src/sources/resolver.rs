@@ -130,8 +130,11 @@ impl SourceResolver {
         }
 
         // Sort by similarity descending
-        suggestions
-            .sort_by(|a, b| b.similarity.partial_cmp(&a.similarity).unwrap_or(std::cmp::Ordering::Equal));
+        suggestions.sort_by(|a, b| {
+            b.similarity
+                .partial_cmp(&a.similarity)
+                .unwrap_or(std::cmp::Ordering::Equal)
+        });
 
         // Return top 3
         suggestions.truncate(3);
@@ -158,10 +161,10 @@ impl SourceResolver {
 pub fn extract_title_from_filename(filename: &str) -> String {
     // Extract title (after ` - ` and before .ext)
     if let Some(dash_pos) = filename.find(" - ") {
-        if let Some(ext_pos) = filename.rfind('.') {
-            if ext_pos > dash_pos + 3 {
-                return filename[dash_pos + 3..ext_pos].trim().to_string();
-            }
+        if let Some(ext_pos) = filename.rfind('.')
+            && ext_pos > dash_pos + 3
+        {
+            return filename[dash_pos + 3..ext_pos].trim().to_string();
         }
         // No extension found, take everything after ` - `
         return filename[dash_pos + 3..].trim().to_string();

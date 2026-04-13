@@ -62,8 +62,7 @@ pub async fn validate_sources(
     let mut report = ValidationReport::new();
 
     // Scan concept cards for source references
-    let (sources_in_cards, scan_stats) =
-        scan_content_for_sources_with_stats(content_path).await?;
+    let (sources_in_cards, scan_stats) = scan_content_for_sources_with_stats(content_path).await?;
 
     // Create resolver from categories
     let resolver = SourceResolver::from_categories(categories);
@@ -197,11 +196,7 @@ mod tests {
         let categories = make_categories(&sources_path, files);
 
         create_concept_card(&cards_path, "test.md", "Open Music Theory").await;
-        create_source_file(
-            &sources_path,
-            "[2022] Gotham - Open Music Theory.pdf",
-        )
-        .await;
+        create_source_file(&sources_path, "[2022] Gotham - Open Music Theory.pdf").await;
 
         let report = validate_sources(&cards_path, &categories, ValidationMode::All, false, 0.7)
             .await
@@ -278,11 +273,7 @@ mod tests {
 
         let categories = make_categories(&sources_path, files);
 
-        create_source_file(
-            &sources_path,
-            "[2022] Gotham - Open Music Theory.pdf",
-        )
-        .await;
+        create_source_file(&sources_path, "[2022] Gotham - Open Music Theory.pdf").await;
 
         // Typo in source name
         create_concept_card(&cards_path, "test.md", "Open Music Theor").await;

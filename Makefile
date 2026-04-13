@@ -186,7 +186,7 @@ clean-all: clean
 test:
 	@echo "$(BLUE)Running tests...$(RESET)"
 	@echo "$(CYAN)• Running all workspace tests...$(RESET)"
-	@cargo test --all-features --workspace
+	@ulimit -n 4096 2>/dev/null; cargo test --all-features --workspace
 	@echo "$(GREEN)✓ All tests passed$(RESET)"
 
 .PHONY: lint
@@ -210,7 +210,7 @@ format:
 coverage:
 	@echo "$(BLUE)Generating test coverage report...$(RESET)"
 	@echo "$(CYAN)• Running tests with coverage (all workspace crates)...$(RESET)"
-	@cargo llvm-cov --lib --workspace
+	@ulimit -n 4096 2>/dev/null; cargo llvm-cov --lib --workspace
 	@echo "$(GREEN)✓ Coverage report generated$(RESET)"
 	@echo "$(YELLOW)→ For detailed HTML report, run: make coverage-html$(RESET)"
 
@@ -218,7 +218,7 @@ coverage:
 coverage-html:
 	@echo "$(BLUE)Generating HTML coverage report...$(RESET)"
 	@echo "$(CYAN)• Running tests with coverage (all workspace crates)...$(RESET)"
-	@cargo llvm-cov --html --lib --workspace
+	@ulimit -n 4096 2>/dev/null; cargo llvm-cov --html --lib --workspace
 	@echo "$(GREEN)✓ HTML coverage report generated$(RESET)"
 	@echo "$(CYAN)→ Report: target/llvm-cov/html/index.html$(RESET)"
 
