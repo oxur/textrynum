@@ -6,6 +6,8 @@ This index is automatically generated. Do not edit manually.
 
 | Number | Title | State | Updated |
 |--------|-------|-------|----------|
+| 0023 | Augmenting LLM reasoning with external tools: a practitioner's landscape | Final | 2026-04-13 |
+| 0022 | The Limitations of LLMs with Abstract Reasoning | Final | 2026-04-13 |
 | 0021 | Building a trait-based event bus in Rust: ecosystem landscape and design patterns | Final | 2026-03-25 |
 | 0020 | Sygnum: Event-Driven Architecture for Keystone | Under Review | 2026-03-25 |
 | 0019 | Theorem provers for Rust-based MCP integration | Final | 2026-03-19 |
@@ -50,6 +52,8 @@ This index is automatically generated. Do not edit manually.
 
 ### Final
 
+- [0023 - Augmenting LLM reasoning with external tools: a practitioner's landscape](06-final/0023-augmenting-llm-reasoning-with-external-tools-a-practitioners-landscape.md)
+- [0022 - The Limitations of LLMs with Abstract Reasoning](06-final/0022-the-limitations-of-llms-with-abstract-reasoning.md)
 - [0021 - Building a trait-based event bus in Rust: ecosystem landscape and design patterns](06-final/0021-building-a-trait-based-event-bus-in-rust-ecosystem-landscape-and-design-patterns.md)
 - [0019 - Theorem provers for Rust-based MCP integration](06-final/0019-theorem-provers-for-rust-based-mcp-integration.md)
 - [0016 - Research - 2026 State of Rust Ecosystem for Workflow/Pipeline Frameworks](06-final/0016-research-2026-state-of-rust-ecosystem-for-workflowpipeline-frameworks.md)
