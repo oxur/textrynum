@@ -3646,6 +3646,7 @@ dependencies = [
  "tempfile",
  "tokio",
  "toml 1.1.2+spec-1.1.0",
+ "toml_edit 0.22.27",
  "tracing",
  "tracing-subscriber",
 ]
@@ -3659,7 +3660,9 @@ dependencies = [
  "pulldown-cmark",
  "regex",
  "serde",
+ "strsim",
  "tempfile",
+ "tokio",
  "yaml_serde",
 ]
 
@@ -3690,6 +3693,7 @@ dependencies = [
  "async-trait",
  "async-walkdir",
  "chrono",
+ "fabryk-content",
  "fabryk-core",
  "futures",
  "log",
@@ -3766,6 +3770,7 @@ dependencies = [
  "schemars 1.2.1",
  "serde",
  "serde_json",
+ "strsim",
  "tempfile",
  "tokio",
  "tokio-test",
