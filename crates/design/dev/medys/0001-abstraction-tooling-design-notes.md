@@ -3,9 +3,15 @@
 **Date:** 2026-04-13
 **Context:** Emerged from a Fabryk migration audit that exposed a systematic LLM abstraction deficit.
 
+## Backround
+
+The bulk of this note was extracted from a long day of research and discussion that resulted from a rather sudden realisation about the nature of LLMs and their deep limitations around abstract thinking, depsite superficial "evidence" to the contrary (see the doc [The Limitations of LLMs with Abstract Reasoning](./crates/design/docs/06-final/0022-the-limitations-of-llms-with-abstract-reasoning.md)). However, this project itself has been in discussion for nearly a month prior (see [Theorem provers for Rust-based MCP integration](./crates/design/docs/06-final/0019-theorem-provers-for-rust-based-mcp-integration.md)). The original concept was to provide the ability to perform basic theorem-proving capability to consumers of an MCP server. However, upon discovering the very serious issues of analytical and abstract reasoning and the inability to consistently peform repeatedly correct generalisations, "simple" therem proving was deemed too special-case, and tooling for assisting with analytical reasoning seemed a better, more encompasssing, more complete goal.
+
 ## The Problem
 
-During a code audit of the ai-music-theory MCP server, Claude repeatedly misclassified domain-agnostic code as domain-specific -- three correction rounds were needed. The failure mode: seeing `concept_cards` in a music-theory project and classifying it as music-specific, when "concept card" is a generic knowledge-management term that Fabryk itself uses. This same failure has been blocking Fabryk extraction work for roughly a month.
+During a code audit of the ai-music-theory MCP server with the goal of extracting domain-agnostic, generally useful capabilities for use in the fabryk libraries, Claude repeatedly misclassified domain-agnostic code as domain-specific -- three correction rounds were needed. And this effort was itself the third or fourth attempt at such a refactor (all the others having been committed, but also having been decidedly limited in the extent of the amount of resuable code identified and moved). Claude's failure was in seeing `concept_cards` in a music-theory project and repeatedly classifying it as music-specific, when 1) "concept card" is a generic knowledge-management term that Fabryk itself uses, and 2) even after multiple corrections indicating that Claude had made incorrect analyses and that the code was in fact domain-agnostic. No number of repeated instructions were able to convince Claude that he should move the code out of the ai-music-theory repository and into one or more of the textrynum/fabryk crates. Astonishingly this behaviour and limitation continued _even after Claude recognised the problem, discussed it, and become convinced of the need for this change_. Such incredbile, seemlingly insurmountable resistance to refactor indicated much deepeer, systemic issues; given the strength of the resistnce, we guessed this was directly tied into Claude's core LLM training.
+
+It is also worth noting that this problem has persisted for _weeks_: mutliple occurances of this same failure have been blocking Fabryk extraction work for roughly a month.
 
 ### Root Cause
 
@@ -26,9 +32,9 @@ This is well-documented in the research literature:
 
 ## The Insight
 
-The solution is **tooling, not training**. We can't retrain the model, but we can externalize the abstraction step into a deterministic process that the model's bias can't override.
+Both research and our own practical experiences indicate that the solution is **tooling, not training**. We can't retrain the model. We can't build new models from scratch (cost). And we don't have the expertise needed to augement LLM development with an essentially completely different paradigm for learning. However, we _can_ externalize the abstraction step into a deterministic process that the model's bias may be prevented from overriding.
 
-This follows the pattern identified in the research as most effective for augmenting LLM reasoning: **"generate -> formalize -> verify -> revise"** (from MCP-Solver, Logic-LM, LINC, and others). The LLM orchestrates; deterministic tools compute.
+Such an approach would follow the pattern identified in the research as most effective for augmenting LLM reasoning: **"generate -> formalize -> verify -> revise"** (from MCP-Solver, Logic-LM, LINC, and others). The LLM orchestrates; deterministic tools compute.
 
 Key design principle from Chiasmus: "the LLM handles perception (understanding questions), while solvers handle cognition."
 
@@ -49,16 +55,18 @@ The critical property: **steps 2-3 are external to the LLM**. The stripping and 
 
 The tool encodes this decision procedure:
 
-> "What is this code *doing*, structurally, independent of the names? If the structural answer doesn't require domain knowledge, the code is generic -- regardless of what it's named, where it lives, or what project it's in."
+> "What is this code _doing_, structurally, independent of the names? If the structural answer doesn't require domain knowledge, the code is generic -- regardless of what it's named, where it lives, or what project it's in."
 
-Concretely, the tool asks: **"Does this code require domain-specific *knowledge* (e.g., music theory, pitch arithmetic, chord construction) to function, or only domain-specific *data* (e.g., config values, file paths, display strings)?"**
+Concretely, the tool asks: **"Does this code require domain-specific _knowledge_ (e.g., music theory, pitch arithmetic, chord construction) to function, or only domain-specific _data_ (e.g., config values, file paths, display strings)?"**
 
 - Requires domain knowledge to function → truly domain-specific
 - Requires only domain data → generic code with domain configuration
 
+However, this is a very low-level of evaluation. What about at a component level? Would it be possible for an LLM-based AI to determine -- when presented with a description of a system and all of its components, with a cursory explanation of functional relationships -- what the general form, general purpose of each of those components are (or even of the system as a whole) and if it might make sense to break that provided architecture up into domain-specific and domain-agnostic components, subs-systems, or even into entirely new systems.
+
 ### Structural Signature Extraction
 
-For a function like `load_concept_graph(data_dir: &Path) -> Result<LoadedGraph>`:
+For low-level evalutaions, a workflow like the following may be useful, e.g., for a function like `load_concept_graph(data_dir: &Path) -> Result<LoadedGraph>`:
 
 1. Strip names: `load_X(dir: &Path) -> Result<LoadedX>`
 2. Extract operations: reads JSON file, parses graph structure, counts nodes by type, wraps in metadata struct
@@ -69,12 +77,13 @@ For a function like `load_concept_graph(data_dir: &Path) -> Result<LoadedGraph>`
 ### Supporting Components
 
 - **Fabryk Vocabulary File**: An authoritative list of terms that are generic Fabryk/knowledge-management vocabulary (concept, concept card, source, guide, prerequisite, tier, confidence, etc.). Converts judgment calls into lookups.
+- **Knowledge Base**: Literature should be examined for pragmatic, concise, possibly-rule-based effective models for abstraction; concepts for these could be extracted and guides assembled for use by LLMs, and MCP tools created for use by MCP-ready LLMs.
 - **Successful Abstraction Traces**: A "Buffer of Thoughts" -- stored examples of correct abstraction reasoning that can be retrieved as templates for similar situations. E.g., "here's when I correctly identified `concept_cards` as generic despite living in a music-theory project."
 - **Per-Edit Validation**: Following MCP-Solver's pattern, every classification decision during migration work gets validated before being acted upon.
 
 ## Connection to Existing Work
 
-The ai-music-theory project's concept graph (petgraph-backed, with Relationship types like Prerequisite/RelatesTo/Extends) is already a structural abstraction of knowledge relationships. The abstraction tool applies the same pattern to *code* rather than *concepts*: a structural graph of what code *does* separated from what it's *named*.
+The ai-music-theory project's concept graph -- and by extension, that of the Textrynum/ECL/Fabryk collection of Rust crates -- (petgraph-backed, with Relationship types like Prerequisite/RelatesTo/Extends) is already a structural abstraction of knowledge relationships. The abstraction tool applies the same pattern to _code_ rather than _concepts_: a structural graph of what code _does_ separated from what it's _named_.
 
 The Fabryk framework itself embodies the right vocabulary: ContentTools, SourceTools, GuideTools, GraphTools, SearchBackend, ConceptCardDocumentExtractor -- all generic knowledge-management terms that happen to be used in a music-theory project.
 
