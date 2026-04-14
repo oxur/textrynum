@@ -40,6 +40,9 @@ pub struct GraphStats {
     pub most_depended_on: Option<String>,
     /// Node with highest out-degree.
     pub most_dependencies: Option<String>,
+    /// Nodes per node type (e.g., "domain" -> 150, "source" -> 12).
+    #[serde(default)]
+    pub type_counts: HashMap<String, usize>,
 }
 
 /// Direction for degree calculation.
@@ -62,15 +65,17 @@ pub fn compute_stats(graph: &GraphData) -> GraphStats {
     let node_count = graph.node_count();
     let edge_count = graph.edge_count();
 
-    // Count canonical vs variant
+    // Count canonical vs variant, and node types
     let mut canonical_count = 0;
     let mut variant_count = 0;
+    let mut type_counts: HashMap<String, usize> = HashMap::new();
     for node in graph.iter_nodes() {
         if node.is_canonical {
             canonical_count += 1;
         } else {
             variant_count += 1;
         }
+        *type_counts.entry(node.node_type.to_string()).or_insert(0) += 1;
     }
 
     // Category distribution
@@ -146,6 +151,7 @@ pub fn compute_stats(graph: &GraphData) -> GraphStats {
         max_out_degree,
         most_depended_on,
         most_dependencies,
+        type_counts,
     }
 }
 
