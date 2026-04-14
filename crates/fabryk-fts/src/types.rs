@@ -25,6 +25,8 @@ pub enum QueryMode {
 /// Search configuration.
 ///
 /// Domain implementations provide this to configure search behavior.
+/// Field aliases are provided for backward compatibility with alternative
+/// naming conventions used by some downstream projects.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SearchConfig {
     /// Backend type: "tantivy" or "simple".
@@ -42,7 +44,7 @@ pub struct SearchConfig {
     pub query_mode: QueryMode,
 
     /// Enable fuzzy matching.
-    #[serde(default)]
+    #[serde(default, alias = "fuzzy_search")]
     pub fuzzy_enabled: bool,
 
     /// Fuzzy edit distance (1 or 2).
@@ -50,7 +52,7 @@ pub struct SearchConfig {
     pub fuzzy_distance: u8,
 
     /// Enable stopword filtering.
-    #[serde(default = "default_true")]
+    #[serde(default = "default_true", alias = "enable_stopwords")]
     pub stopwords_enabled: bool,
 
     /// Custom stopwords to add.
@@ -58,7 +60,7 @@ pub struct SearchConfig {
     pub custom_stopwords: Vec<String>,
 
     /// Words to preserve (not filter as stopwords).
-    #[serde(default)]
+    #[serde(default, alias = "stopword_allowlist")]
     pub allowlist: Vec<String>,
 
     /// Default result limit.
@@ -66,8 +68,28 @@ pub struct SearchConfig {
     pub default_limit: usize,
 
     /// Snippet length in characters.
-    #[serde(default = "default_snippet_length")]
+    #[serde(default = "default_snippet_length", alias = "snippet_size")]
     pub snippet_length: usize,
+
+    /// Rebuild index on startup.
+    #[serde(default)]
+    pub rebuild_on_startup: bool,
+
+    /// Minimum match percentage for OR queries with 3+ terms (0.0-1.0).
+    #[serde(default = "default_minimum_match")]
+    pub minimum_match_percent: f32,
+
+    /// Title field boost multiplier for relevance scoring.
+    #[serde(default = "default_field_boost_title")]
+    pub field_boost_title: f32,
+
+    /// Description field boost multiplier.
+    #[serde(default = "default_field_boost_description")]
+    pub field_boost_description: f32,
+
+    /// Content field boost multiplier.
+    #[serde(default = "default_field_boost_content")]
+    pub field_boost_content: f32,
 }
 
 fn default_backend() -> String {
@@ -90,6 +112,22 @@ fn default_snippet_length() -> usize {
     200
 }
 
+fn default_minimum_match() -> f32 {
+    0.6
+}
+
+fn default_field_boost_title() -> f32 {
+    3.0
+}
+
+fn default_field_boost_description() -> f32 {
+    2.0
+}
+
+fn default_field_boost_content() -> f32 {
+    1.0
+}
+
 impl Default for SearchConfig {
     fn default() -> Self {
         Self {
@@ -104,6 +142,11 @@ impl Default for SearchConfig {
             allowlist: Vec::new(),
             default_limit: default_limit(),
             snippet_length: default_snippet_length(),
+            rebuild_on_startup: false,
+            minimum_match_percent: default_minimum_match(),
+            field_boost_title: default_field_boost_title(),
+            field_boost_description: default_field_boost_description(),
+            field_boost_content: default_field_boost_content(),
         }
     }
 }
