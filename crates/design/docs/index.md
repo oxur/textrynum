@@ -6,6 +6,7 @@ This index is automatically generated. Do not edit manually.
 
 | Number | Title | State | Updated |
 |--------|-------|-------|----------|
+| 0024 | Code Audit Report: PoC MCP Server — Final Fabryk Extraction | Draft | 2026-04-14 |
 | 0023 | Augmenting LLM reasoning with external tools: a practitioner's landscape | Final | 2026-04-13 |
 | 0022 | The Limitations of LLMs with Abstract Reasoning | Final | 2026-04-13 |
 | 0021 | Building a trait-based event bus in Rust: ecosystem landscape and design patterns | Final | 2026-03-25 |
@@ -34,6 +35,7 @@ This index is automatically generated. Do not edit manually.
 
 ### Draft
 
+- [0024 - Code Audit Report: PoC MCP Server — Final Fabryk Extraction](01-draft/0024-code-audit-report-poc-mcp-server-final-fabryk-extraction.md)
 - [0009 - Unified Ecosystem Vision: ECL + Fabryk + Skill Framework](01-draft/0009-unified-ecosystem-vision-ecl-fabryk-skill-framework.md)
 
 ### Under Review

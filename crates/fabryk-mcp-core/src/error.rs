@@ -28,6 +28,34 @@ impl McpErrorExt for fabryk_core::Error {
     }
 }
 
+/// Extension trait for converting errors to MCP ErrorData with a descriptive
+/// context string.
+///
+/// Extends [`McpErrorExt`] (which provides no-context `to_mcp_error()`) with a
+/// context-aware variant used by tool handlers that want to include a
+/// human-readable description of what was happening when the error occurred.
+///
+/// Maps error types to MCP protocol error codes:
+/// - NotFound/FileNotFound → RESOURCE_NOT_FOUND
+/// - Config → INVALID_PARAMS
+/// - All other errors → INTERNAL_ERROR (with context prefix)
+pub trait McpErrorContextExt {
+    /// Convert to MCP ErrorData with a descriptive context string.
+    fn to_mcp_error_with_context(&self, context: &str) -> ErrorData;
+}
+
+impl McpErrorContextExt for fabryk_core::Error {
+    fn to_mcp_error_with_context(&self, context: &str) -> ErrorData {
+        if self.is_not_found() {
+            ErrorData::resource_not_found(format!("Not found: {}", self), None)
+        } else if self.is_config() {
+            ErrorData::invalid_params(format!("Configuration error: {}", self), None)
+        } else {
+            ErrorData::internal_error(format!("{}: {}", context, self), None)
+        }
+    }
+}
+
 // ============================================================================
 // Tests
 // ============================================================================
@@ -85,5 +113,29 @@ mod tests {
         let err = fabryk_core::Error::not_found("Item", "xyz");
         let mcp_err = err.to_mcp_error();
         assert!(mcp_err.message.contains("not found"));
+    }
+
+    // McpErrorContextExt tests
+
+    #[test]
+    fn test_context_not_found() {
+        let err = fabryk_core::Error::file_not_found(PathBuf::from("/test.txt"));
+        let mcp_err = err.to_mcp_error_with_context("Error reading file");
+        assert!(mcp_err.message.contains("Not found"));
+    }
+
+    #[test]
+    fn test_context_config() {
+        let err = fabryk_core::Error::config("missing field");
+        let mcp_err = err.to_mcp_error_with_context("Error loading config");
+        assert!(mcp_err.message.contains("Configuration error"));
+    }
+
+    #[test]
+    fn test_context_internal() {
+        let io_err = std::io::Error::new(std::io::ErrorKind::PermissionDenied, "denied");
+        let err = fabryk_core::Error::io(io_err);
+        let mcp_err = err.to_mcp_error_with_context("Error accessing file");
+        assert!(mcp_err.message.contains("Error accessing file"));
     }
 }

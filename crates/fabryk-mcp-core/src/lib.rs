@@ -47,6 +47,7 @@
 pub mod discoverable;
 pub mod error;
 pub mod guidance;
+pub mod helpers;
 #[cfg(feature = "http")]
 pub mod health_router;
 pub mod notifier;
@@ -71,7 +72,10 @@ pub use server::{FabrykMcpServer, ServerConfig};
 pub use notifier::Notifier;
 
 // Re-exports — error
-pub use error::McpErrorExt;
+pub use error::{McpErrorContextExt, McpErrorExt};
+
+// Re-exports — helpers
+pub use helpers::{make_tool, make_tool_no_params, serialize_response, tier_confidence_schema};
 
 // Re-exports — guidance
 pub use guidance::ServerGuidance;
