@@ -10,6 +10,7 @@
 //! - Built-in graph commands (validate, stats, query)
 
 pub mod app;
+pub mod cache;
 pub mod cli;
 pub mod config;
 pub mod config_handlers;
