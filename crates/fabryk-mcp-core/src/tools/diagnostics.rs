@@ -6,30 +6,13 @@
 //! - `debug_config` — show server configuration (with optional redaction)
 //! - `service_status` — report status of all background services
 
+use crate::helpers::{make_tool_no_params, serialize_response};
 use crate::registry::{ToolRegistry, ToolResult};
 use fabryk_core::service::ServiceHandle;
-use rmcp::model::{CallToolResult, Content, ErrorData, Tool};
+use rmcp::model::{CallToolResult, ErrorData, Tool};
 use serde::Serialize;
 use serde_json::Value;
 use std::sync::Arc;
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-fn make_tool(name: &str, description: &str) -> Tool {
-    Tool::new(
-        name.to_string(),
-        description.to_string(),
-        crate::empty_input_schema(),
-    )
-}
-
-fn serialize_response<T: Serialize>(value: &T) -> Result<CallToolResult, ErrorData> {
-    let json = serde_json::to_string_pretty(value)
-        .map_err(|e| ErrorData::internal_error(e.to_string(), None))?;
-    Ok(CallToolResult::success(vec![Content::text(json)]))
-}
 
 // ---------------------------------------------------------------------------
 // DiagnosticTools
@@ -80,11 +63,11 @@ impl<C: Serialize + Send + Sync> DiagnosticTools<C> {
 impl<C: Serialize + Send + Sync + 'static> ToolRegistry for DiagnosticTools<C> {
     fn tools(&self) -> Vec<Tool> {
         vec![
-            make_tool(
+            make_tool_no_params(
                 "debug_config",
                 "Show the server configuration (sensitive values redacted)",
             ),
-            make_tool(
+            make_tool_no_params(
                 "service_status",
                 "Show the status of all background services",
             ),
