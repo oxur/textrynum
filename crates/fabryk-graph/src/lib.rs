@@ -63,7 +63,7 @@ pub use query::{
 pub use stats::{DegreeDirection, GraphStats, compute_stats, quick_summary, top_nodes_by_degree};
 
 // Re-exports — types
-pub use types::{Edge, EdgeOrigin, GraphData, Node, NodeType, Relationship};
+pub use types::{Edge, EdgeOrigin, GraphData, LoadedGraph, Node, NodeType, Relationship};
 
 // Re-exports — validation
 pub use validation::{ValidationIssue, ValidationResult, is_valid, validate_graph};

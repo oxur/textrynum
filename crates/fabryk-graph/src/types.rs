@@ -7,6 +7,8 @@
 use petgraph::graph::{DiGraph, NodeIndex};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+use std::fmt;
+use std::str::FromStr;
 
 // ============================================================================
 // Relationship enum
@@ -98,6 +100,60 @@ impl Relationship {
             Self::ContrastsWith => "contrasts_with",
             Self::AnswersQuestion => "answers_question",
             Self::Custom(name) => name,
+        }
+    }
+}
+
+impl fmt::Display for Relationship {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Prerequisite => write!(f, "Prerequisite"),
+            Self::LeadsTo => write!(f, "LeadsTo"),
+            Self::RelatesTo => write!(f, "RelatesTo"),
+            Self::Extends => write!(f, "Extends"),
+            Self::Introduces => write!(f, "Introduces"),
+            Self::Covers => write!(f, "Covers"),
+            Self::VariantOf => write!(f, "VariantOf"),
+            Self::ContrastsWith => write!(f, "ContrastsWith"),
+            Self::AnswersQuestion => write!(f, "AnswersQuestion"),
+            Self::Custom(name) => write!(f, "{}", name),
+        }
+    }
+}
+
+impl FromStr for Relationship {
+    type Err = std::convert::Infallible;
+
+    /// Parse a relationship name string.
+    ///
+    /// Accepts PascalCase (`"Prerequisite"`), snake_case (`"relates_to"`),
+    /// and case-insensitive matching. Unrecognized strings become
+    /// `Custom(original_string)` rather than an error.
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(match s.to_lowercase().replace('_', "").as_str() {
+            "prerequisite" => Self::Prerequisite,
+            "leadsto" => Self::LeadsTo,
+            "relatesto" => Self::RelatesTo,
+            "extends" => Self::Extends,
+            "introduces" => Self::Introduces,
+            "covers" => Self::Covers,
+            "variantof" => Self::VariantOf,
+            "contrastswith" => Self::ContrastsWith,
+            "answersquestion" => Self::AnswersQuestion,
+            // SameAs and Cites are common domain conventions; route through Custom
+            "sameas" => Self::Custom("same_as".to_string()),
+            "cites" => Self::Custom("cites".to_string()),
+            _ => Self::Custom(s.to_string()),
+        })
+    }
+}
+
+impl fmt::Display for NodeType {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Domain => write!(f, "domain"),
+            Self::UserQuery => write!(f, "user_query"),
+            Self::Custom(name) => write!(f, "{}", name),
         }
     }
 }
@@ -231,6 +287,38 @@ impl Node {
     ) -> Self {
         self.metadata.insert(key.into(), value.into());
         self
+    }
+
+    // ---- Node inspection helpers ----
+
+    /// Check if this is a domain-type node (the default node type).
+    pub fn is_domain(&self) -> bool {
+        matches!(self.node_type, NodeType::Domain)
+    }
+
+    /// Check if this is a custom-type node with the given type name.
+    pub fn is_custom_type(&self, type_name: &str) -> bool {
+        matches!(&self.node_type, NodeType::Custom(s) if s == type_name)
+    }
+
+    /// Get the category, defaulting to `"unknown"` if not set.
+    pub fn category_or_default(&self) -> &str {
+        self.category.as_deref().unwrap_or("unknown")
+    }
+
+    /// Get a string value from metadata.
+    pub fn metadata_str(&self, key: &str) -> Option<&str> {
+        self.metadata.get(key).and_then(|v| v.as_str())
+    }
+
+    /// Get a u64 value from metadata.
+    pub fn metadata_u64(&self, key: &str) -> Option<u64> {
+        self.metadata.get(key).and_then(|v| v.as_u64())
+    }
+
+    /// Get a bool value from metadata.
+    pub fn metadata_bool(&self, key: &str) -> Option<bool> {
+        self.metadata.get(key).and_then(|v| v.as_bool())
     }
 }
 
@@ -418,6 +506,36 @@ impl GraphData {
 impl Default for GraphData {
     fn default() -> Self {
         Self::new()
+    }
+}
+
+// ============================================================================
+// LoadedGraph — graph data with load-time metadata
+// ============================================================================
+
+/// A loaded graph with metadata about when it was loaded and summary statistics.
+///
+/// Used by application state to hold the active graph instance alongside
+/// its load timestamp and precomputed statistics.
+#[derive(Clone, Debug)]
+pub struct LoadedGraph {
+    /// The underlying graph data.
+    pub data: GraphData,
+    /// When the graph was loaded.
+    pub loaded_at: chrono::DateTime<chrono::Utc>,
+    /// Precomputed statistics.
+    pub stats: crate::stats::GraphStats,
+}
+
+impl LoadedGraph {
+    /// Create a new LoadedGraph with stats computed from the data.
+    pub fn new(data: GraphData) -> Self {
+        let stats = crate::stats::compute_stats(&data);
+        Self {
+            data,
+            loaded_at: chrono::Utc::now(),
+            stats,
+        }
     }
 }
 
