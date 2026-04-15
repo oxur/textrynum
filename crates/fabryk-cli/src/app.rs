@@ -114,6 +114,14 @@ impl<C: ConfigProvider> FabrykCli<C> {
             Some(BaseCommand::Vectordb(cmd)) => {
                 crate::vectordb_handlers::handle_vectordb_command(cmd.command)
             }
+            Some(BaseCommand::Cache(_)) => {
+                println!(
+                    "Cache commands require project-specific configuration. \
+                     Override run() in your domain CLI to call \
+                     cache module functions with project constants."
+                );
+                Ok(())
+            }
             None => {
                 println!("{} {} — use --help for usage", self.name, self.version);
                 Ok(())

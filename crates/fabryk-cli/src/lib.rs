@@ -24,7 +24,8 @@ pub mod vectordb_handlers;
 
 // Re-exports — CLI types
 pub use cli::{
-    BaseCommand, CliArgs, CliExtension, ConfigAction, ConfigCommand, GraphCommand, GraphSubcommand,
+    BaseCommand, CacheAction, CacheCommand, CliArgs, CliExtension, ConfigAction, ConfigCommand,
+    GraphCommand, GraphSubcommand,
 };
 #[cfg(feature = "vector-fastembed")]
 pub use cli::{VectordbAction, VectordbCommand};
