@@ -73,6 +73,9 @@ pub enum BaseCommand {
     /// Vector database operations.
     #[cfg(feature = "vector-fastembed")]
     Vectordb(VectordbCommand),
+
+    /// Cache management (download, status, package).
+    Cache(CacheCommand),
 }
 
 /// Config-specific subcommands.
@@ -197,6 +200,47 @@ pub enum VectordbAction {
         /// Directory to cache the downloaded model.
         #[arg(long)]
         cache_dir: Option<String>,
+    },
+}
+
+// ============================================================================
+// Cache commands
+// ============================================================================
+
+/// Cache management subcommands.
+#[derive(Parser, Debug)]
+pub struct CacheCommand {
+    /// Cache subcommand to execute.
+    #[command(subcommand)]
+    pub command: CacheAction,
+}
+
+/// Available cache subcommands.
+#[derive(Subcommand, Debug)]
+pub enum CacheAction {
+    /// Download pre-built caches from GitHub releases.
+    Download {
+        /// Which cache to download (graph, fts, vector, all).
+        #[arg(default_value = "all")]
+        backend: String,
+
+        /// Force re-download even if cache exists at current version.
+        #[arg(long, short)]
+        force: bool,
+    },
+
+    /// Show status of local caches.
+    Status,
+
+    /// Package local caches for distribution (CI use).
+    Package {
+        /// Which cache to package (graph, fts, vector, all).
+        #[arg(default_value = "all")]
+        backend: String,
+
+        /// Output directory for archives.
+        #[arg(long, short, default_value = "./dist")]
+        output: String,
     },
 }
 
