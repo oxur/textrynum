@@ -48,6 +48,7 @@ pub mod discoverable;
 pub mod error;
 pub mod guidance;
 pub mod helpers;
+pub mod search_fallback;
 #[cfg(feature = "http")]
 pub mod health_router;
 pub mod notifier;
@@ -76,6 +77,9 @@ pub use error::{McpErrorContextExt, McpErrorExt};
 
 // Re-exports — helpers
 pub use helpers::{make_tool, make_tool_no_params, serialize_response, tier_confidence_schema};
+
+// Re-exports — search fallback
+pub use search_fallback::{SearchFallback, resolve_backend_name, resolve_search_backend};
 
 // Re-exports — guidance
 pub use guidance::ServerGuidance;

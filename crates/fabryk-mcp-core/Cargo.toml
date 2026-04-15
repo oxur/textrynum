@@ -11,6 +11,7 @@ description = "Core MCP server infrastructure for Fabryk"
 
 [dependencies]
 fabryk-core = { version = "0.5.0", path = "../fabryk-core" }
+fabryk-fts = { version = "0.5.0", path = "../fabryk-fts" }
 
 # MCP SDK
 rmcp = { workspace = true }
