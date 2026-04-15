@@ -44,6 +44,7 @@
 //!     .await?;
 //! ```
 
+pub mod builder;
 pub mod discoverable;
 pub mod error;
 pub mod guidance;
@@ -71,6 +72,9 @@ pub use server::{FabrykMcpServer, ServerConfig};
 
 // Re-exports — notifier
 pub use notifier::Notifier;
+
+// Re-exports — builder
+pub use builder::ServerBuilder;
 
 // Re-exports — error
 pub use error::{McpErrorContextExt, McpErrorExt};
