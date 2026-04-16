@@ -99,6 +99,48 @@ impl ServerBuilder {
         self
     }
 
+    /// Consume the builder and return the composed registry for further
+    /// wrapping (e.g., with [`DiscoverableRegistry`]).
+    ///
+    /// Use this when you need to wrap the registry before creating the server.
+    /// Call [`Self::build_with_registry`] afterward to finish construction.
+    pub fn into_parts(self) -> (CompositeRegistry, ServerBuilderParts) {
+        (
+            self.registry,
+            ServerBuilderParts {
+                name: self.name,
+                version: self.version,
+                description: self.description,
+                resources_path: self.resources_path,
+                resource_defs: self.resource_defs,
+            },
+        )
+    }
+
+    /// Build the server from a pre-wrapped registry and the remaining builder parts.
+    pub fn build_with_registry(
+        registry: impl ToolRegistry + 'static,
+        parts: ServerBuilderParts,
+    ) -> FabrykMcpServer {
+        let mut server = FabrykMcpServer::new(registry)
+            .with_name(&parts.name)
+            .with_version(&parts.version);
+
+        if let Some(desc) = &parts.description {
+            server = server.with_description(desc);
+        }
+
+        if !parts.resource_defs.is_empty() {
+            let mut resources = StaticResources::new(parts.resources_path);
+            for def in parts.resource_defs {
+                resources = resources.with_resource(def);
+            }
+            server = server.with_resources(resources);
+        }
+
+        server
+    }
+
     /// Build the final [`FabrykMcpServer`].
     ///
     /// Assembles the composite registry, static resources, and server
@@ -122,6 +164,20 @@ impl ServerBuilder {
 
         server
     }
+}
+
+/// Remaining builder state after extracting the registry via [`ServerBuilder::into_parts`].
+pub struct ServerBuilderParts {
+    /// Server name.
+    pub name: String,
+    /// Server version.
+    pub version: String,
+    /// Optional description / instructions.
+    pub description: Option<String>,
+    /// Base path for static resource files.
+    pub resources_path: PathBuf,
+    /// Static resource definitions.
+    pub resource_defs: Vec<StaticResourceDef>,
 }
 
 impl Default for ServerBuilder {
