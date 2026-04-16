@@ -83,6 +83,7 @@ impl ServerBuilder {
     ///
     /// Tool registries are added in order and queried in order for tool
     /// dispatch. Add domain-specific registries after framework registries.
+    #[allow(clippy::should_implement_trait)]
     pub fn add(mut self, registry: impl ToolRegistry + 'static) -> Self {
         self.registry = self.registry.add(registry);
         self

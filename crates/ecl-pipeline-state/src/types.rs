@@ -397,6 +397,119 @@ mod tests {
         }
     }
 
+    // -----------------------------------------------------------------------
+    // Display tests
+    // -----------------------------------------------------------------------
+
+    #[test]
+    fn test_pipeline_status_display_pending() {
+        assert_eq!(PipelineStatus::Pending.to_string(), "Pending");
+    }
+
+    #[test]
+    fn test_pipeline_status_display_running() {
+        let status = PipelineStatus::Running {
+            current_stage: "extract".to_string(),
+        };
+        assert_eq!(status.to_string(), "Running (extract)");
+    }
+
+    #[test]
+    fn test_pipeline_status_display_completed() {
+        let status = PipelineStatus::Completed {
+            finished_at: test_time(),
+        };
+        let display = status.to_string();
+        assert!(display.starts_with("Completed ("));
+        assert!(display.contains("2026"));
+    }
+
+    #[test]
+    fn test_pipeline_status_display_failed() {
+        let status = PipelineStatus::Failed {
+            error: "boom".to_string(),
+            failed_at: test_time(),
+        };
+        let display = status.to_string();
+        assert!(display.starts_with("Failed at "));
+        assert!(display.contains("boom"));
+    }
+
+    #[test]
+    fn test_pipeline_status_display_interrupted() {
+        let status = PipelineStatus::Interrupted {
+            interrupted_at: test_time(),
+        };
+        let display = status.to_string();
+        assert!(display.starts_with("Interrupted ("));
+    }
+
+    #[test]
+    fn test_item_status_display_pending() {
+        assert_eq!(ItemStatus::Pending.to_string(), "Pending");
+    }
+
+    #[test]
+    fn test_item_status_display_processing() {
+        let status = ItemStatus::Processing {
+            stage: "extract".to_string(),
+        };
+        assert_eq!(status.to_string(), "Processing (extract)");
+    }
+
+    #[test]
+    fn test_item_status_display_completed() {
+        assert_eq!(ItemStatus::Completed.to_string(), "Completed");
+    }
+
+    #[test]
+    fn test_item_status_display_failed() {
+        let status = ItemStatus::Failed {
+            stage: "normalize".to_string(),
+            error: "parse error".to_string(),
+            attempts: 3,
+        };
+        assert_eq!(
+            status.to_string(),
+            "Failed at normalize after 3 attempt(s): parse error"
+        );
+    }
+
+    #[test]
+    fn test_item_status_display_skipped() {
+        let status = ItemStatus::Skipped {
+            stage: "emit".to_string(),
+            reason: "condition false".to_string(),
+        };
+        assert_eq!(status.to_string(), "Skipped (emit): condition false");
+    }
+
+    #[test]
+    fn test_item_status_display_unchanged() {
+        assert_eq!(ItemStatus::Unchanged.to_string(), "Unchanged");
+    }
+
+    #[test]
+    fn test_stage_status_display_all_variants() {
+        assert_eq!(StageStatus::Pending.to_string(), "Pending");
+        assert_eq!(StageStatus::Running.to_string(), "Running");
+        assert_eq!(StageStatus::Completed.to_string(), "Completed");
+        assert_eq!(
+            StageStatus::Skipped {
+                reason: "cond".to_string()
+            }
+            .to_string(),
+            "Skipped: cond"
+        );
+        assert_eq!(
+            StageStatus::Failed {
+                error: "timeout".to_string()
+            }
+            .to_string(),
+            "Failed: timeout"
+        );
+    }
+
     #[test]
     fn test_pipeline_stats_default() {
         let stats = PipelineStats::default();

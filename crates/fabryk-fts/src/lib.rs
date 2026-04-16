@@ -146,3 +146,61 @@ pub async fn create_search_backend(
 ) -> fabryk_core::Result<Box<dyn SearchBackend>> {
     backend::create_search_backend(config).await
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn test_create_search_backend_default_config() {
+        let config = SearchConfig::default();
+        let backend = create_search_backend(&config).await.unwrap();
+        // Default config should produce a SimpleSearch fallback
+        let results = backend
+            .search(SearchParams {
+                query: "test".to_string(),
+                ..Default::default()
+            })
+            .await
+            .unwrap();
+        assert_eq!(results.total, 0);
+    }
+
+    #[tokio::test]
+    async fn test_create_search_backend_unknown_backend() {
+        let config = SearchConfig {
+            backend: "nonexistent".to_string(),
+            ..Default::default()
+        };
+        // Unknown backend falls back to SimpleSearch
+        let backend = create_search_backend(&config).await.unwrap();
+        let results = backend
+            .search(SearchParams {
+                query: "anything".to_string(),
+                ..Default::default()
+            })
+            .await
+            .unwrap();
+        assert_eq!(results.total, 0);
+    }
+
+    #[cfg(feature = "fts-tantivy")]
+    #[tokio::test]
+    async fn test_create_search_backend_tantivy_missing_index_falls_back() {
+        let config = SearchConfig {
+            backend: "tantivy".to_string(),
+            index_path: Some("/nonexistent/path".to_string()),
+            ..Default::default()
+        };
+        // Missing index path should fall back to SimpleSearch
+        let backend = create_search_backend(&config).await.unwrap();
+        let results = backend
+            .search(SearchParams {
+                query: "test".to_string(),
+                ..Default::default()
+            })
+            .await
+            .unwrap();
+        assert_eq!(results.total, 0);
+    }
+}

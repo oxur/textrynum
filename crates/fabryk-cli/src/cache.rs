@@ -364,16 +364,15 @@ pub fn download_cache(
     force: bool,
 ) -> Result<()> {
     let mut manifest = load_manifest(base_path)?;
-    if !force {
-        if let Some(entry) = manifest.get(backend) {
-            if entry.version == version {
-                log::info!(
-                    "{} cache v{version} already installed, skipping (use --force to re-download)",
-                    backend
-                );
-                return Ok(());
-            }
-        }
+    if !force
+        && let Some(entry) = manifest.get(backend)
+        && entry.version == version
+    {
+        log::info!(
+            "{} cache v{version} already installed, skipping (use --force to re-download)",
+            backend
+        );
+        return Ok(());
     }
 
     log::info!("Installing {backend} cache v{version} ...");
@@ -540,9 +539,15 @@ mod tests {
 
     #[test]
     fn test_cache_backend_from_str() {
-        assert_eq!(CacheBackend::from_str("graph").unwrap(), CacheBackend::Graph);
+        assert_eq!(
+            CacheBackend::from_str("graph").unwrap(),
+            CacheBackend::Graph
+        );
         assert_eq!(CacheBackend::from_str("fts").unwrap(), CacheBackend::Fts);
-        assert_eq!(CacheBackend::from_str("GRAPH").unwrap(), CacheBackend::Graph);
+        assert_eq!(
+            CacheBackend::from_str("GRAPH").unwrap(),
+            CacheBackend::Graph
+        );
         assert!(CacheBackend::from_str("unknown").is_err());
     }
 
@@ -653,6 +658,97 @@ mod tests {
 
         let display = format!("{report}");
         assert!(display.contains("not installed"));
+    }
+
+    #[test]
+    fn test_verify_checksum_valid() {
+        let dir = tempfile::tempdir().unwrap();
+        let file_path = dir.path().join("test.tar.gz");
+        std::fs::write(&file_path, b"test content").unwrap();
+
+        // Compute the expected sha256 hash
+        let output = std::process::Command::new("shasum")
+            .args(["-a", "256"])
+            .arg(&file_path)
+            .output()
+            .unwrap();
+        let stdout = String::from_utf8_lossy(&output.stdout);
+        let expected_hash = stdout.split_whitespace().next().unwrap();
+
+        assert!(verify_checksum(&file_path, expected_hash).is_ok());
+    }
+
+    #[test]
+    fn test_verify_checksum_mismatch() {
+        let dir = tempfile::tempdir().unwrap();
+        let file_path = dir.path().join("test.tar.gz");
+        std::fs::write(&file_path, b"test content").unwrap();
+
+        let result = verify_checksum(&file_path, "badhash");
+        assert!(result.is_err());
+        assert!(
+            result
+                .unwrap_err()
+                .to_string()
+                .contains("Checksum mismatch")
+        );
+    }
+
+    #[test]
+    fn test_extract_archive_valid() {
+        let dir = tempfile::tempdir().unwrap();
+        let archive_path = dir.path().join("test.tar.gz");
+
+        // Create a small tar.gz archive
+        let output = std::process::Command::new("bash")
+            .args([
+                "-c",
+                &format!(
+                    "echo 'hello' > {0}/hello.txt && tar -czf {1} -C {0} hello.txt",
+                    dir.path().display(),
+                    archive_path.display()
+                ),
+            ])
+            .output()
+            .unwrap();
+        assert!(output.status.success());
+
+        let extract_dir = dir.path().join("extracted");
+        std::fs::create_dir(&extract_dir).unwrap();
+        assert!(extract_archive(&archive_path, &extract_dir).is_ok());
+        assert!(extract_dir.join("hello.txt").exists());
+    }
+
+    #[test]
+    fn test_extract_archive_invalid_file() {
+        let dir = tempfile::tempdir().unwrap();
+        let bad_archive = dir.path().join("bad.tar.gz");
+        std::fs::write(&bad_archive, b"not a tar file").unwrap();
+
+        let result = extract_archive(&bad_archive, dir.path());
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn test_download_cache_skip_when_already_installed() {
+        let dir = tempfile::tempdir().unwrap();
+        let project = test_project();
+
+        // Pre-install a manifest entry
+        let mut manifest = CacheManifest::default();
+        manifest.set(
+            &CacheBackend::Graph,
+            CacheEntry {
+                version: "1.0.0".to_string(),
+                downloaded_at: "2025-01-01T00:00:00Z".to_string(),
+                checksum: "abc".to_string(),
+            },
+        );
+        save_manifest(dir.path(), &manifest).unwrap();
+
+        // Should skip (not try to download)
+        let result = download_cache(&CacheBackend::Graph, dir.path(), "1.0.0", &project, false);
+        assert!(result.is_ok());
     }
 
     #[test]

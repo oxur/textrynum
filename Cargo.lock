@@ -3143,6 +3143,7 @@ dependencies = [
  "tracing",
  "twyg",
  "uuid",
+ "wiremock",
 ]
 
 [[package]]
@@ -3264,6 +3265,7 @@ version = "0.5.0"
 dependencies = [
  "apache-avro",
  "async-trait",
+ "chrono",
  "ecl-pipeline-spec",
  "ecl-pipeline-state",
  "ecl-pipeline-topo",
@@ -3646,7 +3648,7 @@ dependencies = [
  "tempfile",
  "tokio",
  "toml 1.1.2+spec-1.1.0",
- "toml_edit 0.22.27",
+ "toml_edit 0.25.10+spec-1.1.0",
  "tracing",
  "tracing-subscriber",
 ]
@@ -3755,8 +3757,10 @@ name = "fabryk-mcp-auth"
 version = "0.5.0"
 dependencies = [
  "axum",
+ "http",
  "serde_json",
  "tokio",
+ "tower",
 ]
 
 [[package]]
@@ -3783,6 +3787,7 @@ dependencies = [
  "async-trait",
  "axum",
  "fabryk-core",
+ "fabryk-fts",
  "log",
  "reqwest 0.13.2",
  "rmcp",

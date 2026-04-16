@@ -521,4 +521,135 @@ mod tests {
         fn assert_send_sync<T: Send + Sync>() {}
         assert_send_sync::<KafkaSinkStage>();
     }
+
+    use ecl_pipeline_state::{Blake3Hash, ItemProvenance};
+    use std::sync::Arc;
+
+    fn make_item(metadata: BTreeMap<String, serde_json::Value>) -> PipelineItem {
+        PipelineItem {
+            id: "item-1".to_string(),
+            display_name: "test item".to_string(),
+            content: Arc::from(b"content" as &[u8]),
+            mime_type: "text/plain".to_string(),
+            source_name: "test".to_string(),
+            source_content_hash: Blake3Hash::new("abc"),
+            record: None,
+            metadata,
+            provenance: ItemProvenance {
+                source_kind: "test".to_string(),
+                metadata: BTreeMap::new(),
+                source_modified: None,
+                extracted_at: chrono::Utc::now(),
+            },
+            stream: None,
+        }
+    }
+
+    fn make_test_stage() -> KafkaSinkStage {
+        let params = json!({
+            "topic": "test-topic",
+            "bootstrap_servers": "localhost:9092",
+            "schema_registry_url": "http://localhost:8081",
+            "avro_schema": r#"{"type":"record","name":"Test","fields":[{"name":"id","type":"string"}]}"#,
+            "security_protocol": "PLAINTEXT",
+            "filter": "valid_only"
+        });
+        KafkaSinkStage::from_params(&params).unwrap()
+    }
+
+    #[test]
+    fn test_kafka_sink_stage_name() {
+        let stage = make_test_stage();
+        assert_eq!(stage.name(), "kafka_sink");
+    }
+
+    #[test]
+    fn test_kafka_sink_stage_debug_format() {
+        let stage = make_test_stage();
+        let debug = format!("{stage:?}");
+        assert!(debug.contains("KafkaSinkStage"));
+        assert!(debug.contains("test-topic"));
+    }
+
+    #[test]
+    fn test_should_produce_valid_only_skips_failed() {
+        let stage = make_test_stage();
+        let mut metadata = BTreeMap::new();
+        metadata.insert("_validation_status".to_string(), json!("failed"));
+        assert!(!stage.should_produce(&make_item(metadata)));
+    }
+
+    #[test]
+    fn test_should_produce_valid_only_passes_valid() {
+        let stage = make_test_stage();
+        let mut metadata = BTreeMap::new();
+        metadata.insert("_validation_status".to_string(), json!("passed"));
+        assert!(stage.should_produce(&make_item(metadata)));
+    }
+
+    #[test]
+    fn test_should_produce_valid_only_passes_no_status() {
+        let stage = make_test_stage();
+        assert!(stage.should_produce(&make_item(BTreeMap::new())));
+    }
+
+    #[test]
+    fn test_should_produce_errors_only() {
+        let params = json!({
+            "topic": "t",
+            "bootstrap_servers": "localhost:9092",
+            "schema_registry_url": "http://localhost:8081",
+            "avro_schema": r#"{"type":"record","name":"Test","fields":[{"name":"id","type":"string"}]}"#,
+            "security_protocol": "PLAINTEXT",
+            "filter": "errors_only"
+        });
+        let stage = KafkaSinkStage::from_params(&params).unwrap();
+
+        let mut failed_meta = BTreeMap::new();
+        failed_meta.insert("_validation_status".to_string(), json!("failed"));
+        assert!(stage.should_produce(&make_item(failed_meta)));
+        assert!(!stage.should_produce(&make_item(BTreeMap::new())));
+    }
+
+    #[test]
+    fn test_should_produce_all_filter() {
+        let params = json!({
+            "topic": "t",
+            "bootstrap_servers": "localhost:9092",
+            "schema_registry_url": "http://localhost:8081",
+            "avro_schema": r#"{"type":"record","name":"Test","fields":[{"name":"id","type":"string"}]}"#,
+            "security_protocol": "PLAINTEXT",
+            "filter": "all"
+        });
+        let stage = KafkaSinkStage::from_params(&params).unwrap();
+
+        let mut meta = BTreeMap::new();
+        meta.insert("_validation_status".to_string(), json!("failed"));
+        assert!(stage.should_produce(&make_item(meta)));
+    }
+
+    #[test]
+    fn test_kafka_sink_from_params_with_sasl_config() {
+        let params = json!({
+            "topic": "t",
+            "bootstrap_servers": "broker:9093",
+            "schema_registry_url": "http://localhost:8081",
+            "avro_schema": r#"{"type":"record","name":"Test","fields":[{"name":"id","type":"string"}]}"#,
+            "security_protocol": "PLAINTEXT",
+            "sasl_mechanism": "PLAIN",
+            "sasl_username": "user",
+            "sasl_password": "pass"
+        });
+        let stage = KafkaSinkStage::from_params(&params).unwrap();
+        assert_eq!(stage.config.sasl_mechanism, Some("PLAIN".to_string()));
+        assert_eq!(stage.config.sasl_username, Some("user".to_string()));
+        assert_eq!(stage.config.sasl_password, Some("pass".to_string()));
+    }
+
+    #[test]
+    fn test_kafka_sink_from_params_invalid_config_json() {
+        let params = json!("not an object");
+        let result = KafkaSinkStage::from_params(&params);
+        assert!(result.is_err());
+    }
 }

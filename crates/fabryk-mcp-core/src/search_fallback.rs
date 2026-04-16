@@ -63,14 +63,12 @@ pub fn resolve_search_backend<T>(
 where
     T: SearchBackend + Send + Sync + 'static,
 {
-    if let Some(slot) = fts_slot {
-        if slot.is_ready() {
-            if let Ok(guard) = slot.inner().read() {
-                if let Some(ref backend) = *guard {
-                    return Arc::clone(backend) as Arc<dyn SearchBackend + Send + Sync>;
-                }
-            }
-        }
+    if let Some(slot) = fts_slot
+        && slot.is_ready()
+        && let Ok(guard) = slot.inner().read()
+        && let Some(ref backend) = *guard
+    {
+        return Arc::clone(backend) as Arc<dyn SearchBackend + Send + Sync>;
     }
     Arc::clone(simple)
 }
@@ -79,10 +77,10 @@ where
 ///
 /// Returns `"tantivy"` if the FTS slot is ready, `"simple"` otherwise.
 pub fn resolve_backend_name<T>(fts_slot: Option<&BackendSlot<Arc<T>>>) -> &'static str {
-    if let Some(slot) = fts_slot {
-        if slot.is_ready() {
-            return "tantivy";
-        }
+    if let Some(slot) = fts_slot
+        && slot.is_ready()
+    {
+        return "tantivy";
     }
     "simple"
 }
