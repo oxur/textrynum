@@ -36,5 +36,17 @@ pub use traits::ConfigManager;
 pub use traits::ConfigProvider;
 
 // Convenience re-exports from util
-pub use util::ids::{id_from_path, normalize_id};
+pub use util::ids::{humanize_id, id_from_path, normalize_id};
 pub use util::resolver::PathResolver;
+
+/// Strategy for handling errors during batch operations (indexing, building, etc.).
+#[derive(Clone, Debug, Default)]
+pub enum ErrorHandling {
+    /// Stop on first error.
+    #[default]
+    FailFast,
+    /// Continue and collect errors.
+    Collect,
+    /// Log and skip problematic files.
+    Skip,
+}

@@ -50,8 +50,8 @@ pub mod sources;
 pub use concept_card::ConceptCardFrontmatter;
 pub use markdown::{
     FrontmatterResult, extract_all_list_items, extract_first_heading, extract_first_paragraph,
-    extract_frontmatter, extract_list_from_section, extract_section_content, extract_text_content,
-    normalize_id, parse_comma_list, parse_keyword_list, strip_frontmatter,
+    extract_frontmatter, extract_list_from_section, extract_section_content, extract_string_array,
+    extract_text_content, normalize_id, parse_comma_list, parse_keyword_list, strip_frontmatter,
 };
 
 pub use metadata::{ContentMetadata, ContentType, detect_content_type, extract_metadata};

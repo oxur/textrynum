@@ -5,6 +5,7 @@
 
 use crate::traits::{ContentItemProvider, GuideProvider, QuestionSearchProvider, SourceProvider};
 use fabryk_mcp_core::error::McpErrorExt;
+use fabryk_mcp_core::helpers::{make_tool, serialize_response};
 use fabryk_mcp_core::model::{CallToolResult, Content, ErrorData, Tool};
 use fabryk_mcp_core::registry::{ToolRegistry, ToolResult};
 use serde::{Deserialize, Serialize};
@@ -16,21 +17,6 @@ use std::sync::Arc;
 // Helpers
 // ---------------------------------------------------------------------------
 
-/// Convert a `serde_json::Value::Object` to an `Arc<serde_json::Map>`.
-fn json_schema(value: Value) -> Arc<serde_json::Map<String, Value>> {
-    match value {
-        Value::Object(map) => Arc::new(map),
-        _ => Arc::new(serde_json::Map::new()),
-    }
-}
-
-/// Serialize a value to a successful `CallToolResult`.
-fn serialize_response<T: serde::Serialize>(value: &T) -> Result<CallToolResult, ErrorData> {
-    let json = serde_json::to_string_pretty(value)
-        .map_err(|e| ErrorData::internal_error(e.to_string(), None))?;
-    Ok(CallToolResult::success(vec![Content::text(json)]))
-}
-
 /// Extract a required string field from a JSON `Value`, returning an MCP error
 /// if the field is missing or not a string.
 fn extract_string_field(args: &Value, field: &str) -> Result<String, ErrorData> {
@@ -40,15 +26,6 @@ fn extract_string_field(args: &Value, field: &str) -> Result<String, ErrorData> 
         .ok_or_else(|| {
             ErrorData::invalid_params(format!("Missing required parameter: {field}"), None)
         })
-}
-
-/// Build a `Tool` with a JSON schema.
-fn make_tool(name: &str, description: &str, schema: Value) -> Tool {
-    Tool::new(
-        name.to_string(),
-        description.to_string(),
-        json_schema(schema),
-    )
 }
 
 // ---------------------------------------------------------------------------

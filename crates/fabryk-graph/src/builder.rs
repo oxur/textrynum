@@ -28,17 +28,7 @@ use std::path::{Path, PathBuf};
 // Builder configuration types
 // ============================================================================
 
-/// Options for handling errors during graph building.
-#[derive(Clone, Debug, Default)]
-pub enum ErrorHandling {
-    /// Stop on first error.
-    #[default]
-    FailFast,
-    /// Continue and collect errors.
-    Collect,
-    /// Log and skip problematic files.
-    Skip,
-}
+pub use fabryk_core::ErrorHandling;
 
 /// An error that occurred during building.
 #[derive(Debug, Clone)]

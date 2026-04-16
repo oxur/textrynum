@@ -231,19 +231,7 @@ impl GraphExtractor for ConceptCardGraphExtractor {
     }
 }
 
-/// Extract a `Vec<String>` from a YAML frontmatter sequence field.
-fn extract_string_array(frontmatter: &yaml_serde::Value, key: &str) -> Vec<String> {
-    frontmatter
-        .get(key)
-        .and_then(|v| v.as_sequence())
-        .map(|seq| {
-            seq.iter()
-                .filter_map(|v| v.as_str())
-                .map(String::from)
-                .collect()
-        })
-        .unwrap_or_default()
-}
+use fabryk_content::extract_string_array;
 
 // ============================================================================
 // Tests

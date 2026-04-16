@@ -255,6 +255,32 @@ pub fn strip_frontmatter(content: &str) -> &str {
         .unwrap_or(content)
 }
 
+/// Extract a `Vec<String>` from a YAML frontmatter sequence field.
+///
+/// Looks up `key` in the frontmatter value, expects a YAML sequence,
+/// and collects all string elements. Returns an empty vec if the key
+/// is missing, the value is not a sequence, or items are not strings.
+///
+/// # Example
+///
+/// ```rust
+/// let yaml: yaml_serde::Value = yaml_serde::from_str("tags:\n  - jazz\n  - harmony").unwrap();
+/// let tags = fabryk_content::extract_string_array(&yaml, "tags");
+/// assert_eq!(tags, vec!["jazz", "harmony"]);
+/// ```
+pub fn extract_string_array(frontmatter: &Value, key: &str) -> Vec<String> {
+    frontmatter
+        .get(key)
+        .and_then(|v| v.as_sequence())
+        .map(|seq| {
+            seq.iter()
+                .filter_map(|v| v.as_str())
+                .map(String::from)
+                .collect()
+        })
+        .unwrap_or_default()
+}
+
 // ============================================================================
 // Tests
 // ============================================================================

@@ -25,20 +25,7 @@ use std::sync::Arc;
 use std::time::Instant;
 
 // ============================================================================
-// Error handling options
-// ============================================================================
-
-/// Options for handling errors during vector index building.
-#[derive(Clone, Debug, Default)]
-pub enum ErrorHandling {
-    /// Stop on first error.
-    #[default]
-    FailFast,
-    /// Continue and collect errors.
-    Collect,
-    /// Log and skip problematic files.
-    Skip,
-}
+pub use fabryk_core::ErrorHandling;
 
 // ============================================================================
 // VectorIndexBuilder

@@ -271,26 +271,7 @@ fn resolve_title(
     if let Some((_level, heading)) = crate::extract_first_heading(content) {
         return heading;
     }
-    humanize_id(id)
-}
-
-/// Convert a kebab-case or snake_case identifier into a title-cased string.
-fn humanize_id(id: &str) -> String {
-    id.split(['-', '_'])
-        .filter(|s| !s.is_empty())
-        .map(|word| {
-            let mut chars = word.chars();
-            match chars.next() {
-                Some(first) => {
-                    let mut s = first.to_uppercase().to_string();
-                    s.extend(chars);
-                    s
-                }
-                None => String::new(),
-            }
-        })
-        .collect::<Vec<_>>()
-        .join(" ")
+    fabryk_core::humanize_id(id)
 }
 
 // ===========================================================================
@@ -534,20 +515,4 @@ Body.
 
     // -----------------------------------------------------------------------
     // humanize_id
-    // -----------------------------------------------------------------------
-
-    #[test]
-    fn test_humanize_id_kebab() {
-        assert_eq!(humanize_id("tritone-substitution"), "Tritone Substitution");
-    }
-
-    #[test]
-    fn test_humanize_id_snake() {
-        assert_eq!(humanize_id("tritone_substitution"), "Tritone Substitution");
-    }
-
-    #[test]
-    fn test_humanize_id_single_word() {
-        assert_eq!(humanize_id("harmony"), "Harmony");
-    }
 }
