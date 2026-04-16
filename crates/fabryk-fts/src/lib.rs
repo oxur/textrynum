@@ -111,7 +111,7 @@ pub use backend::{
 pub use concept_card_extractor::ConceptCardDocumentExtractor;
 pub use document::SearchDocument;
 pub use probe::{SearchProbe, search_probe};
-pub use types::{QueryMode, SearchConfig};
+pub use types::{LanceDbConfig, QueryMode, SearchConfig};
 
 #[cfg(feature = "fts-tantivy")]
 pub use schema::SearchSchema;

@@ -152,6 +152,50 @@ impl Default for SearchConfig {
 }
 
 // ============================================================================
+// LanceDB / Vector search configuration
+// ============================================================================
+
+/// Vector search configuration (LanceDB / fastembed).
+///
+/// Controls the embedding model, cache directory, and whether vector
+/// search is enabled. Used by applications that support hybrid
+/// keyword + vector search.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(default)]
+pub struct LanceDbConfig {
+    /// Embedding model name for vector search.
+    #[serde(default = "default_embedding_model")]
+    pub embedding_model: String,
+
+    /// Path to fastembed model cache directory.
+    /// If None, fastembed uses its default (`.fastembed_cache` relative to CWD).
+    #[serde(default)]
+    pub embedding_cache_dir: Option<String>,
+
+    /// Enable vector search.
+    #[serde(default = "default_lancedb_enabled")]
+    pub enabled: bool,
+}
+
+fn default_embedding_model() -> String {
+    "bge-small-en-v1.5".to_string()
+}
+
+fn default_lancedb_enabled() -> bool {
+    true
+}
+
+impl Default for LanceDbConfig {
+    fn default() -> Self {
+        Self {
+            embedding_model: default_embedding_model(),
+            embedding_cache_dir: None,
+            enabled: default_lancedb_enabled(),
+        }
+    }
+}
+
+// ============================================================================
 // Tests
 // ============================================================================
 

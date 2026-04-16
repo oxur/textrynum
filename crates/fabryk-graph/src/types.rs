@@ -63,6 +63,12 @@ pub enum Relationship {
     /// A answers or addresses question B.
     #[serde(alias = "answers_question")]
     AnswersQuestion,
+    /// A is the same concept as B (identity / equivalence).
+    #[serde(alias = "same_as")]
+    SameAs,
+    /// A cites or references B as a source.
+    #[serde(alias = "cites")]
+    Cites,
     /// Domain-specific relationship not covered above.
     Custom(String),
 }
@@ -82,6 +88,8 @@ impl Relationship {
             Self::VariantOf => 0.9,
             Self::ContrastsWith => 0.7,
             Self::AnswersQuestion => 0.6,
+            Self::SameAs => 0.9,
+            Self::Cites => 0.7,
             Self::RelatesTo => 0.7,
             Self::Custom(_) => 0.5,
         }
@@ -99,6 +107,8 @@ impl Relationship {
             Self::VariantOf => "variant_of",
             Self::ContrastsWith => "contrasts_with",
             Self::AnswersQuestion => "answers_question",
+            Self::SameAs => "same_as",
+            Self::Cites => "cites",
             Self::Custom(name) => name,
         }
     }
@@ -116,6 +126,8 @@ impl fmt::Display for Relationship {
             Self::VariantOf => write!(f, "VariantOf"),
             Self::ContrastsWith => write!(f, "ContrastsWith"),
             Self::AnswersQuestion => write!(f, "AnswersQuestion"),
+            Self::SameAs => write!(f, "SameAs"),
+            Self::Cites => write!(f, "Cites"),
             Self::Custom(name) => write!(f, "{}", name),
         }
     }
@@ -140,9 +152,8 @@ impl FromStr for Relationship {
             "variantof" => Self::VariantOf,
             "contrastswith" => Self::ContrastsWith,
             "answersquestion" => Self::AnswersQuestion,
-            // SameAs and Cites are common domain conventions; route through Custom
-            "sameas" => Self::Custom("same_as".to_string()),
-            "cites" => Self::Custom("cites".to_string()),
+            "sameas" | "same_as" => Self::SameAs,
+            "cites" => Self::Cites,
             _ => Self::Custom(s.to_string()),
         })
     }
