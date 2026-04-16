@@ -103,7 +103,11 @@ impl GoogleDriveAdapter {
     ) -> Result<Self, ResolveError> {
         let filters = compile_filters(&spec.filters)?;
         let http_client = reqwest::Client::new();
-        let token_provider = TokenProvider::new(spec.credentials.clone(), http_client.clone());
+        let token_provider = TokenProvider::new(
+            spec.credentials.clone(),
+            http_client.clone(),
+            crate::types::DRIVE_READONLY_SCOPE,
+        );
 
         let modified_after = spec.modified_after.as_ref().and_then(|s| {
             if s == "last_run" {
