@@ -74,7 +74,7 @@ pub use server::{FabrykMcpServer, ServerConfig};
 pub use notifier::Notifier;
 
 // Re-exports — builder
-pub use builder::ServerBuilder;
+pub use builder::{ServerBuilder, ServerBuilderParts};
 
 // Re-exports — error
 pub use error::{McpErrorContextExt, McpErrorExt};
