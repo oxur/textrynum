@@ -4,7 +4,8 @@
 //! queries to `fabryk_graph` algorithms.
 
 use fabryk_mcp_core::error::McpErrorExt;
-use fabryk_mcp_core::model::{CallToolResult, Content, ErrorData, Tool};
+use fabryk_mcp_core::helpers::{make_tool, serialize_response};
+use fabryk_mcp_core::model::{ErrorData, Tool};
 use fabryk_mcp_core::registry::{ToolRegistry, ToolResult};
 
 use fabryk_graph::{
@@ -56,21 +57,6 @@ pub trait GraphNodeFilter: Send + Sync {
 // Helpers
 // ---------------------------------------------------------------------------
 
-fn json_schema(value: Value) -> Arc<serde_json::Map<String, Value>> {
-    match value {
-        Value::Object(map) => Arc::new(map),
-        _ => Arc::new(serde_json::Map::new()),
-    }
-}
-
-fn make_tool(name: &str, description: &str, schema: Value) -> Tool {
-    Tool::new(
-        name.to_string(),
-        description.to_string(),
-        json_schema(schema),
-    )
-}
-
 fn apply_node_filter(
     nodes: Vec<Node>,
     args: &Value,
@@ -80,12 +66,6 @@ fn apply_node_filter(
         Some(f) => nodes.into_iter().filter(|n| f.matches(n, args)).collect(),
         None => nodes,
     }
-}
-
-fn serialize_response<T: serde::Serialize>(value: &T) -> Result<CallToolResult, ErrorData> {
-    let json = serde_json::to_string_pretty(value)
-        .map_err(|e| ErrorData::internal_error(e.to_string(), None))?;
-    Ok(CallToolResult::success(vec![Content::text(json)]))
 }
 
 fn parse_relationship(s: &str) -> Relationship {

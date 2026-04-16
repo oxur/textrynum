@@ -7,38 +7,14 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 use fabryk_fts::{SearchBackend, SearchParams};
-use fabryk_mcp_core::model::{CallToolResult, Content, ErrorData, Tool};
+use fabryk_mcp_core::helpers::{make_tool, serialize_response};
+use fabryk_mcp_core::model::{ErrorData, Tool};
 use fabryk_mcp_core::registry::{ToolRegistry, ToolResult};
 use fabryk_vector::{
     FtsResult, HybridSearchResult, VectorBackend, VectorSearchParams, reciprocal_rank_fusion,
 };
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-fn json_schema(value: Value) -> Arc<serde_json::Map<String, Value>> {
-    match value {
-        Value::Object(map) => Arc::new(map),
-        _ => Arc::new(serde_json::Map::new()),
-    }
-}
-
-fn make_tool(name: &str, description: &str, schema: Value) -> Tool {
-    Tool::new(
-        name.to_string(),
-        description.to_string(),
-        json_schema(schema),
-    )
-}
-
-fn serialize_response<T: serde::Serialize>(value: &T) -> Result<CallToolResult, ErrorData> {
-    let json = serde_json::to_string_pretty(value)
-        .map_err(|e| ErrorData::internal_error(e.to_string(), None))?;
-    Ok(CallToolResult::success(vec![Content::text(json)]))
-}
 
 // ---------------------------------------------------------------------------
 // Argument types

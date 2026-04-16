@@ -58,6 +58,39 @@ pub fn id_from_path(path: &Path) -> Option<String> {
     path.file_stem().and_then(|s| s.to_str()).map(normalize_id)
 }
 
+/// Convert a kebab-case or snake_case identifier to Title Case.
+///
+/// Inverse of [`normalize_id`]. Splits on hyphens and underscores, capitalizes
+/// the first letter of each word, and joins with spaces.
+///
+/// # Examples
+///
+/// ```
+/// use fabryk_core::util::ids::humanize_id;
+///
+/// assert_eq!(humanize_id("voice-leading"), "Voice Leading");
+/// assert_eq!(humanize_id("jazz_theory_book"), "Jazz Theory Book");
+/// assert_eq!(humanize_id("single"), "Single");
+/// assert_eq!(humanize_id(""), "");
+/// ```
+pub fn humanize_id(id: &str) -> String {
+    id.split(['-', '_'])
+        .filter(|s| !s.is_empty())
+        .map(|word| {
+            let mut chars = word.chars();
+            match chars.next() {
+                Some(first) => {
+                    let mut s = first.to_uppercase().to_string();
+                    s.extend(chars);
+                    s
+                }
+                None => String::new(),
+            }
+        })
+        .collect::<Vec<_>>()
+        .join(" ")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -150,5 +183,42 @@ mod tests {
     fn test_id_from_path_hidden_file() {
         let path = Path::new("/data/.hidden");
         assert_eq!(id_from_path(path), Some(".hidden".to_string()));
+    }
+
+    // -------------------------------------------------------------------------
+    // humanize_id tests
+    // -------------------------------------------------------------------------
+
+    #[test]
+    fn test_humanize_id_kebab_case() {
+        assert_eq!(humanize_id("voice-leading"), "Voice Leading");
+    }
+
+    #[test]
+    fn test_humanize_id_snake_case() {
+        assert_eq!(humanize_id("jazz_theory_book"), "Jazz Theory Book");
+    }
+
+    #[test]
+    fn test_humanize_id_single_word() {
+        assert_eq!(humanize_id("single"), "Single");
+    }
+
+    #[test]
+    fn test_humanize_id_empty() {
+        assert_eq!(humanize_id(""), "");
+    }
+
+    #[test]
+    fn test_humanize_id_double_separator() {
+        assert_eq!(humanize_id("some--double-dash"), "Some Double Dash");
+    }
+
+    #[test]
+    fn test_humanize_id_roundtrip_with_normalize() {
+        let original = "voice-leading";
+        let humanized = humanize_id(original);
+        let normalized = normalize_id(&humanized);
+        assert_eq!(normalized, original);
     }
 }

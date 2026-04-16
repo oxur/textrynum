@@ -326,32 +326,8 @@ impl SourceProvider for FsSourceProvider {
 
 /// Convert a source directory name to a human-readable title.
 ///
-/// Replaces hyphens and underscores with spaces, then title-cases each word.
-///
-/// # Examples
-///
-/// ```
-/// use fabryk_mcp_content::humanize_source_id;
-///
-/// assert_eq!(humanize_source_id("open-music-theory"), "Open Music Theory");
-/// assert_eq!(humanize_source_id("jazz_theory_book"), "Jazz Theory Book");
-/// ```
-pub fn humanize_source_id(id: &str) -> String {
-    id.split(['-', '_'])
-        .filter(|s| !s.is_empty())
-        .map(|word| {
-            let mut chars = word.chars();
-            match chars.next() {
-                None => String::new(),
-                Some(first) => {
-                    let upper: String = first.to_uppercase().collect();
-                    upper + chars.as_str()
-                }
-            }
-        })
-        .collect::<Vec<_>>()
-        .join(" ")
-}
+/// Re-exports [`fabryk_core::humanize_id`] for backwards compatibility.
+pub use fabryk_core::humanize_id as humanize_source_id;
 
 // ============================================================================
 // Tests
