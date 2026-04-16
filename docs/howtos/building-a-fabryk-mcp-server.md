@@ -8,6 +8,9 @@ ecosystem.
 **Audience:** Rust developers building MCP servers for AI-assisted knowledge
 exploration. Assumes familiarity with Rust async patterns and Cargo workspaces.
 
+**Reference implementation:** [ai-music-theory](https://github.com/oxur/ai-music-theory)
+— a production Fabryk MCP server with 50+ tools.
+
 **What you'll build:** An MCP server that:
 
 - Loads a markdown corpus with YAML frontmatter
@@ -15,6 +18,7 @@ exploration. Assumes familiarity with Rust async patterns and Cargo workspaces.
 - Constructs a knowledge graph with relationship extraction
 - Creates a vector index for semantic search (LanceDB + FastEmbed)
 - Exposes all of these as MCP tools for Claude (or any MCP client)
+- Adds custom domain-specific computation tools
 - Supports both stdio and HTTP transport with optional OAuth2
 - Reports health, provides tool discovery, and handles graceful startup
 
@@ -25,21 +29,23 @@ exploration. Assumes familiarity with Rust async patterns and Cargo workspaces.
 1. [Architecture Overview](#1-architecture-overview)
 2. [Project Setup](#2-project-setup)
 3. [Configuration](#3-configuration)
-4. [Domain Types & Content Loading](#4-domain-types--content-loading)
-5. [Content Provider](#5-content-provider)
-6. [Full-Text Search](#6-full-text-search)
-7. [Knowledge Graph](#7-knowledge-graph)
-8. [Vector & Semantic Search](#8-vector--semantic-search)
-9. [MCP Server Core](#9-mcp-server-core)
+4. [Content Providers](#4-content-providers)
+5. [Full-Text Search](#5-full-text-search)
+6. [Knowledge Graph](#6-knowledge-graph)
+7. [Vector & Semantic Search](#7-vector--semantic-search)
+8. [Custom Domain Tools](#8-custom-domain-tools)
+9. [Server Composition with ServerBuilder](#9-server-composition-with-serverbuilder)
 10. [Tool Composition & Registries](#10-tool-composition--registries)
 11. [Service Lifecycle & Health](#11-service-lifecycle--health)
-12. [Tool Metadata & Discoverability](#12-tool-metadata--discoverability)
-13. [Authentication & HTTP Transport](#13-authentication--http-transport)
-14. [CLI Integration](#14-cli-integration)
-15. [Testing](#15-testing)
-16. [Deployment](#16-deployment)
-17. [Quick Start Checklist](#17-quick-start-checklist)
-18. [Pattern Reference](#18-pattern-reference)
+12. [Static Resources](#12-static-resources)
+13. [Tool Metadata & Discoverability](#13-tool-metadata--discoverability)
+14. [Authentication & HTTP Transport](#14-authentication--http-transport)
+15. [CLI Integration](#15-cli-integration)
+16. [Cache Management](#16-cache-management)
+17. [Testing](#17-testing)
+18. [Deployment](#18-deployment)
+19. [Quick Start Checklist](#19-quick-start-checklist)
+20. [Pattern Reference](#20-pattern-reference)
 
 ---
 
@@ -60,8 +66,9 @@ convenience.
 │  └────┬─────┘ └────┬─────┘ └────┬─────┘ └──────┬────────┘  │
 │       │            │            │              │           │
 │  ┌────┴────────────┴────────────┴──────────────┴────────┐  │
-│  │  fabryk-mcp-core: FabrykMcpServer, CompositeRegistry,│  │
-│  │  ServiceAwareRegistry, DiscoverableRegistry, Health  │  │
+│  │  fabryk-mcp-core: ServerBuilder, FabrykMcpServer,    │  │
+│  │  CompositeRegistry, ServiceAwareRegistry,            │  │
+│  │  DiscoverableRegistry, HealthTools, helpers           │  │
 │  └──────────────────────────────────────────────────────┘  │
 ├────────────────────────────────────────────────────────────┤
 │  Domain Layer (fabryk)                                     │
@@ -70,8 +77,11 @@ convenience.
 │  │ (md/yaml)│ │(tantivy) │ │(petgraph)│ │(lancedb) │       │
 │  └──────────┘ └──────────┘ └──────────┘ └──────────┘       │
 ├────────────────────────────────────────────────────────────┤
-│  Core Layer: fabryk-core (ServiceHandle, ConfigManager,    │
-│  Error, AppState, PathResolver, spawn_with_retry)          │
+│  Core Layer: fabryk-core (ServiceHandle, BackendSlot,      │
+│  ConfigManager, Error, AppState, PathResolver)              │
+├────────────────────────────────────────────────────────────┤
+│  CLI Layer: fabryk-cli (FabrykCli, cache management,       │
+│  config/graph/vector/sources commands)                      │
 ├────────────────────────────────────────────────────────────┤
 │  Infrastructure: fabryk-auth, fabryk-redis, fabryk-gcp     │
 └────────────────────────────────────────────────────────────┘
@@ -79,17 +89,20 @@ convenience.
 
 **Key design principles:**
 
-- **Trait-driven extensibility** — Your domain implements 3-4 traits
-  (`GraphExtractor`, `VectorExtractor`, `ContentItemProvider`, optionally
-  `ConfigManager`). Fabryk handles the rest.
+- **Trait-driven extensibility** — Your domain implements extractors
+  (`GraphExtractor`, `DocumentExtractor`) or uses built-in ones
+  (`ConceptCardGraphExtractor`, `ConceptCardDocumentExtractor`).
+  Fabryk handles the rest.
 - **Feature-gated heavy dependencies** — Tantivy, LanceDB, FastEmbed are
-  opt-in. Lightweight fallbacks (SimpleSearch, SimpleVectorBackend) always
-  available.
-- **Service lifecycle management** — Background index building with
-  `spawn_with_retry`, progressive tool availability via
-  `ServiceAwareRegistry`.
-- **Composable registries** — Mix and match tool groups. Each group can be
-  independently gated on service readiness.
+  opt-in. Lightweight fallbacks (`SimpleSearch`) always available.
+- **Service lifecycle management** — `BackendSlot<T>` combines service
+  state tracking with value storage. `ServiceAwareRegistry` gates tool
+  availability on service readiness.
+- **Composable registries** — Mix and match tool groups via
+  `CompositeRegistry`. Add metadata via `DiscoverableRegistry`.
+  Gate on readiness via `ServiceAwareRegistry`.
+- **ServerBuilder** — Fluent API for composing the final server from
+  tool registries, resources, service handles, and metadata.
 
 ---
 
@@ -102,57 +115,30 @@ convenience.
 name = "my-knowledge-server"
 version = "0.1.0"
 edition = "2024"
-rust-version = "1.85"
 
 [dependencies]
-# Fabryk domain layer (umbrella — picks up core, content, fts, graph, vector)
-fabryk = { version = "0.3", features = [
+# Fabryk domain layer (umbrella)
+fabryk = { version = "0.5", features = [
     "fts-tantivy",       # Full-text search with Tantivy
     "graph-rkyv-cache",  # Graph persistence with rkyv + blake3
     "vector-lancedb",    # Vector search with LanceDB
     "vector-fastembed",  # Local embedding generation
 ] }
 
-# Fabryk MCP layer (umbrella — picks up mcp-core + all tool crates)
-fabryk-mcp = { version = "0.3", features = [
+# Fabryk MCP layer (umbrella)
+fabryk-mcp = { version = "0.5", features = [
     "http",              # HTTP transport (axum-based)
-    "fts-tantivy",       # Pass-through to fabryk-fts
-    "graph-rkyv-cache",  # Pass-through to fabryk-graph
 ] }
 
-# Auth (optional — only for HTTP transport with OAuth2)
-fabryk-auth = "0.3"
-fabryk-auth-google = "0.3"
-fabryk-mcp-auth = "0.3"
-
-# CLI framework (optional — for config/graph/vectordb commands)
-fabryk-cli = { version = "0.3", features = ["vector-fastembed"] }
-
-# MCP SDK
-rmcp = { version = "1.1", features = ["server", "transport-io"] }
+# CLI framework
+fabryk-cli = { version = "0.5", features = ["vector-fastembed"] }
 
 # Standard dependencies
-tokio = { version = "1", features = ["rt-multi-thread", "macros", "fs", "sync", "time"] }
+tokio = { version = "1", features = ["full"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-serde_yaml = "0.9"
-clap = { version = "4", features = ["derive", "env"] }
-confyg = "0.1"
-tracing = "0.1"
-tracing-subscriber = { version = "0.3", features = ["env-filter"] }
-thiserror = "2"
-async-trait = "0.1"
-chrono = { version = "0.4", features = ["serde"] }
-schemars = "1.2"
-
-[lints.rust]
-unsafe_code = "forbid"
-missing_docs = "warn"
-
-[lints.clippy]
-unwrap_used = "deny"
-expect_used = "warn"
-panic = "deny"
+clap = { version = "4", features = ["derive"] }
+log = "0.4"
 ```
 
 ### Feature Selection Guide
@@ -163,421 +149,156 @@ panic = "deny"
 | **Full-text search** | `fts-tantivy` |
 | **Knowledge graph** | `graph-rkyv-cache` |
 | **Semantic search** | `vector-lancedb`, `vector-fastembed` |
-| **Full stack** | All of the above (`full` shorthand) |
 | **HTTP transport** | `http` on fabryk-mcp |
 | **CLI tools** | `vector-fastembed` on fabryk-cli |
-
-### Project Structure
-
-```
-my-knowledge-server/
-├── Cargo.toml
-├── config.toml              # Application configuration
-├── src/
-│   ├── main.rs              # Entry point, CLI parsing, server startup
-│   ├── config.rs            # ConfigManager + ConfigProvider impl
-│   ├── types.rs             # Domain types (deserialized from frontmatter)
-│   ├── content.rs           # ContentItemProvider implementation
-│   ├── extractors.rs        # GraphExtractor + VectorExtractor implementations
-│   ├── error.rs             # Domain error types
-│   ├── server.rs            # MCP server composition
-│   └── tools/
-│       └── mod.rs           # Custom domain-specific MCP tools (if any)
-├── content/                 # Your markdown corpus
-│   ├── concepts/
-│   │   ├── topic-a.md
-│   │   └── topic-b.md
-│   └── guides/
-│       └── getting-started.md
-└── cache/                   # Generated indices (gitignored)
-    ├── fts/                 # Tantivy index
-    ├── graph/               # rkyv-cached graph
-    └── vector/              # LanceDB vector index
-```
 
 ---
 
 ## 3. Configuration
 
-Fabryk provides two configuration traits. Implement both for your project.
-
-### ConfigManager — Application Configuration
-
-`ConfigManager` handles loading, saving, and serializing your config:
+Implement `ConfigManager` and `ConfigProvider` from `fabryk::core`:
 
 ```rust
-use fabryk::core::ConfigManager;
-use serde::{Deserialize, Serialize};
-use std::path::{Path, PathBuf};
+use fabryk::core::{ConfigManager, ConfigProvider};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(default)]
 pub struct Config {
-    pub project_name: String,
-    pub content_path: PathBuf,
-    pub cache_path: PathBuf,
-    pub port: u16,
-
-    #[serde(default)]
-    pub oauth: Option<OAuthConfig>,
-
-    #[serde(default)]
-    pub redis: Option<RedisConfig>,
+    pub server: ServerConfig,
+    pub paths: PathsConfig,
+    pub search: fabryk::fts::SearchConfig,  // Re-use fabryk's type
+    pub lancedb: fabryk::fts::LanceDbConfig, // Re-use fabryk's type
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct OAuthConfig {
-    pub client_id: String,
-    pub allowed_domain: Option<String>,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct RedisConfig {
-    pub url: String,
+impl ConfigProvider for Config {
+    fn project_name(&self) -> &str { &self.server.name }
+    fn base_path(&self) -> fabryk::core::Result<PathBuf> { expand_path(&self.paths.base) }
+    fn content_path(&self, content_type: &str) -> fabryk::core::Result<PathBuf> {
+        match content_type {
+            "concepts" => expand_path(&self.paths.concepts),
+            "sources" => expand_path(&self.paths.sources),
+            _ => Err(Error::config(format!("Unknown content type: {}", content_type))),
+        }
+    }
+    fn cache_path(&self, cache_type: &str) -> fabryk::core::Result<PathBuf> {
+        let base = self.base_path()?;
+        match cache_type {
+            "fts" => resolve_index_path(&self.search),
+            "graph" => Ok(base.join("data/graphs")),
+            _ => Ok(base.join(".cache").join(cache_type)),
+        }
+    }
 }
 
 impl ConfigManager for Config {
-    fn load(path: &Path) -> Result<Self, Box<dyn std::error::Error>> {
-        let config: Self = confyg::load_from_file(path)?;
-        Ok(config)
-    }
-
-    fn save(&self, path: &Path) -> Result<(), Box<dyn std::error::Error>> {
-        let toml_str = toml::to_string_pretty(self)?;
-        std::fs::write(path, toml_str)?;
-        Ok(())
-    }
-
-    fn resolve_paths(&mut self, base: &Path) {
-        if self.content_path.is_relative() {
-            self.content_path = base.join(&self.content_path);
-        }
-        if self.cache_path.is_relative() {
-            self.cache_path = base.join(&self.cache_path);
-        }
-    }
-
-    fn to_toml(&self) -> Result<String, Box<dyn std::error::Error>> {
-        Ok(toml::to_string_pretty(self)?)
-    }
-
-    fn to_env_vars(&self) -> Vec<(String, String)> {
-        vec![
-            ("PROJECT_NAME".into(), self.project_name.clone()),
-            ("CONTENT_PATH".into(), self.content_path.display().to_string()),
-            ("CACHE_PATH".into(), self.cache_path.display().to_string()),
-            ("PORT".into(), self.port.to_string()),
-        ]
+    fn load(config_path: Option<&str>) -> fabryk::core::Result<Self> {
+        // Load from TOML using confyg or similar
     }
 }
 ```
 
-### ConfigProvider — Bridge to Fabryk Builders
-
-`ConfigProvider` tells Fabryk builders where to find content and caches:
+**Tip:** Use `fabryk::fts::SearchConfig` and `fabryk::fts::LanceDbConfig` directly
+rather than defining your own. Set project-specific defaults in `Config::default()`:
 
 ```rust
-use fabryk::core::ConfigProvider;
-
-impl ConfigProvider for Config {
-    fn content_path(&self) -> &Path {
-        &self.content_path
+pub fn default_search_config() -> SearchConfig {
+    SearchConfig {
+        backend: "simple".to_string(),
+        index_path: Some(".tantivy-index".to_string()),
+        fuzzy_distance: 2,
+        allowlist: vec!["I", "V", "do", "re", "mi"].into_iter().map(String::from).collect(),
+        ..SearchConfig::default()
     }
-
-    fn cache_path(&self, cache_type: &str) -> PathBuf {
-        self.cache_path.join(cache_type)
-    }
-
-    fn project_name(&self) -> &str {
-        &self.project_name
-    }
-}
-```
-
-### Example config.toml
-
-```toml
-project_name = "my-knowledge-base"
-content_path = "./content"
-cache_path = "./cache"
-port = 8080
-
-[oauth]
-client_id = "123456.apps.googleusercontent.com"
-allowed_domain = "mycompany.com"
-
-[redis]
-url = "redis://localhost:6379"
-```
-
----
-
-## 4. Domain Types & Content Loading
-
-Your markdown files use YAML frontmatter to carry structured metadata.
-Fabryk's content crate parses this generically — you define the domain types.
-
-### Frontmatter Schema
-
-```yaml
----
-title: "Functional Harmony"
-category: "music-theory"
-tags: ["harmony", "chords", "progressions"]
-prerequisites: ["intervals", "scales"]
-related: ["voice-leading", "chord-substitution"]
-summary: "How chords function within a key..."
----
-
-# Functional Harmony
-
-Content goes here...
-```
-
-### Domain Types
-
-```rust
-use serde::{Deserialize, Serialize};
-
-/// Metadata extracted from YAML frontmatter.
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ItemMetadata {
-    pub title: String,
-    #[serde(default)]
-    pub category: String,
-    #[serde(default)]
-    pub tags: Vec<String>,
-    #[serde(default)]
-    pub prerequisites: Vec<String>,
-    #[serde(default)]
-    pub related: Vec<String>,
-    #[serde(default)]
-    pub summary: String,
-}
-
-/// A loaded content item with parsed metadata and raw content.
-#[derive(Debug, Clone)]
-pub struct ContentItem {
-    pub id: String,
-    pub path: std::path::PathBuf,
-    pub metadata: ItemMetadata,
-    pub content: String,
-}
-```
-
-### Loading Content
-
-```rust
-use fabryk::content::{extract_frontmatter, extract_text_content};
-use fabryk::core::PathResolver;
-
-pub fn load_items(content_path: &Path) -> Result<Vec<ContentItem>, Error> {
-    let resolver = PathResolver::new(content_path);
-    let mut items = Vec::new();
-
-    for entry in std::fs::read_dir(content_path.join("concepts"))? {
-        let entry = entry?;
-        let path = entry.path();
-        if path.extension().is_some_and(|e| e == "md") {
-            let raw = std::fs::read_to_string(&path)?;
-            let frontmatter = extract_frontmatter(&raw)?;
-            let metadata: ItemMetadata = serde_yaml::from_value(frontmatter.data)?;
-            let id = fabryk::core::id_from_path(&path, content_path);
-
-            items.push(ContentItem {
-                id,
-                path,
-                metadata,
-                content: raw,
-            });
-        }
-    }
-
-    Ok(items)
 }
 ```
 
 ---
 
-## 5. Content Provider
+## 4. Content Providers
 
-The `ContentItemProvider` trait connects your domain types to Fabryk's
-MCP content tools. Implement it and `ContentTools` automatically generates
-`{prefix}_list`, `{prefix}_get`, and `{prefix}_categories` MCP tools.
-
-```rust
-use async_trait::async_trait;
-use fabryk_mcp::content::{ContentItemProvider, CategoryInfo, ListItemsArgs, GetItemArgs};
-use fabryk::core::Error;
-
-/// Summary returned by list operations.
-#[derive(Debug, Clone, Serialize, Deserialize, schemars::JsonSchema)]
-pub struct ItemSummary {
-    pub id: String,
-    pub title: String,
-    pub category: String,
-    pub tags: Vec<String>,
-    pub summary: String,
-}
-
-/// Full detail returned by get operations.
-#[derive(Debug, Clone, Serialize, Deserialize, schemars::JsonSchema)]
-pub struct ItemDetail {
-    pub id: String,
-    pub title: String,
-    pub category: String,
-    pub tags: Vec<String>,
-    pub summary: String,
-    pub content: String,
-    pub prerequisites: Vec<String>,
-    pub related: Vec<String>,
-}
-
-pub struct MyContentProvider {
-    items: Vec<ContentItem>,
-}
-
-#[async_trait]
-impl ContentItemProvider for MyContentProvider {
-    type ItemSummary = ItemSummary;
-    type ItemDetail = ItemDetail;
-
-    async fn list_items(&self, args: &ListItemsArgs) -> Result<Vec<ItemSummary>, Error> {
-        let mut results: Vec<_> = self.items.iter()
-            .filter(|item| {
-                args.category.as_ref()
-                    .map_or(true, |cat| item.metadata.category == *cat)
-            })
-            .map(|item| ItemSummary {
-                id: item.id.clone(),
-                title: item.metadata.title.clone(),
-                category: item.metadata.category.clone(),
-                tags: item.metadata.tags.clone(),
-                summary: item.metadata.summary.clone(),
-            })
-            .collect();
-
-        if let Some(limit) = args.limit {
-            results.truncate(limit);
-        }
-        Ok(results)
-    }
-
-    async fn get_item(&self, args: &GetItemArgs) -> Result<Option<ItemDetail>, Error> {
-        Ok(self.items.iter()
-            .find(|item| item.id == args.id)
-            .map(|item| ItemDetail {
-                id: item.id.clone(),
-                title: item.metadata.title.clone(),
-                category: item.metadata.category.clone(),
-                tags: item.metadata.tags.clone(),
-                summary: item.metadata.summary.clone(),
-                content: item.content.clone(),
-                prerequisites: item.metadata.prerequisites.clone(),
-                related: item.metadata.related.clone(),
-            }))
-    }
-
-    async fn categories(&self) -> Result<Vec<CategoryInfo>, Error> {
-        let mut cats = std::collections::BTreeMap::new();
-        for item in &self.items {
-            *cats.entry(item.metadata.category.clone()).or_insert(0usize) += 1;
-        }
-        Ok(cats.into_iter()
-            .map(|(name, count)| CategoryInfo { name, count })
-            .collect())
-    }
-
-    fn item_count(&self) -> usize {
-        self.items.len()
-    }
-}
-```
-
-### Register with MCP
+Fabryk provides filesystem-based providers out of the box. Use them with
+`ContentTools`, `SourceTools`, and `GuideTools`:
 
 ```rust
-use fabryk_mcp::content::ContentTools;
-
-let content_tools = ContentTools::new(Arc::new(provider))
-    .with_prefix("concepts");
-// Generates: concepts_list, concepts_get, concepts_categories
-```
-
----
-
-## 6. Full-Text Search
-
-Fabryk's FTS layer wraps Tantivy with a domain-friendly API. You describe
-how to extract searchable fields from your content; Fabryk handles indexing
-and querying.
-
-### Building the Index
-
-```rust
-use fabryk::fts::{IndexBuilder, DocumentExtractor, SearchDocument, SearchSchema, SearchConfig};
-
-/// Tell Fabryk how to turn your items into search documents.
-struct MyDocumentExtractor;
-
-impl DocumentExtractor for MyDocumentExtractor {
-    fn extract(&self, path: &Path, content: &str) -> Option<SearchDocument> {
-        let frontmatter = fabryk::content::extract_frontmatter(content).ok()?;
-        let meta: ItemMetadata = serde_yaml::from_value(frontmatter.data).ok()?;
-        let text = fabryk::content::extract_text_content(content);
-
-        Some(SearchDocument {
-            id: fabryk::core::id_from_path(path, &self.base_path),
-            path: path.display().to_string(),
-            title: meta.title,
-            description: meta.summary,
-            content: text,
-            category: meta.category,
-            tags: meta.tags,
-            ..Default::default()
-        })
-    }
-}
-
-// Build the index
-let config = SearchConfig {
-    index_path: config.cache_path("fts"),
-    ..Default::default()
+use fabryk_mcp::content::{
+    ContentTools, FsContentItemProvider, FsGuideProvider, FsSourceProvider,
+    GuideTools, SourceTools,
 };
 
-let builder = IndexBuilder::new(&config, MyDocumentExtractor)?;
-let stats = builder.build_from_directory(&config.content_path).await?;
-tracing::info!("Indexed {} documents", stats.documents_indexed);
+// Concept cards (list, get, categories)
+let content_provider = Arc::new(
+    FsContentItemProvider::new(&concept_cards_path)
+        .with_content_type_name("concept", "concepts"),
+);
+let concept_tools = ContentTools::with_shared(content_provider)
+    .with_names(HashMap::from([
+        ("list".into(), "list_concepts".into()),
+        ("get".into(), "get_concept".into()),
+        ("categories".into(), "list_categories".into()),
+    ]))
+    .with_descriptions(HashMap::from([
+        ("list".into(), "List concept cards with optional filtering".into()),
+        ("get".into(), "Retrieve a specific concept card".into()),
+    ]))
+    .with_get_id_field("concept_id")
+    .with_extra_list_schema(serde_json::json!({
+        "tier": { "type": "string", "enum": ["foundational", "intermediate", "advanced"] }
+    }));
+
+// Source materials (list, chapters, get chapter, availability, PDF path)
+let source_provider = Arc::new(FsSourceProvider::new(&sources_path));
+let source_tools = SourceTools::with_shared(source_provider)
+    .with_names(HashMap::from([...]))
+    .with_descriptions(HashMap::from([...]));
+
+// Guides
+let guide_provider = FsGuideProvider::new(&guides_path);
+let guide_tools = GuideTools::new(guide_provider);
 ```
 
-### Index Freshness
+### Customizing Tool Names
 
-Before rebuilding, check if the index is still fresh:
+Every tool registry supports `.with_names()` and `.with_descriptions()` to
+override the default slot names. Use `.with_extra_list_schema()`,
+`.with_extra_search_schema()`, and `.with_extra_schema()` to add
+domain-specific filter parameters to tool schemas.
+
+---
+
+## 5. Full-Text Search
+
+### Multi-Directory Indexing
+
+Index content from multiple directories with per-directory labels:
 
 ```rust
-use fabryk::fts::is_index_fresh;
+use fabryk::fts::{build_index_multi, ConceptCardDocumentExtractor};
 
-if !is_index_fresh(&config.cache_path("fts"), &config.content_path).await? {
-    tracing::info!("Content changed, rebuilding FTS index...");
-    builder.build_from_directory(&config.content_path).await?;
-}
+let content_dirs: Vec<(PathBuf, &str)> = vec![
+    (concept_cards_path, "concept_cards"),
+    (sources_md_path, "source_chapters"),
+    (guides_path, "guides"),
+];
+
+let extractor = ConceptCardDocumentExtractor::new();
+let stats = build_index_multi(&content_dirs, &index_path, Box::new(extractor)).await?;
+
+log::info!("Indexed {} docs, {} errors", stats.documents_indexed, stats.errors);
+// Per-directory counts available via stats.label_counts
 ```
 
-### Querying
+### Search Backend Fallback
+
+Use `resolve_search_backend` for transparent FTS-with-simple fallback:
 
 ```rust
-use fabryk::fts::{create_search_backend, SearchParams};
+use fabryk_mcp::{resolve_search_backend, resolve_backend_name};
 
-let backend = create_search_backend(&config).await?;
-let results = backend.search(SearchParams {
-    query: "functional harmony".into(),
-    limit: Some(10),
-    category: Some("music-theory".into()),
-    ..Default::default()
-}).await?;
-
-for result in &results.results {
-    println!("{}: {} (score: {:.2})", result.id, result.title, result.score);
-}
+// Always returns a working backend:
+// - FTS if the tantivy index is ready
+// - SimpleSearch (linear scan) otherwise
+let backend = resolve_search_backend(Some(&fts_slot), &simple_backend);
+let name = resolve_backend_name(Some(&fts_slot)); // "tantivy" or "simple"
 ```
 
 ### Register with MCP
@@ -585,124 +306,46 @@ for result in &results.results {
 ```rust
 use fabryk_mcp::fts::FtsTools;
 
-let fts_tools = FtsTools::from_boxed(backend);
-// Generates: search, search_status
+let search_tools = FtsTools::with_shared(search_backend)
+    .with_names(HashMap::from([("search".into(), "search_concepts".into())]))
+    .with_extra_search_schema(serde_json::json!({
+        "tier": { "type": "string", "enum": ["foundational", "intermediate", "advanced"] },
+        "content_types": { "type": "array", "items": {"type": "string"} }
+    }));
 ```
 
 ---
 
-## 7. Knowledge Graph
-
-The knowledge graph captures relationships between concepts. You implement
-`GraphExtractor` to tell Fabryk how your domain items relate to each other.
-
-### Implementing GraphExtractor
-
-```rust
-use fabryk::graph::{GraphExtractor, Node, Edge, NodeType, Relationship, EdgeOrigin};
-
-struct MyGraphExtractor;
-
-impl GraphExtractor for MyGraphExtractor {
-    fn extract_nodes(&self, id: &str, content: &str) -> Vec<Node> {
-        let frontmatter = fabryk::content::extract_frontmatter(content).ok();
-        let meta: Option<ItemMetadata> = frontmatter
-            .and_then(|fm| serde_yaml::from_value(fm.data).ok());
-
-        let title = meta.as_ref()
-            .map(|m| m.title.clone())
-            .unwrap_or_else(|| id.to_string());
-
-        vec![Node {
-            id: id.to_string(),
-            label: title,
-            node_type: NodeType::Domain,
-            metadata: serde_json::json!({
-                "category": meta.as_ref().map(|m| &m.category),
-                "tags": meta.as_ref().map(|m| &m.tags),
-            }),
-        }]
-    }
-
-    fn extract_edges(&self, id: &str, content: &str) -> Vec<Edge> {
-        let frontmatter = fabryk::content::extract_frontmatter(content).ok();
-        let meta: Option<ItemMetadata> = frontmatter
-            .and_then(|fm| serde_yaml::from_value(fm.data).ok());
-
-        let mut edges = Vec::new();
-        if let Some(meta) = meta {
-            // Prerequisites → "requires" relationship
-            for prereq in &meta.prerequisites {
-                edges.push(Edge {
-                    source: id.to_string(),
-                    target: prereq.clone(),
-                    relationship: Relationship::Requires,
-                    weight: 1.0,
-                    origin: EdgeOrigin::Extracted,
-                    metadata: serde_json::Value::Null,
-                });
-            }
-            // Related → "related_to" relationship
-            for related in &meta.related {
-                edges.push(Edge {
-                    source: id.to_string(),
-                    target: related.clone(),
-                    relationship: Relationship::RelatedTo,
-                    weight: 0.5,
-                    origin: EdgeOrigin::Extracted,
-                    metadata: serde_json::Value::Null,
-                });
-            }
-        }
-        edges
-    }
-}
-```
+## 6. Knowledge Graph
 
 ### Building the Graph
 
 ```rust
-use fabryk::graph::{GraphBuilder, load_graph, save_graph, is_cache_fresh};
+use fabryk::graph::{GraphBuilder, ConceptCardGraphExtractor, LoadedGraph};
 
-// Check freshness first
-let graph_cache = config.cache_path("graph");
-if is_cache_fresh(&graph_cache, &config.content_path).await? {
-    let graph = load_graph(&graph_cache)?;
-    tracing::info!("Loaded cached graph ({} nodes)", graph.nodes.len());
-} else {
-    let mut builder = GraphBuilder::new();
-    builder.add_items_from_directory(&config.content_path, MyGraphExtractor).await?;
-    let graph = builder.build()?;
+let extractor = ConceptCardGraphExtractor::new();
+let mut builder = GraphBuilder::new(extractor).with_content_path(&content_path);
 
-    // Validate
-    let validation = fabryk::graph::validate_graph(&graph);
-    if !validation.is_valid() {
-        for issue in &validation.issues {
-            tracing::warn!("Graph issue: {}", issue);
-        }
-    }
-
-    save_graph(&graph, &graph_cache)?;
-    tracing::info!("Built graph: {} nodes, {} edges", graph.nodes.len(), graph.edges.len());
+// Optional: merge hand-curated edges
+if manual_edges_path.exists() {
+    builder = builder.with_manual_edges(&manual_edges_path);
 }
+
+let (graph_data, build_stats) = builder.build().await?;
+let loaded = LoadedGraph::new(graph_data);
+// loaded.stats has node_count, edge_count, type_counts, category_distribution, etc.
 ```
 
-### Using Graph Algorithms
+### Node Inspection
+
+`Node` provides convenience methods for metadata access:
 
 ```rust
-use fabryk::graph::{shortest_path, prerequisites_sorted, neighborhood, calculate_centrality};
-
-// Find the learning path between two concepts
-let path = shortest_path(&graph, "intervals", "jazz-harmony")?;
-
-// Get prerequisites in learning order
-let prereqs = prerequisites_sorted(&graph, "functional-harmony")?;
-
-// Explore a concept's neighborhood (2 hops)
-let neighbors = neighborhood(&graph, "chord-substitution", 2)?;
-
-// Find the most important concepts
-let centrality = calculate_centrality(&graph);
+if node.is_domain() { /* concept node */ }
+if node.is_custom_type("source") { /* source node */ }
+let category = node.category_or_default(); // "unknown" if None
+let author = node.metadata_str("author").unwrap_or("Unknown");
+let year = node.metadata_u64("year").map(|y| y as u16);
 ```
 
 ### Register with MCP
@@ -710,179 +353,165 @@ let centrality = calculate_centrality(&graph);
 ```rust
 use fabryk_mcp::graph::GraphTools;
 
-let graph_tools = GraphTools::new(Arc::new(graph));
-// Generates: graph_related, graph_path, graph_prerequisites,
-//            graph_neighborhood, graph_info, graph_validate,
-//            graph_centrality, graph_bridges
+let graph_tools = GraphTools::with_shared(Arc::clone(&shared_graph))
+    .with_node_filter(node_filter)
+    .with_names(HashMap::from([
+        (GraphTools::SLOT_RELATED.into(), "get_related_concepts".into()),
+        (GraphTools::SLOT_PATH.into(), "find_concept_path".into()),
+        (GraphTools::SLOT_PREREQUISITES.into(), "get_prerequisites".into()),
+        (GraphTools::SLOT_LEARNING_PATH.into(), "get_learning_path".into()),
+        // ... 17 total slots
+    ]))
+    .with_descriptions(HashMap::from([...]))
+    .with_extra_schema(GraphTools::SLOT_RELATED, tier_confidence_schema())
+    .with_extra_schema(GraphTools::SLOT_PREREQUISITES, tier_confidence_schema());
 ```
 
----
+### Metadata Node Filtering
 
-## 8. Vector & Semantic Search
-
-Vector search enables "find items similar to this query" using embedding
-models. Fabryk supports LanceDB for storage and FastEmbed for local
-embedding generation.
-
-### Implementing VectorExtractor
+Filter graph query results by metadata (e.g., tier, confidence):
 
 ```rust
-use fabryk::vector::VectorExtractor;
+use fabryk_mcp::graph::MetadataNodeFilter;
 
-/// Tell Fabryk how to compose text for embedding from your content items.
-struct MyVectorExtractor;
-
-impl VectorExtractor for MyVectorExtractor {
-    fn extract_text(&self, id: &str, content: &str) -> Option<String> {
-        let frontmatter = fabryk::content::extract_frontmatter(content).ok()?;
-        let meta: ItemMetadata = serde_yaml::from_value(frontmatter.data).ok()?;
-        let body = fabryk::content::extract_text_content(content);
-
-        // Compose embedding text: title + summary + body
-        // Title and summary are weighted by appearing first
-        Some(format!("{}\n{}\n{}", meta.title, meta.summary, body))
-    }
-
-    fn extract_metadata(&self, id: &str, content: &str) -> serde_json::Value {
-        let frontmatter = fabryk::content::extract_frontmatter(content).ok();
-        let meta: Option<ItemMetadata> = frontmatter
-            .and_then(|fm| serde_yaml::from_value(fm.data).ok());
-
-        serde_json::json!({
-            "category": meta.as_ref().map(|m| &m.category),
-            "tags": meta.as_ref().map(|m| &m.tags),
-        })
-    }
-}
-```
-
-### Building the Vector Index
-
-```rust
-use fabryk::vector::{
-    VectorIndexBuilder, VectorConfig,
-    create_vector_backend, FastEmbedProvider,
-};
-use std::sync::Arc;
-
-let embedding_provider = Arc::new(FastEmbedProvider::new()?);
-let vector_config = VectorConfig {
-    db_path: config.cache_path("vector"),
-    ..Default::default()
-};
-
-let backend = create_vector_backend(&vector_config).await?;
-
-let mut builder = VectorIndexBuilder::new(embedding_provider.clone());
-builder.add_items_from_directory(
-    &config.content_path,
-    MyVectorExtractor,
-).await?;
-builder.build_into(&backend).await?;
-
-tracing::info!("Built vector index: {} documents", builder.document_count());
-```
-
-### Hybrid Search (Keyword + Semantic)
-
-Fabryk provides reciprocal rank fusion (RRF) to merge FTS and vector
-results:
-
-```rust
-use fabryk::vector::reciprocal_rank_fusion;
-
-let fts_results = fts_backend.search(query_params).await?;
-let vector_results = vector_backend.search(vector_params).await?;
-
-let hybrid = reciprocal_rank_fusion(
-    &fts_results.results,
-    &vector_results.results,
-    60, // RRF constant (higher = more weight to top results)
+let node_filter = Arc::new(
+    MetadataNodeFilter::new()
+        .with_exact("tier", "tier")
+        .with_ordered("min_confidence", "extraction_confidence", &["low", "medium", "high"]),
 );
 ```
 
-### Register with MCP
+Use `fabryk_mcp::tier_confidence_schema()` for the standard tier/confidence
+JSON schema.
+
+---
+
+## 7. Vector & Semantic Search
+
+### Deferred Vector Backend (VectorSlot)
+
+Register semantic search tools before the vector index is ready:
 
 ```rust
 use fabryk_mcp::semantic::SemanticSearchTools;
 
-let semantic_tools = SemanticSearchTools::new(
-    fts_backend,       // keyword search
-    vector_backend,    // vector search
-);
-// Generates: semantic_search (with mode: keyword | vector | hybrid)
-```
-
-### Deferred Vector Backend (VectorSlot)
-
-If your vector index takes time to build, use `VectorSlot` to register
-the semantic search tools before the backend is ready:
-
-```rust
-use fabryk_mcp::semantic::VectorSlot;
-use std::sync::Arc;
-use tokio::sync::RwLock;
-
 let vector_slot: VectorSlot = Arc::new(RwLock::new(None));
 
-// Register tools immediately (queries will fail gracefully until ready)
+// Register immediately — queries fail gracefully until ready
 let semantic_tools = SemanticSearchTools::with_vector_slot(
-    fts_backend,
+    search_backend,
     vector_slot.clone(),
 );
 
-// Later, when the vector index is built:
-tokio::spawn(async move {
-    let backend = build_vector_index().await;
-    *vector_slot.write().await = Some(backend);
-    // semantic_search now works with vector + hybrid modes
-});
+// Later, when index is built:
+*vector_slot.write().await = Some(vector_backend);
 ```
 
 ---
 
-## 9. MCP Server Core
+## 8. Custom Domain Tools
 
-`FabrykMcpServer` is the central server type. It wraps a `ToolRegistry`
-(typically a `CompositeRegistry`) and handles MCP protocol negotiation.
+Most real servers need domain-specific computation tools beyond content/search/graph.
+Implement `ToolRegistry` directly:
 
 ```rust
-use fabryk_mcp::{FabrykMcpServer, ServerConfig};
+use fabryk_mcp::{make_tool, serialize_response, ToolRegistry, ToolResult, McpErrorContextExt};
+use fabryk_mcp::model::{ErrorCode, ErrorData, Tool};
 
-let server = FabrykMcpServer::new(registry)
-    .with_config(ServerConfig {
-        name: "my-knowledge-server".into(),
-        version: env!("CARGO_PKG_VERSION").into(),
-        description: Some("Knowledge exploration MCP server".into()),
-    })
-    .with_instructions(
-        "This server provides access to a knowledge corpus. \
-         Use semantic_search for open-ended queries, graph tools \
-         for relationship exploration, and concepts_get for \
-         reading specific items."
-    );
+struct MyDomainToolsRegistry;
+
+impl ToolRegistry for MyDomainToolsRegistry {
+    fn tools(&self) -> Vec<Tool> {
+        vec![
+            make_tool(
+                "compute_something",
+                "Compute a domain-specific result",
+                json!({
+                    "type": "object",
+                    "properties": {
+                        "input": { "type": "string", "description": "The input value" }
+                    },
+                    "required": ["input"]
+                }),
+            ),
+        ]
+    }
+
+    fn call(&self, name: &str, args: Value) -> Option<ToolResult> {
+        match name {
+            "compute_something" => Some(Box::pin(async move {
+                let args: ComputeArgs = serde_json::from_value(args)
+                    .map_err(|e| ErrorData::new(
+                        ErrorCode::INVALID_PARAMS,
+                        format!("Invalid parameters: {}", e),
+                        None,
+                    ))?;
+                let result = do_computation(args)
+                    .map_err(|e| e.to_mcp_error_with_context("Computation error"))?;
+                serialize_response(&result)
+            })),
+            _ => None,
+        }
+    }
+}
 ```
 
-### Stdio Transport (for Claude Code)
+### Key Helpers
+
+- **`make_tool(name, description, schema)`** — Construct a Tool from JSON schema
+- **`serialize_response(value)`** — Serialize any `T: Serialize` into a successful CallToolResult
+- **`McpErrorContextExt::to_mcp_error_with_context(context)`** — Convert fabryk errors to MCP ErrorData with context
+
+---
+
+## 9. Server Composition with ServerBuilder
+
+`ServerBuilder` is the recommended way to assemble an MCP server:
 
 ```rust
+use fabryk_mcp::ServerBuilder;
+
+let server = ServerBuilder::new()
+    .name("my-knowledge-server")
+    .version(env!("CARGO_PKG_VERSION"))
+    .description("My server with query strategy guidance for LLMs...")
+    .resources_path(skill_docs_path)
+    .with_services(vec![fts_service, graph_service, vector_service])
+    // Add tool registries
+    .add(concept_tools)
+    .add(guide_tools)
+    .add(source_tools)
+    .add(search_tools)
+    .add(semantic_tools)
+    .add(health_tools)
+    .add(my_domain_tools)
+    // Add static resources
+    .with_resource(StaticResourceDef { ... })
+    .build();
+
+// Serve
 server.serve_stdio().await?;
+// or
+server.serve_http(addr).await?;
 ```
 
-### HTTP Transport (for web clients)
+### With DiscoverableRegistry
+
+For tool metadata and a directory tool, use `into_parts()`:
 
 ```rust
-server.serve_http("0.0.0.0", config.port).await?;
-```
+let (registry, parts) = builder.into_parts();
 
-See [Section 13](#13-authentication--http-transport) for adding
-authentication to the HTTP transport.
+let discoverable = DiscoverableRegistry::new(registry, "myapp")
+    .with_tool_meta("search", ToolMeta { ... })
+    .with_tool_meta("get_item", ToolMeta { ... });
+
+let server = ServerBuilder::build_with_registry(discoverable, parts);
+```
 
 ---
 
 ## 10. Tool Composition & Registries
-
-Fabryk provides three registry types that compose like layers:
 
 ### CompositeRegistry — Combine Independent Tool Groups
 
@@ -890,136 +519,103 @@ Fabryk provides three registry types that compose like layers:
 use fabryk_mcp::CompositeRegistry;
 
 let registry = CompositeRegistry::new()
-    .add(content_tools)     // concepts_list, concepts_get, concepts_categories
-    .add(fts_tools)         // search, search_status
-    .add(graph_tools)       // graph_related, graph_path, ...
-    .add(semantic_tools)    // semantic_search
-    .add(health_tools);     // health, diagnostics
+    .add(content_tools)
+    .add(search_tools)
+    .add(graph_tools)
+    .add(health_tools)
+    .add(my_domain_tools);
 ```
 
 ### ServiceAwareRegistry — Gate Tools on Service Readiness
 
-Wrap any registry to gate its tools on service readiness. Before the
-service reports `Ready`, tool calls return a "service is starting" error:
+Tools are listed but calls return "service is starting" until ready:
 
 ```rust
 use fabryk_mcp::ServiceAwareRegistry;
-use fabryk::core::ServiceHandle;
 
-let graph_svc = ServiceHandle::new("graph");
-let vector_svc = ServiceHandle::new("vector");
-
-// These tools are only available after their services are ready
 let gated_graph = ServiceAwareRegistry::new(
     graph_tools,
-    vec![graph_svc.clone()],
+    vec![state.graph.service().clone()],
 );
-
-let gated_semantic = ServiceAwareRegistry::new(
-    semantic_tools,
-    vec![vector_svc.clone()],
-);
-
-let registry = CompositeRegistry::new()
-    .add(content_tools)        // Always available (loaded at startup)
-    .add(fts_tools)            // Always available
-    .add(gated_graph)          // Available after graph builds
-    .add(gated_semantic)       // Available after vector index builds
-    .add(health_tools);
 ```
 
 ### DiscoverableRegistry — Add Metadata & Directory Tool
-
-Wrap any registry to attach tool metadata and auto-generate a
-`{prefix}_directory` tool:
 
 ```rust
 use fabryk_mcp::{DiscoverableRegistry, ToolMeta};
 
 let discoverable = DiscoverableRegistry::new(registry, "kb")
-    .with_tool_meta("concepts_list", ToolMeta {
-        summary: "List all concepts, optionally filtered by category".into(),
-        when_to_use: "When the user wants to browse or explore available topics".into(),
-        returns: "Array of concept summaries with title, category, tags".into(),
-        next: vec!["concepts_get".into(), "graph_related".into()],
-        category: "content".into(),
-    })
-    .with_tool_meta("semantic_search", ToolMeta {
-        summary: "Search by meaning using keyword, vector, or hybrid mode".into(),
-        when_to_use: "When the user asks a question or searches for something".into(),
+    .with_tool_meta("search", ToolMeta {
+        summary: "Full-text search across all content".into(),
+        when_to_use: "When looking for content by keyword".into(),
         returns: "Ranked results with relevance scores".into(),
-        next: vec!["concepts_get".into(), "graph_neighborhood".into()],
-        category: "search".into(),
+        next: Some("get_item for full details".into()),
+        category: Some("search".into()),
     });
 // Auto-generates: kb_directory tool
 ```
-
-See the [MCP Metadata howto](mcp-metadata.md) for full `ToolMeta` design
-guidelines.
 
 ---
 
 ## 11. Service Lifecycle & Health
 
-For services that take time to initialize (vector index building, graph
-construction), Fabryk provides `ServiceHandle` with lifecycle management.
+### BackendSlot<T>
 
-### spawn_with_retry
+`BackendSlot<T>` combines a `ServiceHandle` (lifecycle state) with
+an `RwLock<Option<T>>` (stored value). Use it for backends that load
+asynchronously:
 
 ```rust
-use fabryk::core::{ServiceHandle, spawn_with_retry};
+use fabryk::core::BackendSlot;
 
-let graph_svc = ServiceHandle::new("graph");
-let vector_svc = ServiceHandle::new("vector");
+pub struct AppState {
+    pub fts: BackendSlot<Arc<TantivySearch>>,
+    pub graph: BackendSlot<LoadedGraph>,
+    pub vector: BackendSlot<Arc<dyn VectorBackend>>,
+}
 
-// Build graph in background with retry
-spawn_with_retry(
-    graph_svc.clone(),
-    || async {
-        let graph = build_graph(&config).await?;
-        // Store in shared state...
-        Ok(())
-    },
-    3,     // max attempts
-    1000,  // initial delay ms
-    2.0,   // backoff multiplier
-).await;
+// Check readiness
+if state.fts.is_ready() { ... }
 
-// Build vector index in background
-spawn_with_retry(
-    vector_svc.clone(),
-    || async {
-        let index = build_vector_index(&config).await?;
-        *vector_slot.write().await = Some(index);
-        Ok(())
-    },
-    3,
-    2000,
-    2.0,
-).await;
+// Store a value
+state.graph.set(loaded_graph)?;
+state.graph.service().set_state(ServiceState::Ready);
+
+// Read the value
+if let Ok(guard) = state.fts.inner().read() {
+    if let Some(ref backend) = *guard { ... }
+}
 ```
 
-### Wait for Services (Optional)
+### Search Fallback
+
+Always-available simple search that upgrades to FTS when ready:
 
 ```rust
-use fabryk::core::wait_all_ready;
+use fabryk_mcp::resolve_search_backend;
 
-// Block until all services are ready (with timeout)
-wait_all_ready(
-    &[graph_svc.clone(), vector_svc.clone()],
-    std::time::Duration::from_secs(120),
-).await?;
+let backend = resolve_search_backend(
+    Some(&state.fts),
+    &simple_backend,
+);
 ```
 
 ### Health Endpoint (HTTP)
 
+Register service handles with `ServerBuilder` for automatic `/health`:
+
 ```rust
-use fabryk_mcp::health_router;
+let server = ServerBuilder::new()
+    .with_services(vec![
+        state.fts.service().clone(),
+        state.graph.service().clone(),
+    ])
+    // ...
+    .build();
 
-let services = vec![graph_svc.clone(), vector_svc.clone()];
-
-// Returns 200 when all services are ready, 503 otherwise
-let health = health_router(services);
+// serve_http automatically adds /health endpoint
+// Returns 200 when all Ready, 503 when any Starting/Failed
+server.serve_http(addr).await?;
 ```
 
 ### Built-in Health Tool (MCP)
@@ -1027,353 +623,225 @@ let health = health_router(services);
 ```rust
 use fabryk_mcp::HealthTools;
 
-let health_tools = HealthTools::new(vec![graph_svc, vector_svc]);
-// Generates: health tool (returns service status + tool count)
+let health_tools = HealthTools::new(&name, &version, 0)
+    .with_backends(probes)
+    .with_search_config(search_config_info);
 ```
-
-See the [MCP Async Startup howto](mcp-async-startup.md) and
-[MCP Health howto](mcp-health.md) for detailed patterns.
 
 ---
 
-## 12. Tool Metadata & Discoverability
+## 12. Static Resources
 
-The `DiscoverableRegistry` (section 10) generates a directory tool that
-tells AI clients what's available, when to use each tool, and what
-workflow to follow.
+Expose reference documents via MCP resources with fallback content:
+
+```rust
+use fabryk_mcp::StaticResourceDef;
+
+builder
+    .with_resource(StaticResourceDef {
+        uri: "skill://conventions".into(),
+        name: "Conventions".into(),
+        description: "Notation conventions".into(),
+        mime_type: "text/markdown".into(),
+        filename: "CONVENTIONS.md".into(),
+        fallback: Some(default_conventions_content()),
+    })
+    .with_resource(StaticResourceDef {
+        uri: "skill://scope".into(),
+        name: "Scope".into(),
+        description: "Topics covered".into(),
+        mime_type: "text/markdown".into(),
+        filename: "SCOPE.md".into(),
+        fallback: Some(default_scope_content()),
+    });
+```
+
+The `fallback` content is served if the file doesn't exist on disk.
+
+---
+
+## 13. Tool Metadata & Discoverability
 
 ### Query Strategy Guidance
 
-Your server instructions should describe the multi-tool workflow:
+The server description doubles as instructions for LLMs:
 
 ```rust
-let instructions = r#"
-This server exposes a knowledge corpus through multiple tools.
-
-**Query Strategy:**
-1. Start with `semantic_search` (mode: hybrid) for open-ended questions
-2. Use `concepts_get` to read full content of interesting results
-3. Use `graph_related` or `graph_neighborhood` to explore connections
-4. Use `graph_prerequisites` to find learning order
-5. Use `graph_path` to find how concepts connect
-
-**Tool Categories:**
-- Search: semantic_search, search
-- Content: concepts_list, concepts_get, concepts_categories
-- Graph: graph_related, graph_path, graph_prerequisites, etc.
-- Meta: kb_directory, health
-"#;
-
-server.with_instructions(instructions);
+.description(
+    "My Knowledge Server — comprehensive materials and computation.\n\n\
+     QUERY STRATEGY:\n\
+     1. Start with semantic_search for open-ended questions\n\
+     2. Use search for keyword lookups\n\
+     3. Use get_item to read full content\n\
+     4. Use graph_related to explore connections\n\
+     5. Use graph_prerequisites for learning order",
+)
 ```
 
-See the [MCP Metadata howto](mcp-metadata.md) for full design guidelines.
+### ToolMeta for Every Tool
+
+Write `ToolMeta` for your tools — especially `when_to_use` and `next`:
+
+```rust
+.with_tool_meta("get_learning_path", ToolMeta {
+    summary: "Topologically sorted prerequisites for a target concept".into(),
+    when_to_use: "When planning a study sequence".into(),
+    returns: "Ordered learning steps with tier annotations".into(),
+    next: Some("get_item for each step".into()),
+    category: Some("graph".into()),
+})
+```
 
 ---
 
-## 13. Authentication & HTTP Transport
+## 14. Authentication & HTTP Transport
 
-For HTTP-accessible MCP servers, Fabryk provides Google OAuth2
-authentication and RFC 9728/8414 discovery endpoints.
+See the original guide — this section is unchanged. OAuth2 via
+`fabryk-auth-google` and `fabryk-mcp-auth` for HTTP transport.
 
-### OAuth2 Discovery Routes
+---
+
+## 15. CLI Integration
+
+Use `fabryk-cli` types for standard commands:
 
 ```rust
-use fabryk_mcp_auth::discovery_routes;
+use fabryk_cli::{CacheCommand, CacheAction, ConfigAction, SourcesCommand};
+use clap::{Parser, Subcommand};
 
-let resource_url = "https://my-server.run.app";
-let auth_server_url = "https://accounts.google.com";
-
-let discovery = discovery_routes(resource_url, auth_server_url);
-// Serves:
-//   /.well-known/oauth-protected-resource  (RFC 9728)
-//   /.well-known/oauth-authorization-server (RFC 8414)
+#[derive(Subcommand)]
+pub enum Commands {
+    Serve { ... },
+    #[cfg(feature = "fts")]
+    Index { force: bool },
+    #[cfg(feature = "graph")]
+    Graph(GraphCommands),
+    Config { action: Option<ConfigAction> },
+    Sources(SourcesCommand),
+    Cache(CacheCommand),
+}
 ```
 
-### Google Token Validation
+---
+
+## 16. Cache Management
+
+Distribute pre-built caches via GitHub Releases:
 
 ```rust
-use fabryk_auth::{AuthLayer, AuthConfig};
-use fabryk_auth_google::GoogleTokenValidator;
-
-let validator = GoogleTokenValidator::new(
-    "https://www.googleapis.com/oauth2/v3/certs".into(),
-);
-
-let auth_config = AuthConfig {
-    enabled: config.oauth.is_some(),
-    audience: config.oauth.as_ref()
-        .map(|o| o.client_id.clone())
-        .unwrap_or_default(),
-    domain: config.oauth.as_ref()
-        .and_then(|o| o.allowed_domain.clone())
-        .unwrap_or_default(),
+use fabryk_cli::cache::{
+    CacheProject, BackendPaths, PackagePaths,
+    download_cache, package_cache, cache_status, parse_backend_arg,
 };
-```
 
-### Composing the HTTP Router
+let project = CacheProject {
+    prefix: "my-project".into(),
+    release_base_url: "https://github.com/org/repo/releases/download".into(),
+};
 
-```rust
-use axum::Router;
+// Download pre-built caches
+download_cache(&CacheBackend::Graph, &base_path, version, &project, false)?;
 
-let app = Router::new()
-    .merge(health_router(services))
-    .merge(discovery_routes(resource_url, auth_server_url))
-    .layer(AuthLayer::new(validator, auth_config));
+// Check status
+let report = cache_status(&base_path, &backend_paths)?;
+println!("{report}");
 
-// Bind with port override for Cloud Run
-let port = std::env::var("PORT")
-    .ok()
-    .and_then(|p| p.parse().ok())
-    .unwrap_or(config.port);
-
-let listener = tokio::net::TcpListener::bind(format!("0.0.0.0:{}", port)).await?;
-axum::serve(listener, app).await?;
-```
-
-### Dual-Mode Support (HTTP + Stdio)
-
-Support both transports from the same binary:
-
-```rust
-#[derive(clap::Parser)]
-struct Args {
-    /// Run in stdio mode (for Claude Code)
-    #[arg(long)]
-    stdio: bool,
-
-    /// HTTP port (overridden by PORT env var in Cloud Run)
-    #[arg(long, default_value = "8080")]
-    port: u16,
-}
-
-async fn main() -> Result<()> {
-    let args = Args::parse();
-
-    if args.stdio {
-        server.serve_stdio().await?;
-    } else {
-        server.serve_http("0.0.0.0", args.port).await?;
-    }
-
-    Ok(())
-}
-```
-
-See the [MCP with Claude Code howto](mcp-with-claude-code.md) for
-registration details.
-
----
-
-## 14. CLI Integration
-
-Fabryk's CLI framework provides config validation, graph inspection, and
-vector database commands. Extend it with your domain-specific commands.
-
-```rust
-use fabryk_cli::{FabrykCli, CliExtension};
-
-struct MyCliExtension;
-
-impl CliExtension for MyCliExtension {
-    // Add domain-specific subcommands
-    fn register(app: clap::Command) -> clap::Command {
-        app.subcommand(
-            clap::Command::new("validate")
-                .about("Validate all content files")
-        )
-    }
-}
-
-let cli = FabrykCli::<Config>::new()
-    .with_extension::<MyCliExtension>();
-
-cli.run().await?;
-```
-
-### Built-in Commands
-
-```bash
-# Show/validate configuration
-my-server config show
-my-server config validate
-
-# Graph operations
-my-server graph validate    # Check graph structure
-my-server graph stats       # Node/edge counts, centrality
-
-# Vector database (with vector-fastembed feature)
-my-server vectordb get-model  # Download embedding model
+// Package for distribution
+package_cache(&CacheBackend::Fts, &base_path, &output_dir, version, &project, &paths)?;
 ```
 
 ---
 
-## 15. Testing
+## 17. Testing
 
 ### Schema Validation
-
-Verify your MCP tools have valid schemas before deployment:
 
 ```rust
 use fabryk_mcp::assert_tools_valid;
 
 #[tokio::test]
 async fn test_all_tools_have_valid_schemas() {
-    let registry = build_test_registry().await;
-    let discoverable = DiscoverableRegistry::new(registry, "kb");
-
-    // Panics if any tool has an invalid inputSchema
-    assert_tools_valid(&discoverable);
+    let server = build_server(state);
+    assert_tools_valid(server.registry());
 }
 ```
 
-### Health Endpoint Tests
+### Health Endpoint (HTTP)
 
 ```rust
-use axum::http::StatusCode;
+use fabryk_mcp::health_router;
 
 #[tokio::test]
-async fn test_health_returns_200_when_ready() {
+async fn test_health_returns_200() {
     let svc = ServiceHandle::new("test");
-    svc.set_ready();
-
+    svc.set_state(ServiceState::Ready);
     let app = health_router(vec![svc]);
-    let response = app
-        .oneshot(axum::http::Request::get("/health").body(axum::body::Body::empty()).unwrap())
-        .await
-        .unwrap();
-
-    assert_eq!(response.status(), StatusCode::OK);
+    // ... test with axum oneshot
 }
-
-#[tokio::test]
-async fn test_health_returns_503_when_starting() {
-    let svc = ServiceHandle::new("test");
-    // Don't set ready
-
-    let app = health_router(vec![svc]);
-    let response = app
-        .oneshot(axum::http::Request::get("/health").body(axum::body::Body::empty()).unwrap())
-        .await
-        .unwrap();
-
-    assert_eq!(response.status(), StatusCode::SERVICE_UNAVAILABLE);
-}
-```
-
-### Mock Backends for Unit Tests
-
-```rust
-use fabryk::vector::{MockEmbeddingProvider, SimpleVectorBackend};
-use fabryk::graph::MockExtractor; // requires graph/test-utils feature
-
-// In-memory vector backend (no LanceDB needed)
-let mock_embeddings = Arc::new(MockEmbeddingProvider::new(384));
-let simple_backend = SimpleVectorBackend::new(mock_embeddings);
-
-// In-memory Redis (no Redis server needed)
-use fabryk_redis::MockRedis;
-let mock_redis = MockRedis::new();
 ```
 
 ---
 
-## 16. Deployment
+## 18. Deployment
 
 ### Cloud Run
 
-Fabryk detects Cloud Run automatically and adjusts:
-
-```dockerfile
-FROM rust:1.85 AS builder
-WORKDIR /app
-COPY . .
-RUN cargo build --release
-
-FROM debian:bookworm-slim
-COPY --from=builder /app/target/release/my-knowledge-server /usr/local/bin/
-COPY content/ /app/content/
-
-ENV CONTENT_PATH=/app/content
-ENV CACHE_PATH=/app/cache
-
-EXPOSE 8080
-CMD ["my-knowledge-server", "--port", "8080"]
-```
-
-Cloud Run sets the `PORT` environment variable — your server should
-respect it (see section 13).
-
-### Health Check Configuration
-
-Cloud Run uses HTTP health checks:
-
-```yaml
-# Cloud Run service.yaml
-spec:
-  template:
-    spec:
-      containers:
-        - image: my-knowledge-server
-          ports:
-            - containerPort: 8080
-          startupProbe:
-            httpGet:
-              path: /health
-              port: 8080
-            initialDelaySeconds: 10
-            periodSeconds: 5
-            failureThreshold: 30
-```
-
-The `/health` endpoint returns 503 while indices are building and 200
-when all services are ready — Cloud Run won't route traffic until
-indices are built.
+`serve_http` automatically merges a `/health` endpoint that returns 503
+while services are loading and 200 when all are Ready. Configure Cloud
+Run's startup probe against `/health`.
 
 ---
 
-## 17. Quick Start Checklist
+## 19. Quick Start Checklist
 
-Minimum steps to get a working MCP server:
-
-- [ ] Create project with `cargo new my-knowledge-server`
-- [ ] Add Fabryk dependencies to Cargo.toml (section 2)
-- [ ] Create `config.toml` with content/cache paths (section 3)
-- [ ] Define domain types for your frontmatter schema (section 4)
-- [ ] Implement `ContentItemProvider` for content access (section 5)
-- [ ] Implement `DocumentExtractor` for FTS indexing (section 6)
-- [ ] Implement `GraphExtractor` for relationship extraction (section 7)
-- [ ] Implement `VectorExtractor` for embedding text composition (section 8)
-- [ ] Compose tools into a `CompositeRegistry` (section 10)
-- [ ] Create `FabrykMcpServer` and call `serve_stdio()` (section 9)
-- [ ] Register with Claude Code: `claude mcp add my-server -- cargo run -- --stdio`
-- [ ] Test: ask Claude to search your knowledge base
+- [ ] Create project, add Fabryk dependencies (§2)
+- [ ] Implement `ConfigProvider` + `ConfigManager` (§3)
+- [ ] Set up content providers with custom tool names (§4)
+- [ ] Configure FTS with multi-directory indexing (§5)
+- [ ] Configure knowledge graph with metadata filtering (§6)
+- [ ] Implement custom domain tools with `make_tool` + `serialize_response` (§8)
+- [ ] Compose with `ServerBuilder` (§9)
+- [ ] Add `DiscoverableRegistry` with `ToolMeta` (§10, §13)
+- [ ] Gate async tools with `ServiceAwareRegistry` (§10)
+- [ ] Register service handles for health (§11)
+- [ ] Add static resources with fallbacks (§12)
+- [ ] Add `assert_tools_valid` test (§17)
+- [ ] Register with Claude Code: `claude mcp add my-server -- cargo run`
 
 ---
 
-## 18. Pattern Reference
+## 20. Pattern Reference
 
-| Pattern | Where | Purpose |
-|---------|-------|---------|
-| `ConfigManager` + `ConfigProvider` | Section 3 | Application config + Fabryk builder bridge |
-| `ContentItemProvider` | Section 5 | Domain content → MCP content tools |
-| `DocumentExtractor` | Section 6 | Domain content → FTS search documents |
-| `GraphExtractor` | Section 7 | Domain content → knowledge graph nodes/edges |
-| `VectorExtractor` | Section 8 | Domain content → embedding text |
-| `CompositeRegistry` | Section 10 | Combine independent tool groups |
-| `ServiceAwareRegistry` | Section 10 | Gate tools on service readiness |
-| `DiscoverableRegistry` | Section 12 | Add metadata + directory tool |
-| `spawn_with_retry` | Section 11 | Resilient background service startup |
-| `VectorSlot` | Section 8 | Deferred vector backend wiring |
-| `health_router` | Section 11 | HTTP health endpoint |
-| `discovery_routes` | Section 13 | OAuth2 metadata endpoints |
-| `AuthLayer` | Section 13 | Tower auth middleware |
-| `FabrykMcpServer` | Section 9 | MCP server (stdio or HTTP) |
-| `FabrykCli` | Section 14 | CLI framework with built-in commands |
+| Pattern | Section | Purpose |
+|---------|---------|---------|
+| `ConfigManager` + `ConfigProvider` | §3 | Application config + Fabryk builder bridge |
+| `FsContentItemProvider` | §4 | Filesystem content → MCP content tools |
+| `ConceptCardDocumentExtractor` | §5 | Content → FTS search documents |
+| `build_index_multi` | §5 | Multi-directory index building |
+| `resolve_search_backend` | §5 | FTS-with-simple fallback |
+| `ConceptCardGraphExtractor` | §6 | Content → knowledge graph |
+| `LoadedGraph` | §6 | Graph data + stats + timestamp |
+| `Node` methods | §6 | `is_domain()`, `metadata_str()`, etc. |
+| `MetadataNodeFilter` | §6 | Filter graph results by metadata |
+| `tier_confidence_schema` | §6 | Standard tier/confidence filter schema |
+| `VectorSlot` | §7 | Deferred vector backend wiring |
+| `make_tool` + `serialize_response` | §8 | Custom domain tool helpers |
+| `McpErrorContextExt` | §8 | Context-aware error mapping |
+| `ServerBuilder` | §9 | Fluent server composition |
+| `into_parts` / `build_with_registry` | §9 | Registry wrapping before build |
+| `CompositeRegistry` | §10 | Combine independent tool groups |
+| `ServiceAwareRegistry` | §10 | Gate tools on service readiness |
+| `DiscoverableRegistry` + `ToolMeta` | §10, §13 | Tool metadata + directory |
+| `BackendSlot<T>` | §11 | Service lifecycle + value storage |
+| `health_router` / `.with_services()` | §11 | HTTP health endpoint |
+| `StaticResourceDef` | §12 | MCP resources with fallback content |
+| `CacheProject` + cache management | §16 | Pre-built cache distribution |
+| `assert_tools_valid` | §17 | Schema validation in tests |
+| `FabrykMcpServer` | §9 | MCP server (stdio or HTTP) |
 
 ### Related Howtos
 
-- [MCP Async Startup](mcp-async-startup.md) — ServiceHandle lifecycle, spawn_with_retry, parallel wait
-- [MCP Health](mcp-health.md) — Health endpoint, HTTP status codes, testing
-- [MCP Metadata](mcp-metadata.md) — DiscoverableRegistry, ToolMeta, ExternalConnector
-- [MCP with Claude Code](mcp-with-claude-code.md) — Registration, .mcp.json, transport options
+- [MCP Async Startup](mcp-async-startup.md) — ServiceHandle, BackendSlot, spawn_with_retry
+- [MCP Health](mcp-health.md) — Health endpoint, HTTP status codes
+- [MCP Metadata](mcp-metadata.md) — DiscoverableRegistry, ToolMeta
+- [MCP with Claude Code](mcp-with-claude-code.md) — Registration, .mcp.json
