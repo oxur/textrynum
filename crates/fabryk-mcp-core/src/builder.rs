@@ -40,6 +40,7 @@ pub struct ServerBuilder {
     registry: CompositeRegistry,
     resources_path: PathBuf,
     resource_defs: Vec<StaticResourceDef>,
+    services: Vec<fabryk_core::service::ServiceHandle>,
 }
 
 impl ServerBuilder {
@@ -52,6 +53,7 @@ impl ServerBuilder {
             registry: CompositeRegistry::new(),
             resources_path: PathBuf::from("."),
             resource_defs: Vec::new(),
+            services: Vec::new(),
         }
     }
 
@@ -76,6 +78,16 @@ impl ServerBuilder {
     /// Set the base path for static resource files.
     pub fn resources_path(mut self, path: impl Into<PathBuf>) -> Self {
         self.resources_path = path.into();
+        self
+    }
+
+    /// Register service handles for HTTP health endpoint reporting.
+    ///
+    /// When the server runs in HTTP mode, the `/health` endpoint returns
+    /// the status of these services. Returns 200 when all are Ready,
+    /// 503 when any is Starting/Failed.
+    pub fn with_services(mut self, services: Vec<fabryk_core::service::ServiceHandle>) -> Self {
+        self.services.extend(services);
         self
     }
 
@@ -113,6 +125,7 @@ impl ServerBuilder {
                 description: self.description,
                 resources_path: self.resources_path,
                 resource_defs: self.resource_defs,
+                services: self.services,
             },
         )
     }
@@ -124,7 +137,8 @@ impl ServerBuilder {
     ) -> FabrykMcpServer {
         let mut server = FabrykMcpServer::new(registry)
             .with_name(&parts.name)
-            .with_version(&parts.version);
+            .with_version(&parts.version)
+            .with_services(parts.services);
 
         if let Some(desc) = &parts.description {
             server = server.with_description(desc);
@@ -148,7 +162,8 @@ impl ServerBuilder {
     pub fn build(self) -> FabrykMcpServer {
         let mut server = FabrykMcpServer::new(self.registry)
             .with_name(&self.name)
-            .with_version(&self.version);
+            .with_version(&self.version)
+            .with_services(self.services);
 
         if let Some(desc) = &self.description {
             server = server.with_description(desc);
@@ -178,6 +193,8 @@ pub struct ServerBuilderParts {
     pub resources_path: PathBuf,
     /// Static resource definitions.
     pub resource_defs: Vec<StaticResourceDef>,
+    /// Service handles for health tracking.
+    pub services: Vec<fabryk_core::service::ServiceHandle>,
 }
 
 impl Default for ServerBuilder {
