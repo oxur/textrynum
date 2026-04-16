@@ -53,4 +53,48 @@ mod tests {
     fn test_trait_object_safety() {
         fn _assert_object_safe(_: &dyn ResourceRegistry) {}
     }
+
+    struct TestResources;
+
+    impl ResourceRegistry for TestResources {
+        fn resources(&self) -> Vec<Resource> {
+            use rmcp::model::{Annotated, RawResource};
+            vec![Annotated::new(
+                RawResource::new("test://doc", "Test Document"),
+                None,
+            )]
+        }
+
+        fn read(&self, uri: &str) -> Option<ResourceFuture> {
+            if uri == "test://doc" {
+                Some(Box::pin(async {
+                    Ok(vec![ResourceContents::text("test://doc", "hello")])
+                }))
+            } else {
+                None
+            }
+        }
+    }
+
+    #[test]
+    fn test_resources_returns_items() {
+        let registry = TestResources;
+        let resources = registry.resources();
+        assert_eq!(resources.len(), 1);
+    }
+
+    #[tokio::test]
+    async fn test_read_known_uri() {
+        let registry = TestResources;
+        let future = registry.read("test://doc");
+        assert!(future.is_some());
+        let contents = future.unwrap().await.unwrap();
+        assert_eq!(contents.len(), 1);
+    }
+
+    #[test]
+    fn test_read_unknown_uri_returns_none() {
+        let registry = TestResources;
+        assert!(registry.read("test://unknown").is_none());
+    }
 }

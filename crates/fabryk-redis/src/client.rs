@@ -109,3 +109,45 @@ impl RedisOps for RedisClient {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_redis_client_is_send_sync() {
+        fn assert_send_sync<T: Send + Sync>() {}
+        assert_send_sync::<RedisClient>();
+    }
+
+    #[test]
+    fn test_redis_client_is_clone() {
+        fn assert_clone<T: Clone>() {}
+        assert_clone::<RedisClient>();
+    }
+
+    #[test]
+    fn test_redis_client_is_debug() {
+        fn assert_debug<T: std::fmt::Debug>() {}
+        assert_debug::<RedisClient>();
+    }
+
+    #[test]
+    fn test_redis_client_implements_redis_ops() {
+        fn assert_redis_ops<T: RedisOps>() {}
+        assert_redis_ops::<RedisClient>();
+    }
+
+    #[tokio::test]
+    async fn test_redis_client_new_invalid_url() {
+        let result = RedisClient::new("not-a-valid-url").await;
+        assert!(result.is_err());
+    }
+
+    #[tokio::test]
+    async fn test_redis_client_new_connection_refused() {
+        // Use a valid URL format but unreachable host
+        let result = RedisClient::new("redis://127.0.0.1:1").await;
+        assert!(result.is_err());
+    }
+}

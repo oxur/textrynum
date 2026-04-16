@@ -41,6 +41,7 @@ thiserror = { workspace = true }
 regex = { workspace = true }
 
 [dev-dependencies]
+chrono = { workspace = true }
 tokio = { workspace = true, features = ["test-util"] }
 wiremock = "0.6"
 tempfile = { workspace = true }

@@ -9,7 +9,7 @@
 use crate::helpers::{make_tool_no_params, serialize_response};
 use crate::registry::{ToolRegistry, ToolResult};
 use fabryk_core::service::ServiceHandle;
-use rmcp::model::{CallToolResult, ErrorData, Tool};
+use rmcp::model::{ErrorData, Tool};
 use serde::Serialize;
 use serde_json::Value;
 use std::sync::Arc;

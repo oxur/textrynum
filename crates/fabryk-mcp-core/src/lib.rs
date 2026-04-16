@@ -48,13 +48,13 @@ pub mod builder;
 pub mod discoverable;
 pub mod error;
 pub mod guidance;
-pub mod helpers;
-pub mod search_fallback;
 #[cfg(feature = "http")]
 pub mod health_router;
+pub mod helpers;
 pub mod notifier;
 pub mod registry;
 pub mod resource;
+pub mod search_fallback;
 pub mod server;
 pub mod service_registry;
 pub mod static_resources;

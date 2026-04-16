@@ -130,4 +130,104 @@ mod tests {
         let Json(value) = authorization_server_metadata_google().await;
         assert_eq!(value["issuer"], "https://accounts.google.com");
     }
+
+    #[tokio::test]
+    async fn test_discovery_routes_protected_resource() {
+        use axum::body::Body;
+        use http::Request;
+        use tower::ServiceExt;
+
+        let app = discovery_routes("https://example.com", "https://accounts.google.com");
+        let resp = app
+            .oneshot(
+                Request::builder()
+                    .uri("/.well-known/oauth-protected-resource")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(resp.status(), 200);
+        let body = axum::body::to_bytes(resp.into_body(), usize::MAX)
+            .await
+            .unwrap();
+        let value: serde_json::Value = serde_json::from_slice(&body).unwrap();
+        assert_eq!(value["resource"], "https://example.com");
+        assert_eq!(
+            value["authorization_servers"][0],
+            "https://accounts.google.com"
+        );
+    }
+
+    #[tokio::test]
+    async fn test_discovery_routes_protected_resource_mcp() {
+        use axum::body::Body;
+        use http::Request;
+        use tower::ServiceExt;
+
+        let app = discovery_routes("https://example.com", "https://accounts.google.com");
+        let resp = app
+            .oneshot(
+                Request::builder()
+                    .uri("/.well-known/oauth-protected-resource/mcp")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(resp.status(), 200);
+    }
+
+    #[tokio::test]
+    async fn test_discovery_routes_authorization_server() {
+        use axum::body::Body;
+        use http::Request;
+        use tower::ServiceExt;
+
+        let app = discovery_routes("https://example.com", "https://accounts.google.com");
+        let resp = app
+            .oneshot(
+                Request::builder()
+                    .uri("/.well-known/oauth-authorization-server")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(resp.status(), 200);
+        let body = axum::body::to_bytes(resp.into_body(), usize::MAX)
+            .await
+            .unwrap();
+        let value: serde_json::Value = serde_json::from_slice(&body).unwrap();
+        assert_eq!(value["issuer"], "https://accounts.google.com");
+    }
+
+    #[tokio::test]
+    async fn test_discovery_routes_authorization_server_mcp() {
+        use axum::body::Body;
+        use http::Request;
+        use tower::ServiceExt;
+
+        let app = discovery_routes("https://example.com", "https://accounts.google.com");
+        let resp = app
+            .oneshot(
+                Request::builder()
+                    .uri("/.well-known/oauth-authorization-server/mcp")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+
+        assert_eq!(resp.status(), 200);
+        let body = axum::body::to_bytes(resp.into_body(), usize::MAX)
+            .await
+            .unwrap();
+        let value: serde_json::Value = serde_json::from_slice(&body).unwrap();
+        // /mcp suffix uses Google-specific metadata
+        assert_eq!(value["issuer"], "https://accounts.google.com");
+    }
 }

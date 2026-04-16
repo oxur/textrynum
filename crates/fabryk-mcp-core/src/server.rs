@@ -289,6 +289,59 @@ impl FabrykMcpServer {
     }
 }
 
+// Helper methods extracted for testability (ServerHandler methods need
+// RequestContext which is difficult to construct in tests).
+impl FabrykMcpServer {
+    /// List all tools from the registry.
+    pub(crate) fn list_tools_inner(&self) -> Vec<rmcp::model::Tool> {
+        self.registry.tools()
+    }
+
+    /// Call a tool by name with the given arguments.
+    pub(crate) async fn call_tool_inner(
+        &self,
+        name: &str,
+        args: serde_json::Value,
+    ) -> Result<CallToolResult, ErrorData> {
+        match self.registry.call(name, args) {
+            Some(future) => future.await,
+            None => Ok(CallToolResult::error(vec![Content::text(format!(
+                "Unknown tool: {name}"
+            ))])),
+        }
+    }
+
+    /// List all resources from the resource registry.
+    pub(crate) fn list_resources_inner(&self) -> ListResourcesResult {
+        match &self.resource_registry {
+            Some(registry) => ListResourcesResult::with_all_items(registry.resources()),
+            None => ListResourcesResult::default(),
+        }
+    }
+
+    /// Read a resource by URI.
+    pub(crate) async fn read_resource_inner(
+        &self,
+        uri: &str,
+    ) -> Result<ReadResourceResult, ErrorData> {
+        let registry = self
+            .resource_registry
+            .as_ref()
+            .ok_or_else(|| ErrorData::invalid_params("Resources not enabled", None))?;
+
+        match registry.read(uri) {
+            Some(future) => {
+                let contents = future.await?;
+                Ok(ReadResourceResult::new(contents))
+            }
+            None => Err(ErrorData::invalid_params(
+                format!("Unknown resource: {uri}"),
+                None,
+            )),
+        }
+    }
+}
+
 impl ServerHandler for FabrykMcpServer {
     fn get_info(&self) -> ServerInfo {
         let capabilities = if self.resource_registry.is_some() {
@@ -338,7 +391,7 @@ impl ServerHandler for FabrykMcpServer {
         _context: RequestContext<RoleServer>,
     ) -> impl std::future::Future<Output = Result<rmcp::model::ListToolsResult, ErrorData>> + Send + '_
     {
-        let tools = self.registry.tools();
+        let tools = self.list_tools_inner();
         async move {
             Ok(rmcp::model::ListToolsResult {
                 tools,
@@ -359,14 +412,7 @@ impl ServerHandler for FabrykMcpServer {
             .map(serde_json::Value::Object)
             .unwrap_or(serde_json::Value::Null);
 
-        async move {
-            match self.registry.call(&name, args) {
-                Some(future) => future.await,
-                None => Ok(CallToolResult::error(vec![Content::text(format!(
-                    "Unknown tool: {name}"
-                ))])),
-            }
-        }
+        async move { self.call_tool_inner(&name, args).await }
     }
 
     #[allow(clippy::manual_async_fn)]
@@ -375,12 +421,7 @@ impl ServerHandler for FabrykMcpServer {
         _request: Option<rmcp::model::PaginatedRequestParams>,
         _context: RequestContext<RoleServer>,
     ) -> impl std::future::Future<Output = Result<ListResourcesResult, ErrorData>> + Send + '_ {
-        async move {
-            match &self.resource_registry {
-                Some(registry) => Ok(ListResourcesResult::with_all_items(registry.resources())),
-                None => Ok(ListResourcesResult::default()),
-            }
-        }
+        async move { Ok(self.list_resources_inner()) }
     }
 
     #[allow(clippy::manual_async_fn)]
@@ -389,24 +430,7 @@ impl ServerHandler for FabrykMcpServer {
         request: ReadResourceRequestParams,
         _context: RequestContext<RoleServer>,
     ) -> impl std::future::Future<Output = Result<ReadResourceResult, ErrorData>> + Send + '_ {
-        async move {
-            let registry = self
-                .resource_registry
-                .as_ref()
-                .ok_or_else(|| ErrorData::invalid_params("Resources not enabled", None))?;
-
-            let uri = &request.uri;
-            match registry.read(uri) {
-                Some(future) => {
-                    let contents = future.await?;
-                    Ok(ReadResourceResult::new(contents))
-                }
-                None => Err(ErrorData::invalid_params(
-                    format!("Unknown resource: {uri}"),
-                    None,
-                )),
-            }
-        }
+        async move { self.read_resource_inner(&request.uri).await }
     }
 
     #[allow(clippy::manual_async_fn)]
@@ -719,6 +743,129 @@ mod tests {
         let server = FabrykMcpServer::new(MockRegistry).with_resources(TestResources);
         let info = server.get_info();
         assert!(info.capabilities.resources.is_some());
+    }
+
+    #[test]
+    fn test_list_tools_inner_returns_tools() {
+        let server = FabrykMcpServer::new(MockRegistry);
+        let tools = server.list_tools_inner();
+        assert_eq!(tools.len(), 1);
+        assert_eq!(tools[0].name.to_string(), "test_tool");
+    }
+
+    #[test]
+    fn test_list_tools_inner_empty_registry() {
+        let server = FabrykMcpServer::new(CompositeRegistry::new());
+        let tools = server.list_tools_inner();
+        assert!(tools.is_empty());
+    }
+
+    #[tokio::test]
+    async fn test_call_tool_inner_known_tool() {
+        let server = FabrykMcpServer::new(MockRegistry);
+        let result = server
+            .call_tool_inner("test_tool", serde_json::Value::Null)
+            .await
+            .unwrap();
+        assert!(!result.is_error.unwrap_or(false));
+    }
+
+    #[tokio::test]
+    async fn test_call_tool_inner_unknown_tool() {
+        let server = FabrykMcpServer::new(MockRegistry);
+        let result = server
+            .call_tool_inner("nonexistent", serde_json::Value::Null)
+            .await
+            .unwrap();
+        // Unknown tools return an error result (not an Err)
+        let text = &result.content[0];
+        assert!(format!("{text:?}").contains("Unknown tool"));
+    }
+
+    #[test]
+    fn test_list_resources_inner_no_registry() {
+        let server = FabrykMcpServer::new(CompositeRegistry::new());
+        let result = server.list_resources_inner();
+        assert!(result.resources.is_empty());
+    }
+
+    #[test]
+    fn test_list_resources_inner_with_registry() {
+        use crate::resource::ResourceRegistry;
+        use rmcp::model::{Annotated, RawResource, Resource};
+
+        struct TestResources;
+        impl ResourceRegistry for TestResources {
+            fn resources(&self) -> Vec<Resource> {
+                vec![Annotated::new(
+                    RawResource::new("test://res", "Test Resource"),
+                    None,
+                )]
+            }
+            fn read(&self, _uri: &str) -> Option<crate::resource::ResourceFuture> {
+                None
+            }
+        }
+
+        let server = FabrykMcpServer::new(MockRegistry).with_resources(TestResources);
+        let result = server.list_resources_inner();
+        assert_eq!(result.resources.len(), 1);
+    }
+
+    #[tokio::test]
+    async fn test_read_resource_inner_no_registry() {
+        let server = FabrykMcpServer::new(CompositeRegistry::new());
+        let result = server.read_resource_inner("test://doc").await;
+        assert!(result.is_err());
+    }
+
+    #[tokio::test]
+    async fn test_read_resource_inner_unknown_uri() {
+        use crate::resource::ResourceRegistry;
+        use rmcp::model::Resource;
+
+        struct EmptyResources;
+        impl ResourceRegistry for EmptyResources {
+            fn resources(&self) -> Vec<Resource> {
+                vec![]
+            }
+            fn read(&self, _uri: &str) -> Option<crate::resource::ResourceFuture> {
+                None
+            }
+        }
+
+        let server = FabrykMcpServer::new(MockRegistry).with_resources(EmptyResources);
+        let result = server.read_resource_inner("test://missing").await;
+        assert!(result.is_err());
+    }
+
+    #[tokio::test]
+    async fn test_read_resource_inner_known_uri() {
+        use crate::resource::ResourceRegistry;
+        use rmcp::model::{Annotated, RawResource, Resource, ResourceContents};
+
+        struct DocResources;
+        impl ResourceRegistry for DocResources {
+            fn resources(&self) -> Vec<Resource> {
+                vec![Annotated::new(
+                    RawResource::new("test://doc", "Test Doc"),
+                    None,
+                )]
+            }
+            fn read(&self, uri: &str) -> Option<crate::resource::ResourceFuture> {
+                if uri == "test://doc" {
+                    Some(Box::pin(async {
+                        Ok(vec![ResourceContents::text("test://doc", "content")])
+                    }))
+                } else {
+                    None
+                }
+            }
+        }
+
+        let server = FabrykMcpServer::new(MockRegistry).with_resources(DocResources);
+        let result = server.read_resource_inner("test://doc").await.unwrap();
+        assert_eq!(result.contents.len(), 1);
     }
 
     #[tokio::test]
