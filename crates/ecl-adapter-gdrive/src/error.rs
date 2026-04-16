@@ -49,6 +49,10 @@ pub enum DriveAdapterError {
     /// I/O error (reading credential files, etc.).
     #[error("I/O error: {0}")]
     Io(#[from] std::io::Error),
+
+    /// Shared GCP authentication error.
+    #[error(transparent)]
+    GcpAuth(#[from] ecl_gcp_auth::GcpAuthError),
 }
 
 /// Result type alias for Drive adapter operations.

@@ -2,6 +2,11 @@
 
 use serde::{Deserialize, Serialize};
 
+// Re-export shared Google auth types from ecl-gcp-auth.
+pub use ecl_gcp_auth::{
+    AuthorizedUserCredentials, GOOGLE_TOKEN_URL, ServiceAccountKey, TokenResponse,
+};
+
 /// Response from the Drive Files.list API endpoint.
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct FileListResponse {
@@ -50,50 +55,7 @@ impl DriveFile {
     }
 }
 
-/// OAuth2 token response from Google's token endpoint.
-#[derive(Debug, Clone, Deserialize)]
-pub struct TokenResponse {
-    /// The access token.
-    pub access_token: String,
-
-    /// Token lifetime in seconds.
-    pub expires_in: Option<u64>,
-
-    /// Token type (usually "Bearer").
-    pub token_type: Option<String>,
-}
-
-/// Authorized user credentials (from `gcloud auth application-default login`).
-#[derive(Debug, Clone, Deserialize)]
-pub struct AuthorizedUserCredentials {
-    /// OAuth2 client ID.
-    pub client_id: String,
-
-    /// OAuth2 client secret.
-    pub client_secret: String,
-
-    /// Refresh token.
-    pub refresh_token: String,
-
-    /// Credential type (should be "authorized_user").
-    #[serde(rename = "type")]
-    pub credential_type: String,
-}
-
-/// Service account key file structure.
-#[derive(Debug, Clone, Deserialize)]
-pub struct ServiceAccountKey {
-    /// Service account email address.
-    pub client_email: String,
-
-    /// RSA private key in PEM format.
-    pub private_key: String,
-
-    /// Token URI for exchanging JWT assertions.
-    pub token_uri: String,
-}
-
-// ── Google Drive MIME type constants ─────────────────────────────
+// -- Google Drive MIME type constants ----------------------------------------
 
 /// MIME type for Google Drive folders.
 pub const MIME_FOLDER: &str = "application/vnd.google-apps.folder";
@@ -106,9 +68,6 @@ pub const MIME_SPREADSHEET: &str = "application/vnd.google-apps.spreadsheet";
 
 /// MIME type for Google Slides.
 pub const MIME_PRESENTATION: &str = "application/vnd.google-apps.presentation";
-
-/// Default Google OAuth2 token endpoint.
-pub const GOOGLE_TOKEN_URL: &str = "https://oauth2.googleapis.com/token";
 
 /// Default Google Drive API v3 base URL.
 pub const DRIVE_API_BASE_URL: &str = "https://www.googleapis.com";

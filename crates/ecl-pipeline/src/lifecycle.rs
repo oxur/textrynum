@@ -27,8 +27,11 @@ impl LifecycleManager {
     /// Create a new lifecycle manager from a `LifecycleSpec`.
     pub fn new(spec: &LifecycleSpec) -> Self {
         let http_client = reqwest::Client::new();
-        let token_provider = TokenProvider::new(spec.credentials.clone(), http_client.clone())
-            .with_scope(GCS_READWRITE_SCOPE.to_string());
+        let token_provider = TokenProvider::new(
+            spec.credentials.clone(),
+            http_client.clone(),
+            GCS_READWRITE_SCOPE,
+        );
 
         Self {
             spec: spec.clone(),

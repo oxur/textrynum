@@ -2,6 +2,11 @@
 
 use serde::{Deserialize, Serialize};
 
+// Re-export shared Google auth types from ecl-gcp-auth.
+pub use ecl_gcp_auth::{
+    AuthorizedUserCredentials, GOOGLE_TOKEN_URL, ServiceAccountKey, TokenResponse,
+};
+
 /// GCS JSON API base URL.
 pub const GCS_API_BASE_URL: &str = "https://storage.googleapis.com/storage/v1";
 
@@ -16,9 +21,6 @@ pub const GCS_READWRITE_SCOPE: &str = "https://www.googleapis.com/auth/devstorag
 
 /// GCS JSON API upload URL base (for object uploads).
 pub const GCS_UPLOAD_BASE_URL: &str = "https://storage.googleapis.com/upload/storage/v1";
-
-/// Google OAuth2 token endpoint.
-pub const GOOGLE_TOKEN_URL: &str = "https://oauth2.googleapis.com/token";
 
 /// Response from the GCS Objects.list API endpoint.
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -61,46 +63,6 @@ pub struct GcsObject {
 
     /// Object metageneration.
     pub metageneration: Option<String>,
-}
-
-/// OAuth2 token response from Google's token endpoint.
-#[derive(Debug, Clone, Deserialize)]
-pub struct TokenResponse {
-    /// The access token.
-    pub access_token: String,
-
-    /// Token lifetime in seconds.
-    pub expires_in: Option<u64>,
-}
-
-/// Service account key file structure (same format as Google Drive).
-#[derive(Debug, Clone, Deserialize)]
-pub struct ServiceAccountKey {
-    /// The service account email.
-    pub client_email: String,
-
-    /// The RSA private key in PEM format.
-    pub private_key: String,
-
-    /// Token URI for JWT exchange.
-    pub token_uri: String,
-}
-
-/// Authorized user credentials (from `gcloud auth application-default login`).
-#[derive(Debug, Clone, Deserialize)]
-pub struct AuthorizedUserCredentials {
-    /// OAuth2 client ID.
-    pub client_id: String,
-
-    /// OAuth2 client secret.
-    pub client_secret: String,
-
-    /// Refresh token.
-    pub refresh_token: String,
-
-    /// Credential type (expected: "authorized_user").
-    #[serde(rename = "type")]
-    pub credential_type: String,
 }
 
 #[cfg(test)]

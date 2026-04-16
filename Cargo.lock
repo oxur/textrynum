@@ -2993,6 +2993,7 @@ dependencies = [
  "blake3",
  "chrono",
  "dirs 6.0.0",
+ "ecl-gcp-auth",
  "ecl-pipeline-spec",
  "ecl-pipeline-state",
  "ecl-pipeline-topo",
@@ -3016,6 +3017,7 @@ dependencies = [
  "blake3",
  "chrono",
  "dirs 6.0.0",
+ "ecl-gcp-auth",
  "ecl-pipeline-spec",
  "ecl-pipeline-state",
  "ecl-pipeline-topo",
@@ -3151,6 +3153,24 @@ name = "ecl-design"
 version = "0.5.0"
 dependencies = [
  "oxur-odm",
+]
+
+[[package]]
+name = "ecl-gcp-auth"
+version = "0.5.0"
+dependencies = [
+ "chrono",
+ "dirs 6.0.0",
+ "ecl-pipeline-spec",
+ "jsonwebtoken",
+ "reqwest 0.13.2",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "thiserror 2.0.18",
+ "tokio",
+ "tracing",
+ "wiremock",
 ]
 
 [[package]]

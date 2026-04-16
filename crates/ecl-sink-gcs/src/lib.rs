@@ -85,8 +85,11 @@ impl GcsSinkStage {
             })?;
 
         let http_client = reqwest::Client::new();
-        let token_provider = TokenProvider::new(config.credentials.clone(), http_client.clone())
-            .with_scope(GCS_READWRITE_SCOPE.to_string());
+        let token_provider = TokenProvider::new(
+            config.credentials.clone(),
+            http_client.clone(),
+            GCS_READWRITE_SCOPE,
+        );
 
         Ok(Self {
             config,

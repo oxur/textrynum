@@ -91,7 +91,11 @@ impl GcsAdapter {
             .transpose()?;
 
         let http_client = reqwest::Client::new();
-        let token_provider = TokenProvider::new(spec.credentials.clone(), http_client.clone());
+        let token_provider = TokenProvider::new(
+            spec.credentials.clone(),
+            http_client.clone(),
+            crate::types::GCS_READONLY_SCOPE,
+        );
 
         Ok(Self {
             source_name: source_name.to_string(),
