@@ -221,7 +221,7 @@ impl<E: VectorExtractor> VectorIndexBuilder<E> {
             let texts: Vec<&str> = chunk.iter().map(|d| d.text.as_str()).collect();
             let embeddings = provider.embed_batch(&texts).await?;
 
-            for (doc, embedding) in chunk.iter().zip(embeddings.into_iter()) {
+            for (doc, embedding) in chunk.iter().zip(embeddings) {
                 embedded_documents.push(EmbeddedDocument::new(doc.clone(), embedding));
             }
         }
@@ -358,7 +358,7 @@ impl<E: VectorExtractor> VectorIndexBuilder<E> {
             let texts: Vec<&str> = chunk.iter().map(|d| d.text.as_str()).collect();
             let embeddings = provider.embed_batch(&texts).await?;
 
-            for (doc, embedding) in chunk.iter().zip(embeddings.into_iter()) {
+            for (doc, embedding) in chunk.iter().zip(embeddings) {
                 embedded_documents.push(EmbeddedDocument::new(doc.clone(), embedding));
             }
         }

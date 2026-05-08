@@ -184,7 +184,7 @@ pub fn top_nodes_by_degree(
         })
         .collect();
 
-    scores.sort_by(|a, b| b.1.cmp(&a.1));
+    scores.sort_by_key(|b| std::cmp::Reverse(b.1));
     scores.truncate(limit);
     scores
 }

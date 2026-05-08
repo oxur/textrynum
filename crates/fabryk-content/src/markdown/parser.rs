@@ -200,15 +200,15 @@ pub fn extract_text_content(content: &str) -> String {
                 }
                 text_content.push_str(&text);
             }
-            Event::SoftBreak | Event::HardBreak => {
-                if !text_content.is_empty() && !text_content.ends_with(' ') {
-                    text_content.push(' ');
-                }
+            Event::SoftBreak | Event::HardBreak
+                if !text_content.is_empty() && !text_content.ends_with(' ') =>
+            {
+                text_content.push(' ');
             }
-            Event::End(TagEnd::Paragraph) | Event::End(TagEnd::Heading(_)) => {
-                if !text_content.is_empty() && !text_content.ends_with('\n') {
-                    text_content.push('\n');
-                }
+            Event::End(TagEnd::Paragraph) | Event::End(TagEnd::Heading(_))
+                if !text_content.is_empty() && !text_content.ends_with('\n') =>
+            {
+                text_content.push('\n');
             }
             _ => {}
         }
