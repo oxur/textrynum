@@ -20,7 +20,8 @@ Each release worktree is `.worktrees/release-0.N.x`. Release branches preserve
 their pinned implementation snapshots. `release/0.1.x` was advanced from its
 ancestor `2d32858` to `0.1.2`; no existing branch history or tags were discarded.
 `release/0.5.x` is the exact `main` snapshot inspected for this migration.
-These are local changes; no remote publication was requested or performed.
+These release branches remain local. Duncan has since authorized publication to
+all three remotes after the hosted-purge and integration gates below.
 
 ## How the history was reconstructed
 
@@ -160,7 +161,8 @@ ordinary new commits.
 
 Before audit/feature development: get fresh CI passing, update all dependencies
 to latest stable, then get checks green again. Duncan re-enabled CI and a fresh
-read-only baseline run was dispatched. The planned code phase uses Autonomous
+read-only baseline run completed with dependency-check and release-build failures
+(recorded in arc00). The planned code phase uses Autonomous
 Mode with CDC 6.1 Sol High and CC 6 Luna High; no contributor is dispatched while
 the cleanup entry gate remains open. See
 [arc00-ci-dependencies](project05-discoverability/arc00-ci-dependencies/arc-plan.md).

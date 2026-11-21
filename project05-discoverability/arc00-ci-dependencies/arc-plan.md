@@ -25,7 +25,18 @@ reports active. The previous completed run was 28922892089: debug failed at
 Check dependencies and release passed. Those July results are historical evidence,
 not a current green baseline. The assistant dispatched fresh run 44943360336 on
 sanitized main `856af87561c7e53379ec9094c69a01211d3e5283` without source changes.
-Record its actual outcome before designing repairs; no result is assumed here.
+The [fresh run](https://github.com/oxur/textrynum/actions/runs/44943360336)
+completed with failure in both jobs:
+
+- Debug stopped at `Check dependencies`: the compatible-update check reported
+  Redis manifest requirement `1.2` versus `1.8.2` available in that run. Later
+  debug build/lint/test steps were skipped.
+- Release passed formatting, then `cargo build --locked --all-features --workspace
+  --release` failed in `ethnum 1.5.2`, `src/error.rs:16`, with E0512 for
+  `mem::transmute(())`. Release lint/tests were skipped.
+
+These are observed baseline failures, not diagnosed root causes or an upgrade
+recommendation. No source repair, dependency upgrade or audit was performed.
 
 ## Implementation scope when opened
 

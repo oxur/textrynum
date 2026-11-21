@@ -6358,7 +6358,16 @@
         }
       ]
     },
-    "baseline_ci_run": 44943360336
+    "baseline_ci_run": 44943360336,
+    "baseline_ci_result": {
+      "status": "completed",
+      "conclusion": "failure",
+      "source": "856af87561c7e53379ec9094c69a01211d3e5283",
+      "url": "https://github.com/oxur/textrynum/actions/runs/44943360336",
+      "debug": "Check dependencies: Redis requirement 1.2 versus 1.8.2 reported; later steps skipped",
+      "release": "Formatting passed; build failed in ethnum 1.5.2 src/error.rs:16 with E0512; lint/tests skipped",
+      "scope": "Read-only baseline; no source fixes, dependency updates or audit"
+    }
   },
   "history_rewrite": {
     "date": "2026-11-21",
