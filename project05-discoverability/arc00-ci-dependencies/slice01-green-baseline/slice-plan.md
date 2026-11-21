@@ -26,4 +26,7 @@ Source-grounded: source AGENTS, root manifest/lock, CI and Makefile checker insp
 
 ## Assignment history
 
-- 2026-11-21 initial `cc-prompt.md`, predecessor none, reason: current CI failures; status ready for dispatch. Current assignment: `cc-prompt.md`.
+- 2026-11-21 initial `cc-prompt.md`, predecessor none, reason: current CI failures; status returned before implementation due to generic self-description being mistaken for unavailable runtime metadata.
+- 2026-11-21 `cc-prompt-iteration01.md`, predecessor cc-prompt.md, reason: actual runner turn_context verifies exact Luna/High; resume remaining intake/implementation, status active. Initial stopped before edits; executed refinement count zero. Current assignment: `cc-prompt-iteration01.md`.
+
+Runtime evidence: existing runner thread `01a2000f-9f2d-7660-97b4-f54373f19a94` turn_context reports gpt-6-luna/high, physical source cwd, on-request approval and workspace-write sandbox. Generic generated self-description is not an identity blocker. No backend identity beyond reported configuration is claimed.
