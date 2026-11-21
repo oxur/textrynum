@@ -6424,7 +6424,7 @@
       ]
     },
     "arc00_execution": {
-      "status": "slice01 independently accepted; complete baseline CI green; slice02 latest sweep may open",
+      "status": "slice01 accepted; slice02 full-upgrade prompt issued, exact-Luna dispatch next",
       "source_branch": "codex/ci-dependencies",
       "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
       "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",
@@ -6468,6 +6468,17 @@
           "ignored": 61
         },
         "accepted": "slice01 CDC verification and retrospective complete"
+      },
+      "baseline_CC_session": "01a2000f-9f2d-7660-97b4-f54373f19a94",
+      "slice02": {
+        "prompt": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt.md",
+        "rows": 7,
+        "external_packages": 64,
+        "manifests": 42,
+        "isolated_feature_selections": 17,
+        "entry_source": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
+        "CC_session": "pending actual fresh exact-Luna High dispatch",
+        "ownership": "CDC until runner start, then CC exclusive source/index until explicit return"
       }
     },
     "audit_intake_observations": [

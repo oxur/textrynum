@@ -212,3 +212,12 @@ Slice01 is independently accepted at edc8db69a2ef45d49e1c369ad5cf489dc58d161b; a
 CI-01 and project row09 close. Dependency sweep slice02 may now open under already approved Rust1.94/RMCP migration decisions and actual persistence/MSRV proof contracts above. DEP-01, CI-02 and final independent arc composition REVIEW-01 remain open. No new baseline discovery changes the two-slice decomposition; prospective compatibility proof was strengthened before next-slice planning. All audit/features/publication boundaries remain.
 
 - 2026-11-21 v1.4 — accepted slice01 capability, current source/CI and bubble-up recorded after canonical CC close and independent CDC review/retrospective; no whole-arc acceptance.
+
+
+## Slice02 issued source-grounded assignment — 2026-11-21
+
+Current full-upgrade assignment: slice02-latest-dependencies/cc-prompt.md, seven opening DEP2 rows and canonical dependency-inventory.json. Author refreshed all64 stable registry selections after accepted baseline; russh advanced to0.65.4 and Arrow58.4.2 is the latest matching LanceDB family. Actual old-writer/new-reader Redb/Lance/vector-metadata/Tantivy checks precede dependency edits; real1.94 minimum and all17 isolated feature selections complement latest1.100 gates. Add a nonpublishing MSRV CI check job while preserving original debug/release gates. Downstream RMCP notes and real HTTP/vector/Avro boundary checks make the approved migration observable.
+
+A fresh exact-Luna High CC session replaces the completed baseline context for the distinct64-package task; it is not an extra simultaneous contributor. Reuse accepted baseline/caches/canonical evidence rather than carrying complete old test output or replaying passing gates. CDC retains independent source review and task-branch CI authority; CC has exclusive source/index ownership only from actual runner start until explicit return. No source update yet; actual dispatch metadata will be recorded from the runner, not inferred.
+
+- 2026-11-21 v1.5 — concrete slice02 issued after baseline acceptance, current registry/API inventory and approved persistence/MSRV contract; no new unresolved Operator choice or audit/feature authority.
