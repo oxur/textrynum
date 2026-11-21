@@ -1,0 +1,144 @@
+# Full workspace and architecture audit
+
+Status: planned, not executed. Project05's remaining feature work is held until
+this audit and the subsequent repair/composition gate are complete.
+
+## Consumer, purpose and stop condition
+
+The consumer is Duncan and the project05 foundation-repair planner. The audit
+must establish what the actual 0.5.x code does, where contracts and implementations
+conflict, and which repairs are required before reusable-server work resumes.
+Duncan requested a full audit rather than a sample. The scope is all first-party
+workspace members and supporting entrypoints, tests, configuration, build and
+release machinery. The audit ends with complete coverage accounting, actionable
+findings, synthesis and a repair handoff. Do not turn diagnosis into code changes
+or extend it into a separate research programme. Repeated blockers or unavailable
+external inputs must be reported, not disguised as completed coverage.
+Execution effort/model/contributor allocation is set when the audit is opened;
+this planning record does not invent an approved time or token budget.
+
+## Baseline and source discipline
+
+At audit start pin the exact `release/0.5.x` source commit, planning commit,
+toolchain, Cargo feature/target inventory, repository instructions and current
+architecture pointers. Recheck drift before acceptance. Historical reports are
+leads, not findings or verified evidence. Missing/stale architecture is itself
+a finding. Preserve distinct failures and observations without duplicate archives.
+
+The audit is diagnosis-only: no source edits, staging or implementation commits.
+Any minimal reproducer is isolated and recorded; fixes belong to the later repair
+arc. The separate user-authorized privacy cleanup is not an audit repair pass.
+
+## Required method
+
+Use collaboration-framework, project-management, work-verification and the complete
+code-auditing guide set. Before auditing Rust, read rust-guidelines and all its
+language guides, beginning with its anti-patterns guide. Detect other actual
+languages/tools by both manifests and files and load their applicable guidance.
+Do not silently drop shell, Make, CI, TOML, JSON, examples or release contracts:
+record how they were inspected and any missing specialist guidance. The Operator's
+explicit full-workspace scope includes architectural and operational review even
+where no language-specific skill is available.
+
+Build the audit map before findings from `Cargo.toml`, module trees, binary
+entrypoints, feature definitions, test layouts, public facades and CI/build files.
+Every first-party file/target/subsystem receives a coverage disposition; exclude
+only identified generated, vendored, dependency and build-output trees.
+`.worktrees/` is not a second source population. Cover each of seven scales:
+line/function, file/module, logical unit, crate/target, application/service,
+whole codebase, and workspace/system boundaries.
+
+## Named coverage passes
+
+These are review passes, not pre-issued implementation slices. Split a pass if
+needed to retain context and verification headroom, and keep remaining coverage
+explicit in the audit index.
+
+| Pass | Population and primary contracts |
+| --- | --- |
+| 1 — Core/auth/config | fabryk-core, auth/auth-google/mcp-auth, ACL surface, Redis/GCP utilities; identity versus authorization, state invariants, errors, paths and configuration |
+| 2 — Content and search | content parsing, source resolution/validation, FTS, metadata, caches, shared schema ownership and simple-search fallback |
+| 3 — Graph and vector | extractors, persistence, graph algorithms, embedding/index lifecycle, hybrid retrieval, shared error policy and ownership |
+| 4 — MCP boundary | mcp-core, content/FTS/graph/semantic tools and facades; schemas versus handlers, naming/discovery, resources/subscriptions, transport and runtime behavior |
+| 5 — Application assembly | fabryk-cli, builders, orchestration, service slots/probes, default commands versus real handlers, startup/shutdown/recovery and thin-server integration |
+| 6 — Existing ECL | every ecl library, pipeline/spec/topology/state crate, adapter, sink, stage and CLI; parsed configuration versus executed behavior, crash resume, side effects and integration wiring |
+| 7 — Workspace/release composition | every remaining member including design and textrynum-util; dependency graph, feature combinations, MSRV, manifests, scripts, Make targets, CI, packaging, examples and downstream compatibility |
+
+The actual manifest inventory controls completeness; these names cannot be used
+to omit an unlisted crate. Review the generic versus domain-specific boundary by
+operations, dependencies and required knowledge rather than vocabulary alone.
+Use the existing music-server integration as a bounded consumer check where
+available; changes to another repository require their own authorized scope.
+
+## Required hunt list
+
+- Inconsistencies in errors, configuration, IDs, serialization, time, paths,
+  logging, async ownership, feature gates and public API conventions.
+- Duplicate functions, algorithms, data models, caches, configuration adapters,
+  state machines and policies, including near-duplicates that have drifted.
+- Competing or circular abstractions, misplaced responsibilities, inappropriate
+  crate dependencies, unnecessary layers and application/library leakage.
+- Partial implementations: inert config, no-op commands, stubs, silent fallbacks,
+  disconnected handlers, and success returns that do not deliver promised effects.
+- MCP schemas/capabilities versus dispatch and observable responses; validate at
+  real protocol entrypoints and protect stdio from accidental logging.
+- Backend lifecycle: single source of truth, readiness, lock order, cancellation,
+  retry, errors, health reporting, resource cleanup and failed/repeated startup.
+- Filesystem, network, subprocess and persistence boundaries: validation,
+  canonicalization, atomicity, idempotency, crash recovery, trust and secret handling.
+- Misleading tests, mocks bypassing production paths, vacuous assertions, ignored
+  failures, untested error paths and missing cross-crate composition evidence.
+- Documentation, feature lists, examples and package contents that promise more
+  than the implemented entrypoints deliver. Distinguish legacy/cancelled scope
+  from an active product contract before assigning a defect.
+
+## Validation and evidence
+
+Derive commands from the current repository rather than guessing that old `make`
+claims remain accurate. Record baseline build/test/lint/format failures and their
+causes. Inspect meaningful default/no-default/feature-specific/all-feature and
+supported target/package combinations; do not substitute one green umbrella build
+for the matrix. Use discriminating tests and small reproducers for findings.
+Where credentials/services prevent a check, retain the gap and concrete re-entry
+condition. Do not infer production behavior from mock-only or compilation-only tests.
+
+Every finding has a stable ID, Blocker/High/Medium/Low severity, exact source
+commit and file:line, affected scale, observed failure mode, concrete fix direction
+and validation oracle. Unconfirmed hypotheses are labeled and not counted as
+confirmed defects. At least five concrete negative checks belong in each language
+report. Cross-cutting findings point to one root-cause record, not duplicate counts.
+
+## Deliverables — Operator-mandated home
+
+All audit results go directly in `project05-discoverability/artifacts/`.
+This explicitly overrides the code-auditing skill's default `workbench/` output
+home and the normal per-slice artifact home for these results.
+Capture the actual date at execution; `YYYY.MM.DD` below is a naming pattern,
+not a claim that an audit occurred on the planning date.
+
+- `artifacts/YYYY.MM.DD-audit-index.md`: pinned baseline, complete map, languages,
+  coverage dispositions, findings counts, exclusions, unavailable checks and handoff.
+- `artifacts/YYYY.MM.DD-audit-results-<language>.md`: per-language findings,
+  scale evidence, coherence observations and negative checks.
+- `artifacts/YYYY.MM.DD-audit-modernization-synthesis.md`: root-cause themes,
+  ownership, proposed consolidations and compatibility-sensitive decisions.
+- Reproducer/evidence files only where a concrete reproduction or decision needs
+  them; keep them under this same project artifacts directory with clear names.
+
+Do not create successful reports or verification records before the work happens.
+
+## Acceptance and handoff
+
+Complete all coverage rows in the sibling ledger with inspectable evidence.
+Have a separate reviewer check coverage, source evidence and the conclusions.
+The synthesis must assign every finding to a repair owner and validation approach,
+protect sound existing behavior and distinguish safe refactors from explicit
+behavior changes. Then open finding-driven repair slices. All findings must be
+fixed before remaining project05 feature work, unless Duncan explicitly approves
+a documented alternative disposition; severity alone grants no automatic waiver.
+Repair acceptance and higher-scale composition are separate from audit acceptance.
+
+## Version history
+
+- 2026-11-21 v1.0 — Planned the Operator-requested full audit and fixed the
+  results home at project05/artifacts. No audit execution or findings claimed.

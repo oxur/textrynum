@@ -39,10 +39,24 @@
       "history": [
         "652cf7d|2026-04-14T14:49:13-05:00|feat: Add MCP helpers, McpErrorContextExt, and date utilities"
       ],
-      "disposition": "held-for-0.5-review",
-      "reason": "Post-0.4 material; retained at original source path pending Operator review. No project05 created.",
+      "disposition": "migrated",
+      "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
       "mtime_local": "2026-04-14T13:44:12.787896-05:00",
-      "source_blob": "d318fdc13013c8dfb7d6f021de3b156c3974389f"
+      "source_blob": "d318fdc13013c8dfb7d6f021de3b156c3974389f",
+      "project": "project05-discoverability",
+      "segments": [
+        {
+          "path": "project05-discoverability/artifacts/0024-code-audit-report-poc-mcp-server-final-fabryk-extraction.md",
+          "source_lines": [
+            1,
+            171
+          ],
+          "target_lines": [
+            3,
+            173
+          ]
+        }
+      ]
     },
     {
       "source": "crates/design/docs/02-under-review/0001-ecl-architecture-proposal.md",
@@ -161,10 +175,24 @@
       "history": [
         "c9d961c|2026-03-25T16:46:15-05:00|Added first thoughts on an event bus design."
       ],
-      "disposition": "held-for-0.5-review",
-      "reason": "Post-0.4 material; retained at original source path pending Operator review. No project05 created.",
+      "disposition": "migrated",
+      "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
       "mtime_local": "2026-03-25T16:45:48.274554-05:00",
-      "source_blob": "916f485f47acfb9b84ad0eb2bcd6b1291716cae2"
+      "source_blob": "916f485f47acfb9b84ad0eb2bcd6b1291716cae2",
+      "project": "project07-live-ingest",
+      "segments": [
+        {
+          "path": "project07-live-ingest/artifacts/0020-sygnum-event-driven-architecture-for-keystone.md",
+          "source_lines": [
+            1,
+            301
+          ],
+          "target_lines": [
+            3,
+            303
+          ]
+        }
+      ]
     },
     {
       "source": "crates/design/docs/05-active/0013-fabryk-extraction-project-plan-overview.md",
@@ -638,10 +666,24 @@
       "history": [
         "3bb0fff|2026-03-25T17:29:53-05:00|Added research on event buses in Rust."
       ],
-      "disposition": "held-for-0.5-review",
-      "reason": "Post-0.4 material; retained at original source path pending Operator review. No project05 created.",
+      "disposition": "migrated",
+      "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
       "mtime_local": "2026-03-25T17:29:28.913756-05:00",
-      "source_blob": "b2e683ceeb247436ebd9557efd28fe9697ba6436"
+      "source_blob": "b2e683ceeb247436ebd9557efd28fe9697ba6436",
+      "project": "project07-live-ingest",
+      "segments": [
+        {
+          "path": "project07-live-ingest/artifacts/0021-building-a-trait-based-event-bus-in-rust-ecosystem-landscape-and-design-patterns.md",
+          "source_lines": [
+            1,
+            165
+          ],
+          "target_lines": [
+            3,
+            167
+          ]
+        }
+      ]
     },
     {
       "source": "crates/design/docs/06-final/0022-the-limitations-of-llms-with-abstract-reasoning.md",
@@ -652,10 +694,24 @@
       "history": [
         "a678a15|2026-04-13T18:49:09-05:00|Added research docs."
       ],
-      "disposition": "held-for-0.5-review",
-      "reason": "Post-0.4 material; retained at original source path pending Operator review. No project05 created.",
+      "disposition": "migrated",
+      "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
       "mtime_local": "2026-04-13T17:47:01.788653-05:00",
-      "source_blob": "c4269fccefc8dcaace8a55286292f72bb4161dcb"
+      "source_blob": "c4269fccefc8dcaace8a55286292f72bb4161dcb",
+      "project": "project08-reasoning",
+      "segments": [
+        {
+          "path": "project08-reasoning/artifacts/0022-the-limitations-of-llms-with-abstract-reasoning.md",
+          "source_lines": [
+            1,
+            119
+          ],
+          "target_lines": [
+            3,
+            121
+          ]
+        }
+      ]
     },
     {
       "source": "crates/design/docs/06-final/0023-augmenting-llm-reasoning-with-external-tools-a-practitioners-landscape.md",
@@ -666,10 +722,24 @@
       "history": [
         "a678a15|2026-04-13T18:49:09-05:00|Added research docs."
       ],
-      "disposition": "held-for-0.5-review",
-      "reason": "Post-0.4 material; retained at original source path pending Operator review. No project05 created.",
+      "disposition": "migrated",
+      "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
       "mtime_local": "2026-04-13T17:47:21.135509-05:00",
-      "source_blob": "23774c81b540a4b7b1e3813f072dd864cd3ee365"
+      "source_blob": "23774c81b540a4b7b1e3813f072dd864cd3ee365",
+      "project": "project08-reasoning",
+      "segments": [
+        {
+          "path": "project08-reasoning/artifacts/0023-augmenting-llm-reasoning-with-external-tools-a-practitioners-landscape.md",
+          "source_lines": [
+            1,
+            141
+          ],
+          "target_lines": [
+            3,
+            143
+          ]
+        }
+      ]
     },
     {
       "source": "crates/design/docs/10-superseded/0003-ecl-project-proposal.md",
@@ -1437,10 +1507,24 @@
       "history": [
         "068c85f|2026-04-03T14:31:17-05:00|feat(fabryk-mcp-content): Add extended filter support and extra source tool slots"
       ],
-      "disposition": "held-for-0.5-review",
-      "reason": "Post-0.4 material; retained at original source path pending Operator review. No project05 created.",
+      "disposition": "migrated",
+      "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
       "mtime_local": "2026-04-11T10:40:25.812301-05:00",
-      "source_blob": "c95f8eb45daa6fd70e2a7c1b24d8b0df170f4fbb"
+      "source_blob": "c95f8eb45daa6fd70e2a7c1b24d8b0df170f4fbb",
+      "project": "project05-discoverability",
+      "segments": [
+        {
+          "path": "project05-discoverability/artifacts/0014-complete-the-fabryk-extraction-implementation-plan.md",
+          "source_lines": [
+            1,
+            300
+          ],
+          "target_lines": [
+            3,
+            302
+          ]
+        }
+      ]
     },
     {
       "source": "crates/design/dev/0015-plan-cross-crate-duplicate-code-consolidation.md",
@@ -1451,10 +1535,24 @@
       "history": [
         "8ae5aa2|2026-04-16T12:35:30-05:00|feat: Add LanceDbConfig, promote SameAs/Cites relationships"
       ],
-      "disposition": "held-for-0.5-review",
-      "reason": "Post-0.4 material; retained at original source path pending Operator review. No project05 created.",
+      "disposition": "migrated",
+      "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
       "mtime_local": "2026-04-16T12:06:33.274760-05:00",
-      "source_blob": "4fc03596f75ea0d06dbc74794ea645464f3c35bf"
+      "source_blob": "4fc03596f75ea0d06dbc74794ea645464f3c35bf",
+      "project": "project05-discoverability",
+      "segments": [
+        {
+          "path": "project05-discoverability/artifacts/0015-plan-cross-crate-duplicate-code-consolidation.md",
+          "source_lines": [
+            1,
+            235
+          ],
+          "target_lines": [
+            3,
+            237
+          ]
+        }
+      ]
     },
     {
       "source": "crates/design/dev/concept-cards/0001-concept-card-framework-immediate-improvements-report.md",
@@ -3988,10 +4086,24 @@
         "17be2fd|2026-04-13T20:03:35-05:00|More notes from the day's adventures.",
         "9a72635|2026-04-13T19:16:38-05:00|Added initial medys doc."
       ],
-      "disposition": "held-for-0.5-review",
-      "reason": "Post-0.4 material; retained at original source path pending Operator review. No project05 created.",
+      "disposition": "migrated",
+      "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
       "mtime_local": "2026-04-14T11:31:02.900817-05:00",
-      "source_blob": "d08a6c0bfaaa4f764bd5346ac4964505b4ec14a9"
+      "source_blob": "d08a6c0bfaaa4f764bd5346ac4964505b4ec14a9",
+      "project": "project08-reasoning",
+      "segments": [
+        {
+          "path": "project08-reasoning/artifacts/0001-abstraction-tooling-design-notes.md",
+          "source_lines": [
+            1,
+            117
+          ],
+          "target_lines": [
+            3,
+            119
+          ]
+        }
+      ]
     },
     {
       "source": "workbench/0026-banyan-data-pipeline-requirements-analysis.md",
@@ -4447,9 +4559,23 @@
       "mtime_ns": 1776275784160091840,
       "tracked": false,
       "history": [],
-      "disposition": "held-for-0.5-review",
-      "reason": "Post-0.4 material; retained at original source path pending Operator review. No project05 created.",
-      "mtime_local": "2026-04-15T12:56:24.160092-05:00"
+      "disposition": "migrated",
+      "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
+      "mtime_local": "2026-04-15T12:56:24.160092-05:00",
+      "project": "project08-reasoning",
+      "segments": [
+        {
+          "path": "project08-reasoning/artifacts/architectural-blueprints-for-a-rust-mcp-reasoning-server.md",
+          "source_lines": [
+            1,
+            196
+          ],
+          "target_lines": [
+            3,
+            198
+          ]
+        }
+      ]
     },
     {
       "source": "workbench/cc-pipeline-crate-analysis-prompts.md",
@@ -4490,9 +4616,23 @@
       "mtime_ns": 1776357655236452097,
       "tracked": false,
       "history": [],
-      "disposition": "held-for-0.5-review",
-      "reason": "Post-0.4 material; retained at original source path pending Operator review. No project05 created.",
-      "mtime_local": "2026-04-16T11:40:55.236452-05:00"
+      "disposition": "migrated",
+      "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
+      "mtime_local": "2026-04-16T11:40:55.236452-05:00",
+      "project": "project05-discoverability",
+      "segments": [
+        {
+          "path": "project05-discoverability/artifacts/duplicate-code-audit.md",
+          "source_lines": [
+            1,
+            315
+          ],
+          "target_lines": [
+            3,
+            317
+          ]
+        }
+      ]
     },
     {
       "source": "workbench/ecl-pipeline-bootstrap.md",
@@ -4869,9 +5009,23 @@
       "mtime_ns": 1776275615791730237,
       "tracked": false,
       "history": [],
-      "disposition": "held-for-0.5-review",
-      "reason": "Post-0.4 material; retained at original source path pending Operator review. No project05 created.",
-      "mtime_local": "2026-04-15T12:53:35.791730-05:00"
+      "disposition": "migrated",
+      "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
+      "mtime_local": "2026-04-15T12:53:35.791730-05:00",
+      "project": "project08-reasoning",
+      "segments": [
+        {
+          "path": "project08-reasoning/artifacts/unified-rust-mcp-server-for-llm-reasoning-augmentation.md",
+          "source_lines": [
+            1,
+            145
+          ],
+          "target_lines": [
+            3,
+            147
+          ]
+        }
+      ]
     },
     {
       "source": "workbench/old/0007-cc-prompt-fabryk-2.md",
@@ -5791,12 +5945,12 @@
   "import_commit": "3a39aea33a9d133d2546c66bbbe361cbcfe97f70",
   "historical_exception": "Operator requested historical splitting and organization only; do not invent missing plans, criteria, assignments, close reports, verification, or corrected links.",
   "summary": {
-    "migrated": 127,
-    "held-for-0.5-review": 11,
+    "migrated": 138,
     "superseded-copy": 76,
-    "projects": 4,
-    "arcs": 23,
-    "slices": 106
+    "projects": 8,
+    "historical_projects": 4,
+    "historical_arcs": 23,
+    "historical_slices": 106
   },
   "generated_files": [
     "AGENTS.md",
@@ -6083,7 +6237,42 @@
     "project04-ecl-pipeline-engine/ledger.md",
     "project04-ecl-pipeline-engine/project-plan.md",
     "project04-ecl-pipeline-engine/slice01-slack-stub-validation/slice-plan.md",
-    "project04-ecl-pipeline-engine/slice02-zapier-webhooks/slice-plan.md"
+    "project04-ecl-pipeline-engine/slice02-zapier-webhooks/slice-plan.md",
+    "project05-discoverability/arc01-foundation-audit/arc-plan.md",
+    "project05-discoverability/arc01-foundation-audit/ledger.md",
+    "project05-discoverability/artifacts/0014-complete-the-fabryk-extraction-implementation-plan.md",
+    "project05-discoverability/artifacts/0015-plan-cross-crate-duplicate-code-consolidation.md",
+    "project05-discoverability/artifacts/0024-code-audit-report-poc-mcp-server-final-fabryk-extraction.md",
+    "project05-discoverability/artifacts/duplicate-code-audit.md",
+    "project05-discoverability/ledger.md",
+    "project05-discoverability/project-plan.md",
+    "project06-pipeline/ledger.md",
+    "project06-pipeline/project-plan.md",
+    "project07-live-ingest/artifacts/0020-sygnum-event-driven-architecture-for-keystone.md",
+    "project07-live-ingest/artifacts/0021-building-a-trait-based-event-bus-in-rust-ecosystem-landscape-and-design-patterns.md",
+    "project07-live-ingest/ledger.md",
+    "project07-live-ingest/project-plan.md",
+    "project08-reasoning/artifacts/0001-abstraction-tooling-design-notes.md",
+    "project08-reasoning/artifacts/0022-the-limitations-of-llms-with-abstract-reasoning.md",
+    "project08-reasoning/artifacts/0023-augmenting-llm-reasoning-with-external-tools-a-practitioners-landscape.md",
+    "project08-reasoning/artifacts/architectural-blueprints-for-a-rust-mcp-reasoning-server.md",
+    "project08-reasoning/artifacts/unified-rust-mcp-server-for-llm-reasoning-augmentation.md",
+    "project08-reasoning/ledger.md",
+    "project08-reasoning/project-plan.md"
   ],
-  "release_tree_check": "All requested planning paths on release/0.1.x through release/0.4.x are covered by the main inventory or the two documented status-directory renames. The deeper .dustbin/overwritten file is outside the requested globs and retained in source."
+  "release_tree_check": "All requested planning paths on release/0.1.x through release/0.4.x are covered by the main inventory or the two documented status-directory renames. The deeper .dustbin/overwritten file is outside the requested globs and retained in source.",
+  "current_decisions": {
+    "date": "2026-11-21",
+    "projects": {
+      "5": "project05-discoverability",
+      "6": "project06-pipeline",
+      "7": "project07-live-ingest",
+      "8": "project08-reasoning"
+    },
+    "active_priority": "Ship solid 0.5.0 through project05 after full audit and repairs",
+    "project06_07": "implementation held",
+    "concept_cards": "Current work owned by ai-engineering",
+    "legacy_agent_workflow": "cancelled in favor of project06",
+    "audit_outputs": "project05-discoverability/artifacts/"
+  }
 }

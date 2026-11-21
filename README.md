@@ -14,7 +14,7 @@ of claims made by the old documents.
 | `release/0.2.x` | `0850343` | `0.2.0` | [Fabryk consolidation and lifecycle](project02-fabryk-consolidation/project-plan.md) |
 | `release/0.3.x` | `007bc76` | `0.3.0`, `v0.3.0` (same commit) | [MCP guidance and resources](project03-mcp-guidance-resources/project-plan.md) |
 | `release/0.4.x` | `1a248c4` | `0.4.0`, `0.4.1`, `0.4.2` | [ECL pipeline engine](project04-ecl-pipeline-engine/project-plan.md) |
-| `release/0.5.x` | `f19bb3b` | No 0.5 tag exists in the inspected local repository | Project intentionally deferred for Operator review |
+| `release/0.5.x` | `f19bb3b` | No 0.5 tag exists in the inspected local repository | [Discoverability and 0.5.0 foundation](project05-discoverability/project-plan.md) |
 
 Each release worktree is `.worktrees/release-0.N.x`. Release branches preserve
 their pinned implementation snapshots. `release/0.1.x` was advanced from its
@@ -80,8 +80,9 @@ git show 3a39aea:crates/design/docs/05-active/0013-fabryk-extraction-project-pla
 This Git history preserves the originals without maintaining a parallel archive
 in the current planning tree. The source checkout cleanup is isolated on
 `codex/planning-migration`; the release branches and `main` remain pinned.
-The 11 distinct post-0.4 sources and their lower-precedence versions stay at
-their original source paths pending the 0.5 review. No `project05` exists.
+The 11 distinct post-0.4 sources are now assigned to projects05, 07 and 08.
+Their original bytes remain in the import history; lower-precedence copies are
+not retained as competing current documents.
 The generated design index, the nested `.dustbin/overwritten` document, and
 non-Markdown workbench content are outside the requested migration globs and
 remain in the source checkout. Existing links in those records are not repaired.
@@ -95,10 +96,9 @@ remain in the source checkout. Existing links in those records are not repaired.
 | `project03-mcp-guidance-resources` | 0 | 0 |
 | `project04-ecl-pipeline-engine` | 9 | 46 |
 
-127 selected source documents are represented in the current projects; 76
-lower-precedence copies are retained in the import commit and mapped to their
-preferred source; 11 distinct post-0.4 sources await review. Some of the 76
-copies belong to those held sources, so they also remain in the source checkout.
+138 selected source documents are represented in the current projects; 76
+lower-precedence copies are retained in import history and mapped to preferred
+versions. No original migration source remains unassigned.
 
 ## Validation boundary
 
@@ -118,3 +118,20 @@ the actual bodies and document roles. All five release worktrees were clean
 and checked out their named branches; all applicable tags were ancestors of
 their release tips, and `release/0.5.x` equaled `main`. The planning branch had
 one independent, initially empty root. These are author self-checks.
+
+## Current project split — 2026-11-21
+
+| Project | Responsibility | Current execution status |
+| --- | --- | --- |
+| [05 — Discoverability](project05-discoverability/project-plan.md) | Solid 0.5.0: audit and repairs first, reusable assembly/startup, consolidation, thin servers; vector improvements tentative | Planning; audit not executed |
+| [06 — Pipeline](project06-pipeline/project-plan.md) | End-to-end ingestion, CLI completion, remaining data pipelines, required authorization/multi-tenancy | Deferred |
+| [07 — Live ingest](project07-live-ingest/project-plan.md) | Sygnum and event-driven ingestion | Deferred |
+| [08 — Reasoning](project08-reasoning/project-plan.md) | Medys and reasoning tools | Deferred |
+
+Concept-card development is owned by ai-engineering. The original agent-workflow
+framework is explicitly cancelled in favor of project06. Historical source text
+remains evidence and does not override these current scope decisions.
+All future project05 audit results must be written to
+`project05-discoverability/artifacts/`, per Duncan's explicit instruction.
+The complete audit plan is
+[arc01-foundation-audit/arc-plan.md](project05-discoverability/arc01-foundation-audit/arc-plan.md).

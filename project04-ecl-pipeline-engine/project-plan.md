@@ -359,3 +359,11 @@ custom Rust atop proven crates" target when you subtract test code.
 - 2026-11-21: Reorganized original documents under the Operator-requested release/project mapping. Source identities, workbench mtimes, duplicate decisions and exact split ranges are recorded in [migration-map.json](../migration-map.json). This records documentary provenance, not implementation acceptance.
 
 Original criteria are also available in the [historical ledger](ledger.md).
+
+## Current scope ownership — 2026-11-21
+
+Remaining pipeline/CLI and later data-pipeline milestones belong to
+project06-pipeline, which is deferred. Authorization and multi-tenancy required
+by those efforts also belong to project06. These historical release records
+remain here to preserve what was planned and what evidence actually exists;
+this transfer does not assert that an old milestone was delivered or accepted.

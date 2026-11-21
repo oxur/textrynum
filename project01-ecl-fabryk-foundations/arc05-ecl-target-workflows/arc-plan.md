@@ -46,3 +46,7 @@ Full workflow test with real codebase (e.g., toy Redis clone in JS → Rust).
 
 ---
 
+
+## Operator disposition — 2026-11-21
+
+Cancelled as prospective work in favor of project06-pipeline. Preserve this historical record; do not issue or resume its old assignments.

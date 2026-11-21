@@ -458,3 +458,12 @@ for context on what came before and what comes after the current milestone.
 - 2026-11-21: Reorganized original documents under the Operator-requested release/project mapping. Source identities, workbench mtimes, duplicate decisions and exact split ranges are recorded in [migration-map.json](../migration-map.json). This records documentary provenance, not implementation acceptance.
 
 Original criteria are also available in the [historical ledger](ledger.md).
+
+## Current scope disposition — 2026-11-21
+
+Duncan explicitly cancelled the original agent-workflow framework in favor of
+project06-pipeline. Historical ECL step-framework/API/hardening/target-workflow
+plans remain as evidence, not executable backlog. Existing shipped code is not
+silently removed by this decision. Current concept-card development belongs to
+ai-engineering; existing card-related artifacts here are historical references.
+Project05 tentatively owns deferred vector-search improvements after its audit.

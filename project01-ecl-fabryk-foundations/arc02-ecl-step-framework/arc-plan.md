@@ -750,3 +750,7 @@ Start with **[Stage 2.1: Step Trait Definition](./0003-phase-2-01-step-trait.md)
 - [Stage 2.5: SQLx Persistence Layer](slice05-sqlx-persistence-layer/slice-plan.md)
 - [Stage 2.6: Observability Infrastructure](slice06-observability-infrastructure/slice-plan.md)
 - [Stage 2.7: Toy Workflow Integration](slice07-toy-workflow-integration/slice-plan.md)
+
+## Operator disposition — 2026-11-21
+
+Cancelled as prospective work in favor of project06-pipeline. Preserve this historical record; do not issue or resume its old assignments.
