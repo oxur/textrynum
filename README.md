@@ -148,3 +148,24 @@ against the sanitized import and includes a commit-identity translation map.
 No unsanitized archive or backup branch is retained.
 
 The [privacy rewrite record](project05-discoverability/artifacts/privacy-rewrite-record.md) distinguishes completed remote ref replacement from the still-pending host-side purge.
+
+## Follow-up execution gates and ChatGPT UX — 2026-11-21
+
+Macpro's host-side purge is verified complete. GitHub and Codeberg still require
+provider-side cleanup. Duncan explicitly chose waiting for both before AGENTS
+policy edits, source-cleanup FF into release/0.5.x, and release-branch publication.
+All five release branches are to be pushed to all three remotes when ready.
+No further privacy-history rewrites are planned; later planning changes are
+ordinary new commits.
+
+Before audit/feature development: get fresh CI passing, update all dependencies
+to latest stable, then get checks green again. Duncan re-enabled CI and a fresh
+read-only baseline run was dispatched. The planned code phase uses Autonomous
+Mode with CDC 6.1 Sol High and CC 6 Luna High; no contributor is dispatched while
+the cleanup entry gate remains open. See
+[arc00-ci-dependencies](project05-discoverability/arc00-ci-dependencies/arc-plan.md).
+
+ChatGPT UX is primary project05 scope and release acceptance. Its goal, task-level
+measures, discovery/request/payload/information tradeoffs and real-client evidence
+are recorded in the project plan and audit plan, with post-audit implementation
+owned by the ChatGPT UX/reusable-server readiness work.

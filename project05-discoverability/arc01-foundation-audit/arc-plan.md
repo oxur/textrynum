@@ -142,3 +142,26 @@ Repair acceptance and higher-scale composition are separate from audit acceptanc
 
 - 2026-11-21 v1.0 — Planned the Operator-requested full audit and fixed the
   results home at project05/artifacts. No audit execution or findings claimed.
+
+## Additional Operator prerequisites and ChatGPT UX scope — 2026-11-21
+
+Do not execute this audit until arc00's fresh green CI, latest-dependency update,
+and green revalidation have been accepted. Existing instructions that call audit
+"first" mean first before remaining feature development, after these newly
+specified prerequisites. Pin the resulting source baseline rather than the old
+pre-upgrade snapshot.
+
+ChatGPT UX is a major project05 outcome. Audit the Claude-origin assumptions at
+the actual client boundary: tool naming/descriptions, schema clarity, discovery
+and navigation, guidance/resources/prompts compatibility, next-step affordances,
+stable IDs/provenance, filters/pagination, summary/detail payloads, error recovery
+and backend readiness. Assess request count and payload costs against complete,
+correct, useful tasks. Do not equate compilation, a directory tool, small payloads
+or an assistant's subjective preference with proven ChatGPT usability.
+
+Use the project plan's ChatGPT UX acceptance axis to derive a concrete task set
+and protocol. Verify actual target-client support from current official guidance
+and real trials. Propose measurable tradeoffs and capture limitations; numerical
+thresholds and trial scope require agreement before evaluation, not invented
+success claims. The post-audit readiness work and release gate must carry these
+obligations forward. All audit results remain in project05/artifacts.

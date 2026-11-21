@@ -8,8 +8,8 @@ refs on every configured remote. Acme Inc. is the prose replacement; code and
 path identifiers use anonymized forms. The private original is intentionally
 not repeated in this record.
 
-Current status: local rewrite and remote ref replacement completed; full hosted
-object/cache purge remains pending. This is privacy-cleanup evidence, not the
+Current status: local rewrite, remote ref replacement and macpro host-side purge
+completed; GitHub and Codeberg host-side object/cache purge remains pending. This is privacy-cleanup evidence, not the
 planned full code/architecture audit, an independent acceptance, or a 0.5.0 release.
 
 ## Preparation and preservation boundaries
@@ -53,7 +53,8 @@ known old main commit from each host. Each recovered tree still contained 11
 matching files. All disposable probe repositories were destroyed immediately;
 no old sensitive payload was retained as a new archive.
 
-GitHub, Codeberg and macpro therefore still need host-side object/cache cleanup.
+At the initial probe, GitHub, Codeberg and macpro still needed host-side
+object/cache cleanup. The macpro follow-up below supersedes its initial result.
 A normal fresh clone is clean, but the complete privacy-removal requirement is
 not closed. The configured macpro endpoint is a restricted Git service and
 rejected shell-style maintenance commands; its admin route is requested from
@@ -108,3 +109,55 @@ The following known old commits were still recoverable at the retention check. T
 | github | `f19bb3b9bc00295dea8eabb40247b6eb9e6fabdf` | `856af87561c7e53379ec9094c69a01211d3e5283` |
 | codeberg | `7a9dead8b608d959d592d393e62094872a4e2a8e` | `87af29b820e495afe2dbe1b0ad5ce5173d59fa43` |
 | macpro | `7a9dead8b608d959d592d393e62094872a4e2a8e` | `87af29b820e495afe2dbe1b0ad5ce5173d59fa43` |
+
+## Completed macpro follow-up
+
+The port-23231 endpoint is Soft Serve, which has its own SSH command interface.
+Normal host SSH on port 22 was available. The running service exposed its data
+location at `/Users/oubiwann/lab/.git-server/data`; the exact bare repository was
+`repos/oxur/textrynum.git` beneath it. No web admin interface was required.
+
+Verified the intended bare repository and expected rewritten main, checked for
+active lock files, expired its reflogs and ran `git gc --prune=now` only there.
+All 10 refs were unchanged. Scanned every stored object: 259 commits, 5 tags,
+1,720 trees and 1,646 blobs; zero private-name matches. A fresh old-hash fetch
+through Soft Serve was rejected. Macpro's cleanup is complete by these checks.
+The old-hash probes against GitHub and Codeberg still recovered sensitive content.
+
+## Operator hold and pending integration instructions
+
+Duncan explicitly selected **wait for all hosted purges** before applying the
+AGENTS.md changes or fast-forwarding the source-cleanup branch. Do not treat clean
+advertised refs, completed macpro maintenance, or a provider acknowledgement as
+proof that the two remaining hosted purges have completed. Repeat the old-object
+checks and inspect the relevant cached views after provider cleanup.
+
+When that gate passes, in this order:
+
+1. Update both source and planning AGENTS.md with the policies below.
+2. Fast-forward `codex/planning-migration` into `release/0.5.x` using `--ff-only`.
+   Keep the orphan `planning` branch separate; never integrate it into source.
+3. Push `release/0.1.x` through `release/0.5.x` to github, codeberg and macpro.
+   Recheck remote state, preserve concurrent work, and use normal pushes where
+   possible. No further privacy-history rewrite is planned or authorized here.
+
+Pending integration policy:
+
+> Integrate branches only with commit-preserving rebase or `git merge --ff-only`.
+> Do not create ordinary merge commits or use squash merges, rebase squash/fixup,
+> autosquash, or commit-dropping operations to collapse work history.
+
+Pending commit-attribution policy, copied from Cayrn's convention and adopted
+by Duncan on 2026-11-21: every future assistant-authored commit on source or
+planning branches must include both trailers, separated from the body by a blank
+line. The requested file edit remains held; subsequent commits already follow
+the explicit user instruction.
+
+```text
+Co-authored-by: Codex <noreply@openai.com>
+Co-authored-by: Billo AI <ai-engineering@billo.systems>
+```
+
+Private provider-purge request drafts are in
+[host-purge-requests.md](host-purge-requests.md). They have not been sent; explicit
+approval is required before messaging the providers.

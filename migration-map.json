@@ -6238,12 +6238,15 @@
     "project04-ecl-pipeline-engine/project-plan.md",
     "project04-ecl-pipeline-engine/slice01-slack-stub-validation/slice-plan.md",
     "project04-ecl-pipeline-engine/slice02-zapier-webhooks/slice-plan.md",
+    "project05-discoverability/arc00-ci-dependencies/arc-plan.md",
+    "project05-discoverability/arc00-ci-dependencies/ledger.md",
     "project05-discoverability/arc01-foundation-audit/arc-plan.md",
     "project05-discoverability/arc01-foundation-audit/ledger.md",
     "project05-discoverability/artifacts/0014-complete-the-fabryk-extraction-implementation-plan.md",
     "project05-discoverability/artifacts/0015-plan-cross-crate-duplicate-code-consolidation.md",
     "project05-discoverability/artifacts/0024-code-audit-report-poc-mcp-server-final-fabryk-extraction.md",
     "project05-discoverability/artifacts/duplicate-code-audit.md",
+    "project05-discoverability/artifacts/host-purge-requests.md",
     "project05-discoverability/artifacts/privacy-rewrite-record.md",
     "project05-discoverability/ledger.md",
     "project05-discoverability/project-plan.md",
@@ -6274,7 +6277,88 @@
     "project06_07": "implementation held",
     "concept_cards": "Current work owned by ai-engineering",
     "legacy_agent_workflow": "cancelled in favor of project06",
-    "audit_outputs": "project05-discoverability/artifacts/"
+    "audit_outputs": "project05-discoverability/artifacts/",
+    "pending_integration_policy": "Commit-preserving rebase or fast-forward only; no merge commits or squashing",
+    "pending_commit_trailers": [
+      "Co-authored-by: Codex <noreply@openai.com>",
+      "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+    ],
+    "integration_hold": "Wait for all hosted purges before AGENTS edits and source-cleanup FF into release/0.5.x",
+    "release_pushes_when_ready": {
+      "branches": [
+        "release/0.1.x",
+        "release/0.2.x",
+        "release/0.3.x",
+        "release/0.4.x",
+        "release/0.5.x"
+      ],
+      "remotes": [
+        "github",
+        "codeberg",
+        "macpro"
+      ]
+    },
+    "pre_audit_order": [
+      "fresh green CI",
+      "all latest stable dependencies",
+      "green checks and CI again",
+      "full audit",
+      "audit repairs",
+      "ChatGPT UX and reusable-server features"
+    ],
+    "autonomous_when_ready": {
+      "CDC": {
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "high"
+      },
+      "CC": {
+        "model": "gpt-6-luna",
+        "reasoning_effort": "high"
+      },
+      "catalog_check": "both names and High supported locally; runtime dispatch not started",
+      "substitutions": "not authorized"
+    },
+    "chatgpt_ux": "Major project05 goal and release gate; natural task success and discoverability balanced with request count, payload and grounded useful information",
+    "ci_state": {
+      "workflow": [
+        {
+          "id": 239132829,
+          "name": "CI/CD",
+          "path": ".github/workflows/cicd.yml",
+          "state": "active"
+        }
+      ],
+      "runs": [
+        {
+          "conclusion": "failure",
+          "createdAt": "2026-07-08T06:38:50Z",
+          "databaseId": 28922892089,
+          "event": "schedule",
+          "headBranch": "main",
+          "headSha": "f19bb3b9bc00295dea8eabb40247b6eb9e6fabdf",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "createdAt": "2026-07-07T07:52:44Z",
+          "databaseId": 28850532945,
+          "event": "schedule",
+          "headBranch": "main",
+          "headSha": "f19bb3b9bc00295dea8eabb40247b6eb9e6fabdf",
+          "status": "completed"
+        },
+        {
+          "conclusion": "failure",
+          "createdAt": "2026-07-06T08:41:05Z",
+          "databaseId": 28778948079,
+          "event": "schedule",
+          "headBranch": "main",
+          "headSha": "f19bb3b9bc00295dea8eabb40247b6eb9e6fabdf",
+          "status": "completed"
+        }
+      ]
+    },
+    "baseline_ci_run": 44943360336
   },
   "history_rewrite": {
     "date": "2026-11-21",
@@ -6553,7 +6637,7 @@
       "ff731f6f8fec43426b34645b0fa479dfa0c48c60": "aeac27593e02abc2e9b06617c630c86186a7f53f",
       "ffc448ad86e316ec9d693b12a31a4206f4337475": "5830950b77d2f6676576d91908bf780c0a331218"
     },
-    "remote_status": "All controlled refs replaced and verified on all three remotes; old commits still recoverable by hash, so host-side purge pending.",
+    "remote_status": "macpro host-side purge verified complete; GitHub and Codeberg still serve known old commits and need provider cleanup. All advertised refs remain rewritten.",
     "remote_verification": {
       "remotes": [
         {
@@ -6601,9 +6685,9 @@
       },
       {
         "remote": "macpro",
-        "old_commit_fetch": "available",
-        "private_content_recoverable": true,
-        "old_tree_matching_files": 11,
+        "old_commit_fetch": "not-served",
+        "private_content_recoverable": false,
+        "old_tree_matching_files": 0,
         "scope": "One known old main commit; temporary fetched objects destroyed after probe."
       }
     ],
@@ -6781,6 +6865,74 @@
         "old_commit_confirmed_recoverable": "7a9dead8b608d959d592d393e62094872a4e2a8e",
         "current_main": "87af29b820e495afe2dbe1b0ad5ce5173d59fa43"
       }
-    ]
+    ],
+    "host_retention_observations": [
+      {
+        "stage": "initial post-rewrite probe",
+        "results": [
+          {
+            "remote": "github",
+            "old_commit_fetch": "available",
+            "private_content_recoverable": true,
+            "old_tree_matching_files": 11,
+            "scope": "One known old main commit; temporary fetched objects destroyed after probe."
+          },
+          {
+            "remote": "codeberg",
+            "old_commit_fetch": "available",
+            "private_content_recoverable": true,
+            "old_tree_matching_files": 11,
+            "scope": "One known old main commit; temporary fetched objects destroyed after probe."
+          },
+          {
+            "remote": "macpro",
+            "old_commit_fetch": "available",
+            "private_content_recoverable": true,
+            "old_tree_matching_files": 11,
+            "scope": "One known old main commit; temporary fetched objects destroyed after probe."
+          }
+        ]
+      },
+      {
+        "stage": "after targeted macpro maintenance",
+        "results": [
+          {
+            "remote": "github",
+            "old_commit_fetch": "available",
+            "private_content_recoverable": true,
+            "old_tree_matching_files": 11,
+            "scope": "One known old main commit; temporary fetched objects destroyed after probe."
+          },
+          {
+            "remote": "codeberg",
+            "old_commit_fetch": "available",
+            "private_content_recoverable": true,
+            "old_tree_matching_files": 11,
+            "scope": "One known old main commit; temporary fetched objects destroyed after probe."
+          },
+          {
+            "remote": "macpro",
+            "old_commit_fetch": "not-served",
+            "private_content_recoverable": false,
+            "old_tree_matching_files": 0,
+            "scope": "One known old main commit; temporary fetched objects destroyed after probe."
+          }
+        ]
+      }
+    ],
+    "macpro_purge": {
+      "method": "Normal host SSH on port 22; Soft Serve Git/management endpoint is port 23231",
+      "repository": "/Users/oubiwann/lab/.git-server/data/repos/oxur/textrynum.git",
+      "ref_count": 10,
+      "refs_unchanged": true,
+      "objects_scanned": {
+        "commit": 259,
+        "tag": 5,
+        "tree": 1720,
+        "blob": 1646
+      },
+      "private_matches": 0,
+      "old_commit_fetch": "not-served"
+    }
   }
 }
