@@ -6450,7 +6450,15 @@
       "source_mutation_owner": "CDC /root/ci_dependency_cdc",
       "baseline_candidate_ci_run": 44957414892,
       "CC_session": "01a2000f-9f2d-7660-97b4-f54373f19a94"
-    }
+    },
+    "audit_intake_observations": [
+      {
+        "path": "project05-discoverability/artifacts/dependency-planning-audit-intake.md",
+        "origin": "arc00 dependency source inspection",
+        "source": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
+        "status": "incidental source evidence only; full audit unopened; no acceptance or repair authority"
+      }
+    ]
   },
   "history_rewrite": {
     "date": "2026-11-21",

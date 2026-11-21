@@ -165,3 +165,9 @@ and real trials. Propose measurable tradeoffs and capture limitations; numerical
 thresholds and trial scope require agreement before evaluation, not invented
 success claims. The post-audit readiness work and release gate must carry these
 obligations forward. All audit results remain in project05/artifacts.
+
+## Incidental prerequisite intake — audit still unopened
+
+[Dependency-planning audit intake](../artifacts/dependency-planning-audit-intake.md) preserves a pinned SFTP server-key observation from arc00's routine source inspection. It is source evidence for the later Existing ECL/trust-boundary passes, not a commissioned, severity-graded or accepted finding and not completed audit coverage. Revalidate against the accepted post-upgrade baseline. The audit remains planned and unexecuted; no security redesign is authorized by this link.
+
+- 2026-11-21 v1.1 — Linked the explicitly requested incidental prerequisite observation in the Operator-mandated project artifacts home; no audit execution or acceptance claimed.
