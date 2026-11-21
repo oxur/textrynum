@@ -12,13 +12,16 @@ Keep both requests private; do not post a public community issue.
   Gmail message/thread ID: `1a1fffadcdba4153`. The sent From header is
   `Duncan McGreggor <duncan@mcgreg.gr>`. Provider acknowledgement and purge
   completion remain pending; a sent message does not close the cleanup gate.
-- **GitHub: approved, not submitted.** Browser-control initialization failed
+- **GitHub: deferred by Operator, not submitted.** Browser-control initialization failed
   before the support form could be accessed. Both normal initialization and
   explicit reset/retry ended with `trusted Node process exited unexpectedly`.
   No GitHub request or ticket confirmation was created. The private portal
-  remains [GitHub Support](https://support.github.com/contact); the approved
-  text below is ready for submission when browser access is restored or by
-  Duncan directly. Do not treat this as a provider rejection.
+  remains [GitHub Support](https://support.github.com/contact). Duncan opened
+  the form but found the options trigger destructive operations and explicitly
+  stopped this task for now. Keep the text below as an unsubmitted draft;
+  do not submit further forms, delete or recreate the repository without new
+  authorization. This open task no longer blocks other work. Do not treat it
+  as a provider rejection or a completed purge.
 
 
 ## GitHub Support

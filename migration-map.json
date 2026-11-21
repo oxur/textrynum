@@ -6283,7 +6283,7 @@
       "Co-authored-by: Codex <noreply@openai.com>",
       "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
     ],
-    "integration_hold": "Wait for all hosted purges before AGENTS edits and source-cleanup FF into release/0.5.x",
+    "integration_hold": "Superseded by Operator: accept cleanup so far and continue; hosted purge stays open and nonblocking",
     "release_pushes_when_ready": {
       "branches": [
         "release/0.1.x",
@@ -6367,6 +6367,19 @@
       "debug": "Check dependencies: Redis requirement 1.2 versus 1.8.2 reported; later steps skipped",
       "release": "Formatting passed; build failed in ethnum 1.5.2 src/error.rs:16 with E0512; lint/tests skipped",
       "scope": "Read-only baseline; no source fixes, dependency updates or audit"
+    },
+    "hosted_purge_deferral": {
+      "date": "2026-11-21",
+      "status": "open_nonblocking",
+      "github_form": "not submitted; Operator stopped attempts after reviewing destructive-operation options",
+      "codeberg_request": "sent; provider outcome pending",
+      "deletion_or_recreation": "not authorized; possible later Operator decision",
+      "continue": [
+        "AGENTS policies",
+        "source-cleanup fast-forward",
+        "all release branch pushes",
+        "bounded arc00 CI/dependency Autonomous Mode"
+      ]
     }
   },
   "history_rewrite": {
@@ -6957,11 +6970,12 @@
         "purge_complete": false
       },
       "github": {
-        "status": "approved_not_submitted",
+        "status": "operator_deferred_not_submitted",
         "reason": "Browser-control initialization failed before support portal access, including explicit reset/retry",
         "portal": "https://support.github.com/contact",
         "ticket_created": false,
-        "purge_complete": false
+        "purge_complete": false,
+        "current_disposition": "Keep open, stop further form operations; does not block remaining work; repository deletion/recreation not authorized"
       }
     }
   }

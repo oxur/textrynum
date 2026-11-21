@@ -1,7 +1,9 @@
 # CI and latest-dependency foundation
 
-Status: planned and held for full hosted purge plus the requested AGENTS policy
-and source-cleanup integration. Read-only CI checks can run during cleanup.
+Status: authorized for bounded Autonomous execution after the requested AGENTS
+policy and source-cleanup integration. Duncan lifted the earlier hosted-purge
+hold on 2026-11-21, accepting cleanup so far and keeping that task open without
+blocking the remaining work. No repository deletion/recreation is authorized.
 
 ## Outcome and order
 
@@ -40,7 +42,7 @@ recommendation. No source repair, dependency upgrade or audit was performed.
 
 ## Implementation scope when opened
 
-- Pin release/0.5.x after the held cleanup integration, current plan, toolchain,
+- Pin release/0.5.x after the requested cleanup integration, current plan, toolchain,
   manifest/package/feature inventory and actual fresh CI failures.
 - Use a dedicated non-default source branch, proposed `codex/ci-dependencies`,
   and a single mutable checkout owner. Reuse a suitable checkout; do not create
@@ -74,7 +76,7 @@ the selected CDC before execution.
 Use CDC + CC with independent review, preserved per-slice prompts/iterations,
 file ownership, commits with both Cayrn co-author trailers, ledger discipline,
 closure/bubble-up and CDC retrospectives. Concrete slices/prompts are opened only
-when the cleanup gate passes and current CI evidence has been inspected. Do not
+after the requested integration and inspection of current CI evidence. Do not
 manufacture a complete implementation recipe from stale logs.
 
 The endpoint is accepted CI/dependency preparation for project05. Do not silently
@@ -82,7 +84,7 @@ advance into the audit or whole-project implementation. Publication/tagging,
 unrelated provider messages and deployment remain separately gated. Recheck CI
 workflow effects before CI pushes/reruns; the inspected workflow only builds,
 lints and tests. The user separately authorized release-branch pushes after the
-held cleanup sequence; do not conflate that with release publication.
+requested integration sequence; do not conflate that with release publication.
 
 ## Evidence and closure
 

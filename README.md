@@ -21,7 +21,8 @@ their pinned implementation snapshots. `release/0.1.x` was advanced from its
 ancestor `2d32858` to `0.1.2`; no existing branch history or tags were discarded.
 `release/0.5.x` is the exact `main` snapshot inspected for this migration.
 These release branches remain local. Duncan has since authorized publication to
-all three remotes after the hosted-purge and integration gates below.
+all three remotes after the integration steps below; the remaining hosted purge
+is explicitly deferred and nonblocking.
 
 ## How the history was reconstructed
 
@@ -153,8 +154,10 @@ The [privacy rewrite record](project05-discoverability/artifacts/privacy-rewrite
 ## Follow-up execution gates and ChatGPT UX — 2026-11-21
 
 Macpro's host-side purge is verified complete. GitHub and Codeberg still require
-provider-side cleanup. Duncan explicitly chose waiting for both before AGENTS
-policy edits, source-cleanup FF into release/0.5.x, and release-branch publication.
+provider-side cleanup. Duncan initially chose waiting for both, then explicitly
+accepted cleanup so far and directed continuation with that task **open and
+nonblocking**. AGENTS policy edits, source-cleanup FF into release/0.5.x and
+release-branch pushes can proceed. No repository deletion/recreation is authorized.
 All five release branches are to be pushed to all three remotes when ready.
 No further privacy-history rewrites are planned; later planning changes are
 ordinary new commits.
@@ -163,8 +166,7 @@ Before audit/feature development: get fresh CI passing, update all dependencies
 to latest stable, then get checks green again. Duncan re-enabled CI and a fresh
 read-only baseline run completed with dependency-check and release-build failures
 (recorded in arc00). The planned code phase uses Autonomous
-Mode with CDC 6.1 Sol High and CC 6 Luna High; no contributor is dispatched while
-the cleanup entry gate remains open. See
+Mode with CDC 6.1 Sol High and CC 6 Luna High; the earlier cleanup hold is lifted for the bounded CI/dependency arc. See
 [arc00-ci-dependencies](project05-discoverability/arc00-ci-dependencies/arc-plan.md).
 
 ChatGPT UX is primary project05 scope and release acceptance. Its goal, task-level

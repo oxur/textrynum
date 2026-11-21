@@ -124,15 +124,21 @@ All 10 refs were unchanged. Scanned every stored object: 259 commits, 5 tags,
 through Soft Serve was rejected. Macpro's cleanup is complete by these checks.
 The old-hash probes against GitHub and Codeberg still recovered sensitive content.
 
-## Operator hold and pending integration instructions
+## Operator hold history and current integration instructions
 
-Duncan explicitly selected **wait for all hosted purges** before applying the
-AGENTS.md changes or fast-forwarding the source-cleanup branch. Do not treat clean
-advertised refs, completed macpro maintenance, or a provider acknowledgement as
-proof that the two remaining hosted purges have completed. Repeat the old-object
-checks and inspect the relevant cached views after provider cleanup.
+Duncan initially selected **wait for all hosted purges** before AGENTS.md edits
+and source-cleanup integration. On 2026-11-21 he explicitly superseded that hold:
+accept the completed cleanup as sufficient to continue and keep the hosted-purge
+task open. The GitHub form's destructive-operation options were not submitted;
+Duncan will consider deletion/recreation separately later if needed. No such
+operation is authorized now. Codeberg's sent private request remains pending.
 
-When that gate passes, in this order:
+This is an Operator-approved deferral, not evidence that retained objects have
+been removed. Do not treat clean advertised refs, macpro's maintenance or a
+provider acknowledgement as proof of hosted-purge completion. Re-entry requires
+actual old-object and cached-view checks if that deferred task is resumed.
+
+Proceed with the rest of the work, in this order:
 
 1. Update both source and planning AGENTS.md with the policies below.
 2. Fast-forward `codex/planning-migration` into `release/0.5.x` using `--ff-only`.
@@ -141,16 +147,16 @@ When that gate passes, in this order:
    Recheck remote state, preserve concurrent work, and use normal pushes where
    possible. No further privacy-history rewrite is planned or authorized here.
 
-Pending integration policy:
+Requested integration policy:
 
 > Integrate branches only with commit-preserving rebase or `git merge --ff-only`.
 > Do not create ordinary merge commits or use squash merges, rebase squash/fixup,
 > autosquash, or commit-dropping operations to collapse work history.
 
-Pending commit-attribution policy, copied from Cayrn's convention and adopted
+Requested commit-attribution policy, copied from Cayrn's convention and adopted
 by Duncan on 2026-11-21: every future assistant-authored commit on source or
 planning branches must include both trailers, separated from the body by a blank
-line. The requested file edit remains held; subsequent commits already follow
+line. The earlier file-edit hold is lifted; subsequent commits already follow
 the explicit user instruction.
 
 ```text
@@ -163,5 +169,7 @@ Private provider-purge requests and submission evidence are in
 Codeberg's request was sent on 2026-11-21 at 21:19:53 UTC and its sent-message
 metadata was read back. No provider acknowledgement or completion is claimed.
 GitHub remains approved but unsubmitted because browser-control initialization
-failed before portal access; no ticket was created. Both hosted purges and all
-held integration/publication actions remain pending.
+failed before portal access; no ticket was created. Duncan subsequently reported
+that the form options invoke destructive operations and instructed us to stop
+this task for now. Hosted purge remains open and nonblocking; integration and
+release pushes are authorized to continue. No deletion/recreation is authorized.

@@ -23,9 +23,12 @@ use a dedicated non-default task branch when implementation is authorized.
 
 ## Mandatory order and release gate
 
-1. Finish all hosted purges. Duncan explicitly selected waiting for GitHub and
-   Codeberg completion; macpro is now verified purged.
-2. Apply the pending AGENTS.md policies (rebase/fast-forward only and Cayrn's
+1. Preserve the completed sanitization. Duncan subsequently accepted the current
+   coverage and deferred the remaining hosted purge as **open and nonblocking**.
+   Macpro is verified purged; GitHub retains old content and Codeberg's private
+   request awaits an outcome. Do not delete/recreate repositories or submit
+   further GitHub destructive form operations without new authorization.
+2. Apply the requested AGENTS.md policies (rebase/fast-forward only and Cayrn's
    two co-author trailers), fast-forward `codex/planning-migration` into
    `release/0.5.x`, then push all five release branches to all three remotes.
 3. Get a fresh CI baseline passing. CI was re-enabled by Duncan; the assistant
@@ -45,19 +48,21 @@ use a dedicated non-default task branch when implementation is authorized.
 8. Validate the actual 0.5.0 packages and real ChatGPT task workflows, then seek
    the Operator's release acceptance. Publishing 0.5.0 remains separately gated.
 
-Read-only CI verification may proceed while hosted cleanup is pending. Source
-implementation, the AGENTS.md edits and the requested integration remain held.
-No audit execution has begun.
+Duncan explicitly lifted the prior hosted-purge hold and instructed continuation
+of the rest of the work. AGENTS edits, the source-cleanup fast-forward, release
+branch pushes and bounded arc00 execution may proceed. The full audit remains
+unopened until CI/dependency preparation is accepted.
 
-Privacy cleanup of the repository and its affected remote history is an immediate
-prerequisite. Use only Acme Inc. in prose and anonymized identifiers in code,
-fixtures and paths. Keep all other project scope frozen during that cleanup.
+Use only Acme Inc. in prose and anonymized identifiers in code, fixtures and
+paths. Keep the deferred purge visible without misrepresenting retained hosted
+objects as removed. Repository deletion/recreation is for Duncan's possible later
+decision, not an action authorized by this continuation.
 
 ## Arc roadmap
 
 | Arc | Useful result | Dependencies / status |
 | --- | --- | --- |
-| 00 — CI and dependencies | Fresh green CI, latest external dependencies and green checks again | Held for full cleanup and the requested integration; Autonomous Mode choices explicitly selected |
+| 00 — CI and dependencies | Fresh green CI, latest external dependencies and green checks again | Ready after requested integration; hosted purge deferred; Autonomous Mode choices explicitly selected |
 | 01 — Foundation audit | Complete, severity-graded, evidence-based workspace and architecture findings with an implementation handoff | Detailed plan exists; execution has not started |
 | 02 — Foundation repair and consolidation | Audited defects repaired at their root, shared policies centralized, real behavior and integration demonstrated | Requires accepted audit; slices are created from actual findings, not invented in advance |
 | 03 — ChatGPT UX and reusable server readiness | Natural ChatGPT workflows, efficient discovery and payloads, consistent thin-server assembly, backend lifecycle and remaining existing extraction obligations | Blocked until audit and repair gates pass; detailed scope will be reconciled then |
@@ -96,8 +101,9 @@ implemented simply because an old document remains present.
 
 Planning, privacy cleanup and read-only CI inspection are active. Duncan requested
 CI and dependency preparation before audit or feature coding, and explicitly chose
-Autonomous Mode when implementation is ready. Full hosted purge is still an entry
-gate; no contributor has been dispatched and no source coding/audit has started.
+Autonomous Mode when implementation is ready. Duncan has now explicitly lifted
+the hosted-purge entry gate while retaining that task open. At this authorization
+update no contributor has been dispatched and no source coding/audit has started.
 
 | Role | Approved model and reasoning | Deployment and actual assignment |
 | --- | --- | --- |
@@ -203,3 +209,8 @@ home in `project05-discoverability/artifacts/`.
   audit; select Autonomous CDC 6.1 Sol High and CC 6 Luna High for ready implementation.
 - 2026-11-21 v1.3 — Make actual ChatGPT UX, discovery and balanced request/payload/
   information efficiency primary scope and release acceptance requirements.
+
+- 2026-11-21 v1.4 — Duncan paused the GitHub purge attempt, accepted cleanup so
+  far and directed continuation while keeping hosted purge open. This supersedes
+  the earlier wait-for-all-purges gate; no repository deletion/recreation is
+  authorized. Proceed with AGENTS policies, FF, release pushes and bounded arc00.
