@@ -28,9 +28,17 @@ Durable artifacts: dependency-inventory.json is the canonical64-package declarat
 
 ## Assignment history
 
-- cc-prompt.md initial full-upgrade assignment, predecessor none. Initial baseline compatibility decisions resolved; no executed slice02 correction pass yet. Current assignment cc-prompt.md. Five executed corrective-pass budget applies; report meaningful findings/progress through the existing parent relay.
+- cc-prompt.md initial full-upgrade assignment, predecessor none. Initial baseline compatibility decisions resolved; no executed slice02 correction pass yet. Current assignment cc-prompt-iteration01.md; predecessor cc-prompt.md preserved. Five executed corrective-pass budget applies; report meaningful findings/progress through the existing parent relay.
 
 
 ## Actual dispatch — 2026-11-21
 
 Runner thread01a2006e-2618-7721-b361-1bd809d21d87, owned exec session8373, launched from the exact preserved cc-prompt.md. CDC inspected actual turn_context at23:25:57.185UTC: gpt-6-luna/high, physical source cwd, on-request approval, workspace-write with physical planning added. Backend beyond configured identity is unreported. CC now exclusively owns source/index until return; initial stage is required intake/readback, then baseline fixtures before dependency edits. CDC remains planning/design/independent-review owner. No extra active contributor and no detached mutator.
+
+
+## Dispatch clarification — iteration01
+
+Initial exact-Luna session8373 exited before edits after it did not locate its actual on-disk turn_context. The initial prompt's missing concrete new-session filename repeated an intake ambiguity; CDC verified configuration and preserved the stopped attempt/limited reads. Iteration01 supplies that exact filename and same-session resume, with full remaining intake still required. No source/probe change or implementation correction pass occurred. Source returns CDC-owned until resumed runner starts, then CC exclusive until return. This does not change model, verification standard or implementation scope.
+
+
+Future initial packets must explicitly state that coordinator-applied/independently verified Operator configuration is the authoritative receipt that CC acknowledges. Exact own-session metadata, when available, is a bounded cross-check; unavailable introspection/generic self-description does not manufacture a mismatch or require hidden backend attestation. The original issued prompt remains preserved; iteration01 makes this existing selection contract explicit, with the actual new-session path/projection supplied. This local packet-design correction follows parent direction, not a model substitution or weaker selection standard.

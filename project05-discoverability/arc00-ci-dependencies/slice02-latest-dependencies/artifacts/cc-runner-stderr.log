@@ -1,0 +1,18 @@
+2026-11-21T23:25:48.423349Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:25:48.425607Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:25:48.438193Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:25:48.438543Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:25:48.439018Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:25:48.833270Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:25:49.020138Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-11-21T23:25:49.020161Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-11-21T23:25:49.149064Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:25:49.232839Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:25:49.666681Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:25:49.814162Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:25:57.272987Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:26:03.551517Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:26:09.780046Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:26:28.254081Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:26:30.782351Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:26:49.524960Z  WARN codex_file_watcher: failed to unwatch /Users/oubiwann/Library/Application Support/ChatGPT-Profiles/personal/codex-home/skills: No watch was found.
