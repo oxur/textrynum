@@ -1,6 +1,6 @@
 # CDC verification — slice01 baseline
 
-Current verdict: **review in progress; not accepted**. Actual complete Linux CI and the canonical closing/bubble-up/retrospective records remain required. This is a performed independent review record, not a pre-filled success record.
+Current verdict: **review in progress; not accepted**. Actual complete Linux CI is now verified; canonical closing/bubble-up/retrospective records remain required. This is a performed independent review record, not a pre-filled success record.
 
 ## Identity and reviewed state
 
@@ -29,7 +29,7 @@ At the exact returned source SHA on macOS aarch64, Rust/Cargo1.95.0:
 
 CC's complete local debug/release build, strict clippy and full test results were inspected directly in the runner/logs: each full suite has85 result summaries totaling2,437 passed,0 failed,61 pre-existing ignored,0 filtered. These full local gates are doer-attested observations, not CDC reruns. The61 ignored cases were unchanged; they are not accepted evidence of the behavior they skip. The later audit/release obligations remain open.
 
-The real workflow on Linux uses Rust1.100.0, distinct from local1.95.0. After checking the exact unchanged sole workflow and active state, CDC pushed only the authorized task branch. Fresh [CI run44957414892](https://github.com/oxur/textrynum/actions/runs/44957414892) is tied to edc8db69. Debug job137008481299 reached Lint after successful freshness/format/build; release job137008481067 is building after format. Final full-job/step conclusions are pending and cannot be inferred from local success. No PR, main/release update, merge, tag, publish, deploy or support/purge action occurred.
+The real workflow on Linux uses Rust1.100.0, distinct from local1.95.0. After checking the exact unchanged sole workflow and active state, CDC pushed only the authorized task branch. Fresh [CI run44957414892](https://github.com/oxur/textrynum/actions/runs/44957414892) is tied to edc8db69. CDC retrieved every job/step conclusion and both complete job logs after final completion at2026-11-21T23:06:23Z. Debug job137008481299 and release job137008481067 both succeeded. Each Linux Rust1.100.0 job passed formatting, locked all-feature workspace build, strict clippy and full tests; debug passed actual freshness. Release freshness alone was intentionally skipped by the unchanged debug-only predicate. Each job has85 test summaries totaling2,437 passed,0 failed,61 unchanged ignored,0 measured/filtered; no actual compiler-error or failed-test marker. Complete CI logs inspected at /private/tmp/textrynum-slice01-ci-{debug,release}.log, with GitHub retaining authoritative run logs. No PR, main/release update, merge, tag, publish, deploy or support/purge action occurred.
 
 ## Execution observations retained
 
@@ -39,12 +39,12 @@ CC launched a queued duplicate debug build while the original owned build held t
 
 ## Row walk and remaining gate
 
-Opening ledger has3 rows; all3 are accounted for:
+Opening ledger has3 rows; all3 are accounted for (CI evidence updated after completion):
 
 | Row | Current evidence and disposition |
 | --- | --- |
 | BASE-01 | Minimal repair is independently inspected/reproduced with no blocking source finding; final row closure joins the full slice verdict. |
-| BASE-02 | Actual complete debug/release CI is in progress; remains open. |
+| BASE-02 | Actual complete debug/release CI passed at the exact candidate; final row closure joins the slice verdict. |
 | BASE-03 | Intake/delivery reviewed; canonical CC closing report, final bubble-up check and CDC retrospective remain open. |
 
 Do not advance the dependency sweep until BASE-02 and BASE-03 are complete and this verdict is updated. The Operator has now explicitly approved Rust1.94 and current RMCP facade migration for the subsequent sweep; those choices do not waive this baseline gate. Full audit and later features remain unopened.
