@@ -2,7 +2,7 @@
 
 > Historical slice plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/dev/ecl/0028-phase-3-detailed-implementation-plan-make-acme-inc-work.md, lines 873-1026. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0028-phase-3-detailed-implementation-plan-make-acme-inc-work.md, lines 873-1026. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## 5. Milestone 9.4: Deduplication Stage
 

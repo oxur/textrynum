@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/ecl/0002-pipeline-crate-deep-analysis-claude-code-prompts.md, lines 1-270. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0002-pipeline-crate-deep-analysis-claude-code-prompts.md, lines 1-270. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Pipeline Crate Deep Analysis — Claude Code Prompts
 

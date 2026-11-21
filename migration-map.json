@@ -1,5 +1,5 @@
 {
-  "source_revision": "f19bb3b9bc00295dea8eabb40247b6eb9e6fabdf",
+  "source_revision": "856af87561c7e53379ec9094c69a01211d3e5283",
   "captured_on": "2026-11-21",
   "records": [
     {
@@ -37,7 +37,7 @@
       "mtime_ns": 1776192252787895774,
       "tracked": true,
       "history": [
-        "652cf7d|2026-04-14T14:49:13-05:00|feat: Add MCP helpers, McpErrorContextExt, and date utilities"
+        "3f1188d|2026-04-14T14:49:13-05:00|feat: Add MCP helpers, McpErrorContextExt, and date utilities"
       ],
       "disposition": "migrated",
       "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
@@ -173,7 +173,7 @@
       "mtime_ns": 1774475148274553555,
       "tracked": true,
       "history": [
-        "c9d961c|2026-03-25T16:46:15-05:00|Added first thoughts on an event bus design."
+        "0bb65c5|2026-03-25T16:46:15-05:00|Added first thoughts on an event bus design."
       ],
       "disposition": "migrated",
       "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
@@ -327,8 +327,8 @@
       "mtime_ns": 1773436526929982103,
       "tracked": true,
       "history": [
-        "ac368b5|2026-03-13T16:15:43-05:00|Formatting for ASCII diagram.",
-        "78c7f65|2026-03-13T16:10:26-05:00|docs: Rust quality pass on ECL pipeline runner design (0017 v1.1)"
+        "0a307dd|2026-03-13T16:15:43-05:00|Formatting for ASCII diagram.",
+        "b97375b|2026-03-13T16:10:26-05:00|docs: Rust quality pass on ECL pipeline runner design (0017 v1.1)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -355,7 +355,7 @@
       "mtime_ns": 1773437170454138930,
       "tracked": true,
       "history": [
-        "bed4b16|2026-03-13T16:28:52-05:00|State transitions."
+        "664ffb8|2026-03-13T16:28:52-05:00|State transitions."
       ],
       "disposition": "migrated",
       "segments": [
@@ -583,7 +583,7 @@
       "mtime_ns": 1773069781406597413,
       "tracked": true,
       "history": [
-        "ccb078c|2026-03-09T10:38:08-05:00|refactor: Restructure fabryk crate hierarchy for better downstream UX"
+        "6a8ebbc|2026-03-09T10:38:08-05:00|refactor: Restructure fabryk crate hierarchy for better downstream UX"
       ],
       "disposition": "migrated",
       "segments": [
@@ -610,7 +610,7 @@
       "mtime_ns": 1773424758544319690,
       "tracked": true,
       "history": [
-        "3de2b93|2026-03-13T13:00:21-05:00|docs: Add research doc on Rust workflow/pipeline ecosystem (2026)"
+        "a358d49|2026-03-13T13:00:21-05:00|docs: Add research doc on Rust workflow/pipeline ecosystem (2026)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -637,7 +637,7 @@
       "mtime_ns": 1774108450995731332,
       "tracked": true,
       "history": [
-        "ae63f44|2026-03-19T10:52:27-05:00|Added research on the current state of theorem provers."
+        "ba80928|2026-03-19T10:52:27-05:00|Added research on the current state of theorem provers."
       ],
       "disposition": "migrated",
       "segments": [
@@ -664,7 +664,7 @@
       "mtime_ns": 1774477768913755659,
       "tracked": true,
       "history": [
-        "3bb0fff|2026-03-25T17:29:53-05:00|Added research on event buses in Rust."
+        "d1a2aa8|2026-03-25T17:29:53-05:00|Added research on event buses in Rust."
       ],
       "disposition": "migrated",
       "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
@@ -692,7 +692,7 @@
       "mtime_ns": 1776120421788652941,
       "tracked": true,
       "history": [
-        "a678a15|2026-04-13T18:49:09-05:00|Added research docs."
+        "b626c3e|2026-04-13T18:49:09-05:00|Added research docs."
       ],
       "disposition": "migrated",
       "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
@@ -720,7 +720,7 @@
       "mtime_ns": 1776120441135508742,
       "tracked": true,
       "history": [
-        "a678a15|2026-04-13T18:49:09-05:00|Added research docs."
+        "b626c3e|2026-04-13T18:49:09-05:00|Added research docs."
       ],
       "disposition": "migrated",
       "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
@@ -748,7 +748,7 @@
       "mtime_ns": 1773434555807484755,
       "tracked": true,
       "history": [
-        "78c7f65|2026-03-13T16:10:26-05:00|docs: Rust quality pass on ECL pipeline runner design (0017 v1.1)",
+        "b97375b|2026-03-13T16:10:26-05:00|docs: Rust quality pass on ECL pipeline runner design (0017 v1.1)",
         "b0aa827|2026-01-22T18:59:51-06:00|Formatting.",
         "27f5b1a|2026-01-15T16:38:37-06:00|Added project files."
       ],
@@ -788,7 +788,7 @@
       "mtime_ns": 1773437215537828167,
       "tracked": true,
       "history": [
-        "bed4b16|2026-03-13T16:28:52-05:00|State transitions.",
+        "664ffb8|2026-03-13T16:28:52-05:00|State transitions.",
         "da71ce6|2026-01-22T20:05:01-06:00|Added project plan."
       ],
       "disposition": "migrated",
@@ -1505,7 +1505,7 @@
       "mtime_ns": 1775922025812301008,
       "tracked": true,
       "history": [
-        "068c85f|2026-04-03T14:31:17-05:00|feat(fabryk-mcp-content): Add extended filter support and extra source tool slots"
+        "83d4cb2|2026-04-03T14:31:17-05:00|feat(fabryk-mcp-content): Add extended filter support and extra source tool slots"
       ],
       "disposition": "migrated",
       "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
@@ -1533,7 +1533,7 @@
       "mtime_ns": 1776359193274759737,
       "tracked": true,
       "history": [
-        "8ae5aa2|2026-04-16T12:35:30-05:00|feat: Add LanceDbConfig, promote SameAs/Cites relationships"
+        "4af4439|2026-04-16T12:35:30-05:00|feat: Add LanceDbConfig, promote SameAs/Cites relationships"
       ],
       "disposition": "migrated",
       "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
@@ -1645,7 +1645,7 @@
       "mtime_ns": 1773425643755586292,
       "tracked": true,
       "history": [
-        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+        "f38e745|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1672,7 +1672,7 @@
       "mtime_ns": 1773425707018934930,
       "tracked": true,
       "history": [
-        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+        "f38e745|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1699,7 +1699,7 @@
       "mtime_ns": 1773425470586493392,
       "tracked": true,
       "history": [
-        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+        "f38e745|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1726,7 +1726,7 @@
       "mtime_ns": 1773425477848558564,
       "tracked": true,
       "history": [
-        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+        "f38e745|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1753,7 +1753,7 @@
       "mtime_ns": 1773425487087245946,
       "tracked": true,
       "history": [
-        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+        "f38e745|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1780,7 +1780,7 @@
       "mtime_ns": 1773425493047539200,
       "tracked": true,
       "history": [
-        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+        "f38e745|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1807,7 +1807,7 @@
       "mtime_ns": 1773425496788397143,
       "tracked": true,
       "history": [
-        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+        "f38e745|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1834,7 +1834,7 @@
       "mtime_ns": 1773425499991974305,
       "tracked": true,
       "history": [
-        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+        "f38e745|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1861,7 +1861,7 @@
       "mtime_ns": 1773425503242768483,
       "tracked": true,
       "history": [
-        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+        "f38e745|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1888,7 +1888,7 @@
       "mtime_ns": 1773434195085832457,
       "tracked": true,
       "history": [
-        "78c7f65|2026-03-13T16:10:26-05:00|docs: Rust quality pass on ECL pipeline runner design (0017 v1.1)"
+        "b97375b|2026-03-13T16:10:26-05:00|docs: Rust quality pass on ECL pipeline runner design (0017 v1.1)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1915,7 +1915,7 @@
       "mtime_ns": 1773434247710254698,
       "tracked": true,
       "history": [
-        "78c7f65|2026-03-13T16:10:26-05:00|docs: Rust quality pass on ECL pipeline runner design (0017 v1.1)"
+        "b97375b|2026-03-13T16:10:26-05:00|docs: Rust quality pass on ECL pipeline runner design (0017 v1.1)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1942,7 +1942,7 @@
       "mtime_ns": 1773438293906736764,
       "tracked": true,
       "history": [
-        "c59aca0|2026-03-13T16:49:10-05:00|docs: Add Phase 1 milestone implementation plans (1.1, 1.2, 1.3)"
+        "a6edf8b|2026-03-13T16:49:10-05:00|docs: Add Phase 1 milestone implementation plans (1.1, 1.2, 1.3)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1969,7 +1969,7 @@
       "mtime_ns": 1773438280684361731,
       "tracked": true,
       "history": [
-        "c59aca0|2026-03-13T16:49:10-05:00|docs: Add Phase 1 milestone implementation plans (1.1, 1.2, 1.3)"
+        "a6edf8b|2026-03-13T16:49:10-05:00|docs: Add Phase 1 milestone implementation plans (1.1, 1.2, 1.3)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -1996,7 +1996,7 @@
       "mtime_ns": 1773438390366934905,
       "tracked": true,
       "history": [
-        "c59aca0|2026-03-13T16:49:10-05:00|docs: Add Phase 1 milestone implementation plans (1.1, 1.2, 1.3)"
+        "a6edf8b|2026-03-13T16:49:10-05:00|docs: Add Phase 1 milestone implementation plans (1.1, 1.2, 1.3)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2023,7 +2023,7 @@
       "mtime_ns": 1773438637054910054,
       "tracked": true,
       "history": [
-        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+        "59333a7|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2050,7 +2050,7 @@
       "mtime_ns": 1773438778410019921,
       "tracked": true,
       "history": [
-        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+        "59333a7|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2077,7 +2077,7 @@
       "mtime_ns": 1773438755458738717,
       "tracked": true,
       "history": [
-        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+        "59333a7|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2104,7 +2104,7 @@
       "mtime_ns": 1773439141476919286,
       "tracked": true,
       "history": [
-        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+        "59333a7|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2131,7 +2131,7 @@
       "mtime_ns": 1773439119874618114,
       "tracked": true,
       "history": [
-        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+        "59333a7|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2158,7 +2158,7 @@
       "mtime_ns": 1773439114747527339,
       "tracked": true,
       "history": [
-        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+        "59333a7|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2185,7 +2185,7 @@
       "mtime_ns": 1773439078646456996,
       "tracked": true,
       "history": [
-        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+        "59333a7|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2212,7 +2212,7 @@
       "mtime_ns": 1773439475019732868,
       "tracked": true,
       "history": [
-        "0f43630|2026-03-13T17:14:39-05:00|docs: Add Phase 5-6 milestone implementation plans (5.1, 5.2, 6.1)"
+        "555f37d|2026-03-13T17:14:39-05:00|docs: Add Phase 5-6 milestone implementation plans (5.1, 5.2, 6.1)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2239,7 +2239,7 @@
       "mtime_ns": 1773439436630979497,
       "tracked": true,
       "history": [
-        "0f43630|2026-03-13T17:14:39-05:00|docs: Add Phase 5-6 milestone implementation plans (5.1, 5.2, 6.1)"
+        "555f37d|2026-03-13T17:14:39-05:00|docs: Add Phase 5-6 milestone implementation plans (5.1, 5.2, 6.1)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2266,7 +2266,7 @@
       "mtime_ns": 1773439456121143344,
       "tracked": true,
       "history": [
-        "0f43630|2026-03-13T17:14:39-05:00|docs: Add Phase 5-6 milestone implementation plans (5.1, 5.2, 6.1)"
+        "555f37d|2026-03-13T17:14:39-05:00|docs: Add Phase 5-6 milestone implementation plans (5.1, 5.2, 6.1)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2293,7 +2293,7 @@
       "mtime_ns": 1774108451165368352,
       "tracked": true,
       "history": [
-        "32eedda|2026-03-17T13:22:33-05:00|feat(ecl-adapter-zapier): Zapier webhook push source adapter (milestone 7.1 + 7.2)"
+        "d95f31e|2026-03-17T13:22:33-05:00|feat(ecl-adapter-zapier): Zapier webhook push source adapter (milestone 7.1 + 7.2)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2315,13 +2315,13 @@
     },
     {
       "source": "crates/design/dev/ecl/0026-phase-1-detailed-implementation-plan-make-affinity-work.md",
-      "sha256": "a6a43e1a847656240e12b79fbf7e0c111df24b83c6131d0bfee87c3ee1729070",
+      "sha256": "e723dccaf20be21e84ff7a754ab16a4c4a7070d8d93c8ba7f5d98fdfd29ce10f",
       "bytes": 47760,
       "mtime_ns": 1774108451200313879,
       "tracked": true,
       "history": [
-        "659de70|2026-03-17T15:49:42-05:00|feat(ecl-stages): Field mapping stage (Affinity Phase 1, milestone 7.2)",
-        "e092e34|2026-03-17T15:45:49-05:00|feat(ecl-stages): Record type & CSV parse stage (Affinity Phase 1, milestone 7.1)"
+        "7981f49|2026-03-17T15:49:42-05:00|feat(ecl-stages): Field mapping stage (Affinity Phase 1, milestone 7.2)",
+        "9012d32|2026-03-17T15:45:49-05:00|feat(ecl-stages): Record type & CSV parse stage (Affinity Phase 1, milestone 7.1)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2438,7 +2438,7 @@
       ],
       "project": "project04-ecl-pipeline-engine",
       "mtime_local": "2026-03-21T10:54:11.200314-05:00",
-      "source_blob": "c28333674b915863292c94f00638102dbe0491a5"
+      "source_blob": "013e9ffe6d42fda00cb7cc74fcae2f0d3f358f91"
     },
     {
       "source": "crates/design/dev/ecl/0027-phase-2-detailed-implementation-plan-make-giant-eagle-work.md",
@@ -2447,8 +2447,8 @@
       "mtime_ns": 1774108451200825758,
       "tracked": true,
       "history": [
-        "659de70|2026-03-17T15:49:42-05:00|feat(ecl-stages): Field mapping stage (Affinity Phase 1, milestone 7.2)",
-        "e092e34|2026-03-17T15:45:49-05:00|feat(ecl-stages): Record type & CSV parse stage (Affinity Phase 1, milestone 7.1)"
+        "7981f49|2026-03-17T15:49:42-05:00|feat(ecl-stages): Field mapping stage (Affinity Phase 1, milestone 7.2)",
+        "9012d32|2026-03-17T15:45:49-05:00|feat(ecl-stages): Record type & CSV parse stage (Affinity Phase 1, milestone 7.1)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2569,12 +2569,12 @@
     },
     {
       "source": "crates/design/dev/ecl/0028-phase-3-detailed-implementation-plan-make-acme-inc-work.md",
-      "sha256": "241ef91c6e09fbde7d1fb8884755859e8731ec9f17a6664d06aca9f276c53a37",
-      "bytes": 54899,
+      "sha256": "f0664039e51c652f17851a27adfb7df218f25bb1afe7fbe0729f285fe815a5a2",
+      "bytes": 54876,
       "mtime_ns": 1774108451184308521,
       "tracked": true,
       "history": [
-        "e092e34|2026-03-17T15:45:49-05:00|feat(ecl-stages): Record type & CSV parse stage (Affinity Phase 1, milestone 7.1)"
+        "9012d32|2026-03-17T15:45:49-05:00|feat(ecl-stages): Record type & CSV parse stage (Affinity Phase 1, milestone 7.1)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2691,16 +2691,16 @@
       ],
       "project": "project04-ecl-pipeline-engine",
       "mtime_local": "2026-03-21T10:54:11.184309-05:00",
-      "source_blob": "63f8b44f4e5e8d4956b07181e28fc2d2cbf87792"
+      "source_blob": "cd979859eaaa93f35435227559337335fab41ecf"
     },
     {
       "source": "crates/design/dev/ecl/0029-phase-4-detailed-implementation-plan-full-parity.md",
-      "sha256": "cc94f058416df65eccc60e7154f275e108a1285d33e08d8e2a239726e80de04c",
-      "bytes": 47374,
+      "sha256": "42a9e4048c3df21558c579b99aa16bd5b65bd95eae32f6164e2c335fb8845c3b",
+      "bytes": 47361,
       "mtime_ns": 1774108451201110676,
       "tracked": true,
       "history": [
-        "659de70|2026-03-17T15:49:42-05:00|feat(ecl-stages): Field mapping stage (Affinity Phase 1, milestone 7.2)"
+        "7981f49|2026-03-17T15:49:42-05:00|feat(ecl-stages): Field mapping stage (Affinity Phase 1, milestone 7.2)"
       ],
       "disposition": "migrated",
       "segments": [
@@ -2817,7 +2817,7 @@
       ],
       "project": "project04-ecl-pipeline-engine",
       "mtime_local": "2026-03-21T10:54:11.201111-05:00",
-      "source_blob": "ea6793bad6b860532cea6a9812e9508c3363390b"
+      "source_blob": "505d21135c6814a3cb00b37697858176b3475f22"
     },
     {
       "source": "crates/design/dev/fabryk/0001-cc-prompt-fabryk-1.md",
@@ -4083,8 +4083,8 @@
       "mtime_ns": 1776184262900816779,
       "tracked": true,
       "history": [
-        "17be2fd|2026-04-13T20:03:35-05:00|More notes from the day's adventures.",
-        "9a72635|2026-04-13T19:16:38-05:00|Added initial medys doc."
+        "0525ea8|2026-04-13T20:03:35-05:00|More notes from the day's adventures.",
+        "95be08a|2026-04-13T19:16:38-05:00|Added initial medys doc."
       ],
       "disposition": "migrated",
       "reason": "Assigned by Duncan on 2026-11-21 to the new project split; historical content preserved.",
@@ -4107,8 +4107,8 @@
     },
     {
       "source": "workbench/0026-banyan-data-pipeline-requirements-analysis.md",
-      "sha256": "458d73be276472ac487a4afde622d4bbf247f3440833cda51e7b6b477cf12a7b",
-      "bytes": 24210,
+      "sha256": "1a83ee185a7b3970725b86fc0a38b455f700c215df337a5e51ed7e3881c9ed5c",
+      "bytes": 24201,
       "mtime_ns": 1773774640171563647,
       "tracked": false,
       "history": [],
@@ -4131,7 +4131,7 @@
     },
     {
       "source": "workbench/0027-ecl-banyan-pipeline-implementation-plan.md",
-      "sha256": "c4ba633200d89337745b409237198e6cb256c593b7014ae3333e74dd3924401e",
+      "sha256": "d27af5a4484f59b6b8500df0e8d3e230c4f5ea28cc1ebdc2352c6952e36fdbf9",
       "bytes": 27872,
       "mtime_ns": 1773774815496444284,
       "tracked": false,
@@ -4155,7 +4155,7 @@
     },
     {
       "source": "workbench/0028-phase-1-detailed-implementation-plan.md",
-      "sha256": "0dd61c06d4a64a4fea409808c178da221a84b54e1744fa1728c60739c5b95335",
+      "sha256": "db67dbd0e57c88989228f1b4d7bccd11a252412a3ae68924e76229c45c1cd262",
       "bytes": 47736,
       "mtime_ns": 1773775529243086532,
       "tracked": false,
@@ -4187,8 +4187,8 @@
     },
     {
       "source": "workbench/0030-phase-3-detailed-implementation-plan.md",
-      "sha256": "241ef91c6e09fbde7d1fb8884755859e8731ec9f17a6664d06aca9f276c53a37",
-      "bytes": 54899,
+      "sha256": "f0664039e51c652f17851a27adfb7df218f25bb1afe7fbe0729f285fe815a5a2",
+      "bytes": 54876,
       "mtime_ns": 1773780332203258566,
       "tracked": false,
       "history": [],
@@ -4203,8 +4203,8 @@
     },
     {
       "source": "workbench/0031-phase-4-detailed-implementation-plan.md",
-      "sha256": "cc94f058416df65eccc60e7154f275e108a1285d33e08d8e2a239726e80de04c",
-      "bytes": 47374,
+      "sha256": "42a9e4048c3df21558c579b99aa16bd5b65bd95eae32f6164e2c335fb8845c3b",
+      "bytes": 47361,
       "mtime_ns": 1773780579834923939,
       "tracked": false,
       "history": [],
@@ -4323,7 +4323,7 @@
     },
     {
       "source": "workbench/RELEASE-NOTES-0.4.0.md",
-      "sha256": "3c07ece5210961253eb0545d98f01389c3671c349436fadf0b0122c87b6531d4",
+      "sha256": "4f023623f2c246f2e73238492f2ba64a506192718884d3d667ff716e0097e149",
       "bytes": 14856,
       "mtime_ns": 1774109003420312180,
       "tracked": false,
@@ -5942,7 +5942,7 @@
       }
     }
   ],
-  "import_commit": "3a39aea33a9d133d2546c66bbbe361cbcfe97f70",
+  "import_commit": "2d006a743dcaf55696d077259751cd84d8162bf2",
   "historical_exception": "Operator requested historical splitting and organization only; do not invent missing plans, criteria, assignments, close reports, verification, or corrected links.",
   "summary": {
     "migrated": 138,
@@ -6244,6 +6244,7 @@
     "project05-discoverability/artifacts/0015-plan-cross-crate-duplicate-code-consolidation.md",
     "project05-discoverability/artifacts/0024-code-audit-report-poc-mcp-server-final-fabryk-extraction.md",
     "project05-discoverability/artifacts/duplicate-code-audit.md",
+    "project05-discoverability/artifacts/privacy-rewrite-record.md",
     "project05-discoverability/ledger.md",
     "project05-discoverability/project-plan.md",
     "project06-pipeline/ledger.md",
@@ -6274,5 +6275,347 @@
     "concept_cards": "Current work owned by ai-engineering",
     "legacy_agent_workflow": "cancelled in favor of project06",
     "audit_outputs": "project05-discoverability/artifacts/"
+  },
+  "history_rewrite": {
+    "date": "2026-11-21",
+    "purpose": "Remove private customer identity from file contents, paths, commits and tags; use Acme Inc. and anonymous identifiers.",
+    "provenance": "Hashes and sizes now describe sanitized import bytes. Previously recorded original hashes are superseded. mtimes remain historical capture metadata.",
+    "pre_rewrite_source_revision": "f19bb3b9bc00295dea8eabb40247b6eb9e6fabdf",
+    "pre_rewrite_import_commit": "3a39aea33a9d133d2546c66bbbe361cbcfe97f70",
+    "commit_map": {
+      "006f66c757972abfad38b97586a6b9eb381dd27d": "bf45eae50c4daad654e7f7a0fbd5e6dddb6d9cb4",
+      "007bc762317b7589d3958edea9e48f47459f2882": "0d5ce414a15fe0c16040d23264bd52bf87189674",
+      "0276c6645b54ddbce9c0347585543dcd77d8077e": "183e29d852806721e5e21b62d836ce0dbd3729f1",
+      "02824182fcbd0a98812e1c7037f45ff2b6e92252": "02824182fcbd0a98812e1c7037f45ff2b6e92252",
+      "033e134342519536da39b195c5e834e91e24ddec": "033e134342519536da39b195c5e834e91e24ddec",
+      "041c8cee238a1e1c51e5de1c6323bdad6efd98e8": "969d5aff077677d091932a2589efddfd0ce3ea07",
+      "04d1f2c3b71837103300d746badf281386e5a77d": "429c3e9ba96fd10c9f27da5b29154b2f39f92635",
+      "05ad3ff33f9e8ca946588af997f57add6df201e8": "f25e6e0190b7f47308c5186d9a44619b4694d6c1",
+      "05d0e39f2cd66d1e124243df584dddb43b556dd9": "4e968d563a1ff3ca62ace5c12a0d7bc85c8d2063",
+      "062d25cb7c4fa602b55286ab6617a67e8e73754f": "e0804f8d8489f1cf8ea3cff1445df8d51ed7f4be",
+      "06368035c79ae3c11bf72d6e015e8295c9d14f02": "04f9de9268b87594190cb04ccdf02c48b5851a82",
+      "068c85f84a10bd5db5695f9a59ff355d3181c7e3": "83d4cb219df3cca6fb2fcff7e5ed6f7d5a66766a",
+      "08503430f20fcb4dea5ef2e68dfc25bb5821944f": "bffd74594c33fb5504e07a85458340173863f4d3",
+      "085720dd9ee677b759f522f54d7e547f7389af71": "085720dd9ee677b759f522f54d7e547f7389af71",
+      "0a781d74cd64cb396a2e0986852718ba8649c8a2": "13d412150b05ea7282180125e8924cb10e41c0b5",
+      "0abc855735fe92fd365bf040fea7698023b4e051": "aa9be05d600d11464a6b499de9c08869e27ae7b3",
+      "0c5c9d9f66e3e16826e763afcd669fdb50761119": "0c5c9d9f66e3e16826e763afcd669fdb50761119",
+      "0d2c17bcda0bd6479b8abd689196fa8d8b11a2d4": "697be4c272aed0756b021c3d68cd5dce4fbfdeb2",
+      "0d92313cfef2119db8e979d6d2bffe97ccf68234": "a3d09cd19a3524d96dcf634cc3ed88a3ff8a0c1c",
+      "0f065c3401454e2afd2007bd9c40e5d7d759c9ae": "89a1db9cd82ddc565a36b23182514cf66adc1791",
+      "0f4363090812eeb54cc7dc0c1a4b65f32064ac79": "555f37df615bc696603933ff7c19c51ee561a27e",
+      "12525f09efa316dfd19dce4fdc8445c6308f7c8e": "12525f09efa316dfd19dce4fdc8445c6308f7c8e",
+      "139bb4c590004ec3ab1779da7051594e4e00c559": "e6ed90f82b8f999cec6c0df1a1b95d786106da4b",
+      "15db213417b2e26166d1f2ecb4a13b5a801f1164": "26f8d03ff4f3d7ecbc806e68ee2a16558dd22651",
+      "16cb42ad739d7230bff2f83e7e5e23f0fc98a36d": "778418002a4c96aae189890236a9e100c2fcdf04",
+      "16cc1cf51c756ce6e4f1b56b7661057dea3801e1": "16cc1cf51c756ce6e4f1b56b7661057dea3801e1",
+      "177adbb87f512adf9fadb9873359bd86cb02d73f": "6108aa255b97dbf3740b76be50cfa6726b8158a7",
+      "17be2fdd1612a752d2a4bdb90db2e7b9baf86587": "0525ea8eb85032b483090a215844851ecddc1454",
+      "1945aa652d32e2363b22c6248fa4f3fbc9622b32": "8a108c754d043d184f1cbf205724ad648636f9e7",
+      "19be85a9516158214723f886217fa37acaf49b0b": "df5028aa2f3de2fc9d8d5445872e02cfd5fab745",
+      "19c07b94e2aed3e3aefb554ecfd9b57cc8945020": "19c07b94e2aed3e3aefb554ecfd9b57cc8945020",
+      "1a248c455f85435c38324b3861a3b6f7594a0974": "c4819816ecdc680d877c8a5003f261d59f1e5c22",
+      "1ca3660c8178f8cd5d1fdc0234fdeaa4714018f7": "78a4878385a9c32e071a16267806bdd0f747d128",
+      "1ceb96e11d4a70840ce17f3d94defae7457fa4a0": "1ceb96e11d4a70840ce17f3d94defae7457fa4a0",
+      "1d2fca767fd29e91dcb61584e5795ca37210302b": "1d2fca767fd29e91dcb61584e5795ca37210302b",
+      "1f43851dda6929fb5b1614b34b1ee0de2225d18d": "14c0220044be36e2895cebf208f5bc7421d52402",
+      "2211212de438ff9617b7435e857c4976e8638562": "2211212de438ff9617b7435e857c4976e8638562",
+      "228e780d9500df8e6f8da3fd0fca1f289512e6ea": "d3f12317e3a3d26327a233748fdff4a23152dc4e",
+      "229b5a48afc8d5102ecfdd09c3f50cfdcad20033": "229b5a48afc8d5102ecfdd09c3f50cfdcad20033",
+      "2373950f15743373c5dda7288e4a51707160cc1c": "2373950f15743373c5dda7288e4a51707160cc1c",
+      "23f750d1e6cc89170f908185bdca86aa97bcbb3d": "b0e4794015225f917133211de8bb95616322baa5",
+      "24329ce45335a55e4914ac6c126900e60f7218f9": "2a498acdb7203670a92a153c9369bb4a520ddbb2",
+      "24875bbbdef3f6e107f3f1bcf9df9d7800e8c5c9": "169b19fef3191ea82afdf8fe7af2642b498e85aa",
+      "2497bc2e285aa902a677f58edfe16fad03b0adfb": "2497bc2e285aa902a677f58edfe16fad03b0adfb",
+      "27f5b1a41dd11879f68b90f1c5f8b789caa63aa2": "27f5b1a41dd11879f68b90f1c5f8b789caa63aa2",
+      "2b5b22de1de96db3fd50b3747e395827a4753b58": "2b5b22de1de96db3fd50b3747e395827a4753b58",
+      "2bd92c317739666d48207df3106ad41d3661dea8": "2bd92c317739666d48207df3106ad41d3661dea8",
+      "2d3285821f693dfb267f1fc68bd1a35fe2dea280": "2d3285821f693dfb267f1fc68bd1a35fe2dea280",
+      "315740a6cfc05baa4df7f32c7f93c444a57384cd": "315740a6cfc05baa4df7f32c7f93c444a57384cd",
+      "32502774965ef6a1eebcfeedee0549e5d0e670c8": "71d4ba643c19bf7e8164f542eb5580c68da7b66b",
+      "3281a81542e9955c75cf0e4622f0c21fef54840e": "e429d418368475928a36f193f63f5a4d042368b4",
+      "32eedda15df8dfc40c615a54a931a1b81a812b9d": "d95f31ed63cda34253dd6905feb23a983bdfaa47",
+      "3541a4dea66998e45d0e5e978868f7da342ff02f": "5a939eec25e61ccba4b4845260d0f28256537776",
+      "3551b32afddcb8617f38d78af7157f467a5824dc": "6b98e4d7826ba89280e1477d2cf908196732a941",
+      "35f5aff490a661cfa148c69867847a6a09bfada4": "f33e10cd8bf03176c4651362d8e2a294053a99be",
+      "39f93d46aec061930eca4196aea4b3a6babe8e1c": "167512bd47cc2d4b0b1cbf99a7bdf5e4317718f6",
+      "3a39aea33a9d133d2546c66bbbe361cbcfe97f70": "2d006a743dcaf55696d077259751cd84d8162bf2",
+      "3bb0fffd9ac5983056e005fa72249eb2f6b23efd": "d1a2aa8e3957641f0f6d1ef9016c183afe7ab4c4",
+      "3bebdecaddb67e52ab1a87a0769e4dc8aae1490f": "11cae3882c1a4d093175456549b843b6755591e1",
+      "3d89c3453e76990e52332b81d08d72e687358e6b": "f2880d1fa1177d95b101b5f4a895f71adbe097e2",
+      "3da7dd04aaa8b0df0b8e269ca5f7a590e9e3fc27": "2383c90c2d783339480047f8fee584f9ca66263d",
+      "3de2b9345e2c83cde3279e6a4074e303be2852af": "a358d491348d867d621d3f1205df3fe57811f2c9",
+      "3ed79261a15639b5b7f5dc96a89d59da7e8dba5b": "3ed79261a15639b5b7f5dc96a89d59da7e8dba5b",
+      "41d20118ef99db72f101be756bc33e429cc0f8cd": "41d20118ef99db72f101be756bc33e429cc0f8cd",
+      "43aac572dd6fa364cf18750dc57f209d49d4e916": "7d13d42f0b6abf2b3c765d5d5d6ff8367e7a04f6",
+      "44a721192a305af0c16cb90d63a0c59487e1f5c3": "146ad463dde264c055a5a6b88ceb84006b6a85c0",
+      "45e7f0ca1f0d169628083366f76fa0473780d4f5": "32e601351e8e3d99ac1ec7804127bbd720f1c512",
+      "464fa14232a0c5add1163257762b67c1bda9e643": "464fa14232a0c5add1163257762b67c1bda9e643",
+      "47476e40f8dfaa51817513dd70c338f0aeb35a87": "47476e40f8dfaa51817513dd70c338f0aeb35a87",
+      "4830332f7577d1130c9c15803e81ed8816ec631a": "b044419fb4af36b95300b06113879062cabfee47",
+      "49ef799c97c5bc39d2340d9591bd1d861d503a89": "39ad837fcce9901e81dd31e2e31c6e2b9d1e26d8",
+      "4af057d6ac3df085e780d1f1a8c67ae588576f38": "4af057d6ac3df085e780d1f1a8c67ae588576f38",
+      "4c217e231934551e7cab8768df0d948360d7ac90": "4c217e231934551e7cab8768df0d948360d7ac90",
+      "4cb08354eaf3a812195e8b6037c61a3848c7dda1": "05ccdec8be72b8cb501a5454762cafb490ca2154",
+      "4d08fd2eb8e4a592be8ada303ba2359d8ec89a2a": "6d7d377941935350972c380022f08bcefbece742",
+      "4d164e4b2234cd1ef35ebc930875e179f9ed0970": "be2a76163a4de95278d046c911d0db1077a4e457",
+      "4e8cbd57a52b793e08758b12b5ae6d10eca2759f": "2cac738c428e2f7afd340b183abb4c5176dc84cc",
+      "4ed25ef0a05a8be7a200db0290f635695600df4d": "76e066172107fdc1d09072ae70f296f89ae74024",
+      "4f086eeb7a1547f5506fe927aef9d4727a4ece64": "03abe9c4cf8bdb6fc21c43d4d0d679cb8b493759",
+      "4ffd1c6eb0f77f59702366f98301b56968d572e2": "4ffd1c6eb0f77f59702366f98301b56968d572e2",
+      "51553d5f28387efdbfba22f13b3cd36a83d50d31": "4f5481b86df20776ea7970b03080d37b669451ca",
+      "51a76c7c5ead81b920429a5752d238c938920068": "51a76c7c5ead81b920429a5752d238c938920068",
+      "53f852e9e450cb5e9c06db449103a0a97bd13fa8": "a4ebe7ea8dc0e2c4358942f89a469227f79e73e2",
+      "541a652967ead0dc3cab8f4819f2a9b01ccc27a8": "8fd0def53e029367998618d2b17cfb31f0b6aa9c",
+      "542a5b3b10c1c88ced6e81a692f5d04f0a0c2d45": "a2127eab81327cb322d1afdc26e9028e550a188b",
+      "548d5787c3c14b116b5e8c4c66b9d4b83d8c9dcc": "59c4ea022596e4a1dd91f5c24de90d6ff428f082",
+      "561da8eb8d4a68c94d544ca41aced633caa13482": "5593a63b26daf7da25e21ecb23e0a7d9909d0ca9",
+      "57c43c250849a0a9ffa00ee2aac9b6ee7ae4c6d2": "57c43c250849a0a9ffa00ee2aac9b6ee7ae4c6d2",
+      "5a296b2de57fc9da9ce7e3d783033303639d6d55": "5e9472afc2b63de92d6ac3c8dc75271f7dc1669a",
+      "5ab2b77bddab3bfd29c5fa12e18c9b1c953f06ab": "59333a74aafe583b5df085e7fb2b7efdab226f31",
+      "5db9eb6b31aefc0d04b4d2050bc5b21e7bd38ea7": "beceed1e84f32d3e31d1358b8ef7358af4cac0b4",
+      "5e2a215994f852ca6cfc0d74be5e018af7621cab": "1d71cc4976dfa9d4cbdd99cc2f80ca7b9b27faca",
+      "5eb7a39dfe94258a8a757f1f3d4fcb311f05c3a4": "61d3a1043300ff74794443bdbb3e8f4595100b0b",
+      "5eda3accdb09143c1861969e65e58d3073d57075": "5eda3accdb09143c1861969e65e58d3073d57075",
+      "5efa7c8fd34e1e52c0af5518dc7ef1c4f8376f3b": "5efa7c8fd34e1e52c0af5518dc7ef1c4f8376f3b",
+      "5ff9ff44fe1eceaf992fffe1d94cba2eb4755395": "f80e3857cb92f2845d2533203b8b5aab68d83aa9",
+      "61d575fa50c23db146d0b394dc45316faa7c775b": "61d575fa50c23db146d0b394dc45316faa7c775b",
+      "6296f3e5d3fdca4e9ccf0597a1c9fa80b1764786": "5a1ff4d8949dfa0eee1d4bf49622b167a57ea451",
+      "62e58d71e00c2e929bb1cd2889cf5942155c6034": "62e58d71e00c2e929bb1cd2889cf5942155c6034",
+      "63012044e3e9d2483fc70b05c2e2034f72dcbcf6": "155291cc5078d945d73ec0968311a91d9fcf63b8",
+      "63f3de352634950ffc4cb58f2cdb4b538dae5b7e": "63f3de352634950ffc4cb58f2cdb4b538dae5b7e",
+      "640f8009449ea85791e6bbfed6666d45b6aca1e3": "7d600858472f2be1595c1878e5c71107ded45627",
+      "6482f637c828f2aaeba03d5a69505a0b2b6a1ed8": "14ef1ed63c1a3ce2c73b352c9af52ec30f6f3615",
+      "652cf7dc2d360af7d169ccc655a691536c15fab5": "3f1188df84bae92cb4220c04285df6a63605017e",
+      "6589bedd44948798c597fff70dddbf1593f3785e": "733d601212c1cf28ae854a3c00d48d35520b45a0",
+      "659de70c1749614e729c45fa6c9fa204a5c8f72c": "7981f49ff838691df3acbffd53f6f0b6463b8ddd",
+      "65f892fa6c5db3ec7f87ab6d2a861e1e8d33dbf7": "4bae8dc2437d21a50e555f1760656fc107269430",
+      "668593d283ee5ca505bbdd505b33ff30b859e32d": "a8de35170f49f176809e83585562ac46ccc70dc0",
+      "675fea24573f41732391d7b71bed077be2a635ff": "500d887a46414ef452f722b0489a079637aa1186",
+      "68afb1ad432943bf776dcaad70187ca1732e414a": "6d03518db3a0df546742ee8dd00313903a45bf15",
+      "6a18ce451bcdc42fbae1fc9d125902c2a1a4f551": "e0b653942daba22ac7e17baa760d49dab84555c5",
+      "6ad57728b836d729eebfbcb2c990f03c91fdf06c": "16c15f00a8a80ed7fb10f07544193e2b810425c2",
+      "6cb5fa9e6425d8d894affe2fa19a8be47be1027d": "e5954c6a09569d93e7a7d400529fc93c38581a86",
+      "6da00bdaaada5c229f662602978566c0ac8e9c67": "350d669ff5bb978d6798831e764225e2fc7e011c",
+      "6df517cf49022b03b5bcf021ad8c3aca7c99e1b8": "ce1542e26304cf741fc5b74baa348034a8c8ce9e",
+      "6eb5648626620524a3f8601243cf5de6ec6ff11c": "6eb5648626620524a3f8601243cf5de6ec6ff11c",
+      "7083c52fdd5e24243e684a414f5683ca16b597c8": "7f70c0706a1ec53624bed5cb02010aa93d7dc0e1",
+      "717be36c3aa5fde413a4af12a4d69722c84bf4ac": "717be36c3aa5fde413a4af12a4d69722c84bf4ac",
+      "74032b001553314b00aa1730f1e9f60041395bdb": "a5b26bc4b1e2e6c80f1c5724dbb493522b1eacb8",
+      "7447adb4ee6402fc3c1de9821c23833fd9575a45": "ffb05c43d9b4c4f9eda495d1ad5ba474dcbbb1ce",
+      "74d3531e3d09c293592ea89e6b21d27f3b01e3c7": "3e0ec6678234f91414faf9dfd15c6ba2e6b04b2c",
+      "78c7f65c6daadf25e8cc978953f62f8149ac4911": "b97375b73ecb82252b7930396e0189dd51192915",
+      "7a9dead8b608d959d592d393e62094872a4e2a8e": "87af29b820e495afe2dbe1b0ad5ce5173d59fa43",
+      "7e76fc434beae0767bc4249f37602e34713e2906": "389f177ca67d9720e1dd2309c402e0bf26523860",
+      "7e8e0b9204c5577e082f1648dd63b2c4fd1329b7": "7e8e0b9204c5577e082f1648dd63b2c4fd1329b7",
+      "7ecbd2bf34904825a189a5f7f4027b102cc855e7": "a3ab8555374968c7c57030f8fb8958ee9120b60d",
+      "7f9c9401265c314127cf07ee1e5937a687cf0a53": "7f9c9401265c314127cf07ee1e5937a687cf0a53",
+      "80094c75ba1a853e155af50b0587ff0bcaad6ddd": "519630f8d67911ab92ea351db2e1fb35c2161f99",
+      "808e788897bd1b35337e0ea1af6a99573bf4a1c5": "b495773a567021b03e1c2c086b2b6d47c6a32aba",
+      "83b2c1703b55e80c30f25847cf82a82da201a6f4": "84a8cdb80970bd7214d514046ce3950171441c30",
+      "84e9511353c32a4c89861106d1b98a8cf2ef8d28": "d6a22b98c4f41d5afd05abb9c229c824e7f2ae1f",
+      "8537487790a1d070befbb4f7cadbdca6a91b96ff": "8537487790a1d070befbb4f7cadbdca6a91b96ff",
+      "858ff24aa6db0a1d8881be410a2a5ef76ecebe2b": "ff45bf784e11f5851f0bfe22481a7e9c45ed7f55",
+      "898b16cff4cba174e315299fd68ac59a368d9676": "80879d4fc6b02ffdaeac5ecad7d0df5f5bae0793",
+      "8a61709433a421ddfcdbd73a7eee58bc60b12647": "d75077a787d32dd508ba7dc10c7b2457558a64aa",
+      "8ae5aa262920f9287904dcd507a71f1dd9b63e0f": "4af4439e4f3d98578c77cb79a90dc02cc54aa540",
+      "8c69716250af37c9299a3e847607572509dbb760": "f780a491dcbe824768f4c25700c3a8b2ed3ef01e",
+      "8d07490f5d41ae1e8989d3c48cecd2bcee72e316": "8d07490f5d41ae1e8989d3c48cecd2bcee72e316",
+      "8dd9072c59aead72a38a8b32c344b2ec3394d37d": "5b37cffcea8cc910c0a6a1f21e1e660f0c4d9140",
+      "8e998e9d23c2c0f1a1834574dc153b80f1a045cd": "e6e834bb4fe79bd8761b2758c48df6777e1634d5",
+      "9075b24ebad72fc63e7149dc279d2eefdf425a9d": "4d156f4b4232b6ff74cadd2f813a52b4b9d958e7",
+      "92b30f8d6e8f06907e680fb75e8013c5260053c2": "c7b32e1fb823eb7d2833f4ebf5decda0ee602cbc",
+      "92db0adab694e5e997f4da0fa875d5fc593a1a13": "96d9c524e18daefca8112124de1e3e2aad152cc3",
+      "92dd30a08c2e0e50f3686f5880c7f2c4c3a4acef": "92dd30a08c2e0e50f3686f5880c7f2c4c3a4acef",
+      "932b7e4c424d2a8a947fd826033de392ba7f24ab": "603612c95c83a0b201dfb1c13ed746c380cf8134",
+      "93f36023a76551cb22a2b69264ff8bc983b0e21e": "93f36023a76551cb22a2b69264ff8bc983b0e21e",
+      "9437d20d4195f4f0acbf8172666316783c76e528": "11c11eabf59a2f9d68e58df7e3258ef20faf6c63",
+      "973a9d97707c5022f37e82ad3ecaabb31970c8da": "973a9d97707c5022f37e82ad3ecaabb31970c8da",
+      "9748d5e601c0ee525b76842b8e111bfb1c646c4f": "9748d5e601c0ee525b76842b8e111bfb1c646c4f",
+      "9a726354992102dfd243c1098a6121f1eaa2ceee": "95be08ad82dfe665fba403bd84cc4e8a2bf0fd67",
+      "9bba4eec8c21501fc9f2607df2cf4e784c2ad622": "9bba4eec8c21501fc9f2607df2cf4e784c2ad622",
+      "9c0ccf5031d655588f757e0e28c1d2f9b50417d2": "9c0ccf5031d655588f757e0e28c1d2f9b50417d2",
+      "9ce08fb7f2d0ae867acc89939f322f5df0647bca": "ec28275cbe9e2f7a7018a2e46b90edd2be74a7f9",
+      "9cfe23b0f0ad50ea3c4805f07a08b778669bbe74": "9cfe23b0f0ad50ea3c4805f07a08b778669bbe74",
+      "9d635c28503c66541e307126dc0192716eec1b74": "80cdc516c4971d6c4b71f40fd54128d8fb8db322",
+      "9db5fa8548ef5cf4a25f4f0d9cbb9a53d21ebb07": "9db5fa8548ef5cf4a25f4f0d9cbb9a53d21ebb07",
+      "a1080b87fec3095df9e4c125c993802002a90af1": "a1080b87fec3095df9e4c125c993802002a90af1",
+      "a10b64a8c2bc99b54d14d0b525e1d64e29dd98c0": "a10b64a8c2bc99b54d14d0b525e1d64e29dd98c0",
+      "a2d255ec944c46234fc3a2453d3d02bc07fd5f4c": "19562141f41c02044d56232b1d4f8245d040671d",
+      "a41081239a561370ebd5ffc320cde5675ac254e5": "a41081239a561370ebd5ffc320cde5675ac254e5",
+      "a4f0da7e28001722379cab7ff96a3c811bfab68d": "a4f0da7e28001722379cab7ff96a3c811bfab68d",
+      "a678a15179b28cfa14a2263a980d98c4c8084c75": "b626c3e8d9c6f1ecee4d62434c96d0339bef28cd",
+      "a75ea6673f52b341ab47742ce69d061e3dd2d23a": "ae448ef03201c6350548a081da54a3644a890429",
+      "a7b16873c11bc3a5727c40466af2cf5b0492c7a1": "a7b16873c11bc3a5727c40466af2cf5b0492c7a1",
+      "a89cee1097b8e8e0d97c0e18b3dbee2fd2f8d606": "f5e4a10315353fb0733f555def6e9e55e2a783a3",
+      "aa0ae709faea01d803dcd1f0ad2163ff8ca3d786": "aa0ae709faea01d803dcd1f0ad2163ff8ca3d786",
+      "aa4130bdf645aebeac70af58b3335691993d3cb0": "bee1b47fdf7a5058e64a76054856a58e4a65835c",
+      "aa933e9bb5667e2c5a303f688a010c56cd76aaae": "aa933e9bb5667e2c5a303f688a010c56cd76aaae",
+      "aaa7e26a13fc501b81ce2d7f2d58500b5a615c88": "cf96b1ff85f490a72a7bcbe7718110dab672e482",
+      "ab56c2b90f99c58a9a31c7b3b01beb1d22782d32": "ab56c2b90f99c58a9a31c7b3b01beb1d22782d32",
+      "ac0811da1f60a68909cd674478ee3893102c7dfe": "c06e6bac6c9715c08df2956c1907d3b61a7c5f3a",
+      "ac13f84cab6c8d3e630b179c148e74f5a9847d18": "5d6f5649668c03cafce603f1e041d58c230e4fa3",
+      "ac368b5f6cce4a10910965a228f097a070599960": "0a307ddb11e59ca1a35034fae0f7528064ce969a",
+      "ad1a3d1b86b3c4b8751cc6f1a23b404c1a283e23": "8977515edaa737ea04130b44e6f69136a2dc746a",
+      "ad5678349837b8f9105aa96b374eb7675688283d": "ad5678349837b8f9105aa96b374eb7675688283d",
+      "ae4540afc0ab63cf66253470d4d3b09638c962fb": "2de4c3eca23530079f2b2ec6ba0477aa8186ab1d",
+      "ae63f447af60ed87139c6982ecb8bbfec40aeb98": "ba809283eeb4953cc1a966a49344fc7b6fb4ffcd",
+      "ae93a5776d32069b6d651ecf8c1e1bc2a88dc6ac": "ae93a5776d32069b6d651ecf8c1e1bc2a88dc6ac",
+      "af71e27f2ed19ef2055bf401e346940ecd1e30db": "af71e27f2ed19ef2055bf401e346940ecd1e30db",
+      "b0aa827c4e27f49e84ee0ac733dd78cebc07570a": "b0aa827c4e27f49e84ee0ac733dd78cebc07570a",
+      "b0dc53e18a8bb7ea0c8dda1217cbb25a0b658ad9": "8797727c8c4b57f4567dd3e7054007ea30bae6c1",
+      "b0dcf59df29469a7187342e0e8ed190cabec0644": "b0dcf59df29469a7187342e0e8ed190cabec0644",
+      "b15fc35e35b082cca61ea302bdd68ab96efc0a24": "b5c17e57bab73af8ffbd1dee8d62957ee2746281",
+      "b2fe4a1cfaadf4af21afb62427f7be6c034dc0de": "c19ed8cf5ecbf92f7668ce7ef74908e49ba2e36f",
+      "b47aae2b04df3b22c386b9061f21a6de3f388c5a": "2faba85722f676da07e35a9a964b7d357c2c144e",
+      "b4a8b2f2e2ba3d0f2a1c29cf96988a6154284781": "b4a8b2f2e2ba3d0f2a1c29cf96988a6154284781",
+      "b50e912fbf4b0c7c4082186fd6883baac91c3d11": "b50e912fbf4b0c7c4082186fd6883baac91c3d11",
+      "b5ffa135331c6fd16062898bb2070b7dea33a596": "b5ffa135331c6fd16062898bb2070b7dea33a596",
+      "b64619b3002af8bdfa9e9301e31e2fc175bb0994": "f220821c919d0023ad933d5d123a19f122f3230e",
+      "b8354768debabc3fc94246db5c6668249e75ab41": "216b5f15838dc7af693269f8dcde819193322daf",
+      "b915a5b0221b4be1f44446e6c56b7c7237d59bd3": "b915a5b0221b4be1f44446e6c56b7c7237d59bd3",
+      "b95d63a31560f6686b011b8d099bcd2203e9a0c6": "0b192fae70527523ed93bed740732249b180e727",
+      "bb1522efca0233832694e2b89a7a1230fbd358b0": "bb1522efca0233832694e2b89a7a1230fbd358b0",
+      "bba87299ebaaa1e4a8ab806165a58debbcecf8d8": "0cdaea5211946d683b686ce4bae0f5cdf4c357de",
+      "bcb0cdf0b530b24fc6b9576c4815a77218eaadf3": "bcb0cdf0b530b24fc6b9576c4815a77218eaadf3",
+      "bce7df09b66028fa4e856858c5657095a7ad3d28": "4be5a33fb38f93fdedf11472aa299b99b336d09d",
+      "bcf4a093c54376a7d8009f7b09b314d31ed6468b": "a05380162f1fe77b6bcb6259ea4c3c57c6526b58",
+      "bd4b45865d1f2ae29e15d94ea4b3b5cef7af628a": "d058bd7d4a5bf199b364acbf8e3e29848cda7ddf",
+      "beac63b391617c96472492406239ec05e6523052": "b1607690f62cee678c35139da38cd0a3f5563218",
+      "bed4b16d8c06485775ce1ed94b2c1b19aedba0e4": "664ffb8b8d003e09ae6ef45f1b67a57eeb6bacfa",
+      "bf0b0f090b6bafe7f16b2f865fed4d0cfd48bf49": "e0e19ea4c9fca2e094d36301e69ff59121700827",
+      "c11d612ac9e1a2ab78bdfcfbe51c7e91ab2db6af": "c11d612ac9e1a2ab78bdfcfbe51c7e91ab2db6af",
+      "c31f63716ce4888de6cb773c797345dab647d391": "777c2ea641822765263b84b1f843226e7e298efd",
+      "c55f63ffe94715d532d1e11af5dab48a1d35099a": "c32eeb75466e3dc6045c09d781893ed6c07217a8",
+      "c59aca031ed649152d028aaf50e21f17e46f54c7": "a6edf8b1c3f6cc0bbe5ac10bbfe8ec5065e58dd3",
+      "c6358672a41174d74a46f6106cd1027f0eca6939": "065b039e1070a651ba133f74170bed5036c6959c",
+      "c68b199cf25be251245a60a724e2778723cc9131": "ee91311bb97d2293e8509f8300c7ae891e07f74e",
+      "c6ee5a6aee4f7fb96caa725200bab04ee9b4803b": "528017c44f0a25e0751c42c143e80f8f3f77b811",
+      "c7b946c0e8fdfafffe769665151aacc0ec01bc40": "1a9a817711615f370536efd433bffb15f04e0a2b",
+      "c9cd81651bcce622d84d9a7293801cff84658984": "84e887ce6cb133641e835516e005b2ca57597ccc",
+      "c9d961cb6d91830a9aaed77f4ef7c3b6e0c45aea": "0bb65c5f8b0c68f38df08721ea8be5b6d88481b9",
+      "cc24aade6eb932182c4b52a7db5c621376932880": "cc24aade6eb932182c4b52a7db5c621376932880",
+      "cc8627bd96b4a4ed26c620acb379945edf832d60": "cc8627bd96b4a4ed26c620acb379945edf832d60",
+      "ccb078cbda2577ef98edfbc6f22f1f03b46cbe26": "6a8ebbc59bc572cac6646dded29ecbaa482c76d4",
+      "d06d39c19de7788baf2ea43f7f341300ae772871": "b0df9174e67764c7c3cf3d5cb4c877881269906f",
+      "d111e63cbad245596006fc779e84e3518cd31092": "1e521ed4598d903c8b54855125c391ac989f3e4d",
+      "d1940fa8ad84813c1d4a5375e542ff03adb6bba3": "768b2bb18888c1992e62a5a25c7b30aed9f9bd64",
+      "d371d43db547082c1f634a14ca460786297c1fd2": "b3e279003d8ba64579ccc9c73962245c8a30097f",
+      "d4344b3849865dbf37343f940c8efc398e7e1b78": "8e4eb7332c62da5310e089f353b1246675744e65",
+      "d668aa3e52842a4d629135f90941b505389d935b": "a42ec47070669a701a2a3f19d026959bdc9791af",
+      "d72c19be639862945ac11909aa991a94fcf13e0b": "d72c19be639862945ac11909aa991a94fcf13e0b",
+      "d97b0413603830d98e94c3bf61ca0d15dd85b44d": "2d0e149bb9e27f0acf25350add45c9f8fc5a00e2",
+      "d9977b83fe5bdb93b8735d1f9da4b767a93426e2": "dc53c056e3229fd9addbcdd8b8bddea90c1e53bf",
+      "da71ce65a79b963439a687a6ef7d3db025d4bf45": "da71ce65a79b963439a687a6ef7d3db025d4bf45",
+      "dab38148e8a6f8caaea12be04a5827dbc0998dad": "dab38148e8a6f8caaea12be04a5827dbc0998dad",
+      "dbc1b4a85a6b7b61ec1280bf392aa5084baa8f20": "1412e55a6f6235da898b12ba5793c59c4c0d5a25",
+      "dc8e37afc0fba2d8fb83ff0779f8b6dc17b82ccd": "ef38f534a2f1e12679dad9a5a6298ba51de1409b",
+      "dd10f9f0c90e8d6d653d25d2ecc594f94cf87a04": "dd10f9f0c90e8d6d653d25d2ecc594f94cf87a04",
+      "dda4a15719976fcea075b00df54f53fceac1eed8": "51a624dc1b422324d5e8101f9001a84612e9dc1a",
+      "ddcc22cf696d952a1a293bef716f6ddf03dcd571": "ddcc22cf696d952a1a293bef716f6ddf03dcd571",
+      "df4941834092d23b3bc576f3a3829c4020f65f03": "df4941834092d23b3bc576f3a3829c4020f65f03",
+      "e087fdf8d32a09bf94aa7c00fbbd75d923bfaed1": "e087fdf8d32a09bf94aa7c00fbbd75d923bfaed1",
+      "e092e342335c0bee02ad3022d276ecd1622e40c3": "9012d32a5440bf9e097c896ea6f8b0a20ee05277",
+      "e0a837221a2f578efd6db156067c2cd26a4e1e62": "f38e745ac1def9cff77c64e19ded5d5827acda4e",
+      "e1b43b1477f152cc09a85e83b38a144e85cc8144": "82b59610d707679002d651e7fe490efe0fbf2115",
+      "e25c78d566d738286a3bd3ed8f4d30dbe705e4d2": "303c3880b1690efd44e2cae4c0264bfab3bb714a",
+      "e341c3d12a86ebd187fd85e01530dd3dd09ff676": "4eafd6bbdce97345927ad238d6c14b411b684e9e",
+      "e4c6820b1c19c89b4759288a8f53a80a230ec95d": "90f19510c33af79048dae268d9c9f63a4a53865f",
+      "e658adaf33c39ee3c8c87a85e933a303366f4c42": "e658adaf33c39ee3c8c87a85e933a303366f4c42",
+      "e9032885c7bac4a253fcb0806a916514de91a368": "b3e582e2f258a53f261ba6754a0c384dde1d8a0e",
+      "e96c2662db848c983a51f4ea8c6d0ccf204fc5f6": "86745e0f6360cee53ebb419406e61c60a1b196a9",
+      "ea6be1588e326e04b21647c905266379aa143cc2": "bbee0652fc64fdd6c83cc69b689293d30ed92105",
+      "eb8e117f5e999c31d126a00f430f536d410cc83c": "22c972eae02b2ed83faa40289a929a4e544cf09c",
+      "eba8ca75b4f960b646ab45273840f14730c3385f": "c1e8762a4c920a9d44c28581083f6a21ba73acd4",
+      "ec2387240e1fd9e3deb3203700229a3af2a39811": "9d82a489a9b09c3c60c445cf48a788e9a26ce83b",
+      "ec4fdc8a496c1cc665a1e7d4cfaf8b6f75d7a1eb": "ec4fdc8a496c1cc665a1e7d4cfaf8b6f75d7a1eb",
+      "ed4503919fb1831a2bc00fe000bb44229c840614": "ed4503919fb1831a2bc00fe000bb44229c840614",
+      "ef305124c902369dcb173c4eb4936ac2220646b7": "b134862d616d50b30e8e619d5536d0e8341a4086",
+      "ef6adffbf89573876f17728e162f45f09a82acf0": "ef6adffbf89573876f17728e162f45f09a82acf0",
+      "f142357389f779023615a6c78ad04440c2be6d6b": "e1d369ceee888f972630090e629c49a3865fdd10",
+      "f19bb3b9bc00295dea8eabb40247b6eb9e6fabdf": "856af87561c7e53379ec9094c69a01211d3e5283",
+      "f3f45b8c49d3407b904aa59bdda5491c1d553bd0": "a4b455a659fc82df8bbb742b817f22dc82baf0ee",
+      "f41b49275a22c6d5ac8b59a0d423e42b5bcb2eee": "f41b49275a22c6d5ac8b59a0d423e42b5bcb2eee",
+      "f47ac77fce7bdd8abd7f0b3cce7e8451e48a3554": "0fdd2de554ac47854b06d7e6bba8e427b5c8aad7",
+      "f5d026c1ffc7593129b65546610098fe5c119d03": "f5d026c1ffc7593129b65546610098fe5c119d03",
+      "f5dd1e4055d651fd888ac4574f1379b4ef090307": "f5dd1e4055d651fd888ac4574f1379b4ef090307",
+      "f6562ad97972b4684d33e6125dd94d010e080bb7": "6c1766d3ad976a7598089729fb75a14ee0154e65",
+      "f89a37f2452d2b1653c4fc45d405a142e52d4bb0": "f89a37f2452d2b1653c4fc45d405a142e52d4bb0",
+      "fa6f63b5c6552b0f87b3f7a6e6a8842187f5fda3": "fa6f63b5c6552b0f87b3f7a6e6a8842187f5fda3",
+      "fbc1ff1c39e5dd9860cea609bbff2d559b7dc8fe": "092e6121fc158bf09a397b17835426bc8a0febe2",
+      "fc83529cf95003d632f098780ffee7d8fca2beca": "094b74503400137b457d32b971dd2228447c98f2",
+      "fd84e46616020bf324403f43bd08eadeace002dd": "fd84e46616020bf324403f43bd08eadeace002dd",
+      "fdc877614fa07614df3b14b3f7611d9d5df9f201": "d316c28cb8d1f285d7ab8c86da60bc491f34f22a",
+      "fe3d131a2148bf470c5dd3fbbd734ae2e3a1cbc3": "fe3d131a2148bf470c5dd3fbbd734ae2e3a1cbc3",
+      "fe55083674894474633d1b39b93ece3785638d9a": "fe55083674894474633d1b39b93ece3785638d9a",
+      "fe5a8a896fbde9d8d57bf6de29602f37373a9aef": "04a6b0507f504496ace6728fcbe1c00007e8cd63",
+      "fe98809dcc5a44cc28476084357753d53284654b": "4bed0cdc4a218f07ffc90e2f82a65fd551cc70ec",
+      "ff731f6f8fec43426b34645b0fa479dfa0c48c60": "aeac27593e02abc2e9b06617c630c86186a7f53f",
+      "ffc448ad86e316ec9d693b12a31a4206f4337475": "5830950b77d2f6676576d91908bf780c0a331218"
+    },
+    "remote_status": "All controlled refs replaced and verified on all three remotes; old commits still recoverable by hash, so host-side purge pending.",
+    "remote_verification": {
+      "remotes": [
+        {
+          "remote": "github",
+          "existing_refs_replaced": 10,
+          "advertised_refs": 20,
+          "ref_readback": "passed"
+        },
+        {
+          "remote": "codeberg",
+          "existing_refs_replaced": 6,
+          "advertised_refs": 12,
+          "ref_readback": "passed"
+        },
+        {
+          "remote": "macpro",
+          "existing_refs_replaced": 8,
+          "advertised_refs": 16,
+          "ref_readback": "passed"
+        }
+      ],
+      "freshly_fetched_objects_scanned": {
+        "commit": 270,
+        "tree": 1729,
+        "blob": 1649,
+        "tag": 6
+      },
+      "private_matches": 0,
+      "coverage": "All advertised refs from all three configured remotes, freshly fetched after rewrite. Provider-retained unreachable objects and caches are outside this fetch boundary."
+    },
+    "host_retention": [
+      {
+        "remote": "github",
+        "old_commit_fetch": "available",
+        "private_content_recoverable": true,
+        "old_tree_matching_files": 11,
+        "scope": "One known old main commit; temporary fetched objects destroyed after probe."
+      },
+      {
+        "remote": "codeberg",
+        "old_commit_fetch": "available",
+        "private_content_recoverable": true,
+        "old_tree_matching_files": 11,
+        "scope": "One known old main commit; temporary fetched objects destroyed after probe."
+      },
+      {
+        "remote": "macpro",
+        "old_commit_fetch": "available",
+        "private_content_recoverable": true,
+        "old_tree_matching_files": 11,
+        "scope": "One known old main commit; temporary fetched objects destroyed after probe."
+      }
+    ],
+    "focused_tests": {
+      "command": "cargo test -p ecl-stages -p ecl-pipeline-spec",
+      "spec_tests_passed": 50,
+      "stage_tests_passed": 142,
+      "total_failed": 0
+    },
+    "signature_metadata": {
+      "old_signed_commits": 3,
+      "rewritten_signed_commits": 0
+    }
   }
 }

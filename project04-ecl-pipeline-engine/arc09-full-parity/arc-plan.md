@@ -2,7 +2,7 @@
 
 > Historical arc plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/dev/ecl/0029-phase-4-detailed-implementation-plan-full-parity.md, lines 1-73. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0029-phase-4-detailed-implementation-plan-full-parity.md, lines 1-73. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Phase 4 Detailed Implementation Plan: "Full Parity"
 
@@ -94,7 +94,7 @@ Historical milestone moved to [8. Milestone 10.7: Chime End-to-End Integration T
 
 Historical milestone moved to [9. Milestone 10.8: Acme Inc. Loyalty End-to-End Integration Test](slice08-acme-inc-loyalty-end-to-end-integration-test/slice-plan.md).
 
-<!-- Historical source: crates/design/dev/ecl/0029-phase-4-detailed-implementation-plan-full-parity.md, lines 1187-1355. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0029-phase-4-detailed-implementation-plan-full-parity.md, lines 1187-1355. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## 10. Cross-Cutting Concerns
 

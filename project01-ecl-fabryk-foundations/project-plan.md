@@ -129,7 +129,7 @@ This is a reconstruction of historical planning, not a new implementation projec
 - 65f892f Formatting.
 - ef30512 fix: Address 3 minor code quality issues from audit
 
-<!-- Historical source: crates/design/docs/10-superseded/0004-ecl-project-plan.md, lines 1-89. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/10-superseded/0004-ecl-project-plan.md, lines 1-89. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 number: 4
@@ -231,7 +231,7 @@ Historical section moved to [Phase 4: Hardening](arc04-ecl-hardening/arc-plan.md
 
 Historical section moved to [Phase 5: Target Workflow Implementation](arc05-ecl-target-workflows/arc-plan.md).
 
-<!-- Historical source: crates/design/docs/10-superseded/0004-ecl-project-plan.md, lines 1717-1768. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/10-superseded/0004-ecl-project-plan.md, lines 1717-1768. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## Appendices
 
@@ -286,7 +286,7 @@ From the original proposal:
 |---------|------|--------|---------|
 | 1.0 | 2026-01 | Claude | Initial project plan |
 
-<!-- Historical source: crates/design/docs/05-active/0013-fabryk-extraction-project-plan-overview.md, lines 1-41. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/05-active/0013-fabryk-extraction-project-plan-overview.md, lines 1-41. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 number: 13
@@ -336,7 +336,7 @@ Historical section moved to [Phase 2: fabryk-content (1 week)](arc07-fabryk-cont
 
 Historical section moved to [Phase 3: fabryk-fts (2 weeks)](arc08-fabryk-search/arc-plan.md).
 
-<!-- Historical source: crates/design/docs/05-active/0013-fabryk-extraction-project-plan-overview.md, lines 120-136. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/05-active/0013-fabryk-extraction-project-plan-overview.md, lines 120-136. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## v0.1-alpha Checkpoint
 
@@ -364,7 +364,7 @@ Historical section moved to [Phase 6: fabryk-cli (1 week)](arc12-fabryk-cli/arc-
 
 Historical section moved to [Phase 7: Integration & Documentation (1 week)](arc14-fabryk-integration/arc-plan.md).
 
-<!-- Historical source: crates/design/docs/05-active/0013-fabryk-extraction-project-plan-overview.md, lines 242-282. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/05-active/0013-fabryk-extraction-project-plan-overview.md, lines 242-282. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## Summary
 

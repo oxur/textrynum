@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0008-cc-prompt-fabryk-2.md, lines 1-750. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0008-cc-prompt-fabryk-2.md, lines 1-750. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk 2.1 — Frontmatter Extraction"

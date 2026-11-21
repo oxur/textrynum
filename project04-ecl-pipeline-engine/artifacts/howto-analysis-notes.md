@@ -1,5 +1,5 @@
 
-<!-- Historical source: workbench/howto-analysis-notes.md, lines 1-57. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: workbench/howto-analysis-notes.md, lines 1-57. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Howto Analysis Notes
 

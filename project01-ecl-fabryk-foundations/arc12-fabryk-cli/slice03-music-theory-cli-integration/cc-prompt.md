@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0034-cc-prompt-fabryk-6.md, lines 1-216. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0034-cc-prompt-fabryk-6.md, lines 1-216. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk 6.3 — Music Theory CLI Integration"

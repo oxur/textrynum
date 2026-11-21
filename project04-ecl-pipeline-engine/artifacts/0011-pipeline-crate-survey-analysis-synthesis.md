@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/ecl/0011-pipeline-crate-survey-analysis-synthesis.md, lines 1-582. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0011-pipeline-crate-survey-analysis-synthesis.md, lines 1-582. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Pipeline Crate Survey Analysis Synthesis
 

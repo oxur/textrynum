@@ -2,7 +2,7 @@
 
 > Historical arc plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/dev/ecl/0026-phase-1-detailed-implementation-plan-make-affinity-work.md, lines 1-124. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0026-phase-1-detailed-implementation-plan-make-affinity-work.md, lines 1-124. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Phase 1 Detailed Implementation Plan: "Make Affinity Work"
 
@@ -145,7 +145,7 @@ Historical milestone moved to [8. Milestone 7.7: File Lifecycle Management](slic
 
 Historical milestone moved to [9. Milestone 7.8: Affinity End-to-End Integration Test](slice08-affinity-end-to-end-integration-test/slice-plan.md).
 
-<!-- Historical source: crates/design/dev/ecl/0026-phase-1-detailed-implementation-plan-make-affinity-work.md, lines 1317-1477. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0026-phase-1-detailed-implementation-plan-make-affinity-work.md, lines 1317-1477. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## 10. Cross-Cutting Concerns
 

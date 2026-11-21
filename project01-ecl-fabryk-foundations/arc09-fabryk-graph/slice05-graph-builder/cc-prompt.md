@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0022-cc-prompt-fabryk-4.md, lines 1-664. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0022-cc-prompt-fabryk-4.md, lines 1-664. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk 4.5 — Graph Builder"

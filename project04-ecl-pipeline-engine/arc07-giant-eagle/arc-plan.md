@@ -2,7 +2,7 @@
 
 > Historical arc plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/dev/ecl/0027-phase-2-detailed-implementation-plan-make-giant-eagle-work.md, lines 1-211. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0027-phase-2-detailed-implementation-plan-make-giant-eagle-work.md, lines 1-211. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Phase 2 Detailed Implementation Plan: "Make Giant Eagle Work"
 
@@ -232,7 +232,7 @@ Historical milestone moved to [8. Milestone 8.7: Receipt Assembly Stage](slice07
 
 Historical milestone moved to [9. Milestone 8.8: Giant Eagle End-to-End Integration Test](slice08-giant-eagle-end-to-end-integration-test/slice-plan.md).
 
-<!-- Historical source: crates/design/dev/ecl/0027-phase-2-detailed-implementation-plan-make-giant-eagle-work.md, lines 1611-1828. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0027-phase-2-detailed-implementation-plan-make-giant-eagle-work.md, lines 1611-1828. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## 10. Cross-Cutting Concerns
 

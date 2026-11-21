@@ -1,5 +1,5 @@
 
-<!-- Historical source: workbench/0027-ecl-banyan-pipeline-implementation-plan.md, lines 1-769. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: workbench/0027-ecl-banyan-pipeline-implementation-plan.md, lines 1-769. Original bytes are recoverable from import commit 2d006a7. -->
 
 # 0027 — ECL Banyan Data Pipeline Implementation Plan
 

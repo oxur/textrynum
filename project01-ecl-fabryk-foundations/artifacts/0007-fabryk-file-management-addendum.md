@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/docs/02-under-review/0007-fabryk-file-management-addendum.md, lines 1-885. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/02-under-review/0007-fabryk-file-management-addendum.md, lines 1-885. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 number: 7

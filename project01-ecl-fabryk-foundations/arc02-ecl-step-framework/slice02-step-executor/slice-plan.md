@@ -2,7 +2,7 @@
 
 > Historical slice plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/dev/0004-phase-2-02-step-executor.md, lines 1-470. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/0004-phase-2-02-step-executor.md, lines 1-470. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Stage 2.2: Step Executor
 
@@ -477,7 +477,7 @@ async fn test_executor_respects_max_retries() {
 
 Historical criteria: [ledger.md](ledger.md).
 
-<!-- Historical source: crates/design/dev/0004-phase-2-02-step-executor.md, lines 483-495. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/0004-phase-2-02-step-executor.md, lines 483-495. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## Estimated Effort
 

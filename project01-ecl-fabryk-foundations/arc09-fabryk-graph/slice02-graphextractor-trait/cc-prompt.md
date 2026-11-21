@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0019-cc-prompt-fabryk-4.md, lines 1-596. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0019-cc-prompt-fabryk-4.md, lines 1-596. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk 4.2 — GraphExtractor Trait"

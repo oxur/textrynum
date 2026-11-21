@@ -1,5 +1,5 @@
 
-<!-- Historical source: workbench/old/phase-6.md, lines 1-160. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: workbench/old/phase-6.md, lines 1-160. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Phase 6: fabryk-cli — CLI Framework & Graph Commands
 

@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/docs/05-active/0017-ecl-pipeline-runner-unified-design-vision.md, lines 1-1864. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/05-active/0017-ecl-pipeline-runner-unified-design-vision.md, lines 1-1864. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 number: 17

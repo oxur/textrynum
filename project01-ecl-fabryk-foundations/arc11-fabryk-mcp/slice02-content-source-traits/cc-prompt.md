@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0027-cc-prompt-fabryk-5.md, lines 1-556. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0027-cc-prompt-fabryk-5.md, lines 1-556. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk 5.2 — Content & Source Traits"

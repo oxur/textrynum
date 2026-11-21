@@ -97,3 +97,5 @@ Project composition and Operator acceptance remain explicit gates.
 - [0015-plan-cross-crate-duplicate-code-consolidation.md](artifacts/0015-plan-cross-crate-duplicate-code-consolidation.md)
 - [0024-code-audit-report-poc-mcp-server-final-fabryk-extraction.md](artifacts/0024-code-audit-report-poc-mcp-server-final-fabryk-extraction.md)
 - [duplicate-code-audit.md](artifacts/duplicate-code-audit.md)
+
+Privacy ref rewrite and validation: [privacy-rewrite-record.md](artifacts/privacy-rewrite-record.md). Full hosted purge remains open because old commits are still served by hash.

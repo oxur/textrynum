@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/docs/06-final/0011-fabryk-extraction-audit-music-theory-mcp-server.md, lines 1-2135. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/06-final/0011-fabryk-extraction-audit-music-theory-mcp-server.md, lines 1-2135. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 number: 11

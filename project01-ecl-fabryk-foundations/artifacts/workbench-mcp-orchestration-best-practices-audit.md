@@ -1,5 +1,5 @@
 
-<!-- Historical source: workbench/mcp-orchestration-best-practices-audit.md, lines 1-230. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: workbench/mcp-orchestration-best-practices-audit.md, lines 1-230. Original bytes are recoverable from import commit 2d006a7. -->
 
 # MCP Server AI-Accessibility Audit
 

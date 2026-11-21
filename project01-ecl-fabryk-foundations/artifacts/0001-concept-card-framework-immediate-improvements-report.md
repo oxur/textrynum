@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/concept-cards/0001-concept-card-framework-immediate-improvements-report.md, lines 1-420. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/concept-cards/0001-concept-card-framework-immediate-improvements-report.md, lines 1-420. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Concept Card Framework: Immediate Improvements Report
 

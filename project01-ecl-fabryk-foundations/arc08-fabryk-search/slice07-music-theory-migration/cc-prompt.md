@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0007-cc-prompt-fabryk-3.5.md, lines 1-288. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0007-cc-prompt-fabryk-3.5.md, lines 1-288. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk Checkpoint — Music Theory Migration"

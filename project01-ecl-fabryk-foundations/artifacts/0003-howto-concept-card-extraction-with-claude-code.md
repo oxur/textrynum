@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/concept-cards/0003-howto-concept-card-extraction-with-claude-code.md, lines 1-673. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/concept-cards/0003-howto-concept-card-extraction-with-claude-code.md, lines 1-673. Original bytes are recoverable from import commit 2d006a7. -->
 
 # HOWTO: Concept Card Extraction with Claude Code
 

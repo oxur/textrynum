@@ -1,5 +1,5 @@
 
-<!-- Historical source: workbench/mcp-server-implementation-taproot.md, lines 1-1135. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: workbench/mcp-server-implementation-taproot.md, lines 1-1135. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Building a Fabryk MCP Server
 

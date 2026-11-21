@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0017-cc-prompt-fabryk-36-phase-3-completion-v0.md, lines 1-382. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0017-cc-prompt-fabryk-36-phase-3-completion-v0.md, lines 1-382. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk 3.6 — Phase 3 Completion & v0.1-alpha Checkpoint"

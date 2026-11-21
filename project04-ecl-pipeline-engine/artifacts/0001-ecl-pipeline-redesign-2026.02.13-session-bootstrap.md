@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/ecl/0001-ecl-pipeline-redesign-2026.02.13-session-bootstrap.md, lines 1-212. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0001-ecl-pipeline-redesign-2026.02.13-session-bootstrap.md, lines 1-212. Original bytes are recoverable from import commit 2d006a7. -->
 
 # ECL Pipeline Redesign — 2026.02.13 Session Bootstrap
 

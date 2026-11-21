@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/docs/01-draft/0009-unified-ecosystem-vision-ecl-fabryk-skill-framework.md, lines 1-587. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/01-draft/0009-unified-ecosystem-vision-ecl-fabryk-skill-framework.md, lines 1-587. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 number: 9

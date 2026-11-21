@@ -2,7 +2,7 @@
 
 > Historical arc plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/docs/10-superseded/0004-ecl-project-plan.md, lines 1675-1716. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/10-superseded/0004-ecl-project-plan.md, lines 1675-1716. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## Phase 5: Target Workflow Implementation
 

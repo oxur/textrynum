@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/docs/10-superseded/0003-ecl-project-proposal.md, lines 1-371. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/10-superseded/0003-ecl-project-proposal.md, lines 1-371. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 number: 3

@@ -3,7 +3,7 @@
 > These are original criteria or verification instructions, reorganized on 2026-11-21. They are not current acceptance evidence. Original checkbox states are preserved; no new statuses, sign-offs or successful verification results have been assigned.
 
 
-<!-- Historical criteria excerpt: crates/design/docs/05-active/0018-ecl-pipeline-runner-multi-phase-project-plan.md, lines 45-62; full original recoverable from import commit 3a39aea. -->
+<!-- Historical criteria excerpt: crates/design/docs/05-active/0018-ecl-pipeline-runner-multi-phase-project-plan.md, lines 45-62; full original recoverable from import commit 2d006a7. -->
 
 ## Phase Overview
 

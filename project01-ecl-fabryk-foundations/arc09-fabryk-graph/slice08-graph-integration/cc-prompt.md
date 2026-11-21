@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0025-cc-prompt-fabryk-4.md, lines 1-378. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0025-cc-prompt-fabryk-4.md, lines 1-378. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk 4.8 — Graph Integration"

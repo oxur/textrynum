@@ -2,7 +2,7 @@
 
 > Historical slice plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/dev/0005-phase-2-03-toy-workflow-steps.md, lines 1-1614. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/0005-phase-2-03-toy-workflow-steps.md, lines 1-1614. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Stage 2.3: Toy Workflow Step Implementations
 
@@ -1621,7 +1621,7 @@ just coverage
 
 Historical criteria: [ledger.md](ledger.md).
 
-<!-- Historical source: crates/design/dev/0005-phase-2-03-toy-workflow-steps.md, lines 1671-1800. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/0005-phase-2-03-toy-workflow-steps.md, lines 1671-1800. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## Estimated Effort
 

@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0006-cc-prompt-fabryk-1.md, lines 1-254. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0006-cc-prompt-fabryk-1.md, lines 1-254. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk 1.6 — Phase 1 Completion & Verification"

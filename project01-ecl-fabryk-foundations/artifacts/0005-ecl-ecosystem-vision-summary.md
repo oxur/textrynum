@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/docs/10-superseded/0005-ecl-ecosystem-vision-summary.md, lines 1-396. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/10-superseded/0005-ecl-ecosystem-vision-summary.md, lines 1-396. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 number: 5

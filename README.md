@@ -10,11 +10,11 @@ of claims made by the old documents.
 
 | Release branch | Baseline | Tags grouped on the branch | Historical project |
 | --- | --- | --- | --- |
-| `release/0.1.x` | `ef30512` | `0.1.0`, `0.1.1`, `0.1.2`; ancestral `fabryk-v0.1-alpha` | [ECL and Fabryk foundations](project01-ecl-fabryk-foundations/project-plan.md) |
-| `release/0.2.x` | `0850343` | `0.2.0` | [Fabryk consolidation and lifecycle](project02-fabryk-consolidation/project-plan.md) |
-| `release/0.3.x` | `007bc76` | `0.3.0`, `v0.3.0` (same commit) | [MCP guidance and resources](project03-mcp-guidance-resources/project-plan.md) |
-| `release/0.4.x` | `1a248c4` | `0.4.0`, `0.4.1`, `0.4.2` | [ECL pipeline engine](project04-ecl-pipeline-engine/project-plan.md) |
-| `release/0.5.x` | `f19bb3b` | No 0.5 tag exists in the inspected local repository | [Discoverability and 0.5.0 foundation](project05-discoverability/project-plan.md) |
+| `release/0.1.x` | `b134862` | `0.1.0`, `0.1.1`, `0.1.2`; ancestral `fabryk-v0.1-alpha` | [ECL and Fabryk foundations](project01-ecl-fabryk-foundations/project-plan.md) |
+| `release/0.2.x` | `bffd745` | `0.2.0` | [Fabryk consolidation and lifecycle](project02-fabryk-consolidation/project-plan.md) |
+| `release/0.3.x` | `0d5ce41` | `0.3.0`, `v0.3.0` (same commit) | [MCP guidance and resources](project03-mcp-guidance-resources/project-plan.md) |
+| `release/0.4.x` | `c481981` | `0.4.0`, `0.4.1`, `0.4.2` | [ECL pipeline engine](project04-ecl-pipeline-engine/project-plan.md) |
+| `release/0.5.x` | `856af87` | No 0.5 tag exists in the inspected local repository | [Discoverability and 0.5.0 foundation](project05-discoverability/project-plan.md) |
 
 Each release worktree is `.worktrees/release-0.N.x`. Release branches preserve
 their pinned implementation snapshots. `release/0.1.x` was advanced from its
@@ -69,12 +69,12 @@ The map serves recovery and completeness checks; it does not establish code
 correctness. Every selected source is covered completely by its recorded
 segments, and every lower-precedence copy has an explicit preferred source.
 
-Original input bytes, including ignored workbench files and superseded copies,
-were committed before reorganization as `3a39aea`. For example:
+The imported sources, including ignored workbench files and superseded copies,
+were committed before reorganization as `2d006a7`. For example:
 
 ```sh
-git show 3a39aea:workbench/TODO.md
-git show 3a39aea:crates/design/docs/05-active/0013-fabryk-extraction-project-plan-overview.md
+git show 2d006a7:workbench/TODO.md
+git show 2d006a7:crates/design/docs/05-active/0013-fabryk-extraction-project-plan-overview.md
 ```
 
 This Git history preserves the originals without maintaining a parallel archive
@@ -135,3 +135,16 @@ All future project05 audit results must be written to
 `project05-discoverability/artifacts/`, per Duncan's explicit instruction.
 The complete audit plan is
 [arc01-foundation-audit/arc-plan.md](project05-discoverability/arc01-foundation-audit/arc-plan.md).
+
+## Privacy rewrite — 2026-11-21
+
+Duncan required anonymization of a private customer across current source,
+fixtures, filenames and Git history. Acme Inc. and anonymous code/path identifiers
+replace that identity. The import commit, source revision, content hashes and
+migration headers now refer to sanitized history. Historical byte-preservation
+statements above describe the initial migration; privacy sanitization explicitly
+supersedes the original sensitive bytes. The current source map is reconciled
+against the sanitized import and includes a commit-identity translation map.
+No unsanitized archive or backup branch is retained.
+
+The [privacy rewrite record](project05-discoverability/artifacts/privacy-rewrite-record.md) distinguishes completed remote ref replacement from the still-pending host-side purge.

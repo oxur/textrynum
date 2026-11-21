@@ -2,7 +2,7 @@
 
 > Historical slice plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/dev/ecl/0014-milestone-1.3-topology-layer-ecl-pipeline-topo.md, lines 1-1629. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0014-milestone-1.3-topology-layer-ecl-pipeline-topo.md, lines 1-1629. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Milestone 1.3: Topology Layer (`ecl-pipeline-topo`)
 

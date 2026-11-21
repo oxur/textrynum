@@ -1,5 +1,5 @@
 
-<!-- Historical source: workbench/old/meta-prompt-generate-phase-milestones.md, lines 1-272. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: workbench/old/meta-prompt-generate-phase-milestones.md, lines 1-272. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "Meta-Prompt: Generate Fabryk Phase Milestone Prompts"

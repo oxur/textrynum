@@ -3,7 +3,7 @@
 > These are original criteria or verification instructions, reorganized on 2026-11-21. They are not current acceptance evidence. Original checkbox states are preserved; no new statuses, sign-offs or successful verification results have been assigned.
 
 
-<!-- Historical criteria excerpt: crates/design/dev/ecl/0029-phase-4-detailed-implementation-plan-full-parity.md, lines 1246-1273; full original recoverable from import commit 3a39aea. -->
+<!-- Historical criteria excerpt: crates/design/dev/ecl/0029-phase-4-detailed-implementation-plan-full-parity.md, lines 1246-1273; full original recoverable from import commit 2d006a7. -->
 
 ## 11. Verification Checklist
 

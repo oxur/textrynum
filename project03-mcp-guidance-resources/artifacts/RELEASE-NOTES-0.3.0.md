@@ -1,5 +1,5 @@
 
-<!-- Historical source: workbench/RELEASE-NOTES-0.3.0.md, lines 1-163. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: workbench/RELEASE-NOTES-0.3.0.md, lines 1-163. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Release Notes — v0.3.0
 

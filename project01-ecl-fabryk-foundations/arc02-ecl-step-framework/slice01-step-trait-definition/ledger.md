@@ -4,7 +4,7 @@
 
 Criteria and checkbox states below are transcribed, not re-evaluated. No new row statuses, verification results or sign-offs are assigned.
 
-<!-- Historical source: crates/design/dev/0003-phase-2-01-step-trait.md, lines 870-884. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/0003-phase-2-01-step-trait.md, lines 870-884. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## Acceptance Criteria
 

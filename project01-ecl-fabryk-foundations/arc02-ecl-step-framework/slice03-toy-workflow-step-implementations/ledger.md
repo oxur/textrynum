@@ -4,7 +4,7 @@
 
 Criteria and checkbox states below are transcribed, not re-evaluated. No new row statuses, verification results or sign-offs are assigned.
 
-<!-- Historical source: crates/design/dev/0005-phase-2-03-toy-workflow-steps.md, lines 1615-1670. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/0005-phase-2-03-toy-workflow-steps.md, lines 1615-1670. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## Acceptance Criteria
 

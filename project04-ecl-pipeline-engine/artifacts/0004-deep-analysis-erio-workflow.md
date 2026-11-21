@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/ecl/0004-deep-analysis-erio-workflow.md, lines 1-125. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0004-deep-analysis-erio-workflow.md, lines 1-125. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Deep Analysis: erio-workflow
 

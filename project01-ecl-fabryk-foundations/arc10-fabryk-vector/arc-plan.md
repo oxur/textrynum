@@ -2,7 +2,7 @@
 
 > Historical arc plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/dev/fabryk/0040-phase-4.5-fabryk-vector.md, lines 1-86. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0040-phase-4.5-fabryk-vector.md, lines 1-86. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Phase 4.5: fabryk-vector — Vector Search Infrastructure
 
@@ -91,7 +91,7 @@ Level 2: fabryk-vector (new) — depends on fabryk-core
 ## Implementation Milestones
 
 
-<!-- Historical source: crates/design/dev/fabryk/0040-phase-4.5-fabryk-vector.md, lines 168-255. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0040-phase-4.5-fabryk-vector.md, lines 168-255. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## Key Files
 

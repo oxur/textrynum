@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0016-cc-prompt-fabryk-3.md, lines 1-846. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0016-cc-prompt-fabryk-3.md, lines 1-846. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk 3.5 — Query Builder & TantivySearch"

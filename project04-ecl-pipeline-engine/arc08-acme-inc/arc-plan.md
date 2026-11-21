@@ -2,7 +2,7 @@
 
 > Historical arc plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/dev/ecl/0028-phase-3-detailed-implementation-plan-make-acme-inc-work.md, lines 1-174. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0028-phase-3-detailed-implementation-plan-make-acme-inc-work.md, lines 1-174. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Phase 3 Detailed Implementation Plan: "Make Acme Inc. Work"
 
@@ -195,7 +195,7 @@ Historical milestone moved to [8. Milestone 9.7: Scheduling & Cron Triggers](sli
 
 Historical milestone moved to [9. Milestone 9.8: Acme Inc. End-to-End Integration Test](slice08-acme-inc-end-to-end-integration-test/slice-plan.md).
 
-<!-- Historical source: crates/design/dev/ecl/0028-phase-3-detailed-implementation-plan-make-acme-inc-work.md, lines 1438-1656. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0028-phase-3-detailed-implementation-plan-make-acme-inc-work.md, lines 1438-1656. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## 10. Cross-Cutting Concerns
 

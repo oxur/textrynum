@@ -2,7 +2,7 @@
 
 > Historical slice plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/dev/0007-phase-2-05-sqlx-persistence.md, lines 1-1421. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/0007-phase-2-05-sqlx-persistence.md, lines 1-1421. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Stage 2.5: SQLx Persistence Layer
 
@@ -1428,7 +1428,7 @@ impl Default for DatabaseConfig {
 
 Historical criteria: [ledger.md](ledger.md).
 
-<!-- Historical source: crates/design/dev/0007-phase-2-05-sqlx-persistence.md, lines 1440-1548. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/0007-phase-2-05-sqlx-persistence.md, lines 1440-1548. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## Files to Create
 

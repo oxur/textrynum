@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/0013-lancedb-integration-guide-for-rust-mcp-servers.md, lines 1-1212. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/0013-lancedb-integration-guide-for-rust-mcp-servers.md, lines 1-1212. Original bytes are recoverable from import commit 2d006a7. -->
 
 # LanceDB Integration Guide for Rust MCP Servers
 

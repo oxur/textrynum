@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/ecl/0005-deep-analysis-oxigdal-workflow.md, lines 1-124. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0005-deep-analysis-oxigdal-workflow.md, lines 1-124. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Deep Analysis: oxigdal-workflow
 

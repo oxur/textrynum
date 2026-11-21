@@ -1,5 +1,5 @@
 
-<!-- Historical source: workbench/BOOTSTRAP.md, lines 1-737. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: workbench/BOOTSTRAP.md, lines 1-737. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Fabryk Extraction Project — Context Bootstrap
 

@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/ecl/0010-ecl-pipeline-runner-trait-based-design-sketch.md, lines 1-1069. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0010-ecl-pipeline-runner-trait-based-design-sketch.md, lines 1-1069. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 number: TBD

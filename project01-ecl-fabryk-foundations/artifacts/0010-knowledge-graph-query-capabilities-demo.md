@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/docs/06-final/0010-knowledge-graph-query-capabilities-demo.md, lines 1-598. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/06-final/0010-knowledge-graph-query-capabilities-demo.md, lines 1-598. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 number: 10

@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/0011-claude-code-music-theory-mcp-server-extraction-audit.md, lines 1-413. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/0011-claude-code-music-theory-mcp-server-extraction-audit.md, lines 1-413. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Claude Code: Music Theory MCP Server Extraction Audit
 

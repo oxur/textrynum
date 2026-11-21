@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0004-cc-prompt-fabryk-1.md, lines 1-636. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0004-cc-prompt-fabryk-1.md, lines 1-636. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk 1.4 — ID Utilities & PathResolver"

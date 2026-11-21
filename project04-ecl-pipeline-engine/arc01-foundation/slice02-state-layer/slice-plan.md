@@ -2,7 +2,7 @@
 
 > Historical slice plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/dev/ecl/0013-milestone-1.2-state-layer-ecl-pipeline-state.md, lines 1-1188. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0013-milestone-1.2-state-layer-ecl-pipeline-state.md, lines 1-1188. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Milestone 1.2: State Layer (`ecl-pipeline-state`)
 

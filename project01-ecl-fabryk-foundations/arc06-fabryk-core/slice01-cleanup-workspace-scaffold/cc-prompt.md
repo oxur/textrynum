@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0001-cc-prompt-fabryk-1.md, lines 1-1207. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0001-cc-prompt-fabryk-1.md, lines 1-1207. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk 1.0 & 1.1 — Cleanup & Workspace Scaffold"

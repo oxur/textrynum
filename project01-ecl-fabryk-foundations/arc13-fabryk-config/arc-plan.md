@@ -2,7 +2,7 @@
 
 > Historical arc plan, reorganized on 2026-11-21. The source text and its completion claims are historical evidence, not current instructions or independently verified acceptance. Original paths inside the text are intentionally unchanged.
 
-<!-- Historical source: crates/design/dev/fabryk/0041-phase-6.5-config-infra.md, lines 1-8. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0041-phase-6.5-config-infra.md, lines 1-8. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Phase 6.5: Configuration Infrastructure
 
@@ -19,7 +19,7 @@ Historical milestone moved to [Milestone 6.5.2 — Config CLI Commands](slice02-
 
 Historical milestone moved to [Milestone 6.5.3 — Integration: Wire Config into FabrykCli](slice03-3-integration-wire-config-into-fabrykcli/slice-plan.md).
 
-<!-- Historical source: crates/design/dev/fabryk/0041-phase-6.5-config-infra.md, lines 284-328. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0041-phase-6.5-config-infra.md, lines 284-328. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## Key files to create/modify
 

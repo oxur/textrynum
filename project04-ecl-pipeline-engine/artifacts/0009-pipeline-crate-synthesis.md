@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/ecl/0009-pipeline-crate-synthesis.md, lines 1-155. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/ecl/0009-pipeline-crate-synthesis.md, lines 1-155. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Pipeline Crate Synthesis
 

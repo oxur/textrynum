@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/0012-fabryk-extraction-session-bootstrap-phases-1-7.md, lines 1-308. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/0012-fabryk-extraction-session-bootstrap-phases-1-7.md, lines 1-308. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 number: 11

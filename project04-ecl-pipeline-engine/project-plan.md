@@ -90,7 +90,7 @@ This is a reconstruction of historical planning, not a new implementation projec
 - 51553d5 Bumped minor version number.
 - 1a248c4 chore: Bump russh 0.46 → 0.54, russh-keys 0.46 → 0.49
 
-<!-- Historical source: crates/design/docs/05-active/0018-ecl-pipeline-runner-multi-phase-project-plan.md, lines 1-80. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/05-active/0018-ecl-pipeline-runner-multi-phase-project-plan.md, lines 1-80. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 number: 18
@@ -183,7 +183,7 @@ Historical section moved to [Phase 4: Real Adapter (Google Drive)](arc04-google-
 
 Historical section moved to [Phase 5: CLI & Polish](arc05-cli-observability/arc-plan.md).
 
-<!-- Historical source: crates/design/docs/05-active/0018-ecl-pipeline-runner-multi-phase-project-plan.md, lines 534-649. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/docs/05-active/0018-ecl-pipeline-runner-multi-phase-project-plan.md, lines 534-649. Original bytes are recoverable from import commit 2d006a7. -->
 
 ## Phase 6: Validation
 

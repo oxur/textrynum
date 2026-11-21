@@ -26,7 +26,7 @@ proposal notes visible. Preserve original internal paths; link repair and
 implementation auditing are outside this migration's scope.
 
 Before editing the historical reconstruction, consult README.md and the source
-map. The original bytes are preserved in import commit `3a39aea`; avoid adding
+map. The privacy-sanitized source bytes are preserved in import commit `2d006a7`; avoid adding
 duplicate archives. Later implementation work needs an explicit current plan
 and its applicable verification contract.
 

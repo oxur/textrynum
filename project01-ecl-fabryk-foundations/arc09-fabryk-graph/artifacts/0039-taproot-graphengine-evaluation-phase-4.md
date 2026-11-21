@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0039-taproot-graphengine-evaluation-phase-4.md, lines 1-215. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0039-taproot-graphengine-evaluation-phase-4.md, lines 1-215. Original bytes are recoverable from import commit 2d006a7. -->
 
 # Taproot GraphEngine Evaluation & Phase 4 Adaptation Recommendations
 

@@ -1,5 +1,5 @@
 
-<!-- Historical source: crates/design/dev/fabryk/0035-cc-prompt-fabryk-7.md, lines 1-224. Original bytes are recoverable from import commit 3a39aea. -->
+<!-- Historical source: crates/design/dev/fabryk/0035-cc-prompt-fabryk-7.md, lines 1-224. Original bytes are recoverable from import commit 2d006a7. -->
 
 ---
 title: "CC Prompt: Fabryk 7.1 — Comprehensive Testing"
