@@ -29,3 +29,8 @@ Durable artifacts: dependency-inventory.json is the canonical64-package declarat
 ## Assignment history
 
 - cc-prompt.md initial full-upgrade assignment, predecessor none. Initial baseline compatibility decisions resolved; no executed slice02 correction pass yet. Current assignment cc-prompt.md. Five executed corrective-pass budget applies; report meaningful findings/progress through the existing parent relay.
+
+
+## Actual dispatch — 2026-11-21
+
+Runner thread01a2006e-2618-7721-b361-1bd809d21d87, owned exec session8373, launched from the exact preserved cc-prompt.md. CDC inspected actual turn_context at23:25:57.185UTC: gpt-6-luna/high, physical source cwd, on-request approval, workspace-write with physical planning added. Backend beyond configured identity is unreported. CC now exclusively owns source/index until return; initial stage is required intake/readback, then baseline fixtures before dependency edits. CDC remains planning/design/independent-review owner. No extra active contributor and no detached mutator.
