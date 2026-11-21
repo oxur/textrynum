@@ -107,7 +107,7 @@ update no contributor has been dispatched and no source coding/audit has started
 
 | Role | Approved model and reasoning | Deployment and actual assignment |
 | --- | --- | --- |
-| CDC — coordination/planning and independent review | `gpt-6.1-sol`, High | Codex/OpenAI runner; requested explicitly by Duncan; not yet dispatched |
+| CDC — coordination/planning and independent review | `gpt-6.1-sol`, High | Codex/OpenAI runner; requested explicitly by Duncan; CDC dispatched as `/root/ci_dependency_cdc`, CC exact CLI dispatch pending |
 | CC — implementation | `gpt-6-luna`, High | Codex/OpenAI runner; requested explicitly by Duncan; not yet dispatched |
 
 Both IDs and High reasoning were found in the local Codex model catalog. This is
@@ -219,3 +219,5 @@ home in `project05-discoverability/artifacts/`.
   completed at `92c72d7`, and all five release branches pushed normally/atomically
   to all three remotes with tip verification. Arc00 source branch is now
   `codex/ci-dependencies`; contributor dispatch follows the recorded selection.
+
+- 2026-11-21 v1.6 — arc00 CDC dispatch/ownership accepted; slice01 minimal baseline repair opened from current run 44952335686. Exact CC dispatch and independent results remain pending.

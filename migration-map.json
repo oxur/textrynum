@@ -6424,7 +6424,7 @@
       ]
     },
     "arc00_execution": {
-      "status": "authorized; contributor dispatch pending",
+      "status": "CDC /root/ci_dependency_cdc assigned gpt-6.1-sol High; slice01 prompt ready; CC exact Luna dispatch pending",
       "source_branch": "codex/ci-dependencies",
       "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
       "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",

@@ -129,3 +129,16 @@ close a row. Reconcile all findings and report the bounded endpoint to Duncan.
   that alias. Use real workdir paths and normal reviewed escalation where needed;
   do not weaken the global symlink sandbox setting or change filesystem layout.
   The CC CLI can run with explicit real `--cd` and selected model/settings.
+
+## Active CDC assignment and slice breakdown — 2026-11-21
+
+CDC `/root/ci_dependency_cdc` accepted ownership after parent dispatch with requested `gpt-6.1-sol` High. This is dispatch metadata; backend identity beyond it is unreported. CC exact `gpt-6-luna` High will use Codex CLI with physical --cd and normal reviewed workspace-write approvals. Source remains clean at `92c72d7`.
+
+1. slice01-green-baseline: minimal compatible Redis/ethnum repair and genuine complete green CI; covers CI-01. Newer run [44952335686](https://github.com/oxur/textrynum/actions/runs/44952335686) at `92c72d7` reproduces the same blockers.
+2. slice02-latest-dependencies: complete external dependency/tooling inventory and all-latest migration with stated upstream constraints, meaningful local/package/feature checks and actual green CI; opens only after slice01 accepted; covers DEP-01/CI-02. Exact migration recipe follows source/version inspection then.
+
+CDC independently reviews CC source at each slice. The final assembled arc composition has a separate fresh-context or Operator gate; parent can supply the approved CDC model context for that bounded review. No automatic audit. Prompt/evidence homes follow canonical slices; no duplicate archives/config exports.
+
+### Version history
+
+- 2026-11-21 v1.1 — actual CDC ownership recorded; current CI evidence and minimal-first slice decomposition opened, preserving all arc rows and the Operator order.
