@@ -1,8 +1,25 @@
-# Private provider purge requests — drafts, not sent
+# Private provider purge requests — submission status
 
 These requests serve the remaining privacy-cleanup gate. They intentionally do
-not repeat the confidential customer identity. Submission to either provider
-requires Duncan's explicit approval; do not post a public community issue.
+not repeat the confidential customer identity. Duncan explicitly approved submitting both requests on 2026-11-21.
+Keep both requests private; do not post a public community issue.
+
+## Submission evidence — 2026-11-21
+
+- **Codeberg: sent.** Gmail accepted the approved request to
+  `contact@codeberg.org` at 21:19:53 UTC (15:19:53 America/Chicago).
+  The sent-message readback confirms recipient, subject and `SENT` label.
+  Gmail message/thread ID: `1a1fffadcdba4153`. The sent From header is
+  `Duncan McGreggor <duncan@mcgreg.gr>`. Provider acknowledgement and purge
+  completion remain pending; a sent message does not close the cleanup gate.
+- **GitHub: approved, not submitted.** Browser-control initialization failed
+  before the support form could be accessed. Both normal initialization and
+  explicit reset/retry ended with `trusted Node process exited unexpectedly`.
+  No GitHub request or ticket confirmation was created. The private portal
+  remains [GitHub Support](https://support.github.com/contact); the approved
+  text below is ready for submission when browser access is restored or by
+  Duncan directly. Do not treat this as a provider rejection.
+
 
 ## GitHub Support
 

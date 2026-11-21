@@ -6942,6 +6942,27 @@
       },
       "private_matches": 0,
       "old_commit_fetch": "not-served"
+    },
+    "provider_requests": {
+      "authorized_on": "2026-11-21",
+      "authorization": "Operator explicitly approved submitting both private requests",
+      "codeberg": {
+        "status": "sent",
+        "recipient": "contact@codeberg.org",
+        "sent_at_utc": "2026-11-21T21:19:53Z",
+        "gmail_message_id": "1a1fffadcdba4153",
+        "gmail_thread_id": "1a1fffadcdba4153",
+        "verification": "Sent-message metadata readback confirmed To, Subject and SENT label",
+        "provider_acknowledgement": "not observed",
+        "purge_complete": false
+      },
+      "github": {
+        "status": "approved_not_submitted",
+        "reason": "Browser-control initialization failed before support portal access, including explicit reset/retry",
+        "portal": "https://support.github.com/contact",
+        "ticket_created": false,
+        "purge_complete": false
+      }
     }
   }
 }

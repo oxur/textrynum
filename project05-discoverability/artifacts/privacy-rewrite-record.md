@@ -158,6 +158,10 @@ Co-authored-by: Codex <noreply@openai.com>
 Co-authored-by: Billo AI <ai-engineering@billo.systems>
 ```
 
-Private provider-purge request drafts are in
-[host-purge-requests.md](host-purge-requests.md). They have not been sent; explicit
-approval is required before messaging the providers.
+Private provider-purge requests and submission evidence are in
+[host-purge-requests.md](host-purge-requests.md). Duncan approved both submissions.
+Codeberg's request was sent on 2026-11-21 at 21:19:53 UTC and its sent-message
+metadata was read back. No provider acknowledgement or completion is claimed.
+GitHub remains approved but unsubmitted because browser-control initialization
+failed before portal access; no ticket was created. Both hosted purges and all
+held integration/publication actions remain pending.
