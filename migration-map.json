@@ -6627,6 +6627,160 @@
       },
       "private_matches": 0,
       "first_party_live_files_and_paths": "passed"
-    }
+    },
+    "remote_ref_updates": [
+      {
+        "remote": "github",
+        "changes": [
+          {
+            "ref": "refs/heads/feature/discoverable-registry",
+            "old": "15db213417b2e26166d1f2ecb4a13b5a801f1164",
+            "new": "26f8d03ff4f3d7ecbc806e68ee2a16558dd22651"
+          },
+          {
+            "ref": "refs/heads/feature/mcp-http-transport",
+            "old": "006f66c757972abfad38b97586a6b9eb381dd27d",
+            "new": "bf45eae50c4daad654e7f7a0fbd5e6dddb6d9cb4"
+          },
+          {
+            "ref": "refs/heads/main",
+            "old": "f19bb3b9bc00295dea8eabb40247b6eb9e6fabdf",
+            "new": "856af87561c7e53379ec9094c69a01211d3e5283"
+          },
+          {
+            "ref": "refs/tags/0.1.1",
+            "old": "19be85a9516158214723f886217fa37acaf49b0b",
+            "new": "df5028aa2f3de2fc9d8d5445872e02cfd5fab745"
+          },
+          {
+            "ref": "refs/tags/0.1.2",
+            "old": "ef305124c902369dcb173c4eb4936ac2220646b7",
+            "new": "b134862d616d50b30e8e619d5536d0e8341a4086"
+          },
+          {
+            "ref": "refs/tags/0.2.0",
+            "old": "08503430f20fcb4dea5ef2e68dfc25bb5821944f",
+            "new": "bffd74594c33fb5504e07a85458340173863f4d3"
+          },
+          {
+            "ref": "refs/tags/0.3.0",
+            "old": "4cd574c94ac5d5e67d847c80b595e4fe109daa3b",
+            "new": "f32e7c7dc539c36a62b5ae80f0dff38037d45fbe"
+          },
+          {
+            "ref": "refs/tags/0.4.0",
+            "old": "77c17ec97e97191a1cf1a04c2fa63069d306498d",
+            "new": "50a4d108eadcd338ac50ef3d34bf640d33b7100d"
+          },
+          {
+            "ref": "refs/tags/0.4.1",
+            "old": "4a79ce26fae4395e6a757296ce0b775d788b2169",
+            "new": "f9ed51b752ff566fe54c7615840721dde0c737e4"
+          },
+          {
+            "ref": "refs/tags/0.4.2",
+            "old": "a36cf532ba9ba930cfc65ded0d4d21fa5119ef86",
+            "new": "2f9240855dbc9d615cf1edc2c99db402b358d652"
+          }
+        ]
+      },
+      {
+        "remote": "codeberg",
+        "changes": [
+          {
+            "ref": "refs/heads/main",
+            "old": "7a9dead8b608d959d592d393e62094872a4e2a8e",
+            "new": "87af29b820e495afe2dbe1b0ad5ce5173d59fa43"
+          },
+          {
+            "ref": "refs/tags/0.1.1",
+            "old": "19be85a9516158214723f886217fa37acaf49b0b",
+            "new": "df5028aa2f3de2fc9d8d5445872e02cfd5fab745"
+          },
+          {
+            "ref": "refs/tags/0.1.2",
+            "old": "ef305124c902369dcb173c4eb4936ac2220646b7",
+            "new": "b134862d616d50b30e8e619d5536d0e8341a4086"
+          },
+          {
+            "ref": "refs/tags/0.2.0",
+            "old": "08503430f20fcb4dea5ef2e68dfc25bb5821944f",
+            "new": "bffd74594c33fb5504e07a85458340173863f4d3"
+          },
+          {
+            "ref": "refs/tags/0.3.0",
+            "old": "4cd574c94ac5d5e67d847c80b595e4fe109daa3b",
+            "new": "f32e7c7dc539c36a62b5ae80f0dff38037d45fbe"
+          },
+          {
+            "ref": "refs/tags/v0.3.0",
+            "old": "4cd574c94ac5d5e67d847c80b595e4fe109daa3b",
+            "new": "4840526681bfc69244c9cc4aa60a455b05956a29"
+          }
+        ]
+      },
+      {
+        "remote": "macpro",
+        "changes": [
+          {
+            "ref": "refs/heads/main",
+            "old": "7a9dead8b608d959d592d393e62094872a4e2a8e",
+            "new": "87af29b820e495afe2dbe1b0ad5ce5173d59fa43"
+          },
+          {
+            "ref": "refs/tags/0.1.1",
+            "old": "19be85a9516158214723f886217fa37acaf49b0b",
+            "new": "df5028aa2f3de2fc9d8d5445872e02cfd5fab745"
+          },
+          {
+            "ref": "refs/tags/0.1.2",
+            "old": "ef305124c902369dcb173c4eb4936ac2220646b7",
+            "new": "b134862d616d50b30e8e619d5536d0e8341a4086"
+          },
+          {
+            "ref": "refs/tags/0.2.0",
+            "old": "08503430f20fcb4dea5ef2e68dfc25bb5821944f",
+            "new": "bffd74594c33fb5504e07a85458340173863f4d3"
+          },
+          {
+            "ref": "refs/tags/0.3.0",
+            "old": "4cd574c94ac5d5e67d847c80b595e4fe109daa3b",
+            "new": "f32e7c7dc539c36a62b5ae80f0dff38037d45fbe"
+          },
+          {
+            "ref": "refs/tags/0.4.0",
+            "old": "77c17ec97e97191a1cf1a04c2fa63069d306498d",
+            "new": "50a4d108eadcd338ac50ef3d34bf640d33b7100d"
+          },
+          {
+            "ref": "refs/tags/0.4.1",
+            "old": "4a79ce26fae4395e6a757296ce0b775d788b2169",
+            "new": "f9ed51b752ff566fe54c7615840721dde0c737e4"
+          },
+          {
+            "ref": "refs/tags/0.4.2",
+            "old": "a36cf532ba9ba930cfc65ded0d4d21fa5119ef86",
+            "new": "2f9240855dbc9d615cf1edc2c99db402b358d652"
+          }
+        ]
+      }
+    ],
+    "host_purge_targets": [
+      {
+        "remote": "github",
+        "old_commit_confirmed_recoverable": "f19bb3b9bc00295dea8eabb40247b6eb9e6fabdf",
+        "current_main": "856af87561c7e53379ec9094c69a01211d3e5283"
+      },
+      {
+        "remote": "codeberg",
+        "old_commit_confirmed_recoverable": "7a9dead8b608d959d592d393e62094872a4e2a8e",
+        "current_main": "87af29b820e495afe2dbe1b0ad5ce5173d59fa43"
+      },
+      {
+        "remote": "macpro",
+        "old_commit_confirmed_recoverable": "7a9dead8b608d959d592d393e62094872a4e2a8e",
+        "current_main": "87af29b820e495afe2dbe1b0ad5ce5173d59fa43"
+      }
+    ]
   }
 }

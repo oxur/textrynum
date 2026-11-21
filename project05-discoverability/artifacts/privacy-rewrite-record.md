@@ -98,3 +98,13 @@ record, followed by a scan of every remaining object. The final result is append
 here after the purge; this statement does not itself claim completion.
 
 Final local purge check: reflogs expired and obsolete objects pruned. Scanned every remaining local Git object: 270 commit, 6 tag, 2049 tree, 2225 blob; zero private-name matches. First-party live files/paths across all worktrees also had zero matches. Release-tip relationships, clean release worktrees and orphan planning ancestry passed. These are author self-checks.
+
+## Concrete host-purge targets
+
+The following known old commits were still recoverable at the retention check. The current refs are clean; old identities below are purge targets, not backup refs. Complete before/after ref identities are recorded under `history_rewrite.remote_ref_updates` in the source map.
+
+| Host | Old main commit confirmed recoverable | Current main |
+| --- | --- | --- |
+| github | `f19bb3b9bc00295dea8eabb40247b6eb9e6fabdf` | `856af87561c7e53379ec9094c69a01211d3e5283` |
+| codeberg | `7a9dead8b608d959d592d393e62094872a4e2a8e` | `87af29b820e495afe2dbe1b0ad5ce5173d59fa43` |
+| macpro | `7a9dead8b608d959d592d393e62094872a4e2a8e` | `87af29b820e495afe2dbe1b0ad5ce5173d59fa43` |
