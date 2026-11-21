@@ -6424,7 +6424,7 @@
       ]
     },
     "arc00_execution": {
-      "status": "slice02 initial metadata-location stop before edits; preserved iteration01 resumes same verified exact-Luna session",
+      "status": "slice02 same-session receipt acknowledged; required intake/source mapping active before baseline fixtures",
       "source_branch": "codex/ci-dependencies",
       "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
       "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",
@@ -6447,7 +6447,7 @@
         "entry_gate": "independently accepted actual green baseline CI before slice02 edits"
       },
       "source_candidate": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
-      "source_mutation_owner": "CDC until same-session resume starts, then CC exclusive source/index until return",
+      "source_mutation_owner": "CC exact-Luna High session01a2006e-2618-7721-b361-1bd809d21d87 exclusive until explicit return",
       "baseline_candidate_ci_run": 44957414892,
       "CC_session": "01a2006e-2618-7721-b361-1bd809d21d87",
       "baseline_candidate_ci_result": {
@@ -6478,9 +6478,9 @@
         "isolated_feature_selections": 17,
         "entry_source": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
         "CC_session": "01a2006e-2618-7721-b361-1bd809d21d87",
-        "ownership": "CC exclusive source/index from actual runner start; CDC design/independent review",
+        "ownership": "resumed CC exclusive source/index until return; CDC design/plans/independent review",
         "actual_turn_context": {
-          "timestamp": "2026-11-21T23:25:57.185Z",
+          "timestamp": "2026-11-21T23:29:19.987Z",
           "model": "gpt-6-luna",
           "effort": "high",
           "cwd": "/Users/oubiwann/lab/oxur/textrynum",
@@ -6488,9 +6488,10 @@
           "sandbox_policy": "workspace-write",
           "backend_identity": "unreported"
         },
-        "owned_exec_session": 8373,
+        "owned_exec_session": 3060,
         "initial_exec_session": 8373,
-        "initial_disposition": "returned before edits; actual model/effort verified; concrete metadata filename now supplied"
+        "initial_disposition": "returned before edits; actual model/effort verified; concrete metadata filename now supplied",
+        "configuration_receipt": "Coordinator-applied and independently verified Operator selection is authoritative; CC acknowledged and cross-checked; generic identity/introspection absence is not mismatch evidence"
       }
     },
     "audit_intake_observations": [

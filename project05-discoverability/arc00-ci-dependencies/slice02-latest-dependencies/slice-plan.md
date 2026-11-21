@@ -42,3 +42,6 @@ Initial exact-Luna session8373 exited before edits after it did not locate its a
 
 
 Future initial packets must explicitly state that coordinator-applied/independently verified Operator configuration is the authoritative receipt that CC acknowledges. Exact own-session metadata, when available, is a bounded cross-check; unavailable introspection/generic self-description does not manufacture a mismatch or require hidden backend attestation. The original issued prompt remains preserved; iteration01 makes this existing selection contract explicit, with the actual new-session path/projection supplied. This local packet-design correction follows parent direction, not a model substitution or weaker selection standard.
+
+
+Current same-session resume is owned exec3060. Actual turn_context23:29:19.987UTC again reports gpt-6-luna/high, physical source cwd and normal on-request/workspace-write policy. CC explicitly acknowledged the coordinator receipt as authority and completed the bounded own-file cross-check. Remaining intake is proceeding; source/index exclusively CC-owned until explicit return. Initial stopped coverage remains preserved in artifacts/cc-execution.md and the original runner transcript; it is not an executed implementation pass.
