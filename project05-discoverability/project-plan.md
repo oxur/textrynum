@@ -62,7 +62,7 @@ decision, not an action authorized by this continuation.
 
 | Arc | Useful result | Dependencies / status |
 | --- | --- | --- |
-| 00 — CI and dependencies | Fresh green CI, latest external dependencies and green checks again | Ready after requested integration; hosted purge deferred; Autonomous Mode choices explicitly selected |
+| 00 — CI and dependencies | Fresh green CI, latest external dependencies and green checks again | Integration complete; bounded Autonomous execution authorized; hosted purge deferred |
 | 01 — Foundation audit | Complete, severity-graded, evidence-based workspace and architecture findings with an implementation handoff | Detailed plan exists; execution has not started |
 | 02 — Foundation repair and consolidation | Audited defects repaired at their root, shared policies centralized, real behavior and integration demonstrated | Requires accepted audit; slices are created from actual findings, not invented in advance |
 | 03 — ChatGPT UX and reusable server readiness | Natural ChatGPT workflows, efficient discovery and payloads, consistent thin-server assembly, backend lifecycle and remaining existing extraction obligations | Blocked until audit and repair gates pass; detailed scope will be reconciled then |
@@ -214,3 +214,8 @@ home in `project05-discoverability/artifacts/`.
   far and directed continuation while keeping hosted purge open. This supersedes
   the earlier wait-for-all-purges gate; no repository deletion/recreation is
   authorized. Proceed with AGENTS policies, FF, release pushes and bounded arc00.
+
+- 2026-11-21 v1.5 — AGENTS policies committed, source-cleanup fast-forward
+  completed at `92c72d7`, and all five release branches pushed normally/atomically
+  to all three remotes with tip verification. Arc00 source branch is now
+  `codex/ci-dependencies`; contributor dispatch follows the recorded selection.

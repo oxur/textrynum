@@ -173,3 +173,33 @@ failed before portal access; no ticket was created. Duncan subsequently reported
 that the form options invoke destructive operations and instructed us to stop
 this task for now. Hosted purge remains open and nonblocking; integration and
 release pushes are authorized to continue. No deletion/recreation is authorized.
+
+
+## Completed integration and release pushes — 2026-11-21
+
+After Duncan explicitly made hosted purge nonblocking:
+
+- Both source and planning AGENTS.md now require commit-preserving rebase/FF-only
+  integration and both Cayrn co-author trailers. Source policy commit: `92c72d7`;
+  planning decision/policy commit: `be12aa7`.
+- `release/0.5.x` fast-forwarded from `856af875` to
+  `92c72d7058dea91c0d475959e8c5b51b65f577ab`, exactly the migration branch tip.
+  No orphan-planning merge, merge commit or squash was used.
+- All five release branches were absent on all three remotes before publication.
+  Normal atomic pushes (no force) succeeded to github, codeberg and macpro.
+  Every one of the 15 remote branch tips was read back and matched the local ref.
+- Tags for release lines 0.1–0.4 remain ancestors of their corresponding tips.
+  Release/0.5 changes integrate planning relocation and instructions; no new
+  Rust implementation change was made by this integration.
+- Source checkout now uses `codex/ci-dependencies` at the same sanitized baseline
+  for bounded arc00 work. This does not close the deferred hosted-purge task.
+
+Published branch tips:
+
+| Branch | Commit (same on all three remotes) |
+| --- | --- |
+| `release/0.1.x` | `b134862d616d50b30e8e619d5536d0e8341a4086` |
+| `release/0.2.x` | `bffd74594c33fb5504e07a85458340173863f4d3` |
+| `release/0.3.x` | `0d5ce414a15fe0c16040d23264bd52bf87189674` |
+| `release/0.4.x` | `c4819816ecdc680d877c8a5003f261d59f1e5c22` |
+| `release/0.5.x` | `92c72d7058dea91c0d475959e8c5b51b65f577ab` |

@@ -6380,6 +6380,56 @@
         "all release branch pushes",
         "bounded arc00 CI/dependency Autonomous Mode"
       ]
+    },
+    "completed_integration": {
+      "source_commit": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
+      "source_branch": "codex/planning-migration",
+      "release_branch": "release/0.5.x",
+      "method": "fast-forward only",
+      "agents_policies": "source and planning committed",
+      "release_pushes": [
+        {
+          "remote": "github",
+          "push": "atomic normal, no force",
+          "verified_refs": {
+            "refs/heads/release/0.1.x": "b134862d616d50b30e8e619d5536d0e8341a4086",
+            "refs/heads/release/0.2.x": "bffd74594c33fb5504e07a85458340173863f4d3",
+            "refs/heads/release/0.3.x": "0d5ce414a15fe0c16040d23264bd52bf87189674",
+            "refs/heads/release/0.4.x": "c4819816ecdc680d877c8a5003f261d59f1e5c22",
+            "refs/heads/release/0.5.x": "92c72d7058dea91c0d475959e8c5b51b65f577ab"
+          }
+        },
+        {
+          "remote": "codeberg",
+          "push": "atomic normal, no force",
+          "verified_refs": {
+            "refs/heads/release/0.1.x": "b134862d616d50b30e8e619d5536d0e8341a4086",
+            "refs/heads/release/0.2.x": "bffd74594c33fb5504e07a85458340173863f4d3",
+            "refs/heads/release/0.3.x": "0d5ce414a15fe0c16040d23264bd52bf87189674",
+            "refs/heads/release/0.4.x": "c4819816ecdc680d877c8a5003f261d59f1e5c22",
+            "refs/heads/release/0.5.x": "92c72d7058dea91c0d475959e8c5b51b65f577ab"
+          }
+        },
+        {
+          "remote": "macpro",
+          "push": "atomic normal, no force",
+          "verified_refs": {
+            "refs/heads/release/0.1.x": "b134862d616d50b30e8e619d5536d0e8341a4086",
+            "refs/heads/release/0.2.x": "bffd74594c33fb5504e07a85458340173863f4d3",
+            "refs/heads/release/0.3.x": "0d5ce414a15fe0c16040d23264bd52bf87189674",
+            "refs/heads/release/0.4.x": "c4819816ecdc680d877c8a5003f261d59f1e5c22",
+            "refs/heads/release/0.5.x": "92c72d7058dea91c0d475959e8c5b51b65f577ab"
+          }
+        }
+      ]
+    },
+    "arc00_execution": {
+      "status": "authorized; contributor dispatch pending",
+      "source_branch": "codex/ci-dependencies",
+      "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
+      "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",
+      "endpoint": "accepted arc00 CI/dependency prerequisite; no automatic audit or feature work",
+      "nonpublishing_ci_task_branch_pushes": "authorized as necessary to requested green CI; no main update, merge, PR or publication"
     }
   },
   "history_rewrite": {

@@ -94,3 +94,38 @@ project05/artifacts. Show baseline and upgraded candidate identities, exact
 version inventory, failures/fixes, local checks, CI URLs and independent review.
 A passing historical run, a new lockfile or a declared model name alone does not
 close a row. Reconcile all findings and report the bounded endpoint to Duncan.
+
+
+## Current execution preflight — 2026-11-21
+
+- Operator continuation lifts only the earlier hosted-purge entry hold. The
+  remaining purge task stays open; do not pursue destructive forms or repository
+  deletion/recreation. AGENTS policies, migration FF and all 15 release-ref
+  publications are complete; see the project privacy record.
+- Source: `/Users/oubiwann/lab/oxur/textrynum`, branch `codex/ci-dependencies`,
+  baseline `92c72d7058dea91c0d475959e8c5b51b65f577ab`, clean at handoff.
+  Planning: separate orphan worktree `.worktrees/planning`. No new source
+  worktree is needed. Assign one source/index mutation owner at a time.
+- Scope/endpoint: this arc's CI-01, DEP-01, CI-02 and REVIEW-01, using exact
+  Operator-selected CDC `gpt-6.1-sol` High for planning/independent review and CC
+  `gpt-6-luna` High for implementation. No contributor substitution is authorized.
+  A selected context must inspect source and load all required skills before
+  issuing concrete slices/prompts. Existing failures are entry evidence, not a
+  complete diagnosis or an implementation recipe.
+- CDC receives coordination ownership; CC receives source mutation ownership
+  only under a durable issued slice prompt. CDC owns planning records and
+  independently inspects/reproduces CC evidence. Preserve current prompts,
+  iterations, ledgers, closing records and CDC retrospectives.
+- Nonpublishing GitHub pushes of the CI/dependency task branch and CI runs are
+  necessary within the requested green-CI work. Inspect effects before each
+  relevant change. Current workflow runs build/lint/test only; no deployment or
+  release job exists. No PR, tag, package publication, new external support
+  message, main update or merge of the CI/dependency branch is authorized here.
+- Stop after accepted CI/dependency preparation and report; do not automatically
+  begin arc01 audit or later feature work. Audit results, when commissioned,
+  must go directly in `project05-discoverability/artifacts/`.
+- Runtime note: the parent chat has a managed workspace alias pointing through
+  a symlink. Sandboxed native/browser tools can fail before startup because of
+  that alias. Use real workdir paths and normal reviewed escalation where needed;
+  do not weaken the global symlink sandbox setting or change filesystem layout.
+  The CC CLI can run with explicit real `--cd` and selected model/settings.

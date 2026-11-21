@@ -20,9 +20,10 @@ Each release worktree is `.worktrees/release-0.N.x`. Release branches preserve
 their pinned implementation snapshots. `release/0.1.x` was advanced from its
 ancestor `2d32858` to `0.1.2`; no existing branch history or tags were discarded.
 `release/0.5.x` is the exact `main` snapshot inspected for this migration.
-These release branches remain local. Duncan has since authorized publication to
-all three remotes after the integration steps below; the remaining hosted purge
-is explicitly deferred and nonblocking.
+All five release branches are now published to github, codeberg and macpro;
+all 15 remote tips were read back successfully. Release/0.5.x subsequently
+fast-forwarded to `92c72d7` for planning relocation and AGENTS policies. The
+remaining hosted purge is explicitly deferred and nonblocking.
 
 ## How the history was reconstructed
 
@@ -173,3 +174,13 @@ ChatGPT UX is primary project05 scope and release acceptance. Its goal, task-lev
 measures, discovery/request/payload/information tradeoffs and real-client evidence
 are recorded in the project plan and audit plan, with post-audit implementation
 owned by the ChatGPT UX/reusable-server readiness work.
+
+
+## Current execution handoff — 2026-11-21
+
+Requested AGENTS changes, source-cleanup FF and all release-branch pushes are
+complete; evidence and full branch IDs are in the privacy record. Arc00 is the
+bounded active implementation scope, using source branch `codex/ci-dependencies`
+at `92c72d7`, source checkout `/Users/oubiwann/lab/oxur/textrynum`, and the separate
+planning worktree. CDC 6.1 Sol High coordinates/reviews CC 6 Luna High. Hosted purge
+stays open and nonblocking. The full audit and project06/07 features are unopened.
