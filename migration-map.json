@@ -1,0 +1,2004 @@
+{
+  "source_revision": "f19bb3b9bc00295dea8eabb40247b6eb9e6fabdf",
+  "captured_on": "2026-11-21",
+  "records": [
+    {
+      "source": "crates/design/docs/01-draft/0009-unified-ecosystem-vision-ecl-fabryk-skill-framework.md",
+      "sha256": "3a3338d89acc9f9e0b53d6c1656cc9022be2caec0fb89c2bdb4316cf20c38083",
+      "bytes": 27822,
+      "mtime_ns": 1770259585025044506,
+      "tracked": true,
+      "history": [
+        "9748d5e|2026-01-28T23:13:40-06:00|Updated docs.",
+        "7e8e0b9|2026-01-28T23:09:12-06:00|Added first version of file."
+      ]
+    },
+    {
+      "source": "crates/design/docs/01-draft/0024-code-audit-report-poc-mcp-server-final-fabryk-extraction.md",
+      "sha256": "e57d3f9a8c09070991d37a107aec49f19b550693140135d4dd806caf340f172d",
+      "bytes": 13218,
+      "mtime_ns": 1776192252787895774,
+      "tracked": true,
+      "history": [
+        "652cf7d|2026-04-14T14:49:13-05:00|feat: Add MCP helpers, McpErrorContextExt, and date utilities"
+      ]
+    },
+    {
+      "source": "crates/design/docs/02-under-review/0001-ecl-architecture-proposal.md",
+      "sha256": "0646eae396dc0f4f19c6c5f4acf6157adbccc393c0b33eeb293f63d336122718",
+      "bytes": 22638,
+      "mtime_ns": 1768516626499348844,
+      "tracked": true,
+      "history": [
+        "27f5b1a|2026-01-15T16:38:37-06:00|Added project files."
+      ]
+    },
+    {
+      "source": "crates/design/docs/02-under-review/0006-fabryk-project-proposal.md",
+      "sha256": "0a6dcd5ee379b31c48f94b116e50a9c84fe4014d5dce60e742a45614f24f1361",
+      "bytes": 28384,
+      "mtime_ns": 1770259585025346091,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/docs/02-under-review/0007-fabryk-file-management-addendum.md",
+      "sha256": "1a6278e012dac425afcb7b6871d42bc3078f4857a4085fa992411251695ff83a",
+      "bytes": 23114,
+      "mtime_ns": 1770259585025468300,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/docs/02-under-review/0008-fabryk-mcp-project-proposal.md",
+      "sha256": "4aa674989dadecd7779606002b98140ba0aa106babf74669618b0feb05add91e",
+      "bytes": 36491,
+      "mtime_ns": 1770259585025608842,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/docs/02-under-review/0020-sygnum-event-driven-architecture-for-keystone.md",
+      "sha256": "0e59e953d9385ccfdd4cbdf462d130850f1fe7da1387d5eaaff5d75a0b39b94f",
+      "bytes": 14577,
+      "mtime_ns": 1774475148274553555,
+      "tracked": true,
+      "history": [
+        "c9d961c|2026-03-25T16:46:15-05:00|Added first thoughts on an event bus design."
+      ]
+    },
+    {
+      "source": "crates/design/docs/05-active/0013-fabryk-extraction-project-plan-overview.md",
+      "sha256": "b2f6fab27fb832fb9e41f9a8112742925970f36a3defb0d3f0c53500ee59a336",
+      "bytes": 17136,
+      "mtime_ns": 1770259585025862468,
+      "tracked": true,
+      "history": [
+        "b915a5b|2026-02-03T18:57:56-06:00|More docs updates."
+      ]
+    },
+    {
+      "source": "crates/design/docs/05-active/0017-ecl-pipeline-runner-unified-design-vision.md",
+      "sha256": "974a228be02f8a9f0e30bba945b0b9e086fa8d781f0f6f6afce2c5d4ef117014",
+      "bytes": 70186,
+      "mtime_ns": 1773436526929982103,
+      "tracked": true,
+      "history": [
+        "ac368b5|2026-03-13T16:15:43-05:00|Formatting for ASCII diagram.",
+        "78c7f65|2026-03-13T16:10:26-05:00|docs: Rust quality pass on ECL pipeline runner design (0017 v1.1)"
+      ]
+    },
+    {
+      "source": "crates/design/docs/05-active/0018-ecl-pipeline-runner-multi-phase-project-plan.md",
+      "sha256": "432e45d5b4328b4e604eb1748dc20af062e093b199ee8d7fdd328385d233a9b2",
+      "bytes": 28112,
+      "mtime_ns": 1773437170454138930,
+      "tracked": true,
+      "history": [
+        "bed4b16|2026-03-13T16:28:52-05:00|State transitions."
+      ]
+    },
+    {
+      "source": "crates/design/docs/06-final/0002-ecl-library-research-recommendations.md",
+      "sha256": "635fd54611cfb028f8a02cfd8275407a3567ee6d0f21a52b672538a68c649c58",
+      "bytes": 17151,
+      "mtime_ns": 1768516667642562858,
+      "tracked": true,
+      "history": [
+        "27f5b1a|2026-01-15T16:38:37-06:00|Added project files."
+      ]
+    },
+    {
+      "source": "crates/design/docs/06-final/0010-knowledge-graph-query-capabilities-demo.md",
+      "sha256": "f90307a5386edb19bbe96eb858dcd387379833bb47dfd51d92e913c5ce4e05aa",
+      "bytes": 18190,
+      "mtime_ns": 1770259585025984635,
+      "tracked": true,
+      "history": [
+        "ddcc22c|2026-02-03T17:47:20-06:00|Updated docs."
+      ]
+    },
+    {
+      "source": "crates/design/docs/06-final/0011-fabryk-extraction-audit-music-theory-mcp-server.md",
+      "sha256": "5e461989d6f94cb4237865e7517a3303a15f0fb0ff8cb3349214176d353a1a03",
+      "bytes": 64432,
+      "mtime_ns": 1770259585026134303,
+      "tracked": true,
+      "history": [
+        "ddcc22c|2026-02-03T17:47:20-06:00|Updated docs."
+      ]
+    },
+    {
+      "source": "crates/design/docs/06-final/0012-fabryk-extraction-audit-amendment-refinements.md",
+      "sha256": "9c8db5703b0e0828f67cc53db032a68c1955afe92493367f449c0ed7586d537f",
+      "bytes": 23841,
+      "mtime_ns": 1770259585026254636,
+      "tracked": true,
+      "history": [
+        "ddcc22c|2026-02-03T17:47:20-06:00|Updated docs."
+      ]
+    },
+    {
+      "source": "crates/design/docs/06-final/0014-fabryk-architecture-2026-02-24.md",
+      "sha256": "a2e2e80e4aea508866c7ca3ee831aec2d1ac8d5ec5714aa95325efb5a9d25ac7",
+      "bytes": 26792,
+      "mtime_ns": 1771962107110166884,
+      "tracked": true,
+      "history": [
+        "1ceb96e|2026-02-26T10:36:23-06:00|Added current architecture doc."
+      ]
+    },
+    {
+      "source": "crates/design/docs/06-final/0015-restructure-fabryk-crate-hierarchy-for-better-downstream-ux.md",
+      "sha256": "68615dbfe5fee411fbb1bc19cf792216779ac4eac6fdf3cbb25d2a9ff6f9270a",
+      "bytes": 6463,
+      "mtime_ns": 1773069781406597413,
+      "tracked": true,
+      "history": [
+        "ccb078c|2026-03-09T10:38:08-05:00|refactor: Restructure fabryk crate hierarchy for better downstream UX"
+      ]
+    },
+    {
+      "source": "crates/design/docs/06-final/0016-research-2026-state-of-rust-ecosystem-for-workflowpipeline-frameworks.md",
+      "sha256": "21c9f0328bc4df68c12d521293c15823bdd1f25c07b1494fa36b7f504f96d388",
+      "bytes": 13387,
+      "mtime_ns": 1773424758544319690,
+      "tracked": true,
+      "history": [
+        "3de2b93|2026-03-13T13:00:21-05:00|docs: Add research doc on Rust workflow/pipeline ecosystem (2026)"
+      ]
+    },
+    {
+      "source": "crates/design/docs/06-final/0019-theorem-provers-for-rust-based-mcp-integration.md",
+      "sha256": "9c73f93f775e9324acf16ffee55e7d182a4d197b58a2be02ddba88c7e5275745",
+      "bytes": 15021,
+      "mtime_ns": 1774108450995731332,
+      "tracked": true,
+      "history": [
+        "ae63f44|2026-03-19T10:52:27-05:00|Added research on the current state of theorem provers."
+      ]
+    },
+    {
+      "source": "crates/design/docs/06-final/0021-building-a-trait-based-event-bus-in-rust-ecosystem-landscape-and-design-patterns.md",
+      "sha256": "062108fb3237ca552cc8b00b447e27cc7e862100707b668cdd1adc76b7d3838e",
+      "bytes": 18983,
+      "mtime_ns": 1774477768913755659,
+      "tracked": true,
+      "history": [
+        "3bb0fff|2026-03-25T17:29:53-05:00|Added research on event buses in Rust."
+      ]
+    },
+    {
+      "source": "crates/design/docs/06-final/0022-the-limitations-of-llms-with-abstract-reasoning.md",
+      "sha256": "7f903904cc986bc94994213e4ce24752a9f76e7f0de8f31f273c0a532a28d85d",
+      "bytes": 24840,
+      "mtime_ns": 1776120421788652941,
+      "tracked": true,
+      "history": [
+        "a678a15|2026-04-13T18:49:09-05:00|Added research docs."
+      ]
+    },
+    {
+      "source": "crates/design/docs/06-final/0023-augmenting-llm-reasoning-with-external-tools-a-practitioners-landscape.md",
+      "sha256": "b31b1a9c7fa71487afa2ab07080efaea80eddd8fcfac7453e5a9f918aca6c148",
+      "bytes": 22499,
+      "mtime_ns": 1776120441135508742,
+      "tracked": true,
+      "history": [
+        "a678a15|2026-04-13T18:49:09-05:00|Added research docs."
+      ]
+    },
+    {
+      "source": "crates/design/docs/10-superseded/0003-ecl-project-proposal.md",
+      "sha256": "368b3491a2f078a0ac2037f9d0fa626b703a81701e0da84358d86156cd26b7d5",
+      "bytes": 13654,
+      "mtime_ns": 1773434555807484755,
+      "tracked": true,
+      "history": [
+        "78c7f65|2026-03-13T16:10:26-05:00|docs: Rust quality pass on ECL pipeline runner design (0017 v1.1)",
+        "b0aa827|2026-01-22T18:59:51-06:00|Formatting.",
+        "27f5b1a|2026-01-15T16:38:37-06:00|Added project files."
+      ]
+    },
+    {
+      "source": "crates/design/docs/10-superseded/0004-ecl-project-plan.md",
+      "sha256": "32cbcc7885cd90511e200effe7c8fe0ac5f3e3b071f23e10352bbd4fcd44a86d",
+      "bytes": 48284,
+      "mtime_ns": 1773437215537828167,
+      "tracked": true,
+      "history": [
+        "bed4b16|2026-03-13T16:28:52-05:00|State transitions.",
+        "da71ce6|2026-01-22T20:05:01-06:00|Added project plan."
+      ]
+    },
+    {
+      "source": "crates/design/docs/10-superseded/0005-ecl-ecosystem-vision-summary.md",
+      "sha256": "ae8c96d6332cd962db04aa93789f4b8f0fb96c70a923a13272e97573a0b37557",
+      "bytes": 16217,
+      "mtime_ns": 1770259585026468262,
+      "tracked": true,
+      "history": [
+        "9748d5e|2026-01-28T23:13:40-06:00|Updated docs.",
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0001-phase-1-implementation.md",
+      "sha256": "f15b3116505af22175fdc1587343455bbcaa68d9c522bcb03bdfb7baa894a9e1",
+      "bytes": 94003,
+      "mtime_ns": 1770259585021110864,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs.",
+        "dd10f9f|2026-01-22T20:32:48-06:00|Added phase 1 dev plan."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0002-phase-2-00-overview.md",
+      "sha256": "2537f7eac2eea3c4a93ddac92439da31b5231e460ee787c02e53bb28151782bd",
+      "bytes": 6768,
+      "mtime_ns": 1770259585021265573,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0003-phase-2-01-step-trait.md",
+      "sha256": "12f92202bc64161f87eb5da40b2c579709a406b979e3bcbd76c3f4af9a293871",
+      "bytes": 22645,
+      "mtime_ns": 1770259585021364157,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0004-phase-2-02-step-executor.md",
+      "sha256": "cde498fb863337ba1b8242df51d44f69b40cc059bb7343a6ea1035266c86ca0a",
+      "bytes": 12801,
+      "mtime_ns": 1770259585021518324,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0005-phase-2-03-toy-workflow-steps.md",
+      "sha256": "ef5b8c5389dbd5f45443c3b5123f92be60c0578a2273f25ea0507635899483ea",
+      "bytes": 49475,
+      "mtime_ns": 1770259585021657366,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0006-phase-2-04-workflow-orchestrator.md",
+      "sha256": "9d5669513bdd886e53b066f389a6530d0897315ab8de8e955edce5423e39d4a7",
+      "bytes": 45397,
+      "mtime_ns": 1770259585021801408,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0007-phase-2-05-sqlx-persistence.md",
+      "sha256": "bad0d26f21e40778cba051f1d96092c94660fdcb8f9f197dbbb405b9ffe5c9c2",
+      "bytes": 47622,
+      "mtime_ns": 1770259585021937451,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0008-phase-2-06-observability.md",
+      "sha256": "e873dfa5ec31fd39e2590dbfa92dcbaf798bd3f697fc71c4b61d8b61a3b6f6be",
+      "bytes": 34761,
+      "mtime_ns": 1770259585022065118,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0009-phase-2-07-integration.md",
+      "sha256": "e0b5df374fb6b4a08b5f1ecfdeaad1706e28cb5362757acb3557f5a1b0ec952e",
+      "bytes": 51614,
+      "mtime_ns": 1770259585022210244,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0010-phase-2-08-checklist.md",
+      "sha256": "8279029968cadee4c7858d6d9da1b8a8b77b48f79b7cbcbd81e8a02f4bb126f3",
+      "bytes": 18809,
+      "mtime_ns": 1770259585022329786,
+      "tracked": true,
+      "history": [
+        "b5ffa13|2026-01-23T20:26:09-06:00|Added more design docs."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0011-claude-code-music-theory-mcp-server-extraction-audit.md",
+      "sha256": "78a159a6c6102af27994ec4619431b395826f6da02e51c4b1e7c8c05fc3b2b8b",
+      "bytes": 13273,
+      "mtime_ns": 1770259585022468536,
+      "tracked": true,
+      "history": [
+        "ddcc22c|2026-02-03T17:47:20-06:00|Updated docs."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0012-fabryk-extraction-session-bootstrap-phases-1-7.md",
+      "sha256": "21a14f59411560f0b78ce1b0f843275da22dda670a5f85a693c5f5a19745d78c",
+      "bytes": 12671,
+      "mtime_ns": 1770259585022579537,
+      "tracked": true,
+      "history": [
+        "b915a5b|2026-02-03T18:57:56-06:00|More docs updates.",
+        "ddcc22c|2026-02-03T17:47:20-06:00|Updated docs."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0013-lancedb-integration-guide-for-rust-mcp-servers.md",
+      "sha256": "4d6fd19009f18b5982ecf40bb618a1f200dc42148c21dff9d2eef19d35e27a65",
+      "bytes": 36727,
+      "mtime_ns": 1770430360895384617,
+      "tracked": true,
+      "history": [
+        "47476e4|2026-02-06T20:10:26-06:00|Added doc for integrating lancedb."
+      ]
+    },
+    {
+      "source": "crates/design/dev/0014-complete-the-fabryk-extraction-implementation-plan.md",
+      "sha256": "64678fb9b8024c2b85f09b5d4282a6b8b366e703b2b382b00abccec749bf35ed",
+      "bytes": 12400,
+      "mtime_ns": 1775922025812301008,
+      "tracked": true,
+      "history": [
+        "068c85f|2026-04-03T14:31:17-05:00|feat(fabryk-mcp-content): Add extended filter support and extra source tool slots"
+      ]
+    },
+    {
+      "source": "crates/design/dev/0015-plan-cross-crate-duplicate-code-consolidation.md",
+      "sha256": "43b644840c69b208f9fe44d564caece80e6ebf8d24d39c8f71a2ddd6891d8f75",
+      "bytes": 11163,
+      "mtime_ns": 1776359193274759737,
+      "tracked": true,
+      "history": [
+        "8ae5aa2|2026-04-16T12:35:30-05:00|feat: Add LanceDbConfig, promote SameAs/Cites relationships"
+      ]
+    },
+    {
+      "source": "crates/design/dev/concept-cards/0001-concept-card-framework-immediate-improvements-report.md",
+      "sha256": "416f2bac71cf2ec3eca1e4d4ec139c9f392f5ab8c103d0c4f568fda281848a6d",
+      "bytes": 14622,
+      "mtime_ns": 1770259585023099081,
+      "tracked": true,
+      "history": [
+        "92dd30a|2026-02-04T15:10:18-06:00|Added new dev docs on concept cards."
+      ]
+    },
+    {
+      "source": "crates/design/dev/concept-cards/0002-a-guide-for-parallel-concept-card-extraction-v3.md",
+      "sha256": "69f5366d6eda9170e22afbf39833de23ecc3bad8b1f7f12faab19e28c8cccbc4",
+      "bytes": 20892,
+      "mtime_ns": 1771861076330238214,
+      "tracked": true,
+      "history": [
+        "fa6f63b|2026-02-23T09:39:06-06:00|docs: Add YAML quoting rule for aliases containing colons",
+        "ef6adff|2026-02-04T16:07:56-06:00|Updated docs.",
+        "92dd30a|2026-02-04T15:10:18-06:00|Added new dev docs on concept cards."
+      ]
+    },
+    {
+      "source": "crates/design/dev/concept-cards/0003-howto-concept-card-extraction-with-claude-code.md",
+      "sha256": "1a19761c98f0defdb70db875bdde983b939dfe94e444978fe08687257fcdebf1",
+      "bytes": 20221,
+      "mtime_ns": 1771861097749565481,
+      "tracked": true,
+      "history": [
+        "fa6f63b|2026-02-23T09:39:06-06:00|docs: Add YAML quoting rule for aliases containing colons",
+        "92dd30a|2026-02-04T15:10:18-06:00|Added new dev docs on concept cards."
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0001-ecl-pipeline-redesign-2026.02.13-session-bootstrap.md",
+      "sha256": "e3aece2aa26ffdfbd70597cee37f58ffcf82b1b4ce0153b9ed2953a5894c8a33",
+      "bytes": 9637,
+      "mtime_ns": 1773425643755586292,
+      "tracked": true,
+      "history": [
+        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0002-pipeline-crate-deep-analysis-claude-code-prompts.md",
+      "sha256": "00ae8727f4d31d53afcaa03559a1c6381918f1b2f29200fcf83f01d4c2371e34",
+      "bytes": 8847,
+      "mtime_ns": 1773425707018934930,
+      "tracked": true,
+      "history": [
+        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0003-deep-analysis-dagrs.md",
+      "sha256": "44d6d6ffe298e2d95776dcefc9d0e3e808cf4b5fe75a471956ccb1d04a718380",
+      "bytes": 4381,
+      "mtime_ns": 1773425470586493392,
+      "tracked": true,
+      "history": [
+        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0004-deep-analysis-erio-workflow.md",
+      "sha256": "392c9799f69725532217e142e886871c33e0fb9221a1f29c928df643b727af74",
+      "bytes": 4763,
+      "mtime_ns": 1773425477848558564,
+      "tracked": true,
+      "history": [
+        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0005-deep-analysis-oxigdal-workflow.md",
+      "sha256": "2b3dc40772e9284b7e020935b14402c0c18a96d7c79b4654aa2e817986f55cc3",
+      "bytes": 5032,
+      "mtime_ns": 1773425487087245946,
+      "tracked": true,
+      "history": [
+        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0006-deep-analysis-dagx.md",
+      "sha256": "97ee40e2818cdb50bf2cd76339c6bf00a81a5fcd50888b95b59a07db7bb61518",
+      "bytes": 4907,
+      "mtime_ns": 1773425493047539200,
+      "tracked": true,
+      "history": [
+        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0007-deep-analysis-dagga.md",
+      "sha256": "1e5f2c3e28299d085c45cd10d894cdb5d2d83080bc9cd2d05438aeeaef2651e6",
+      "bytes": 4984,
+      "mtime_ns": 1773425496788397143,
+      "tracked": true,
+      "history": [
+        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0008-deep-analysis-rettle.md",
+      "sha256": "cfa66b9657fceee647024c7057a8771ae18c5294c3ce3bf8b49570b3fd3d7899",
+      "bytes": 5139,
+      "mtime_ns": 1773425499991974305,
+      "tracked": true,
+      "history": [
+        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0009-pipeline-crate-synthesis.md",
+      "sha256": "56a90c45039272b6491612e2c7ea5f9918f50e47f63f9c22bef2a696cc73dbfb",
+      "bytes": 6609,
+      "mtime_ns": 1773425503242768483,
+      "tracked": true,
+      "history": [
+        "e0a8372|2026-03-13T13:16:34-05:00|docs: Add ECL pipeline redesign research and crate analysis"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0010-ecl-pipeline-runner-trait-based-design-sketch.md",
+      "sha256": "5ff848398cbb03604aed8eaa081aaa7a740277462e6695191f7d4eabe05c2ef1",
+      "bytes": 35188,
+      "mtime_ns": 1773434195085832457,
+      "tracked": true,
+      "history": [
+        "78c7f65|2026-03-13T16:10:26-05:00|docs: Rust quality pass on ECL pipeline runner design (0017 v1.1)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0011-pipeline-crate-survey-analysis-synthesis.md",
+      "sha256": "b192227b512079041372019955b3fa886c550dc4eae4ae097d9a2906c17ad3a3",
+      "bytes": 25348,
+      "mtime_ns": 1773434247710254698,
+      "tracked": true,
+      "history": [
+        "78c7f65|2026-03-13T16:10:26-05:00|docs: Rust quality pass on ECL pipeline runner design (0017 v1.1)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0012-milestone-1.1-specification-layer-ecl-pipeline-spec.md",
+      "sha256": "d7ecf2eb08d43f546548fd46e0aaec80121073c0378c15ebbfe5dd3368286195",
+      "bytes": 26568,
+      "mtime_ns": 1773438293906736764,
+      "tracked": true,
+      "history": [
+        "c59aca0|2026-03-13T16:49:10-05:00|docs: Add Phase 1 milestone implementation plans (1.1, 1.2, 1.3)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0013-milestone-1.2-state-layer-ecl-pipeline-state.md",
+      "sha256": "38d78a2e87aa465836bf47d11d0c027e547f240940c88937c209ca8aec190db7",
+      "bytes": 42602,
+      "mtime_ns": 1773438280684361731,
+      "tracked": true,
+      "history": [
+        "c59aca0|2026-03-13T16:49:10-05:00|docs: Add Phase 1 milestone implementation plans (1.1, 1.2, 1.3)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0014-milestone-1.3-topology-layer-ecl-pipeline-topo.md",
+      "sha256": "27576bd0ce1e2065480ccdb73f11d0802f8b1f14dcb81330ef2f81bf834af822",
+      "bytes": 58834,
+      "mtime_ns": 1773438390366934905,
+      "tracked": true,
+      "history": [
+        "c59aca0|2026-03-13T16:49:10-05:00|docs: Add Phase 1 milestone implementation plans (1.1, 1.2, 1.3)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0015-milestone-2.1-redbstatestore-ecl-pipeline-state.md",
+      "sha256": "6f99697c60591c01afa6646dde6c838a24c02787ff01e1f5ddb87b1192d4fa7e",
+      "bytes": 37866,
+      "mtime_ns": 1773438637054910054,
+      "tracked": true,
+      "history": [
+        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0016-milestone-2.2-pipeline-runner-core-ecl-pipeline.md",
+      "sha256": "9999247a12e07b93fbfa81cf8e461d055286c66a4a89ddae02212cd08453a1a8",
+      "bytes": 68213,
+      "mtime_ns": 1773438778410019921,
+      "tracked": true,
+      "history": [
+        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0017-milestone-2.3-topology-resolution.md",
+      "sha256": "bf06cb004d992114f83f5f4f148f9557a9f965b91760cde126c4bae17d2ddd11",
+      "bytes": 44069,
+      "mtime_ns": 1773438755458738717,
+      "tracked": true,
+      "history": [
+        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0018-milestone-3.1-filesystem-adapter-built-in-stages-ecl-adapter-fs-ecl-stages.md",
+      "sha256": "9323b08b295e06e73f696a0265d0bade6b01073bdb8ed1f449e3e5a68a23a236",
+      "bytes": 58077,
+      "mtime_ns": 1773439141476919286,
+      "tracked": true,
+      "history": [
+        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0019-milestone-3.2-integration-test-suite.md",
+      "sha256": "2928d810799479d9d8692715e91c78f5ab7c2b5ef1fdfa3fcd201d7dbb502135",
+      "bytes": 44226,
+      "mtime_ns": 1773439119874618114,
+      "tracked": true,
+      "history": [
+        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0020-milestone-4.1-google-drive-auth-enumerate-ecl-adapter-gdrive.md",
+      "sha256": "b1b2fc11490981406b8e957e27839986a7aedae52ecb1437b3ec024ad40db9a0",
+      "bytes": 49478,
+      "mtime_ns": 1773439114747527339,
+      "tracked": true,
+      "history": [
+        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0021-milestone-4.2-google-drive-fetch-full-pipeline-ecl-adapter-gdrive-ecl-stages.md",
+      "sha256": "18d998f745e677ad2919628c74a7db2744115d84256006376b723f23889cbd41",
+      "bytes": 33954,
+      "mtime_ns": 1773439078646456996,
+      "tracked": true,
+      "history": [
+        "5ab2b77|2026-03-13T17:04:14-05:00|docs: Add Phase 2-4 milestone implementation plans (2.1-4.2)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0022-milestone-5.1-cli-commands-ecl-cli-pipeline-subcommands.md",
+      "sha256": "7775cb0c2a963a00a847a1e6139b41686de11af3b48016c4ad9d87a4eb08ff99",
+      "bytes": 57160,
+      "mtime_ns": 1773439475019732868,
+      "tracked": true,
+      "history": [
+        "0f43630|2026-03-13T17:14:39-05:00|docs: Add Phase 5-6 milestone implementation plans (5.1, 5.2, 6.1)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0023-milestone-5.2-observability-reporting.md",
+      "sha256": "c576264eed3ef0469b817d2de32e1af27747a95a116fe16ae3e2c9bdd7156395",
+      "bytes": 39508,
+      "mtime_ns": 1773439436630979497,
+      "tracked": true,
+      "history": [
+        "0f43630|2026-03-13T17:14:39-05:00|docs: Add Phase 5-6 milestone implementation plans (5.1, 5.2, 6.1)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0024-milestone-6.1-slack-stub-validation-ecl-adapter-slack.md",
+      "sha256": "46b245d105dffdfdf9696e5a84598c6bd52482f2b96beb27c03a9eb683701d9a",
+      "bytes": 40791,
+      "mtime_ns": 1773439456121143344,
+      "tracked": true,
+      "history": [
+        "0f43630|2026-03-13T17:14:39-05:00|docs: Add Phase 5-6 milestone implementation plans (5.1, 5.2, 6.1)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0025-zapier-webhook-adapter-implementation-plan.md",
+      "sha256": "f6744cccf67999e80d560c5a27ffb7c9e6bafd7d6ef6527fcfd145ff49d8f661",
+      "bytes": 15687,
+      "mtime_ns": 1774108451165368352,
+      "tracked": true,
+      "history": [
+        "32eedda|2026-03-17T13:22:33-05:00|feat(ecl-adapter-zapier): Zapier webhook push source adapter (milestone 7.1 + 7.2)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0026-phase-1-detailed-implementation-plan-make-affinity-work.md",
+      "sha256": "a6a43e1a847656240e12b79fbf7e0c111df24b83c6131d0bfee87c3ee1729070",
+      "bytes": 47760,
+      "mtime_ns": 1774108451200313879,
+      "tracked": true,
+      "history": [
+        "659de70|2026-03-17T15:49:42-05:00|feat(ecl-stages): Field mapping stage (Affinity Phase 1, milestone 7.2)",
+        "e092e34|2026-03-17T15:45:49-05:00|feat(ecl-stages): Record type & CSV parse stage (Affinity Phase 1, milestone 7.1)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0027-phase-2-detailed-implementation-plan-make-giant-eagle-work.md",
+      "sha256": "657f3fe993c9cfb463f913efeba0e9784bd09346c0d0d463cc6780e7dbb19050",
+      "bytes": 65419,
+      "mtime_ns": 1774108451200825758,
+      "tracked": true,
+      "history": [
+        "659de70|2026-03-17T15:49:42-05:00|feat(ecl-stages): Field mapping stage (Affinity Phase 1, milestone 7.2)",
+        "e092e34|2026-03-17T15:45:49-05:00|feat(ecl-stages): Record type & CSV parse stage (Affinity Phase 1, milestone 7.1)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0028-phase-3-detailed-implementation-plan-make-acme-inc-work.md",
+      "sha256": "241ef91c6e09fbde7d1fb8884755859e8731ec9f17a6664d06aca9f276c53a37",
+      "bytes": 54899,
+      "mtime_ns": 1774108451184308521,
+      "tracked": true,
+      "history": [
+        "e092e34|2026-03-17T15:45:49-05:00|feat(ecl-stages): Record type & CSV parse stage (Affinity Phase 1, milestone 7.1)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/ecl/0029-phase-4-detailed-implementation-plan-full-parity.md",
+      "sha256": "cc94f058416df65eccc60e7154f275e108a1285d33e08d8e2a239726e80de04c",
+      "bytes": 47374,
+      "mtime_ns": 1774108451201110676,
+      "tracked": true,
+      "history": [
+        "659de70|2026-03-17T15:49:42-05:00|feat(ecl-stages): Field mapping stage (Affinity Phase 1, milestone 7.2)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0001-cc-prompt-fabryk-1.md",
+      "sha256": "57bf72140a35270a01a42e61687750d6811adf6f7accc5cd0e9f305ca0d20a71",
+      "bytes": 29795,
+      "mtime_ns": 1770259585023932209,
+      "tracked": true,
+      "history": [
+        "cc24aad|2026-02-03T21:46:55-06:00|docs(fabryk): add checkpoint clarification and revise milestone 1.3",
+        "fe55083|2026-02-03T21:19:29-06:00|docs(fabryk): revise milestones 1.0-1.2 for consistent thiserror approach",
+        "fe3d131|2026-02-03T21:03:05-06:00|docs(fabryk): revise milestone 1.0 & 1.1 for ECL workspace approach",
+        "5eda3ac|2026-02-03T21:01:58-06:00|Added milestone docs from Claude Desktop."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0002-cc-prompt-fabryk-1.md",
+      "sha256": "e0af2ba027348df4ca042895f1da4a9f28cfa1da591a5d631c0602ee8cc29280",
+      "bytes": 20534,
+      "mtime_ns": 1770259585024042377,
+      "tracked": true,
+      "history": [
+        "cc24aad|2026-02-03T21:46:55-06:00|docs(fabryk): add checkpoint clarification and revise milestone 1.3",
+        "fe55083|2026-02-03T21:19:29-06:00|docs(fabryk): revise milestones 1.0-1.2 for consistent thiserror approach",
+        "5eda3ac|2026-02-03T21:01:58-06:00|Added milestone docs from Claude Desktop."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0003-cc-prompt-fabryk-1.md",
+      "sha256": "71f6c8f71c511f8f579c34c40c3045fa2e30e97c3fd06319286db98714b46ace",
+      "bytes": 15380,
+      "mtime_ns": 1770259585024183294,
+      "tracked": true,
+      "history": [
+        "cc24aad|2026-02-03T21:46:55-06:00|docs(fabryk): add checkpoint clarification and revise milestone 1.3",
+        "5eda3ac|2026-02-03T21:01:58-06:00|Added milestone docs from Claude Desktop."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0004-cc-prompt-fabryk-1.md",
+      "sha256": "78497acec3e55a7ff0d3dbe3fb82e476a613bcb060434d81af1788ec498edad2",
+      "bytes": 19488,
+      "mtime_ns": 1770259585024338378,
+      "tracked": true,
+      "history": [
+        "229b5a4|2026-02-03T22:20:10-06:00|docs(fabryk): revise milestones 1.4-1.7 for correct scope",
+        "5eda3ac|2026-02-03T21:01:58-06:00|Added milestone docs from Claude Desktop."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0005-cc-prompt-fabryk-1.md",
+      "sha256": "844d174e083726a2ca48671da1b427b59364582d3969ec0b8bafe4a0781f4d47",
+      "bytes": 11497,
+      "mtime_ns": 1770259585024507629,
+      "tracked": true,
+      "history": [
+        "229b5a4|2026-02-03T22:20:10-06:00|docs(fabryk): revise milestones 1.4-1.7 for correct scope",
+        "5eda3ac|2026-02-03T21:01:58-06:00|Added milestone docs from Claude Desktop."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0006-cc-prompt-fabryk-1.md",
+      "sha256": "a1abfb8d7d8b4bbc6e2efe3e81131ca5750dac87596fda6409994a427e18b398",
+      "bytes": 7214,
+      "mtime_ns": 1770259585024615046,
+      "tracked": true,
+      "history": [
+        "229b5a4|2026-02-03T22:20:10-06:00|docs(fabryk): revise milestones 1.4-1.7 for correct scope",
+        "5eda3ac|2026-02-03T21:01:58-06:00|Added milestone docs from Claude Desktop."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0007-cc-prompt-fabryk-3.5.md",
+      "sha256": "6c81216b3296345d87e9d456c73b8fe7847df21d43197087230a6908cb332558",
+      "bytes": 7999,
+      "mtime_ns": 1770259585024734046,
+      "tracked": true,
+      "history": [
+        "229b5a4|2026-02-03T22:20:10-06:00|docs(fabryk): revise milestones 1.4-1.7 for correct scope"
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0008-cc-prompt-fabryk-2.md",
+      "sha256": "6596519ab0db6e44071fc8740f6056e582a136819d98c52a07c79d4379b4f8c4",
+      "bytes": 23904,
+      "mtime_ns": 1770407565132190452,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0009-cc-prompt-fabryk-2.md",
+      "sha256": "03d1065c7e83347d7242c3c44d070084e8ad806979180bce386745502d26641a",
+      "bytes": 21387,
+      "mtime_ns": 1770407673358459446,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0010-cc-prompt-fabryk-2.md",
+      "sha256": "0b1d29213d6994afc2f43a5ed735a6a23c76a1f96e84323fd52b36fefabf7419",
+      "bytes": 26734,
+      "mtime_ns": 1770407782663663976,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0011-cc-prompt-fabryk-2.md",
+      "sha256": "8e7fbf33effaedc31a4e434dabe7a360e0286702922922a938fa826e473bf4ba",
+      "bytes": 10432,
+      "mtime_ns": 1770407844813875138,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0012-cc-prompt-fabryk-3.md",
+      "sha256": "c3a82aa9472937a43b41a08382b2aa1298efcaee938d91a6b2f9203336015766",
+      "bytes": 17810,
+      "mtime_ns": 1770410754370037732,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0013-cc-prompt-fabryk-3.md",
+      "sha256": "487ab9bf8e471e423fa5e864b1f5a9af8ee4902d20cb6eff00d2de510c6f1262",
+      "bytes": 24080,
+      "mtime_ns": 1770410851279964814,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0014-cc-prompt-fabryk-3.md",
+      "sha256": "a38838495f8534e6ead7671365142c20acf142bc16bc5106781cbde4e9f2764c",
+      "bytes": 30028,
+      "mtime_ns": 1770410960425096834,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0015-cc-prompt-fabryk-3.md",
+      "sha256": "7d6cca9c8332a40a3a5bc911a8b447b0027ae9af12262c2b02e17470007b0250",
+      "bytes": 31639,
+      "mtime_ns": 1770411164606277789,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0016-cc-prompt-fabryk-3.md",
+      "sha256": "72dbad4fa054c8cbcb5693b6b9341a97686015ee17eb05e9bf37df474d2c238b",
+      "bytes": 25186,
+      "mtime_ns": 1770411164699728213,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0017-cc-prompt-fabryk-36-phase-3-completion-v0.md",
+      "sha256": "066eeda3647c2396e75a0f833e7d7789bbcd5cc04060ca7b9e826d33e38e61fd",
+      "bytes": 10508,
+      "mtime_ns": 1770411221640877031,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0018-cc-prompt-fabryk-4.md",
+      "sha256": "85d7ccdf7c21a362230f80084d40793bc4d5675d3acfaf5cbee57e22678bed64",
+      "bytes": 16774,
+      "mtime_ns": 1770428821757253140,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0019-cc-prompt-fabryk-4.md",
+      "sha256": "16af024621c1eb7fe7358cacd01fd9fb6badac61a17f92a880900731e27832f0",
+      "bytes": 18420,
+      "mtime_ns": 1770428899177597430,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0020-cc-prompt-fabryk-4.md",
+      "sha256": "64179de9866ee6693b4fe6dfdafb62108fc5e6950af7d1f36afa13dedaf1839c",
+      "bytes": 24871,
+      "mtime_ns": 1770428994571216018,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0021-cc-prompt-fabryk-4.md",
+      "sha256": "920ef5b857f7cada34064160b1613ab5a0aaac9ddf4ad9c006f6115dbf6cfc2c",
+      "bytes": 18057,
+      "mtime_ns": 1770429070013607956,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0022-cc-prompt-fabryk-4.md",
+      "sha256": "dc169ca12a254355634276762dd48333c4841a66cf9b5734a713671eb34d6710",
+      "bytes": 20721,
+      "mtime_ns": 1770429151312105038,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0023-cc-prompt-fabryk-4.md",
+      "sha256": "a2ee9bb7e7646858b5032fe2519a33023c1501ec8b22117685c126c115b3a8d2",
+      "bytes": 22503,
+      "mtime_ns": 1770429236154608800,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0024-cc-prompt-fabryk-4.md",
+      "sha256": "e2fb426d308607fc497d950915cd9de75bac40df04a70ef5d0b394973ff6445e",
+      "bytes": 17975,
+      "mtime_ns": 1770429304783287212,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0025-cc-prompt-fabryk-4.md",
+      "sha256": "a43badf65bcaccae6e86a3404cc73b23c1602e761538f1d4016bd822945fc2f3",
+      "bytes": 10700,
+      "mtime_ns": 1770429361691466440,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0026-cc-prompt-fabryk-5.md",
+      "sha256": "7f9c23c457372e2765f52bca8764a14cdea8b2f50779f79c44239b02f7551b7d",
+      "bytes": 14240,
+      "mtime_ns": 1770429740164236847,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0027-cc-prompt-fabryk-5.md",
+      "sha256": "0936e2764a6d65b0ef428c34e3359d3ec988bceac921a89ba1d332ecfe8236bf",
+      "bytes": 16559,
+      "mtime_ns": 1770429855029542973,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0028-cc-prompt-fabryk-5.md",
+      "sha256": "73fed44e3340ffd971371bb1fac6e157091263a0d11a6349eaea18da4ecbe493",
+      "bytes": 16490,
+      "mtime_ns": 1770429855118392190,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0029-cc-prompt-fabryk-5.md",
+      "sha256": "a0a3f446daf2c85a5d54b665be4d71203c38746055aff9d32bea13dc8c87de13",
+      "bytes": 12988,
+      "mtime_ns": 1770429980914388939,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0030-cc-prompt-fabryk-5.md",
+      "sha256": "adea3c4a24aae4539efc1abb06cc2363e1bfc4cb4e3e6f1cdd3153741805cec7",
+      "bytes": 17320,
+      "mtime_ns": 1770429981001839264,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0031-cc-prompt-fabryk-5.md",
+      "sha256": "f4ebcf26dd1601994775cad3c98e5a00835be6d938682730edc204c5931af1d6",
+      "bytes": 7642,
+      "mtime_ns": 1770429981099600740,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0032-cc-prompt-fabryk-6.md",
+      "sha256": "cd380cbbbdc0e6ae3e21b323e11032af97c1ef85a8dbf0d0392f14388f59b968",
+      "bytes": 11094,
+      "mtime_ns": 1770430089552665269,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0033-cc-prompt-fabryk-6.md",
+      "sha256": "b244240c1500b4b92fad643677906e5e84d0fc4e6b9b9f7b8c0c56e3b33c91ae",
+      "bytes": 11719,
+      "mtime_ns": 1770430089647202219,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0034-cc-prompt-fabryk-6.md",
+      "sha256": "d23fa17c66c75199e4274d04f4e94ddb022763ef389170e4a9d6bc058cbf6bc6",
+      "bytes": 5972,
+      "mtime_ns": 1770430089761422487,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0035-cc-prompt-fabryk-7.md",
+      "sha256": "7e69bf2e5b9624eb4cd53b768e60030b3d76d240255f122a2bfb260920ed5e8c",
+      "bytes": 5369,
+      "mtime_ns": 1770430206091401328,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0036-cc-prompt-fabryk-7.md",
+      "sha256": "f9ed6a3b686b7053890d3c8a24e6bd08c75dc7fd356d7f72401a6fe3aa9ba9a5",
+      "bytes": 4802,
+      "mtime_ns": 1770430206204021708,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0037-cc-prompt-fabryk-7.md",
+      "sha256": "18b7ae42fc4708874f49f0c7cf273cf8844ddc4413980d63888ddda792989ced",
+      "bytes": 9211,
+      "mtime_ns": 1770430206312698699,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0038-cc-prompt-fabryk-7.md",
+      "sha256": "7555f19a8a7da4c3b1ad27c99920482df556ce6dd923aab89466f45cc3f56078",
+      "bytes": 6712,
+      "mtime_ns": 1770430206433447810,
+      "tracked": true,
+      "history": [
+        "a1080b8|2026-02-09T16:56:13-06:00|Moved docs around.",
+        "9c0ccf5|2026-02-06T20:12:02-06:00|Added phases."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0039-taproot-graphengine-evaluation-phase-4.md",
+      "sha256": "628d275ac3f1a9427538e917d21b9ebec5315ba91df6a9bb63db0869bd710586",
+      "bytes": 11413,
+      "mtime_ns": 1771364626251915616,
+      "tracked": true,
+      "history": [
+        "2497bc2|2026-02-17T16:41:06-06:00|Docs updates."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0040-phase-4.5-fabryk-vector.md",
+      "sha256": "87cd9f335b244c5b82e6cc7526e68dec91115156ec8a8d64430fa27a98a82f3d",
+      "bytes": 12277,
+      "mtime_ns": 1771367815197323458,
+      "tracked": true,
+      "history": [
+        "2497bc2|2026-02-17T16:41:06-06:00|Docs updates."
+      ]
+    },
+    {
+      "source": "crates/design/dev/fabryk/0041-phase-6.5-config-infra.md",
+      "sha256": "ae6ffe9d6f79e86678263ff55a67c14c1cbafd036a804100fb52bd88e7d951ee",
+      "bytes": 10943,
+      "mtime_ns": 1771398398633929285,
+      "tracked": true,
+      "history": [
+        "8d07490|2026-02-18T01:20:20-06:00|feat(cli): add configuration infrastructure with TOML config and CLI commands (Phase 6.5)"
+      ]
+    },
+    {
+      "source": "crates/design/dev/medys/0001-abstraction-tooling-design-notes.md",
+      "sha256": "4bf5fea9d487603873b771e33bd7f47ba3e13076381748088423ed99f1bcbd1e",
+      "bytes": 11002,
+      "mtime_ns": 1776184262900816779,
+      "tracked": true,
+      "history": [
+        "17be2fd|2026-04-13T20:03:35-05:00|More notes from the day's adventures.",
+        "9a72635|2026-04-13T19:16:38-05:00|Added initial medys doc."
+      ]
+    },
+    {
+      "source": "workbench/0026-banyan-data-pipeline-requirements-analysis.md",
+      "sha256": "458d73be276472ac487a4afde622d4bbf247f3440833cda51e7b6b477cf12a7b",
+      "bytes": 24210,
+      "mtime_ns": 1773774640171563647,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/0027-ecl-banyan-pipeline-implementation-plan.md",
+      "sha256": "c4ba633200d89337745b409237198e6cb256c593b7014ae3333e74dd3924401e",
+      "bytes": 27872,
+      "mtime_ns": 1773774815496444284,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/0028-phase-1-detailed-implementation-plan.md",
+      "sha256": "0dd61c06d4a64a4fea409808c178da221a84b54e1744fa1728c60739c5b95335",
+      "bytes": 47736,
+      "mtime_ns": 1773775529243086532,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/0029-phase-2-detailed-implementation-plan.md",
+      "sha256": "03b32647b3df00f31ac5d5e3277b89c68ac9e331e894f712d2b0dec999d11d2c",
+      "bytes": 65414,
+      "mtime_ns": 1773776358079832720,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/0030-phase-3-detailed-implementation-plan.md",
+      "sha256": "241ef91c6e09fbde7d1fb8884755859e8731ec9f17a6664d06aca9f276c53a37",
+      "bytes": 54899,
+      "mtime_ns": 1773780332203258566,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/0031-phase-4-detailed-implementation-plan.md",
+      "sha256": "cc94f058416df65eccc60e7154f275e108a1285d33e08d8e2a239726e80de04c",
+      "bytes": 47374,
+      "mtime_ns": 1773780579834923939,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/BOOTSTRAP.md",
+      "sha256": "1e3441e64554482b121e6684a9bc4c7f4328ccbb55bac7d4cb4ba3c5b542290e",
+      "bytes": 21165,
+      "mtime_ns": 1770259585035758512,
+      "tracked": true,
+      "history": [
+        "a4f0da7|2026-02-04T14:49:43-06:00|docs(fabryk): update bootstrap document paths and formatting",
+        "ad56783|2026-02-04T14:07:44-06:00|Moved BOOTSTRAP doc.",
+        "61d575f|2026-02-04T14:06:48-06:00|docs(fabryk): add bootstrap navigation document"
+      ]
+    },
+    {
+      "source": "workbench/PROMPTS.md",
+      "sha256": "2195f25c9e3c7d4684b35046a365201c1dd835b20369a2ca069a172a389bd338",
+      "bytes": 8107,
+      "mtime_ns": 1770430360890061337,
+      "tracked": true,
+      "history": [
+        "e087fdf|2026-02-04T16:40:08-06:00|Added another workbench/scratch file."
+      ]
+    },
+    {
+      "source": "workbench/RELEASE-NOTES-0.2.0.md",
+      "sha256": "9d59eddb88d6ac96e42dffc9b9b8a980315cc6ea038ad5807f5917ab5eb3a418",
+      "bytes": 8238,
+      "mtime_ns": 1773763896182919267,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/RELEASE-NOTES-0.3.0.md",
+      "sha256": "995a989ff540d3292ec076e7de423f539697e0940e37d645f599b74ad283a8f5",
+      "bytes": 6660,
+      "mtime_ns": 1773764030697906135,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/RELEASE-NOTES-0.4.0.md",
+      "sha256": "3c07ece5210961253eb0545d98f01389c3671c349436fadf0b0122c87b6531d4",
+      "bytes": 14856,
+      "mtime_ns": 1774109003420312180,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/TODO.md",
+      "sha256": "9fe422fc3d7303f225a11b718aef3d319fc7ce796b500959c603612e38d2f173",
+      "bytes": 4421,
+      "mtime_ns": 1773064291262704810,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/abstract-giggling-willow.md",
+      "sha256": "f6744cccf67999e80d560c5a27ffb7c9e6bafd7d6ef6527fcfd145ff49d8f661",
+      "bytes": 15687,
+      "mtime_ns": 1773769244449342181,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/abstraction-tooling-design-notes.md",
+      "sha256": "f922b789fa0e4079039b574bf48a52c332c45a20cf1957696636ba1d6aaeb07f",
+      "bytes": 7538,
+      "mtime_ns": 1776120363774201454,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/analysis-dagga.md",
+      "sha256": "5aaa4950fc4ff8dc4010d4d4362f529e582629acd4cb2b0dfe9dea1c6acf2318",
+      "bytes": 22229,
+      "mtime_ns": 1773427898323434129,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/analysis-dagrs.md",
+      "sha256": "ed003bf1cff43080c73add4b00a23c195a29ef33a34384f54a83490f5c40aa0e",
+      "bytes": 20649,
+      "mtime_ns": 1773427798236379827,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/analysis-dagx.md",
+      "sha256": "b43d3ac9f85a9b771c39c8993501e1b5e19f57acfb1e8d4031760a4c6eb8029e",
+      "bytes": 17459,
+      "mtime_ns": 1773427730994878283,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/analysis-erio-workflow.md",
+      "sha256": "0ec41d55f0d22de0eb97ae8eb1f1203f48dca86669c2bbfba4819a53dc8cfb70",
+      "bytes": 17815,
+      "mtime_ns": 1773427729432322349,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/analysis-oxigdal-workflow.md",
+      "sha256": "8eb2073f4513c58f12bc51251b4bc43eeb3110b2fbcbd0805ed9f5242194be48",
+      "bytes": 20744,
+      "mtime_ns": 1773427699656139016,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/analysis-rettle.md",
+      "sha256": "042567881cb0dcabe39b0fa14c3c893a2953ec62531ff5dafe3171f4c7dff0e4",
+      "bytes": 18246,
+      "mtime_ns": 1773427678028394785,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/architectural-blueprints-for-a-rust-mcp-reasoning-server.md",
+      "sha256": "0435d16346991b961d47c0c8cd9cf812043e5a227f0c4518f66b42119353f0c8",
+      "bytes": 28486,
+      "mtime_ns": 1776275784160091840,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/cc-pipeline-crate-analysis-prompts.md",
+      "sha256": "00ae8727f4d31d53afcaa03559a1c6381918f1b2f29200fcf83f01d4c2371e34",
+      "bytes": 8847,
+      "mtime_ns": 1773425707018934930,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/crate-refactor.md",
+      "sha256": "b4fae4498af90ff7a9580534537c0fb2f76f60ab86faadfe054e3b7d8172e0bd",
+      "bytes": 6211,
+      "mtime_ns": 1773069727009326378,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/duplicate-code-audit.md",
+      "sha256": "48bb4762e7c395b2e02c842a4d1957e56f1f99a173faef17a4d478aa2294a64d",
+      "bytes": 14714,
+      "mtime_ns": 1776357655236452097,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/ecl-pipeline-bootstrap.md",
+      "sha256": "e3aece2aa26ffdfbd70597cee37f58ffcf82b1b4ce0153b9ed2953a5894c8a33",
+      "bytes": 9637,
+      "mtime_ns": 1773425643755586292,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/ecl-pipeline-design-proposal.md",
+      "sha256": "5ff848398cbb03604aed8eaa081aaa7a740277462e6695191f7d4eabe05c2ef1",
+      "bytes": 35188,
+      "mtime_ns": 1773434195085832457,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/ecl-pipeline-unified-vision.md",
+      "sha256": "f74e5cf0dddc8275ebeb318790c716c64814432b7bf9bf2ffe09d34c6e21c34d",
+      "bytes": 63625,
+      "mtime_ns": 1773434420462198628,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/event-bus-research.md",
+      "sha256": "a493a360ba271756abd73352e309d7ed1dda03b783fc4a04329d373e2ea248d9",
+      "bytes": 18707,
+      "mtime_ns": 1774477329052807007,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/fabryk-mcp-implementation-guide-ai-kasu.md",
+      "sha256": "0c64f46dc9f910245c94b14a2b5f99fe47c5cf3c1ae74add439b40d36328eeb7",
+      "bytes": 46767,
+      "mtime_ns": 1773442962360068293,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/howto-analysis-notes.md",
+      "sha256": "05226611b9d272f1b758bd41eeeab9c34c9947466d6ff3d5e1840fe76a1a1673",
+      "bytes": 2492,
+      "mtime_ns": 1773444133368212822,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/mcp-orchestration-best-practices-audit.md",
+      "sha256": "4eeef780fe0c8ebcbd1d5d048a7352de3be90428e0d87b0a442d4a8bd5733bc6",
+      "bytes": 9345,
+      "mtime_ns": 1771956502611946318,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/mcp-orchestration-best-practices.md",
+      "sha256": "20dd85c64fd215a5f6eb093a6b717bed30ade82cab3740dd115e5a1a42468081",
+      "bytes": 17750,
+      "mtime_ns": 1771956455102058703,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/mcp-server-as-knowledge-source.md",
+      "sha256": "38f83480ba0af24aac5d79561d213e6c0517adb8dc25a399562f423d094b6f4f",
+      "bytes": 5649,
+      "mtime_ns": 1772745705478289023,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/mcp-server-implementation-taproot.md",
+      "sha256": "fca39cb8133e2ddf4317a016300d626a9bf8f1081f1c0c24bbdf67cae0341987",
+      "bytes": 35065,
+      "mtime_ns": 1773442789014106519,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/pipeline-crate-synthesis.md",
+      "sha256": "b192227b512079041372019955b3fa886c550dc4eae4ae097d9a2906c17ad3a3",
+      "bytes": 25348,
+      "mtime_ns": 1773434247710254698,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/prompt-01-dagrs.md",
+      "sha256": "44d6d6ffe298e2d95776dcefc9d0e3e808cf4b5fe75a471956ccb1d04a718380",
+      "bytes": 4381,
+      "mtime_ns": 1773425470586493392,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/prompt-02-erio-workflow.md",
+      "sha256": "392c9799f69725532217e142e886871c33e0fb9221a1f29c928df643b727af74",
+      "bytes": 4763,
+      "mtime_ns": 1773425477848558564,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/prompt-03-oxigdal-workflow.md",
+      "sha256": "2b3dc40772e9284b7e020935b14402c0c18a96d7c79b4654aa2e817986f55cc3",
+      "bytes": 5032,
+      "mtime_ns": 1773425487087245946,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/prompt-04-dagx.md",
+      "sha256": "97ee40e2818cdb50bf2cd76339c6bf00a81a5fcd50888b95b59a07db7bb61518",
+      "bytes": 4907,
+      "mtime_ns": 1773425493047539200,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/prompt-05-dagga.md",
+      "sha256": "1e5f2c3e28299d085c45cd10d894cdb5d2d83080bc9cd2d05438aeeaef2651e6",
+      "bytes": 4984,
+      "mtime_ns": 1773425496788397143,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/prompt-06-rettle.md",
+      "sha256": "cfa66b9657fceee647024c7057a8771ae18c5294c3ce3bf8b49570b3fd3d7899",
+      "bytes": 5139,
+      "mtime_ns": 1773425499991974305,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/prompt-07-synthesis.md",
+      "sha256": "56a90c45039272b6491612e2c7ea5f9918f50e47f63f9c22bef2a696cc73dbfb",
+      "bytes": 6609,
+      "mtime_ns": 1773425503242768483,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/research-rust-pipeline-framework.md",
+      "sha256": "781d97531dd812c630a0aa71e86e40c1e31db36deaa110c2b994be190f581144",
+      "bytes": 13121,
+      "mtime_ns": 1773424487983968951,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/sygnum-architectural-evolution.md",
+      "sha256": "8cc6d5123d6712c914471f37fd8f92ee4624105cab2de284a0b91806d056480f",
+      "bytes": 14337,
+      "mtime_ns": 1774474716806127725,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/unified-rust-mcp-server-for-llm-reasoning-augmentation.md",
+      "sha256": "f33cb5a0422326d35572242b6b4fe1104f7d0a27673f663972c77eda286ed985",
+      "bytes": 21986,
+      "mtime_ns": 1776275615791730237,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0007-cc-prompt-fabryk-2.md",
+      "sha256": "6596519ab0db6e44071fc8740f6056e582a136819d98c52a07c79d4379b4f8c4",
+      "bytes": 23904,
+      "mtime_ns": 1770407565132190452,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0008-cc-prompt-fabryk-2.md",
+      "sha256": "03d1065c7e83347d7242c3c44d070084e8ad806979180bce386745502d26641a",
+      "bytes": 21387,
+      "mtime_ns": 1770407673358459446,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0009-cc-prompt-fabryk-2.md",
+      "sha256": "0b1d29213d6994afc2f43a5ed735a6a23c76a1f96e84323fd52b36fefabf7419",
+      "bytes": 26734,
+      "mtime_ns": 1770407782663663976,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0010-cc-prompt-fabryk-2.md",
+      "sha256": "8e7fbf33effaedc31a4e434dabe7a360e0286702922922a938fa826e473bf4ba",
+      "bytes": 10432,
+      "mtime_ns": 1770407844813875138,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0011-cc-prompt-fabryk-3.md",
+      "sha256": "c3a82aa9472937a43b41a08382b2aa1298efcaee938d91a6b2f9203336015766",
+      "bytes": 17810,
+      "mtime_ns": 1770410754370037732,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0012-cc-prompt-fabryk-3.md",
+      "sha256": "487ab9bf8e471e423fa5e864b1f5a9af8ee4902d20cb6eff00d2de510c6f1262",
+      "bytes": 24080,
+      "mtime_ns": 1770410851279964814,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0013-cc-prompt-fabryk-3.md",
+      "sha256": "a38838495f8534e6ead7671365142c20acf142bc16bc5106781cbde4e9f2764c",
+      "bytes": 30028,
+      "mtime_ns": 1770410960425096834,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0014-cc-prompt-fabryk-3.md",
+      "sha256": "7d6cca9c8332a40a3a5bc911a8b447b0027ae9af12262c2b02e17470007b0250",
+      "bytes": 31639,
+      "mtime_ns": 1770411164606277789,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0015-cc-prompt-fabryk-3.md",
+      "sha256": "72dbad4fa054c8cbcb5693b6b9341a97686015ee17eb05e9bf37df474d2c238b",
+      "bytes": 25186,
+      "mtime_ns": 1770411164699728213,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0016-cc-prompt-fabryk-3.md",
+      "sha256": "066eeda3647c2396e75a0f833e7d7789bbcd5cc04060ca7b9e826d33e38e61fd",
+      "bytes": 10508,
+      "mtime_ns": 1770411221640877031,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0017-cc-prompt-fabryk-4.md",
+      "sha256": "85d7ccdf7c21a362230f80084d40793bc4d5675d3acfaf5cbee57e22678bed64",
+      "bytes": 16774,
+      "mtime_ns": 1770428821757253140,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0018-cc-prompt-fabryk-4.md",
+      "sha256": "16af024621c1eb7fe7358cacd01fd9fb6badac61a17f92a880900731e27832f0",
+      "bytes": 18420,
+      "mtime_ns": 1770428899177597430,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0019-cc-prompt-fabryk-4.md",
+      "sha256": "64179de9866ee6693b4fe6dfdafb62108fc5e6950af7d1f36afa13dedaf1839c",
+      "bytes": 24871,
+      "mtime_ns": 1770428994571216018,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0020-cc-prompt-fabryk-4.md",
+      "sha256": "920ef5b857f7cada34064160b1613ab5a0aaac9ddf4ad9c006f6115dbf6cfc2c",
+      "bytes": 18057,
+      "mtime_ns": 1770429070013607956,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0021-cc-prompt-fabryk-4.md",
+      "sha256": "dc169ca12a254355634276762dd48333c4841a66cf9b5734a713671eb34d6710",
+      "bytes": 20721,
+      "mtime_ns": 1770429151312105038,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0022-cc-prompt-fabryk-4.md",
+      "sha256": "a2ee9bb7e7646858b5032fe2519a33023c1501ec8b22117685c126c115b3a8d2",
+      "bytes": 22503,
+      "mtime_ns": 1770429236154608800,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0023-cc-prompt-fabryk-4.md",
+      "sha256": "e2fb426d308607fc497d950915cd9de75bac40df04a70ef5d0b394973ff6445e",
+      "bytes": 17975,
+      "mtime_ns": 1770429304783287212,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0024-cc-prompt-fabryk-4.md",
+      "sha256": "a43badf65bcaccae6e86a3404cc73b23c1602e761538f1d4016bd822945fc2f3",
+      "bytes": 10700,
+      "mtime_ns": 1770429361691466440,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0025-cc-prompt-fabryk-5.md",
+      "sha256": "7f9c23c457372e2765f52bca8764a14cdea8b2f50779f79c44239b02f7551b7d",
+      "bytes": 14240,
+      "mtime_ns": 1770429740164236847,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0026-cc-prompt-fabryk-5.md",
+      "sha256": "0936e2764a6d65b0ef428c34e3359d3ec988bceac921a89ba1d332ecfe8236bf",
+      "bytes": 16559,
+      "mtime_ns": 1770429855029542973,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0027-cc-prompt-fabryk-5.md",
+      "sha256": "73fed44e3340ffd971371bb1fac6e157091263a0d11a6349eaea18da4ecbe493",
+      "bytes": 16490,
+      "mtime_ns": 1770429855118392190,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0028-cc-prompt-fabryk-5.md",
+      "sha256": "a0a3f446daf2c85a5d54b665be4d71203c38746055aff9d32bea13dc8c87de13",
+      "bytes": 12988,
+      "mtime_ns": 1770429980914388939,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0029-cc-prompt-fabryk-5.md",
+      "sha256": "adea3c4a24aae4539efc1abb06cc2363e1bfc4cb4e3e6f1cdd3153741805cec7",
+      "bytes": 17320,
+      "mtime_ns": 1770429981001839264,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0030-cc-prompt-fabryk-5.md",
+      "sha256": "f4ebcf26dd1601994775cad3c98e5a00835be6d938682730edc204c5931af1d6",
+      "bytes": 7642,
+      "mtime_ns": 1770429981099600740,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0031-cc-prompt-fabryk-6.md",
+      "sha256": "cd380cbbbdc0e6ae3e21b323e11032af97c1ef85a8dbf0d0392f14388f59b968",
+      "bytes": 11094,
+      "mtime_ns": 1770430089552665269,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0032-cc-prompt-fabryk-6.md",
+      "sha256": "b244240c1500b4b92fad643677906e5e84d0fc4e6b9b9f7b8c0c56e3b33c91ae",
+      "bytes": 11719,
+      "mtime_ns": 1770430089647202219,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0033-cc-prompt-fabryk-6.md",
+      "sha256": "d23fa17c66c75199e4274d04f4e94ddb022763ef389170e4a9d6bc058cbf6bc6",
+      "bytes": 5972,
+      "mtime_ns": 1770430089761422487,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0034-cc-prompt-fabryk-7.md",
+      "sha256": "7e69bf2e5b9624eb4cd53b768e60030b3d76d240255f122a2bfb260920ed5e8c",
+      "bytes": 5369,
+      "mtime_ns": 1770430206091401328,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0035-cc-prompt-fabryk-7.md",
+      "sha256": "f9ed6a3b686b7053890d3c8a24e6bd08c75dc7fd356d7f72401a6fe3aa9ba9a5",
+      "bytes": 4802,
+      "mtime_ns": 1770430206204021708,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0036-cc-prompt-fabryk-7.md",
+      "sha256": "18b7ae42fc4708874f49f0c7cf273cf8844ddc4413980d63888ddda792989ced",
+      "bytes": 9211,
+      "mtime_ns": 1770430206312698699,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/0037-cc-prompt-fabryk-7.md",
+      "sha256": "7555f19a8a7da4c3b1ad27c99920482df556ce6dd923aab89466f45cc3f56078",
+      "bytes": 6712,
+      "mtime_ns": 1770430206433447810,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/01-concept-card-improvements-report.md",
+      "sha256": "416f2bac71cf2ec3eca1e4d4ec139c9f392f5ab8c103d0c4f568fda281848a6d",
+      "bytes": 14622,
+      "mtime_ns": 1770238802184407351,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/01_architecture_proposal.md",
+      "sha256": "136ea8be586f57e873a457ca6966e23408f447569292f43bf7d9c525ef719eef",
+      "bytes": 22416,
+      "mtime_ns": 1768516490027394064,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/02-guide-for-parallel-concept-card-extraction-v2.md",
+      "sha256": "acf4a7f2959c262d24d13f4f6eb9eff67417697d8541714015d9123ace2fa987",
+      "bytes": 20683,
+      "mtime_ns": 1770239835211767889,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/02_library_research.md",
+      "sha256": "8c1e339c15ea18afb030cdf9fbc9a0620dc1a15a1e5c53f54620f33c2e1c6c04",
+      "bytes": 16921,
+      "mtime_ns": 1768516523931334497,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/03-HOWTO-concept-card-extraction.md",
+      "sha256": "bceaa6e0959cda2accd88407ada29feb466fc4075db856ddb1a90ca73a2c82b5",
+      "bytes": 19849,
+      "mtime_ns": 1770239329157906457,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/03_proposal_and_justification.md",
+      "sha256": "370723e257b92ae6b0e54e2df320e76f0da719ae7e32da9f7aba4b3cdf1d64de",
+      "bytes": 13452,
+      "mtime_ns": 1768516575407699079,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/arch-2026-02-24.md",
+      "sha256": "725789cafedd3304c9cb9fcf353177fd975a6b25377b5c1779130bb8d901f60a",
+      "bytes": 26567,
+      "mtime_ns": 1771962054290858812,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/augmenting-llm-reasoning.md",
+      "sha256": "33a4daf4a5ca5b13f57819520aa67094a633d81dad9039cce522acba259a7120",
+      "bytes": 22230,
+      "mtime_ns": 1776120323741487951,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/lancedb-mcp-integration-guide.md",
+      "sha256": "4d6fd19009f18b5982ecf40bb618a1f200dc42148c21dff9d2eef19d35e27a65",
+      "bytes": 36727,
+      "mtime_ns": 1770429758481895548,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/llm-abstract-reasoning-limitations.md",
+      "sha256": "e5a850f8741a2d0a0dc4f39ae502f2d9cc652b11d34c3c147c090fb542c1f3a8",
+      "bytes": 24608,
+      "mtime_ns": 1776120299115947546,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/meta-prompt-generate-phase-milestones.md",
+      "sha256": "c955c139f58ae0753ee0fc689babaa0642d3c1fc43025c09a94e1d00feccaa39",
+      "bytes": 8969,
+      "mtime_ns": 1770244026816843956,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/milestone-1.1-ecl-pipeline-spec.md",
+      "sha256": "d7ecf2eb08d43f546548fd46e0aaec80121073c0378c15ebbfe5dd3368286195",
+      "bytes": 26568,
+      "mtime_ns": 1773438293906736764,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/milestone-1.2-ecl-pipeline-state.md",
+      "sha256": "38d78a2e87aa465836bf47d11d0c027e547f240940c88937c209ca8aec190db7",
+      "bytes": 42602,
+      "mtime_ns": 1773438280684361731,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/milestone-1.3-ecl-pipeline-topo.md",
+      "sha256": "27576bd0ce1e2065480ccdb73f11d0802f8b1f14dcb81330ef2f81bf834af822",
+      "bytes": 58834,
+      "mtime_ns": 1773438390366934905,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/milestone-2.1-redb-state-store.md",
+      "sha256": "6f99697c60591c01afa6646dde6c838a24c02787ff01e1f5ddb87b1192d4fa7e",
+      "bytes": 37866,
+      "mtime_ns": 1773438637054910054,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/milestone-2.2-pipeline-runner-core.md",
+      "sha256": "9999247a12e07b93fbfa81cf8e461d055286c66a4a89ddae02212cd08453a1a8",
+      "bytes": 68213,
+      "mtime_ns": 1773438778410019921,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/milestone-2.3-topology-resolution.md",
+      "sha256": "bf06cb004d992114f83f5f4f148f9557a9f965b91760cde126c4bae17d2ddd11",
+      "bytes": 44069,
+      "mtime_ns": 1773438755458738717,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/milestone-3.1-filesystem-adapter-stages.md",
+      "sha256": "9323b08b295e06e73f696a0265d0bade6b01073bdb8ed1f449e3e5a68a23a236",
+      "bytes": 58077,
+      "mtime_ns": 1773439141476919286,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/milestone-3.2-integration-test-suite.md",
+      "sha256": "2928d810799479d9d8692715e91c78f5ab7c2b5ef1fdfa3fcd201d7dbb502135",
+      "bytes": 44226,
+      "mtime_ns": 1773439119874618114,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/milestone-4.1-gdrive-auth-enumerate.md",
+      "sha256": "b1b2fc11490981406b8e957e27839986a7aedae52ecb1437b3ec024ad40db9a0",
+      "bytes": 49478,
+      "mtime_ns": 1773439114747527339,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/milestone-4.2-gdrive-fetch-pipeline.md",
+      "sha256": "18d998f745e677ad2919628c74a7db2744115d84256006376b723f23889cbd41",
+      "bytes": 33954,
+      "mtime_ns": 1773439078646456996,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/phase-6.5.md",
+      "sha256": "ae6ffe9d6f79e86678263ff55a67c14c1cbafd036a804100fb52bd88e7d951ee",
+      "bytes": 10943,
+      "mtime_ns": 1771398398633929285,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/phase-6.md",
+      "sha256": "42db03e9d1cdceae37d5763cc4aacc21c92e56589ce462640c86d613809e0610",
+      "bytes": 5585,
+      "mtime_ns": 1771396549510514929,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/taproot-eval.md",
+      "sha256": "628d275ac3f1a9427538e917d21b9ebec5315ba91df6a9bb63db0869bd710586",
+      "bytes": 11413,
+      "mtime_ns": 1771364626251915616,
+      "tracked": false,
+      "history": []
+    },
+    {
+      "source": "workbench/old/vector-db.md",
+      "sha256": "87cd9f335b244c5b82e6cc7526e68dec91115156ec8a8d64430fa27a98a82f3d",
+      "bytes": 12277,
+      "mtime_ns": 1771367815197323458,
+      "tracked": false,
+      "history": []
+    }
+  ]
+}
