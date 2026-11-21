@@ -22,3 +22,30 @@ The original agent-workflow framework is cancelled in favor of project06.
 Current concept-card development lives in ai-engineering. Sygnum belongs to
 project07 and Medys to project08. Customer examples must use Acme Inc. and
 suitable anonymized code/path identifiers; do not reintroduce private names.
+
+## Git integration and commit attribution
+
+Integrate branches only with commit-preserving rebase or `git merge --ff-only`.
+Do not create ordinary merge commits or use squash merges, rebase squash/fixup,
+autosquash or commit-dropping operations to collapse work history. Keep the
+orphan planning branch separate from implementation branches.
+
+Every future assistant-authored commit, on implementation or planning branches,
+must include both trailers, separated from the message body by a blank line:
+
+```text
+Co-authored-by: Codex <noreply@openai.com>
+Co-authored-by: Billo AI <ai-engineering@billo.systems>
+```
+
+## Current prerequisite sequence — 2026-11-21
+
+Duncan accepted the completed sanitization and deferred the remaining hosted
+purge as an open, nonblocking task. Do not delete or recreate any repository,
+submit further GitHub removal operations or claim the purge is complete.
+The Codeberg request was sent; its actual outcome remains pending.
+Continue the requested integration and release-branch pushes. Before any full
+audit or feature coding, complete project05/arc00: fresh green CI, latest stable
+external dependencies, then green checks again, using the selected Autonomous
+Mode roles (CDC 6.1 Sol High; CC 6 Luna High). Follow the current canonical plans;
+no project06/07 feature implementation or 0.5.0 publication is authorized here.
