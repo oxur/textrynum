@@ -11,8 +11,14 @@ checkboxes are not independently verified acceptance. Missing implementation
 plans, ledgers and verification records were not invented. Preserved historical
 prompts are evidence, not current instructions.
 
-Release checkouts are `.worktrees/release-0.N.x`. The post-0.4 planning sources
-remain in this checkout pending Duncan's review; do not create project05 or
-migrate those sources until that review. For new slice-produced supporting
+Release checkouts are `.worktrees/release-0.N.x`. The post-0.4 planning sources are now organized under projects05–08.
+Project05 targets 0.5.0 after a full audit and repair gate; project06/07
+implementation is held and project08 is deferred. Audit results belong in
+project05-discoverability/artifacts/. For new slice-produced supporting
 artifacts, use the owning slice's `artifacts/` directory unless explicitly
 agreed otherwise.
+
+The original agent-workflow framework is cancelled in favor of project06.
+Current concept-card development lives in ai-engineering. Sygnum belongs to
+project07 and Medys to project08. Customer examples must use Acme Inc. and
+suitable anonymized code/path identifiers; do not reintroduce private names.
