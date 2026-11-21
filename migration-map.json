@@ -4051,7 +4051,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0026-phase-1-detailed-implementation-plan-make-affinity-work.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-17T14:25:29.243087-05:00"
+      "mtime_local": "2026-03-17T14:25:29.243087-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 0.988018,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/0029-phase-2-detailed-implementation-plan.md",
@@ -4063,7 +4067,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0027-phase-2-detailed-implementation-plan-make-giant-eagle-work.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-17T14:39:18.079833-05:00"
+      "mtime_local": "2026-03-17T14:39:18.079833-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 0.995607,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/0030-phase-3-detailed-implementation-plan.md",
@@ -4075,7 +4083,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0028-phase-3-detailed-implementation-plan-make-acme-inc-work.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-17T15:45:32.203259-05:00"
+      "mtime_local": "2026-03-17T15:45:32.203259-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/0031-phase-4-detailed-implementation-plan.md",
@@ -4087,7 +4099,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0029-phase-4-detailed-implementation-plan-full-parity.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-17T15:49:39.834924-05:00"
+      "mtime_local": "2026-03-17T15:49:39.834924-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/BOOTSTRAP.md",
@@ -4252,7 +4268,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0025-zapier-webhook-adapter-implementation-plan.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-17T12:40:44.449342-05:00"
+      "mtime_local": "2026-03-17T12:40:44.449342-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/abstraction-tooling-design-notes.md",
@@ -4264,7 +4284,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/medys/0001-abstraction-tooling-design-notes.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-04-13T17:46:03.774201-05:00"
+      "mtime_local": "2026-04-13T17:46:03.774201-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 0.897778,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/analysis-dagga.md",
@@ -4273,10 +4297,23 @@
       "mtime_ns": 1773427898323434129,
       "tracked": false,
       "history": [],
-      "disposition": "superseded-copy",
-      "preferred_source": "crates/design/dev/ecl/0007-deep-analysis-dagga.md",
-      "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T13:51:38.323434-05:00"
+      "disposition": "migrated",
+      "reason": "Research output, not a version of the similarly titled analysis prompt; retained alongside the tracked assignment.",
+      "mtime_local": "2026-03-13T13:51:38.323434-05:00",
+      "project": "project04-ecl-pipeline-engine",
+      "segments": [
+        {
+          "path": "project04-ecl-pipeline-engine/artifacts/analysis-dagga.md",
+          "source_lines": [
+            1,
+            393
+          ],
+          "target_lines": [
+            4,
+            396
+          ]
+        }
+      ]
     },
     {
       "source": "workbench/analysis-dagrs.md",
@@ -4285,10 +4322,23 @@
       "mtime_ns": 1773427798236379827,
       "tracked": false,
       "history": [],
-      "disposition": "superseded-copy",
-      "preferred_source": "crates/design/dev/ecl/0003-deep-analysis-dagrs.md",
-      "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T13:49:58.236380-05:00"
+      "disposition": "migrated",
+      "reason": "Research output, not a version of the similarly titled analysis prompt; retained alongside the tracked assignment.",
+      "mtime_local": "2026-03-13T13:49:58.236380-05:00",
+      "project": "project04-ecl-pipeline-engine",
+      "segments": [
+        {
+          "path": "project04-ecl-pipeline-engine/artifacts/analysis-dagrs.md",
+          "source_lines": [
+            1,
+            531
+          ],
+          "target_lines": [
+            4,
+            534
+          ]
+        }
+      ]
     },
     {
       "source": "workbench/analysis-dagx.md",
@@ -4297,10 +4347,23 @@
       "mtime_ns": 1773427730994878283,
       "tracked": false,
       "history": [],
-      "disposition": "superseded-copy",
-      "preferred_source": "crates/design/dev/ecl/0006-deep-analysis-dagx.md",
-      "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T13:48:50.994878-05:00"
+      "disposition": "migrated",
+      "reason": "Research output, not a version of the similarly titled analysis prompt; retained alongside the tracked assignment.",
+      "mtime_local": "2026-03-13T13:48:50.994878-05:00",
+      "project": "project04-ecl-pipeline-engine",
+      "segments": [
+        {
+          "path": "project04-ecl-pipeline-engine/artifacts/analysis-dagx.md",
+          "source_lines": [
+            1,
+            357
+          ],
+          "target_lines": [
+            4,
+            360
+          ]
+        }
+      ]
     },
     {
       "source": "workbench/analysis-erio-workflow.md",
@@ -4309,10 +4372,23 @@
       "mtime_ns": 1773427729432322349,
       "tracked": false,
       "history": [],
-      "disposition": "superseded-copy",
-      "preferred_source": "crates/design/dev/ecl/0004-deep-analysis-erio-workflow.md",
-      "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T13:48:49.432322-05:00"
+      "disposition": "migrated",
+      "reason": "Research output, not a version of the similarly titled analysis prompt; retained alongside the tracked assignment.",
+      "mtime_local": "2026-03-13T13:48:49.432322-05:00",
+      "project": "project04-ecl-pipeline-engine",
+      "segments": [
+        {
+          "path": "project04-ecl-pipeline-engine/artifacts/analysis-erio-workflow.md",
+          "source_lines": [
+            1,
+            469
+          ],
+          "target_lines": [
+            4,
+            472
+          ]
+        }
+      ]
     },
     {
       "source": "workbench/analysis-oxigdal-workflow.md",
@@ -4321,10 +4397,23 @@
       "mtime_ns": 1773427699656139016,
       "tracked": false,
       "history": [],
-      "disposition": "superseded-copy",
-      "preferred_source": "crates/design/dev/ecl/0005-deep-analysis-oxigdal-workflow.md",
-      "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T13:48:19.656139-05:00"
+      "disposition": "migrated",
+      "reason": "Research output, not a version of the similarly titled analysis prompt; retained alongside the tracked assignment.",
+      "mtime_local": "2026-03-13T13:48:19.656139-05:00",
+      "project": "project04-ecl-pipeline-engine",
+      "segments": [
+        {
+          "path": "project04-ecl-pipeline-engine/artifacts/analysis-oxigdal-workflow.md",
+          "source_lines": [
+            1,
+            414
+          ],
+          "target_lines": [
+            4,
+            417
+          ]
+        }
+      ]
     },
     {
       "source": "workbench/analysis-rettle.md",
@@ -4333,10 +4422,23 @@
       "mtime_ns": 1773427678028394785,
       "tracked": false,
       "history": [],
-      "disposition": "superseded-copy",
-      "preferred_source": "crates/design/dev/ecl/0008-deep-analysis-rettle.md",
-      "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T13:47:58.028395-05:00"
+      "disposition": "migrated",
+      "reason": "Research output, not a version of the similarly titled analysis prompt; retained alongside the tracked assignment.",
+      "mtime_local": "2026-03-13T13:47:58.028395-05:00",
+      "project": "project04-ecl-pipeline-engine",
+      "segments": [
+        {
+          "path": "project04-ecl-pipeline-engine/artifacts/analysis-rettle.md",
+          "source_lines": [
+            1,
+            344
+          ],
+          "target_lines": [
+            4,
+            347
+          ]
+        }
+      ]
     },
     {
       "source": "workbench/architectural-blueprints-for-a-rust-mcp-reasoning-server.md",
@@ -4359,7 +4461,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0002-pipeline-crate-deep-analysis-claude-code-prompts.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T13:15:07.018935-05:00"
+      "mtime_local": "2026-03-13T13:15:07.018935-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/crate-refactor.md",
@@ -4371,7 +4477,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/docs/06-final/0015-restructure-fabryk-crate-hierarchy-for-better-downstream-ux.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-09T10:22:07.009326-05:00"
+      "mtime_local": "2026-03-09T10:22:07.009326-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/duplicate-code-audit.md",
@@ -4394,7 +4504,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0001-ecl-pipeline-redesign-2026.02.13-session-bootstrap.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T13:14:03.755586-05:00"
+      "mtime_local": "2026-03-13T13:14:03.755586-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/ecl-pipeline-design-proposal.md",
@@ -4406,7 +4520,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0010-ecl-pipeline-runner-trait-based-design-sketch.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T15:36:35.085832-05:00"
+      "mtime_local": "2026-03-13T15:36:35.085832-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/ecl-pipeline-unified-vision.md",
@@ -4418,7 +4536,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/docs/05-active/0017-ecl-pipeline-runner-unified-design-vision.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T15:40:20.462198-05:00"
+      "mtime_local": "2026-03-13T15:40:20.462198-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 0.915062,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/event-bus-research.md",
@@ -4430,7 +4552,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/docs/06-final/0021-building-a-trait-based-event-bus-in-rust-ecosystem-landscape-and-design-patterns.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-25T17:22:09.052807-05:00"
+      "mtime_local": "2026-03-25T17:22:09.052807-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/fabryk-mcp-implementation-guide-ai-kasu.md",
@@ -4586,7 +4712,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0011-pipeline-crate-survey-analysis-synthesis.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T15:37:27.710255-05:00"
+      "mtime_local": "2026-03-13T15:37:27.710255-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/prompt-01-dagrs.md",
@@ -4595,22 +4725,14 @@
       "mtime_ns": 1773425470586493392,
       "tracked": false,
       "history": [],
-      "disposition": "migrated",
-      "segments": [
-        {
-          "path": "project04-ecl-pipeline-engine/artifacts/prompt-01-dagrs.md",
-          "source_lines": [
-            1,
-            117
-          ],
-          "target_lines": [
-            4,
-            120
-          ]
-        }
-      ],
-      "project": "project04-ecl-pipeline-engine",
-      "mtime_local": "2026-03-13T13:11:10.586493-05:00"
+      "disposition": "superseded-copy",
+      "mtime_local": "2026-03-13T13:11:10.586493-05:00",
+      "preferred_source": "crates/design/dev/ecl/0003-deep-analysis-dagrs.md",
+      "reason": "Same research assignment as the higher-precedence tracked prompt. The resulting analysis report is a distinct migrated source.",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/prompt-02-erio-workflow.md",
@@ -4619,22 +4741,14 @@
       "mtime_ns": 1773425477848558564,
       "tracked": false,
       "history": [],
-      "disposition": "migrated",
-      "segments": [
-        {
-          "path": "project04-ecl-pipeline-engine/artifacts/prompt-02-erio-workflow.md",
-          "source_lines": [
-            1,
-            125
-          ],
-          "target_lines": [
-            4,
-            128
-          ]
-        }
-      ],
-      "project": "project04-ecl-pipeline-engine",
-      "mtime_local": "2026-03-13T13:11:17.848559-05:00"
+      "disposition": "superseded-copy",
+      "mtime_local": "2026-03-13T13:11:17.848559-05:00",
+      "preferred_source": "crates/design/dev/ecl/0004-deep-analysis-erio-workflow.md",
+      "reason": "Same research assignment as the higher-precedence tracked prompt. The resulting analysis report is a distinct migrated source.",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/prompt-03-oxigdal-workflow.md",
@@ -4643,22 +4757,14 @@
       "mtime_ns": 1773425487087245946,
       "tracked": false,
       "history": [],
-      "disposition": "migrated",
-      "segments": [
-        {
-          "path": "project04-ecl-pipeline-engine/artifacts/prompt-03-oxigdal-workflow.md",
-          "source_lines": [
-            1,
-            124
-          ],
-          "target_lines": [
-            4,
-            127
-          ]
-        }
-      ],
-      "project": "project04-ecl-pipeline-engine",
-      "mtime_local": "2026-03-13T13:11:27.087246-05:00"
+      "disposition": "superseded-copy",
+      "mtime_local": "2026-03-13T13:11:27.087246-05:00",
+      "preferred_source": "crates/design/dev/ecl/0005-deep-analysis-oxigdal-workflow.md",
+      "reason": "Same research assignment as the higher-precedence tracked prompt. The resulting analysis report is a distinct migrated source.",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/prompt-04-dagx.md",
@@ -4667,22 +4773,14 @@
       "mtime_ns": 1773425493047539200,
       "tracked": false,
       "history": [],
-      "disposition": "migrated",
-      "segments": [
-        {
-          "path": "project04-ecl-pipeline-engine/artifacts/prompt-04-dagx.md",
-          "source_lines": [
-            1,
-            126
-          ],
-          "target_lines": [
-            4,
-            129
-          ]
-        }
-      ],
-      "project": "project04-ecl-pipeline-engine",
-      "mtime_local": "2026-03-13T13:11:33.047539-05:00"
+      "disposition": "superseded-copy",
+      "mtime_local": "2026-03-13T13:11:33.047539-05:00",
+      "preferred_source": "crates/design/dev/ecl/0006-deep-analysis-dagx.md",
+      "reason": "Same research assignment as the higher-precedence tracked prompt. The resulting analysis report is a distinct migrated source.",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/prompt-05-dagga.md",
@@ -4691,22 +4789,14 @@
       "mtime_ns": 1773425496788397143,
       "tracked": false,
       "history": [],
-      "disposition": "migrated",
-      "segments": [
-        {
-          "path": "project04-ecl-pipeline-engine/artifacts/prompt-05-dagga.md",
-          "source_lines": [
-            1,
-            127
-          ],
-          "target_lines": [
-            4,
-            130
-          ]
-        }
-      ],
-      "project": "project04-ecl-pipeline-engine",
-      "mtime_local": "2026-03-13T13:11:36.788397-05:00"
+      "disposition": "superseded-copy",
+      "mtime_local": "2026-03-13T13:11:36.788397-05:00",
+      "preferred_source": "crates/design/dev/ecl/0007-deep-analysis-dagga.md",
+      "reason": "Same research assignment as the higher-precedence tracked prompt. The resulting analysis report is a distinct migrated source.",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/prompt-06-rettle.md",
@@ -4715,22 +4805,14 @@
       "mtime_ns": 1773425499991974305,
       "tracked": false,
       "history": [],
-      "disposition": "migrated",
-      "segments": [
-        {
-          "path": "project04-ecl-pipeline-engine/artifacts/prompt-06-rettle.md",
-          "source_lines": [
-            1,
-            127
-          ],
-          "target_lines": [
-            4,
-            130
-          ]
-        }
-      ],
-      "project": "project04-ecl-pipeline-engine",
-      "mtime_local": "2026-03-13T13:11:39.991974-05:00"
+      "disposition": "superseded-copy",
+      "mtime_local": "2026-03-13T13:11:39.991974-05:00",
+      "preferred_source": "crates/design/dev/ecl/0008-deep-analysis-rettle.md",
+      "reason": "Same research assignment as the higher-precedence tracked prompt. The resulting analysis report is a distinct migrated source.",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/prompt-07-synthesis.md",
@@ -4742,7 +4824,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0009-pipeline-crate-synthesis.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T13:11:43.242768-05:00"
+      "mtime_local": "2026-03-13T13:11:43.242768-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/research-rust-pipeline-framework.md",
@@ -4754,7 +4840,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/docs/06-final/0016-research-2026-state-of-rust-ecosystem-for-workflowpipeline-frameworks.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T12:54:47.983969-05:00"
+      "mtime_local": "2026-03-13T12:54:47.983969-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/sygnum-architectural-evolution.md",
@@ -4766,7 +4856,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/docs/02-under-review/0020-sygnum-event-driven-architecture-for-keystone.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-25T16:38:36.806128-05:00"
+      "mtime_local": "2026-03-25T16:38:36.806128-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/unified-rust-mcp-server-for-llm-reasoning-augmentation.md",
@@ -4789,7 +4883,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0008-cc-prompt-fabryk-2.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T13:52:45.132190-06:00"
+      "mtime_local": "2026-02-06T13:52:45.132190-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0008-cc-prompt-fabryk-2.md",
@@ -4801,7 +4899,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0009-cc-prompt-fabryk-2.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T13:54:33.358459-06:00"
+      "mtime_local": "2026-02-06T13:54:33.358459-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0009-cc-prompt-fabryk-2.md",
@@ -4813,7 +4915,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0010-cc-prompt-fabryk-2.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T13:56:22.663664-06:00"
+      "mtime_local": "2026-02-06T13:56:22.663664-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0010-cc-prompt-fabryk-2.md",
@@ -4825,7 +4931,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0011-cc-prompt-fabryk-2.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T13:57:24.813875-06:00"
+      "mtime_local": "2026-02-06T13:57:24.813875-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0011-cc-prompt-fabryk-3.md",
@@ -4837,7 +4947,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0012-cc-prompt-fabryk-3.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T14:45:54.370038-06:00"
+      "mtime_local": "2026-02-06T14:45:54.370038-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0012-cc-prompt-fabryk-3.md",
@@ -4849,7 +4963,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0013-cc-prompt-fabryk-3.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T14:47:31.279965-06:00"
+      "mtime_local": "2026-02-06T14:47:31.279965-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0013-cc-prompt-fabryk-3.md",
@@ -4861,7 +4979,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0014-cc-prompt-fabryk-3.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T14:49:20.425097-06:00"
+      "mtime_local": "2026-02-06T14:49:20.425097-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0014-cc-prompt-fabryk-3.md",
@@ -4873,7 +4995,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0015-cc-prompt-fabryk-3.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T14:52:44.606278-06:00"
+      "mtime_local": "2026-02-06T14:52:44.606278-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0015-cc-prompt-fabryk-3.md",
@@ -4885,7 +5011,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0016-cc-prompt-fabryk-3.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T14:52:44.699728-06:00"
+      "mtime_local": "2026-02-06T14:52:44.699728-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0016-cc-prompt-fabryk-3.md",
@@ -4897,7 +5027,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0017-cc-prompt-fabryk-36-phase-3-completion-v0.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T14:53:41.640877-06:00"
+      "mtime_local": "2026-02-06T14:53:41.640877-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0017-cc-prompt-fabryk-4.md",
@@ -4909,7 +5043,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0018-cc-prompt-fabryk-4.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T19:47:01.757253-06:00"
+      "mtime_local": "2026-02-06T19:47:01.757253-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0018-cc-prompt-fabryk-4.md",
@@ -4921,7 +5059,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0019-cc-prompt-fabryk-4.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T19:48:19.177598-06:00"
+      "mtime_local": "2026-02-06T19:48:19.177598-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0019-cc-prompt-fabryk-4.md",
@@ -4933,7 +5075,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0020-cc-prompt-fabryk-4.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T19:49:54.571216-06:00"
+      "mtime_local": "2026-02-06T19:49:54.571216-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0020-cc-prompt-fabryk-4.md",
@@ -4945,7 +5091,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0021-cc-prompt-fabryk-4.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T19:51:10.013608-06:00"
+      "mtime_local": "2026-02-06T19:51:10.013608-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0021-cc-prompt-fabryk-4.md",
@@ -4957,7 +5107,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0022-cc-prompt-fabryk-4.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T19:52:31.312105-06:00"
+      "mtime_local": "2026-02-06T19:52:31.312105-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0022-cc-prompt-fabryk-4.md",
@@ -4969,7 +5123,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0023-cc-prompt-fabryk-4.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T19:53:56.154609-06:00"
+      "mtime_local": "2026-02-06T19:53:56.154609-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0023-cc-prompt-fabryk-4.md",
@@ -4981,7 +5139,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0024-cc-prompt-fabryk-4.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T19:55:04.783287-06:00"
+      "mtime_local": "2026-02-06T19:55:04.783287-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0024-cc-prompt-fabryk-4.md",
@@ -4993,7 +5155,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0025-cc-prompt-fabryk-4.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T19:56:01.691467-06:00"
+      "mtime_local": "2026-02-06T19:56:01.691467-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0025-cc-prompt-fabryk-5.md",
@@ -5005,7 +5171,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0026-cc-prompt-fabryk-5.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:02:20.164237-06:00"
+      "mtime_local": "2026-02-06T20:02:20.164237-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0026-cc-prompt-fabryk-5.md",
@@ -5017,7 +5187,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0027-cc-prompt-fabryk-5.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:04:15.029543-06:00"
+      "mtime_local": "2026-02-06T20:04:15.029543-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0027-cc-prompt-fabryk-5.md",
@@ -5029,7 +5203,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0028-cc-prompt-fabryk-5.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:04:15.118392-06:00"
+      "mtime_local": "2026-02-06T20:04:15.118392-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0028-cc-prompt-fabryk-5.md",
@@ -5041,7 +5219,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0029-cc-prompt-fabryk-5.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:06:20.914389-06:00"
+      "mtime_local": "2026-02-06T20:06:20.914389-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0029-cc-prompt-fabryk-5.md",
@@ -5053,7 +5235,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0030-cc-prompt-fabryk-5.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:06:21.001839-06:00"
+      "mtime_local": "2026-02-06T20:06:21.001839-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0030-cc-prompt-fabryk-5.md",
@@ -5065,7 +5251,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0031-cc-prompt-fabryk-5.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:06:21.099601-06:00"
+      "mtime_local": "2026-02-06T20:06:21.099601-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0031-cc-prompt-fabryk-6.md",
@@ -5077,7 +5267,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0032-cc-prompt-fabryk-6.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:08:09.552665-06:00"
+      "mtime_local": "2026-02-06T20:08:09.552665-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0032-cc-prompt-fabryk-6.md",
@@ -5089,7 +5283,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0033-cc-prompt-fabryk-6.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:08:09.647202-06:00"
+      "mtime_local": "2026-02-06T20:08:09.647202-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0033-cc-prompt-fabryk-6.md",
@@ -5101,7 +5299,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0034-cc-prompt-fabryk-6.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:08:09.761423-06:00"
+      "mtime_local": "2026-02-06T20:08:09.761423-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0034-cc-prompt-fabryk-7.md",
@@ -5113,7 +5315,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0035-cc-prompt-fabryk-7.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:10:06.091401-06:00"
+      "mtime_local": "2026-02-06T20:10:06.091401-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0035-cc-prompt-fabryk-7.md",
@@ -5125,7 +5331,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0036-cc-prompt-fabryk-7.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:10:06.204022-06:00"
+      "mtime_local": "2026-02-06T20:10:06.204022-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0036-cc-prompt-fabryk-7.md",
@@ -5137,7 +5347,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0037-cc-prompt-fabryk-7.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:10:06.312699-06:00"
+      "mtime_local": "2026-02-06T20:10:06.312699-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/0037-cc-prompt-fabryk-7.md",
@@ -5149,7 +5363,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0038-cc-prompt-fabryk-7.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:10:06.433448-06:00"
+      "mtime_local": "2026-02-06T20:10:06.433448-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/01-concept-card-improvements-report.md",
@@ -5161,7 +5379,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/concept-cards/0001-concept-card-framework-immediate-improvements-report.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-04T15:00:02.184407-06:00"
+      "mtime_local": "2026-02-04T15:00:02.184407-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/01_architecture_proposal.md",
@@ -5173,7 +5395,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/docs/02-under-review/0001-ecl-architecture-proposal.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-01-15T16:34:50.027394-06:00"
+      "mtime_local": "2026-01-15T16:34:50.027394-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/02-guide-for-parallel-concept-card-extraction-v2.md",
@@ -5185,7 +5411,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/concept-cards/0002-a-guide-for-parallel-concept-card-extraction-v3.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-04T15:17:15.211768-06:00"
+      "mtime_local": "2026-02-04T15:17:15.211768-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 0.997815,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/02_library_research.md",
@@ -5197,7 +5427,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/docs/06-final/0002-ecl-library-research-recommendations.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-01-15T16:35:23.931334-06:00"
+      "mtime_local": "2026-01-15T16:35:23.931334-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/03-HOWTO-concept-card-extraction.md",
@@ -5209,7 +5443,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/concept-cards/0003-howto-concept-card-extraction-with-claude-code.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-04T15:08:49.157907-06:00"
+      "mtime_local": "2026-02-04T15:08:49.157907-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 0.991004,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/03_proposal_and_justification.md",
@@ -5221,7 +5459,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/docs/10-superseded/0003-ecl-project-proposal.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-01-15T16:36:15.407699-06:00"
+      "mtime_local": "2026-01-15T16:36:15.407699-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 0.97479,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/arch-2026-02-24.md",
@@ -5233,7 +5475,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/docs/06-final/0014-fabryk-architecture-2026-02-24.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-24T13:40:54.290859-06:00"
+      "mtime_local": "2026-02-24T13:40:54.290859-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/augmenting-llm-reasoning.md",
@@ -5245,7 +5491,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/docs/06-final/0023-augmenting-llm-reasoning-with-external-tools-a-practitioners-landscape.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-04-13T17:45:23.741488-05:00"
+      "mtime_local": "2026-04-13T17:45:23.741488-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/lancedb-mcp-integration-guide.md",
@@ -5257,7 +5507,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/0013-lancedb-integration-guide-for-rust-mcp-servers.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-06T20:02:38.481895-06:00"
+      "mtime_local": "2026-02-06T20:02:38.481895-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/llm-abstract-reasoning-limitations.md",
@@ -5269,7 +5523,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/docs/06-final/0022-the-limitations-of-llms-with-abstract-reasoning.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-04-13T17:44:59.115947-05:00"
+      "mtime_local": "2026-04-13T17:44:59.115947-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/meta-prompt-generate-phase-milestones.md",
@@ -5306,7 +5564,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0012-milestone-1.1-specification-layer-ecl-pipeline-spec.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T16:44:53.906737-05:00"
+      "mtime_local": "2026-03-13T16:44:53.906737-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/milestone-1.2-ecl-pipeline-state.md",
@@ -5318,7 +5580,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0013-milestone-1.2-state-layer-ecl-pipeline-state.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T16:44:40.684362-05:00"
+      "mtime_local": "2026-03-13T16:44:40.684362-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/milestone-1.3-ecl-pipeline-topo.md",
@@ -5330,7 +5596,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0014-milestone-1.3-topology-layer-ecl-pipeline-topo.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T16:46:30.366935-05:00"
+      "mtime_local": "2026-03-13T16:46:30.366935-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/milestone-2.1-redb-state-store.md",
@@ -5342,7 +5612,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0015-milestone-2.1-redbstatestore-ecl-pipeline-state.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T16:50:37.054910-05:00"
+      "mtime_local": "2026-03-13T16:50:37.054910-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/milestone-2.2-pipeline-runner-core.md",
@@ -5354,7 +5628,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0016-milestone-2.2-pipeline-runner-core-ecl-pipeline.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T16:52:58.410020-05:00"
+      "mtime_local": "2026-03-13T16:52:58.410020-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/milestone-2.3-topology-resolution.md",
@@ -5366,7 +5644,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0017-milestone-2.3-topology-resolution.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T16:52:35.458739-05:00"
+      "mtime_local": "2026-03-13T16:52:35.458739-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/milestone-3.1-filesystem-adapter-stages.md",
@@ -5378,7 +5660,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0018-milestone-3.1-filesystem-adapter-built-in-stages-ecl-adapter-fs-ecl-stages.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T16:59:01.476919-05:00"
+      "mtime_local": "2026-03-13T16:59:01.476919-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/milestone-3.2-integration-test-suite.md",
@@ -5390,7 +5676,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0019-milestone-3.2-integration-test-suite.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T16:58:39.874618-05:00"
+      "mtime_local": "2026-03-13T16:58:39.874618-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/milestone-4.1-gdrive-auth-enumerate.md",
@@ -5402,7 +5692,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0020-milestone-4.1-google-drive-auth-enumerate-ecl-adapter-gdrive.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T16:58:34.747527-05:00"
+      "mtime_local": "2026-03-13T16:58:34.747527-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/milestone-4.2-gdrive-fetch-pipeline.md",
@@ -5414,7 +5708,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/ecl/0021-milestone-4.2-google-drive-fetch-full-pipeline-ecl-adapter-gdrive-ecl-stages.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-03-13T16:57:58.646457-05:00"
+      "mtime_local": "2026-03-13T16:57:58.646457-05:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/phase-6.5.md",
@@ -5426,7 +5724,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0041-phase-6.5-config-infra.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-18T01:06:38.633929-06:00"
+      "mtime_local": "2026-02-18T01:06:38.633929-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/phase-6.md",
@@ -5463,7 +5765,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0039-taproot-graphengine-evaluation-phase-4.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-17T15:43:46.251915-06:00"
+      "mtime_local": "2026-02-17T15:43:46.251915-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     },
     {
       "source": "workbench/old/vector-db.md",
@@ -5475,7 +5781,11 @@
       "disposition": "superseded-copy",
       "preferred_source": "crates/design/dev/fabryk/0040-phase-4.5-fabryk-vector.md",
       "reason": "Higher-precedence version selected; original retained in import commit.",
-      "mtime_local": "2026-02-17T16:36:55.197324-06:00"
+      "mtime_local": "2026-02-17T16:36:55.197324-06:00",
+      "duplicate_review": {
+        "body_line_similarity": 1.0,
+        "comparison": "Original bodies compared after removing only leading YAML frontmatter and outer whitespace; differences retained in import history. Prompt/report role checked separately."
+      }
     }
   ],
   "import_commit": "3a39aea33a9d133d2546c66bbbe361cbcfe97f70",
@@ -5761,15 +6071,15 @@
     "project04-ecl-pipeline-engine/artifacts/0026-banyan-data-pipeline-requirements-analysis.md",
     "project04-ecl-pipeline-engine/artifacts/0027-ecl-banyan-pipeline-implementation-plan.md",
     "project04-ecl-pipeline-engine/artifacts/RELEASE-NOTES-0.4.0.md",
+    "project04-ecl-pipeline-engine/artifacts/analysis-dagga.md",
+    "project04-ecl-pipeline-engine/artifacts/analysis-dagrs.md",
+    "project04-ecl-pipeline-engine/artifacts/analysis-dagx.md",
+    "project04-ecl-pipeline-engine/artifacts/analysis-erio-workflow.md",
+    "project04-ecl-pipeline-engine/artifacts/analysis-oxigdal-workflow.md",
+    "project04-ecl-pipeline-engine/artifacts/analysis-rettle.md",
     "project04-ecl-pipeline-engine/artifacts/fabryk-mcp-implementation-guide-ai-kasu.md",
     "project04-ecl-pipeline-engine/artifacts/howto-analysis-notes.md",
     "project04-ecl-pipeline-engine/artifacts/mcp-server-implementation-taproot.md",
-    "project04-ecl-pipeline-engine/artifacts/prompt-01-dagrs.md",
-    "project04-ecl-pipeline-engine/artifacts/prompt-02-erio-workflow.md",
-    "project04-ecl-pipeline-engine/artifacts/prompt-03-oxigdal-workflow.md",
-    "project04-ecl-pipeline-engine/artifacts/prompt-04-dagx.md",
-    "project04-ecl-pipeline-engine/artifacts/prompt-05-dagga.md",
-    "project04-ecl-pipeline-engine/artifacts/prompt-06-rettle.md",
     "project04-ecl-pipeline-engine/ledger.md",
     "project04-ecl-pipeline-engine/project-plan.md",
     "project04-ecl-pipeline-engine/slice01-slack-stub-validation/slice-plan.md",

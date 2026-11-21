@@ -341,12 +341,18 @@ custom Rust atop proven crates" target when you subtract test code.
 - [fabryk-mcp-implementation-guide-ai-kasu.md](artifacts/fabryk-mcp-implementation-guide-ai-kasu.md)
 - [howto-analysis-notes.md](artifacts/howto-analysis-notes.md)
 - [mcp-server-implementation-taproot.md](artifacts/mcp-server-implementation-taproot.md)
-- [prompt-01-dagrs.md](artifacts/prompt-01-dagrs.md)
-- [prompt-02-erio-workflow.md](artifacts/prompt-02-erio-workflow.md)
-- [prompt-03-oxigdal-workflow.md](artifacts/prompt-03-oxigdal-workflow.md)
-- [prompt-04-dagx.md](artifacts/prompt-04-dagx.md)
-- [prompt-05-dagga.md](artifacts/prompt-05-dagga.md)
-- [prompt-06-rettle.md](artifacts/prompt-06-rettle.md)
+
+- [analysis-dagrs.md](artifacts/analysis-dagrs.md)
+
+- [analysis-erio-workflow.md](artifacts/analysis-erio-workflow.md)
+
+- [analysis-oxigdal-workflow.md](artifacts/analysis-oxigdal-workflow.md)
+
+- [analysis-dagx.md](artifacts/analysis-dagx.md)
+
+- [analysis-dagga.md](artifacts/analysis-dagga.md)
+
+- [analysis-rettle.md](artifacts/analysis-rettle.md)
 
 ## Reconstruction history
 

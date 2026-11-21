@@ -29,7 +29,10 @@ Sources were selected in the Operator's precedence order: high-level
 `crates/design/dev/*.md`, grouped implementation documents in
 `crates/design/dev/*/*.md`, then `workbench/*.md`, then `workbench/old/*.md`.
 Different versions are resolved by that precedence; complementary reports,
-prompts and implementation summaries remain distinct records.
+prompts and implementation summaries remain distinct records. In particular,
+the six pipeline-crate analysis reports are retained separately from their
+similarly titled research prompts. Duplicate bodies were compared directly;
+shared titles alone do not establish a duplicate.
 
 Release membership follows adjacent tag ranges and document content/history.
 Original workbench modification times are supplementary evidence. They are
@@ -106,3 +109,12 @@ No Rust implementation tests, dependency upgrades or behavioral audits were
 performed as part of this organizational work. Historical test counts and
 completion statements inside source documents have not been independently
 verified.
+
+Migration self-checks on 2026-11-21 passed: all 214 imported originals matched
+their SHA-256 and size records; all 127 selected sources had complete,
+non-overlapping, exact line coverage at their destinations; 295 generated
+navigation links resolved; all 76 duplicate relationships were checked against
+the actual bodies and document roles. All five release worktrees were clean
+and checked out their named branches; all applicable tags were ancestors of
+their release tips, and `release/0.5.x` equaled `main`. The planning branch had
+one independent, initially empty root. These are author self-checks.
