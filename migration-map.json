@@ -6424,7 +6424,7 @@
       ]
     },
     "arc00_execution": {
-      "status": "CDC /root/ci_dependency_cdc active; CC exact Luna/high verified in session01a2000f-9f2d-7660-97b4-f54373f19a94; slice01 iteration01 intake active",
+      "status": "slice01 candidate returned; CDC independent checks passed; actual full baseline CI pending",
       "source_branch": "codex/ci-dependencies",
       "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
       "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",
@@ -6445,7 +6445,11 @@
         },
         "arrow_family": "58 retained as explicit latest LanceDB0.41 upstream compatibility constraint",
         "entry_gate": "independently accepted actual green baseline CI before slice02 edits"
-      }
+      },
+      "source_candidate": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
+      "source_mutation_owner": "CDC /root/ci_dependency_cdc",
+      "baseline_candidate_ci_run": 44957414892,
+      "CC_session": "01a2000f-9f2d-7660-97b4-f54373f19a94"
     }
   },
   "history_rewrite": {

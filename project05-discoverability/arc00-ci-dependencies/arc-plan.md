@@ -180,3 +180,11 @@ The Operator explicitly answered both choices through the parent relay: **raise 
 ### Version history continuation
 
 - 2026-11-21 v1.2 — Operator resolved the two concrete compatibility choices surfaced by prospective slice02 dependency inspection. Adopt Rust1.94 and current RMCP facade migration with notes; retain the green-baseline sequencing gate and all prior obligations.
+
+## Current baseline review and next-slice proof contract — 2026-11-21
+
+Baseline candidate edc8db69a2ef45d49e1c369ad5cf489dc58d161b has passed all local CC gates and CDC's independent scope/format/freshness/Redis checks. Only Cargo.toml/Cargo.lock changed, with Redis1.8.2, ethnum1.5.3 and necessary combine4.6.9. Source/index owner is CDC after CC return. Actual GitHub run44957414892 is still in progress; slice01 is not accepted yet. No main/release update, merge or publication occurred.
+
+The slice02 MSRV row must run the **actual locked candidate on Rust1.94.0**, including `cargo +1.94.0 check --locked --workspace --all-features --all-targets`, plus complementary default/no-default/isolated feature checks as applicable. Current stable1.100 CI and direct-package metadata are separate evidence and cannot establish the declared minimum. If resolved transitive dependencies or source APIs make1.94 false, preserve the concrete failures/parent constraints and seek a disposition rather than silently raising Rust or declaring compatibility. Keep all internal crates0.5.0.
+
+Future CC prompts use a temporary commit-message file, verify its actual bytes and both exact parsed trailers before committing, and prohibit housekeeping amend/squash/fixup/drop operations. Prefer ordinary follow-up commits. The baseline's already-completed unpublished message amendment is retained accurately in its verification/retrospective and is not undone.

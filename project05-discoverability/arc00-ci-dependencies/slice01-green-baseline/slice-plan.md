@@ -1,6 +1,6 @@
 # Slice01 — restore the real CI baseline
 
-Status: open, CC initial assignment ready. Source baseline: `92c72d7058dea91c0d475959e8c5b51b65f577ab`, branch `codex/ci-dependencies`, physical checkout `/Users/oubiwann/lab/oxur/textrynum`. Governing arc: arc00 CI/dependency preparation. This slice delivers a reviewable baseline candidate and actual complete green debug/release CI before the broader dependency sweep; CDC owns subsequent integration/review, with no main/release merge authorized.
+Status: under independent CDC review; actual full baseline CI is running. Source baseline: `92c72d7058dea91c0d475959e8c5b51b65f577ab`, branch `codex/ci-dependencies`, physical checkout `/Users/oubiwann/lab/oxur/textrynum`. Governing arc: arc00 CI/dependency preparation. This slice delivers a reviewable baseline candidate and actual complete green debug/release CI before the broader dependency sweep; CDC owns subsequent integration/review, with no main/release merge authorized.
 
 ## Scope and implementation
 
@@ -27,6 +27,12 @@ Source-grounded: source AGENTS, root manifest/lock, CI and Makefile checker insp
 ## Assignment history
 
 - 2026-11-21 initial `cc-prompt.md`, predecessor none, reason: current CI failures; status returned before implementation due to generic self-description being mistaken for unavailable runtime metadata.
-- 2026-11-21 `cc-prompt-iteration01.md`, predecessor cc-prompt.md, reason: actual runner turn_context verifies exact Luna/High; resume remaining intake/implementation, status active. Initial stopped before edits; executed refinement count zero. Current assignment: `cc-prompt-iteration01.md`.
+- 2026-11-21 `cc-prompt-iteration01.md`, predecessor cc-prompt.md, reason: actual runner turn_context verifies exact Luna/High; resume remaining intake/implementation, status returned for CDC review at source edc8db69. Initial stopped before edits; executed refinement count zero. Current assignment: `cc-prompt-iteration01.md`.
 
 Runtime evidence: existing runner thread `01a2000f-9f2d-7660-97b4-f54373f19a94` turn_context reports gpt-6-luna/high, physical source cwd, on-request approval and workspace-write sandbox. Generic generated self-description is not an identity blocker. No backend identity beyond reported configuration is claimed.
+
+## Current review handoff — 2026-11-21
+
+CC returned source/index ownership and its runner exited0. Candidate edc8db69a2ef45d49e1c369ad5cf489dc58d161b is clean on codex/ci-dependencies, direct parent92c72d7, exact source files Cargo.toml/Cargo.lock. CDC independently reproduced formatting, freshness and all13 Redis tests, inspected the complete diff and both parsed trailers. The task branch was pushed only to GitHub; actual run44957414892 is in progress. Canonical cdc-verification.md records performed review with acceptance still pending complete CI and close records. No source process remains active.
+
+The Operator has explicitly approved the later Rust1.94 and current RMCP facade migration choices. They do not bypass this slice's actual-green-CI gate. Future prompts must verify a temporary commit-message file's bytes and both trailers before git commit; use ordinary follow-up commits rather than amendments/squash/fixup/drop for housekeeping. Preserve the already-corrected unpublished baseline amendment truthfully; do not rewrite it again.

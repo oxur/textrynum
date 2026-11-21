@@ -1,0 +1,3 @@
+**Blocked before implementation.** This session does not expose the required exact `gpt-6-luna` model ID or High reasoning setting. I made no substitution, changed no source files, ran no checks, and created no commit. The source checkout remains clean at `92c72d7` on `codex/ci-dependencies`.
+
+I recorded the blocker, pinned revisions, intake coverage and limits, and contract readback in [cc-execution.md](/Users/oubiwann/lab/oxur/textrynum/.worktrees/planning/project05-discoverability/arc00-ci-dependencies/slice01-green-baseline/artifacts/cc-execution.md). The broader required reads and data queries remain incomplete; the ledger rows remain open. CDC needs to re-dispatch this assignment in the exact approved runtime before implementation proceeds.

@@ -108,7 +108,7 @@ update no contributor has been dispatched and no source coding/audit has started
 | Role | Approved model and reasoning | Deployment and actual assignment |
 | --- | --- | --- |
 | CDC — coordination/planning and independent review | `gpt-6.1-sol`, High | Codex/OpenAI runner; requested explicitly by Duncan; CDC dispatched as `/root/ci_dependency_cdc`, CC exact CLI dispatch pending |
-| CC — implementation | `gpt-6-luna`, High | Codex/OpenAI runner; exact CLI session `01a2000f-9f2d-7660-97b4-f54373f19a94` turn_context reports gpt-6-luna/high; intake active |
+| CC — implementation | `gpt-6-luna`, High | Codex/OpenAI runner; exact CLI session `01a2000f-9f2d-7660-97b4-f54373f19a94` reports gpt-6-luna/high; baseline candidate edc8db69 returned for CDC review |
 
 Both IDs and High reasoning were found in the local Codex model catalog. This is
 catalog verification, not a runtime identity claim. Apply the exact choices at
