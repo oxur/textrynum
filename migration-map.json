@@ -6315,7 +6315,7 @@
         "model": "gpt-6-luna",
         "reasoning_effort": "high"
       },
-      "catalog_check": "both names and High supported locally; runtime dispatch not started",
+      "catalog_check": "both names and High supported locally; actual CDC/CC assignments are recorded under arc00_execution",
       "substitutions": "not authorized"
     },
     "chatgpt_ux": "Major project05 goal and release gate; natural task success and discoverability balanced with request count, payload and grounded useful information",
@@ -6429,7 +6429,23 @@
       "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
       "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",
       "endpoint": "accepted arc00 CI/dependency prerequisite; no automatic audit or feature work",
-      "nonpublishing_ci_task_branch_pushes": "authorized as necessary to requested green CI; no main update, merge, PR or publication"
+      "nonpublishing_ci_task_branch_pushes": "authorized as necessary to requested green CI; no main update, merge, PR or publication",
+      "compatibility_decisions": {
+        "date": "2026-11-21",
+        "authority": "Operator explicitly approved both recommended choices through parent relay",
+        "workspace_msrv": {
+          "from": "1.91",
+          "to": "1.94",
+          "status": "approved"
+        },
+        "rmcp_facade": {
+          "status": "approved_migration",
+          "downstream_migration_notes": "required",
+          "legacy_wrapper_compatibility_layer": "not required"
+        },
+        "arrow_family": "58 retained as explicit latest LanceDB0.41 upstream compatibility constraint",
+        "entry_gate": "independently accepted actual green baseline CI before slice02 edits"
+      }
     }
   },
   "history_rewrite": {

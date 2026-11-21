@@ -168,3 +168,15 @@ RMCP resource contents construction remains text-first, URI-second in both pinne
 Further consequential findings will be collected here for a consolidated decision, rather than piecemeal Operator questions. Remaining package migrations (Avro, base64, dirs, JWT, rdkafka, russh/SFTP, Tantivy and zip, plus compatible versions) must be grounded in their actual consumers/upstream APIs before issuing the full slice prompt. All root/member/internal package versions stay0.5.0. No held project06/07 features or full audit is opened.
 
 Upstream witnesses: published crate archives from crates.io API for fastembed7.7.1, rmcp1.3.0/3.11.0 and lancedb0.41.0; latest registry max_stable_version metadata; https://github.com/cberner/redb/releases/tag/v5.0.0 ; GitHub authoritative releases APIs for CI/helper versions.
+
+## Operator compatibility decisions — approved 2026-11-21
+
+The Operator explicitly answered both choices through the parent relay: **raise minimum Rust to1.94** and **migrate the public facade API**, both recommended options. These supersede the pending-decision statements above. No further approval of these unchanged choices is needed.
+
+- Slice02 may raise workspace `rust-version` from1.91 to1.94 for latest LanceDB0.41.0. Keep Arrow58 as the documented coupled-library constraint against latest Arrow60.2.0. Verify the advertised MSRV meaningfully, separately from latest-stable CI.
+- Migrate the unreleased0.5 public RMCP facade to current Resource/ContentBlock APIs and remove the obsolete SDK wrapper reexports where required. Include downstream source migration notes. No layer preserving the removed AnnotateAble/Annotated/RawResource types is required. Preserve higher-level tool/resource registry behavior and adapt handler wrappers internally; no new task/MRTR/subscription feature or ChatGPT UX redesign is authorized by this dependency choice.
+- Continue bounded arc00 autonomously with the already approved CDC/CC role/model/settings. Slice02 still waits for independently accepted, actual green baseline CI. Audit, project06/07 features, branch merge and publication remain unauthorized.
+
+### Version history continuation
+
+- 2026-11-21 v1.2 — Operator resolved the two concrete compatibility choices surfaced by prospective slice02 dependency inspection. Adopt Rust1.94 and current RMCP facade migration with notes; retain the green-baseline sequencing gate and all prior obligations.
