@@ -203,3 +203,12 @@ Use thin canonical probe drivers in the owning slice artifacts and temporary own
 ### Version history continuation
 
 - 2026-11-21 v1.3 — parent review strengthened the prospective slice02 persistence proof to actual old-writer/new-reader fixtures for Redb and exposed Lance/vector behavior; CDC applied the same proportionate check to the exposed Tantivy disk-index surface. No new product behavior or audit was opened.
+
+
+## Accepted slice01 and next entry gate — 2026-11-21
+
+Slice01 is independently accepted at edc8db69a2ef45d49e1c369ad5cf489dc58d161b; all3 BASE rows done, canonical CC close/CDC verification/retrospective complete. Actual run44957414892 completed both Linux Rust1.100 jobs successfully at23:06:23UTC, each2,437 passed/0 failed/61 existing ignored. Debug freshness and both full format/build/strict-lint/test chains passed. Minimal Redis/ethnum repair includes necessary combine4.6.9; no source/test/workflow weakening. Task branch is pushed only to GitHub and remains unmerged; source clean and CDC-owned, no CC/native mutable process active.
+
+CI-01 and project row09 close. Dependency sweep slice02 may now open under already approved Rust1.94/RMCP migration decisions and actual persistence/MSRV proof contracts above. DEP-01, CI-02 and final independent arc composition REVIEW-01 remain open. No new baseline discovery changes the two-slice decomposition; prospective compatibility proof was strengthened before next-slice planning. All audit/features/publication boundaries remain.
+
+- 2026-11-21 v1.4 — accepted slice01 capability, current source/CI and bubble-up recorded after canonical CC close and independent CDC review/retrospective; no whole-arc acceptance.

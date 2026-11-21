@@ -1,6 +1,6 @@
 # Slice01 — restore the real CI baseline
 
-Status: actual complete baseline CI green; canonical CC close and final independent CDC acceptance pending. Source baseline: `92c72d7058dea91c0d475959e8c5b51b65f577ab`, branch `codex/ci-dependencies`, physical checkout `/Users/oubiwann/lab/oxur/textrynum`. Governing arc: arc00 CI/dependency preparation. This slice delivers a reviewable baseline candidate and actual complete green debug/release CI before the broader dependency sweep; CDC owns subsequent integration/review, with no main/release merge authorized.
+Status: accepted 2026-11-21; actual complete baseline CI and canonical independent close/retrospective complete. Source baseline: `92c72d7058dea91c0d475959e8c5b51b65f577ab`, branch `codex/ci-dependencies`, physical checkout `/Users/oubiwann/lab/oxur/textrynum`. Governing arc: arc00 CI/dependency preparation. This slice delivers a reviewable baseline candidate and actual complete green debug/release CI before the broader dependency sweep; CDC owns subsequent integration/review, with no main/release merge authorized.
 
 ## Scope and implementation
 
@@ -38,3 +38,7 @@ CC returned source/index ownership and its runner exited0. Candidate edc8db69a2e
 The Operator has explicitly approved the later Rust1.94 and current RMCP facade migration choices. They do not bypass this slice's actual-green-CI gate. Future prompts must verify a temporary commit-message file's bytes and both trailers before git commit; use ordinary follow-up commits rather than amendments/squash/fixup/drop for housekeeping. Preserve the already-corrected unpublished baseline amendment truthfully; do not rewrite it again.
 
 - 2026-11-21 closing handoff `cc-prompt-iteration02.md`, predecessor iteration01, reason: actual CI now green; documentation-only canonical CC close, no source repair/refinement or reruns. Issued after source-grounded CDC review; final acceptance/retrospective still CDC-owned.
+
+## Accepted endpoint
+
+All3 BASE rows done at edc8db69; see closing-report.md, cdc-verification.md and cdc-retrospective.md. Both actual CI jobs succeeded in run44957414892. Source clean, task branch pushed only to GitHub, unmerged; CDC owns source/index after both CC returns. No mutable process remains. Slice02 entry gate is satisfied; larger arc/audit/release work remains open.

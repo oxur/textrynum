@@ -1,6 +1,6 @@
 # CDC verification — slice01 baseline
 
-Current verdict: **review in progress; not accepted**. Actual complete Linux CI is now verified; canonical closing/bubble-up/retrospective records remain required. This is a performed independent review record, not a pre-filled success record.
+Current verdict: **accepted — 2026-11-21** at edc8db69a2ef45d49e1c369ad5cf489dc58d161b. Actual complete Linux CI, canonical CC close, independent bubble-up review and CDC retrospective are complete. This closes slice01 only; arc00 is not complete. This is a performed independent review record; earlier pending states remain identifiable in Git history and dated execution records.
 
 ## Identity and reviewed state
 
@@ -48,3 +48,14 @@ Opening ledger has3 rows; all3 are accounted for (CI evidence updated after comp
 | BASE-03 | Intake/delivery reviewed; canonical CC closing report, final bubble-up check and CDC retrospective remain open. |
 
 Do not advance the dependency sweep until BASE-02 and BASE-03 are complete and this verdict is updated. The Operator has now explicitly approved Rust1.94 and current RMCP facade migration for the subsequent sweep; those choices do not waive this baseline gate. Full audit and later features remain unopened.
+
+
+## Final independent close and bubble-up — 2026-11-21
+
+CC iteration02 runner13019 returned exit0 and documentation ownership before final CDC edits. New actual turn_context again reported gpt-6-luna/high with physical source cwd and normal on-request/workspace-write policy. CDC read the complete closing-report.md and dated execution appendix, verified the actual filenames/diff and retained the independently reproduced source/behavior evidence above. No source change or gate rerun occurred during the close handoff. Source was rechecked clean on codex/ci-dependencies at edc8db69; no native/CC mutable process remains owned or detached.
+
+All3 opening BASE rows close done, with no deferral/no-op or silent drop: BASE-01 exact minimal repair/upstream consequence and affected behavior; BASE-02 both complete actual CI jobs at the candidate; BASE-03 full intake/CC delivery, this independent review, canonical closing report, cdc-retrospective.md and the verified bubble-up. The CC report's proposed/pending labels accurately describe its return before this final reviewer decision; this paragraph supplies the current acceptance rather than inventing CC self-acceptance.
+
+Artifact inventory matches all4 durable files in artifacts/: cc-execution.md, cc-last-message.md, cc-runner.jsonl and cc-runner-stderr.log. All3 issued prompts remain in the slice root; current documentation-close assignment is cc-prompt-iteration02.md, implementation assignment iteration01. Root first-class close/verification/retrospective records are excluded from supporting-artifact inventory. Complete raw CI logs remain available from the exact GitHub jobs; inspected temporary copies supplement that authoritative record.
+
+Against arc-plan slice breakdown, the delivered capability is the minimal actual-green baseline on a nonmerged, pushed task branch. Existing features/tests/freshness/workflow behavior are preserved; no wider latest sweep or declared MSRV proof is claimed. The silent-drop diff is complete: no assigned baseline capability missing, and larger audit/release obligations remain open rather than silently disposed. The necessary combine update does not change decomposition. Arc-plan was updated before the next slice to record this accepted state and the parent-strengthened, approved prospective persistence/MSRV contract. CI-01 and project05 row09 close; DEP-01/CI-02 and final arc composition REVIEW-01 remain open. Final retrospective is linked from the CC close and completed at cdc-retrospective.md. Slice02 may now be planned/executed; no audit, feature, merge or publication authority follows.

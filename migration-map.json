@@ -6424,7 +6424,7 @@
       ]
     },
     "arc00_execution": {
-      "status": "slice01 candidate returned; CDC independent checks passed; actual full baseline CI pending",
+      "status": "slice01 independently accepted; complete baseline CI green; slice02 latest sweep may open",
       "source_branch": "codex/ci-dependencies",
       "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
       "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",
@@ -6449,7 +6449,26 @@
       "source_candidate": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
       "source_mutation_owner": "CDC /root/ci_dependency_cdc",
       "baseline_candidate_ci_run": 44957414892,
-      "CC_session": "01a2000f-9f2d-7660-97b4-f54373f19a94"
+      "CC_session": "01a2000f-9f2d-7660-97b4-f54373f19a94",
+      "baseline_candidate_ci_result": {
+        "status": "completed",
+        "conclusion": "success",
+        "source": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
+        "run": 44957414892,
+        "url": "https://github.com/oxur/textrynum/actions/runs/44957414892",
+        "jobs": [
+          137008481299,
+          137008481067
+        ],
+        "toolchain": "Linux Rust1.100.0",
+        "each_test_suite": {
+          "summaries": 85,
+          "passed": 2437,
+          "failed": 0,
+          "ignored": 61
+        },
+        "accepted": "slice01 CDC verification and retrospective complete"
+      }
     },
     "audit_intake_observations": [
       {

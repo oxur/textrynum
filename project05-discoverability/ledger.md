@@ -1,11 +1,11 @@
 # Ledger
 
-All rows are open. Planning and historical records are not acceptance evidence.
+Row09 is independently accepted from the current arc00 baseline. Other rows remain open; planning and historical records are not acceptance evidence.
 
 | ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 01 | Private-name cleanup covers reachable Git history, filenames, live source and all affected configured remote refs | Sanitized object/path scan, remote ref read-back and fresh fetch verification | correctness-grade | Operator decision 2026-11-21 | open | [Privacy record](artifacts/privacy-rewrite-record.md), author-attested | Controlled refs and local objects cleaned; hosted purge remains open but Duncan explicitly made it nonblocking on 2026-11-21. No deletion/recreation authorized. |
-| 09 | Fresh CI baseline passes before the audit | Complete current CI run on pinned sanitized source | correctness-grade | Operator 2026-11-21 | open | | |
+| 09 | Fresh CI baseline passes before the audit | Complete current CI run on pinned sanitized source | correctness-grade | Operator 2026-11-21 | done | [Slice01 acceptance](arc00-ci-dependencies/slice01-green-baseline/cdc-verification.md), [run44957414892](https://github.com/oxur/textrynum/actions/runs/44957414892), edc8db69 | Accepted 2026-11-21; dependency sweep and subsequent CI remain row10/arc00 duties, audit unopened. |
 | 10 | All dependencies updated to latest stable and checks/CI green again before audit | Version inventory, explicit compatibility constraints, lockfile and current checks | correctness-grade | Operator 2026-11-21 | open | | |
 | 11 | ChatGPT UX delivers natural, efficient discovery and completed grounded tasks | Real ChatGPT trials with task success, discovery/request/payload/useful-information evidence | correctness-grade | Operator 2026-11-21 | open | | |
 | 02 | Full audit is independently accepted across all workspace members and scales | Audit index, per-language reports, coverage accounting and independent review | correctness-grade | Operator decision 2026-11-21 | open | | |
