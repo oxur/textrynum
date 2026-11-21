@@ -96,3 +96,5 @@ Observed signature metadata: {"old_signed_commits": 3, "rewritten_signed_commits
 Local reflogs and obsolete objects are to be expired/pruned after committing this
 record, followed by a scan of every remaining object. The final result is appended
 here after the purge; this statement does not itself claim completion.
+
+Final local purge check: reflogs expired and obsolete objects pruned. Scanned every remaining local Git object: 270 commit, 6 tag, 2049 tree, 2225 blob; zero private-name matches. First-party live files/paths across all worktrees also had zero matches. Release-tip relationships, clean release worktrees and orphan planning ancestry passed. These are author self-checks.

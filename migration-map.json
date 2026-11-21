@@ -6616,6 +6616,17 @@
     "signature_metadata": {
       "old_signed_commits": 3,
       "rewritten_signed_commits": 0
+    },
+    "local_purge": {
+      "status": "passed",
+      "objects_scanned": {
+        "commit": 270,
+        "tag": 6,
+        "tree": 2049,
+        "blob": 2225
+      },
+      "private_matches": 0,
+      "first_party_live_files_and_paths": "passed"
     }
   }
 }
