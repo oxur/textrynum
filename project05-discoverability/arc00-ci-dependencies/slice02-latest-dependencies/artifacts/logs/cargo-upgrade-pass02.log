@@ -1,0 +1,759 @@
+$ cargo upgrade --manifest-path Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+name         old req compatible latest new req
+====         ======= ========== ====== =======
+zip          8       8.6.0      9.8.1  9      
+rdkafka      0.39    0.39.0     0.40.0 0.40   
+apache-avro  0.21    0.21.0     0.23.0 0.23   
+rmcp         1       1.8.0      3.11.0 3      
+dirs         6       6.0.0      7.0.0  7      
+tantivy      0.26    0.26.2     0.27.0 0.27   
+lancedb      0.27    0.27.2     0.41.0 0.41   
+arrow-array  57      57.3.3     60.2.0 60     
+arrow-schema 57      57.3.3     60.2.0 60     
+fastembed    5       5.17.4     7.7.1  7      
+jsonwebtoken 10      10.4.0     12.0.0 12     
+redb         4       4.6.0      5.0.0  5      
+base64       0.22    0.22.1     0.23.1 0.23   
+pgp          0.19    0.19.0     0.21.1 0.21   
+russh        0.60    0.60.3     0.65.4 0.65   
+russh-sftp   2       2.4.0      4.0.0  4      
+    Checking ecl's dependencies
+    Checking ecl-adapter-fs's dependencies
+    Checking ecl-adapter-gcs's dependencies
+    Checking ecl-adapter-gdrive's dependencies
+    Checking ecl-adapter-sftp's dependencies
+    Checking ecl-adapter-slack's dependencies
+    Checking ecl-adapter-zapier's dependencies
+    Checking ecl-cli's dependencies
+    Checking ecl-core's dependencies
+    Checking ecl-design's dependencies
+    Checking ecl-gcp-auth's dependencies
+    Checking ecl-pipeline's dependencies
+    Checking ecl-pipeline-spec's dependencies
+    Checking ecl-pipeline-state's dependencies
+    Checking ecl-pipeline-topo's dependencies
+    Checking ecl-secrets's dependencies
+    Checking ecl-sink-gcs's dependencies
+    Checking ecl-sink-kafka's dependencies
+    Checking ecl-stages's dependencies
+    Checking ecl-steps's dependencies
+    Checking ecl-workflows's dependencies
+    Checking fabryk's dependencies
+    Checking fabryk-acl's dependencies
+    Checking fabryk-auth's dependencies
+    Checking fabryk-auth-google's dependencies
+    Checking fabryk-cli's dependencies
+    Checking fabryk-content's dependencies
+    Checking fabryk-core's dependencies
+    Checking fabryk-fts's dependencies
+    Checking fabryk-gcp's dependencies
+    Checking fabryk-graph's dependencies
+    Checking fabryk-mcp's dependencies
+    Checking fabryk-mcp-auth's dependencies
+    Checking fabryk-mcp-content's dependencies
+    Checking fabryk-mcp-core's dependencies
+    Checking fabryk-mcp-fts's dependencies
+    Checking fabryk-mcp-graph's dependencies
+    Checking fabryk-mcp-semantic's dependencies
+    Checking fabryk-redis's dependencies
+    Checking fabryk-vector's dependencies
+    Checking textrynum-util's dependencies
+   Upgrading recursive dependencies
+     Locking 160 packages to latest compatible versions
+    Updating aho-corasick v1.1.4 -> v1.1.5
+    Updating android_system_properties v0.1.5 -> v0.1.6
+    Updating anyhow v1.0.102 -> v1.0.104
+    Updating arc-swap v1.9.1 -> v1.9.3
+    Updating arrayvec v0.7.6 -> v0.7.8
+    Updating async-compression v0.4.41 -> v0.4.52
+    Updating async-trait v0.1.89 -> v0.1.92
+    Updating autocfg v1.5.0 -> v1.5.1
+    Updating avif-serialize v0.8.8 -> v0.8.9
+    Updating aws-lc-rs v1.16.2 -> v1.19.0
+    Updating aws-lc-sys v0.39.1 -> v0.47.0
+    Updating bitstream-io v4.9.0 -> v4.10.0
+    Updating built v0.8.0 -> v0.8.1
+    Updating bumpalo v3.20.2 -> v3.20.3
+    Updating cc v1.2.59 -> v1.11.2
+    Updating cfg-if v1.0.4 -> v1.0.5
+    Updating cfg_aliases v0.2.1 -> v0.2.2
+    Updating chacha20 v0.10.0 -> v0.10.2
+    Updating chrono v0.4.44 -> v0.4.45
+    Updating compression-codecs v0.4.37 -> v0.4.47
+    Updating compression-core v0.4.31 -> v0.4.34
+    Removing core2 v0.4.0
+    Updating cpufeatures v0.3.0 -> v0.3.1
+    Updating crc32fast v1.5.0 -> v1.5.4
+    Updating crossbeam-channel v0.5.15 -> v0.5.17
+    Updating crossbeam-deque v0.8.6 -> v0.8.8
+    Updating crossbeam-epoch v0.9.18 -> v0.9.21
+    Updating crossbeam-utils v0.8.21 -> v0.8.23
+    Updating data-encoding v2.10.0 -> v2.11.1
+    Updating deranged v0.5.8 -> v0.5.9
+    Updating displaydoc v0.2.5 -> v0.2.7
+    Updating either v1.15.0 -> v1.19.0
+    Updating equivalent v1.0.2 -> v1.0.3
+    Updating event-listener v5.4.1 -> v5.4.2
+    Updating exr v1.74.0 -> v1.74.2
+    Updating fastrand v2.4.0 -> v2.5.0
+    Updating fax v0.2.6 -> v0.2.7
+    Removing fax_derive v0.2.0
+    Updating find-msvc-tools v0.1.9 -> v0.1.15
+    Updating flate2 v1.1.9 -> v1.1.10
+    Updating futures v0.3.32 -> v0.3.34
+    Updating futures-channel v0.3.32 -> v0.3.34
+    Updating futures-core v0.3.32 -> v0.3.34
+    Updating futures-executor v0.3.32 -> v0.3.34
+    Updating futures-io v0.3.32 -> v0.3.34
+    Updating futures-macro v0.3.32 -> v0.3.34
+    Updating futures-sink v0.3.32 -> v0.3.34
+    Updating futures-task v0.3.32 -> v0.3.34
+    Updating futures-util v0.3.32 -> v0.3.34
+    Updating getrandom v0.4.2 -> v0.4.3
+    Updating gif v0.14.1 -> v0.14.2
+    Updating glob v0.3.3 -> v0.3.4
+    Updating h2 v0.4.13 -> v0.4.20
+    Updating http v1.4.0 -> v1.5.0
+    Updating http-body v1.0.1 -> v1.1.0
+    Updating http-body-util v0.1.3 -> v0.1.5
+    Updating hyper v1.9.0 -> v1.12.0
+    Updating hyper-rustls v0.27.7 -> v0.27.10
+    Updating hyper-util v0.1.20 -> v0.1.21
+    Removing id-arena v2.3.0
+    Updating idna_adapter v1.2.1 -> v1.2.2
+    Updating imgref v1.12.0 -> v1.12.3
+    Updating ipnet v2.12.0 -> v2.12.2
+    Removing iri-string v0.7.12
+    Updating jobserver v0.1.34 -> v0.1.35
+    Updating lazy_static v1.5.0 -> v1.5.1
+    Removing leb128fmt v0.1.0
+    Updating litemap v0.8.2 -> v0.8.3
+    Updating litrs v1.0.0 -> v1.0.1
+    Updating lru-slab v0.1.2 -> v0.1.3
+    Updating matrixmultiply v0.3.10 -> v0.3.11
+    Updating memchr v2.8.0 -> v2.8.3
+    Updating memmap2 v0.9.10 -> v0.9.12
+    Updating mime v0.3.17 -> v0.3.18
+    Updating mio v1.2.0 -> v1.2.4
+      Adding no_std_io2 v0.9.4
+    Updating num-conv v0.2.1 -> v0.2.2
+    Updating num-integer v0.1.46 -> v0.1.47
+    Updating openssl-probe v0.2.1 -> v0.2.2
+    Updating ordered-float v5.3.0 -> v5.5.1
+    Updating pastey v0.2.1 -> v0.2.3
+    Updating pin-project v1.1.11 -> v1.1.13
+    Updating pin-project-internal v1.1.11 -> v1.1.13
+    Updating pin-project-lite v0.2.17 -> v0.2.18
+    Updating pkg-config v0.3.32 -> v0.3.34
+    Updating portable-atomic v1.13.1 -> v1.15.0
+    Updating portable-atomic-util v0.2.6 -> v0.2.8
+    Updating potential_utf v0.1.5 -> v0.1.6
+    Updating powerfmt v0.2.0 -> v0.2.1
+    Updating proc-macro2 v1.0.106 -> v1.0.107
+    Updating profiling v1.0.17 -> v1.0.18
+    Updating profiling-procmacros v1.0.17 -> v1.0.18
+    Updating prost v0.14.3 -> v0.14.4
+    Updating prost-derive v0.14.3 -> v0.14.4
+      Adding pulp v0.22.3
+      Adding pulp-wasm-simd-flag v0.1.1
+    Updating pxfm v0.1.28 -> v0.1.30
+    Updating quinn v0.11.9 -> v0.11.12
+    Updating quinn-proto v0.11.14 -> v0.11.19
+    Updating quinn-udp v0.5.14 -> v0.5.16
+    Updating quote v1.0.45 -> v1.0.47
+    Updating rand v0.9.2 -> v0.9.5
+    Updating rand_core v0.10.0 -> v0.10.1
+      Adding rand_pcg v0.10.2
+      Adding raw-cpuid v11.6.0
+    Updating rayon v1.11.0 -> v1.12.0
+      Adding reborrow v0.5.5
+    Updating ref-cast v1.0.25 -> v1.0.27
+    Updating ref-cast-impl v1.0.25 -> v1.0.27
+    Updating regex v1.12.3 -> v1.13.1
+    Updating regex-automata v0.4.14 -> v0.4.18
+    Updating regex-syntax v0.8.10 -> v0.8.11
+    Updating rustc-hash v2.1.2 -> v2.1.3
+    Updating rustix v1.1.4 -> v1.1.6
+    Updating rustls v0.23.37 -> v0.23.46
+    Updating rustls-native-certs v0.8.3 -> v0.8.5
+    Updating rustls-pki-types v1.14.0 -> v1.15.1
+    Updating rustls-webpki v0.103.10 -> v0.103.16
+    Updating rustversion v1.0.22 -> v1.0.23
+    Updating schannel v0.1.29 -> v0.1.30
+    Updating schemars v1.2.1 -> v1.2.2
+    Updating schemars_derive v1.2.1 -> v1.2.2
+    Updating serde_derive_internals v0.29.1 -> v0.30.0
+    Updating serde_repr v0.1.20 -> v0.1.21
+    Updating sha1 v0.10.6 -> v0.10.7
+      Adding shlex v2.0.1
+    Updating simd-adler32 v0.3.9 -> v0.3.10
+    Updating siphasher v1.0.2 -> v1.0.4
+    Updating smallvec v1.15.1 -> v1.16.4
+    Updating socket2 v0.6.3 -> v0.6.5
+    Updating spin v0.9.8 -> v0.9.9
+    Updating syn v2.0.117 -> v2.0.119
+    Removing synstructure v0.13.2
+    Updating thread_local v1.1.9 -> v1.1.10
+    Updating time v0.3.47 -> v0.3.55
+    Updating time-core v0.1.8 -> v0.1.9
+    Updating time-macros v0.2.27 -> v0.2.32
+    Updating tinyvec v1.11.0 -> v1.13.3
+    Removing tinyvec_macros v0.1.1
+    Updating tokio-macros v2.7.0 -> v2.7.2
+    Updating tokio-rustls v0.26.4 -> v0.26.6
+    Updating tokio-stream v0.1.18 -> v0.1.19
+    Updating toml_datetime v1.1.1+spec-1.1.0 -> v1.1.3+spec-1.1.0
+    Updating toml_edit v0.25.10+spec-1.1.0 -> v0.25.17+spec-1.1.0
+    Updating toml_parser v1.1.2+spec-1.1.0 -> v1.1.5+spec-1.1.0
+    Updating toml_writer v1.1.1+spec-1.1.0 -> v1.2.0+spec-1.1.0
+    Updating tower-http v0.6.8 -> v0.6.11
+    Updating twox-hash v2.1.2 -> v2.1.5
+    Updating unicase v2.9.0 -> v2.10.0
+    Updating unicode-ident v1.0.24 -> v1.0.27
+    Updating unicode-normalization v0.1.25 -> v0.1.26
+    Updating unicode-segmentation v1.13.2 -> v1.13.3
+    Updating unicode-width v0.2.2 -> v0.2.3
+    Updating ureq-proto v0.6.0 -> v0.6.5
+    Updating utf8_iter v1.0.4 -> v1.1.0
+      Adding utf_types v1.0.0
+    Updating want v0.3.1 -> v0.3.2
+    Removing wasip3 v0.4.0+wasi-0.3.0-rc-2026-01-06
+    Removing wasm-encoder v0.244.0
+    Removing wasm-metadata v0.244.0
+    Removing wasmparser v0.244.0
+    Updating webpki-roots v1.0.6 -> v1.0.11
+    Removing windows-sys v0.60.2
+    Removing windows-targets v0.53.5
+    Removing windows_aarch64_gnullvm v0.53.1
+    Removing windows_aarch64_msvc v0.53.1
+    Removing windows_i686_gnu v0.53.1
+    Removing windows_i686_gnullvm v0.53.1
+    Removing windows_i686_msvc v0.53.1
+    Removing windows_x86_64_gnu v0.53.1
+    Removing windows_x86_64_gnullvm v0.53.1
+    Removing windows_x86_64_msvc v0.53.1
+    Updating winnow v1.0.1 -> v1.0.5
+    Removing wit-bindgen-core v0.51.0
+    Removing wit-bindgen-rust v0.51.0
+    Removing wit-bindgen-rust-macro v0.51.0
+    Removing wit-component v0.244.0
+    Removing wit-parser v0.244.0
+    Updating xxhash-rust v0.8.15 -> v0.8.19
+    Updating zerocopy v0.8.48 -> v0.8.63
+    Updating zerocopy-derive v0.8.48 -> v0.8.63
+    Updating zerofrom v0.1.7 -> v0.1.8
+    Updating zerofrom-derive v0.1.7 -> v0.1.8
+    Updating zlib-rs v0.6.3 -> v0.6.8
+    Updating zmij v1.0.21 -> v1.0.23
+    Updating zune-core v0.5.1 -> v0.5.3
+note: pass `--verbose` to see 12 unchanged dependencies behind latest
+note: Re-run with `--verbose` to show more dependencies
+  latest: 78 packages
+EXIT 0
+$ cargo upgrade --manifest-path crates/ecl-adapter-gcs/Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+    Checking ecl's dependencies
+    Checking ecl-adapter-fs's dependencies
+    Checking ecl-adapter-gcs's dependencies
+    Checking ecl-adapter-gdrive's dependencies
+    Checking ecl-adapter-sftp's dependencies
+    Checking ecl-adapter-slack's dependencies
+    Checking ecl-adapter-zapier's dependencies
+    Checking ecl-cli's dependencies
+    Checking ecl-core's dependencies
+    Checking ecl-design's dependencies
+    Checking ecl-gcp-auth's dependencies
+    Checking ecl-pipeline's dependencies
+    Checking ecl-pipeline-spec's dependencies
+    Checking ecl-pipeline-state's dependencies
+    Checking ecl-pipeline-topo's dependencies
+    Checking ecl-secrets's dependencies
+    Checking ecl-sink-gcs's dependencies
+    Checking ecl-sink-kafka's dependencies
+    Checking ecl-stages's dependencies
+    Checking ecl-steps's dependencies
+    Checking ecl-workflows's dependencies
+    Checking fabryk's dependencies
+    Checking fabryk-acl's dependencies
+    Checking fabryk-auth's dependencies
+    Checking fabryk-auth-google's dependencies
+    Checking fabryk-cli's dependencies
+    Checking fabryk-content's dependencies
+    Checking fabryk-core's dependencies
+    Checking fabryk-fts's dependencies
+    Checking fabryk-gcp's dependencies
+    Checking fabryk-graph's dependencies
+    Checking fabryk-mcp's dependencies
+    Checking fabryk-mcp-auth's dependencies
+    Checking fabryk-mcp-content's dependencies
+    Checking fabryk-mcp-core's dependencies
+    Checking fabryk-mcp-fts's dependencies
+    Checking fabryk-mcp-graph's dependencies
+    Checking fabryk-mcp-semantic's dependencies
+    Checking fabryk-redis's dependencies
+    Checking fabryk-vector's dependencies
+    Checking textrynum-util's dependencies
+note: Re-run with `--verbose` to show more dependencies
+  latest: 94 packages
+EXIT 0
+$ cargo upgrade --manifest-path crates/ecl-adapter-gdrive/Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+    Checking ecl's dependencies
+    Checking ecl-adapter-fs's dependencies
+    Checking ecl-adapter-gcs's dependencies
+    Checking ecl-adapter-gdrive's dependencies
+    Checking ecl-adapter-sftp's dependencies
+    Checking ecl-adapter-slack's dependencies
+    Checking ecl-adapter-zapier's dependencies
+    Checking ecl-cli's dependencies
+    Checking ecl-core's dependencies
+    Checking ecl-design's dependencies
+    Checking ecl-gcp-auth's dependencies
+    Checking ecl-pipeline's dependencies
+    Checking ecl-pipeline-spec's dependencies
+    Checking ecl-pipeline-state's dependencies
+    Checking ecl-pipeline-topo's dependencies
+    Checking ecl-secrets's dependencies
+    Checking ecl-sink-gcs's dependencies
+    Checking ecl-sink-kafka's dependencies
+    Checking ecl-stages's dependencies
+    Checking ecl-steps's dependencies
+    Checking ecl-workflows's dependencies
+    Checking fabryk's dependencies
+    Checking fabryk-acl's dependencies
+    Checking fabryk-auth's dependencies
+    Checking fabryk-auth-google's dependencies
+    Checking fabryk-cli's dependencies
+    Checking fabryk-content's dependencies
+    Checking fabryk-core's dependencies
+    Checking fabryk-fts's dependencies
+    Checking fabryk-gcp's dependencies
+    Checking fabryk-graph's dependencies
+    Checking fabryk-mcp's dependencies
+    Checking fabryk-mcp-auth's dependencies
+    Checking fabryk-mcp-content's dependencies
+    Checking fabryk-mcp-core's dependencies
+    Checking fabryk-mcp-fts's dependencies
+    Checking fabryk-mcp-graph's dependencies
+    Checking fabryk-mcp-semantic's dependencies
+    Checking fabryk-redis's dependencies
+    Checking fabryk-vector's dependencies
+    Checking textrynum-util's dependencies
+note: Re-run with `--verbose` to show more dependencies
+  latest: 94 packages
+EXIT 0
+$ cargo upgrade --manifest-path crates/ecl-core/Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+    Checking ecl's dependencies
+    Checking ecl-adapter-fs's dependencies
+    Checking ecl-adapter-gcs's dependencies
+    Checking ecl-adapter-gdrive's dependencies
+    Checking ecl-adapter-sftp's dependencies
+    Checking ecl-adapter-slack's dependencies
+    Checking ecl-adapter-zapier's dependencies
+    Checking ecl-cli's dependencies
+    Checking ecl-core's dependencies
+    Checking ecl-design's dependencies
+    Checking ecl-gcp-auth's dependencies
+    Checking ecl-pipeline's dependencies
+    Checking ecl-pipeline-spec's dependencies
+    Checking ecl-pipeline-state's dependencies
+    Checking ecl-pipeline-topo's dependencies
+    Checking ecl-secrets's dependencies
+    Checking ecl-sink-gcs's dependencies
+    Checking ecl-sink-kafka's dependencies
+    Checking ecl-stages's dependencies
+    Checking ecl-steps's dependencies
+    Checking ecl-workflows's dependencies
+    Checking fabryk's dependencies
+    Checking fabryk-acl's dependencies
+    Checking fabryk-auth's dependencies
+    Checking fabryk-auth-google's dependencies
+    Checking fabryk-cli's dependencies
+    Checking fabryk-content's dependencies
+    Checking fabryk-core's dependencies
+    Checking fabryk-fts's dependencies
+    Checking fabryk-gcp's dependencies
+    Checking fabryk-graph's dependencies
+    Checking fabryk-mcp's dependencies
+    Checking fabryk-mcp-auth's dependencies
+    Checking fabryk-mcp-content's dependencies
+    Checking fabryk-mcp-core's dependencies
+    Checking fabryk-mcp-fts's dependencies
+    Checking fabryk-mcp-graph's dependencies
+    Checking fabryk-mcp-semantic's dependencies
+    Checking fabryk-redis's dependencies
+    Checking fabryk-vector's dependencies
+    Checking textrynum-util's dependencies
+note: Re-run with `--verbose` to show more dependencies
+  latest: 94 packages
+EXIT 0
+$ cargo upgrade --manifest-path crates/ecl-gcp-auth/Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+    Checking ecl's dependencies
+    Checking ecl-adapter-fs's dependencies
+    Checking ecl-adapter-gcs's dependencies
+    Checking ecl-adapter-gdrive's dependencies
+    Checking ecl-adapter-sftp's dependencies
+    Checking ecl-adapter-slack's dependencies
+    Checking ecl-adapter-zapier's dependencies
+    Checking ecl-cli's dependencies
+    Checking ecl-core's dependencies
+    Checking ecl-design's dependencies
+    Checking ecl-gcp-auth's dependencies
+    Checking ecl-pipeline's dependencies
+    Checking ecl-pipeline-spec's dependencies
+    Checking ecl-pipeline-state's dependencies
+    Checking ecl-pipeline-topo's dependencies
+    Checking ecl-secrets's dependencies
+    Checking ecl-sink-gcs's dependencies
+    Checking ecl-sink-kafka's dependencies
+    Checking ecl-stages's dependencies
+    Checking ecl-steps's dependencies
+    Checking ecl-workflows's dependencies
+    Checking fabryk's dependencies
+    Checking fabryk-acl's dependencies
+    Checking fabryk-auth's dependencies
+    Checking fabryk-auth-google's dependencies
+    Checking fabryk-cli's dependencies
+    Checking fabryk-content's dependencies
+    Checking fabryk-core's dependencies
+    Checking fabryk-fts's dependencies
+    Checking fabryk-gcp's dependencies
+    Checking fabryk-graph's dependencies
+    Checking fabryk-mcp's dependencies
+    Checking fabryk-mcp-auth's dependencies
+    Checking fabryk-mcp-content's dependencies
+    Checking fabryk-mcp-core's dependencies
+    Checking fabryk-mcp-fts's dependencies
+    Checking fabryk-mcp-graph's dependencies
+    Checking fabryk-mcp-semantic's dependencies
+    Checking fabryk-redis's dependencies
+    Checking fabryk-vector's dependencies
+    Checking textrynum-util's dependencies
+note: Re-run with `--verbose` to show more dependencies
+  latest: 94 packages
+EXIT 0
+$ cargo upgrade --manifest-path crates/ecl-pipeline/Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+    Checking ecl's dependencies
+    Checking ecl-adapter-fs's dependencies
+    Checking ecl-adapter-gcs's dependencies
+    Checking ecl-adapter-gdrive's dependencies
+    Checking ecl-adapter-sftp's dependencies
+    Checking ecl-adapter-slack's dependencies
+    Checking ecl-adapter-zapier's dependencies
+    Checking ecl-cli's dependencies
+    Checking ecl-core's dependencies
+    Checking ecl-design's dependencies
+    Checking ecl-gcp-auth's dependencies
+    Checking ecl-pipeline's dependencies
+    Checking ecl-pipeline-spec's dependencies
+    Checking ecl-pipeline-state's dependencies
+    Checking ecl-pipeline-topo's dependencies
+    Checking ecl-secrets's dependencies
+    Checking ecl-sink-gcs's dependencies
+    Checking ecl-sink-kafka's dependencies
+    Checking ecl-stages's dependencies
+    Checking ecl-steps's dependencies
+    Checking ecl-workflows's dependencies
+    Checking fabryk's dependencies
+    Checking fabryk-acl's dependencies
+    Checking fabryk-auth's dependencies
+    Checking fabryk-auth-google's dependencies
+    Checking fabryk-cli's dependencies
+    Checking fabryk-content's dependencies
+    Checking fabryk-core's dependencies
+    Checking fabryk-fts's dependencies
+    Checking fabryk-gcp's dependencies
+    Checking fabryk-graph's dependencies
+    Checking fabryk-mcp's dependencies
+    Checking fabryk-mcp-auth's dependencies
+    Checking fabryk-mcp-content's dependencies
+    Checking fabryk-mcp-core's dependencies
+    Checking fabryk-mcp-fts's dependencies
+    Checking fabryk-mcp-graph's dependencies
+    Checking fabryk-mcp-semantic's dependencies
+    Checking fabryk-redis's dependencies
+    Checking fabryk-vector's dependencies
+    Checking textrynum-util's dependencies
+note: Re-run with `--verbose` to show more dependencies
+  latest: 94 packages
+EXIT 0
+$ cargo upgrade --manifest-path crates/ecl-sink-gcs/Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+    Checking ecl's dependencies
+    Checking ecl-adapter-fs's dependencies
+    Checking ecl-adapter-gcs's dependencies
+    Checking ecl-adapter-gdrive's dependencies
+    Checking ecl-adapter-sftp's dependencies
+    Checking ecl-adapter-slack's dependencies
+    Checking ecl-adapter-zapier's dependencies
+    Checking ecl-cli's dependencies
+    Checking ecl-core's dependencies
+    Checking ecl-design's dependencies
+    Checking ecl-gcp-auth's dependencies
+    Checking ecl-pipeline's dependencies
+    Checking ecl-pipeline-spec's dependencies
+    Checking ecl-pipeline-state's dependencies
+    Checking ecl-pipeline-topo's dependencies
+    Checking ecl-secrets's dependencies
+    Checking ecl-sink-gcs's dependencies
+    Checking ecl-sink-kafka's dependencies
+    Checking ecl-stages's dependencies
+    Checking ecl-steps's dependencies
+    Checking ecl-workflows's dependencies
+    Checking fabryk's dependencies
+    Checking fabryk-acl's dependencies
+    Checking fabryk-auth's dependencies
+    Checking fabryk-auth-google's dependencies
+    Checking fabryk-cli's dependencies
+    Checking fabryk-content's dependencies
+    Checking fabryk-core's dependencies
+    Checking fabryk-fts's dependencies
+    Checking fabryk-gcp's dependencies
+    Checking fabryk-graph's dependencies
+    Checking fabryk-mcp's dependencies
+    Checking fabryk-mcp-auth's dependencies
+    Checking fabryk-mcp-content's dependencies
+    Checking fabryk-mcp-core's dependencies
+    Checking fabryk-mcp-fts's dependencies
+    Checking fabryk-mcp-graph's dependencies
+    Checking fabryk-mcp-semantic's dependencies
+    Checking fabryk-redis's dependencies
+    Checking fabryk-vector's dependencies
+    Checking textrynum-util's dependencies
+note: Re-run with `--verbose` to show more dependencies
+  latest: 94 packages
+EXIT 0
+$ cargo upgrade --manifest-path crates/ecl-sink-kafka/Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+    Checking ecl's dependencies
+    Checking ecl-adapter-fs's dependencies
+    Checking ecl-adapter-gcs's dependencies
+    Checking ecl-adapter-gdrive's dependencies
+    Checking ecl-adapter-sftp's dependencies
+    Checking ecl-adapter-slack's dependencies
+    Checking ecl-adapter-zapier's dependencies
+    Checking ecl-cli's dependencies
+    Checking ecl-core's dependencies
+    Checking ecl-design's dependencies
+    Checking ecl-gcp-auth's dependencies
+    Checking ecl-pipeline's dependencies
+    Checking ecl-pipeline-spec's dependencies
+    Checking ecl-pipeline-state's dependencies
+    Checking ecl-pipeline-topo's dependencies
+    Checking ecl-secrets's dependencies
+    Checking ecl-sink-gcs's dependencies
+    Checking ecl-sink-kafka's dependencies
+    Checking ecl-stages's dependencies
+    Checking ecl-steps's dependencies
+    Checking ecl-workflows's dependencies
+    Checking fabryk's dependencies
+    Checking fabryk-acl's dependencies
+    Checking fabryk-auth's dependencies
+    Checking fabryk-auth-google's dependencies
+    Checking fabryk-cli's dependencies
+    Checking fabryk-content's dependencies
+    Checking fabryk-core's dependencies
+    Checking fabryk-fts's dependencies
+    Checking fabryk-gcp's dependencies
+    Checking fabryk-graph's dependencies
+    Checking fabryk-mcp's dependencies
+    Checking fabryk-mcp-auth's dependencies
+    Checking fabryk-mcp-content's dependencies
+    Checking fabryk-mcp-core's dependencies
+    Checking fabryk-mcp-fts's dependencies
+    Checking fabryk-mcp-graph's dependencies
+    Checking fabryk-mcp-semantic's dependencies
+    Checking fabryk-redis's dependencies
+    Checking fabryk-vector's dependencies
+    Checking textrynum-util's dependencies
+note: Re-run with `--verbose` to show more dependencies
+  latest: 94 packages
+EXIT 0
+$ cargo upgrade --manifest-path crates/fabryk-auth/Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+    Checking ecl's dependencies
+    Checking ecl-adapter-fs's dependencies
+    Checking ecl-adapter-gcs's dependencies
+    Checking ecl-adapter-gdrive's dependencies
+    Checking ecl-adapter-sftp's dependencies
+    Checking ecl-adapter-slack's dependencies
+    Checking ecl-adapter-zapier's dependencies
+    Checking ecl-cli's dependencies
+    Checking ecl-core's dependencies
+    Checking ecl-design's dependencies
+    Checking ecl-gcp-auth's dependencies
+    Checking ecl-pipeline's dependencies
+    Checking ecl-pipeline-spec's dependencies
+    Checking ecl-pipeline-state's dependencies
+    Checking ecl-pipeline-topo's dependencies
+    Checking ecl-secrets's dependencies
+    Checking ecl-sink-gcs's dependencies
+    Checking ecl-sink-kafka's dependencies
+    Checking ecl-stages's dependencies
+    Checking ecl-steps's dependencies
+    Checking ecl-workflows's dependencies
+    Checking fabryk's dependencies
+    Checking fabryk-acl's dependencies
+    Checking fabryk-auth's dependencies
+    Checking fabryk-auth-google's dependencies
+    Checking fabryk-cli's dependencies
+    Checking fabryk-content's dependencies
+    Checking fabryk-core's dependencies
+    Checking fabryk-fts's dependencies
+    Checking fabryk-gcp's dependencies
+    Checking fabryk-graph's dependencies
+    Checking fabryk-mcp's dependencies
+    Checking fabryk-mcp-auth's dependencies
+    Checking fabryk-mcp-content's dependencies
+    Checking fabryk-mcp-core's dependencies
+    Checking fabryk-mcp-fts's dependencies
+    Checking fabryk-mcp-graph's dependencies
+    Checking fabryk-mcp-semantic's dependencies
+    Checking fabryk-redis's dependencies
+    Checking fabryk-vector's dependencies
+    Checking textrynum-util's dependencies
+note: Re-run with `--verbose` to show more dependencies
+  latest: 94 packages
+EXIT 0
+$ cargo upgrade --manifest-path crates/fabryk-cli/Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+    Checking ecl's dependencies
+    Checking ecl-adapter-fs's dependencies
+    Checking ecl-adapter-gcs's dependencies
+    Checking ecl-adapter-gdrive's dependencies
+    Checking ecl-adapter-sftp's dependencies
+    Checking ecl-adapter-slack's dependencies
+    Checking ecl-adapter-zapier's dependencies
+    Checking ecl-cli's dependencies
+    Checking ecl-core's dependencies
+    Checking ecl-design's dependencies
+    Checking ecl-gcp-auth's dependencies
+    Checking ecl-pipeline's dependencies
+    Checking ecl-pipeline-spec's dependencies
+    Checking ecl-pipeline-state's dependencies
+    Checking ecl-pipeline-topo's dependencies
+    Checking ecl-secrets's dependencies
+    Checking ecl-sink-gcs's dependencies
+    Checking ecl-sink-kafka's dependencies
+    Checking ecl-stages's dependencies
+    Checking ecl-steps's dependencies
+    Checking ecl-workflows's dependencies
+    Checking fabryk's dependencies
+    Checking fabryk-acl's dependencies
+    Checking fabryk-auth's dependencies
+    Checking fabryk-auth-google's dependencies
+    Checking fabryk-cli's dependencies
+    Checking fabryk-content's dependencies
+    Checking fabryk-core's dependencies
+    Checking fabryk-fts's dependencies
+    Checking fabryk-gcp's dependencies
+    Checking fabryk-graph's dependencies
+    Checking fabryk-mcp's dependencies
+    Checking fabryk-mcp-auth's dependencies
+    Checking fabryk-mcp-content's dependencies
+    Checking fabryk-mcp-core's dependencies
+    Checking fabryk-mcp-fts's dependencies
+    Checking fabryk-mcp-graph's dependencies
+    Checking fabryk-mcp-semantic's dependencies
+    Checking fabryk-redis's dependencies
+    Checking fabryk-vector's dependencies
+    Checking textrynum-util's dependencies
+note: Re-run with `--verbose` to show more dependencies
+  latest: 94 packages
+EXIT 0
+$ cargo upgrade --manifest-path crates/fabryk-mcp-auth/Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+    Checking ecl's dependencies
+    Checking ecl-adapter-fs's dependencies
+    Checking ecl-adapter-gcs's dependencies
+    Checking ecl-adapter-gdrive's dependencies
+    Checking ecl-adapter-sftp's dependencies
+    Checking ecl-adapter-slack's dependencies
+    Checking ecl-adapter-zapier's dependencies
+    Checking ecl-cli's dependencies
+    Checking ecl-core's dependencies
+    Checking ecl-design's dependencies
+    Checking ecl-gcp-auth's dependencies
+    Checking ecl-pipeline's dependencies
+    Checking ecl-pipeline-spec's dependencies
+    Checking ecl-pipeline-state's dependencies
+    Checking ecl-pipeline-topo's dependencies
+    Checking ecl-secrets's dependencies
+    Checking ecl-sink-gcs's dependencies
+    Checking ecl-sink-kafka's dependencies
+    Checking ecl-stages's dependencies
+    Checking ecl-steps's dependencies
+    Checking ecl-workflows's dependencies
+    Checking fabryk's dependencies
+    Checking fabryk-acl's dependencies
+    Checking fabryk-auth's dependencies
+    Checking fabryk-auth-google's dependencies
+    Checking fabryk-cli's dependencies
+    Checking fabryk-content's dependencies
+    Checking fabryk-core's dependencies
+    Checking fabryk-fts's dependencies
+    Checking fabryk-gcp's dependencies
+    Checking fabryk-graph's dependencies
+    Checking fabryk-mcp's dependencies
+    Checking fabryk-mcp-auth's dependencies
+    Checking fabryk-mcp-content's dependencies
+    Checking fabryk-mcp-core's dependencies
+    Checking fabryk-mcp-fts's dependencies
+    Checking fabryk-mcp-graph's dependencies
+    Checking fabryk-mcp-semantic's dependencies
+    Checking fabryk-redis's dependencies
+    Checking fabryk-vector's dependencies
+    Checking textrynum-util's dependencies
+note: Re-run with `--verbose` to show more dependencies
+  latest: 94 packages
+EXIT 0
+$ cargo upgrade --manifest-path crates/textrynum-util/Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+    Checking ecl's dependencies
+    Checking ecl-adapter-fs's dependencies
+    Checking ecl-adapter-gcs's dependencies
+    Checking ecl-adapter-gdrive's dependencies
+    Checking ecl-adapter-sftp's dependencies
+    Checking ecl-adapter-slack's dependencies
+    Checking ecl-adapter-zapier's dependencies
+    Checking ecl-cli's dependencies
+    Checking ecl-core's dependencies
+    Checking ecl-design's dependencies
+    Checking ecl-gcp-auth's dependencies
+    Checking ecl-pipeline's dependencies
+    Checking ecl-pipeline-spec's dependencies
+    Checking ecl-pipeline-state's dependencies
+    Checking ecl-pipeline-topo's dependencies
+    Checking ecl-secrets's dependencies
+    Checking ecl-sink-gcs's dependencies
+    Checking ecl-sink-kafka's dependencies
+    Checking ecl-stages's dependencies
+    Checking ecl-steps's dependencies
+    Checking ecl-workflows's dependencies
+    Checking fabryk's dependencies
+    Checking fabryk-acl's dependencies
+    Checking fabryk-auth's dependencies
+    Checking fabryk-auth-google's dependencies
+    Checking fabryk-cli's dependencies
+    Checking fabryk-content's dependencies
+    Checking fabryk-core's dependencies
+    Checking fabryk-fts's dependencies
+    Checking fabryk-gcp's dependencies
+    Checking fabryk-graph's dependencies
+    Checking fabryk-mcp's dependencies
+    Checking fabryk-mcp-auth's dependencies
+    Checking fabryk-mcp-content's dependencies
+    Checking fabryk-mcp-core's dependencies
+    Checking fabryk-mcp-fts's dependencies
+    Checking fabryk-mcp-graph's dependencies
+    Checking fabryk-mcp-semantic's dependencies
+    Checking fabryk-redis's dependencies
+    Checking fabryk-vector's dependencies
+    Checking textrynum-util's dependencies
+note: Re-run with `--verbose` to show more dependencies
+  latest: 94 packages
+EXIT 0

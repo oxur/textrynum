@@ -1,0 +1,15 @@
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Checking fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+    Checking ecl-sink-kafka v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-kafka)
+    Checking fabryk-mcp-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-core)
+    Checking ecl-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-cli)
+    Checking fabryk-mcp-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-content)
+    Checking fabryk-mcp-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-fts)
+    Checking fabryk-mcp-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-graph)
+    Checking fabryk-mcp-semantic v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-semantic)
+    Checking fabryk v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk)
+    Checking fabryk-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli)
+    Checking fabryk-mcp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 48s
+
+CARGO_EXIT_STATUS=0

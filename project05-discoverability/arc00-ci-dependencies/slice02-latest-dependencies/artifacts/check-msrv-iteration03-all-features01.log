@@ -1,0 +1,20 @@
+    Checking lance-tokenizer v14.0.2
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Checking ecl-sink-kafka v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-kafka)
+    Checking ecl-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-cli)
+    Checking fabryk-mcp-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-core)
+    Checking lance-index v14.0.2
+    Checking fabryk-mcp-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-fts)
+    Checking fabryk-mcp-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-graph)
+    Checking fabryk-mcp-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-content)
+    Checking lance v14.0.2
+    Checking lance-namespace-impls v14.0.2
+    Checking lancedb v0.41.0
+    Checking fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+    Checking fabryk-mcp-semantic v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-semantic)
+    Checking fabryk-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli)
+    Checking fabryk v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk)
+    Checking fabryk-mcp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2m 46s
+
+CARGO_EXIT_STATUS=0

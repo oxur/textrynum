@@ -1,0 +1,18 @@
+{
+  "source": "https://crates.io/api/v1/crates/{name}/{version}",
+  "all_64_checked": true,
+  "exceptions": [
+    {
+      "name": "arrow-array",
+      "selected": "58.4.2",
+      "max_stable_version": "60.2.0",
+      "selected_yanked": false
+    },
+    {
+      "name": "arrow-schema",
+      "selected": "58.4.2",
+      "max_stable_version": "60.2.0",
+      "selected_yanked": false
+    }
+  ]
+}

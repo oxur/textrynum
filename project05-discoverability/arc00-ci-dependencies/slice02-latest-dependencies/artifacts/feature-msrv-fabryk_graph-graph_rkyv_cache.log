@@ -1,0 +1,21 @@
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+    Checking once_cell v1.21.4
+    Checking tokio v1.54.1
+    Checking serde v1.0.229
+    Checking blocking v1.7.0
+    Checking tempfile v3.27.0
+    Checking async-fs v2.2.0
+    Checking yaml_serde v0.10.7
+    Checking chrono v0.4.45
+    Checking tokio-stream v0.1.19
+    Checking async-walkdir v2.2.0
+    Checking tokio-test v0.4.6
+    Checking fabryk-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core)
+    Checking fabryk-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content)
+    Checking fabryk-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-graph)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 10.28s

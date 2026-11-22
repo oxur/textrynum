@@ -1,0 +1,2914 @@
+warning: unused workspace dependency `russh-keys`
+   --> Cargo.toml:203:1
+    |
+203 | russh-keys = "0.49.2"
+    | ^^^^^^^^^^
+    |
+    = note: `cargo::unused_workspace_dependencies` is set to `warn` by default
+help: consider removing the workspace dependency `russh-keys`
+warning: unused workspace dependency `tokio-stream`
+   --> Cargo.toml:195:1
+    |
+195 | tokio-stream = "0.1.19"
+    | ^^^^^^^^^^^^
+    |
+help: consider removing the workspace dependency `tokio-stream`
+warning: unused field `description` in `workspace.package`
+  --> Cargo.toml:60:1
+   |
+60 | description = "Textrynum — Knowledge Fabric Workshop (Fabryk + ECL)"
+   | ^^^^^^^^^^^
+   |
+   = note: `cargo::unused_workspace_package_fields` is set to `warn` by default
+help: consider removing the field `workspace.package.description`
+warning: workspace (manifest) generated 3 warnings
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-gdrive/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-gdrive` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-graph/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-graph` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-redis/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-redis` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-secrets/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-secrets` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-fts/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-fts` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-auth/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-auth` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-core/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-core` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-sink-gcs/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-sink-gcs` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-core/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-core` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-gcp/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-gcp` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-vector/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-vector` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-acl/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-acl` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline-state/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline-state` (manifest) generated 1 warning
+warning: crates/ecl-pipeline-topo/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline-topo/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline-topo` (manifest) generated 2 warnings
+warning: crates/fabryk-cli/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: crates/fabryk-cli/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-cli/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-cli` (manifest) generated 3 warnings
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-cli/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-cli` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-auth/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-auth` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-content/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-content` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-zapier/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-zapier` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-core/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-core` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-graph/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-graph` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-content/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-content` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-steps/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-steps` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-gcp-auth/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-gcp-auth` (manifest) generated 1 warning
+warning: crates/textrynum-util/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: crates/textrynum-util/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/textrynum-util/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `textrynum-util` (manifest) generated 3 warnings
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-fs/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-fs` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-slack/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-slack` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-gcs/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-gcs` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-auth-google/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-auth-google` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-fts/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-fts` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+  --> crates/ecl-workflows/Cargo.toml:13:1
+   |
+12 | repository.workspace = true
+   | ----------
+13 | homepage.workspace = true
+   | ^^^^^^^^
+   |
+   = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-workflows` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-sftp/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-sftp` (manifest) generated 1 warning
+warning: crates/ecl-pipeline-spec/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline-spec/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline-spec` (manifest) generated 2 warnings
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-stages/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-stages` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-semantic/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-semantic` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/design/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-design` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-sink-kafka/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-sink-kafka` (manifest) generated 1 warning
+   Compiling proc-macro2 v1.0.107
+    Checking cfg-if v1.0.5
+    Checking memchr v2.8.3
+    Checking subtle v2.6.1
+    Checking typenum v1.20.1
+    Checking itoa v1.0.19
+    Checking equivalent v1.0.3
+    Checking foldhash v0.2.0
+    Checking allocator-api2 v0.2.21
+    Checking bytes v1.12.2
+    Checking rand_core v0.10.1
+    Checking log v0.4.35
+    Checking smallvec v1.16.6
+    Checking once_cell v1.21.4
+   Compiling quote v1.0.47
+    Checking libc v0.2.191
+    Checking serde_core v1.0.229
+    Checking libm v0.2.16
+    Checking zmij v1.0.23
+    Checking pin-project-lite v0.2.18
+    Checking scopeguard v1.2.0
+    Checking cmov v0.5.4
+    Checking core-foundation-sys v0.8.7
+    Checking futures-core v0.3.34
+    Checking futures-io v0.3.34
+    Checking futures-sink v0.3.34
+    Checking futures-task v0.3.34
+    Checking slab v0.4.12
+    Checking stable_deref_trait v1.2.1
+    Checking ryu v1.0.23
+    Checking percent-encoding v2.3.2
+    Checking lock_api v0.4.14
+    Checking fastrand v2.5.0
+    Checking const-oid v0.10.3
+    Checking regex-syntax v0.8.12
+    Checking tracing-core v0.1.36
+    Checking futures-channel v0.3.34
+    Checking crossbeam-utils v0.8.23
+    Checking writeable v0.6.4
+    Checking litemap v0.8.3
+    Checking ctutils v0.4.8
+    Checking hashbrown v0.17.1
+    Checking utf_types v1.0.0
+    Checking iana-time-zone v0.1.65
+   Compiling rustix v1.1.6
+    Checking simdutf8 v0.1.5
+    Checking aho-corasick v1.1.5
+    Checking form_urlencoded v1.2.3
+    Checking icu_properties_data v2.4.0
+    Checking icu_normalizer_data v2.4.0
+    Checking atomic-waker v1.1.2
+   Compiling semver v1.0.28
+    Checking either v1.19.0
+    Checking fnv v1.0.7
+    Checking http v1.5.0
+    Checking const-oid v0.9.6
+    Checking sha1_smol v1.0.1
+    Checking siphasher v1.0.4
+    Checking zstd-sys v2.1.3+zstd.1.5.7
+    Checking crc32fast v1.5.5
+    Checking utf8_iter v1.1.0
+    Checking arrayvec v0.7.8
+    Checking base64 v0.23.1
+    Checking base64 v0.22.1
+    Checking simd-adler32 v0.3.10
+   Compiling rustc_version v0.4.1
+    Checking tower-service v0.3.3
+    Checking httparse v1.10.1
+    Checking constant_time_eq v0.4.2
+    Checking adler2 v2.0.1
+    Checking phf_shared v0.12.1
+    Checking try-lock v0.2.5
+    Checking itertools v0.14.0
+    Checking httpdate v1.0.3
+    Checking ipnet v2.12.2
+    Checking sync_wrapper v1.0.2
+    Checking miniz_oxide v0.9.1
+    Checking want v0.3.2
+    Checking blake3 v1.8.7
+    Checking unicode-width v0.2.3
+    Checking tower-layer v0.3.3
+    Checking phf v0.12.1
+    Checking zlib-rs v0.6.8
+    Checking byteorder v1.5.0
+    Checking unicode-segmentation v1.13.3
+    Checking mime v0.3.18
+    Checking glob v0.3.4
+   Compiling syn v2.0.119
+   Compiling syn v3.0.10
+    Checking num-traits v0.2.19
+    Checking aws-lc-sys v0.47.0
+    Checking csv-core v0.1.13
+    Checking untrusted v0.7.1
+    Checking lexical-util v1.0.7
+    Checking parking v2.2.1
+    Checking base64ct v1.8.3
+   Compiling strsim v0.11.1
+    Checking untrusted v0.9.0
+    Checking http-body v1.1.0
+    Checking getrandom v0.4.3
+    Checking errno v0.3.15
+    Checking parking_lot_core v0.9.12
+    Checking mio v1.2.5
+    Checking socket2 v0.6.5
+    Checking getrandom v0.2.17
+    Checking getrandom v0.3.4
+    Checking cpufeatures v0.3.1
+    Checking system-configuration-sys v0.6.0
+    Checking http-body-util v0.1.5
+    Checking core-foundation v0.9.4
+    Checking core-foundation v0.10.1
+    Checking security-framework-sys v2.17.0
+    Checking signal-hook-registry v1.4.8
+    Checking event-listener v5.4.2
+    Checking rand_core v0.6.4
+    Checking ring v0.17.14
+    Checking rand_core v0.9.5
+    Checking parking_lot v0.12.5
+    Checking option-ext v0.2.0
+    Checking comfy-table v7.2.2
+    Checking encoding_rs v0.8.44
+    Checking lexical-write-integer v1.0.6
+    Checking lexical-parse-integer v1.0.6
+   Compiling flatbuffers v25.12.19
+    Checking zstd-safe v7.4.1
+    Checking compression-core v0.4.34
+    Checking same-file v1.0.6
+    Checking crossbeam-epoch v0.9.21
+    Checking event-listener-strategy v0.5.4
+    Checking humantime v2.4.0
+    Checking dirs-sys v0.5.0
+    Checking hex v0.4.3
+    Checking num-integer v0.1.47
+    Checking num-complex v0.4.6
+    Checking atoi v2.0.0
+    Checking foldhash v0.1.5
+    Checking fixedbitset v0.5.9
+    Checking walkdir v2.5.1
+    Checking lexical-parse-float v1.0.6
+    Checking async-lock v3.5.0
+    Checking hashbrown v0.14.5
+    Checking zstd v0.13.5
+    Checking regex-automata v0.4.19
+    Checking lexical-write-float v1.0.6
+    Checking datafusion-doc v54.2.0
+    Checking hashbrown v0.15.5
+   Compiling indexmap v2.14.2
+    Checking concurrent-queue v2.5.0
+    Checking crossbeam-deque v0.8.8
+    Checking dirs v7.0.0
+    Checking bitflags v2.13.2
+    Checking uuid v1.29.3
+    Checking csv v1.4.0
+    Checking num_cpus v1.17.0
+    Checking crossbeam-channel v0.5.17
+    Checking async-channel v2.5.0
+    Checking unicase v2.10.0
+   Compiling time-core v0.1.9
+   Compiling num-conv v0.2.2
+    Checking lexical-core v1.0.6
+    Checking system-configuration v0.7.0
+    Checking security-framework v3.7.0
+    Checking dashmap v6.2.1
+    Checking rayon-core v1.13.0
+    Checking deranged v0.5.9
+   Compiling itertools v0.15.0
+    Checking anyhow v1.0.104
+    Checking winnow v1.0.5
+   Compiling time-macros v0.2.32
+    Checking flate2 v1.1.11
+    Checking powerfmt v0.2.1
+    Checking toml_writer v1.2.0+spec-1.1.0
+    Checking serde_spanned v1.1.3
+    Checking futures-lite v2.6.1
+    Checking serde_json v1.0.154
+    Checking petgraph v0.8.3
+    Checking cpufeatures v0.2.17
+    Checking piper v0.2.5
+    Checking rayon v1.12.0
+    Checking async-task v4.7.1
+    Checking zstd-safe v8.3.0
+    Checking ordered-float v5.5.1
+    Checking nom v8.0.0
+    Checking compression-codecs v0.4.48
+    Checking toml_datetime v1.1.3+spec-1.1.0
+    Checking dirs v6.0.0
+    Checking pem-rfc7468 v1.0.0
+    Checking cpubits v0.1.1
+    Checking zstd v0.14.4
+    Checking crunchy v0.2.4
+    Checking spin v0.9.9
+    Checking tap v1.0.1
+    Checking radium v0.7.0
+    Checking funty v2.0.0
+    Checking lazy_static v1.5.1
+    Checking wyz v0.5.1
+    Checking memmap2 v0.9.12
+    Checking nix v0.31.4
+    Checking serde_bytes v0.11.19
+    Checking blocking v1.7.0
+    Checking libyaml-rs v0.3.0
+    Checking utf8-ranges v1.0.5
+    Checking toml_parser v1.1.6+spec-1.1.0
+    Checking portable-atomic v1.15.0
+    Checking shellexpand v3.1.2
+    Checking arc-swap v1.9.5
+    Checking arrow-schema v58.4.2
+    Checking bitvec v1.1.1
+    Checking async-fs v2.2.0
+    Checking tinyvec v1.13.3
+    Checking tempfile v3.27.0
+    Checking redb v5.0.0
+    Checking hashbrown v0.16.1
+    Checking jiff-core v0.1.8
+    Checking rustc-hash v2.1.3
+    Checking toml v1.2.2+spec-1.1.0
+    Checking native-tls v0.2.18
+    Checking unicode-normalization v0.1.26
+    Checking minimal-lexical v0.2.1
+    Checking ethnum v1.5.3
+    Checking fast-float2 v0.2.4
+    Checking regex v1.13.2
+    Checking frostem v1.20260821.8
+    Checking nom v7.1.3
+    Checking serde_path_to_error v0.1.20
+    Checking tagptr v0.2.0
+   Compiling mime_guess v2.0.5
+    Checking matchit v0.8.4
+    Checking pulldown-cmark v0.13.6
+    Checking pem-rfc7468 v0.7.0
+    Checking ownedbytes v0.9.0
+    Checking bytecount v0.6.9
+    Checking bitpacking v0.9.3
+    Checking thread-tree v0.3.3
+    Checking time v0.3.55
+    Checking unsafe-libyaml v0.2.11
+    Checking rawpointer v0.2.1
+   Compiling darling_core v0.20.11
+    Checking xxhash-rust v0.8.21
+    Checking tantivy-bitpacker v0.27.0
+    Checking typeid v1.0.3
+    Checking matrixmultiply v0.3.11
+    Checking jiff v0.2.46
+    Checking tantivy-fst v0.5.0
+    Checking static_assertions v1.1.0
+    Checking stfu8 v0.2.7
+    Checking murmurhash32 v0.4.0
+   Compiling phf_shared v0.13.1
+    Checking std_prelude v0.2.12
+   Compiling stop-words v0.10.1
+    Checking erased-serde v0.4.11
+   Compiling synstructure v0.14.0
+   Compiling prettyplease v0.3.0
+   Compiling darling_core v0.24.1
+   Compiling phf_generator v0.13.1
+    Checking lz4-sys v1.11.1+lz4-1.10.0
+    Checking arrayref v0.3.9
+    Checking fastdivide v0.4.2
+    Checking base16ct v0.2.0
+    Checking inventory v0.3.25
+    Checking downcast-rs v2.0.2
+    Checking lz4 v1.28.1
+   Compiling phf_codegen v0.13.1
+    Checking lance-bitpacking v14.0.2
+    Checking icu_locale_fallback_data v2.4.0
+    Checking fs4 v0.13.1
+    Checking encoding_rs_io v0.1.8
+    Checking lru v0.18.5
+    Checking measure_time v0.9.0
+    Checking unwrap-infallible v1.0.0
+    Checking daachorse v2.1.1
+    Checking lz4_flex v0.14.2
+    Checking census v0.4.2
+    Checking levenshtein_automata v0.2.1
+    Checking datasketches v0.5.0
+    Checking bitflags v1.3.2
+    Checking oneshot v0.1.13
+    Checking htmlescape v0.3.1
+    Checking phf v0.13.1
+   Compiling der v0.8.3
+    Checking kanaria v0.2.0
+   Compiling jieba-macros v0.10.4
+   Compiling webpki-root-certs v1.0.12
+    Checking icu_segmenter_data v2.4.0
+    Checking approx v0.5.1
+    Checking pem v4.0.0
+    Checking as-slice v0.2.1
+    Checking ff v0.13.1
+    Checking cedarwood v0.5.0
+   Compiling utf8-zero v0.8.1
+    Checking unicode-blocks v0.1.11
+    Checking is_ci v1.2.0
+    Checking aligned v0.4.3
+   Compiling serde_derive_internals v0.30.0
+    Checking group v0.13.0
+    Checking is-terminal v0.4.17
+    Checking no_std_io2 v0.9.4
+    Checking y4m v0.8.0
+    Checking quick-error v2.0.1
+    Checking rangemap v1.8.0
+    Checking utf8parse v0.2.2
+    Checking nu-ansi-term v0.50.3
+    Checking supports-color v2.1.0
+    Checking bitstream-io v4.10.0
+    Checking supports-color v3.0.2
+   Compiling ureq-proto v0.7.1
+    Checking anstyle-parse v1.0.0
+    Checking fst v0.4.7
+    Checking libsais-rs v0.2.4
+    Checking ndarray v0.16.1
+    Checking maybe-rayon v0.1.1
+   Compiling simd_helpers v0.1.0
+    Checking miniz_oxide v0.8.9
+    Checking jieba-rs v0.10.4
+    Checking crossbeam-queue v0.3.14
+    Checking anstyle-query v1.1.5
+   Compiling zeroize_derive v1.5.0
+   Compiling tracing-attributes v0.1.31
+   Compiling zerocopy-derive v0.8.64
+   Compiling sqlparser_derive v0.5.0
+   Compiling datafusion-macros v54.2.0
+   Compiling prost-derive v0.14.6
+   Compiling snafu-derive v0.9.2
+   Compiling lance-derive v14.0.2
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling tokio-macros v2.7.2
+   Compiling futures-macro v0.3.34
+   Compiling async-trait v0.1.92
+   Compiling zerofrom-derive v0.1.8
+   Compiling yoke-derive v0.8.4
+   Compiling zerovec-derive v0.11.7
+   Compiling displaydoc v0.2.7
+   Compiling bytemuck_derive v1.12.1
+    Checking zeroize v1.9.2
+   Compiling pin-project-internal v1.2.0
+    Checking sqlparser v0.62.0
+   Compiling darling_macro v0.20.11
+   Compiling ptr_meta_derive v0.3.2
+    Checking hybrid-array v0.4.15
+    Checking tokio v1.54.1
+    Checking generic-array v0.14.7
+    Checking aws-lc-rs v1.19.0
+    Checking rustls-pki-types v1.16.0
+    Checking futures-util v0.3.34
+    Checking tracing v0.1.44
+   Compiling darling v0.20.11
+    Checking rustls-native-certs v0.8.5
+    Checking ptr_meta v0.3.2
+   Compiling bytecheck_derive v0.8.3
+    Checking crypto-common v0.1.7
+    Checking zerofrom v0.1.8
+    Checking block-buffer v0.10.4
+   Compiling darling_macro v0.24.1
+    Checking axum-core v0.5.6
+    Checking pin-project v1.2.0
+    Checking bytemuck v1.25.2
+    Checking thiserror v2.0.21
+   Compiling prost v0.14.6
+    Checking digest v0.10.7
+    Checking zerocopy v0.8.64
+   Compiling derive_builder_core v0.20.2
+    Checking crypto-common v0.2.2
+    Checking block-buffer v0.12.1
+    Checking block-padding v0.4.2
+    Checking blake2 v0.10.6
+    Checking rustls-webpki v0.103.17
+   Compiling darling v0.24.1
+    Checking inout v0.2.6
+    Checking sha2 v0.10.9
+   Compiling strum_macros v0.28.0
+    Checking snafu v0.9.2
+   Compiling munge_macro v0.4.7
+    Checking inout v0.1.4
+   Compiling rkyv_derive v0.8.18
+    Checking cipher v0.4.4
+    Checking rancor v0.1.3
+    Checking rustls v0.23.46
+    Checking der v0.7.10
+    Checking cipher v0.5.2
+    Checking digest v0.11.3
+    Checking bytecheck v0.8.3
+    Checking sha2 v0.11.1
+    Checking md-5 v0.11.0
+   Compiling derive_builder_macro v0.20.2
+    Checking chacha20 v0.10.2
+    Checking signature v3.0.0
+    Checking hmac v0.13.0
+    Checking aes v0.9.4
+    Checking rand v0.10.4
+    Checking pbkdf2 v0.13.0
+    Checking yoke v0.8.4
+    Checking serde v1.0.229
+    Checking derive_builder v0.20.2
+    Checking munge v0.4.7
+    Checking universal-hash v0.6.1
+   Compiling serde_repr v0.1.21
+   Compiling equator-macro v0.4.2
+    Checking spki v0.7.3
+    Checking polyval v0.7.3
+    Checking pkcs8 v0.10.2
+    Checking twox-hash v2.1.5
+    Checking hmac v0.12.1
+    Checking crypto-bigint v0.7.11
+    Checking async-walkdir v2.2.0
+   Compiling typetag-impl v0.2.23
+    Checking ghash v0.6.0
+    Checking ctr v0.10.1
+    Checking lz4_flex v0.13.2
+    Checking aead v0.6.1
+    Checking signature v2.2.0
+    Checking aes-gcm v0.11.1
+    Checking equator v0.4.2
+    Checking salsa20 v0.11.0
+    Checking spki v0.8.1
+   Compiling async-recursion v1.2.0
+    Checking scrypt v0.12.0
+    Checking strum v0.28.0
+    Checking futures-executor v0.3.34
+    Checking moka v0.12.16
+   Compiling prost-types v0.14.6
+    Checking hkdf v0.12.4
+    Checking futures v0.3.34
+    Checking cbc v0.2.1
+   Compiling ureq v3.5.2
+    Checking roaring v0.11.5
+    Checking safe_arch v0.7.4
+    Checking crypto-bigint v0.5.5
+    Checking wide v0.7.33
+   Compiling ref-cast-impl v1.0.27
+   Compiling bon-macros v3.10.3
+   Compiling serde_with_macros v3.25.0
+   Compiling profiling-procmacros v1.0.18
+   Compiling prost-build v0.14.6
+   Compiling arg_enum_proc_macro v0.3.4
+    Checking ref-cast v1.0.27
+    Checking rustls-platform-verifier v0.7.1
+   Compiling toml_edit v0.25.20+spec-1.1.0
+    Checking profiling v1.0.18
+    Checking pkcs5 v0.8.1
+   Compiling schemars_derive v1.2.3
+    Checking rend v0.5.4
+   Compiling convert_case v0.10.0
+    Checking simba v0.9.1
+   Compiling num-derive v0.4.2
+    Checking anstyle v1.0.14
+    Checking zerovec v0.11.9
+    Checking zerotrie v0.2.5
+    Checking tokio-util v0.7.20
+    Checking tower v0.5.3
+    Checking tokio-rustls v0.26.6
+    Checking async-compression v0.4.52
+    Checking datafusion-common-runtime v54.2.0
+    Checking tokio-native-tls v0.3.1
+    Checking serde_with v3.25.0
+    Checking backon v1.6.0
+   Compiling lance-encoding v14.0.2
+    Checking chrono v0.4.45
+    Checking num-bigint v0.4.8
+    Checking serde_urlencoded v0.7.1
+    Checking yaml_serde v0.10.7
+    Checking lance-jsonb v14.0.2
+    Checking h2 v0.4.20
+    Checking tokio-stream v0.1.19
+    Checking tantivy-common v0.27.0
+    Checking path_abs v0.5.1
+    Checking tantivy-query-grammar v0.27.0
+    Checking typetag v0.2.23
+    Checking aligned-vec v0.6.4
+    Checking serde-tuple-vec-map v1.0.1
+    Checking sketches-ddsketch v0.4.2
+    Checking tantivy-tokenizer-api v0.7.0
+    Checking hyperloglogplus v0.4.1
+   Compiling lance-file v14.0.2
+    Checking v_frame v0.3.9
+    Checking fabryk-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core)
+    Checking bigdecimal v0.4.11
+    Checking num-rational v0.4.2
+    Checking chrono-tz v0.10.4
+    Checking ecl-pipeline-spec v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec)
+    Checking simple_asn1 v0.6.4
+    Checking serde_yaml_ng v0.10.0
+    Checking serdect v0.2.0
+   Compiling lance-table v14.0.2
+   Compiling lance-datafusion v14.0.2
+    Checking sec1 v0.7.3
+    Checking jsonwebtoken v12.0.0
+   Compiling lance-index v14.0.2
+    Checking fabryk-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content)
+    Checking elliptic-curve v0.13.8
+    Checking ppv-lite86 v0.2.21
+    Checking half v2.7.1
+    Checking ahash v0.8.12
+    Checking rand_chacha v0.9.0
+    Checking ecl-pipeline-state v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-state)
+    Checking rand_chacha v0.3.1
+    Checking av-scenechange v0.14.1
+    Checking quick_cache v0.6.24
+    Checking av1-grain v0.2.5
+    Checking rand v0.9.5
+    Checking rand v0.8.8
+    Checking arrow-buffer v58.4.2
+   Compiling lance v14.0.2
+    Checking rkyv v0.8.18
+    Checking hyper v1.12.0
+    Checking tinystr v0.8.5
+    Checking potential_utf v0.1.6
+   Compiling ort-sys v2.0.0-rc.15
+    Checking rand_distr v0.5.1
+    Checking icu_locale_core v2.4.0
+    Checking icu_collections v2.4.0
+    Checking nalgebra v0.33.3
+    Checking zune-core v0.5.3
+    Checking arrow-data v58.4.2
+    Checking tantivy-stacker v0.27.0
+    Checking tantivy-sstable v0.27.0
+    Checking dyn-clone v1.0.20
+    Checking colorchoice v1.0.5
+    Checking is_terminal_polyfill v1.70.2
+    Checking bon v3.10.3
+    Checking new_debug_unreachable v1.0.6
+    Checking imgref v1.12.3
+    Checking weezl v0.1.12
+    Checking anstream v1.0.0
+   Compiling derive_more-impl v2.1.1
+    Checking schemars v1.2.3
+    Checking loop9 v0.1.5
+    Checking tantivy-columnar v0.27.0
+    Checking ecl-pipeline-topo v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo)
+    Checking zune-jpeg v0.5.15
+   Compiling proc-macro-crate v3.5.0
+    Checking pkcs8 v0.11.0
+    Checking icu_provider v2.4.0
+    Checking hyper-util v0.1.21
+   Compiling rmcp-macros v3.11.0
+    Checking sse-stream v0.2.6
+    Checking rfc6979 v0.4.0
+    Checking icu_properties v2.4.0
+    Checking icu_normalizer v2.4.0
+    Checking icu_locale_fallback v2.4.0
+    Checking webpki-roots v1.0.12
+   Compiling monostate-impl v0.1.18
+    Checking owo-colors v4.4.0
+    Checking icu_segmenter v2.4.0
+    Checking onig_sys v69.9.3
+    Checking unicode-general-category v1.1.0
+    Checking crossbeam-skiplist v0.1.3
+    Checking console v0.16.6
+    Checking fdeflate v0.3.7
+    Checking zune-inflate v0.2.54
+    Checking avif-serialize v0.8.9
+    Checking castaway v0.2.4
+    Checking ff v0.14.0
+    Checking byteorder-lite v0.1.0
+    Checking bit_field v0.10.4
+    Checking base64 v0.13.1
+    Checking pxfm v0.1.30
+    Checking clap_lex v1.1.2
+    Checking permutation v0.4.1
+    Checking fax v0.2.7
+    Checking unit-prefix v0.5.2
+    Checking hyper-rustls v0.27.10
+    Checking axum v0.8.9
+    Checking hyper-tls v0.6.0
+    Checking color_quant v1.1.0
+    Checking lebe v0.5.3
+    Checking rgb v0.8.53
+    Checking async_cell v0.2.3
+    Checking macro_rules_attribute v0.2.3
+    Checking gif v0.14.2
+    Checking idna_adapter v1.2.2
+    Checking indicatif v0.18.6
+    Checking tiff v0.11.3
+    Checking spm_precompiled v0.1.4
+    Checking image-webp v0.2.4
+    Checking exr v1.74.3
+    Checking clap_builder v4.6.7
+   Compiling clang-sys v1.9.1
+    Checking twyg v0.6.3
+    Checking idna v1.1.0
+    Checking compact_str v0.9.1
+    Checking png v0.18.1
+    Checking derive_more v2.1.1
+    Checking monostate v0.1.18
+    Checking onig v6.5.3
+    Checking url v2.5.9
+    Checking rav1e v0.8.1
+   Compiling num_enum_derive v0.7.6
+    Checking esaxx-rs v0.1.10
+    Checking failsafe v1.3.0
+    Checking tantivy v0.27.0
+    Checking dary_heap v0.3.9
+    Checking qoi v0.4.1
+   Compiling clap_derive v4.6.9
+    Checking tower-http v0.6.11
+    Checking object_store v0.13.2
+    Checking object_store v0.14.2
+   Compiling snafu-derive v0.8.9
+    Checking ndarray v0.17.2
+    Checking rayon-cond v0.4.0
+    Checking rand_xoshiro v0.7.0
+    Checking unicode-normalization-alignments v0.1.12
+    Checking unicode_categories v0.1.1
+    Checking reqwest v0.13.5
+    Checking arrow-array v58.4.2
+    Checking reqwest v0.12.28
+    Checking daachorse v3.0.3
+    Checking rmcp v3.11.0
+    Checking group v0.14.0
+    Checking num_enum v0.7.6
+    Checking ecdsa v0.16.9
+    Checking safetensors v0.8.0
+    Checking sha1 v0.11.0
+    Checking moxcms v0.8.1
+    Checking matchers v0.2.0
+    Checking sharded-slab v0.1.7
+    Checking wait-timeout v0.2.1
+    Checking ecl-gcp-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-gcp-auth)
+    Checking tokenizers v0.23.2
+   Compiling curve25519-dalek v4.1.3
+    Checking tracing-log v0.2.0
+    Checking thread_local v1.1.10
+    Checking lance-namespace-reqwest-client v0.13.0
+    Checking lindera-dictionary v3.0.7
+    Checking hf-hub v0.5.0
+    Checking bit-vec v0.10.2
+    Checking quick-error v1.2.3
+    Checking base16ct v1.0.0
+    Checking tracing-subscriber v0.3.23
+    Checking rusty-fork v0.3.1
+    Checking ecl-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-core)
+    Checking sec1 v0.8.1
+    Checking primeorder v0.13.6
+    Checking bit-set v0.11.1
+    Checking tokio-test v0.4.6
+    Checking hkdf v0.13.0
+    Checking ctr v0.9.2
+    Checking clap v4.6.9
+    Checking universal-hash v0.5.1
+    Checking aead v0.5.2
+    Checking num-iter v0.1.46
+   Compiling libloading v0.8.9
+    Checking rand_xorshift v0.5.0
+    Checking opaque-debug v0.3.1
+    Checking unarray v0.1.4
+    Checking deadpool-runtime v0.1.4
+   Compiling bindgen v0.72.1
+    Checking core_detect v1.0.0
+    Checking unicode-ident v1.0.27
+    Checking polyval v0.6.2
+    Checking deadpool v0.12.3
+    Checking proptest v1.12.0
+    Checking num-bigint-dig v0.8.6
+    Checking arrow-select v58.4.2
+    Checking arrow-row v58.4.2
+    Checking arrow-arith v58.4.2
+    Checking fsst v14.0.2
+    Checking snafu v0.8.9
+    Checking elliptic-curve v0.14.3
+    Checking primefield v0.14.0
+    Checking assert-json-diff v2.0.2
+    Checking aes v0.8.4
+    Checking lindera v3.0.7
+    Checking dbl v0.3.2
+    Checking keccak v0.1.6
+   Compiling itertools v0.13.0
+   Compiling shlex v1.3.0
+   Compiling rustix v0.38.44
+    Checking libbz2-rs-sys v0.2.7
+    Checking winnow v0.7.15
+   Compiling signal-hook v0.3.18
+    Checking sha3 v0.10.9
+    Checking cmac v0.7.2
+   Compiling bitfields-impl v1.0.3
+    Checking arrow-ord v58.4.2
+    Checking arrow-ipc v58.4.2
+    Checking arrow-string v58.4.2
+    Checking lance-tokenizer v14.0.2
+    Checking ort v2.0.0-rc.15
+   Compiling cexpr v0.6.0
+    Checking wnaf v0.14.1
+    Checking bzip2 v0.6.1
+    Checking wiremock v0.6.5
+    Checking ecl-steps v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-steps)
+    Checking ghash v0.5.1
+    Checking fabryk-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-graph)
+    Checking arrow-cast v58.4.2
+    Checking serdect v0.3.0
+    Checking rfc6979 v0.6.0
+    Checking ecl-secrets v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-secrets)
+    Checking ed25519 v2.2.3
+    Checking pkcs1 v0.7.5
+    Checking sha1 v0.10.7
+    Checking password-hash v0.5.0
+    Checking bumpalo v3.20.4
+   Compiling thiserror v1.0.69
+   Compiling proc-macro2-diagnostics v0.10.1
+    Checking sha1-checked v0.10.0
+    Checking rsa v0.9.10
+    Checking ed25519-dalek v2.2.0
+    Checking argon2 v0.5.3
+    Checking zopfli v0.8.4
+    Checking ecdsa v0.17.0
+    Checking cx448 v0.1.1
+    Checking lance-arrow v14.0.2
+    Checking aes-gcm v0.10.3
+    Checking primeorder v0.14.0
+    Checking x25519-dalek v2.0.1
+    Checking eax v0.5.0
+    Checking nix v0.32.0
+    Checking constant_time_eq v0.6.1
+    Checking crc24 v0.1.6
+    Checking dsa v0.6.3
+    Checking bitfields v1.0.3
+    Checking aes-kw v0.2.1
+    Checking ocb3 v0.1.0
+    Checking p521 v0.13.3
+    Checking p256 v0.13.2
+    Checking p384 v0.13.1
+    Checking ecl-adapter-gcs v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-gcs)
+    Checking k256 v0.13.4
+    Checking lzma-rust2 v0.25.0
+    Checking blowfish v0.9.1
+    Checking camellia v0.1.0
+    Checking cfb-mode v0.8.2
+    Checking twofish v0.7.1
+    Checking cast5 v0.11.1
+    Checking des v0.8.1
+    Checking idea v0.5.1
+    Checking md-5 v0.10.6
+    Checking ripemd v0.1.3
+    Checking block-padding v0.3.3
+   Compiling thiserror-impl v1.0.69
+    Checking arrow-json v58.4.2
+    Checking arrow-csv v58.4.2
+    Checking lance-arrow-scalar v58.0.0
+   Compiling curve25519-dalek v5.0.0
+   Compiling heapless v0.7.17
+    Checking buffer-redux v1.1.0
+    Checking deflate64 v0.1.12
+   Compiling rlimit v0.11.0
+    Checking ppmd-rust v1.5.2
+    Checking lance-arrow-stats v58.0.0
+    Checking replace_with v0.1.8
+   Compiling prettyplease v0.2.37
+    Checking typed-path v0.13.0
+   Compiling syn v1.0.109
+   Compiling ouroboros_macro v0.18.5
+    Checking signal-hook-mio v0.2.5
+    Checking ecl-workflows v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-workflows)
+    Checking arrow v58.4.2
+    Checking libz-sys v1.1.33
+    Checking ecl-adapter-fs v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-fs)
+    Checking ssh-encoding v0.3.0
+    Checking toml_datetime v0.7.5+spec-1.1.0
+    Checking keccak v0.2.2
+    Checking datafusion-common v54.2.0
+    Checking lance-datagen v14.0.2
+    Checking hash32 v0.2.1
+   Compiling proc-macro-error-attr2 v2.0.0
+    Checking rapidhash v4.5.1
+   Compiling litrs v1.0.1
+    Checking oxur-smap v0.2.0
+    Checking pgp v0.21.1
+    Checking sponge-cursor v0.1.0
+    Checking aliasable v0.1.3
+    Checking toml v0.9.12+spec-1.1.0
+    Checking rdkafka-sys v4.11.0+2.16.0
+    Checking ed25519 v3.0.0
+    Checking ravif v0.13.0
+    Checking metrics v0.24.6
+    Checking zip v9.8.1
+    Checking toml_datetime v0.6.11
+    Checking serde_spanned v0.6.9
+   Compiling proc-macro-error2 v2.0.1
+    Checking crypto-primes v0.7.2
+    Checking pkcs1 v0.8.0
+    Checking image v0.25.10
+    Checking cobs v0.3.0
+    Checking poly1305 v0.9.1
+    Checking blowfish v0.10.0
+   Compiling document-features v0.2.12
+    Checking blake2 v0.11.0
+    Checking dirs-sys v0.4.1
+    Checking vte v0.14.1
+    Checking unicode-width v0.1.14
+    Checking toml_write v0.1.2
+    Checking regex-lite v0.1.9
+    Checking yansi v1.0.1
+    Checking mach2 v0.6.0
+    Checking home v0.5.12
+    Checking strip-ansi-escapes v0.2.1
+    Checking toml_edit v0.22.27
+    Checking argon2 v0.6.0
+    Checking which v6.0.3
+    Checking ed25519-dalek v3.0.0
+    Checking confyg v0.3.0
+    Checking ouroboros v0.18.5
+    Checking oxur-lang v0.2.0
+    Checking ariadne v0.4.1
+    Checking dirs v5.0.1
+    Checking bcrypt-pbkdf v0.11.0
+    Checking ssh-cipher v0.3.0
+    Checking postcard v1.2.0
+    Checking oxur-comp v0.2.0
+    Checking rdkafka v0.40.0
+    Checking sha3 v0.12.0
+    Checking shake v0.1.0
+    Checking p521 v0.14.0
+    Checking crossterm v0.29.0
+    Checking p256 v0.14.0
+    Checking p384 v0.14.0
+    Checking fabryk-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-auth)
+    Checking kem v0.3.0
+    Checking module-lattice v0.2.4
+   Compiling strum_macros v0.26.4
+    Checking papergrid v0.13.0
+    Checking sysinfo v0.30.13
+    Checking apache-avro v0.23.0
+    Checking fd-lock v4.0.4
+    Checking fs2 v0.4.3
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Checking jiff-core v1.0.1
+    Checking strum v0.26.3
+    Checking ml-kem v0.3.4
+    Checking russh-cryptovec v0.62.0
+    Checking ecl-pipeline v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline)
+    Checking toml v0.8.23
+    Checking crossterm v0.28.1
+    Checking terminal_size v0.3.0
+    Checking combine v4.6.9
+    Checking rsa v0.10.0
+    Checking russh-util v0.52.0
+    Checking num-bigint v0.5.1
+   Compiling delegate v0.13.5
+    Checking jiff v1.0.2
+   Compiling enum_dispatch v0.3.13
+    Checking datafusion-expr-common v54.2.0
+    Checking colored v2.2.0
+    Checking arcstr v1.2.0
+    Checking data-encoding v2.11.1
+    Checking md5 v0.8.1
+    Checking hex-literal v1.1.0
+    Checking ecl-sink-gcs v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-gcs)
+    Checking ecl-adapter-zapier v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-zapier)
+    Checking fabryk-mcp-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-auth)
+    Checking fastembed v7.7.1
+    Checking ecl-adapter-gdrive v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-gdrive)
+    Checking ecl-adapter-slack v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-slack)
+    Checking fabryk-acl v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-acl)
+    Checking serde_yaml v0.9.34+deprecated
+    Checking textrynum-util v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util)
+    Checking datafusion-physical-expr-common v54.2.0
+    Checking fabryk-auth-google v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-auth-google)
+    Checking reedline v0.44.0
+    Checking ecl-sink-kafka v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-kafka)
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:144:18
+    |
+144 |             _ => panic!("Expected Crates command"),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+    = note: requested on the command line with `-D clippy::panic`
+
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:156:18
+    |
+156 |             _ => panic!("Expected Crates command"),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:168:18
+    |
+168 |             _ => panic!("Expected Crates command"),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:179:18
+    |
+179 |             _ => panic!("Expected Crates command"),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:191:22
+    |
+191 |                 _ => panic!("Expected Update action"),
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:193:18
+    |
+193 |             _ => panic!("Expected Crates command"),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:223:18
+    |
+223 |             _ => panic!("Expected Crate command"),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:239:18
+    |
+239 |             _ => panic!("Expected Crate command"),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:251:18
+    |
+251 |             _ => panic!("Expected SetVersion command"),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:263:18
+    |
+263 |             _ => panic!("Expected SetVersion command"),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:289:18
+    |
+289 |             _ => panic!("Expected SetVersion command"),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:307:18
+    |
+307 |             _ => panic!("Expected SetVersion command"),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+
+error: `panic` should not be present in production code
+   --> crates/textrynum-util/src/cli.rs:323:18
+    |
+323 |             _ => panic!("Expected SetVersion command"),
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#panic
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:300:9
+    |
+300 | /         fs::write(
+301 | |             dir.join("Cargo.toml"),
+302 | |             r#"[workspace]
+303 | | resolver = "2"
+...   |
+311 | |         .expect("write root");
+    | |_____________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+    = note: `-D clippy::expect-used` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::expect_used)]`
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:314:9
+    |
+314 |         fs::create_dir_all(&alpha).expect("mkdir alpha");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:315:9
+    |
+315 | /         fs::write(
+316 | |             alpha.join("Cargo.toml"),
+317 | |             r#"[package]
+318 | | name = "alpha"
+...   |
+323 | |         .expect("write alpha");
+    | |______________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:326:9
+    |
+326 |         fs::create_dir_all(&beta).expect("mkdir beta");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:327:9
+    |
+327 | /         fs::write(
+328 | |             beta.join("Cargo.toml"),
+329 | |             r#"[package]
+330 | | name = "beta"
+...   |
+339 | |         .expect("write beta");
+    | |_____________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:343:9
+    |
+343 | /         fs::write(
+344 | |             dir.join("Cargo.toml"),
+345 | |             r#"[package]
+346 | | name = "myapp"
+...   |
+359 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:366:19
+    |
+366 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:375:19
+    |
+375 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:384:19
+    |
+384 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:387:9
+    |
+387 |         run(tmp.path(), Some("0.2.0"), None, false).expect("update");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:389:20
+    |
+389 |         let root = fs::read_to_string(tmp.path().join("Cargo.toml")).expect("read root");
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:392:20
+    |
+392 |         let beta = fs::read_to_string(tmp.path().join("crates/beta/Cargo.toml")).expect("read");
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:399:19
+    |
+399 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:402:9
+    |
+402 |         run(tmp.path(), Some("0.1.0"), None, false).expect("update");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:404:20
+    |
+404 |         let beta = fs::read_to_string(tmp.path().join("crates/beta/Cargo.toml")).expect("read");
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:410:19
+    |
+410 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:413:9
+    |
+413 |         run(tmp.path(), Some("0.2.0"), None, false).expect("update");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:423:19
+    |
+423 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:426:9
+    |
+426 |         run(tmp.path(), Some("2.0.0"), None, false).expect("update");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:428:23
+    |
+428 |         let content = fs::read_to_string(tmp.path().join("Cargo.toml")).expect("read");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:436:19
+    |
+436 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:439:9
+    |
+439 |         run(tmp.path(), None, Some("0.1.2"), false).expect("update");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:441:23
+    |
+441 |         let content = fs::read_to_string(tmp.path().join("Cargo.toml")).expect("read");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:454:19
+    |
+454 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:457:9
+    |
+457 |         run(tmp.path(), Some("2.0.0"), Some("0.1.2"), false).expect("update");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:459:23
+    |
+459 |         let content = fs::read_to_string(tmp.path().join("Cargo.toml")).expect("read");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on an `Option` value
+   --> crates/textrynum-util/src/commands/set_version.rs:464:32
+    |
+464 |           let pkg_version_line = lines
+    |  ________________________________^
+465 | |             .iter()
+466 | |             .find(|l| l.starts_with("version"))
+467 | |             .expect("version");
+    | |______________________________^
+    |
+    = note: if this value is `None`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:476:19
+    |
+476 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/commands/set_version.rs:485:19
+    |
+485 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:271:19
+    |
+271 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:273:9
+    |
+273 | /         fs::write(
+274 | |             &path,
+275 | |             r#"[package]
+276 | | name = "test"
+...   |
+283 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:285:23
+    |
+285 |         let changed = update_dep_version(&path, "dependencies", "alpha", "0.2.0").expect("update");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:288:23
+    |
+288 |         let content = fs::read_to_string(&path).expect("read");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:295:19
+    |
+295 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:297:9
+    |
+297 | /         fs::write(
+298 | |             &path,
+299 | |             r#"[package]
+300 | | name = "test"
+...   |
+307 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:309:23
+    |
+309 |         let changed = update_dep_version(&path, "dependencies", "alpha", "0.2.0").expect("update");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:315:19
+    |
+315 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:317:9
+    |
+317 | /         fs::write(
+318 | |             &path,
+319 | |             r#"[package]
+320 | | name = "test"
+...   |
+330 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:332:9
+    |
+332 |         update_dep_version(&path, "dependencies", "alpha", "0.2.0").expect("update");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:334:23
+    |
+334 |         let content = fs::read_to_string(&path).expect("read");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:342:19
+    |
+342 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:344:9
+    |
+344 | /         fs::write(
+345 | |             &path,
+346 | |             r#"[package]
+347 | | name = "test"
+...   |
+354 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:356:23
+    |
+356 |         let changed = update_dep_version(&path, "dependencies", "alpha", "0.2.0").expect("update");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:359:23
+    |
+359 |         let content = fs::read_to_string(&path).expect("read");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:366:19
+    |
+366 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:368:9
+    |
+368 | /         fs::write(
+369 | |             &path,
+370 | |             r#"[package]
+371 | | name = "test"
+...   |
+375 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:377:23
+    |
+377 |         let changed = update_dep_version(&path, "dependencies", "alpha", "0.2.0").expect("update");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:383:19
+    |
+383 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:385:9
+    |
+385 | /         fs::write(
+386 | |             &path,
+387 | |             r#"[package]
+388 | | name = "test"
+...   |
+395 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:397:23
+    |
+397 |         let changed = update_dep_version(&path, "dependencies", "alpha", "0.2.0").expect("update");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:403:19
+    |
+403 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:405:9
+    |
+405 | /         fs::write(
+406 | |             &path,
+407 | |             r#"[package]
+408 | | name = "test"
+...   |
+415 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:417:23
+    |
+417 |         let changed = update_dep_version(&path, "dependencies", "serde", "2.0").expect("update");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:423:19
+    |
+423 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:425:9
+    |
+425 | /         fs::write(
+426 | |             &path,
+427 | |             r#"[workspace]
+428 | | resolver = "2"
+...   |
+436 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:438:23
+    |
+438 |         let changed = update_workspace_version(&path, "0.2.0").expect("update");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:441:23
+    |
+441 |         let content = fs::read_to_string(&path).expect("read");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:450:19
+    |
+450 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:452:9
+    |
+452 | /         fs::write(
+453 | |             &path,
+454 | |             r#"[package]
+455 | | name = "myapp"
+...   |
+463 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:466:13
+    |
+466 |             update_any_dep_version(&path, "dependencies", "fabryk-core", "0.1.2").expect("update");
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:469:23
+    |
+469 |         let content = fs::read_to_string(&path).expect("read");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:476:19
+    |
+476 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:478:9
+    |
+478 | /         fs::write(
+479 | |             &path,
+480 | |             r#"[package]
+481 | | name = "myapp"
+...   |
+488 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:491:13
+    |
+491 |             update_any_dep_version(&path, "dependencies", "fabryk-core", "0.1.2").expect("update");
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:494:23
+    |
+494 |         let content = fs::read_to_string(&path).expect("read");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:501:19
+    |
+501 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:503:9
+    |
+503 | /         fs::write(
+504 | |             &path,
+505 | |             r#"[package]
+506 | | name = "myapp"
+...   |
+513 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:516:13
+    |
+516 |             update_any_dep_version(&path, "dependencies", "fabryk-core", "0.1.2").expect("update");
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:522:19
+    |
+522 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:524:9
+    |
+524 | /         fs::write(
+525 | |             &path,
+526 | |             r#"[package]
+527 | | name = "myapp"
+...   |
+534 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:537:13
+    |
+537 |             update_any_dep_version(&path, "dependencies", "fabryk-core", "0.1.2").expect("update");
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:543:19
+    |
+543 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:545:9
+    |
+545 | /         fs::write(
+546 | |             &path,
+547 | |             r#"[package]
+548 | | name = "myapp"
+...   |
+555 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:558:13
+    |
+558 |             update_any_dep_version(&path, "dependencies", "fabryk-core", "0.1.2").expect("update");
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:564:19
+    |
+564 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:566:9
+    |
+566 | /         fs::write(
+567 | |             &path,
+568 | |             r#"[package]
+569 | | name = "myapp"
+...   |
+579 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:581:9
+    |
+581 |         update_any_dep_version(&path, "dependencies", "fabryk-core", "0.1.2").expect("update");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:583:23
+    |
+583 |         let content = fs::read_to_string(&path).expect("read");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:591:19
+    |
+591 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:593:9
+    |
+593 | /         fs::write(
+594 | |             &path,
+595 | |             r#"[package]
+596 | | name = "test"
+...   |
+603 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:606:13
+    |
+606 |             update_any_dep_version(&path, "dependencies", "alpha", "0.2.0").expect("update");
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:609:23
+    |
+609 |         let content = fs::read_to_string(&path).expect("read");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:618:19
+    |
+618 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:620:9
+    |
+620 | /         fs::write(
+621 | |             &path,
+622 | |             r#"[package]
+623 | | name = "myapp"
+...   |
+628 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:630:23
+    |
+630 |         let changed = update_package_version(&path, "2.0.0").expect("update");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:633:23
+    |
+633 |         let content = fs::read_to_string(&path).expect("read");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:640:19
+    |
+640 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:642:9
+    |
+642 | /         fs::write(
+643 | |             &path,
+644 | |             r#"[package]
+645 | | name = "myapp"
+...   |
+649 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:651:23
+    |
+651 |         let changed = update_package_version(&path, "2.0.0").expect("update");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:657:19
+    |
+657 |         let tmp = TempDir::new().expect("tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:659:9
+    |
+659 | /         fs::write(
+660 | |             &path,
+661 | |             r#"[workspace]
+662 | | resolver = "2"
+...   |
+668 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/editor.rs:670:23
+    |
+670 |         let changed = update_workspace_version(&path, "0.2.0").expect("update");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+  --> crates/textrynum-util/src/output.rs:98:20
+   |
+98 |         let text = format_crate_list(&sample_crates(), &OutputFormat::Text).expect("format");
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: if this value is an `Err`, it will panic
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/output.rs:110:20
+    |
+110 |         let json = format_crate_list(&crates, &OutputFormat::Json).expect("format");
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/output.rs:111:38
+    |
+111 |         let parsed: Vec<CrateInfo> = serde_json::from_str(&json).expect("parse");
+    |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:359:9
+    |
+359 | /         fs::write(
+360 | |             dir.join("Cargo.toml"),
+361 | |             r#"[workspace]
+362 | | resolver = "2"
+...   |
+370 | |         .expect("failed to write root Cargo.toml");
+    | |__________________________________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:373:9
+    |
+373 |         fs::create_dir_all(&alpha_dir).expect("failed to create alpha dir");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:374:9
+    |
+374 | /         fs::write(
+375 | |             alpha_dir.join("Cargo.toml"),
+376 | |             r#"[package]
+377 | | name = "alpha"
+...   |
+382 | |         .expect("failed to write alpha Cargo.toml");
+    | |___________________________________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:385:9
+    |
+385 |         fs::create_dir_all(&beta_dir).expect("failed to create beta dir");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:386:9
+    |
+386 | /         fs::write(
+387 | |             beta_dir.join("Cargo.toml"),
+388 | |             r#"[package]
+389 | | name = "beta"
+...   |
+400 | |         .expect("failed to write beta Cargo.toml");
+    | |__________________________________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:403:9
+    |
+403 |         fs::create_dir_all(&gamma_dir).expect("failed to create gamma dir");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:404:9
+    |
+404 | /         fs::write(
+405 | |             gamma_dir.join("Cargo.toml"),
+406 | |             r#"[package]
+407 | | name = "gamma"
+...   |
+416 | |         .expect("failed to write gamma Cargo.toml");
+    | |___________________________________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:419:9
+    |
+419 |         fs::create_dir_all(&tool_dir).expect("failed to create tool dir");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:420:9
+    |
+420 | /         fs::write(
+421 | |             tool_dir.join("Cargo.toml"),
+422 | |             r#"[package]
+423 | | name = "tool"
+...   |
+429 | |         .expect("failed to write tool Cargo.toml");
+    | |__________________________________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:434:19
+    |
+434 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:436:17
+    |
+436 |         assert!(is_workspace(tmp.path()).expect("should check"));
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:441:19
+    |
+441 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:442:9
+    |
+442 | /         fs::write(
+443 | |             tmp.path().join("Cargo.toml"),
+444 | |             r#"[package]
+445 | | name = "myapp"
+...   |
+452 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:453:18
+    |
+453 |         assert!(!is_workspace(tmp.path()).expect("should check"));
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:458:19
+    |
+458 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:459:9
+    |
+459 | /         fs::write(
+460 | |             tmp.path().join("Cargo.toml"),
+461 | |             r#"[package]
+462 | | name = "myapp"
+...   |
+466 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:468:9
+    |
+468 |         fs::create_dir_all(&subdir).expect("mkdir");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:469:20
+    |
+469 |         let root = find_project_root(&subdir).expect("should find root");
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:475:19
+    |
+475 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:478:20
+    |
+478 |         let root = find_project_root(&subdir).expect("should find root");
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:485:19
+    |
+485 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:487:9
+    |
+487 | /         fs::write(
+488 | |             &cargo_toml,
+489 | |             r#"[package]
+490 | | name = "myapp"
+...   |
+504 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:506:23
+    |
+506 |         let matches = scan_matching_deps(&cargo_toml, &["fabryk-", "ecl-"]).expect("should scan");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:520:19
+    |
+520 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:522:9
+    |
+522 | /         fs::write(
+523 | |             &cargo_toml,
+524 | |             r#"[package]
+525 | | name = "myapp"
+...   |
+532 | |         .expect("write");
+    | |________________________^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:534:23
+    |
+534 |         let matches = scan_matching_deps(&cargo_toml, &["fabryk-", "ecl-"]).expect("should scan");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:540:19
+    |
+540 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:544:20
+    |
+544 |         let root = find_workspace_root(&subdir).expect("should find root");
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:550:19
+    |
+550 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:557:19
+    |
+557 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:560:23
+    |
+560 |         let version = read_workspace_version(tmp.path()).expect("should read version");
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:566:19
+    |
+566 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:569:21
+    |
+569 |         let paths = list_member_paths(tmp.path()).expect("should list members");
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:577:19
+    |
+577 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:580:21
+    |
+580 |         let names = collect_internal_crate_names(tmp.path()).expect("should collect names");
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:590:19
+    |
+590 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:593:22
+    |
+593 |         let crates = scan_all_crates(tmp.path()).expect("should scan crates");
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on an `Option` value
+   --> crates/textrynum-util/src/workspace.rs:596:21
+    |
+596 |         let alpha = crates.iter().find(|c| c.name == "alpha").expect("alpha");
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is `None`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on an `Option` value
+   --> crates/textrynum-util/src/workspace.rs:601:20
+    |
+601 |         let beta = crates.iter().find(|c| c.name == "beta").expect("beta");
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is `None`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on an `Option` value
+   --> crates/textrynum-util/src/workspace.rs:605:19
+    |
+605 |           let dep = beta
+    |  ___________________^
+606 | |             .internal_deps
+607 | |             .iter()
+608 | |             .find(|d| d.section == "dependencies")
+609 | |             .expect("should have dep");
+    | |______________________________________^
+    |
+    = note: if this value is `None`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on an `Option` value
+   --> crates/textrynum-util/src/workspace.rs:614:20
+    |
+614 |         let tool = crates.iter().find(|c| c.name == "tool").expect("tool");
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is `None`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:620:19
+    |
+620 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:623:21
+    |
+623 |         let order = publish_order(tmp.path()).expect("should get order");
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:629:19
+    |
+629 |         let tmp = TempDir::new().expect("failed to create tempdir");
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on a `Result` value
+   --> crates/textrynum-util/src/workspace.rs:632:21
+    |
+632 |         let order = publish_order(tmp.path()).expect("should get order");
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is an `Err`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on an `Option` value
+   --> crates/textrynum-util/src/workspace.rs:635:25
+    |
+635 |         let alpha_pos = order.iter().position(|n| n == "alpha").expect("alpha");
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is `None`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on an `Option` value
+   --> crates/textrynum-util/src/workspace.rs:636:24
+    |
+636 |         let beta_pos = order.iter().position(|n| n == "beta").expect("beta");
+    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is `None`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+error: used `expect()` on an `Option` value
+   --> crates/textrynum-util/src/workspace.rs:637:25
+    |
+637 |         let gamma_pos = order.iter().position(|n| n == "gamma").expect("gamma");
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: if this value is `None`, it will panic
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#expect_used
+
+   Compiling libproc v0.14.11
+error: could not compile `textrynum-util` (bin "textyl" test) due to 156 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: use of `default` to create a unit struct
+   --> crates/fabryk-fts/src/concept_card_extractor.rs:196:25
+    |
+196 |         let extractor = ConceptCardDocumentExtractor::default();
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.100.0/index.html#default_constructed_unit_structs
+    = note: `-D clippy::default-constructed-unit-structs` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::default_constructed_unit_structs)]`
+help: remove this call to `default`
+    |
+196 -         let extractor = ConceptCardDocumentExtractor::default();
+196 +         let extractor = ConceptCardDocumentExtractor;
+    |
+
+error: could not compile `fabryk-fts` (lib test) due to 1 previous error

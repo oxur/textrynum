@@ -1,0 +1,5 @@
+[1;34mChecking for outdated dependencies (compatible only)...[0m
+[1;31m✗ cargo upgrade --dry-run failed:[0m
+    Checking virtual workspace's dependencies
+Error: io: failed to lookup address information: nodename nor servname provided, or not known
+make: *** [check-deps-cicd] Error 1

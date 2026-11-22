@@ -1,0 +1,593 @@
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+    Checking lance-index v14.0.2
+    Checking fabryk-mcp-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-core)
+    Checking fastembed v7.7.1
+    Checking oxur-repl v0.2.0
+    Checking ecl-adapter-sftp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-sftp)
+    Checking ecl-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-cli)
+    Checking oxur-cli v0.2.1
+error[E0255]: the name `ServerConfig` is defined multiple times
+  --> crates/fabryk-mcp-core/src/server.rs:35:1
+   |
+14 |     ReadResourceResult, ServerCapabilities, ServerConfig,
+   |                                             ------------ previous import of the type `ServerConfig` here
+...
+35 | pub struct ServerConfig {
+   | ^^^^^^^^^^^^^^^^^^^^^^^ `ServerConfig` redefined here
+   |
+   = note: `ServerConfig` must be defined only once in the type namespace of this module
+help: you can use `as` to change the binding name of the import
+   |
+14 |     ReadResourceResult, ServerCapabilities, ServerConfig as OtherServerConfig,
+   |                                                          ++++++++++++++++++++
+
+error[E0603]: type alias import `ServerConfig` is private
+    --> crates/fabryk-mcp-core/src/lib.rs:71:35
+     |
+  71 | pub use server::{FabrykMcpServer, ServerConfig};
+     |                                   ^^^^^^^^^^^^ private type alias import
+     |
+note: the type alias import `ServerConfig` is defined here...
+    --> crates/fabryk-mcp-core/src/server.rs:14:45
+     |
+  14 |     ReadResourceResult, ServerCapabilities, ServerConfig,
+     |                                             ^^^^^^^^^^^^
+note: ...and refers to the type alias `ServerConfig` which is defined here
+    --> /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rmcp-3.11.0/src/model.rs:1343:1
+     |
+1343 | pub type ServerConfig = InitializeResult;
+     | ^^^^^^^^^^^^^^^^^^^^^ you could import this directly
+help: import `ServerConfig` through the re-export
+     |
+  71 | pub use server::{FabrykMcpServer, model::ServerConfig};
+     |                                   +++++++
+
+error[E0117]: only traits defined in the current crate can be implemented for types defined outside of the crate
+  --> crates/fabryk-mcp-core/src/server.rs:44:1
+   |
+44 | impl Default for ServerConfig {
+   | ^^^^^^^^^^^^^^^^^------------
+   |                  |
+   |                  `rmcp::model::InitializeResult` is not defined in the current crate
+   |
+   = note: impl doesn't have any local type before any uncovered type parameters
+   = note: for more information see https://doc.rust-lang.org/reference/items/implementations.html#orphan-rules
+   = note: define and implement a trait or new type instead
+
+error[E0117]: only traits defined in the current crate can be implemented for types defined outside of the crate
+  --> crates/fabryk-mcp-core/src/server.rs:34:10
+   |
+34 | #[derive(Clone, Debug, Serialize, Deserialize)]
+   |          ^^^^^ `rmcp::model::InitializeResult` is not defined in the current crate
+   |
+   = note: impl doesn't have any local type before any uncovered type parameters
+   = note: for more information see https://doc.rust-lang.org/reference/items/implementations.html#orphan-rules
+   = note: define and implement a trait or new type instead
+
+error[E0117]: only traits defined in the current crate can be implemented for types defined outside of the crate
+  --> crates/fabryk-mcp-core/src/server.rs:34:17
+   |
+34 | #[derive(Clone, Debug, Serialize, Deserialize)]
+   |                 ^^^^^ `rmcp::model::InitializeResult` is not defined in the current crate
+   |
+   = note: impl doesn't have any local type before any uncovered type parameters
+   = note: for more information see https://doc.rust-lang.org/reference/items/implementations.html#orphan-rules
+   = note: define and implement a trait or new type instead
+
+error[E0117]: only traits defined in the current crate can be implemented for types defined outside of the crate
+  --> crates/fabryk-mcp-core/src/server.rs:34:24
+   |
+34 | #[derive(Clone, Debug, Serialize, Deserialize)]
+   |                        ^^^^^^^^^
+35 | pub struct ServerConfig {
+   |            ------------ `rmcp::model::InitializeResult` is not defined in the current crate
+   |
+   = note: impl doesn't have any local type before any uncovered type parameters
+   = note: for more information see https://doc.rust-lang.org/reference/items/implementations.html#orphan-rules
+   = note: define and implement a trait or new type instead
+   = note: this error originates in the derive macro `Serialize` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0117]: only traits defined in the current crate can be implemented for types defined outside of the crate
+  --> crates/fabryk-mcp-core/src/server.rs:34:35
+   |
+34 | #[derive(Clone, Debug, Serialize, Deserialize)]
+   |                                   ^^^^^^^^^^^
+35 | pub struct ServerConfig {
+   |            ------------ `rmcp::model::InitializeResult` is not defined in the current crate
+   |
+   = note: impl doesn't have any local type before any uncovered type parameters
+   = note: for more information see https://doc.rust-lang.org/reference/items/implementations.html#orphan-rules
+   = note: define and implement a trait or new type instead
+   = note: this error originates in the derive macro `Deserialize` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+    Checking oxur-odm v0.3.5
+error[E0609]: no field `name` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:207:25
+    |
+207 |             self.config.name,
+    |                         ^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+207 |             self.config.server_info.name,
+    |                         ++++++++++++
+
+error[E0609]: no field `version` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:208:25
+    |
+208 |             self.config.version,
+    |                         ^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+208 |             self.config.server_info.version,
+    |                         ++++++++++++
+
+error[E0609]: no field `name` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:271:39
+    |
+271 |         let server_name = self.config.name.clone();
+    |                                       ^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+271 |         let server_name = self.config.server_info.name.clone();
+    |                                       ++++++++++++
+
+error[E0639]: cannot create non-exhaustive struct using struct expression
+  --> crates/fabryk-mcp-core/src/server.rs:34:10
+   |
+34 | #[derive(Clone, Debug, Serialize, Deserialize)]
+   |          ^^^^^
+
+error[E0560]: struct `rmcp::model::InitializeResult` has no field named `name`
+  --> crates/fabryk-mcp-core/src/server.rs:37:5
+   |
+37 |     pub name: String,
+   |     ^^^^^^^^^^^^^^^^ `rmcp::model::InitializeResult` does not have this field
+   |
+   = note: all struct fields are already assigned
+
+error[E0609]: no field `name` on type `&rmcp::model::InitializeResult`
+  --> crates/fabryk-mcp-core/src/server.rs:37:9
+   |
+37 |     pub name: String,
+   |         ^^^^ unknown field
+   |
+   = note: available fields are: `protocol_version`, `capabilities`, `server_info`, `instructions`, `meta`
+
+error[E0560]: struct `rmcp::model::InitializeResult` has no field named `version`
+  --> crates/fabryk-mcp-core/src/server.rs:39:5
+   |
+39 |     pub version: String,
+   |     ^^^^^^^^^^^^^^^^^^^ `rmcp::model::InitializeResult` does not have this field
+   |
+   = note: all struct fields are already assigned
+
+error[E0609]: no field `version` on type `&rmcp::model::InitializeResult`
+  --> crates/fabryk-mcp-core/src/server.rs:39:9
+   |
+39 |     pub version: String,
+   |         ^^^^^^^ unknown field
+   |
+   = note: available fields are: `protocol_version`, `capabilities`, `server_info`, `instructions`, `meta`
+
+error[E0560]: struct `rmcp::model::InitializeResult` has no field named `description`
+  --> crates/fabryk-mcp-core/src/server.rs:41:5
+   |
+41 |     pub description: Option<String>,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `rmcp::model::InitializeResult` does not have this field
+   |
+   = note: all struct fields are already assigned
+
+error[E0609]: no field `description` on type `&rmcp::model::InitializeResult`
+  --> crates/fabryk-mcp-core/src/server.rs:41:9
+   |
+41 |     pub description: Option<String>,
+   |         ^^^^^^^^^^^ unknown field
+   |
+   = note: available fields are: `protocol_version`, `capabilities`, `server_info`, `instructions`, `meta`
+
+error[E0639]: cannot create non-exhaustive struct using struct expression
+  --> crates/fabryk-mcp-core/src/server.rs:34:35
+   |
+34 | #[derive(Clone, Debug, Serialize, Deserialize)]
+   |                                   ^^^^^^^^^^^
+   |
+   = note: this error originates in the derive macro `Deserialize` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0560]: struct `rmcp::model::InitializeResult` has no field named `name`
+  --> crates/fabryk-mcp-core/src/server.rs:37:9
+   |
+37 |     pub name: String,
+   |         ^^^^ `rmcp::model::InitializeResult` does not have this field
+   |
+   = note: all struct fields are already assigned
+
+error[E0560]: struct `rmcp::model::InitializeResult` has no field named `version`
+  --> crates/fabryk-mcp-core/src/server.rs:39:9
+   |
+39 |     pub version: String,
+   |         ^^^^^^^ `rmcp::model::InitializeResult` does not have this field
+   |
+   = note: all struct fields are already assigned
+
+error[E0560]: struct `rmcp::model::InitializeResult` has no field named `description`
+  --> crates/fabryk-mcp-core/src/server.rs:41:9
+   |
+41 |     pub description: Option<String>,
+   |         ^^^^^^^^^^^ `rmcp::model::InitializeResult` does not have this field
+   |
+   = note: all struct fields are already assigned
+
+error[E0639]: cannot create non-exhaustive struct using struct expression
+  --> crates/fabryk-mcp-core/src/server.rs:46:9
+   |
+46 | /         Self {
+47 | |             name: "fabryk-server".to_string(),
+48 | |             version: env!("CARGO_PKG_VERSION").to_string(),
+49 | |             description: None,
+50 | |         }
+   | |_________^
+
+error[E0560]: struct `rmcp::model::InitializeResult` has no field named `name`
+  --> crates/fabryk-mcp-core/src/server.rs:47:13
+   |
+47 |             name: "fabryk-server".to_string(),
+   |             ^^^^ `rmcp::model::InitializeResult` does not have this field
+   |
+   = note: available fields are: `protocol_version`, `capabilities`, `server_info`, `instructions`, `meta`
+
+error[E0560]: struct `rmcp::model::InitializeResult` has no field named `version`
+  --> crates/fabryk-mcp-core/src/server.rs:48:13
+   |
+48 |             version: env!("CARGO_PKG_VERSION").to_string(),
+   |             ^^^^^^^ `rmcp::model::InitializeResult` does not have this field
+   |
+   = note: available fields are: `protocol_version`, `capabilities`, `server_info`, `instructions`, `meta`
+
+error[E0560]: struct `rmcp::model::InitializeResult` has no field named `description`
+  --> crates/fabryk-mcp-core/src/server.rs:49:13
+   |
+49 |             description: None,
+   |             ^^^^^^^^^^^ `rmcp::model::InitializeResult` does not have this field
+   |
+   = note: available fields are: `protocol_version`, `capabilities`, `server_info`, `instructions`, `meta`
+
+error[E0609]: no field `name` on type `rmcp::model::InitializeResult`
+  --> crates/fabryk-mcp-core/src/server.rs:98:21
+   |
+98 |         self.config.name = name.into();
+   |                     ^^^^ unknown field
+   |
+help: one of the expressions' fields has a field of the same name
+   |
+98 |         self.config.server_info.name = name.into();
+   |                     ++++++++++++
+
+error[E0609]: no field `version` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:104:21
+    |
+104 |         self.config.version = version.into();
+    |                     ^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+104 |         self.config.server_info.version = version.into();
+    |                     ++++++++++++
+
+error[E0609]: no field `description` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:110:21
+    |
+110 |         self.config.description = Some(description.into());
+    |                     ^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+110 |         self.config.server_info.description = Some(description.into());
+    |                     ++++++++++++
+
+error[E0609]: no field `description` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:159:21
+    |
+159 |         self.config.description = Some(match self.config.description.take() {
+    |                     ^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+159 |         self.config.server_info.description = Some(match self.config.description.take() {
+    |                     ++++++++++++
+
+error[E0609]: no field `description` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:159:58
+    |
+159 |         self.config.description = Some(match self.config.description.take() {
+    |                                                          ^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+159 |         self.config.description = Some(match self.config.server_info.description.take() {
+    |                                                          ++++++++++++
+
+error[E0609]: no field `description` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:168:21
+    |
+168 |         self.config.description = Some(guidance.to_instructions());
+    |                     ^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+168 |         self.config.server_info.description = Some(guidance.to_instructions());
+    |                     ++++++++++++
+
+error[E0609]: no field `name` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:252:25
+    |
+252 |             self.config.name,
+    |                         ^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+252 |             self.config.server_info.name,
+    |                         ++++++++++++
+
+error[E0609]: no field `version` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:253:25
+    |
+253 |             self.config.version,
+    |                         ^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+253 |             self.config.server_info.version,
+    |                         ++++++++++++
+
+error[E0609]: no field `name` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:370:29
+    |
+370 |                 self.config.name.clone(),
+    |                             ^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+370 |                 self.config.server_info.name.clone(),
+    |                             ++++++++++++
+
+error[E0609]: no field `version` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:371:29
+    |
+371 |                 self.config.version.clone(),
+    |                             ^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+371 |                 self.config.server_info.version.clone(),
+    |                             ++++++++++++
+
+error[E0609]: no field `description` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:373:42
+    |
+373 |         if let Some(desc) = &self.config.description {
+    |                                          ^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+373 |         if let Some(desc) = &self.config.server_info.description {
+    |                                          ++++++++++++
+
+error[E0282]: type annotations needed
+   --> crates/fabryk-mcp-core/src/server.rs:374:43
+    |
+374 |             info = info.with_instructions(desc.clone());
+    |                                           ^^^^ cannot infer type
+
+error[E0609]: no field `name` on type `&rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/builder.rs:221:36
+    |
+221 |         assert_eq!(server.config().name, "test-server");
+    |                                    ^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+221 |         assert_eq!(server.config().server_info.name, "test-server");
+    |                                    ++++++++++++
+
+error[E0609]: no field `version` on type `&rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/builder.rs:222:36
+    |
+222 |         assert_eq!(server.config().version, "0.1.0");
+    |                                    ^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+222 |         assert_eq!(server.config().server_info.version, "0.1.0");
+    |                                    ++++++++++++
+
+error[E0609]: no field `description` on type `&rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/builder.rs:234:29
+    |
+234 |             server.config().description.as_deref(),
+    |                             ^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+234 |             server.config().server_info.description.as_deref(),
+    |                             ++++++++++++
+
+error[E0609]: no field `name` on type `&rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/builder.rs:262:36
+    |
+262 |         assert_eq!(server.config().name, "test");
+    |                                    ^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+262 |         assert_eq!(server.config().server_info.name, "test");
+    |                                    ++++++++++++
+
+Some errors have detailed explanations: E0117, E0255, E0282, E0560, E0603, E0609, E0639.
+For more information about an error, try `rustc --explain E0117`.
+error: could not compile `fabryk-mcp-core` (lib) due to 47 previous errors
+warning: build failed, waiting for other jobs to finish...
+error[E0609]: no field `name` on type `&rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:506:36
+    |
+506 |         assert_eq!(server.config().name, "fabryk-server");
+    |                                    ^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+506 |         assert_eq!(server.config().server_info.name, "fabryk-server");
+    |                                    ++++++++++++
+
+error[E0609]: no field `name` on type `&rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:513:36
+    |
+513 |         assert_eq!(server.config().name, "my-server");
+    |                                    ^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+513 |         assert_eq!(server.config().server_info.name, "my-server");
+    |                                    ++++++++++++
+
+error[E0609]: no field `version` on type `&rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:519:36
+    |
+519 |         assert_eq!(server.config().version, "1.0.0");
+    |                                    ^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+519 |         assert_eq!(server.config().server_info.version, "1.0.0");
+    |                                    ++++++++++++
+
+error[E0609]: no field `description` on type `&rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:525:36
+    |
+525 |         assert_eq!(server.config().description, Some("Test server".to_string()));
+    |                                    ^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+525 |         assert_eq!(server.config().server_info.description, Some("Test server".to_string()));
+    |                                    ++++++++++++
+
+error[E0609]: no field `name` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:559:27
+    |
+559 |         assert_eq!(config.name, "fabryk-server");
+    |                           ^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+559 |         assert_eq!(config.server_info.name, "fabryk-server");
+    |                           ++++++++++++
+
+error[E0609]: no field `description` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:560:24
+    |
+560 |         assert!(config.description.is_none());
+    |                        ^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+560 |         assert!(config.server_info.description.is_none());
+    |                        ++++++++++++
+
+error[E0639]: cannot create non-exhaustive struct using struct expression
+   --> crates/fabryk-mcp-core/src/server.rs:565:22
+    |
+565 |           let config = ServerConfig {
+    |  ______________________^
+566 | |             name: "test".to_string(),
+567 | |             version: "1.0".to_string(),
+568 | |             description: Some("desc".to_string()),
+569 | |         };
+    | |_________^
+
+error[E0560]: struct `rmcp::model::InitializeResult` has no field named `name`
+   --> crates/fabryk-mcp-core/src/server.rs:566:13
+    |
+566 |             name: "test".to_string(),
+    |             ^^^^ `rmcp::model::InitializeResult` does not have this field
+    |
+    = note: available fields are: `protocol_version`, `capabilities`, `server_info`, `instructions`, `meta`
+
+error[E0560]: struct `rmcp::model::InitializeResult` has no field named `version`
+   --> crates/fabryk-mcp-core/src/server.rs:567:13
+    |
+567 |             version: "1.0".to_string(),
+    |             ^^^^^^^ `rmcp::model::InitializeResult` does not have this field
+    |
+    = note: available fields are: `protocol_version`, `capabilities`, `server_info`, `instructions`, `meta`
+
+error[E0560]: struct `rmcp::model::InitializeResult` has no field named `description`
+   --> crates/fabryk-mcp-core/src/server.rs:568:13
+    |
+568 |             description: Some("desc".to_string()),
+    |             ^^^^^^^^^^^ `rmcp::model::InitializeResult` does not have this field
+    |
+    = note: available fields are: `protocol_version`, `capabilities`, `server_info`, `instructions`, `meta`
+
+error[E0609]: no field `name` on type `rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:575:33
+    |
+575 |         assert_eq!(deserialized.name, "test");
+    |                                 ^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+575 |         assert_eq!(deserialized.server_info.name, "test");
+    |                                 ++++++++++++
+
+error[E0609]: no field `description` on type `&rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:582:36
+    |
+582 |         let desc = server.config().description.as_deref().unwrap();
+    |                                    ^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+582 |         let desc = server.config().server_info.description.as_deref().unwrap();
+    |                                    ++++++++++++
+
+error[E0609]: no field `description` on type `&rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:592:36
+    |
+592 |         let desc = server.config().description.as_deref().unwrap();
+    |                                    ^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+592 |         let desc = server.config().server_info.description.as_deref().unwrap();
+    |                                    ++++++++++++
+
+error[E0609]: no field `description` on type `&rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:607:36
+    |
+607 |         let desc = server.config().description.as_deref().unwrap();
+    |                                    ^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+607 |         let desc = server.config().server_info.description.as_deref().unwrap();
+    |                                    ++++++++++++
+
+error[E0609]: no field `description` on type `&rmcp::model::InitializeResult`
+   --> crates/fabryk-mcp-core/src/server.rs:691:36
+    |
+691 |         let desc = server.config().description.as_deref().unwrap();
+    |                                    ^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+691 |         let desc = server.config().server_info.description.as_deref().unwrap();
+    |                                    ++++++++++++
+
+error: could not compile `fabryk-mcp-core` (lib test) due to 66 previous errors

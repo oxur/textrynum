@@ -1,0 +1,185 @@
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+    Checking smallvec v1.16.6
+   Compiling serde_json v1.0.154
+    Checking hashbrown v0.17.1
+    Checking stable_deref_trait v1.2.1
+    Checking aho-corasick v1.1.5
+    Checking event-listener v5.4.2
+    Checking zerofrom v0.1.8
+    Checking litemap v0.8.3
+    Checking writeable v0.6.4
+    Checking arrayvec v0.7.8
+   Compiling rustls v0.23.46
+    Checking rustls-webpki v0.103.17
+    Checking uuid v1.29.3
+   Compiling zerocopy v0.8.64
+   Compiling time-macros v0.2.32
+    Checking deranged v0.5.9
+    Checking bitvec v1.1.1
+    Checking simd-adler32 v0.3.10
+   Compiling rmcp v3.11.0
+   Compiling zstd-sys v2.1.3+zstd.1.5.7
+   Compiling regex-syntax v0.8.12
+   Compiling zstd-safe v8.3.0
+   Compiling crossbeam-epoch v0.9.21
+   Compiling either v1.19.0
+    Checking parking_lot_core v0.9.12
+   Compiling bitflags v2.13.2
+    Checking indexmap v2.14.2
+    Checking blake2 v0.10.6
+    Checking yoke v0.8.4
+    Checking event-listener-strategy v0.5.4
+    Checking blake3 v1.8.7
+   Compiling bigdecimal v0.4.11
+    Checking miniz_oxide v0.9.1
+    Checking zopfli v0.8.4
+   Compiling itertools v0.13.0
+   Compiling bon-macros v3.10.3
+    Checking strum v0.28.0
+    Checking regex-automata v0.4.19
+    Checking heapless v0.7.17
+    Checking bytecount v0.6.9
+    Checking time v0.3.55
+    Checking ff v0.13.1
+    Checking parking_lot v0.12.5
+    Checking dashmap v6.2.1
+    Checking argon2 v0.5.3
+    Checking zerovec v0.11.9
+    Checking zerotrie v0.2.5
+    Checking yaml_serde v0.10.7
+    Checking async-lock v3.5.0
+    Checking async-channel v2.5.0
+    Checking flate2 v1.1.11
+    Checking petgraph v0.8.3
+    Checking crossbeam-deque v0.8.8
+    Checking papergrid v0.13.0
+    Checking toml_edit v0.22.27
+    Checking postcard v1.2.0
+    Checking group v0.13.0
+    Checking ecl-pipeline-spec v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec)
+    Checking regex v1.13.2
+    Checking rustls-platform-verifier v0.7.1
+    Checking schemars v1.2.3
+    Checking ppv-lite86 v0.2.21
+    Checking matchers v0.2.0
+    Checking tokio v1.54.1
+    Checking assert-json-diff v2.0.2
+    Checking tinystr v0.8.5
+    Checking potential_utf v0.1.6
+    Checking blocking v1.7.0
+    Checking crossterm v0.29.0
+    Checking oxur-comp v0.2.0
+    Checking rayon-core v1.13.0
+    Checking toml_edit v0.25.20+spec-1.1.0
+    Checking elliptic-curve v0.13.8
+    Checking tabled v0.17.0
+    Checking crossterm v0.28.1
+    Checking arc-swap v1.9.5
+    Checking toml v0.8.23
+    Checking serde_yaml v0.9.34+deprecated
+    Checking fabryk-gcp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-gcp)
+    Checking rand_chacha v0.3.1
+    Checking tracing-subscriber v0.3.23
+    Checking bon v3.10.3
+   Compiling bindgen v0.72.1
+    Checking tokio-util v0.7.20
+    Checking tower v0.5.3
+    Checking icu_locale_core v2.4.0
+    Checking tokio-rustls v0.26.6
+    Checking icu_collections v2.4.0
+    Checking async-fs v2.2.0
+    Checking ecl-pipeline-state v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-state)
+    Checking backon v1.6.0
+    Checking tokio-stream v0.1.19
+    Checking deadpool v0.12.3
+    Checking ecl-secrets v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-secrets)
+    Checking ecdsa v0.16.9
+    Checking primeorder v0.13.6
+    Checking cx448 v0.1.1
+    Checking zstd v0.14.4
+    Checking rand v0.8.8
+    Checking rayon v1.12.0
+    Checking rdkafka v0.40.0
+    Checking russh-util v0.52.0
+    Checking h2 v0.4.20
+    Checking combine v4.6.9
+    Checking icu_provider v2.4.0
+    Checking async-walkdir v2.2.0
+    Checking russh-sftp v4.0.0
+    Checking textrynum-util v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util)
+    Checking tokio-test v0.4.6
+    Checking ecl-pipeline-topo v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo)
+    Checking k256 v0.13.4
+   Compiling libproc v0.14.11
+    Checking p256 v0.13.2
+    Checking failsafe v1.3.0
+    Checking num-bigint-dig v0.8.6
+    Checking p384 v0.13.1
+    Checking p521 v0.13.3
+    Checking simple_asn1 v0.6.4
+    Checking zip v9.8.1
+    Checking fabryk-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core)
+    Checking icu_properties v2.4.0
+    Checking icu_normalizer v2.4.0
+    Checking hyper v1.12.0
+    Checking sysinfo v0.30.13
+    Checking ecl-adapter-fs v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-fs)
+    Checking ecl-adapter-slack v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-slack)
+    Checking russh v0.65.4
+    Checking rsa v0.9.10
+    Checking dsa v0.6.3
+    Checking jsonwebtoken v12.0.0
+    Checking fabryk-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content)
+    Checking fabryk-acl v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-acl)
+    Checking idna_adapter v1.2.2
+    Checking hyper-util v0.1.21
+    Checking pgp v0.21.1
+    Checking reedline v0.44.0
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Checking fabryk-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-graph)
+    Checking fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+    Checking idna v1.1.0
+    Checking hyper-rustls v0.27.10
+    Checking axum v0.8.9
+    Checking apache-avro v0.23.0
+    Checking url v2.5.9
+    Checking fabryk-mcp-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-core)
+    Checking fabryk-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli)
+    Checking ecl-adapter-sftp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-sftp)
+    Checking fabryk-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-auth)
+    Checking fabryk-mcp-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-auth)
+    Checking ecl-adapter-zapier v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-zapier)
+    Checking tower-http v0.6.11
+    Checking wiremock v0.6.5
+    Checking redis v1.8.2
+    Checking fabryk-mcp-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-graph)
+    Checking fabryk-mcp-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-content)
+    Checking fabryk-mcp-semantic v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-semantic)
+    Checking fabryk-mcp-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-fts)
+    Checking ecl-stages v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-stages)
+    Checking metrics-process v2.4.3
+    Checking fabryk v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk)
+    Checking reqwest v0.13.5
+    Checking fabryk-mcp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp)
+    Checking oxur-repl v0.2.0
+    Checking fabryk-redis v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-redis)
+    Checking oxur-cli v0.2.1
+    Checking ecl-gcp-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-gcp-auth)
+    Checking ecl-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-core)
+    Checking ecl-sink-kafka v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-kafka)
+    Checking fabryk-auth-google v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-auth-google)
+    Checking oxur-odm v0.3.5
+    Checking ecl-adapter-gcs v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-gcs)
+    Checking ecl-adapter-gdrive v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-gdrive)
+    Checking ecl-steps v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-steps)
+    Checking ecl-design v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/design)
+    Checking ecl-workflows v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-workflows)
+    Checking ecl-pipeline v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline)
+    Checking ecl-sink-gcs v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-gcs)
+    Checking ecl-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2m 27s

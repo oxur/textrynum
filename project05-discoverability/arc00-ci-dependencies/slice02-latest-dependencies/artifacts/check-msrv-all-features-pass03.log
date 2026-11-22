@@ -1,0 +1,32 @@
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+    Checking lance-table v14.0.2
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Checking ravif v0.13.0
+    Checking oxur-lang v0.2.0
+    Checking libproc v0.14.11
+    Checking ecl-sink-kafka v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-kafka)
+    Checking ecl-adapter-sftp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-sftp)
+    Checking oxur-comp v0.2.0
+    Checking image v0.25.10
+error[E0599]: no method named `to_string_lossy` found for struct `std::string::String` in the current scope
+   --> crates/ecl-adapter-sftp/src/lib.rs:248:42
+    |
+248 |             let name = entry.file_name().to_string_lossy().into_owned();
+    |                                          ^^^^^^^^^^^^^^^
+    |
+help: there is a method `to_string` with a similar name
+    |
+248 -             let name = entry.file_name().to_string_lossy().into_owned();
+248 +             let name = entry.file_name().to_string().into_owned();
+    |
+
+    Checking metrics-process v2.4.3
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `ecl-adapter-sftp` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `ecl-adapter-sftp` (lib test) due to 1 previous error

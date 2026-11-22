@@ -1,0 +1,31 @@
+cargo +1.100.0 package --workspace --locked --no-verify
+Captured Cargo status: 0 (see package-iteration03-pass02.log)
+Current workspace archives produced by this command: 41 (the package log contains exactly 41 `Packaged` summaries for the 41 workspace members)
+Scope correction: the 43 `.crate` paths present in `target/package` at inspection time include the preexisting, noncurrent `ecl-0.0.1.crate` and `ecl-0.1.0.crate`. They are not outputs of this run and were left untouched. CDC independently verified all 41 current `0.5.0` member archives and their `.cargo_vcs_info.json` commit/path/clean metadata; 443 total files across those archives, with no temporary `cc_*` examples.
+fabryk-fts archive: target/package/fabryk-fts-0.5.0.crate (57866 bytes; SHA-256 33b0cb4245ff8e969dc74c5b55d4d6d0caaf66dd9becdd9c3e246400dd66b2bb)
+Bundled stopword array: 10276 bytes; SHA-256 3a93cdaa8b56ba2a3ec8dd10f9e3a3e93e06b23d8074953b0811df48df90ee40
+Bundled license notice: 2979 bytes; SHA-256 e40982f6ac531d4127b2ccf5f9f2e4514e181f4399f36c53f5ed6b9b8ef59fd0
+Required paths found in archive:
+  fabryk-fts-0.5.0/STOPWORDS-LICENSE.md
+  fabryk-fts-0.5.0/src/stopwords-en-iso.json
+Files in the `fabryk-fts-0.5.0.crate` archive only:
+  fabryk-fts-0.5.0/.cargo_vcs_info.json
+  fabryk-fts-0.5.0/Cargo.lock
+  fabryk-fts-0.5.0/Cargo.toml
+  fabryk-fts-0.5.0/Cargo.toml.orig
+  fabryk-fts-0.5.0/README.md
+  fabryk-fts-0.5.0/STOPWORDS-LICENSE.md
+  fabryk-fts-0.5.0/src/backend.rs
+  fabryk-fts-0.5.0/src/builder.rs
+  fabryk-fts-0.5.0/src/concept_card_extractor.rs
+  fabryk-fts-0.5.0/src/document.rs
+  fabryk-fts-0.5.0/src/freshness.rs
+  fabryk-fts-0.5.0/src/indexer.rs
+  fabryk-fts-0.5.0/src/lib.rs
+  fabryk-fts-0.5.0/src/probe.rs
+  fabryk-fts-0.5.0/src/query.rs
+  fabryk-fts-0.5.0/src/schema.rs
+  fabryk-fts-0.5.0/src/stopwords-en-iso.json
+  fabryk-fts-0.5.0/src/stopwords.rs
+  fabryk-fts-0.5.0/src/tantivy_search.rs
+  fabryk-fts-0.5.0/src/types.rs

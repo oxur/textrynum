@@ -1,0 +1,33 @@
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+   Compiling serde_json v1.0.154
+    Checking deranged v0.5.9
+    Checking serde v1.0.229
+    Checking tokio v1.54.1
+    Checking erased-serde v0.4.11
+    Checking uuid v1.29.3
+    Checking smallvec v1.16.6
+    Checking time v0.3.55
+   Compiling stop-words v0.10.1
+    Checking yaml_serde v0.10.7
+    Checking tantivy-query-grammar v0.27.0
+    Checking tantivy-tokenizer-api v0.7.0
+    Checking serde-tuple-vec-map v1.0.1
+    Checking sketches-ddsketch v0.4.2
+    Checking typetag v0.2.23
+    Checking chrono v0.4.45
+    Checking tantivy-common v0.27.0
+    Checking tokio-stream v0.1.19
+    Checking fabryk-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core)
+    Checking tokio-test v0.4.6
+    Checking tantivy-stacker v0.27.0
+    Checking tantivy-sstable v0.27.0
+    Checking fabryk-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content)
+    Checking tantivy-columnar v0.27.0
+    Checking tantivy v0.27.0
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 31.79s

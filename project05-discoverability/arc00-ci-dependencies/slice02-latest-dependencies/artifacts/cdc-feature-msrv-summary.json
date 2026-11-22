@@ -1,0 +1,55 @@
+{
+  "source": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+  "toolchain": "1.94.0",
+  "results": [
+    {
+      "package": "fabryk",
+      "feature": "fts-tantivy",
+      "status": 0,
+      "finished": true,
+      "log": "cdc-msrv-fabryk-fts-tantivy.log"
+    },
+    {
+      "package": "fabryk",
+      "feature": "vector-lancedb",
+      "status": 0,
+      "finished": true,
+      "log": "cdc-msrv-fabryk-vector-lancedb.log"
+    },
+    {
+      "package": "fabryk-fts",
+      "feature": "fts-tantivy",
+      "status": 0,
+      "finished": true,
+      "log": "cdc-msrv-fabryk-fts-fts-tantivy.log"
+    },
+    {
+      "package": "fabryk-mcp",
+      "feature": "http",
+      "status": 0,
+      "finished": true,
+      "log": "cdc-msrv-fabryk-mcp-http.log"
+    },
+    {
+      "package": "fabryk-mcp",
+      "feature": "fts-tantivy",
+      "status": 0,
+      "finished": true,
+      "log": "cdc-msrv-fabryk-mcp-fts-tantivy.log"
+    },
+    {
+      "package": "fabryk-mcp-core",
+      "feature": "http",
+      "status": 0,
+      "finished": true,
+      "log": "cdc-msrv-fabryk-mcp-core-http.log"
+    },
+    {
+      "package": "fabryk-mcp-fts",
+      "feature": "fts-tantivy",
+      "status": 0,
+      "finished": true,
+      "log": "cdc-msrv-fabryk-mcp-fts-fts-tantivy.log"
+    }
+  ]
+}

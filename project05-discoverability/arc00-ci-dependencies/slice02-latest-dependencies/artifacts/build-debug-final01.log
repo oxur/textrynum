@@ -1,0 +1,1252 @@
+warning: unused workspace dependency `russh-keys`
+   --> Cargo.toml:203:1
+    |
+203 | russh-keys = "0.49.2"
+    | ^^^^^^^^^^
+    |
+    = note: `cargo::unused_workspace_dependencies` is set to `warn` by default
+help: consider removing the workspace dependency `russh-keys`
+warning: unused workspace dependency `tokio-stream`
+   --> Cargo.toml:195:1
+    |
+195 | tokio-stream = "0.1.19"
+    | ^^^^^^^^^^^^
+    |
+help: consider removing the workspace dependency `tokio-stream`
+warning: unused field `description` in `workspace.package`
+  --> Cargo.toml:60:1
+   |
+60 | description = "Textrynum — Knowledge Fabric Workshop (Fabryk + ECL)"
+   | ^^^^^^^^^^^
+   |
+   = note: `cargo::unused_workspace_package_fields` is set to `warn` by default
+help: consider removing the field `workspace.package.description`
+warning: workspace (manifest) generated 3 warnings
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-gdrive/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-gdrive` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-graph/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-graph` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-redis/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-redis` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-secrets/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-secrets` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-fts/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-fts` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-auth/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-auth` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-core/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-core` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-sink-gcs/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-sink-gcs` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-core/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-core` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-gcp/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-gcp` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-vector/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-vector` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-acl/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-acl` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline-state/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline-state` (manifest) generated 1 warning
+warning: crates/ecl-pipeline-topo/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline-topo/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline-topo` (manifest) generated 2 warnings
+warning: crates/fabryk-cli/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: crates/fabryk-cli/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-cli/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-cli` (manifest) generated 3 warnings
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-cli/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-cli` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-auth/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-auth` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-content/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-content` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-zapier/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-zapier` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-core/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-core` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-graph/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-graph` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-content/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-content` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-steps/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-steps` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-gcp-auth/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-gcp-auth` (manifest) generated 1 warning
+warning: crates/textrynum-util/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: crates/textrynum-util/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/textrynum-util/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `textrynum-util` (manifest) generated 3 warnings
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-fs/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-fs` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-slack/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-slack` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-gcs/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-gcs` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-auth-google/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-auth-google` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-fts/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-fts` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+  --> crates/ecl-workflows/Cargo.toml:13:1
+   |
+12 | repository.workspace = true
+   | ----------
+13 | homepage.workspace = true
+   | ^^^^^^^^
+   |
+   = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-workflows` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-sftp/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-sftp` (manifest) generated 1 warning
+warning: crates/ecl-pipeline-spec/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline-spec/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline-spec` (manifest) generated 2 warnings
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-stages/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-stages` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-semantic/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-semantic` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/design/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-design` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-sink-kafka/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-sink-kafka` (manifest) generated 1 warning
+   Compiling subtle v2.6.1
+   Compiling serde v1.0.229
+   Compiling getrandom v0.4.3
+   Compiling smallvec v1.16.6
+   Compiling cmov v0.5.4
+   Compiling serde_json v1.0.154
+   Compiling log v0.4.35
+   Compiling syn v2.0.119
+   Compiling indexmap v2.14.2
+   Compiling bitflags v2.13.2
+   Compiling getrandom v0.2.17
+   Compiling generic-array v0.14.7
+   Compiling tracing-core v0.1.36
+   Compiling yoke v0.8.4
+   Compiling const-oid v0.9.6
+   Compiling zstd-sys v2.1.3+zstd.1.5.7
+   Compiling regex-automata v0.4.19
+   Compiling ahash v0.8.12
+   Compiling arrayvec v0.7.8
+   Compiling base64ct v1.8.3
+   Compiling simd-adler32 v0.3.10
+   Compiling cmake v0.1.58
+   Compiling fs_extra v1.3.0
+   Compiling dunce v1.0.5
+   Compiling ctutils v0.4.8
+   Compiling parking_lot_core v0.9.12
+   Compiling rand_core v0.6.4
+   Compiling zerovec v0.11.9
+   Compiling zerotrie v0.2.5
+   Compiling rustix v1.1.6
+   Compiling blake3 v1.8.7
+   Compiling flatbuffers v25.12.19
+   Compiling miniz_oxide v0.9.1
+   Compiling system-configuration-sys v0.6.0
+   Compiling zlib-rs v0.6.8
+   Compiling core-foundation v0.9.4
+   Compiling aws-lc-rs v1.19.0
+   Compiling parking_lot v0.12.5
+   Compiling httpdate v1.0.3
+   Compiling untrusted v0.7.1
+   Compiling aws-lc-sys v0.47.0
+   Compiling dashmap v6.2.1
+   Compiling petgraph v0.8.3
+   Compiling security-framework-sys v2.17.0
+   Compiling ring v0.17.14
+   Compiling rustls v0.23.46
+   Compiling tokio v1.54.1
+   Compiling security-framework v3.7.0
+   Compiling tinystr v0.8.5
+   Compiling potential_utf v0.1.6
+   Compiling pem-rfc7468 v1.0.0
+   Compiling cpubits v0.1.1
+   Compiling winnow v1.0.5
+   Compiling ordered-float v5.5.1
+   Compiling icu_collections v2.4.0
+   Compiling icu_locale_core v2.4.0
+   Compiling bigdecimal v0.4.11
+   Compiling time-macros v0.2.32
+   Compiling nix v0.31.4
+   Compiling uuid v1.29.3
+   Compiling tempfile v3.27.0
+   Compiling deranged v0.5.9
+   Compiling native-tls v0.2.18
+   Compiling hashbrown v0.16.1
+   Compiling arrow-schema v58.4.2
+   Compiling system-configuration v0.7.0
+   Compiling chrono v0.4.45
+   Compiling num-bigint v0.4.8
+   Compiling icu_provider v2.4.0
+   Compiling serde_urlencoded v0.7.1
+   Compiling toml_parser v1.1.6+spec-1.1.0
+   Compiling toml_writer v1.2.0+spec-1.1.0
+   Compiling lance-jsonb v14.0.2
+   Compiling serde_spanned v1.1.3
+   Compiling moka v0.12.16
+   Compiling toml_datetime v1.1.3+spec-1.1.0
+   Compiling pem-rfc7468 v0.7.0
+   Compiling icu_normalizer v2.4.0
+   Compiling icu_properties v2.4.0
+   Compiling regex v1.13.2
+   Compiling darling_core v0.20.11
+   Compiling toml v1.2.2+spec-1.1.0
+   Compiling stop-words v0.10.1
+   Compiling serde_bytes v0.11.19
+   Compiling yaml_serde v0.10.7
+   Compiling zeroize v1.9.2
+   Compiling base16ct v0.2.0
+   Compiling time v0.3.55
+   Compiling httparse v1.10.1
+   Compiling path_abs v0.5.1
+   Compiling redb v5.0.0
+   Compiling chrono-tz v0.10.4
+   Compiling num-rational v0.4.2
+   Compiling bon-macros v3.10.3
+   Compiling ecl-pipeline-spec v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec)
+   Compiling core-foundation v0.10.1
+   Compiling idna_adapter v1.2.2
+   Compiling serde_path_to_error v0.1.20
+   Compiling idna v1.1.0
+   Compiling pastey v0.2.3
+   Compiling matchit v0.8.4
+   Compiling utf8-zero v0.8.1
+   Compiling zeroize_derive v1.5.0
+   Compiling zerocopy-derive v0.8.64
+   Compiling tracing-attributes v0.1.31
+   Compiling url v2.5.9
+   Compiling sqlparser_derive v0.5.0
+   Compiling flate2 v1.1.11
+   Compiling datafusion-macros v54.2.0
+   Compiling prost-derive v0.14.6
+   Compiling snafu-derive v0.9.2
+   Compiling tokio-util v0.7.20
+   Compiling tower v0.5.3
+   Compiling compression-codecs v0.4.48
+   Compiling datafusion-common-runtime v54.2.0
+   Compiling tokio-native-tls v0.3.1
+   Compiling darling_macro v0.20.11
+   Compiling lance-derive v14.0.2
+   Compiling async-compression v0.4.52
+   Compiling strum_macros v0.28.0
+   Compiling hybrid-array v0.4.15
+   Compiling sqlparser v0.62.0
+   Compiling rustls-pki-types v1.16.0
+   Compiling der v0.8.3
+   Compiling darling v0.20.11
+   Compiling der v0.7.10
+   Compiling munge_macro v0.4.7
+   Compiling equator-macro v0.4.2
+   Compiling rustls-native-certs v0.8.5
+   Compiling tracing v0.1.44
+   Compiling tower-http v0.6.11
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling derive_builder_core v0.20.2
+   Compiling inout v0.1.4
+   Compiling zerocopy v0.8.64
+   Compiling prost v0.14.6
+   Compiling digest v0.10.7
+   Compiling tokio-stream v0.1.19
+   Compiling cipher v0.4.4
+   Compiling munge v0.4.7
+   Compiling crypto-common v0.2.2
+   Compiling block-buffer v0.12.1
+   Compiling block-padding v0.4.2
+   Compiling object_store v0.13.2
+   Compiling h2 v0.4.20
+   Compiling blake2 v0.10.6
+   Compiling inout v0.2.6
+   Compiling object_store v0.14.2
+   Compiling crypto-bigint v0.7.11
+   Compiling spki v0.7.3
+   Compiling snafu v0.9.2
+   Compiling prost-types v0.14.6
+   Compiling derive_builder_macro v0.20.2
+   Compiling spki v0.8.1
+   Compiling pkcs8 v0.10.2
+   Compiling cipher v0.5.2
+   Compiling digest v0.11.3
+   Compiling universal-hash v0.6.1
+   Compiling polyval v0.7.3
+   Compiling aead v0.6.1
+   Compiling sha2 v0.11.1
+   Compiling md-5 v0.11.0
+   Compiling hmac v0.13.0
+   Compiling signature v3.0.0
+   Compiling chacha20 v0.10.2
+   Compiling aes v0.9.4
+   Compiling derive_builder v0.20.2
+   Compiling ghash v0.6.0
+   Compiling ctr v0.10.1
+   Compiling strum v0.28.0
+   Compiling salsa20 v0.11.0
+   Compiling pbkdf2 v0.13.0
+   Compiling sha2 v0.10.9
+   Compiling cbc v0.2.1
+   Compiling rkyv v0.8.18
+   Compiling rand v0.10.4
+   Compiling hmac v0.12.1
+   Compiling axum-core v0.5.6
+   Compiling signature v2.2.0
+   Compiling equator v0.4.2
+   Compiling fabryk-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core)
+   Compiling prost-build v0.14.6
+   Compiling aes-gcm v0.11.1
+   Compiling scrypt v0.12.0
+   Compiling ecl-pipeline-state v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-state)
+   Compiling pkcs5 v0.8.1
+   Compiling tantivy-common v0.27.0
+   Compiling bon v3.10.3
+   Compiling twox-hash v2.1.5
+   Compiling pkcs8 v0.11.0
+   Compiling lz4_flex v0.13.2
+   Compiling aligned-vec v0.6.4
+   Compiling serdect v0.2.0
+   Compiling pulldown-cmark v0.13.6
+   Compiling hyperloglogplus v0.4.1
+   Compiling ff v0.13.1
+   Compiling ff v0.14.0
+   Compiling http v1.5.0
+   Compiling base64 v0.23.1
+   Compiling spin v0.9.9
+   Compiling static_assertions v1.1.0
+   Compiling serde_yaml_ng v0.10.0
+   Compiling lazy_static v1.5.1
+   Compiling webpki-root-certs v1.0.12
+   Compiling group v0.13.0
+   Compiling hyper v1.12.0
+   Compiling sec1 v0.7.3
+   Compiling ecl-pipeline-topo v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo)
+   Compiling v_frame v0.3.9
+   Compiling icu_locale_fallback v2.4.0
+   Compiling hkdf v0.12.4
+   Compiling lance-encoding v14.0.2
+   Compiling lance-file v14.0.2
+   Compiling lance-table v14.0.2
+   Compiling ureq-proto v0.7.1
+   Compiling lance-datafusion v14.0.2
+   Compiling fabryk-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content)
+   Compiling crypto-bigint v0.5.5
+   Compiling cedarwood v0.5.0
+   Compiling half v2.7.1
+   Compiling ppv-lite86 v0.2.21
+   Compiling as-slice v0.2.1
+   Compiling av-scenechange v0.14.1
+   Compiling built v0.8.1
+   Compiling rand_chacha v0.9.0
+   Compiling rand_chacha v0.3.1
+   Compiling quick_cache v0.6.24
+   Compiling hyper-util v0.1.21
+   Compiling arrow-buffer v58.4.2
+   Compiling rand v0.9.5
+   Compiling rand v0.8.8
+   Compiling lindera-dictionary v3.0.7
+   Compiling aligned v0.4.3
+   Compiling jieba-rs v0.10.4
+   Compiling rav1e v0.8.1
+   Compiling tantivy-stacker v0.27.0
+   Compiling ureq v3.5.2
+   Compiling icu_segmenter v2.4.0
+   Compiling lance-index v14.0.2
+   Compiling erased-serde v0.4.11
+   Compiling group v0.14.0
+   Compiling rand_distr v0.5.1
+   Compiling profiling-procmacros v1.0.18
+   Compiling elliptic-curve v0.13.8
+   Compiling arg_enum_proc_macro v0.3.4
+   Compiling onig_sys v69.9.3
+   Compiling typetag-impl v0.2.23
+   Compiling arrow-data v58.4.2
+   Compiling no_std_io2 v0.9.4
+   Compiling hmac-sha256 v1.1.15
+   Compiling base16ct v1.0.0
+   Compiling y4m v0.8.0
+   Compiling ref-cast v1.0.27
+   Compiling pastey v0.1.1
+   Compiling quick-error v2.0.1
+   Compiling lzma-rust2 v0.15.8
+   Compiling profiling v1.0.18
+   Compiling sec1 v0.8.1
+   Compiling bitstream-io v4.10.0
+   Compiling nalgebra v0.33.3
+   Compiling toml_edit v0.25.20+spec-1.1.0
+   Compiling typetag v0.2.23
+   Compiling arrow-array v58.4.2
+   Compiling hyper-tls v0.6.0
+   Compiling axum v0.8.9
+   Compiling av1-grain v0.2.5
+   Compiling lance v14.0.2
+   Compiling rfc6979 v0.4.0
+   Compiling hkdf v0.13.0
+   Compiling lindera v3.0.7
+   Compiling num-derive v0.4.2
+   Compiling tantivy-query-grammar v0.27.0
+   Compiling sketches-ddsketch v0.4.2
+   Compiling tantivy-tokenizer-api v0.7.0
+   Compiling serde-tuple-vec-map v1.0.1
+   Compiling maybe-rayon v0.1.1
+   Compiling ort-sys v2.0.0-rc.15
+   Compiling fs4 v0.13.1
+   Compiling miniz_oxide v0.8.9
+   Compiling measure_time v0.9.0
+   Compiling ref-cast-impl v1.0.27
+   Compiling serde_derive_internals v0.30.0
+   Compiling simd_helpers v0.1.0
+   Compiling lru v0.18.5
+   Compiling weezl v0.1.12
+   Compiling is_ci v1.2.0
+   Compiling lance-tokenizer v14.0.2
+   Compiling zune-core v0.5.3
+   Compiling esaxx-rs v0.1.10
+   Compiling unicode-general-category v1.1.0
+   Compiling new_debug_unreachable v1.0.6
+   Compiling noop_proc_macro v0.3.0
+   Compiling imgref v1.12.3
+   Compiling zune-jpeg v0.5.15
+   Compiling elliptic-curve v0.14.3
+   Compiling loop9 v0.1.5
+   Compiling proc-macro-crate v3.5.0
+   Compiling primefield v0.14.0
+   Compiling simple_asn1 v0.6.4
+   Compiling webpki-roots v1.0.12
+   Compiling backon v1.6.0
+   Compiling monostate-impl v0.1.18
+   Compiling schemars_derive v1.2.3
+   Compiling fdeflate v0.3.7
+   Compiling zune-inflate v0.2.54
+   Compiling avif-serialize v0.8.9
+   Compiling pem v4.0.0
+   Compiling arrow-select v58.4.2
+   Compiling arrow-row v58.4.2
+   Compiling arrow-arith v58.4.2
+   Compiling fsst v14.0.2
+   Compiling castaway v0.2.4
+   Compiling console v0.16.6
+   Compiling is-terminal v0.4.17
+   Compiling base64 v0.13.1
+   Compiling dyn-clone v1.0.20
+   Compiling byteorder-lite v0.1.0
+   Compiling bit_field v0.10.4
+   Compiling pxfm v0.1.30
+   Compiling fax v0.2.7
+   Compiling unit-prefix v0.5.2
+   Compiling rmcp v3.11.0
+   Compiling macro_rules_attribute-proc_macro v0.2.3
+   Compiling color_quant v1.1.0
+   Compiling lebe v0.5.3
+   Compiling rgb v0.8.53
+   Compiling vcpkg v0.2.15
+   Compiling gif v0.14.2
+   Compiling zstd-safe v7.4.1
+   Compiling zstd-safe v8.3.0
+   Compiling tiff v0.11.3
+   Compiling exr v1.74.3
+   Compiling indicatif v0.18.6
+   Compiling image-webp v0.2.4
+   Compiling spm_precompiled v0.1.4
+   Compiling supports-color v2.1.0
+   Compiling macro_rules_attribute v0.2.3
+   Compiling zstd v0.13.5
+   Compiling zstd v0.14.4
+   Compiling compact_str v0.9.1
+   Compiling libz-sys v1.1.33
+   Compiling monostate v0.1.18
+   Compiling schemars v1.2.3
+   Compiling tantivy-sstable v0.27.0
+   Compiling png v0.18.1
+   Compiling num_enum_derive v0.7.6
+   Compiling wnaf v0.14.1
+   Compiling supports-color v3.0.2
+   Compiling arrow-ord v58.4.2
+   Compiling arrow-ipc v58.4.2
+   Compiling arrow-string v58.4.2
+   Compiling ecdsa v0.16.9
+   Compiling rfc6979 v0.6.0
+   Compiling tantivy-columnar v0.27.0
+   Compiling snafu-derive v0.8.9
+   Compiling ndarray v0.17.2
+   Compiling rmcp-macros v3.11.0
+   Compiling dary_heap v0.3.9
+   Compiling rayon-cond v0.4.0
+   Compiling sse-stream v0.2.6
+   Compiling moxcms v0.8.1
+   Compiling unicode-normalization-alignments v0.1.12
+   Compiling curve25519-dalek v4.1.3
+   Compiling qoi v0.4.1
+   Compiling proc-macro2-diagnostics v0.10.1
+   Compiling utf8parse v0.2.2
+   Compiling unicode_categories v0.1.1
+   Compiling daachorse v3.0.3
+   Compiling num-bigint-dig v0.8.6
+   Compiling anstyle-parse v1.0.0
+   Compiling num_enum v0.7.6
+   Compiling ecdsa v0.17.0
+   Compiling primeorder v0.14.0
+   Compiling arrow-cast v58.4.2
+   Compiling owo-colors v4.4.0
+   Compiling tantivy v0.27.0
+   Compiling primeorder v0.13.6
+   Compiling sha1 v0.11.0
+   Compiling ctr v0.9.2
+   Compiling snafu v0.8.9
+   Compiling universal-hash v0.5.1
+   Compiling aead v0.5.2
+   Compiling safetensors v0.8.0
+   Compiling curve25519-dalek v5.0.0
+   Compiling num-iter v0.1.46
+   Compiling anstyle v1.0.14
+   Compiling colorchoice v1.0.5
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling opaque-debug v0.3.1
+   Compiling anstyle-query v1.1.5
+   Compiling yansi v1.0.1
+   Compiling polyval v0.6.2
+   Compiling ravif v0.13.0
+   Compiling anstream v1.0.0
+   Compiling twyg v0.6.3
+   Compiling failsafe v1.3.0
+   Compiling ssh-encoding v0.3.0
+   Compiling sharded-slab v0.1.7
+   Compiling aes v0.8.4
+   Compiling dbl v0.3.2
+   Compiling matchers v0.2.0
+   Compiling ort v2.0.0-rc.15
+   Compiling keccak v0.1.6
+   Compiling nix v0.32.0
+   Compiling rdkafka-sys v4.11.0+2.16.0
+   Compiling tracing-log v0.2.0
+   Compiling constant_time_eq v0.6.1
+   Compiling convert_case v0.10.0
+   Compiling keccak v0.2.2
+   Compiling thread_local v1.1.10
+   Compiling heck v0.4.1
+   Compiling unicode-xid v0.2.6
+   Compiling nu-ansi-term v0.50.3
+   Compiling clap_lex v1.1.2
+   Compiling sponge-cursor v0.1.0
+   Compiling crc24 v0.1.6
+   Compiling libbz2-rs-sys v0.2.7
+   Compiling ouroboros_macro v0.18.5
+   Compiling onig v6.5.3
+   Compiling clap_builder v4.6.7
+   Compiling arrow-json v58.4.2
+   Compiling arrow-csv v58.4.2
+   Compiling lance-arrow-scalar v58.0.0
+   Compiling image v0.25.10
+   Compiling tracing-subscriber v0.3.23
+   Compiling lance-arrow-stats v58.0.0
+   Compiling tokenizers v0.23.2
+   Compiling bzip2 v0.6.1
+   Compiling derive_more-impl v2.1.1
+   Compiling sha3 v0.10.9
+   Compiling cmac v0.7.2
+   Compiling ghash v0.5.1
+   Compiling arrow v58.4.2
+   Compiling fabryk-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-graph)
+   Compiling datafusion-common v54.2.0
+   Compiling lance-datagen v14.0.2
+   Compiling crypto-primes v0.7.2
+   Compiling ed25519 v3.0.0
+   Compiling ed25519 v2.2.3
+   Compiling blowfish v0.10.0
+   Compiling blake2 v0.11.0
+   Compiling poly1305 v0.9.1
+   Compiling pkcs1 v0.8.0
+   Compiling pkcs1 v0.7.5
+   Compiling sha1 v0.10.7
+   Compiling bitfields-impl v1.0.3
+   Compiling serdect v0.3.0
+   Compiling password-hash v0.5.0
+   Compiling clap_derive v4.6.9
+   Compiling bumpalo v3.20.4
+   Compiling aliasable v0.1.3
+   Compiling cx448 v0.1.1
+   Compiling sha1-checked v0.10.0
+   Compiling rsa v0.9.10
+   Compiling ouroboros v0.18.5
+   Compiling argon2 v0.5.3
+   Compiling zopfli v0.8.4
+   Compiling rsa v0.10.0
+   Compiling derive_more v2.1.1
+   Compiling argon2 v0.6.0
+   Compiling ssh-cipher v0.3.0
+   Compiling ed25519-dalek v2.2.0
+   Compiling bcrypt-pbkdf v0.11.0
+   Compiling ed25519-dalek v3.0.0
+   Compiling aes-gcm v0.10.3
+   Compiling eax v0.5.0
+   Compiling shake v0.1.0
+   Compiling bitfields v1.0.3
+   Compiling sha3 v0.12.0
+   Compiling dsa v0.6.3
+   Compiling x25519-dalek v2.0.1
+   Compiling aes-kw v0.2.1
+   Compiling ocb3 v0.1.0
+   Compiling p384 v0.13.1
+   Compiling p521 v0.13.3
+   Compiling p256 v0.13.2
+   Compiling p256 v0.14.0
+   Compiling p384 v0.14.0
+   Compiling p521 v0.14.0
+   Compiling k256 v0.13.4
+   Compiling lzma-rust2 v0.25.0
+   Compiling kem v0.3.0
+   Compiling clap v4.6.9
+   Compiling twofish v0.7.1
+   Compiling blowfish v0.9.1
+   Compiling camellia v0.1.0
+   Compiling idea v0.5.1
+   Compiling cfb-mode v0.8.2
+   Compiling des v0.8.1
+   Compiling cast5 v0.11.1
+   Compiling ecl-secrets v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-secrets)
+   Compiling md-5 v0.10.6
+   Compiling ripemd v0.1.3
+   Compiling module-lattice v0.2.4
+   Compiling block-padding v0.3.3
+   Compiling toml_datetime v0.7.5+spec-1.1.0
+   Compiling buffer-redux v1.1.0
+   Compiling deflate64 v0.1.12
+   Compiling jiff-core v1.0.1
+   Compiling ppmd-rust v1.5.2
+   Compiling winnow v0.7.15
+   Compiling replace_with v0.1.8
+   Compiling typed-path v0.13.0
+   Compiling regex-lite v0.1.9
+   Compiling pgp v0.21.1
+   Compiling ml-kem v0.3.4
+   Compiling datafusion-expr-common v54.2.0
+   Compiling russh-cryptovec v0.62.0
+   Compiling fabryk-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-auth)
+   Compiling ecl-adapter-fs v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-fs)
+   Compiling jiff v1.0.2
+   Compiling apache-avro v0.23.0
+   Compiling num-bigint v0.5.1
+   Compiling zip v9.8.1
+   Compiling combine v4.6.9
+   Compiling russh-util v0.52.0
+   Compiling datafusion-physical-expr-common v54.2.0
+   Compiling toml v0.9.12+spec-1.1.0
+   Compiling enum_dispatch v0.3.13
+   Compiling delegate v0.13.5
+   Compiling lance-arrow v14.0.2
+   Compiling hex-literal v1.1.0
+   Compiling datafusion-functions-window-common v54.2.0
+   Compiling datafusion-functions-aggregate-common v54.2.0
+   Compiling data-encoding v2.11.1
+   Compiling md5 v0.8.1
+   Compiling arcstr v1.2.0
+   Compiling confyg v0.3.0
+   Compiling fabryk-mcp-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-auth)
+   Compiling ecl-adapter-zapier v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-zapier)
+   Compiling ecl-adapter-slack v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-slack)
+   Compiling fabryk-acl v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-acl)
+   Compiling russh-sftp v4.0.0
+   Compiling fabryk-gcp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-gcp)
+   Compiling textrynum-util v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util)
+   Compiling ecl v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl)
+   Compiling ecl-design v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/design)
+   Compiling datafusion-expr v54.2.0
+   Compiling fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+   Compiling ssh-key v0.7.0-rc.12
+   Compiling redis v1.8.2
+   Compiling ecl-stages v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-stages)
+   Compiling fabryk-mcp-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-core)
+   Compiling fabryk-mcp-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-content)
+   Compiling fabryk-mcp-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-graph)
+   Compiling fabryk-mcp-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-fts)
+   Compiling datafusion-physical-expr v54.2.0
+   Compiling datafusion-execution v54.2.0
+   Compiling datafusion-functions v54.2.0
+   Compiling fabryk-redis v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-redis)
+   Compiling datafusion-functions-aggregate v54.2.0
+   Compiling datafusion-optimizer v54.2.0
+   Compiling datafusion-functions-window v54.2.0
+   Compiling rustls-webpki v0.103.17
+   Compiling jsonwebtoken v12.0.0
+   Compiling russh v0.65.4
+   Compiling rdkafka v0.40.0
+   Compiling datafusion-physical-plan v54.2.0
+   Compiling datafusion-physical-expr-adapter v54.2.0
+   Compiling datafusion-functions-nested v54.2.0
+   Compiling tokio-rustls v0.26.6
+   Compiling rustls-platform-verifier v0.7.1
+   Compiling hyper-rustls v0.27.10
+   Compiling reqwest v0.12.28
+   Compiling reqwest v0.13.5
+   Compiling ecl-adapter-sftp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-sftp)
+   Compiling datafusion-sql v54.2.0
+   Compiling ecl-gcp-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-gcp-auth)
+   Compiling ecl-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-core)
+   Compiling ecl-sink-kafka v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-kafka)
+   Compiling fabryk-auth-google v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-auth-google)
+   Compiling lance-namespace-reqwest-client v0.13.0
+   Compiling hf-hub v0.5.0
+   Compiling ecl-adapter-gcs v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-gcs)
+   Compiling ecl-adapter-gdrive v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-gdrive)
+   Compiling fastembed v7.7.1
+   Compiling ecl-steps v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-steps)
+   Compiling ecl-workflows v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-workflows)
+   Compiling ecl-pipeline v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline)
+   Compiling ecl-sink-gcs v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-gcs)
+   Compiling datafusion-session v54.2.0
+   Compiling lance-core v14.0.2
+   Compiling datafusion-datasource v54.2.0
+   Compiling ecl-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-cli)
+   Compiling datafusion-catalog v54.2.0
+   Compiling datafusion-pruning v54.2.0
+   Compiling datafusion-datasource-csv v54.2.0
+   Compiling datafusion-datasource-arrow v54.2.0
+   Compiling datafusion-datasource-json v54.2.0
+   Compiling datafusion-physical-optimizer v54.2.0
+   Compiling lance-select v14.0.2
+   Compiling lance-linalg v14.0.2
+   Compiling lance-namespace v14.0.2
+   Compiling lance-io v14.0.2
+   Compiling datafusion-functions-table v54.2.0
+   Compiling datafusion-catalog-listing v54.2.0
+   Compiling datafusion v54.2.0
+   Compiling lance-index-core v14.0.2
+   Compiling lance-namespace-impls v14.0.2
+   Compiling lancedb v0.41.0
+   Compiling fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+   Compiling fabryk-mcp-semantic v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-semantic)
+   Compiling fabryk-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli)
+   Compiling fabryk v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk)
+   Compiling fabryk-mcp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp)
+warning: unused dependency `ecl-workflows`
+  --> crates/ecl-cli/Cargo.toml:16:1
+   |
+16 | ecl-workflows = { version = "0.5.0", path = "../ecl-workflows" }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `cargo::unused_dependencies` is set to `warn` by default
+help: consider removing the dependency on `ecl-workflows`
+warning: `ecl-cli` (manifest) generated 1 warning
+warning: unused dependency `anyhow`
+  --> crates/ecl-core/Cargo.toml:18:1
+   |
+18 | anyhow = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `cargo::unused_dependencies` is set to `warn` by default
+help: consider removing the dependency on `anyhow`
+warning: unused dependency `failsafe`
+  --> crates/ecl-core/Cargo.toml:23:1
+   |
+23 | failsafe = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: consider removing the dependency on `failsafe`
+warning: unused dependency `twyg`
+  --> crates/ecl-core/Cargo.toml:24:1
+   |
+24 | twyg = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: consider removing the dependency on `twyg`
+warning: `ecl-core` (manifest) generated 3 warnings
+warning: unused dependency `chrono`
+  --> crates/ecl-pipeline-spec/Cargo.toml:16:1
+   |
+16 | chrono = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `cargo::unused_dependencies` is set to `warn` by default
+help: consider removing the dependency on `chrono`
+warning: `ecl-pipeline-spec` (manifest) generated 1 warning
+warning: unused dependency `blake3`
+  --> crates/ecl-pipeline-state/Cargo.toml:20:1
+   |
+20 | blake3 = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `cargo::unused_dependencies` is set to `warn` by default
+help: consider removing the dependency on `blake3`
+warning: unused dependency `serde_bytes`
+  --> crates/ecl-pipeline-state/Cargo.toml:16:1
+   |
+16 | serde_bytes = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: consider removing the dependency on `serde_bytes`
+warning: `ecl-pipeline-state` (manifest) generated 2 warnings
+warning: unused dependency `tracing`
+  --> crates/ecl-secrets/Cargo.toml:16:1
+   |
+16 | tracing = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `cargo::unused_dependencies` is set to `warn` by default
+help: consider removing the dependency on `tracing`
+warning: `ecl-secrets` (manifest) generated 1 warning
+warning: unused dependency `ecl-adapter-fs`
+  --> crates/ecl-stages/Cargo.toml:16:1
+   |
+16 | ecl-adapter-fs = { path = "../ecl-adapter-fs", version = "0.5.0" }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `cargo::unused_dependencies` is set to `warn` by default
+help: consider removing the dependency on `ecl-adapter-fs`
+warning: unused dependency `ecl-secrets`
+  --> crates/ecl-stages/Cargo.toml:17:1
+   |
+17 | ecl-secrets = { path = "../ecl-secrets", version = "0.5.0" }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: consider removing the dependency on `ecl-secrets`
+warning: unused dependency `pgp`
+  --> crates/ecl-stages/Cargo.toml:32:1
+   |
+32 | pgp = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: consider removing the dependency on `pgp`
+warning: `ecl-stages` (manifest) generated 3 warnings
+warning: unused dependency `ecl-steps`
+  --> crates/ecl-workflows/Cargo.toml:19:1
+   |
+19 | ecl-steps = { version = "0.5.0", path = "../ecl-steps" }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `cargo::unused_dependencies` is set to `warn` by default
+help: consider removing the dependency on `ecl-steps`
+warning: `ecl-workflows` (manifest) generated 1 warning
+warning: unused dependency `fabryk-core`
+  --> crates/fabryk-acl/Cargo.toml:13:1
+   |
+13 | fabryk-core = { version = "0.5.0", path = "../fabryk-core" }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `cargo::unused_dependencies` is set to `warn` by default
+help: consider removing the dependency on `fabryk-core`
+warning: `fabryk-acl` (manifest) generated 1 warning
+warning: unused dependency `serde`
+  --> crates/fabryk-auth/Cargo.toml:15:1
+   |
+15 | serde = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `cargo::unused_dependencies` is set to `warn` by default
+help: consider removing the dependency on `serde`
+warning: `fabryk-auth` (manifest) generated 1 warning
+warning: unused dependency `async-trait`
+  --> crates/fabryk-core/Cargo.toml:15:1
+   |
+15 | async-trait = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `cargo::unused_dependencies` is set to `warn` by default
+help: consider removing the dependency on `async-trait`
+warning: unused dependency `glob`
+  --> crates/fabryk-core/Cargo.toml:27:1
+   |
+27 | glob = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: consider removing the dependency on `glob`
+warning: unused dependency `shellexpand`
+  --> crates/fabryk-core/Cargo.toml:28:1
+   |
+28 | shellexpand = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: consider removing the dependency on `shellexpand`
+warning: `fabryk-core` (manifest) generated 3 warnings
+warning: unused dependency `memmap2`
+  --> crates/fabryk-graph/Cargo.toml:41:1
+   |
+41 | memmap2 = { workspace = true, optional = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `cargo::unused_dependencies` is set to `warn` by default
+help: consider removing the dependency on `memmap2`
+warning: unused dependency `rkyv`
+  --> crates/fabryk-graph/Cargo.toml:40:1
+   |
+40 | rkyv = { workspace = true, optional = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: consider removing the dependency on `rkyv`
+warning: `fabryk-graph` (manifest) generated 2 warnings
+warning: unused dependency `log`
+  --> crates/fabryk-redis/Cargo.toml:28:1
+   |
+28 | log = { workspace = true }
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `cargo::unused_dependencies` is set to `warn` by default
+help: consider removing the dependency on `log`
+warning: `fabryk-redis` (manifest) generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4m 03s

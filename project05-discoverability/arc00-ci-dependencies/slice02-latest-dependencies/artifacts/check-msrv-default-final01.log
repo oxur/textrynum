@@ -1,0 +1,304 @@
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+    Checking ecl-sink-kafka v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-kafka)
+    Checking fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+    Checking ecl-pipeline-state v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-state)
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+error[E0432]: unresolved import `fabryk_fts::TantivySearch`
+   --> crates/fabryk-fts/examples/cc_tantivy_new_reader.rs:3:61
+    |
+  3 | use fabryk_fts::{SearchBackend, SearchConfig, SearchParams, TantivySearch};
+    |                                                             ^^^^^^^^^^^^^ no `TantivySearch` in the root
+    |
+note: found an item that was configured out
+   --> crates/fabryk-fts/src/lib.rs:135:25
+    |
+134 | #[cfg(feature = "fts-tantivy")]
+    |       ----------------------- the item is gated behind the `fts-tantivy` feature
+135 | pub use tantivy_search::TantivySearch;
+    |                         ^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `fabryk-fts` (example "cc_tantivy_new_reader") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error[E0432]: unresolved import `arrow_array`
+ --> crates/fabryk-vector/examples/cc_lance_new_reader.rs:3:5
+  |
+3 | use arrow_array::{Array, FixedSizeListArray, Float32Array, StringArray};
+  |     ^^^^^^^^^^^ use of unresolved module or unlinked crate `arrow_array`
+  |
+  = help: if you wanted to use a crate named `arrow_array`, use `cargo add arrow_array` to add it to your `Cargo.toml`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `lancedb`
+ --> crates/fabryk-vector/examples/cc_lance_new_reader.rs:7:5
+  |
+7 | use lancedb::query::ExecutableQuery;
+  |     ^^^^^^^ use of unresolved module or unlinked crate `lancedb`
+  |
+  = help: if you wanted to use a crate named `lancedb`, use `cargo add lancedb` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `arrow_schema`
+ --> crates/fabryk-vector/examples/cc_lance_new_reader.rs:4:5
+  |
+4 | use arrow_schema::DataType;
+  |     ^^^^^^^^^^^^ use of unresolved module or unlinked crate `arrow_schema`
+  |
+  = help: if you wanted to use a crate named `arrow_schema`, use `cargo add arrow_schema` to add it to your `Cargo.toml`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `lancedb`
+  --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:10:5
+   |
+10 | use lancedb::query::ExecutableQuery;
+   |     ^^^^^^^ use of unresolved module or unlinked crate `lancedb`
+   |
+   = help: if you wanted to use a crate named `lancedb`, use `cargo add lancedb` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `fabryk_vector::LancedbBackend`
+   --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:6:42
+    |
+  6 |     EmbeddedDocument, EmbeddingProvider, LancedbBackend, VectorBackend, VectorDocument,
+    |                                          ^^^^^^^^^^^^^^ no `LancedbBackend` in the root
+    |
+note: found an item that was configured out
+   --> crates/fabryk-vector/src/lib.rs:108:18
+    |
+107 | #[cfg(feature = "vector-lancedb")]
+    |       -------------------------- the item is gated behind the `vector-lancedb` feature
+108 | pub use lancedb::LancedbBackend;
+    |                  ^^^^^^^^^^^^^^
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `lancedb`
+  --> crates/fabryk-vector/examples/cc_lance_new_reader.rs:19:20
+   |
+19 |     let database = lancedb::connect(database_path.to_str().ok_or("UTF-8 database path")?)
+   |                    ^^^^^^^ use of unresolved module or unlinked crate `lancedb`
+   |
+   = help: if you wanted to use a crate named `lancedb`, use `cargo add lancedb` to add it to your `Cargo.toml`
+
+error[E0282]: type annotations needed
+  --> crates/fabryk-vector/examples/cc_lance_new_reader.rs:19:9
+   |
+19 |     let database = lancedb::connect(database_path.to_str().ok_or("UTF-8 database path")?)
+   |         ^^^^^^^^
+...
+22 |     let table = database.open_table("cc_vectors").execute().await?;
+   |                 -------- type must be known at this point
+   |
+help: consider giving `database` an explicit type
+   |
+19 |     let database: /* Type */ = lancedb::connect(database_path.to_str().ok_or("UTF-8 database path")?)
+   |                 ++++++++++++
+
+error[E0282]: type annotations needed
+  --> crates/fabryk-vector/examples/cc_lance_new_reader.rs:22:9
+   |
+22 |     let table = database.open_table("cc_vectors").execute().await?;
+   |         ^^^^^
+23 |     let schema = table.schema().await?;
+   |                  ----- type must be known at this point
+   |
+help: consider giving `table` an explicit type
+   |
+22 |     let table: /* Type */ = database.open_table("cc_vectors").execute().await?;
+   |              ++++++++++++
+
+error[E0282]: type annotations needed
+  --> crates/fabryk-vector/examples/cc_lance_new_reader.rs:23:9
+   |
+23 |     let schema = table.schema().await?;
+   |         ^^^^^^
+24 |     assert_eq!(
+25 |         schema
+   |         ------ type must be known at this point
+   |
+help: consider giving `schema` an explicit type
+   |
+23 |     let schema: /* Type */ = table.schema().await?;
+   |               ++++++++++++
+
+error[E0282]: type annotations needed
+  --> crates/fabryk-vector/examples/cc_lance_new_reader.rs:28:19
+   |
+28 |             .map(|field| field.name().as_str())
+   |                   ^^^^^  ----- type must be known at this point
+   |
+help: consider giving this closure parameter an explicit type
+   |
+28 |             .map(|field: /* Type */| field.name().as_str())
+   |                        ++++++++++++
+
+error[E0282]: type annotations needed
+  --> crates/fabryk-vector/examples/cc_lance_new_reader.rs:51:19
+   |
+51 |       let batches = table
+   |  ___________________^
+52 | |         .query()
+53 | |         .execute()
+54 | |         .await?
+   | |_______________^ cannot infer type
+
+error[E0282]: type annotations needed
+  --> crates/fabryk-vector/examples/cc_lance_new_reader.rs:59:19
+   |
+59 |         let ids = batch
+   |                   ^^^^^ cannot infer type
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `arrow_schema`
+  --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:62:37
+   |
+62 |     let unrelated_schema = Arc::new(arrow_schema::Schema::new(vec![arrow_schema::Field::new(
+   |                                     ^^^^^^^^^^^^ use of unresolved module or unlinked crate `arrow_schema`
+   |
+   = help: if you wanted to use a crate named `arrow_schema`, use `cargo add arrow_schema` to add it to your `Cargo.toml`
+
+Some errors have detailed explanations: E0282, E0432, E0433.
+For more information about an error, try `rustc --explain E0282`.
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `arrow_schema`
+  --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:64:9
+   |
+64 |         arrow_schema::DataType::Utf8,
+   |         ^^^^^^^^^^^^ use of unresolved module or unlinked crate `arrow_schema`
+   |
+   = help: if you wanted to use a crate named `arrow_schema`, use `cargo add arrow_schema` to add it to your `Cargo.toml`
+
+error: could not compile `fabryk-vector` (example "cc_lance_new_reader") due to 10 previous errors
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `arrow_schema`
+  --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:62:68
+   |
+62 |     let unrelated_schema = Arc::new(arrow_schema::Schema::new(vec![arrow_schema::Field::new(
+   |                                                                    ^^^^^^^^^^^^ use of unresolved module or unlinked crate `arrow_schema`
+   |
+   = help: if you wanted to use a crate named `arrow_schema`, use `cargo add arrow_schema` to add it to your `Cargo.toml`
+help: consider importing this struct
+   |
+ 3 + use std::mem::type_info::Field;
+   |
+help: if you import `Field`, refer to it directly
+   |
+62 -     let unrelated_schema = Arc::new(arrow_schema::Schema::new(vec![arrow_schema::Field::new(
+62 +     let unrelated_schema = Arc::new(arrow_schema::Schema::new(vec![Field::new(
+   |
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `lancedb`
+  --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:61:22
+   |
+61 |     let connection = lancedb::connect(uri).execute().await?;
+   |                      ^^^^^^^ use of unresolved module or unlinked crate `lancedb`
+   |
+   = help: if you wanted to use a crate named `lancedb`, use `cargo add lancedb` to add it to your `Cargo.toml`
+
+error[E0282]: type annotations needed
+  --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:61:9
+   |
+61 |     let connection = lancedb::connect(uri).execute().await?;
+   |         ^^^^^^^^^^
+...
+67 |     connection
+   |     ---------- type must be known at this point
+   |
+help: consider giving `connection` an explicit type
+   |
+61 |     let connection: /* Type */ = lancedb::connect(uri).execute().await?;
+   |                   ++++++++++++
+
+error[E0282]: type annotations needed
+  --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:73:9
+   |
+73 |     let backend =
+   |         ^^^^^^^
+74 |         LancedbBackend::build(uri, "cc_vectors", Arc::new(ZeroProvider), documents()).await?;
+75 |     let results = backend
+   |                   ------- type must be known at this point
+   |
+help: consider giving `backend` an explicit type
+   |
+73 |     let backend: /* Type */ =
+   |                ++++++++++++
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `lancedb`
+   --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:127:22
+    |
+127 |     let connection = lancedb::connect(uri).execute().await?;
+    |                      ^^^^^^^ use of unresolved module or unlinked crate `lancedb`
+    |
+    = help: if you wanted to use a crate named `lancedb`, use `cargo add lancedb` to add it to your `Cargo.toml`
+
+error[E0282]: type annotations needed
+   --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:127:9
+    |
+127 |     let connection = lancedb::connect(uri).execute().await?;
+    |         ^^^^^^^^^^
+128 |     let tables = connection.table_names().execute().await?;
+    |                  ---------- type must be known at this point
+    |
+help: consider giving `connection` an explicit type
+    |
+127 |     let connection: /* Type */ = lancedb::connect(uri).execute().await?;
+    |                   ++++++++++++
+
+error[E0282]: type annotations needed
+   --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:128:9
+    |
+128 |     let tables = connection.table_names().execute().await?;
+    |         ^^^^^^
+129 |     assert!(tables.iter().any(|table| table == "cc_vectors"));
+    |             ------ type must be known at this point
+    |
+help: consider giving `tables` an explicit type
+    |
+128 |     let tables: /* Type */ = connection.table_names().execute().await?;
+    |               ++++++++++++
+
+error[E0282]: type annotations needed
+   --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:133:9
+    |
+133 |     let table = connection.open_table("cc_vectors").execute().await?;
+    |         ^^^^^
+134 |     let batches = table
+    |                   ----- type must be known at this point
+    |
+help: consider giving `table` an explicit type
+    |
+133 |     let table: /* Type */ = connection.open_table("cc_vectors").execute().await?;
+    |              ++++++++++++
+
+error[E0282]: type annotations needed
+   --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:134:19
+    |
+134 |       let batches = table
+    |  ___________________^
+135 | |         .query()
+136 | |         .execute()
+137 | |         .await?
+    | |_______________^ cannot infer type
+
+error[E0282]: type annotations needed
+   --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:134:9
+    |
+134 |     let batches = table
+    |         ^^^^^^^
+...
+141 |         batches.iter().map(|batch| batch.num_rows()).sum::<usize>(),
+    |         ------- type must be known at this point
+    |
+help: consider giving `batches` an explicit type
+    |
+134 |     let batches: /* Type */ = table
+    |                ++++++++++++
+
+error[E0282]: type annotations needed
+   --> crates/fabryk-vector/examples/cc_lance_rebuild_query.rs:141:29
+    |
+141 |         batches.iter().map(|batch| batch.num_rows()).sum::<usize>(),
+    |                             ^^^^^  ----- type must be known at this point
+    |
+help: consider giving this closure parameter an explicit type
+    |
+141 |         batches.iter().map(|batch: /* Type */| batch.num_rows()).sum::<usize>(),
+    |                                  ++++++++++++
+
+error: could not compile `fabryk-vector` (example "cc_lance_rebuild_query") due to 15 previous errors

@@ -1,0 +1,11 @@
+SOURCE_HEAD=719c58f245fe4a9115c7c0391d3e268c99157e2f
+COMMAND=["cargo", "+1.94.0", "check", "--locked", "-p", "fabryk-mcp", "--no-default-features", "--features", "http", "--all-targets"]
+    Checking fabryk-mcp-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-core)
+    Checking fabryk-mcp-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-fts)
+    Checking fabryk-mcp-semantic v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-semantic)
+    Checking fabryk-mcp-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-graph)
+    Checking fabryk-mcp-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-content)
+    Checking fabryk-mcp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 19.63s
+
+CARGO_EXIT_STATUS=0

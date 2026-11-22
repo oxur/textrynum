@@ -1,0 +1,482 @@
+warning: unused workspace dependency `russh-keys`
+   --> Cargo.toml:202:1
+    |
+202 | russh-keys = "0.49.2"
+    | ^^^^^^^^^^
+    |
+    = note: `cargo::unused_workspace_dependencies` is set to `warn` by default
+help: consider removing the workspace dependency `russh-keys`
+warning: unused workspace dependency `tokio-stream`
+   --> Cargo.toml:194:1
+    |
+194 | tokio-stream = "0.1.19"
+    | ^^^^^^^^^^^^
+    |
+help: consider removing the workspace dependency `tokio-stream`
+warning: unused field `description` in `workspace.package`
+  --> Cargo.toml:60:1
+   |
+60 | description = "Textrynum — Knowledge Fabric Workshop (Fabryk + ECL)"
+   | ^^^^^^^^^^^
+   |
+   = note: `cargo::unused_workspace_package_fields` is set to `warn` by default
+help: consider removing the field `workspace.package.description`
+warning: workspace (manifest) generated 3 warnings
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-gdrive/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-gdrive` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-graph/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-graph` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-redis/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-redis` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-secrets/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-secrets` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-fts/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-fts` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-auth/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-auth` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-core/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-core` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-sink-gcs/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-sink-gcs` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-core/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-core` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-gcp/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-gcp` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-vector/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-vector` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-acl/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-acl` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline-state/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline-state` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline-topo/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline-topo` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-cli/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-cli` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-cli/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-cli` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-auth/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-auth` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-content/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-content` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-zapier/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-zapier` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-core/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-core` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-graph/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-graph` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-content/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-content` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-steps/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-steps` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-gcp-auth/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-gcp-auth` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/textrynum-util/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `textrynum-util` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-fs/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-fs` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-slack/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-slack` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-gcs/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-gcs` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-auth-google/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-auth-google` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-fts/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-fts` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+  --> crates/ecl-workflows/Cargo.toml:13:1
+   |
+12 | repository.workspace = true
+   | ----------
+13 | homepage.workspace = true
+   | ^^^^^^^^
+   |
+   = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-workflows` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-sftp/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-sftp` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline-spec/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline-spec` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-stages/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-stages` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-semantic/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-semantic` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/design/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-design` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-sink-kafka/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-sink-kafka` (manifest) generated 1 warning
+   Compiling fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.92s
+     Running `target/debug/examples/cc_slice02_tantivy_new_reader /private/tmp/cc-slice02-tantivy-iter03-wGOREs`
+upgraded Tantivy product reader retrieved each of three old documents exactly once across harmonics/rhythmic searches, with every SearchResult field asserted, plus stemming and category filtering
+
+CARGO_EXIT_STATUS=0
+OWNED_OLD_INDEX_COPY=/private/tmp/cc-slice02-tantivy-iter03-wGOREs

@@ -1,0 +1,15 @@
+SOURCE_HEAD=719c58f245fe4a9115c7c0391d3e268c99157e2f
+BINARY_SHA256=03cc35fb99d31eb1fb47f226c001795e8845b78422dcb3cd99e39aa747047ca6
+COMPILE_WITNESS=current-turn4 item150, test-release-iteration03-ort-only-targets01.log
+COMMAND=["/Users/oubiwann/lab/oxur/textrynum/target/release/build/fabryk-vector/c648fc3e7cac4497/out/fabryk_vector-c648fc3e7cac4497", "fastembed::tests::", "--ignored", "--test-threads=1", "--nocapture"]
+
+running 4 tests
+test fastembed::tests::test_fastembed_deterministic ... ok
+test fastembed::tests::test_fastembed_embed_batch ... ok
+test fastembed::tests::test_fastembed_embed_single ... ok
+test fastembed::tests::test_fastembed_provider_creation ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 116 filtered out; finished in 4.20s
+
+
+TEST_EXIT_STATUS=0

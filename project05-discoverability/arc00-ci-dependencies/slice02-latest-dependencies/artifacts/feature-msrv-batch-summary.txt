@@ -1,0 +1,15 @@
+fabryk	graph-rkyv-cache	0
+fabryk	vector-lancedb	0
+fabryk	vector-fastembed	0
+fabryk-cli	vector-fastembed	0
+fabryk-fts	fts-tantivy	0
+fabryk-graph	graph-rkyv-cache	0
+fabryk-graph	test-utils	0
+fabryk-mcp	http	0
+fabryk-mcp	fts-tantivy	0
+fabryk-mcp	graph-rkyv-cache	0
+fabryk-mcp-core	http	0
+fabryk-mcp-fts	fts-tantivy	0
+fabryk-mcp-graph	graph-rkyv-cache	0
+fabryk-vector	vector-lancedb	0
+fabryk-vector	vector-fastembed	0

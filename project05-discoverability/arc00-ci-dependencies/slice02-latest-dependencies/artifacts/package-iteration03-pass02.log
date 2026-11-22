@@ -1,0 +1,123 @@
+   Packaging ecl v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl)
+    Packaged 6 files, 3.6KiB (2.0KiB compressed)
+   Packaging ecl-pipeline-spec v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec)
+    Updating crates.io index
+    Packaged 11 files, 72.1KiB (17.1KiB compressed)
+   Packaging ecl-pipeline-state v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-state)
+    Updating crates.io index
+    Packaged 12 files, 110.7KiB (21.3KiB compressed)
+   Packaging ecl-pipeline-topo v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo)
+    Updating crates.io index
+    Packaged 10 files, 114.8KiB (26.0KiB compressed)
+   Packaging ecl-adapter-fs v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-fs)
+    Updating crates.io index
+    Packaged 6 files, 53.7KiB (13.1KiB compressed)
+   Packaging ecl-gcp-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-gcp-auth)
+    Updating crates.io index
+    Packaged 8 files, 80.1KiB (20.9KiB compressed)
+   Packaging ecl-adapter-gcs v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-gcs)
+    Updating crates.io index
+    Packaged 8 files, 92.8KiB (23.1KiB compressed)
+   Packaging ecl-adapter-gdrive v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-gdrive)
+    Updating crates.io index
+    Packaged 8 files, 115.8KiB (26.2KiB compressed)
+   Packaging ecl-secrets v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-secrets)
+    Updating crates.io index
+    Packaged 7 files, 17.0KiB (5.2KiB compressed)
+   Packaging ecl-adapter-sftp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-sftp)
+    Updating crates.io index
+    Packaged 5 files, 80.5KiB (20.8KiB compressed)
+   Packaging ecl-adapter-slack v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-slack)
+    Updating crates.io index
+    Packaged 6 files, 43.2KiB (11.1KiB compressed)
+   Packaging ecl-adapter-zapier v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-adapter-zapier)
+    Updating crates.io index
+    Packaged 12 files, 102.7KiB (25.1KiB compressed)
+   Packaging ecl-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-core)
+    Updating crates.io index
+    Packaged 18 files, 119.1KiB (28.8KiB compressed)
+   Packaging ecl-stages v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-stages)
+    Updating crates.io index
+    Packaged 19 files, 297.9KiB (55.1KiB compressed)
+   Packaging ecl-pipeline v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline)
+    Updating crates.io index
+    Packaged 24 files, 342.7KiB (66.4KiB compressed)
+   Packaging ecl-sink-gcs v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-gcs)
+    Updating crates.io index
+    Packaged 5 files, 80.6KiB (21.1KiB compressed)
+   Packaging ecl-sink-kafka v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-kafka)
+    Updating crates.io index
+    Packaged 7 files, 104.9KiB (26.2KiB compressed)
+   Packaging ecl-steps v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-steps)
+    Updating crates.io index
+    Packaged 6 files, 59.2KiB (16.2KiB compressed)
+   Packaging ecl-workflows v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-workflows)
+    Updating crates.io index
+    Packaged 17 files, 98.2KiB (24.3KiB compressed)
+   Packaging ecl-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-cli)
+    Updating crates.io index
+    Packaged 13 files, 149.8KiB (38.3KiB compressed)
+   Packaging ecl-design v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/design)
+    Updating crates.io index
+    Packaged 9 files, 91.8KiB (24.7KiB compressed)
+   Packaging fabryk-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core)
+    Updating crates.io index
+    Packaged 20 files, 154.1KiB (32.9KiB compressed)
+   Packaging fabryk-acl v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-acl)
+    Updating crates.io index
+    Packaged 6 files, 17.3KiB (5.4KiB compressed)
+   Packaging fabryk-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-auth)
+    Updating crates.io index
+    Packaged 8 files, 31.3KiB (8.9KiB compressed)
+   Packaging fabryk-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content)
+    Updating crates.io index
+    Packaged 17 files, 144.1KiB (31.0KiB compressed)
+   Packaging fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Updating crates.io index
+    Packaged 20 files, 250.8KiB (56.5KiB compressed)
+   Packaging fabryk-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-graph)
+    Updating crates.io index
+    Packaged 15 files, 239.9KiB (47.1KiB compressed)
+   Packaging fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+    Updating crates.io index
+    Packaged 16 files, 323.2KiB (72.6KiB compressed)
+   Packaging fabryk v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk)
+    Updating crates.io index
+    Packaged 6 files, 193.8KiB (49.6KiB compressed)
+   Packaging fabryk-auth-google v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-auth-google)
+    Updating crates.io index
+    Packaged 5 files, 61.3KiB (18.1KiB compressed)
+   Packaging fabryk-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli)
+    Updating crates.io index
+    Packaged 17 files, 276.8KiB (60.2KiB compressed)
+   Packaging fabryk-gcp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-gcp)
+    Updating crates.io index
+    Packaged 7 files, 20.0KiB (6.1KiB compressed)
+   Packaging fabryk-mcp-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-auth)
+    Updating crates.io index
+    Packaged 5 files, 21.0KiB (5.6KiB compressed)
+   Packaging fabryk-mcp-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-core)
+    Updating crates.io index
+    Packaged 22 files, 285.3KiB (59.8KiB compressed)
+   Packaging fabryk-mcp-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-content)
+    Updating crates.io index
+    Packaged 12 files, 189.9KiB (34.6KiB compressed)
+   Packaging fabryk-mcp-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-fts)
+    Updating crates.io index
+    Packaged 7 files, 79.5KiB (20.4KiB compressed)
+   Packaging fabryk-mcp-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-graph)
+    Updating crates.io index
+    Packaged 8 files, 135.8KiB (24.1KiB compressed)
+   Packaging fabryk-mcp-semantic v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-semantic)
+    Updating crates.io index
+    Packaged 6 files, 62.8KiB (15.6KiB compressed)
+   Packaging fabryk-mcp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp)
+    Updating crates.io index
+    Packaged 6 files, 73.0KiB (20.6KiB compressed)
+   Packaging fabryk-redis v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-redis)
+    Updating crates.io index
+    Packaged 8 files, 33.1KiB (9.1KiB compressed)
+   Packaging textrynum-util v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util)
+    Updating crates.io index
+    Packaged 15 files, 93.2KiB (18.2KiB compressed)
+GATE_STATUS=0

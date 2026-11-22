@@ -1,0 +1,8 @@
+{
+  "content_hash": "golden-lance-content-hash-42",
+  "document_count": 3,
+  "embedding_dimension": 4,
+  "built_at": "2026-03-13T10:00:00Z",
+  "provider": "cc-zero-oracle",
+  "model": "fixed-4d-fixture-v1"
+}

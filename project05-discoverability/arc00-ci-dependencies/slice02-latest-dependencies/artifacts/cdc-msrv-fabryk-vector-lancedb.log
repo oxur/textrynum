@@ -1,0 +1,7 @@
+SOURCE_HEAD=719c58f245fe4a9115c7c0391d3e268c99157e2f
+COMMAND=["cargo", "+1.94.0", "check", "--locked", "-p", "fabryk", "--no-default-features", "--features", "vector-lancedb", "--all-targets"]
+    Checking fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+    Checking fabryk v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 49.89s
+
+CARGO_EXIT_STATUS=0

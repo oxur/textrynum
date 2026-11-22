@@ -1,0 +1,66 @@
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+   Compiling serde_core v1.0.229
+    Checking log v0.4.35
+   Compiling serde_json v1.0.154
+    Checking tracing v0.1.44
+    Checking v_frame v0.3.9
+    Checking rand_chacha v0.9.0
+    Checking tower v0.5.3
+    Checking half v2.7.1
+    Checking lazy_static v1.5.1
+    Checking winnow v0.7.15
+   Compiling clap_derive v4.6.9
+    Checking clap_builder v4.6.7
+    Checking rustls v0.23.46
+    Checking ureq-proto v0.7.1
+    Checking tracing-log v0.2.0
+    Checking h2 v0.4.20
+    Checking sharded-slab v0.1.7
+    Checking rand v0.9.5
+    Checking exr v1.74.3
+    Checking tiff v0.11.3
+    Checking tower-http v0.6.11
+    Checking clap v4.6.9
+    Checking tracing-subscriber v0.3.23
+    Checking av1-grain v0.2.5
+    Checking av-scenechange v0.14.1
+    Checking serde v1.0.229
+    Checking monostate v0.1.18
+    Checking hashbrown v0.16.1
+    Checking serde_spanned v1.1.3
+    Checking toml_datetime v1.1.3+spec-1.1.0
+    Checking toml_datetime v0.7.5+spec-1.1.0
+    Checking hyper v1.12.0
+    Checking toml v0.9.12+spec-1.1.0
+    Checking toml_edit v0.25.20+spec-1.1.0
+    Checking toml v1.2.2+spec-1.1.0
+    Checking serde_urlencoded v0.7.1
+    Checking yaml_serde v0.10.7
+    Checking spm_precompiled v0.1.4
+    Checking dary_heap v0.3.9
+    Checking ahash v0.8.12
+    Checking compact_str v0.9.1
+    Checking chrono v0.4.45
+    Checking ureq v3.5.2
+    Checking safetensors v0.8.0
+    Checking hyper-util v0.1.21
+    Checking confyg v0.3.0
+    Checking fabryk-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core)
+    Checking rav1e v0.8.1
+    Checking hyper-tls v0.6.0
+    Checking tokenizers v0.23.2
+    Checking fabryk-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content)
+    Checking reqwest v0.12.28
+    Checking fabryk-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-graph)
+    Checking hf-hub v0.5.0
+    Checking ravif v0.13.0
+    Checking image v0.25.10
+    Checking fastembed v7.7.1
+    Checking fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+    Checking fabryk-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 43.32s

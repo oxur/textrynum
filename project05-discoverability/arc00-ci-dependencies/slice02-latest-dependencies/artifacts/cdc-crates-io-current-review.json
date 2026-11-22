@@ -1,0 +1,577 @@
+{
+  "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+  "queried_at_utc": "2026-11-22T03:58:10.972344+00:00",
+  "source": "authoritative crates.io API current metadata and selected stable/yanked rows",
+  "scope": "all63retained direct package names, including declaration-only workspace entries; overall latestArrow exception requires upstreamLance compatibility proof separately",
+  "results": [
+    {
+      "name": "anyhow",
+      "source": "https://crates.io/api/v1/crates/anyhow",
+      "latest_stable": "1.0.104",
+      "selected": "1.0.104",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "apache-avro",
+      "source": "https://crates.io/api/v1/crates/apache-avro",
+      "latest_stable": "0.23.0",
+      "selected": "0.23.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "arrow-array",
+      "source": "https://crates.io/api/v1/crates/arrow-array",
+      "latest_stable": "60.2.0",
+      "selected": "58.4.2",
+      "selected_found": true,
+      "selected_yanked": false,
+      "latest_compatible_58": "58.4.2",
+      "accepted_selection": true
+    },
+    {
+      "name": "arrow-schema",
+      "source": "https://crates.io/api/v1/crates/arrow-schema",
+      "latest_stable": "60.2.0",
+      "selected": "58.4.2",
+      "selected_found": true,
+      "selected_yanked": false,
+      "latest_compatible_58": "58.4.2",
+      "accepted_selection": true
+    },
+    {
+      "name": "async-trait",
+      "source": "https://crates.io/api/v1/crates/async-trait",
+      "latest_stable": "0.1.92",
+      "selected": "0.1.92",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "async-walkdir",
+      "source": "https://crates.io/api/v1/crates/async-walkdir",
+      "latest_stable": "2.2.0",
+      "selected": "2.2.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "axum",
+      "source": "https://crates.io/api/v1/crates/axum",
+      "latest_stable": "0.8.9",
+      "selected": "0.8.9",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "backon",
+      "source": "https://crates.io/api/v1/crates/backon",
+      "latest_stable": "1.6.0",
+      "selected": "1.6.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "base64",
+      "source": "https://crates.io/api/v1/crates/base64",
+      "latest_stable": "0.23.1",
+      "selected": "0.23.1",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "blake3",
+      "source": "https://crates.io/api/v1/crates/blake3",
+      "latest_stable": "1.8.7",
+      "selected": "1.8.7",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "chrono",
+      "source": "https://crates.io/api/v1/crates/chrono",
+      "latest_stable": "0.4.45",
+      "selected": "0.4.45",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "chrono-tz",
+      "source": "https://crates.io/api/v1/crates/chrono-tz",
+      "latest_stable": "0.10.4",
+      "selected": "0.10.4",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "clap",
+      "source": "https://crates.io/api/v1/crates/clap",
+      "latest_stable": "4.6.9",
+      "selected": "4.6.9",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "confyg",
+      "source": "https://crates.io/api/v1/crates/confyg",
+      "latest_stable": "0.3.0",
+      "selected": "0.3.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "csv",
+      "source": "https://crates.io/api/v1/crates/csv",
+      "latest_stable": "1.4.0",
+      "selected": "1.4.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "dirs",
+      "source": "https://crates.io/api/v1/crates/dirs",
+      "latest_stable": "7.0.0",
+      "selected": "7.0.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "failsafe",
+      "source": "https://crates.io/api/v1/crates/failsafe",
+      "latest_stable": "1.3.0",
+      "selected": "1.3.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "fastembed",
+      "source": "https://crates.io/api/v1/crates/fastembed",
+      "latest_stable": "7.7.1",
+      "selected": "7.7.1",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "flate2",
+      "source": "https://crates.io/api/v1/crates/flate2",
+      "latest_stable": "1.1.11",
+      "selected": "1.1.11",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "futures",
+      "source": "https://crates.io/api/v1/crates/futures",
+      "latest_stable": "0.3.34",
+      "selected": "0.3.34",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "glob",
+      "source": "https://crates.io/api/v1/crates/glob",
+      "latest_stable": "0.3.4",
+      "selected": "0.3.4",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "http",
+      "source": "https://crates.io/api/v1/crates/http",
+      "latest_stable": "1.5.0",
+      "selected": "1.5.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "jsonwebtoken",
+      "source": "https://crates.io/api/v1/crates/jsonwebtoken",
+      "latest_stable": "12.0.0",
+      "selected": "12.0.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "lancedb",
+      "source": "https://crates.io/api/v1/crates/lancedb",
+      "latest_stable": "0.41.0",
+      "selected": "0.41.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "log",
+      "source": "https://crates.io/api/v1/crates/log",
+      "latest_stable": "0.4.35",
+      "selected": "0.4.35",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "memmap2",
+      "source": "https://crates.io/api/v1/crates/memmap2",
+      "latest_stable": "0.9.12",
+      "selected": "0.9.12",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "oxur-odm",
+      "source": "https://crates.io/api/v1/crates/oxur-odm",
+      "latest_stable": "0.3.5",
+      "selected": "0.3.5",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "petgraph",
+      "source": "https://crates.io/api/v1/crates/petgraph",
+      "latest_stable": "0.8.3",
+      "selected": "0.8.3",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "pgp",
+      "source": "https://crates.io/api/v1/crates/pgp",
+      "latest_stable": "0.21.1",
+      "selected": "0.21.1",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "proptest",
+      "source": "https://crates.io/api/v1/crates/proptest",
+      "latest_stable": "1.12.0",
+      "selected": "1.12.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "pulldown-cmark",
+      "source": "https://crates.io/api/v1/crates/pulldown-cmark",
+      "latest_stable": "0.13.6",
+      "selected": "0.13.6",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "rdkafka",
+      "source": "https://crates.io/api/v1/crates/rdkafka",
+      "latest_stable": "0.40.0",
+      "selected": "0.40.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "redb",
+      "source": "https://crates.io/api/v1/crates/redb",
+      "latest_stable": "5.0.0",
+      "selected": "5.0.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "redis",
+      "source": "https://crates.io/api/v1/crates/redis",
+      "latest_stable": "1.8.2",
+      "selected": "1.8.2",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "regex",
+      "source": "https://crates.io/api/v1/crates/regex",
+      "latest_stable": "1.13.2",
+      "selected": "1.13.2",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "reqwest",
+      "source": "https://crates.io/api/v1/crates/reqwest",
+      "latest_stable": "0.13.5",
+      "selected": "0.13.5",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "rkyv",
+      "source": "https://crates.io/api/v1/crates/rkyv",
+      "latest_stable": "0.8.18",
+      "selected": "0.8.18",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "rmcp",
+      "source": "https://crates.io/api/v1/crates/rmcp",
+      "latest_stable": "3.11.0",
+      "selected": "3.11.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "russh",
+      "source": "https://crates.io/api/v1/crates/russh",
+      "latest_stable": "0.65.4",
+      "selected": "0.65.4",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "russh-keys",
+      "source": "https://crates.io/api/v1/crates/russh-keys",
+      "latest_stable": "0.49.2",
+      "selected": "0.49.2",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "russh-sftp",
+      "source": "https://crates.io/api/v1/crates/russh-sftp",
+      "latest_stable": "4.0.0",
+      "selected": "4.0.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "schemars",
+      "source": "https://crates.io/api/v1/crates/schemars",
+      "latest_stable": "1.2.3",
+      "selected": "1.2.3",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "serde",
+      "source": "https://crates.io/api/v1/crates/serde",
+      "latest_stable": "1.0.229",
+      "selected": "1.0.229",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "serde_bytes",
+      "source": "https://crates.io/api/v1/crates/serde_bytes",
+      "latest_stable": "0.11.19",
+      "selected": "0.11.19",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "serde_json",
+      "source": "https://crates.io/api/v1/crates/serde_json",
+      "latest_stable": "1.0.154",
+      "selected": "1.0.154",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "shellexpand",
+      "source": "https://crates.io/api/v1/crates/shellexpand",
+      "latest_stable": "3.1.2",
+      "selected": "3.1.2",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "strsim",
+      "source": "https://crates.io/api/v1/crates/strsim",
+      "latest_stable": "0.11.1",
+      "selected": "0.11.1",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "tantivy",
+      "source": "https://crates.io/api/v1/crates/tantivy",
+      "latest_stable": "0.27.0",
+      "selected": "0.27.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "tempfile",
+      "source": "https://crates.io/api/v1/crates/tempfile",
+      "latest_stable": "3.27.0",
+      "selected": "3.27.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "thiserror",
+      "source": "https://crates.io/api/v1/crates/thiserror",
+      "latest_stable": "2.0.21",
+      "selected": "2.0.21",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "tokio",
+      "source": "https://crates.io/api/v1/crates/tokio",
+      "latest_stable": "1.54.1",
+      "selected": "1.54.1",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "tokio-stream",
+      "source": "https://crates.io/api/v1/crates/tokio-stream",
+      "latest_stable": "0.1.19",
+      "selected": "0.1.19",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "tokio-test",
+      "source": "https://crates.io/api/v1/crates/tokio-test",
+      "latest_stable": "0.4.6",
+      "selected": "0.4.6",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "toml",
+      "source": "https://crates.io/api/v1/crates/toml",
+      "latest_stable": "1.2.2+spec-1.1.0",
+      "selected": "1.2.2+spec-1.1.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "toml_edit",
+      "source": "https://crates.io/api/v1/crates/toml_edit",
+      "latest_stable": "0.25.20+spec-1.1.0",
+      "selected": "0.25.20+spec-1.1.0",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "tower",
+      "source": "https://crates.io/api/v1/crates/tower",
+      "latest_stable": "0.5.3",
+      "selected": "0.5.3",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "tracing",
+      "source": "https://crates.io/api/v1/crates/tracing",
+      "latest_stable": "0.1.44",
+      "selected": "0.1.44",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "tracing-subscriber",
+      "source": "https://crates.io/api/v1/crates/tracing-subscriber",
+      "latest_stable": "0.3.23",
+      "selected": "0.3.23",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "twyg",
+      "source": "https://crates.io/api/v1/crates/twyg",
+      "latest_stable": "0.6.3",
+      "selected": "0.6.3",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "uuid",
+      "source": "https://crates.io/api/v1/crates/uuid",
+      "latest_stable": "1.29.3",
+      "selected": "1.29.3",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "wiremock",
+      "source": "https://crates.io/api/v1/crates/wiremock",
+      "latest_stable": "0.6.5",
+      "selected": "0.6.5",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "yaml_serde",
+      "source": "https://crates.io/api/v1/crates/yaml_serde",
+      "latest_stable": "0.10.7",
+      "selected": "0.10.7",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    },
+    {
+      "name": "zip",
+      "source": "https://crates.io/api/v1/crates/zip",
+      "latest_stable": "9.8.1",
+      "selected": "9.8.1",
+      "selected_found": true,
+      "selected_yanked": false,
+      "accepted_selection": true
+    }
+  ]
+}

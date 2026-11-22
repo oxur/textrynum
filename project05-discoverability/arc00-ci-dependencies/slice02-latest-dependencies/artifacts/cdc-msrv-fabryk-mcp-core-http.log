@@ -1,0 +1,6 @@
+SOURCE_HEAD=719c58f245fe4a9115c7c0391d3e268c99157e2f
+COMMAND=["cargo", "+1.94.0", "check", "--locked", "-p", "fabryk-mcp-core", "--no-default-features", "--features", "http", "--all-targets"]
+    Checking fabryk-mcp-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-core)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 6.87s
+
+CARGO_EXIT_STATUS=0

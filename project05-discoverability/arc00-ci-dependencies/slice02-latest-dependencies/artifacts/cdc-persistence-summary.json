@@ -1,0 +1,27 @@
+{
+  "source": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+  "original_fixture_files_verified": 27,
+  "owned_copy_root": "/var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/textrynum-cdc-persist-w7v2iwj0",
+  "results": [
+    {
+      "case": "redb",
+      "status": 0,
+      "log": "cdc-persistence-redb.log"
+    },
+    {
+      "case": "tantivy",
+      "status": 0,
+      "log": "cdc-persistence-tantivy.log"
+    },
+    {
+      "case": "lance-reader",
+      "status": 0,
+      "log": "cdc-persistence-lance-reader.log"
+    },
+    {
+      "case": "lance-rebuild",
+      "status": 0,
+      "log": "cdc-persistence-lance-rebuild.log"
+    }
+  ]
+}

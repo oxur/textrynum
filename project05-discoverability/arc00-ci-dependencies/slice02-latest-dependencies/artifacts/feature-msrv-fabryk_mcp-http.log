@@ -1,0 +1,62 @@
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+    Checking futures-channel v0.3.34
+   Compiling syn v3.0.10
+   Compiling syn v2.0.119
+    Checking getrandom v0.4.3
+    Checking cpufeatures v0.3.1
+    Checking unicode-normalization v0.1.26
+    Checking sha2 v0.11.1
+    Checking uuid v1.29.3
+    Checking rand v0.10.4
+   Compiling darling_core v0.24.1
+   Compiling serde_derive_internals v0.30.0
+   Compiling tracing-attributes v0.1.31
+   Compiling tokio-macros v2.7.2
+   Compiling futures-macro v0.3.34
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling async-trait v0.1.92
+   Compiling ref-cast-impl v1.0.27
+   Compiling schemars_derive v1.2.3
+   Compiling darling_macro v0.24.1
+    Checking tracing v0.1.44
+    Checking ref-cast v1.0.27
+    Checking futures-util v0.3.34
+    Checking tokio v1.54.1
+    Checking thiserror v2.0.21
+    Checking serde v1.0.229
+   Compiling darling v0.24.1
+    Checking axum-core v0.5.6
+    Checking futures-executor v0.3.34
+    Checking sse-stream v0.2.6
+    Checking futures v0.3.34
+    Checking async-walkdir v2.2.0
+    Checking hyper v1.12.0
+    Checking tower v0.5.3
+    Checking tokio-stream v0.1.19
+    Checking tokio-util v0.7.20
+    Checking hyper-util v0.1.21
+    Checking yaml_serde v0.10.7
+    Checking chrono v0.4.45
+    Checking axum v0.8.9
+    Checking fabryk-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core)
+    Checking schemars v1.2.3
+    Checking fabryk-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content)
+   Compiling rmcp-macros v3.11.0
+    Checking fabryk-mcp-auth v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-auth)
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Checking fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+    Checking fabryk-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-graph)
+    Checking rmcp v3.11.0
+    Checking fabryk-mcp-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-core)
+    Checking fabryk-mcp-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-content)
+    Checking fabryk-mcp-semantic v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-semantic)
+    Checking fabryk-mcp-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-fts)
+    Checking fabryk-mcp-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-graph)
+    Checking fabryk-mcp v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 45.83s

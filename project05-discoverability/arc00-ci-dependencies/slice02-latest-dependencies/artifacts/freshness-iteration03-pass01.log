@@ -1,0 +1,8 @@
+[1;34mChecking for outdated dependencies (compatible only)...[0m
+[1;32m✓ All dependencies up to date[0m
+
+MAKE_EXIT_STATUS=
+CARGO_EDIT_VERSION=cargo-edit-upgrade 0.13.14
+
+GATE_STATUS=0
+STATUS_CAPTURE_NOTE: make returned status 0 immediately after the gate; `GATE_STATUS=0` is the captured exit. `cargo upgrade --version` reported cargo-edit-upgrade 0.13.14.

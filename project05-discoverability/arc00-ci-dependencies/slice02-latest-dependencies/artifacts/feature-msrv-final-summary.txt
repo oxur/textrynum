@@ -1,0 +1,34 @@
+RUN fabryk full
+EXIT fabryk full 0
+RUN fabryk fts-tantivy
+EXIT fabryk fts-tantivy 0
+RUN fabryk graph-rkyv-cache
+EXIT fabryk graph-rkyv-cache 0
+RUN fabryk vector-lancedb
+EXIT fabryk vector-lancedb 0
+RUN fabryk vector-fastembed
+EXIT fabryk vector-fastembed 0
+RUN fabryk-cli vector-fastembed
+EXIT fabryk-cli vector-fastembed 0
+RUN fabryk-fts fts-tantivy
+EXIT fabryk-fts fts-tantivy 0
+RUN fabryk-graph graph-rkyv-cache
+EXIT fabryk-graph graph-rkyv-cache 0
+RUN fabryk-graph test-utils
+EXIT fabryk-graph test-utils 0
+RUN fabryk-mcp http
+EXIT fabryk-mcp http 0
+RUN fabryk-mcp fts-tantivy
+EXIT fabryk-mcp fts-tantivy 0
+RUN fabryk-mcp graph-rkyv-cache
+EXIT fabryk-mcp graph-rkyv-cache 0
+RUN fabryk-mcp-core http
+EXIT fabryk-mcp-core http 0
+RUN fabryk-mcp-fts fts-tantivy
+EXIT fabryk-mcp-fts fts-tantivy 0
+RUN fabryk-mcp-graph graph-rkyv-cache
+EXIT fabryk-mcp-graph graph-rkyv-cache 0
+RUN fabryk-vector vector-lancedb
+EXIT fabryk-vector vector-lancedb 0
+RUN fabryk-vector vector-fastembed
+EXIT fabryk-vector vector-fastembed 0

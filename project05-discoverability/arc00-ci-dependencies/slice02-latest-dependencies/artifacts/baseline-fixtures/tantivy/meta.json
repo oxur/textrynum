@@ -1,0 +1,178 @@
+{
+  "index_settings": {
+    "docstore_compression": "lz4",
+    "docstore_blocksize": 16384
+  },
+  "segments": [
+    {
+      "segment_id": "7118a11c-bef4-4216-9420-8be457b41229",
+      "max_doc": 1,
+      "deletes": null
+    },
+    {
+      "segment_id": "1f9a8fba-b3a9-4b40-ae15-f69cc124b1c4",
+      "max_doc": 1,
+      "deletes": null
+    },
+    {
+      "segment_id": "2e3821d4-68a4-4509-8260-ed43bdef929b",
+      "max_doc": 1,
+      "deletes": null
+    }
+  ],
+  "schema": [
+    {
+      "name": "id",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "basic",
+          "fieldnorms": true,
+          "tokenizer": "raw"
+        },
+        "stored": true,
+        "fast": false
+      }
+    },
+    {
+      "name": "path",
+      "type": "text",
+      "options": {
+        "stored": true,
+        "fast": false
+      }
+    },
+    {
+      "name": "title",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "position",
+          "fieldnorms": true,
+          "tokenizer": "en_stem"
+        },
+        "stored": true,
+        "fast": false
+      }
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "position",
+          "fieldnorms": true,
+          "tokenizer": "en_stem"
+        },
+        "stored": true,
+        "fast": false
+      }
+    },
+    {
+      "name": "content",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "position",
+          "fieldnorms": true,
+          "tokenizer": "en_stem"
+        },
+        "stored": true,
+        "fast": false
+      }
+    },
+    {
+      "name": "category",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "basic",
+          "fieldnorms": true,
+          "tokenizer": "raw"
+        },
+        "stored": true,
+        "fast": true
+      }
+    },
+    {
+      "name": "source",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "basic",
+          "fieldnorms": true,
+          "tokenizer": "raw"
+        },
+        "stored": true,
+        "fast": true
+      }
+    },
+    {
+      "name": "tags",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "basic",
+          "fieldnorms": true,
+          "tokenizer": "raw"
+        },
+        "stored": true,
+        "fast": false
+      }
+    },
+    {
+      "name": "chapter",
+      "type": "text",
+      "options": {
+        "stored": true,
+        "fast": false
+      }
+    },
+    {
+      "name": "part",
+      "type": "text",
+      "options": {
+        "stored": true,
+        "fast": false
+      }
+    },
+    {
+      "name": "author",
+      "type": "text",
+      "options": {
+        "stored": true,
+        "fast": false
+      }
+    },
+    {
+      "name": "date",
+      "type": "text",
+      "options": {
+        "stored": true,
+        "fast": false
+      }
+    },
+    {
+      "name": "content_type",
+      "type": "text",
+      "options": {
+        "indexing": {
+          "record": "basic",
+          "fieldnorms": true,
+          "tokenizer": "raw"
+        },
+        "stored": true,
+        "fast": true
+      }
+    },
+    {
+      "name": "section",
+      "type": "text",
+      "options": {
+        "stored": true,
+        "fast": false
+      }
+    }
+  ],
+  "opstamp": 6
+}

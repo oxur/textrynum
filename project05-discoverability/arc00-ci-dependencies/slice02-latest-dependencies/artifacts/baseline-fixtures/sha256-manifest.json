@@ -1,0 +1,142 @@
+{
+  "source_head": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
+  "cargo_lock_git_blob_before_fixtures": "244e0628cd90ca0a0e3dee3354cc020e31d6fe55",
+  "writer_toolchain": "rustc 1.95.0 (59807616e 2026-04-14), cargo 1.95.0 (f2d3ce0bd 2026-03-21)",
+  "fixtures": [
+    {
+      "path": "artifacts/baseline-fixtures/lance/index_metadata.json",
+      "size_bytes": 207,
+      "sha256": "78c59bc5257a552b39834ce390865e068860390279636182b78d9c7909f9a7f3"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/lance/lance-db/cc_vectors.lance/_transactions/0-1a69074f-3ab6-44b5-83c3-56e6a92225ad.txn",
+      "size_bytes": 381,
+      "sha256": "ff23be0b863c5b248cc12d5c200543bbf88073349f9c09a5d238eaaed5be62b9"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/lance/lance-db/cc_vectors.lance/_versions/18446744073709551614.manifest",
+      "size_bytes": 843,
+      "sha256": "4c6e0cf66e8f9fd2b43b7bfe505108848508e14731934ae0100da0de1625eb47"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/lance/lance-db/cc_vectors.lance/data/01101110011001011101100174eb664470b5003f8cf365facc.lance",
+      "size_bytes": 1513,
+      "sha256": "356e24c7a84da9a20f34427342ae5b603c2bec71bc484695e30718f014a57cf3"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/redb/state.redb",
+      "size_bytes": 1056768,
+      "sha256": "3ec6a83050acd19c7c844928cf9c4f28b6bfad1444d179c227fb951ce06b9187"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/.managed.json",
+      "size_bytes": 746,
+      "sha256": "a5dbdf347552f05c1dddbaf4589e49d33f7568308a0e5fea96541a81df870550"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/.tantivy-meta.lock",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/.tantivy-writer.lock",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/1f9a8fbab3a94b40ae15f69cc124b1c4.fast",
+      "size_bytes": 377,
+      "sha256": "c0fa547d5cee31201b051a3cf8493b71cf9cf762fc7bc3d027988a23cd3abf44"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/1f9a8fbab3a94b40ae15f69cc124b1c4.fieldnorm",
+      "size_bytes": 154,
+      "sha256": "a86ca04880fcbb43a475ce7c8a2cc274008d30fc2f600408e610e2f9cb2e2b43"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/1f9a8fbab3a94b40ae15f69cc124b1c4.idx",
+      "size_bytes": 240,
+      "sha256": "d6bb91a6a09f35791b106a18271ced8450b763fb81e25dfcf59c1ea1e347c596"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/1f9a8fbab3a94b40ae15f69cc124b1c4.pos",
+      "size_bytes": 170,
+      "sha256": "8cde6e413fe5840c393284e06ecfc2226550f29bdb533d927585bf533927b37b"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/1f9a8fbab3a94b40ae15f69cc124b1c4.store",
+      "size_bytes": 385,
+      "sha256": "6841040467ed4f77e50f10f86dcc5acde3fd6441a44c12598fcebbf89c42c72c"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/1f9a8fbab3a94b40ae15f69cc124b1c4.term",
+      "size_bytes": 1178,
+      "sha256": "dbeb1d3cc89553ccaafffebcdeb3166f8391719016d8b8256b9cc1cad38af7c4"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/2e3821d468a445098260ed43bdef929b.fast",
+      "size_bytes": 379,
+      "sha256": "90d99d53689bdb584c58bf3576bfd34821db5f902f87097dd2b64208f45fd051"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/2e3821d468a445098260ed43bdef929b.fieldnorm",
+      "size_bytes": 155,
+      "sha256": "c37db93a7481af0db066c454ffe0f0da20d0822b52479a79a1f84d19c5ef7d13"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/2e3821d468a445098260ed43bdef929b.idx",
+      "size_bytes": 238,
+      "sha256": "4544cb074173b84d09dd004943e1f8571f8569916aeb0599d2674240ff79b7da"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/2e3821d468a445098260ed43bdef929b.pos",
+      "size_bytes": 169,
+      "sha256": "c4701bfc5bef21865ae55633e5556121534aeaabc89f17f7ee4cfe872be177a1"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/2e3821d468a445098260ed43bdef929b.store",
+      "size_bytes": 383,
+      "sha256": "ddc8a7d3480b1c1efd1db8b17edaddcf0732b73e7b28db18d5a1b7cca8cab96e"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/2e3821d468a445098260ed43bdef929b.term",
+      "size_bytes": 1168,
+      "sha256": "9c4d56b950569f8a2e7608f91fd14c51e2580522b687a6f766f51a056901ade1"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/7118a11cbef4421694208be457b41229.fast",
+      "size_bytes": 379,
+      "sha256": "90d99d53689bdb584c58bf3576bfd34821db5f902f87097dd2b64208f45fd051"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/7118a11cbef4421694208be457b41229.fieldnorm",
+      "size_bytes": 155,
+      "sha256": "facef4e234bd6dca30c0653cd564104c1649bed228f059d27512eb4c10ee1fdf"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/7118a11cbef4421694208be457b41229.idx",
+      "size_bytes": 238,
+      "sha256": "dbd7bf2b65659948df4c4c2518b581e3791fa5b69cfdd48c496b119f78995733"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/7118a11cbef4421694208be457b41229.pos",
+      "size_bytes": 169,
+      "sha256": "6561187ee8fa8a86ccaed7e9982a181cf154ed6c12220cd77e313e1a4a84f0b3"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/7118a11cbef4421694208be457b41229.store",
+      "size_bytes": 380,
+      "sha256": "092e3c4753cbf1675bcfc50064a62d5a486bc5cc82a7a1ae7383073dbc49b206"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/7118a11cbef4421694208be457b41229.term",
+      "size_bytes": 1172,
+      "sha256": "e5777a89f05d97ffcebda71357af11d895d545a38b925c89ff43d5f3c60753c8"
+    },
+    {
+      "path": "artifacts/baseline-fixtures/tantivy/meta.json",
+      "size_bytes": 3333,
+      "sha256": "da77d3b3abfe77f6e7758dc8860b6c13bf462dff1e628de47f303e1b28823f1d"
+    }
+  ]
+}

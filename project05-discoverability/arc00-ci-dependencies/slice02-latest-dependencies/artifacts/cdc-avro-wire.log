@@ -1,0 +1,17 @@
+SOURCE_HEAD=719c58f245fe4a9115c7c0391d3e268c99157e2f
+BINARY_SHA256=5fc013235de62d01202f616284aa29c848062d1af094e2a679c7d93620a126d3
+COMPILE_WITNESS=test-debug-iteration03-pass02.log
+COMMAND=["/Users/oubiwann/lab/oxur/textrynum/target/debug/build/ecl-sink-kafka/eb54047188c53102/out/ecl_sink_kafka-eb54047188c53102", "avro::tests::", "--nocapture"]
+
+running 6 tests
+test avro::tests::test_avro_error_is_send_sync ... ok
+test avro::tests::test_parse_schema_invalid ... ok
+test avro::tests::test_avro_serialize_wire_format_header ... ok
+test avro::tests::test_avro_serialize_with_nullable_fields ... ok
+test avro::tests::test_avro_serialize_nullable_with_value ... ok
+test avro::tests::test_avro_serialize_simple_record ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 30 filtered out; finished in 0.00s
+
+
+TEST_EXIT_STATUS=0

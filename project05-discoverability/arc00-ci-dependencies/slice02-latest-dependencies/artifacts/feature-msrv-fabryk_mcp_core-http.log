@@ -1,0 +1,48 @@
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+   Compiling aws-lc-rs v1.19.0
+    Checking tokio v1.54.1
+    Checking futures-util v0.3.34
+   Compiling cmake v0.1.58
+    Checking serde v1.0.229
+   Compiling ref-cast-impl v1.0.27
+   Compiling serde_derive_internals v0.30.0
+    Checking form_urlencoded v1.2.3
+    Checking async-walkdir v2.2.0
+   Compiling rmcp-macros v3.11.0
+    Checking axum-core v0.5.6
+    Checking tempfile v3.27.0
+    Checking url v2.5.9
+   Compiling aws-lc-sys v0.47.0
+    Checking yaml_serde v0.10.7
+    Checking chrono v0.4.45
+    Checking ref-cast v1.0.27
+   Compiling schemars_derive v1.2.3
+    Checking futures-executor v0.3.34
+    Checking sse-stream v0.2.6
+    Checking hyper v1.12.0
+    Checking tower v0.5.3
+    Checking tokio-stream v0.1.19
+    Checking tokio-util v0.7.20
+    Checking futures v0.3.34
+    Checking tokio-test v0.4.6
+    Checking tower-http v0.6.11
+    Checking hyper-util v0.1.21
+    Checking fabryk-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core)
+    Checking axum v0.8.9
+    Checking fabryk-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content)
+    Checking schemars v1.2.3
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Checking rmcp v3.11.0
+   Compiling rustls v0.23.46
+    Checking rustls-webpki v0.103.17
+    Checking tokio-rustls v0.26.6
+    Checking rustls-platform-verifier v0.7.1
+    Checking hyper-rustls v0.27.10
+    Checking reqwest v0.13.5
+    Checking fabryk-mcp-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-core)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 26.68s

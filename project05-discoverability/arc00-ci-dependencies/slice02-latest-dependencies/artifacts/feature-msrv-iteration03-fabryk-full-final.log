@@ -1,0 +1,6 @@
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Checking fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+    Checking fabryk v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 05s
+
+CARGO_EXIT_STATUS=0

@@ -1,0 +1,1083 @@
+warning: unused workspace dependency `russh-keys`
+   --> Cargo.toml:202:1
+    |
+202 | russh-keys = "0.49.2"
+    | ^^^^^^^^^^
+    |
+    = note: `cargo::unused_workspace_dependencies` is set to `warn` by default
+help: consider removing the workspace dependency `russh-keys`
+warning: unused workspace dependency `tokio-stream`
+   --> Cargo.toml:194:1
+    |
+194 | tokio-stream = "0.1.19"
+    | ^^^^^^^^^^^^
+    |
+help: consider removing the workspace dependency `tokio-stream`
+warning: unused field `description` in `workspace.package`
+  --> Cargo.toml:60:1
+   |
+60 | description = "Textrynum — Knowledge Fabric Workshop (Fabryk + ECL)"
+   | ^^^^^^^^^^^
+   |
+   = note: `cargo::unused_workspace_package_fields` is set to `warn` by default
+help: consider removing the field `workspace.package.description`
+warning: workspace (manifest) generated 3 warnings
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-gdrive/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-gdrive` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-graph/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-graph` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-redis/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-redis` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-secrets/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-secrets` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-fts/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-fts` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-auth/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-auth` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-core/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-core` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-sink-gcs/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-sink-gcs` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-core/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-core` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-gcp/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-gcp` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-vector/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-vector` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-acl/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-acl` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline-state/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline-state` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline-topo/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline-topo` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-cli/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-cli` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-cli/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-cli` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-auth/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-auth` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-content/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-content` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-zapier/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-zapier` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-core/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-core` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-graph/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-graph` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-content/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-content` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-steps/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-steps` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-gcp-auth/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-gcp-auth` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/textrynum-util/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `textrynum-util` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-fs/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-fs` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-slack/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-slack` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-gcs/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-gcs` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-auth-google/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-auth-google` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-fts/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-fts` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+  --> crates/ecl-workflows/Cargo.toml:13:1
+   |
+12 | repository.workspace = true
+   | ----------
+13 | homepage.workspace = true
+   | ^^^^^^^^
+   |
+   = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-workflows` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-adapter-sftp/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-adapter-sftp` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline-spec/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline-spec` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-stages/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-stages` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/fabryk-mcp-semantic/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `fabryk-mcp-semantic` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/design/Cargo.toml:8:1
+  |
+7 | repository.workspace = true
+  | ----------
+8 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-design` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-pipeline/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-pipeline` (manifest) generated 1 warning
+warning: `package.homepage` is redundant with `package.repository`
+ --> crates/ecl-sink-kafka/Cargo.toml:9:1
+  |
+8 | repository.workspace = true
+  | ----------
+9 | homepage.workspace = true
+  | ^^^^^^^^
+  |
+  = note: `cargo::redundant_homepage` is set to `warn` by default
+help: consider removing `package.homepage`
+warning: `ecl-sink-kafka` (manifest) generated 1 warning
+   Compiling serde v1.0.229
+   Compiling bitflags v2.13.2
+   Compiling smallvec v1.16.6
+   Compiling serde_json v1.0.154
+   Compiling stable_deref_trait v1.2.1
+   Compiling indexmap v2.14.2
+   Compiling log v0.4.35
+   Compiling syn v2.0.119
+   Compiling getrandom v0.4.3
+   Compiling num-bigint v0.4.8
+   Compiling aho-corasick v1.1.5
+   Compiling zstd-sys v2.1.3+zstd.1.5.7
+   Compiling yoke v0.8.4
+   Compiling chacha20 v0.10.2
+   Compiling typenum v1.20.1
+   Compiling subtle v2.6.1
+   Compiling generic-array v0.14.7
+   Compiling once_cell v1.21.4
+   Compiling flatbuffers v25.12.19
+   Compiling rustix v1.1.6
+   Compiling parking_lot_core v0.9.12
+   Compiling zeroize v1.9.2
+   Compiling flate2 v1.1.11
+   Compiling security-framework v3.7.0
+   Compiling zerovec v0.11.9
+   Compiling zerotrie v0.2.5
+   Compiling getrandom v0.2.17
+   Compiling bigdecimal v0.4.11
+   Compiling tempfile v3.27.0
+   Compiling rustls-pki-types v1.16.0
+   Compiling rustls v0.23.46
+   Compiling nix v0.31.4
+   Compiling parking_lot v0.12.5
+   Compiling dashmap v6.2.1
+   Compiling ring v0.17.14
+   Compiling system-configuration v0.7.0
+   Compiling tokio v1.54.1
+   Compiling ordered-float v5.5.1
+   Compiling petgraph v0.8.3
+   Compiling compression-codecs v0.4.48
+   Compiling hybrid-array v0.4.15
+   Compiling zstd-safe v8.3.0
+   Compiling rand v0.10.4
+   Compiling uuid v1.29.3
+   Compiling regex-automata v0.4.19
+   Compiling tinystr v0.8.5
+   Compiling potential_utf v0.1.6
+   Compiling chrono v0.4.45
+   Compiling icu_locale_core v2.4.0
+   Compiling icu_collections v2.4.0
+   Compiling rustls-native-certs v0.8.5
+   Compiling crypto-common v0.2.2
+   Compiling block-buffer v0.12.1
+   Compiling twox-hash v2.1.5
+   Compiling arrow-schema v58.4.2
+   Compiling native-tls v0.2.18
+   Compiling lance-jsonb v14.0.2
+   Compiling moka v0.12.16
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling rustls-webpki v0.103.17
+   Compiling lz4_flex v0.13.2
+   Compiling digest v0.11.3
+   Compiling digest v0.10.7
+   Compiling md-5 v0.11.0
+   Compiling blake2 v0.10.6
+   Compiling sha2 v0.11.1
+   Compiling serde_urlencoded v0.7.1
+   Compiling darling_core v0.20.11
+   Compiling icu_provider v2.4.0
+   Compiling num-rational v0.4.2
+   Compiling chrono-tz v0.10.4
+   Compiling path_abs v0.5.1
+   Compiling hyperloglogplus v0.4.1
+   Compiling icu_normalizer v2.4.0
+   Compiling icu_properties v2.4.0
+   Compiling serde_yaml_ng v0.10.0
+   Compiling icu_locale_fallback v2.4.0
+   Compiling cedarwood v0.5.0
+   Compiling as-slice v0.2.1
+   Compiling base64ct v1.8.3
+   Compiling icu_segmenter v2.4.0
+   Compiling ureq v3.5.2
+   Compiling jieba-rs v0.10.4
+   Compiling aligned v0.4.3
+   Compiling pem-rfc7468 v1.0.0
+   Compiling nalgebra v0.33.3
+   Compiling yaml_serde v0.10.7
+   Compiling webpki-root-certs v1.0.12
+   Compiling webpki-roots v1.0.12
+   Compiling der v0.8.3
+   Compiling ureq-proto v0.7.1
+   Compiling spm_precompiled v0.1.4
+   Compiling compact_str v0.9.1
+   Compiling zerocopy-derive v0.8.64
+   Compiling tracing-attributes v0.1.31
+   Compiling regex v1.13.2
+   Compiling idna_adapter v1.2.2
+   Compiling idna v1.1.0
+   Compiling sqlparser_derive v0.5.0
+   Compiling datafusion-macros v54.2.0
+   Compiling prost-derive v0.14.6
+   Compiling snafu-derive v0.9.2
+   Compiling lance-derive v14.0.2
+   Compiling url v2.5.9
+   Compiling darling_macro v0.20.11
+   Compiling equator-macro v0.4.2
+   Compiling sqlparser v0.62.0
+   Compiling munge_macro v0.4.7
+   Compiling strum_macros v0.28.0
+   Compiling arg_enum_proc_macro v0.3.4
+   Compiling profiling-procmacros v1.0.18
+   Compiling tokio-util v0.7.20
+   Compiling tracing v0.1.44
+   Compiling datafusion-common-runtime v54.2.0
+   Compiling async-compression v0.4.52
+   Compiling tower v0.5.3
+   Compiling tokio-native-tls v0.3.1
+   Compiling darling v0.20.11
+   Compiling munge v0.4.7
+   Compiling profiling v1.0.18
+   Compiling equator v0.4.2
+   Compiling zerocopy v0.8.64
+   Compiling ort-sys v2.0.0-rc.15
+   Compiling num-derive v0.4.2
+   Compiling object_store v0.13.2
+   Compiling h2 v0.4.20
+   Compiling object_store v0.14.2
+   Compiling tokio-rustls v0.26.6
+   Compiling prost v0.14.6
+   Compiling tower-http v0.6.11
+   Compiling derive_builder_core v0.20.2
+   Compiling tokio-stream v0.1.19
+   Compiling rkyv v0.8.18
+   Compiling aligned-vec v0.6.4
+   Compiling snafu v0.9.2
+   Compiling monostate-impl v0.1.18
+   Compiling v_frame v0.3.9
+   Compiling fabryk-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core)
+   Compiling av-scenechange v0.14.1
+   Compiling av1-grain v0.2.5
+   Compiling derive_builder_macro v0.20.2
+   Compiling monostate v0.1.18
+   Compiling strum v0.28.0
+   Compiling prost-types v0.14.6
+   Compiling snafu-derive v0.8.9
+   Compiling png v0.18.1
+   Compiling derive_builder v0.20.2
+   Compiling onig v6.5.3
+   Compiling pulldown-cmark v0.13.6
+   Compiling prost-build v0.14.6
+   Compiling rav1e v0.8.1
+   Compiling dary_heap v0.3.9
+   Compiling unicode-normalization-alignments v0.1.12
+   Compiling sha2 v0.10.9
+   Compiling ort v2.0.0-rc.15
+   Compiling hyper v1.12.0
+   Compiling safetensors v0.8.0
+   Compiling lazy_static v1.5.1
+   Compiling matchers v0.2.0
+   Compiling sharded-slab v0.1.7
+   Compiling tracing-log v0.2.0
+   Compiling confyg v0.3.0
+   Compiling toml_edit v0.25.20+spec-1.1.0
+   Compiling snafu v0.8.9
+   Compiling tokio-test v0.4.6
+   Compiling lindera-dictionary v3.0.7
+   Compiling fabryk-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content)
+   Compiling tracing-subscriber v0.3.23
+   Compiling lance-encoding v14.0.2
+   Compiling lance-file v14.0.2
+   Compiling lance-table v14.0.2
+   Compiling hyper-util v0.1.21
+   Compiling half v2.7.1
+   Compiling ahash v0.8.12
+   Compiling ppv-lite86 v0.2.21
+   Compiling lance-datafusion v14.0.2
+   Compiling quick_cache v0.6.24
+   Compiling rand_chacha v0.9.0
+   Compiling lance-index v14.0.2
+   Compiling arrow-buffer v58.4.2
+   Compiling lance v14.0.2
+   Compiling rand v0.9.5
+   Compiling tiff v0.11.3
+   Compiling exr v1.74.3
+   Compiling fabryk-graph v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-graph)
+   Compiling lindera v3.0.7
+   Compiling hyper-rustls v0.27.10
+   Compiling hyper-tls v0.6.0
+   Compiling arrow-data v58.4.2
+   Compiling reqwest v0.12.28
+   Compiling rand_distr v0.5.1
+   Compiling tokenizers v0.23.2
+   Compiling lance-tokenizer v14.0.2
+   Compiling arrow-array v58.4.2
+   Compiling ravif v0.13.0
+   Compiling zstd-safe v7.4.1
+   Compiling zstd v0.13.5
+   Compiling lance-namespace-reqwest-client v0.13.0
+   Compiling hf-hub v0.5.0
+   Compiling zstd v0.14.4
+   Compiling image v0.25.10
+   Compiling arrow-select v58.4.2
+   Compiling arrow-row v58.4.2
+   Compiling arrow-arith v58.4.2
+   Compiling fsst v14.0.2
+   Compiling arrow-ord v58.4.2
+   Compiling arrow-ipc v58.4.2
+   Compiling arrow-string v58.4.2
+   Compiling fastembed v7.7.1
+   Compiling arrow-cast v58.4.2
+   Compiling arrow-csv v58.4.2
+   Compiling arrow-json v58.4.2
+   Compiling lance-arrow-scalar v58.0.0
+   Compiling lance-arrow-stats v58.0.0
+   Compiling arrow v58.4.2
+   Compiling datafusion-common v54.2.0
+   Compiling lance-datagen v14.0.2
+   Compiling datafusion-expr-common v54.2.0
+   Compiling datafusion-physical-expr-common v54.2.0
+   Compiling datafusion-functions-window-common v54.2.0
+   Compiling datafusion-functions-aggregate-common v54.2.0
+   Compiling datafusion-expr v54.2.0
+   Compiling datafusion-physical-expr v54.2.0
+   Compiling datafusion-execution v54.2.0
+   Compiling datafusion-functions v54.2.0
+   Compiling datafusion-functions-aggregate v54.2.0
+   Compiling datafusion-optimizer v54.2.0
+   Compiling datafusion-functions-window v54.2.0
+   Compiling datafusion-physical-plan v54.2.0
+   Compiling datafusion-physical-expr-adapter v54.2.0
+   Compiling datafusion-functions-nested v54.2.0
+   Compiling datafusion-sql v54.2.0
+   Compiling datafusion-session v54.2.0
+   Compiling datafusion-datasource v54.2.0
+   Compiling datafusion-catalog v54.2.0
+   Compiling datafusion-pruning v54.2.0
+   Compiling datafusion-datasource-csv v54.2.0
+   Compiling datafusion-datasource-arrow v54.2.0
+   Compiling datafusion-datasource-json v54.2.0
+   Compiling datafusion-physical-optimizer v54.2.0
+   Compiling lance-arrow v14.0.2
+   Compiling lance-core v14.0.2
+   Compiling lance-namespace v14.0.2
+   Compiling lance-select v14.0.2
+   Compiling lance-linalg v14.0.2
+   Compiling lance-io v14.0.2
+   Compiling datafusion-functions-table v54.2.0
+   Compiling datafusion-catalog-listing v54.2.0
+   Compiling datafusion v54.2.0
+   Compiling lance-index-core v14.0.2
+   Compiling lance-namespace-impls v14.0.2
+   Compiling lancedb v0.41.0
+   Compiling fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+   Compiling fabryk-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli)
+    Finished `release` profile [optimized] target(s) in 9m 24s
+     Running unittests src/lib.rs (target/release/build/fabryk-cli/f1ee26d2bd4bca71/out/fabryk_cli-f1ee26d2bd4bca71)
+
+running 195 tests
+test app::tests::test_fabryk_cli_config_access ... ok
+test app::tests::test_fabryk_cli_new ... ok
+test app::tests::test_fabryk_cli_with_version ... ok
+test app::tests::test_init_logging_default ... ok
+test app::tests::test_init_logging_verbose ... ok
+test app::tests::test_init_logging_quiet ... ok
+test cache::tests::test_cache_backend_display ... ok
+test cache::tests::test_archive_name ... ok
+test cache::tests::test_cache_status_report_display ... ok
+test cache::tests::test_checksum_url ... ok
+test cache::tests::test_cache_backend_from_str ... ok
+test cache::tests::test_manifest_get_set ... ok
+test app::tests::test_fabryk_cli_config_command_dispatch ... ok
+test cache::tests::test_cache_status_empty ... ok
+test app::tests::test_run_index_command ... ok
+test app::tests::test_run_health_command ... ok
+test app::tests::test_run_version_command ... ok
+test app::tests::test_run_serve_command ... ok
+test app::tests::test_run_no_command ... ok
+test app::tests::test_run_index_check ... ok
+test cache::tests::test_manifest_roundtrip ... ok
+test cache::tests::test_manifest_load_missing_file ... ok
+test app::tests::test_fabryk_cli_from_args_default ... ok
+test cache::tests::test_parse_backend_arg_all ... ok
+test cache::tests::test_parse_backend_arg_invalid ... ok
+test cache::tests::test_parse_backend_arg_single ... ok
+test cache::tests::test_release_url ... ok
+test cache::tests::test_download_cache_skip_when_already_installed ... ok
+test cli::tests::test_cli_args_config ... ok
+test cli::tests::test_cli_args_default ... ok
+test cli::tests::test_cli_args_quiet ... ok
+test cli::tests::test_cli_args_verbose ... ok
+test cli::tests::test_config_export_command ... ok
+test cli::tests::test_config_export_docker_env ... ok
+test cli::tests::test_config_get_no_key_dumps_all ... ok
+test cli::tests::test_config_get_command ... ok
+test cli::tests::test_config_init_command ... ok
+test app::tests::test_fabryk_cli_from_args_with_file ... ok
+test cli::tests::test_config_init_force ... ok
+test cli::tests::test_config_path_command ... ok
+test cache::tests::test_manifest_save_and_load ... ok
+test cli::tests::test_config_set_command ... ok
+test cli::tests::test_graph_build_command ... ok
+test cli::tests::test_graph_query_command ... ok
+test cli::tests::test_graph_build_dry_run ... ok
+test cli::tests::test_graph_query_path ... ok
+test cli::tests::test_graph_stats_command ... ok
+test cli::tests::test_graph_validate_command ... ok
+test cli::tests::test_health_command ... ok
+test cli::tests::test_index_command ... ok
+test cli::tests::test_index_command_force ... ok
+test cli::tests::test_serve_command ... ok
+test cli::tests::test_serve_command_custom_port ... ok
+test cli::tests::test_vectordb_get_model_command ... ok
+test config::tests::test_fabryk_config_default ... ok
+test cli::tests::test_vectordb_get_model_with_overrides ... ok
+test cli::tests::test_version_command ... ok
+test config::tests::test_fabryk_config_from_toml ... ok
+test config::tests::test_fabryk_config_is_clone ... ok
+test config::tests::test_fabryk_config_load_defaults ... ok
+test config::tests::test_fabryk_config_provider_base_path ... ok
+test config::tests::test_fabryk_config_provider_content_path ... ok
+test config::tests::test_fabryk_config_provider_content_path_explicit ... ok
+test config::tests::test_fabryk_config_provider_base_path_default ... ok
+test config::tests::test_fabryk_config_provider_project_name ... ok
+test config::tests::test_fabryk_config_resolve_config_path_explicit ... ok
+test config::tests::test_fabryk_config_send_sync ... ok
+test config::tests::test_fabryk_config_to_env_vars ... ok
+test config::tests::test_fabryk_config_to_toml ... ok
+test config_handlers::tests::test_cmd_config_export_docker_env ... ok
+test config_handlers::tests::test_cmd_config_export_env_vars ... ok
+test config_handlers::tests::test_cmd_config_path_explicit ... ok
+test config_handlers::tests::test_cmd_config_set_missing_file ... ok
+test config_handlers::tests::test_get_nested_value_deep_missing ... ok
+test config_handlers::tests::test_format_toml_value ... ok
+test config_handlers::tests::test_get_nested_value_missing ... ok
+test config_handlers::tests::test_get_nested_value_nested ... ok
+test config_handlers::tests::test_get_nested_value_top_level ... ok
+test config_handlers::tests::test_parse_value_types ... ok
+test config_handlers::tests::test_set_nested_value_creates_section ... ok
+test config_handlers::tests::test_set_nested_value_overwrites ... ok
+test config_handlers::tests::test_set_nested_value_top_level ... ok
+test config::tests::test_fabryk_config_load_from_file ... ok
+test config_loader::tests::test_config_loader_sections ... ok
+test config_sections::tests::test_oauth_config_serde_roundtrip ... ok
+test config_sections::tests::test_oauth_default_disabled ... ok
+test config_sections::tests::test_oauth_default_jwks_url ... ok
+test config_handlers::tests::test_cmd_config_export_to_file ... ok
+test config_sections::tests::test_oauth_validate_disabled_ok ... ok
+test config_sections::tests::test_oauth_validate_enabled_no_client_id ... ok
+test config_sections::tests::test_oauth_validate_enabled_with_client_id ... ok
+test config_sections::tests::test_tls_config_serde_roundtrip ... ok
+test config_sections::tests::test_tls_disabled_empty_strings ... ok
+test config_sections::tests::test_tls_default_disabled ... ok
+test config_sections::tests::test_tls_disabled_only_cert ... ok
+test config_sections::tests::test_tls_enabled_both_set ... ok
+test config_sections::tests::test_tls_validate_asymmetric_error ... ok
+test config_sections::tests::test_tls_validate_both_unset_ok ... ok
+test config_sections::tests::test_tls_validate_nonexistent_cert ... ok
+test config_utils::tests::test_flatten_toml_value_array ... ok
+test config_utils::tests::test_flatten_toml_value_boolean ... ok
+test config_utils::tests::test_flatten_toml_value_hyphen_to_underscore ... ok
+test config_utils::tests::test_flatten_toml_value_integer ... ok
+test config_utils::tests::test_flatten_toml_value_nested_table ... ok
+test config_utils::tests::test_flatten_toml_value_string ... ok
+test config_handlers::tests::test_cmd_config_init_force_overwrites ... ok
+test config_handlers::tests::test_cmd_config_init_no_overwrite ... ok
+test config_handlers::tests::test_cmd_config_init_creates_file ... ok
+test config_handlers::tests::test_cmd_config_path_default ... ok
+test config_loader::tests::test_config_loader_port_override_not_set ... ok
+test config_loader::tests::test_config_loader_defaults ... ok
+test config_loader::tests::test_config_loader_missing_file_uses_defaults ... ok
+test config_utils::tests::test_resolve_opt_path_absolute_unchanged ... ok
+test config_utils::tests::test_resolve_opt_path_empty_unchanged ... ok
+test config_utils::tests::test_resolve_base_dir_cwd_fallback ... ok
+test config_utils::tests::test_resolve_base_dir_from_config_parent ... ok
+test config_utils::tests::test_resolve_opt_path_none_unchanged ... ok
+test config_utils::tests::test_resolve_path_bare_filename ... ok
+test config_utils::tests::test_resolve_path_absolute_passthrough ... ok
+test config_utils::tests::test_resolve_path_dot_prefix ... ok
+test config_utils::tests::test_resolve_opt_path_relative_resolved ... ok
+test config_utils::tests::test_resolve_base_dir_from_env_var_absolute ... ok
+test config_utils::tests::test_resolve_path_empty_passthrough ... ok
+test config_utils::tests::test_resolve_path_relative_joined ... ok
+test graph_handlers::tests::test_build_options_default ... ok
+test graph_handlers::tests::test_build_options_with_output ... ok
+test graph_handlers::tests::test_graph_path ... ok
+test config_utils::tests::test_resolve_base_dir_from_env_var_relative ... ok
+test config::tests::test_fabryk_config_load_env_overlay ... ok
+test config::tests::test_fabryk_config_resolve_config_path_default ... ok
+test config::tests::test_fabryk_config_resolve_config_path_env ... ok
+test graph_handlers::tests::test_load_graph_or_error_missing ... ok
+test config_handlers::tests::test_cmd_config_get_nested_key ... ok
+test config_handlers::tests::test_cmd_config_get_missing_key ... ok
+test cache::tests::test_extract_archive_invalid_file ... ok
+test config_handlers::tests::test_cmd_config_get_or_dump_full ... ok
+test config_handlers::tests::test_cmd_config_get_simple_key ... ok
+test graph_handlers::tests::test_handle_stats_missing_graph ... ok
+test sources_handlers::tests::test_clap_alias_add ... ok
+test graph_handlers::tests::test_handle_validate_missing_graph ... ok
+test sources_handlers::tests::test_clap_alias_list ... ok
+test config_handlers::tests::test_cmd_config_get_or_dump_with_key ... ok
+test sources_handlers::tests::test_clap_alias_list_json ... ok
+test sources_handlers::tests::test_clap_scan_defaults ... ok
+test sources_handlers::tests::test_clap_scan_json_with_cards ... ok
+test sources_handlers::tests::test_clap_validate_custom ... ok
+test sources_handlers::tests::test_clap_validate_defaults ... ok
+test sources_handlers::tests::test_handle_alias_list_empty ... ok
+test sources_handlers::tests::test_handle_alias_list_json ... ok
+test sources_handlers::tests::test_handle_alias_list_with_data ... ok
+test sources_handlers::tests::test_parse_source_id_empty_categories ... ok
+test sources_handlers::tests::test_clap_alias_remove ... ok
+test sources_handlers::tests::test_parse_source_id_empty_file_id ... ok
+test sources_handlers::tests::test_parse_source_id_longer_category_wins ... ok
+test sources_handlers::tests::test_parse_source_id_no_match ... ok
+test sources_handlers::tests::test_parse_source_id_simple_category ... ok
+test sources_handlers::tests::test_parse_source_id_single_segment_file_id ... ok
+test sources_handlers::tests::test_parse_validation_mode_all ... ok
+test sources_handlers::tests::test_parse_validation_mode_cards_fs ... ok
+test sources_handlers::tests::test_parse_validation_mode_cards_config ... ok
+test sources_handlers::tests::test_parse_validation_mode_config_fs ... ok
+test sources_handlers::tests::test_parse_validation_mode_invalid ... ok
+test sources_handlers::tests::test_print_scan_json_with_data ... ok
+test sources_handlers::tests::test_print_scan_table_empty ... ok
+test sources_handlers::tests::test_print_scan_table_with_data ... ok
+test sources_handlers::tests::test_truncate_string_empty ... ok
+test sources_handlers::tests::test_truncate_string_exact ... ok
+test sources_handlers::tests::test_truncate_string_max_four ... ok
+test sources_handlers::tests::test_truncate_string_max_three ... ok
+test sources_handlers::tests::test_truncate_string_short ... ok
+test sources_handlers::tests::test_truncate_string_very_short_max ... ok
+test sources_handlers::tests::test_truncate_string_truncated ... ok
+test vectordb_handlers::tests::test_cmd_vectordb_get_model_default ... ignored
+test vectordb_handlers::tests::test_cmd_vectordb_get_model_invalid_model ... ok
+test config_sections::tests::test_tls_validate_existing_files ... ok
+test config_handlers::tests::test_cmd_config_set_simple_key ... ok
+test graph_handlers::tests::test_load_graph_or_error_success ... ok
+test sources_handlers::tests::test_alias_add_to_config ... ok
+test sources_handlers::tests::test_alias_add_unknown_file_id ... ok
+test config_handlers::tests::test_cmd_config_set_nested_key ... ok
+test config_loader::tests::test_config_loader_from_file ... ok
+test sources_handlers::tests::test_alias_remove_nonexistent ... ok
+test sources_handlers::tests::test_alias_add_duplicate ... ok
+test sources_handlers::tests::test_alias_remove_existing ... ok
+test graph_handlers::tests::test_handle_stats ... ok
+test graph_handlers::tests::test_handle_validate_valid_graph ... ok
+test graph_handlers::tests::test_handle_query_related ... ok
+test graph_handlers::tests::test_handle_query_prerequisites ... ok
+test graph_handlers::tests::test_handle_query_unknown_type ... ok
+test graph_handlers::tests::test_handle_query_related_unknown_node ... ok
+test graph_handlers::tests::test_handle_query_path ... ok
+test graph_handlers::tests::test_handle_query_path_missing_to ... ok
+test cache::tests::test_extract_archive_valid ... ok
+test cache::tests::test_verify_checksum_mismatch ... ok
+test cache::tests::test_verify_checksum_valid ... ok
+
+test result: ok. 194 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+     Running unittests src/lib.rs (target/release/build/fabryk-vector/c648fc3e7cac4497/out/fabryk_vector-c648fc3e7cac4497)
+
+running 120 tests
+test backend::tests::test_cosine_similarity_different_lengths ... ok
+test backend::tests::test_cosine_similarity_identical ... ok
+test backend::tests::test_cosine_similarity_empty ... ok
+test backend::tests::test_cosine_similarity_opposite ... ok
+test backend::tests::test_cosine_similarity_orthogonal ... ok
+test backend::tests::test_load_cache_nonexistent ... ok
+test backend::tests::test_create_vector_backend_simple ... ok
+test backend::tests::test_simple_backend_creation ... ok
+test backend::tests::test_create_vector_backend_disabled ... ok
+test backend::tests::test_simple_backend_add_documents ... ok
+test backend::tests::test_simple_backend_debug ... ok
+test backend::tests::test_trait_object_safety ... ok
+test backend::tests::test_simple_backend_search_with_threshold ... ok
+test backend::tests::test_simple_backend_search_limit ... ok
+test backend::tests::test_simple_backend_search_with_category ... ok
+test backend::tests::test_simple_backend_search_with_results ... ok
+test backend::tests::test_simple_backend_search_with_metadata_filter ... ok
+test backend::tests::test_simple_backend_search_empty ... ok
+test concept_card_extractor::tests::test_defaults ... ok
+test builder::tests::test_builder_missing_content_path ... ok
+test backend::tests::test_cache_freshness ... ok
+test concept_card_extractor::tests::test_full_metadata ... ok
+test concept_card_extractor::tests::test_minimal_metadata ... ok
+test concept_card_extractor::tests::test_concept_as_title_fallback ... ok
+test concept_card_extractor::tests::test_trait_object_safety ... ok
+test concept_card_extractor::tests::test_text_composition_with_subcategory_aliases_questions ... ok
+test concept_card_extractor::tests::test_trims_body ... ok
+test backend::tests::test_save_and_load_cache ... ok
+test concept_card_extractor::tests::test_no_title_fallback ... ok
+test concept_card_extractor::tests::test_text_composition_order ... ok
+test embedding::tests::test_mock_embed_batch ... ok
+test embedding::tests::test_mock_embed_batch_empty ... ok
+test embedding::tests::test_mock_embed_deterministic ... ok
+test embedding::tests::test_mock_embed_different_texts ... ok
+test embedding::tests::test_mock_embed_empty_text ... ok
+test embedding::tests::test_mock_embed_single ... ok
+test embedding::tests::test_mock_provider_creation ... ok
+test embedding::tests::test_trait_object_safety ... ok
+test extractor::tests::test_mock_extractor_defaults ... ok
+test extractor::tests::test_mock_extractor_minimal_frontmatter ... ok
+test extractor::tests::test_mock_extractor_extract_document ... ok
+test extractor::tests::test_mock_extractor_no_title ... ok
+test extractor::tests::test_trait_object_safety ... ok
+test fastembed::tests::test_fastembed_deterministic ... ignored, requires model download (~50MB)
+test fastembed::tests::test_fastembed_embed_batch ... ignored, requires model download (~50MB)
+test fastembed::tests::test_fastembed_embed_single ... ignored, requires model download (~50MB)
+test fastembed::tests::test_fastembed_provider_creation ... ignored, requires model download (~50MB)
+test fastembed::tests::test_resolve_model_aliases ... ok
+test fastembed::tests::test_resolve_model_known ... ok
+test fastembed::tests::test_resolve_model_unknown ... ok
+test hybrid::tests::test_hybrid_result_serialization ... ok
+test hybrid::tests::test_rrf_deduplication ... ok
+test hybrid::tests::test_rrf_both_sources ... ok
+test hybrid::tests::test_rrf_k_parameter_effect ... ok
+test hybrid::tests::test_rrf_fts_only ... ok
+test hybrid::tests::test_rrf_ordering ... ok
+test hybrid::tests::test_rrf_preserves_metadata ... ok
+test hybrid::tests::test_rrf_respects_limit ... ok
+test hybrid::tests::test_rrf_scores_decrease_with_rank ... ok
+test hybrid::tests::test_rrf_vector_only ... ok
+test hybrid::tests::test_rrf_empty_inputs ... ok
+test lancedb::tests::test_build_record_batch_categories ... ok
+test lancedb::tests::test_build_record_batch ... ok
+test lancedb::tests::test_distance_to_score_normalization ... ok
+test lancedb::tests::test_build_record_batch_empty ... ok
+test lancedb::tests::test_build_record_batch_ids ... ok
+test lancedb::tests::test_build_record_batch_metadata ... ok
+test lancedb::tests::test_lancedb_debug ... ok
+test lancedb::tests::test_make_schema ... ok
+test lancedb::tests::test_parse_search_results_basic ... ok
+test persistence::tests::test_metadata_serialization ... ok
+test builder::tests::test_builder_missing_provider ... ok
+test persistence::tests::test_save_metadata_invalid_path ... ok
+test probe::tests::test_vector_probe_as_arc_dyn_backend_probe ... ok
+test probe::tests::test_vector_probe_convenience_function ... ok
+test probe::tests::test_vector_probe_document_count ... ok
+test builder::tests::test_builder_empty_directory ... ok
+test probe::tests::test_vector_probe_kind ... ok
+test probe::tests::test_vector_probe_name ... ok
+test probe::tests::test_vector_probe_last_indexed_default ... ok
+test builder::tests::test_builder_basic ... ok
+test types::tests::test_index_stats_serialization ... ok
+test probe::tests::test_vector_probe_ready ... ok
+test types::tests::test_embedded_document_new ... ok
+test types::tests::test_index_stats_with_errors ... ok
+test types::tests::test_search_params_builder ... ok
+test types::tests::test_search_params_default ... ok
+test types::tests::test_search_params_serialization ... ok
+test types::tests::test_search_result_empty_metadata_skipped ... ok
+test types::tests::test_search_result_serialization ... ok
+test types::tests::test_search_results_empty ... ok
+test types::tests::test_vector_config_default ... ok
+test types::tests::test_vector_config_deserialization_with_defaults ... ok
+test types::tests::test_vector_config_serialization ... ok
+test types::tests::test_vector_document_new ... ok
+test types::tests::test_vector_document_serialization ... ok
+test types::tests::test_vector_document_serialization_skips_empty ... ok
+test types::tests::test_vector_document_with_category ... ok
+test types::tests::test_vector_document_with_metadata ... ok
+test lancedb::tests::test_lancedb_backend_empty ... ok
+test persistence::tests::test_is_index_fresh_different_hash ... ok
+test persistence::tests::test_is_index_fresh_missing_file ... ok
+test builder::tests::test_builder_build_duration_tracked ... ok
+test persistence::tests::test_save_and_load_metadata ... ok
+test builder::tests::test_builder_content_hash_changes ... ok
+test persistence::tests::test_is_index_fresh_matching_hash ... ok
+test builder::tests::test_builder_no_cache_path ... ok
+test persistence::tests::test_load_metadata_invalid_json ... ok
+test builder::tests::test_builder_cache_hit ... ok
+test builder::tests::test_builder_error_handling_collect ... ok
+test builder::tests::test_builder_content_hash_deterministic ... ok
+test builder::tests::test_builder_content_hash ... ok
+test builder::tests::test_builder_batch_size ... ok
+test builder::tests::test_builder_cache_miss_on_content_change ... ok
+test builder::tests::test_builder_skip_cache ... ok
+test lancedb::tests::test_lancedb_backend_score_normalization ... ok
+test lancedb::tests::test_lancedb_backend_build_and_search ... ok
+test lancedb::tests::test_lancedb_backend_with_category_filter ... ok
+test lancedb::tests::test_lancedb_known_l2_scores_ranking_and_filtering ... ok
+test lancedb::tests::test_metadata_filter_streams_multiple_bounded_row_id_batches ... ok
+
+test result: ok. 116 passed; 0 failed; 4 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+   Doc-tests fabryk_cli
+
+running 6 tests
+test crates/fabryk-cli/src/config_loader.rs - config_loader::ConfigLoaderBuilder (line 15) - compile ... ok
+test crates/fabryk-cli/src/sources_handlers.rs - sources_handlers::parse_source_id (line 619) ... ignored
+test crates/fabryk-cli/src/config_utils.rs - config_utils::flatten_toml_value (line 116) ... ok
+test crates/fabryk-cli/src/config_sections.rs - config_sections::TlsConfig (line 21) ... ok
+test crates/fabryk-cli/src/config_utils.rs - config_utils::resolve_base_dir (line 26) ... ok
+test crates/fabryk-cli/src/config_sections.rs - config_sections::OAuthConfig (line 101) ... ok
+
+test result: ok. 5 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 18.78s; merged doctests compilation took 18.62s
+   Doc-tests fabryk_vector
+
+running 4 tests
+test crates/fabryk-vector/src/builder.rs - builder::VectorIndexBuilder (line 41) ... ignored
+test crates/fabryk-vector/src/builder.rs - builder::VectorIndexBuilder<E>::build_append (line 286) ... ignored
+test crates/fabryk-vector/src/lib.rs - (line 36) ... ignored
+test crates/fabryk-vector/src/probe.rs - probe::VectorProbe (line 21) ... ignored
+
+test result: ok. 0 passed; 0 failed; 4 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.69s; merged doctests compilation took 0.55s
+GATE_STATUS=0

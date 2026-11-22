@@ -1,0 +1,4 @@
+   Compiling fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.32s
+     Running `target/debug/examples/cc_slice02_old_lance_writer .worktrees/planning/project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/artifacts/baseline-fixtures/lance`
+wrote baseline Lance table=cc_vectors rows=3 dims=4 path=.worktrees/planning/project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/artifacts/baseline-fixtures/lance

@@ -1,0 +1,4 @@
+$ cargo upgrade --manifest-path Cargo.toml --incompatible allow --rust-version 1.94
+    Checking virtual workspace's dependencies
+Error: io: failed to lookup address information: nodename nor servname provided, or not known
+EXIT 1

@@ -1,0 +1,61 @@
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-spec/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-topo/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `1.2.2+spec-1.1.0` for dependency `toml` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+warning: /Users/oubiwann/lab/oxur/textrynum/crates/textrynum-util/Cargo.toml: version requirement `0.25.20+spec-1.1.0` for dependency `toml_edit` includes semver metadata which will be ignored, removing the metadata is recommended to avoid confusion
+    Checking fabryk-vector v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector)
+    Checking ecl-sink-kafka v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-sink-kafka)
+    Checking ecl-pipeline-state v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-pipeline-state)
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+warning: missing documentation for the crate
+  --> crates/ecl-pipeline-state/examples/cc_redb_new_reader.rs:1:1
+   |
+ 1 | / use ecl_pipeline_state::{Blake3Hash, RedbStateStore, StateStore};
+ 2 | | use std::collections::BTreeMap;
+ 3 | | use std::path::PathBuf;
+...  |
+53 | |     Ok(())
+54 | | }
+   | |_^
+   |
+   = note: requested on the command line with `-W missing-docs`
+
+warning: `ecl-pipeline-state` (example "cc_redb_new_reader") generated 1 warning
+    Checking ecl-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/ecl-cli)
+error[E0061]: this method takes 1 argument but 2 arguments were supplied
+   --> crates/fabryk-vector/src/lancedb.rs:580:14
+    |
+580 |             .zip([0.0_f32, 4.0, 16.0], [1.0_f32, 1.0 / 5.0, 1.0 / 17.0])
+    |              ^^^                       -------------------------------- unexpected argument #2 of type `[f32; 3]`
+    |
+note: method defined here
+   --> /rustc/4a4ef493e3a1488c6e321570238084b38948f6db/library/core/src/iter/traits/iterator.rs:617:7
+help: remove the extra argument
+    |
+580 -             .zip([0.0_f32, 4.0, 16.0], [1.0_f32, 1.0 / 5.0, 1.0 / 17.0])
+580 +             .zip([0.0_f32, 4.0, 16.0])
+    |
+
+error[E0308]: mismatched types
+   --> crates/fabryk-vector/src/lancedb.rs:577:13
+    |
+577 |           for (item, distance, score) in results
+    |  _____________^^^^^^^^^^^^^^^^^^^^^^^____-
+    | |             |
+    | |             expected a tuple with 2 elements, found one with 3 elements
+578 | |             .items
+579 | |             .iter()
+580 | |             .zip([0.0_f32, 4.0, 16.0], [1.0_f32, 1.0 / 5.0, 1.0 / 17.0])
+    | |________________________________________________________________________- this is an iterator with items of type `(&types::VectorSearchResult, f32)`
+    |
+    = note: expected tuple `(&types::VectorSearchResult, f32)`
+               found tuple `(_, _, _)`
+
+    Checking fabryk-mcp-semantic v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-semantic)
+    Checking fabryk-cli v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-cli)
+    Checking fabryk v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk)
+Some errors have detailed explanations: E0061, E0308.
+For more information about an error, try `rustc --explain E0061`.
+error: could not compile `fabryk-vector` (lib test) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

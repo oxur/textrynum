@@ -16,3 +16,1336 @@
 2026-11-21T23:26:28.254081Z  WARN codex_features: unknown feature key in config: suggestions_feature
 2026-11-21T23:26:30.782351Z  WARN codex_features: unknown feature key in config: suggestions_feature
 2026-11-21T23:26:49.524960Z  WARN codex_file_watcher: failed to unwatch /Users/oubiwann/Library/Application Support/ChatGPT-Profiles/personal/codex-home/skills: No watch was found.
+2026-11-21T23:29:05.359081Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:29:05.361540Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:29:05.366223Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:29:05.366223Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:29:05.369405Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:29:05.742896Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:29:05.872076Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-11-21T23:29:05.872118Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-11-21T23:29:05.928310Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-11-21T23:29:05.928334Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-11-21T23:29:05.971951Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:29:06.069803Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:29:06.547854Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:29:06.549244Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:29:20.072630Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:29:39.141238Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:29:53.311733Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:30:03.421366Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:30:17.160680Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:30:25.597270Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:30:35.002917Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:30:39.700793Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:30:46.139448Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:30:55.917665Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:07.621212Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:12.692364Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:15.688362Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:20.209725Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:23.605998Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:30.010865Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:37.528873Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:41.031294Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:45.030433Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:49.246795Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:53.324632Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:56.655902Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:31:59.753936Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:06.178867Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:10.126808Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:13.538390Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:17.063433Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:20.159421Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:23.458707Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:27.009158Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:30.139587Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:33.723726Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:40.087585Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:43.481000Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:46.695988Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:50.244247Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:54.846066Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:32:59.185827Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:33:04.230485Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:33:07.419629Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:33:11.305984Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:33:26.875281Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:33:33.250271Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:33:42.795988Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:33:47.020030Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:33:53.624193Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:33:58.107190Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:34:03.511554Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:34:09.392859Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:34:36.580435Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:34:43.296858Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:35:06.795137Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:35:21.877752Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:35:34.307492Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:35:42.498967Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:35:46.991264Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:35:50.394960Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:35:52.902064Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:35:58.653958Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:08.673611Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:12.219992Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:15.536303Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:18.393758Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:21.208648Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:25.997610Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:33.008153Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:35.974514Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:38.870623Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:41.775037Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:44.629852Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:48.604433Z ERROR codex_core::tools::router: error=exec pragma must be valid JSON with supported fields `yield_time_ms` and `max_output_tokens`: expected value at line 1 column 1
+2026-11-21T23:36:48.698615Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:51.739885Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:55.340775Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:36:58.868715Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:37:01.682008Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:37:05.585682Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:37:08.485079Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:37:13.314304Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:37:19.969246Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:37:24.548770Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:37:27.740081Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:37:30.499192Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:37:33.510157Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:37:36.378516Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:38:56.065612Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:39:01.178481Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:39:07.641488Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:39:12.641786Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:39:17.196694Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:39:21.041027Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:39:36.232872Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:39:39.472998Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:39:53.252407Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:40:08.262676Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:40:12.334909Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:40:16.501919Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:40:31.491958Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:40:50.042335Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:41:06.835048Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:41:27.265533Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:41:27.675970Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:41:27.916832Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:41:32.347540Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:41:38.339901Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:41:46.231974Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:41:53.506538Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:41:58.714836Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:42:05.291194Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:42:21.372082Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:43:11.627706Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:43:21.722174Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:43:26.979048Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:43:33.946071Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:43:38.717168Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:43:46.150380Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:43:53.345702Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:43:56.822338Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:44:08.234556Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:45:18.056043Z ERROR codex_core::tools::router: error=apply_patch verification failed: invalid hunk at line 23, 'adapter = "extract"' is not a valid hunk header. Valid hunk headers: '*** Add File: {path}', '*** Delete File: {path}', '*** Update File: {path}'
+2026-11-21T23:45:18.122194Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:45:44.037537Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:46:10.671719Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:46:23.629299Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:46:33.247789Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:46:40.418716Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:46:52.643942Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:47:01.554111Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:47:08.496623Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:47:14.564126Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:47:27.089768Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:47:39.031578Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:47:52.195711Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:48:04.285769Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:48:18.775174Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:48:30.746504Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:48:43.356733Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:48:55.237055Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:49:08.543081Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:49:20.567556Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:49:33.909699Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:49:46.790395Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:49:50.082495Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:50:01.878255Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:50:04.793002Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:50:16.594565Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:50:19.734236Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:50:30.693361Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:50:43.797325Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:50:49.813580Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:50:55.954014Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:50:59.524837Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:51:07.764253Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:51:19.664055Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:51:31.907911Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:51:35.172077Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:51:49.434541Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:52:01.700873Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:52:29.906696Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:52:52.052659Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:53:03.687885Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:53:28.630083Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:53:32.022155Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:53:43.292591Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:53:57.104658Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:54:00.583058Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:54:09.423071Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:54:13.345936Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:54:25.311329Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:54:34.690269Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:54:43.199470Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:54:47.763441Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:55:00.008343Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:55:11.990327Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:55:23.744574Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:55:26.024704Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:55:31.221951Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:55:53.340183Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:56:50.295129Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:56:53.313526Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:57:06.061964Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:57:10.979573Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:57:23.494808Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:57:35.552003Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:57:38.919669Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:57:51.817074Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:57:56.126869Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:58:10.637279Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:58:29.877520Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:59:30.136316Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:59:34.902498Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:59:47.482487Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-21T23:59:59.897119Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:00:02.886961Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:00:15.496194Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:00:19.234960Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:00:34.342852Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:00:37.499991Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:00:49.787008Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:00:53.881834Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:01:07.211528Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:01:10.531792Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:01:21.058472Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:01:33.147741Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:01:52.696878Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:01:57.090637Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:02:01.682000Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:02:07.734242Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:02:11.824003Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:02:13.821037Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:02:35.454446Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:02:51.413998Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:02:57.130015Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:03:03.753186Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:03:07.589236Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:03:11.308788Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:03:15.048546Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:03:18.685684Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:03:24.765626Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:03:28.641817Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:03:32.405830Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:04:54.959524Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:05:00.181656Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:05:04.376128Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:05:10.065844Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:05:19.397131Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:05:25.685013Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:05:30.346914Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:05:34.216246Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:05:39.869612Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:06:06.703143Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:06:29.148987Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:06:33.126121Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:06:51.697447Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:06:56.828499Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:07:01.662707Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:07:06.100001Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:07:11.223883Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:07:14.613240Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:07:20.541292Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:07:29.303011Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:07:33.724216Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:07:42.223224Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:07:47.417800Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:07:55.620336Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:08:06.395406Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:08:13.865398Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:08:14.302484Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:08:14.593998Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:08:19.062078Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:08:25.551288Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:08:29.390215Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:09:01.493220Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:09:33.881639Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:10:07.781659Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:10:39.840562Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:11:11.830246Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:11:43.891692Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:12:17.224562Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:12:49.316462Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:13:21.133773Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:13:53.091345Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:14:24.953594Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:14:29.698516Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:14:33.117220Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:14:37.215683Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:15:09.096966Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:15:41.747378Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:16:13.585212Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:16:46.774049Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:17:13.733794Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:17:25.380673Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:17:30.731778Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:17:36.805788Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:18:03.074144Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:18:10.555476Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:18:20.751221Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:18:26.753612Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:18:34.193276Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:18:39.601811Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:18:44.176182Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:19:02.757285Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:19:07.851289Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:19:33.302141Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:19:38.276224Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:19:45.304509Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:20:19.247647Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:20:51.321976Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:21:05.926323Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:21:15.972822Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:21:28.929984Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:22:34.752400Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:22:41.342996Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:23:05.206286Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:23:08.960268Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:23:21.602574Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:23:28.266466Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:23:30.670801Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:23:35.854421Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:23:42.147573Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:23:47.491264Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:24:20.050604Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:24:52.001118Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:25:25.510784Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:25:57.290129Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:26:13.926327Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:26:26.735510Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:26:36.474064Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:27:08.719235Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:27:41.818451Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:28:13.588871Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:28:46.288912Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:29:19.149716Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:29:52.632532Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:30:24.501749Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:30:56.683549Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:31:28.506991Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:32:00.760105Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:32:34.255189Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:33:06.732839Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:33:09.732493Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:33:17.202955Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:33:49.560411Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:34:18.105140Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:34:46.548655Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:35:18.714567Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:35:52.293151Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:36:24.980386Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:36:57.005079Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:37:29.344999Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:38:03.891573Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:38:35.941181Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:39:09.494570Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:39:42.387321Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:40:14.685558Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:40:46.664710Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:41:20.068180Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:41:51.917316Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:42:23.929025Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:42:56.129930Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:43:28.151013Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:44:01.361458Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:44:33.423500Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:45:05.614541Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:45:37.886419Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:46:10.053412Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:46:42.319182Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:47:14.347713Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:47:46.335144Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:48:18.313813Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:48:38.730177Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:48:55.155934Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:48:59.991442Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:49:15.188191Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:49:20.877218Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:49:33.197140Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:49:38.716619Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:49:42.413368Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:49:47.628452Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:49:56.079963Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:50:00.744735Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:50:05.403849Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:50:14.557102Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:50:18.316305Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:50:40.416209Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:50:44.317762Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:50:49.156542Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:50:56.063163Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:51:00.145086Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:51:19.452553Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:51:43.530377Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:51:46.222421Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:51:49.322628Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:51:53.090817Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:51:58.114094Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:52:05.255819Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:52:40.259563Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:52:48.512220Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:53:14.324677Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:53:18.477598Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:53:33.887514Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:53:39.889635Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:53:46.341251Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:53:54.381245Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:54:26.995313Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:55:02.850618Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:55:36.210737Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:56:08.141164Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:56:40.650770Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:57:12.846690Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:57:45.023700Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:57:51.257340Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:57:55.081639Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:58:02.385346Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:58:08.898827Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:58:23.877027Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:58:50.654546Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:59:18.928540Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:59:29.078943Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:59:34.938122Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:59:37.318942Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:59:43.561891Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T00:59:50.486804Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:01:10.185671Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:01:15.169161Z  WARN codex_sandboxing::violation: recorded sandbox violation: resource=filesystem backend=seatbelt reason=operation_not_permitted path=/bin/ps
+2026-11-22T01:01:15.181708Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:01:20.389215Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:01:26.982849Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:01:40.944629Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:01:43.593468Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:01:49.411477Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:01:56.141302Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:01:58.947669Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:02:04.130191Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:02:10.065682Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:02:10.552379Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:02:10.819665Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:02:15.749472Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:02:19.805452Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:02:26.495350Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:02:33.616720Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:02:38.853361Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:02:42.786579Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:02:49.461827Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:02:55.540574Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:03:17.595821Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:03:29.579105Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:03:37.422570Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:03:41.675193Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:03:48.244764Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:03:51.531012Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:03:54.971357Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:04:00.855848Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:04:08.390757Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:04:13.238476Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:04:17.004841Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:04:27.939162Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:04:34.930118Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:04:41.924887Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:04:49.040973Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:04:55.959384Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:05:03.480480Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:05:10.644128Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:05:17.401750Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:05:24.235167Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:05:36.124605Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:05:48.122375Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:05:59.901638Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:06:11.872921Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:06:23.957150Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:06:37.059191Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:07:06.760675Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:07:19.872383Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:07:25.110434Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:07:29.560087Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:07:39.348719Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:07:42.792949Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:07:48.044496Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:08:00.891894Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:08:10.037500Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:08:17.045525Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:08:27.400307Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:08:30.306714Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:08:43.145385Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:09:15.157921Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:09:48.387460Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:09:51.812033Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:10:24.625516Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:10:28.223141Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:10:56.337636Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:11:02.815480Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:11:07.840239Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:11:11.987005Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:11:15.439408Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:11:20.934398Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:11:31.535745Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:11:40.482445Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:11:44.818376Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:11:49.183649Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:11:54.526372Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:11:59.670704Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:12:31.967417Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:13:04.354647Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:13:36.908633Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:14:09.422156Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:14:42.649520Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:15:14.800519Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:15:47.045914Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:16:02.373673Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:16:06.953689Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:16:38.937699Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:17:11.850805Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:17:43.917888Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:18:15.706093Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:18:47.492122Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:19:19.362712Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:19:51.203953Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:20:24.184011Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:20:56.302068Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:21:28.273451Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:22:00.106618Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:22:32.033870Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:22:47.744856Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:22:53.222206Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:23:10.872306Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:23:21.804169Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:23:26.597440Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:23:41.095291Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:23:48.685027Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:24:20.889788Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:24:52.967217Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:25:24.976741Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:25:56.932049Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:25:59.571148Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:26:04.682589Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:26:36.991569Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:27:09.001641Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:27:41.026817Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:28:13.731898Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:28:45.499482Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:29:17.629682Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:29:25.413723Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:29:33.286577Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:30:05.245638Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:30:37.468379Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:31:09.607480Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:31:41.382202Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:32:13.225556Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:32:45.317634Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:33:17.344687Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:33:49.464997Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:34:21.451682Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:34:53.251355Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:34:56.028002Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:35:03.503788Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:35:07.936125Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:35:23.395914Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:35:30.428779Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:35:41.584450Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:35:47.334188Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:35:50.038146Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:35:54.764731Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:35:59.478448Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:36:03.070787Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:36:09.267805Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:36:39.401926Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:36:44.481292Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:36:48.591985Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:37:21.115512Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:37:27.040505Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:37:28.943272Z ERROR codex_core::tools::router: error=write_stdin failed: Unknown process id 13531
+2026-11-22T01:37:28.977075Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:37:33.107336Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:37:40.205588Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:38:12.404766Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:38:44.674354Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:39:16.942515Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:39:49.557266Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:40:21.662724Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:40:53.453422Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:41:25.790060Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:41:58.581908Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:42:30.435967Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:43:02.396483Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:43:34.275008Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:44:06.900470Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:44:40.382017Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:45:12.336281Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:45:44.587370Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:45:56.472220Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:46:14.663121Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:46:21.675411Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:46:26.692043Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:46:31.616721Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:46:38.165177Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:46:42.504084Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:47:14.521048Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:47:16.427412Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:47:43.086170Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:47:49.193391Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:47:53.770498Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:48:09.777228Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:48:19.995150Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:48:31.168933Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:49:08.701309Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:49:19.809856Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:49:34.247137Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:50:07.067736Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:50:16.590167Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:50:21.211188Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:50:33.299175Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:50:45.523724Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:50:57.408527Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:51:09.579572Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:51:22.109495Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:51:34.225833Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:51:46.867826Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:51:59.986167Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:52:14.085669Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:52:22.324463Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:52:47.987529Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:53:44.958647Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:53:53.490498Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:54:01.519664Z  WARN codex_core::responses_retry: stream disconnected - retrying sampling request (1/5 in 204ms)... turn_id=01a20071-5f29-7d23-858c-daedb0d7822f retries=1 max_retries=5 sampling_error=stream disconnected before completion: websocket closed by server before response.completed
+2026-11-22T01:54:01.733896Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:54:09.745787Z  WARN codex_file_watcher: failed to unwatch /Users/oubiwann/Library/Application Support/ChatGPT-Profiles/personal/codex-home/skills: No watch was found.
+2026-11-22T01:57:27.906913Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:27.909479Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:27.926860Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:27.926975Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:27.943128Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:28.269776Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:28.457658Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-11-22T01:57:28.457682Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-11-22T01:57:28.500686Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-11-22T01:57:28.500710Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-11-22T01:57:28.557963Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:28.605656Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:29.095498Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:29.158408Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:29.572333Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-f05bfa26-6d3d-44c5-a6dd-f4f540935d2e"
+2026-11-22T01:57:29.572406Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-8b1ede2a-25b7-43f0-80c9-de5219c782b4"
+2026-11-22T01:57:29.572426Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-4cb6168e-81e9-472d-bda8-87614a4d8dbf"
+2026-11-22T01:57:29.572447Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-b579d242-1a1a-40ef-a9a5-7db1e11d5fa6"
+2026-11-22T01:57:29.572471Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-15c4653f-b8c5-47c4-9e13-ee8f8a225263"
+2026-11-22T01:57:29.572491Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-1ec3cdb4-99df-4b85-b68f-dc9f0cd4250a"
+2026-11-22T01:57:29.572505Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-87492041-0d16-49b7-8f40-52c65fcae241"
+2026-11-22T01:57:29.572523Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-044b7a72-5cdc-4b22-8213-6878475c4d01"
+2026-11-22T01:57:29.572543Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-d08bd6b6-3bdf-4a0b-a71b-06df1b152976"
+2026-11-22T01:57:29.572560Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-a9ae5e10-a843-4881-8bfd-0de0b51502c8"
+2026-11-22T01:57:29.572573Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-06892cec-31f7-4a17-bfeb-f026275be5df"
+2026-11-22T01:57:29.572589Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-bf53a67f-7110-4e90-a127-57c397025243"
+2026-11-22T01:57:29.572623Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-14164fbe-2bed-4726-b426-a79cbef8ccad"
+2026-11-22T01:57:29.572640Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-228102b1-a968-4d31-af7d-6aad7b8fb341"
+2026-11-22T01:57:29.572651Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-3730a2f7-3fe1-40b6-ace6-837e8dc8440f"
+2026-11-22T01:57:29.572664Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-1928b577-3262-4676-af46-02cfec27ac2c"
+2026-11-22T01:57:29.572678Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-805b6286-be3f-424e-80b5-c82b219f0bb8"
+2026-11-22T01:57:29.572690Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-1eb5684c-1436-496a-8c97-7c7a98c817a0"
+2026-11-22T01:57:29.572705Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-f615e0ba-2919-45da-bd22-3333ec81f4a3"
+2026-11-22T01:57:29.572723Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-e15ba56d-8863-45bd-8544-54745820a73b"
+2026-11-22T01:57:29.572751Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-c123c5ea-9058-4c33-958a-c69e2056191d"
+2026-11-22T01:57:29.572773Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-d93d874a-4abe-47fa-91a5-439dd7bb8ac5"
+2026-11-22T01:57:29.572785Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-6a16368b-bcd3-4af5-b13f-b7d4e49591f6"
+2026-11-22T01:57:29.572798Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-0275cd6e-7eaa-4996-9b49-d0dd5be80002"
+2026-11-22T01:57:29.572810Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-de386eb8-51ba-46e0-ae78-e49b20a2cd8c"
+2026-11-22T01:57:29.572819Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-e3c4978a-7841-4d61-b766-0b699b93a44b"
+2026-11-22T01:57:29.572831Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-d6f9e545-2eea-4fdf-a916-320af8bd981f"
+2026-11-22T01:57:29.572843Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-39129e15-3311-4625-a808-788fc5677cfa"
+2026-11-22T01:57:29.572854Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-eb5e6610-21e4-4e89-98e9-8eb2c4dd6df0"
+2026-11-22T01:57:29.572872Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-e7feb976-32ce-4749-95b7-756919eb487f"
+2026-11-22T01:57:29.572893Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-aaf5eae4-cc23-4e72-8dfa-88e27e5fc56e"
+2026-11-22T01:57:29.572917Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-a8d39d72-7c9a-4e22-a82f-b4135b91b12b"
+2026-11-22T01:57:29.572934Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-9f8db2e7-977b-4a8b-b2fa-32f8be35771d"
+2026-11-22T01:57:29.572964Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-89a587ab-bc02-401b-80b7-fbd89be992aa"
+2026-11-22T01:57:29.572979Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-632a291a-b97a-41d3-bbd0-68f8158d2231"
+2026-11-22T01:57:29.572997Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-40bb5859-7c3d-42da-9318-82606f351a74"
+2026-11-22T01:57:29.573015Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-03ff754d-1bdc-4d13-90fd-e74dec8790be"
+2026-11-22T01:57:29.573035Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-dd543af1-c1cd-46ad-b1f6-e84771ff7fbe"
+2026-11-22T01:57:29.573054Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-799e9b22-8f87-4375-8ce8-acd4e070b815"
+2026-11-22T01:57:29.573090Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-891a6fc1-46af-498b-8f87-6aba5661b918"
+2026-11-22T01:57:29.573105Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-2f598af5-0c44-409e-a149-4c26c1a69076"
+2026-11-22T01:57:29.573117Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-58cc666c-e9c8-4155-befa-bcd45b1f782d"
+2026-11-22T01:57:29.573129Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-47cb98bc-fdeb-4610-9337-4ac59699295c"
+2026-11-22T01:57:29.573141Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-b4a169e8-007f-4b42-bbb8-31ca6033c90d"
+2026-11-22T01:57:29.573154Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-5c73c99f-455a-4f4d-b21e-2b84b10a10ba"
+2026-11-22T01:57:29.573167Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-c268bee2-9f82-416b-9aec-1bb4d9748d00"
+2026-11-22T01:57:29.573179Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-d56f29c5-6772-45c8-8ffc-3afa28cc3c3b"
+2026-11-22T01:57:29.573244Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-339a7460-db2e-4f86-a75e-8256a9f3686f"
+2026-11-22T01:57:29.573267Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-679406ae-7ed9-4f65-89c1-5ae03715486e"
+2026-11-22T01:57:29.573282Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-79ef81a3-99d9-473c-8bf8-0009d1c37892"
+2026-11-22T01:57:29.573299Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-6d2ac2cc-3f42-46d0-ab08-11dbd2981ae3"
+2026-11-22T01:57:29.573319Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-ddc81f19-c09d-49bc-a95d-b26d766f771a"
+2026-11-22T01:57:29.573336Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-1a12d619-8bb7-4e43-ab96-20da8fb732b0"
+2026-11-22T01:57:29.573353Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-350aecff-2832-44c0-bb61-6671737cff7c"
+2026-11-22T01:57:29.573498Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-7536cadb-6483-433d-9e64-56a7d37762f4"
+2026-11-22T01:57:29.573522Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-ace5a0b9-35c3-4ffd-9108-d7a32acfc699"
+2026-11-22T01:57:29.573536Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-86ab7b6c-8a29-43a5-a97b-d952a3889aca"
+2026-11-22T01:57:29.573562Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-67f048ad-eec0-461a-bbbe-46179a3ed1c2"
+2026-11-22T01:57:29.573577Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-78a2926d-8882-4f59-9f5e-aa34404d45ab"
+2026-11-22T01:57:29.573590Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-e7491efd-9545-4798-800d-e26e77c31202"
+2026-11-22T01:57:29.573604Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-68823587-dabc-4075-8d8b-e8cb38ffcf3f"
+2026-11-22T01:57:29.573675Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-38b4b6c0-11db-40e6-8599-f940adbbd17a"
+2026-11-22T01:57:29.573692Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-11088ead-8b15-4aca-bcd8-c64c07236481"
+2026-11-22T01:57:29.573711Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-6ae9c62c-dc86-4648-9280-f0f80f50eba8"
+2026-11-22T01:57:29.573732Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-8d0efe55-4887-421e-910a-a383d829af8c"
+2026-11-22T01:57:29.573751Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-c0696c6b-5cdf-4ef8-8227-81f632464495"
+2026-11-22T01:57:29.573765Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-5fff1ff7-9e80-435d-8570-74e3455cb7d3"
+2026-11-22T01:57:29.573801Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-41046d9f-5c6a-4c6b-b042-c6c13f859dc7"
+2026-11-22T01:57:29.573893Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-1c586a05-006e-46ac-8e32-47f772c4da34"
+2026-11-22T01:57:29.573905Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a20071-5f29-7d23-858c-daedb0d7822f` item_id="exec-429e232a-fd90-45f0-be5f-f525bfa9de7a"
+2026-11-22T01:57:30.021800Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-11-22T01:57:30.029240Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:30.035384Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-11-22T01:57:30.040106Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-11-22T01:57:30.044614Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-11-22T01:57:30.050874Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-11-22T01:57:30.055634Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-11-22T01:57:30.060250Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-11-22T01:57:30.082743Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:30.848167Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:31.589730Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:36.170365Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:42.334722Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:46.478371Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:57:51.020848Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:58:02.583655Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:58:11.333958Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:58:48.085106Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:58:52.685463Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:58:56.596547Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:59:00.374013Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:59:04.732167Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:59:07.860893Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:59:07.950035Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:59:11.716201Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:59:18.039603Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:59:24.429998Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:59:28.940992Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:59:29.930012Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:59:35.246070Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T01:59:44.294094Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:00:17.643239Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:00:23.241299Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:00:30.452301Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:00:36.905551Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:00:45.200969Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:00:59.532150Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:01:09.473853Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:01:16.467635Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:01:24.734334Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:01:42.009713Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:02:04.679680Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:02:10.503717Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:02:28.737764Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:02:41.578924Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:02:57.292650Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:03:21.316898Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:03:28.845964Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:03:33.192321Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:03:49.948970Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:04:35.992935Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:05:03.432098Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:05:36.016841Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:05:46.884203Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:05:50.835324Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:05:57.809645Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:06:05.909092Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:06:10.962855Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:06:15.271030Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:06:37.247183Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:06:43.750394Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:06:58.089229Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to find expected lines in /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector/src/lancedb.rs:
+    fn test_parse_search_results_basic() {
+2026-11-22T02:06:58.138290Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:07:01.990806Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:07:08.628489Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:07:13.175490Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:07:23.286403Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:07:33.511564Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:07:44.386842Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:08:04.067794Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:08:19.515111Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:08:26.405894Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:08:33.224012Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:08:40.137621Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:08:47.323592Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:08:54.207970Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:09:01.638116Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:09:08.554820Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:09:16.333890Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:09:23.339534Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:09:30.305484Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:09:37.098724Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:09:44.124123Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:09:50.915130Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:09:57.777755Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:10:04.744870Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:10:12.459322Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:10:19.300192Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:10:21.640870Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:10:30.644108Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:10:43.068127Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:10:50.012657Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:10:57.879027Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:11:04.931939Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:11:12.073132Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:11:19.135395Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:11:26.142731Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:11:33.138734Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:11:37.232527Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:11:44.948530Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:11:53.219588Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:12:00.286024Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:12:07.481696Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:12:10.654968Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:12:18.540662Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:12:26.290929Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:12:34.148382Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:12:41.675970Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:12:49.904811Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:12:53.497378Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:13:00.422787Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:13:07.587927Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:13:14.652322Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:13:22.864417Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:13:29.586835Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:13:36.544593Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:13:39.331590Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:13:46.264856Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:13:53.409874Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:13:56.591011Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:14:08.369898Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:14:15.520653Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:14:22.482392Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:14:30.793106Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:14:38.992817Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:14:45.831882Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:14:53.805730Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:14:57.049909Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:15:05.070483Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:15:11.944276Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:15:19.132451Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:15:26.069079Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:15:34.203645Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:15:44.204892Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:15:51.796835Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:15:58.707223Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:16:02.021164Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:16:04.545151Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:16:13.043293Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:16:13.544613Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:16:13.880168Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:16:17.268386Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:16:34.693010Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:16:39.003618Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:16:43.140831Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:16:50.158666Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:16:54.225955Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:16:57.134847Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:17:11.942640Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:17:21.469070Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:17:26.856801Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:17:36.096994Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:17:46.104796Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:17:52.682220Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:18:01.407757Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:18:05.349535Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:18:19.149762Z  WARN codex_file_watcher: failed to unwatch /Users/oubiwann/Library/Application Support/ChatGPT-Profiles/personal/codex-home/skills: No watch was found.
+2026-11-22T02:21:54.350513Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:21:54.353125Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:21:54.368618Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:21:54.368619Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:21:54.381839Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:21:54.816924Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:21:54.984597Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-11-22T02:21:54.984629Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-11-22T02:21:55.041265Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:21:55.094845Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:21:55.801771Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:21:55.821490Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:21:59.931004Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-64787b5b-a629-403d-9ed4-827d378f5fb5"
+2026-11-22T02:21:59.931076Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-596cbbc0-be27-41e1-9b44-cc6215022f50"
+2026-11-22T02:21:59.931142Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-84ff49b1-faa7-4941-b0aa-48718702c7c0"
+2026-11-22T02:21:59.931165Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-d95c8e0e-d798-4397-94a8-d269e2cb105f"
+2026-11-22T02:21:59.931188Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-7c91b1bd-434e-41fa-80e5-abc778ee361b"
+2026-11-22T02:21:59.931210Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-ecef24f5-1887-40ee-90ca-cde0e260b4a1"
+2026-11-22T02:21:59.931232Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-6a85ca3d-9b73-4aef-b652-73c144292eb3"
+2026-11-22T02:21:59.931280Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-9a2a175f-8cb9-4a4c-acb4-bb7b1689e2f4"
+2026-11-22T02:21:59.931312Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-46c6fc48-b26e-4342-858d-21022e3106b9"
+2026-11-22T02:21:59.931335Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-6f63f1b4-abe3-4699-b1b7-ca7cabab34df"
+2026-11-22T02:21:59.931357Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-6b8809f1-b79d-47f5-9287-103bd3332525"
+2026-11-22T02:21:59.931441Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-a79d061e-2bcc-44bf-80b1-7fa47a5d3852"
+2026-11-22T02:21:59.931488Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-8c769bcb-7e96-4c38-b668-9e7e7016a27e"
+2026-11-22T02:21:59.931509Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-8db58987-8402-48d6-bff9-bbba888dd4b1"
+2026-11-22T02:21:59.931527Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-986ef390-9596-4c5f-8fa5-908f79a12aa6"
+2026-11-22T02:21:59.931546Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-44b8533c-0554-4407-ab31-05667d25d4d8"
+2026-11-22T02:21:59.931562Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-1e067c2e-bcc4-4ea4-a2e6-459ad6917a4c"
+2026-11-22T02:21:59.931582Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-645eb42a-0b12-47a5-85a0-466ab61cc96e"
+2026-11-22T02:21:59.931592Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-a2b44bb1-4fe2-4686-8a48-d9505d0cc232"
+2026-11-22T02:21:59.931616Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-6cb0e88b-ffe9-4b18-a93a-7fafbf06485f"
+2026-11-22T02:21:59.931634Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-ae3308e0-8656-4421-b1dd-61b363e5af9f"
+2026-11-22T02:21:59.931651Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-87e8eb80-7d53-4274-ad6d-7ec2d0b63e25"
+2026-11-22T02:21:59.931683Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-bafdaaec-9320-4af2-b569-f72785622f10"
+2026-11-22T02:21:59.931708Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-11139180-37b4-4ae6-a249-e14253675787"
+2026-11-22T02:21:59.931735Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-427b2d36-174e-4556-ad90-aecaf943bda3"
+2026-11-22T02:21:59.931752Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-cc1fca24-7c48-4d98-83c7-f65f36de6543"
+2026-11-22T02:21:59.931769Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-bab2b6c9-76c9-4ee2-97cd-ae5ab0202645"
+2026-11-22T02:21:59.931784Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-45d73bba-9c34-4585-9f6e-2d5d0e4342b4"
+2026-11-22T02:21:59.931799Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-67738dfa-26ad-480f-b9a1-ea0236f6f365"
+2026-11-22T02:21:59.931813Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-6a6adc88-85e1-4655-9fd0-39eb931b675c"
+2026-11-22T02:21:59.931827Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-07a5b08e-57ae-45b8-89ed-eb2e09902135"
+2026-11-22T02:21:59.931853Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-565c9dba-da4d-4ecd-9558-34406cc9f7ab"
+2026-11-22T02:21:59.931878Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-2fa33bb6-e794-46fb-819b-716adbc63a25"
+2026-11-22T02:21:59.931902Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-99d2e9e8-90af-4bf4-8a10-452028a686cf"
+2026-11-22T02:21:59.931923Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-a6492ce7-a7f0-40bd-959c-e0f153e30fa0"
+2026-11-22T02:21:59.931939Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-63ce42ba-6c3f-4941-bc19-cf440a5576ad"
+2026-11-22T02:21:59.931953Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-91c91fc4-3dd3-4beb-8d11-9708cda6367c"
+2026-11-22T02:21:59.931966Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-6c0ea092-a76c-44d5-af1b-bd637511b6e2"
+2026-11-22T02:21:59.931979Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-8529585c-0326-4bd8-b3ae-67db5999251d"
+2026-11-22T02:21:59.931992Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-9336d9d5-98d1-43cf-944b-9c0b686db13b"
+2026-11-22T02:21:59.932005Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-42a145a7-15f5-4a91-bda9-e61d9c7921d7"
+2026-11-22T02:21:59.932024Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-d9ec1d20-2200-48f2-8f9d-fd0af3b33e59"
+2026-11-22T02:21:59.932041Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-1debb5eb-2887-45c5-ad88-121bfdd7add4"
+2026-11-22T02:21:59.932054Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-8c57188b-d8b6-4308-89bc-8aa85851314a"
+2026-11-22T02:21:59.932069Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-643f921c-bc4d-43df-a5ad-d454872ac2d8"
+2026-11-22T02:21:59.932090Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-7efcdc4d-c793-4c29-b9b9-9f25fa8a1ba9"
+2026-11-22T02:21:59.932107Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-0daf9469-90c8-4d3d-a211-11a5060f75b8"
+2026-11-22T02:21:59.932127Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-8c096d1e-17dc-49ac-9225-cf354fb46303"
+2026-11-22T02:21:59.932146Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-a5cc5bc1-233b-4b96-8e98-c2ea27afaf4d"
+2026-11-22T02:21:59.932166Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-2cd2b045-9c7e-4b39-8124-be12cba142ea"
+2026-11-22T02:21:59.932183Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a200f9-056a-7021-aef7-101d7e1d1b10` item_id="exec-0c18cd40-cc7f-4eea-aeac-197a1b3fbebc"
+2026-11-22T02:22:00.361393Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:22:08.656126Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:23:16.029782Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:23:21.422094Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:23:26.158644Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:23:28.725321Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:23:33.868730Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:23:37.053148Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:23:39.580405Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:23:44.831733Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:23:49.105299Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:23:52.868224Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:23:55.716659Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:24:00.488192Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:24:03.003535Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:24:06.880721Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:24:19.380526Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:24:26.792630Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:24:30.799911Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:24:34.931714Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:24:38.469885Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:24:58.954093Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:25:18.473068Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:25:29.776790Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:25:38.879330Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:25:44.132378Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:25:56.429730Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:26:05.369686Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:26:15.536713Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:26:15.937987Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:26:16.214793Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:26:21.473878Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:26:23.437602Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:26:35.724299Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:26:40.036172Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:26:43.112412Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:26:50.350087Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:26:54.354658Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:27:01.278250Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:27:06.379814Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:27:13.782722Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:27:17.517066Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:27:24.009763Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:27:29.541738Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:27:35.690772Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:27:44.480254Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:27:49.025434Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:27:51.103116Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:27:59.137940Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:28:02.431968Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:28:06.067933Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:28:14.220695Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:28:43.303912Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:28:49.396998Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:28:58.452080Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:29:03.690189Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:29:19.010209Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:29:45.470087Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:29:57.839004Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:30:04.877194Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:30:12.176165Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:30:45.488382Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:31:18.905880Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:31:50.744373Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:31:55.267293Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:32:29.188672Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:33:01.080203Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:33:33.495998Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:34:07.200759Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:34:39.257009Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:35:11.403869Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:35:43.554051Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:35:47.232452Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:35:52.122021Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:36:24.285309Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:36:57.690824Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:37:01.422043Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:37:34.513280Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:37:44.026654Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:37:55.881936Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:38:01.544850Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:38:33.401261Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:39:03.112482Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:39:18.569316Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:39:22.516156Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:39:54.435533Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:40:26.325995Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:40:58.495312Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:41:01.811632Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:41:35.644514Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:42:07.728408Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:42:39.728122Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:42:44.171384Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:42:56.735961Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:43:09.725035Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:43:41.609755Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:44:13.505761Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:44:16.871963Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:44:48.940897Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:45:20.801061Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:45:52.781765Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:45:56.030729Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:46:01.125878Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:46:10.782307Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:46:17.241120Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:46:50.250711Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:47:22.091121Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:47:57.477597Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:48:00.616200Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:48:28.130950Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:48:33.619122Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:48:35.916439Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:48:48.882276Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:48:50.933980Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:49:16.269362Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:49:19.131443Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:49:47.278938Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:50:06.445366Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:50:11.032781Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:50:17.922322Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:50:36.806284Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:50:49.235968Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:50:54.328051Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:51:15.826272Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:51:38.098590Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:51:41.406245Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:51:45.677236Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:51:50.984409Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:52:00.490360Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:52:32.352379Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:53:05.372176Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:53:08.653499Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:53:41.278424Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:54:13.341834Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:54:30.085631Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:54:36.636013Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:55:08.653818Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:55:40.525677Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:55:44.593530Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:56:00.988280Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:56:06.534602Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:56:32.721018Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to find expected lines in /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-vector/src/lancedb.rs:
+                    row_ids.push(row_id_col.value(row));
+                    if row_ids.len() == ROW_ID_BATCH {
+                        self.query_row_id_batch(table, &query_embedding, &params.category, &row_ids, threshold, limit, &mut items).await?;
+                        row_ids.clear();
+2026-11-22T02:56:32.816220Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:56:37.687777Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:56:51.871030Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:56:59.377294Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:57:02.286925Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:57:11.094005Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:57:19.476561Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:57:24.257185Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:57:33.517462Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:58:05.507989Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:58:38.353369Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:58:42.726323Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:59:14.932856Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T02:59:47.453322Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:00:21.038726Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:00:53.035187Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:01:25.786427Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:01:29.662361Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:02:02.093452Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:02:16.610600Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:02:25.343959Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:02:58.510967Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:03:30.593796Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:03:34.145277Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:04:07.824287Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:04:31.314961Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:04:36.661736Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:04:41.640331Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:05:13.664839Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:05:24.073631Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:05:43.351231Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:05:48.036878Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:05:59.701414Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:06:06.931101Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:06:39.224563Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:07:11.218211Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:07:43.176612Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:07:54.521185Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:07:59.952152Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:08:16.118244Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:08:22.053051Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:08:54.143953Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:09:26.207055Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:09:33.070593Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:09:36.628002Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:09:52.923729Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:09:58.128863Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:10:05.534164Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:10:13.008653Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:10:20.703716Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:10:26.245482Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:10:34.236292Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:10:41.404042Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:10:57.476486Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:11:02.537059Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:11:34.956935Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:12:07.209204Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:12:39.744057Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:12:43.359883Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:13:15.734209Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:13:47.907885Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:13:55.019183Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:14:28.873110Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:15:01.397800Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:15:21.846403Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:16:19.579603Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:16:37.686124Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:16:55.032886Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:17:47.378346Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:17:54.458673Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:18:02.433249Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:18:15.664836Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:18:21.308732Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:18:56.387600Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:19:19.413039Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:19:31.782412Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:19:34.124840Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:19:47.153073Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:20:07.192553Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:20:21.818274Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:20:25.731887Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:20:32.559690Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:20:49.752571Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:20:56.010688Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:21:09.307328Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:21:30.519032Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:21:45.809352Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:21:50.765895Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:21:55.879599Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:21:55.988272Z  WARN codex_core::responses_retry: stream disconnected - retrying sampling request (1/5 in 199ms)... turn_id=01a2010f-7500-7752-ae6b-8d219d6ddcd4 retries=1 max_retries=5 sampling_error=stream disconnected before completion: Responses websocket connection limit reached (60 minutes). Create a new websocket connection to continue.
+2026-11-22T03:21:56.196162Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:22:19.544640Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:23:28.227850Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:23:33.505113Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:23:39.455498Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:23:48.908040Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:23:49.358460Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:23:49.639878Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:23:55.261028Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:24:27.082895Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:24:58.841339Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:25:30.592534Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:26:03.147207Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:26:34.928295Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:26:56.193472Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:27:05.330545Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:27:10.134048Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:27:41.746184Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:28:06.374538Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:28:14.025547Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:28:21.053896Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:28:27.276081Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:28:46.193490Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:28:51.376250Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:29:24.367133Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:29:57.483927Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:30:29.363523Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:31:01.185154Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:31:33.170559Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:32:04.818936Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:32:36.500376Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:33:09.354971Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:33:41.009089Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:34:15.381673Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:34:47.033056Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:35:18.981051Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:35:51.408828Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:36:23.350032Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:36:26.990367Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:36:58.732022Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:37:30.911165Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:38:05.066840Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:38:36.650757Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:38:40.119387Z ERROR codex_core::tools::router: error=write_stdin failed: Unknown process id 21663
+2026-11-22T03:38:40.143628Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:38:47.085916Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:38:53.054641Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:39:02.310039Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:39:07.350595Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:39:13.198972Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:39:22.891396Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:39:30.221843Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:39:34.499718Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:40:40.523123Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:40:46.816611Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:40:53.307306Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:41:36.255956Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:41:52.164678Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:42:01.625892Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:42:04.332974Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:42:09.630837Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:42:13.085397Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:42:16.013189Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:42:23.215714Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:42:25.746473Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:42:30.273409Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:42:33.678995Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:42:37.829840Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:42:52.005404Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:43:02.023938Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:43:08.756591Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:43:13.562786Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:43:36.617430Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:43:38.351220Z ERROR codex_core::tools::router: error=write_stdin failed: Unknown process id 65541
+2026-11-22T03:43:38.403896Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:43:45.115592Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:44:22.581231Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:44:40.634526Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:44:51.527328Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:44:58.609016Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:45:08.819546Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:45:20.860125Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:45:31.158308Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:45:39.761426Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to read file to update /Users/oubiwann/lab/oxur/textrynum/.worktrees/planning/project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-execution.md: No such file or directory (os error 2)
+2026-11-22T03:45:39.805264Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:45:44.859556Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:45:50.040868Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:46:02.010736Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:46:23.594820Z  WARN codex_file_watcher: failed to unwatch /Users/oubiwann/Library/Application Support/ChatGPT-Profiles/personal/codex-home/skills: No watch was found.
+2026-11-22T03:51:15.305120Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:15.310132Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:15.355443Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:15.355443Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:15.388526Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:15.750129Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:15.939339Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-11-22T03:51:15.939372Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-11-22T03:51:16.035551Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:16.111085Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:16.401128Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-5a509ad5-1649-430f-a8d5-73671b58004b"
+2026-11-22T03:51:16.401267Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-50fb2bf3-2bdc-49ac-ad97-fe88abb0a794"
+2026-11-22T03:51:16.401315Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-c8d5c034-6609-4ec8-882b-86f6f9ef20d2"
+2026-11-22T03:51:16.401388Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-2d7d1056-19a4-410f-9b46-ac801a42366c"
+2026-11-22T03:51:16.401406Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-9cf42db8-9f4f-4682-aa4a-605d7c86d7d5"
+2026-11-22T03:51:16.401422Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-0a751f2b-7d91-4619-98de-65f2b0d45144"
+2026-11-22T03:51:16.401457Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-b7b8e443-9521-45c7-8910-0b4a277c14d9"
+2026-11-22T03:51:16.401475Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-50d8bb6c-d15a-4127-94c4-445c31697023"
+2026-11-22T03:51:16.401508Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-e86add80-d089-4cf4-a6fc-df472b708e2d"
+2026-11-22T03:51:16.401539Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-4b16537e-1dff-4315-a6f0-d9fe92086f31"
+2026-11-22T03:51:16.401561Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-40883afd-c3bb-40f7-8ae0-896e6110a95e"
+2026-11-22T03:51:16.401616Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-1fb6ebee-aef0-4d18-91a3-c805b117a849"
+2026-11-22T03:51:16.401645Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-3f1cc2e8-d481-4d07-aa7d-250427512cf9"
+2026-11-22T03:51:16.401665Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-7128f0cc-0126-4347-af35-9971edb8d1a5"
+2026-11-22T03:51:16.401740Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-2bfaeccd-d015-4d5d-a6e8-013e1b4b4ec3"
+2026-11-22T03:51:16.401798Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-b3b60067-0d7f-45be-8007-e81f078a2bc3"
+2026-11-22T03:51:16.401819Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-b26f4dd1-2c83-4145-a0ac-0b65f02f6e7b"
+2026-11-22T03:51:16.401864Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-95a7ee7a-8223-41d9-b85a-de71aeae00d4"
+2026-11-22T03:51:16.401907Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-40d6ed64-72d5-4bf4-b765-55e749e16111"
+2026-11-22T03:51:16.401980Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-54b84ca3-0c11-41c8-bba8-1debf7c9ebdf"
+2026-11-22T03:51:16.402001Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-a849406d-3d7e-48fc-9d08-2bda91f5e3f3"
+2026-11-22T03:51:16.402026Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-dde7d561-b6c4-4ddb-ab5c-7a76410a622f"
+2026-11-22T03:51:16.402042Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-9ba7a3fe-b336-4e9c-9a67-6b30537b32a3"
+2026-11-22T03:51:16.402059Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-e138b768-9b11-4bae-be1e-69f61a1796d6"
+2026-11-22T03:51:16.402073Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-447cdca1-c556-494e-a82c-9d188d4d0815"
+2026-11-22T03:51:16.402084Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-474bea85-6613-412a-ab65-e0dbc2718f92"
+2026-11-22T03:51:16.402107Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-512e5445-3d77-49b4-8713-ed90ed0724ec"
+2026-11-22T03:51:16.402128Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-ee1b08f4-f560-4541-98fd-e5200fc3f3d5"
+2026-11-22T03:51:16.402146Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-30b51c85-25b2-4641-8bef-97fc44b3e126"
+2026-11-22T03:51:16.402166Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-0a1d6d1d-6f6e-4fe7-b5d1-6472c755a684"
+2026-11-22T03:51:16.402196Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-4a6c8347-7746-4e4c-9047-313beadcf08b"
+2026-11-22T03:51:16.402225Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-9ae4c582-4b1f-4a7a-b622-d1715b4f7c48"
+2026-11-22T03:51:16.402243Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-9378ddb3-248e-4ff2-8f4b-360f2451c233"
+2026-11-22T03:51:16.402270Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-f5c553af-1f89-4926-a744-5644c2a9122e"
+2026-11-22T03:51:16.402306Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-61951d35-74a5-4881-b210-0eb87c7a9059"
+2026-11-22T03:51:16.402341Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-b80e9213-5ffb-45be-9431-3c030989b8a9"
+2026-11-22T03:51:16.402365Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-3968b04d-c549-44ec-8103-30b80117e300"
+2026-11-22T03:51:16.402407Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-5bb8936d-47b9-4cd3-b462-e4a707d63dcb"
+2026-11-22T03:51:16.402430Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-96137fa9-3423-4cc2-9b14-61e0823d1df4"
+2026-11-22T03:51:16.402448Z  WARN codex_app_server_protocol::protocol::thread_history: dropping turn-scoped item for unknown turn id `01a2010f-7500-7752-ae6b-8d219d6ddcd4` item_id="exec-fdad53cd-ef7d-4cc3-92d3-5249ae390d64"
+2026-11-22T03:51:16.653551Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:16.678469Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:17.715112Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:26.719501Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:37.564834Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:44.215898Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:51:54.718122Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:52:16.195272Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:52:27.063972Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:53:23.850524Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:53:48.808608Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:53:52.563047Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:54:54.984511Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:55:37.549219Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:56:05.444411Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:57:22.571221Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:57:35.016249Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:58:11.496693Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:58:24.146167Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:58:42.102354Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T03:59:23.344853Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T04:00:03.038190Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T04:00:11.397932Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T04:00:34.762506Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T04:00:49.313994Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T04:01:26.788257Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T04:01:37.965550Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T04:01:59.558045Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T04:02:26.346705Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T04:02:53.303828Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T04:02:59.153558Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T04:03:09.533000Z  WARN codex_features: unknown feature key in config: suggestions_feature
+2026-11-22T04:03:28.782715Z  WARN codex_file_watcher: failed to unwatch /Users/oubiwann/Library/Application Support/ChatGPT-Profiles/personal/codex-home/skills: No watch was found.

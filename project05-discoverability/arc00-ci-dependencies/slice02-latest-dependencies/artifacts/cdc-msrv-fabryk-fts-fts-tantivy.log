@@ -1,0 +1,6 @@
+SOURCE_HEAD=719c58f245fe4a9115c7c0391d3e268c99157e2f
+COMMAND=["cargo", "+1.94.0", "check", "--locked", "-p", "fabryk-fts", "--no-default-features", "--features", "fts-tantivy", "--all-targets"]
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.57s
+
+CARGO_EXIT_STATUS=0

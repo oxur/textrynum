@@ -6521,7 +6521,7 @@
           "acceptance": "all DEP2 rows open; real Cargo status plus full logs required"
         },
         "prepared_correction": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration04.md",
-        "prepared_correction_status": "iteration04 same-session docs-only resume active in14297; source candidate unchanged",
+        "prepared_correction_status": "iteration04 docs-only correction completed0, current evidence reconciled byCDC; no source/native/commit mutation",
         "new_compatibility_review": {
           "metadata_filter": "bounded native row-ID scan/batching/MAX/zero and260match runtime controls passed; no all-N vector candidates/upfront caller-limit allocation; final review pending",
           "english_stopwords": "explicit Operator preservation choice now received after ordinary-authority implementation; exact1298-term product oracle passed, notices/provenance and real package inclusion still reviewed",
@@ -6576,18 +6576,20 @@
         },
         "private_pattern_scan": {
           "source_files": 360,
-          "planning_files": 510,
+          "planning_existing_files": 534,
+          "planning_listed_paths": 535,
           "new_source_objects": 72,
           "path_hits": 0,
           "content_hits": 0,
-          "method": "encoded case-insensitive byte pattern, counts only"
+          "method": "encoded case-insensitive byte pattern counts only, after native/registry/CIreview artifacts"
         },
         "documentation_correction": {
           "owned_exec": 14297,
           "configuration_timestamp": "2026-11-22T03:51:17.623Z",
           "model": "gpt-6-luna",
           "effort": "high",
-          "scope": "named own planning docs/artifacts only; CDC retains exclusive source/index/Cargo/planningGit"
+          "scope": "named own planning docs/artifacts only; CDC retains exclusive source/index/Cargo/planningGit",
+          "exit": 0
         },
         "independent_runtime_review": {
           "source": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
@@ -6597,8 +6599,10 @@
           "provider_release": "4actualFastembedtests pass/test0 in freshconfiguredreleasebinary",
           "avro": "6pass/test0 including fullwiredecode",
           "iso": "all1298oldterms+6exclusions actualCargo0",
-          "current_registry": "63/63retained direct selections reconcile current authoritative metadata; only2documentedArrowfamily exceptions, none yanked"
-        }
+          "current_registry": "63/63retained direct selections reconcile current authoritative metadata; only2documentedArrowfamily exceptions, none yanked",
+          "literal_MAX": "actualCargo0/all260exactIDs/nativeL2scores/order/latewinner/MAXno-match/zero;initialdriver-only101preserved"
+        },
+        "source_supporting_proof": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/artifacts/persistence-proof.md"
       }
     },
     "audit_intake_observations": [
