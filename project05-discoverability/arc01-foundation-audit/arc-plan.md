@@ -1078,3 +1078,15 @@ pushes, a paused state or waived gates. Original blocked verification/SEARCH/nat
 checks and unfinished preparations remain open/UNVERIFIED. Current04 routine
 review/refinement proceeds without another root acknowledgement; final whole-arc
 acceptance still requires actual evidence and independent composition.
+
+## Original04 static phase independently accepted — 2026-11-22
+
+Afterc8a448cb and correction2148b2dd, GV-S01–07 accepted source-level semantic
+phase for exact25/11072 and7static scale dispositions. Eight diagnoses046–053:
+Medium046/047/049/051/052;Low048/050/053, with conditional compatibility/oracles and
+Q04-GV-01/02 ungraded. Review2/retro preserve actual failures and proportionate CDC
+locator/grade corrections. Budget1/5. No original whole04/pass03/behavioral/cell/
+SEARCH/full-arc acceptance; unchanged38/31/291,49cells7/7/35 and protected bytes.
+Source719clean; no source execution/fix. Author exec32848 completed0 and explicitly
+returned index/sixpaths; CDC owns planning/index, no mutable child. Next finite
+original05MCP-runtime19paths/6741lines, same retained models/static authority.

@@ -1,6 +1,6 @@
 # Original slice04 — graph and vector source-complete static phase
 
-Status: ready for initial author assignment after21closure10ea6615. Original pass03
+Current status: source-complete STATIC phase independently accepted after correction2148b2dd; see review2 below. Initial readiness followed21closure10ea6615. Original pass03
 owns all25 paths below. This phase completes their source-level semantic assessment
 and explicit seven-scale accounting; original full-slice/behavioral/pass-scale
 acceptance remains pending. Initial0/5 refinements for original04, no reset of03 or
@@ -121,3 +121,13 @@ CDC verification retains the criterion walk, actual preserved failures and passi
 metadata/preservation checks.046–048 remain proposals; all prior IDs/gates unchanged.
 Preserved iteration01 consumes1/5 refinements,4 remain. Same retained models,
 source719 read-only, no execution or repair. CDC owns until exact-six-path handoff.
+
+## CDC review2 — static phase accepted,2026-11-22
+
+Correction2148b2dd/exec32848 completed0; GV-S01–07 independently accepted for
+25 source-semantic rows/11072lines and7static scale dispositions only.
+Medium046/047/049/051/052;Low048/050/053, with prior author Low grades and questions
+preserved. See [CDC verification](cdc-verification.md) for full source/grade reasons,
+actual failures, frozen log/protected-byte evidence and unavailable proof.
+Budget1/5,4 remain. Source719clean; original whole04/pass03/behavioral/cell/SEARCH/
+full-arc gates pending. CDC owns next original05; no active mutable child.

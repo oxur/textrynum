@@ -1,9 +1,9 @@
 {
   "assessment": "ORIGINAL04 graph/vector source-complete static phase",
-  "status": "CC-proposed static; independent CDC review pending",
+  "status": "CDC-accepted source-complete static semantic phase; original full-slice/pass/behavioral gates pending",
   "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
   "planning_readiness": "19f9572f950c981021e4a5a5860a9f5cfd9b0b4a",
-  "original_pass": "pass03-graph-vector",
+  "original_pass": "pass03",
   "original_owner": "slice04-graph-vector",
   "population": {
     "paths": 25,
@@ -83,16 +83,6 @@
     "crates/fabryk-vector/src/persistence.rs",
     "crates/fabryk-vector/src/probe.rs"
   ],
-  "current_findings_proposed": [
-    "FA-RS-046",
-    "FA-RS-047",
-    "FA-RS-048",
-    "FA-RS-049",
-    "FA-RS-050",
-    "FA-RS-051",
-    "FA-RS-052",
-    "FA-RS-053"
-  ],
   "prior_scope_references": [
     "FA-RS-038",
     "FA-RS-039",
@@ -111,24 +101,26 @@
       "path": "crates/fabryk-graph/Cargo.toml",
       "line_count": 46,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "Graph package declares default-empty features and gates rkyv/memmap2/blake3 behind graph-rkyv-cache; the gated dependencies do not correspond to a graph rkyv save/load API in the complete crate.",
       "source_loci": [
-        "15–20"
+        "12–15",
+        "39–42"
       ],
       "contrary_checks": "Optional feature declaration is explicit; JSON persistence remains available with no feature.",
       "finding_question_refs": [
         "FA-RS-046"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-graph/README.md",
       "line_count": 18,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "Advertises optional rkyv-based persistence and domain-extensible relationships while labeling the crate under construction; the former capability claim exceeds the current helper-only feature module.",
@@ -139,16 +131,17 @@
       "finding_question_refs": [
         "FA-RS-046"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-graph/src/algorithms.rs",
       "line_count": 1377,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
-      "semantic_conclusion": "Traversal APIs retain accepted direction/filter roots and Q19 metric/tie/provenance questions. Review01 adds four source-backed low-severity contract mismatches: full-graph cycle detection leaks into prerequisite results (049), multiedge degree exceeds its documented normalized range (050), zero bridge maximum can admit one match (051), and neighborhood collection retains only the discovery edge for parallel links (052). All are static derivations; no order or runtime output is claimed.",
+      "semantic_conclusion": "Traversal APIs retain accepted direction/filter roots and Q19 metric/tie/provenance questions. Review01 adds four source-backed contract mismatches (CDC Medium049/051/052;Low050): full-graph cycle detection leaks into prerequisite results (049), multiedge degree exceeds its documented normalized range (050), zero bridge maximum can admit one match (051), and neighborhood collection retains only the discovery edge for parallel links (052). All are static derivations; no order or runtime output is claimed.",
       "source_loci": [
         "132–203",
         "213–267",
@@ -170,13 +163,14 @@
         "FA-RS-052",
         "Q19-01–04"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-graph/src/builder.rs",
       "line_count": 830,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
       "semantic_conclusion": "Three-phase builder extracts all nodes before edges, tracks failures/dangling references, deduplicates by endpoints+relationship name, then loads manual edges. Cache hit precedes discovery/manual loading; current key is sorted Markdown relative path+whole-second mtime, supporting FA-RS-047 and Q04-GV-01.",
@@ -194,13 +188,14 @@
         "Q04-GV-01",
         "Q21-01/02"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-graph/src/concept_card_extractor.rs",
       "line_count": 550,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
       "semantic_conclusion": "Stock frontmatter fields become nodes and typed relationship edges; prerequisite orientation remains the accepted FA-RS-038 producer side, and contrasts_with is emitted as typed ContrastsWith for FA-RS-045.",
@@ -214,13 +209,14 @@
         "FA-RS-038",
         "FA-RS-045"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-graph/src/extractor.rs",
       "line_count": 374,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
       "semantic_conclusion": "GraphExtractor separates domain parsing from node/edge conversion, provides mock support, and declares content_glob; GraphBuilder discovers with Markdown options rather than consulting the trait selector, the accepted FA-RS-042 root.",
@@ -234,13 +230,14 @@
         "FA-RS-038",
         "FA-RS-042"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-graph/src/lib.rs",
       "line_count": 75,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "Public facade re-exports graph builders, algorithms, persistence, queries, stats, types and validation; crate-level docs describe rkyv persistence more broadly than its gated module provides.",
@@ -251,13 +248,14 @@
       "finding_question_refs": [
         "FA-RS-046"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-graph/src/persistence.rs",
       "line_count": 439,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "Normal persistence is serde JSON and rebuilds petgraph state; loader silently skips dangling edges. The optional rkyv_cache module only hashes bytes/directories, while freshness compares content_hash strings.",
@@ -273,13 +271,14 @@
         "FA-RS-046",
         "FA-RS-047"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-graph/src/query.rs",
       "line_count": 812,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
       "semantic_conclusion": "Query projections preserve typed graph responses and serialize an edge relationship using canonical name; the public canonical ContrastsWith response name is part of accepted FA-RS-045 trace.",
@@ -291,13 +290,14 @@
       "finding_question_refs": [
         "FA-RS-045"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-graph/src/stats.rs",
       "line_count": 385,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "Statistics derive node/edge, canonical/variant, category/type/relationship, orphan and degree counts from GraphData; top-node sorting ranks degree but leaves equal-degree tie order unspecified.",
@@ -307,13 +307,14 @@
       ],
       "contrary_checks": "Empty graph, uncategorized nodes, distribution and bounded top-N cases are source controls; no stable tie contract was found.",
       "finding_question_refs": [],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-graph/src/types.rs",
       "line_count": 969,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
       "semantic_conclusion": "Relationship is a typed enum with canonical names/default weights; GraphData maintains three public representations, first-wins duplicate node insertion, endpoint-checked edges and permits parallel edges. The wrapper API accepts parallel relationship edges; this current supported case is relevant to FA-RS-050 and FA-RS-052.",
@@ -330,13 +331,14 @@
         "FA-RS-052",
         "Q21-01/02"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-graph/src/validation.rs",
       "line_count": 642,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "Validation errors mark the graph invalid; orphan and duplicate endpoint/name checks add warnings only. Duplicate keys are (from,to,relationship.name); only typed prerequisite cycles are errors, while non-prerequisite cycles are an intentional negative control.",
@@ -351,13 +353,14 @@
         "FA-RS-038",
         "Q21-02"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/Cargo.toml",
       "line_count": 53,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "Vector target has no default features; LanceDB and FastEmbed dependencies/modules are independently optional, while core builder/provider/search/persistence remain available.",
@@ -366,13 +369,14 @@
       ],
       "contrary_checks": "No feature-combination Cargo checks or model/native build were run.",
       "finding_question_refs": [],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/src/backend.rs",
       "line_count": 626,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
       "semantic_conclusion": "Factory reads enabled/backend but returns Simple for disabled, unknown and Lance requests; its gated Lance branch explicitly directs callers to the separate async builder. This fallback remains current, while the public selection claim is inaccurate (FA-RS-053). Simple search and Lance both count post-limit results, supporting FA-RS-048; broad VectorConfig assembly remains Q04-GV-02.",
@@ -389,13 +393,14 @@
         "Q04-GV-02",
         "Q15 provider/cache/cardinality"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/src/builder.rs",
       "line_count": 753,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
       "semantic_conclusion": "Builder extracts, batches and returns SimpleVectorBackend; cache key hashes sorted path+content bytes. It does not call VectorExtractor::content_glob. with_batch_size stores zero; build/append panic only if control reaches chunks(0), preserving accepted FA-RS-039 without duplicate root. zip cardinality and append-provider identity remain separate open questions.",
@@ -410,13 +415,14 @@
         "FA-RS-042",
         "Q15 provider/cache/cardinality"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/src/concept_card_extractor.rs",
       "line_count": 277,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "Stock extractor derives path ID, composes frontmatter/body in declared order, and preserves category/source/chapter metadata; returns the default Markdown glob that current builder does not consume.",
@@ -428,13 +434,14 @@
       "finding_question_refs": [
         "FA-RS-042"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/src/embedding.rs",
       "line_count": 194,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
       "semantic_conclusion": "EmbeddingProvider default batch remains sequential and one-per-input. Mock vectors are deterministic and normalized when norm is nonzero; dimension-4 empty text yields index-derived components, not a zero vector. The existing empty-text test checks length only and has a misleading zero-vector comment.",
@@ -446,13 +453,14 @@
       "finding_question_refs": [
         "Q15 cardinality"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/src/extractor.rs",
       "line_count": 207,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
       "semantic_conclusion": "VectorExtractor promises content_glob discovery and separates text composition from embedding; the builder uses fixed Markdown FindOptions instead, accepted as FA-RS-042. Mock extractor uses file-stem/title/body and selected metadata.",
@@ -464,13 +472,14 @@
       "finding_question_refs": [
         "FA-RS-042"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/src/fastembed.rs",
       "line_count": 228,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "Feature-gated provider resolves model names, probes dimension during construction, and captures Arc<Mutex<TextEmbedding>> in spawn_blocking for embed calls. The module comment's dependency non-Send/Sync assertion is not treated as independently verified; no Cargo/build or trait check ran. Model-download tests remain ignored.",
@@ -483,13 +492,14 @@
       "finding_question_refs": [
         "Q15 cache/provider identity"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/src/hybrid.rs",
       "line_count": 297,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "RRF combines one-based ranks, merges IDs across vector/FTS inputs, tags one/two-source results, retains first-seen metadata and truncates after score sort; input scores are not used.",
@@ -499,13 +509,14 @@
       ],
       "contrary_checks": "Vector-only, FTS-only, shared-ID, empty and limit tests are contrary controls; no cross-backend score equivalence is promised.",
       "finding_question_refs": [],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/src/lancedb.rs",
       "line_count": 934,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "Feature-gated backend creates/overwrites a table only for nonempty documents; empty store and zero limit exit early. Metadata filters scan row IDs in batches of128, require all exact metadata pairs, then merge/sort/truncate. Distance maps to `1/(1+d)`; total counts returned items.",
@@ -520,13 +531,14 @@
         "FA-RS-048",
         "Q15 provider/cache identity"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/src/lib.rs",
       "line_count": 108,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
       "semantic_conclusion": "Facade exposes core types, Simple backend, builder, extractor, embedding/mock, probe, hybrid, freshness helper and config-selected factory; FastEmbed and LanceDB are cfg-gated re-exports.",
@@ -537,13 +549,14 @@
       "finding_question_refs": [
         "Q04-GV-02"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/src/persistence.rs",
       "line_count": 161,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "Standalone metadata records hash/count/dimension/provider/model, but `is_index_fresh` compares only content_hash; no builder reference to IndexMetadata appears in scoped current callsite lookup.",
@@ -555,13 +568,14 @@
       "finding_question_refs": [
         "Q15 cache/provider identity"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/src/probe.rs",
       "line_count": 134,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
       "semantic_conclusion": "VectorProbe delegates backend name/readiness/document count; readiness inherits the trait default true and document-count errors are converted to None.",
@@ -571,13 +585,14 @@
       ],
       "contrary_checks": "Probe unit tests use Simple backend; no service health/readiness behavior was observed.",
       "finding_question_refs": [],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     },
     {
       "path": "crates/fabryk-vector/src/types.rs",
       "line_count": 583,
       "original_owner": "slice04-graph-vector",
-      "original_pass": "pass03-graph-vector",
+      "original_pass": "pass03",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
       "semantic_conclusion": "Public config defaults to lancedb/fastembed but includes fields not consumed by the backend factory; search params include filters/limit/threshold. `total` says matching docs while implementations return post-limit count, supporting FA-RS-048.",
@@ -592,7 +607,8 @@
         "FA-RS-048",
         "Q04-GV-02"
       ],
-      "actual_behavioral_proof": "not run; separate authorization/gates required"
+      "actual_behavioral_proof": "not run; separate authorization/gates required",
+      "static_disposition": "independently accepted source-level semantic assessment; behavioral proof pending"
     }
   ],
   "negative_checks": [
@@ -690,7 +706,7 @@
   "seven_scales": [
     {
       "scale": "line/function",
-      "conclusion": "Static control-flow supports FA-RS-046 feature/doc gap, FA-RS-047 cache key collision, and FA-RS-048 returned-vs-matching count; existing bounded 038/039/042/045 remain unchanged.",
+      "conclusion": "Eight source-backed diagnoses046–053 accepted statically:Medium046/047/049/051/052,Low048/050/053. Existing038/039/042/045 and questions retain their bounded statuses.",
       "missing_proof": "No runtime result or executed test."
     },
     {
@@ -732,5 +748,32 @@
     "source_changes": 0,
     "tests_builds_native_provider_services_rpc_runs": 0,
     "original_coverage_json_modified": false
+  },
+  "original_pass_label": "graph-vector",
+  "current_findings_accepted_static": [
+    "FA-RS-046",
+    "FA-RS-047",
+    "FA-RS-048",
+    "FA-RS-049",
+    "FA-RS-050",
+    "FA-RS-051",
+    "FA-RS-052",
+    "FA-RS-053"
+  ],
+  "cdc_review": {
+    "author_candidate": "2148b2dd20bfdce2278479ebc42341297507c066",
+    "refinements_used": 1,
+    "grades": {
+      "FA-RS-046": "Medium",
+      "FA-RS-047": "Medium",
+      "FA-RS-048": "Low",
+      "FA-RS-049": "Medium",
+      "FA-RS-050": "Low",
+      "FA-RS-051": "Medium",
+      "FA-RS-052": "Medium",
+      "FA-RS-053": "Low"
+    },
+    "method": "independent complete source/contract review and manual derivation, no product execution",
+    "record": "../arc01-foundation-audit/slice04-graph-vector/cdc-verification.md"
   }
 }

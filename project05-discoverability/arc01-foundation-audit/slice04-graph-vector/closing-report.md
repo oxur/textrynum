@@ -1,6 +1,6 @@
 # Original04 static phase close — graph and vector
 
-**Assignment:** `slice04-graph-vector/cc-prompt.md`. **Readiness parent:** `19f9572f950c981021e4a5a5860a9f5cfd9b0b4a`. **Source:** `719c58f245fe4a9115c7c0391d3e268c99157e2f`, clean/read-only. **Status:** CC proposes GV-S01–07 met for this static phase; independent CDC review pending. This does not close original04/pass03 or any behavioral/full-arc gate.
+**Assignment:** `slice04-graph-vector/cc-prompt.md`. **Readiness parent:** `19f9572f950c981021e4a5a5860a9f5cfd9b0b4a`. **Source:** `719c58f245fe4a9115c7c0391d3e268c99157e2f`, clean/read-only. **Current status:** CDC review2 accepts GV-S01–07 for the static phase; initial author proposal/history is retained below. This does not close original04/pass03 or any behavioral/full-arc gate.
 
 ## Exact six delivered paths
 
@@ -56,3 +56,21 @@ The complete independent review and affected source/reference units were read be
 FA-RS-046–053 remain CC-proposed for independent CDC review. Existing roots 038/039/042/045, Q19/Q21, slice15 questions, and Q04-GV-01/02 remain intact. Current valid inputs are not invalidated by documentation. Conditional future oracles state the owner decision and compatibility boundary; no policy, metric or source repair is selected. Original pass03 behavior, all original status/cell counts, SEARCH and final-arc composition remain pending.
 
 The original intake source for slice15 is `/private/tmp/textrynum-vector-construction-slice15-run.jsonl` (356,604 bytes; SHA-256 `5abe1b218a1a3f0ac821d5268d4e94dc2e07e784126f5a95566a70b4f34ab359`). The later 285,810-byte `iteration01` runner is separately retained as correction provenance, not initial-read proof. The six output paths and planning index remain the entire owned set; ownership returns to CDC after scoped commit and actual post-commit checks.
+
+## CDC review2 — static phase accepted,2026-11-22
+
+Correction2148b2dd/exec32848 completed0; GV-S01–07 independently accepted for
+25 source-semantic rows/11072lines and7static scale dispositions only.
+Medium046/047/049/051/052;Low048/050/053, with prior author Low grades and questions
+preserved. See [CDC verification](cdc-verification.md) for full source/grade reasons,
+actual failures, frozen log/protected-byte evidence and unavailable proof.
+Budget1/5,4 remain. Source719clean; original whole04/pass03/behavioral/cell/SEARCH/
+full-arc gates pending. CDC owns next original05; no active mutable child.
+
+Current bubble-up: (1) exact25-path source semantics and eight static diagnoses
+are independently accepted; (2) repair owners must resolve each current contract
+with explicit compatibility/conditional oracles, not an automatic feature design;
+(3) graph validity versus result cycles, relationship multiplicity, zero maximum,
+factory fallback, existing questions and all missing runtime evidence remain
+visible. Current total is eight, superseding the initial three/ten-check snapshot;
+the correction has eighteen source controls/observations. No original gate dropped.
