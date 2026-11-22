@@ -114,3 +114,9 @@ DOCfindings034/035 accepted. Original38/7whole-owner/cell acceptance unchanged;
 SEARCH and rows02–08 remain open. No source/runtime/CI work. See slice12 CDC
 verification/retro. Whole-arc composition still pending; next separate scope
 requires its own plan/prompt. Slice12 refinements0/5; slice03 remains2/5used.
+
+Progress2026-11-22 SLICE13 READY: separate static loader/API/documentation scope
+recorded after accepted12; four full files/1387lines and direct caller traces.
+No runtime or SEARCH continuation, no coverage owner/cell change. Same retained
+LunaHigh author/Sol6.1High CDC, five CFG criteria pending; initial0/5. See13plan/
+prompt. Original accepted001–010/034–035 and pending011–033 preserved.

@@ -681,3 +681,18 @@ API/entrypoint scope must be recorded before contributor work.
 
 - 2026-11-22 v1.15 — Accepted bounded static review, twoLow findings, exact
   preservation/coverage limits and proportionate process retrospective.
+
+## Separate configuration contract increment — v1.16
+
+After independently accepted slice12 at248a3f18, open slice13-config-loading-
+contracts under the existing separate static authorization. Four complete files/
+1387lines plus immediate dispatch/signature traces bound loader option use,
+ConfigManager/concrete responsibilities and exact current guide calls. No SEARCH
+operation or runtime work is assigned. Same retained models/session; CC authors
+and CDC independently reviews five CFG criteria. New findings begin036 only if
+supported. No whole-owner/pass-scale acceptance follows from this facet; original
+coverage38/7, pending03 and final arc composition remain unchanged. Exact prompt
+propagates terminology/stop and preservation contracts. Initial13budget0/5;
+03 stays2/5used. CDC owns planning/index until exact five-path CC handoff.
+
+- 2026-11-22 v1.16 — Recorded configuration scope/readiness before contributor work.
