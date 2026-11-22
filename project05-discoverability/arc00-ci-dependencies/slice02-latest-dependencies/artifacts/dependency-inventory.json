@@ -52,7 +52,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "1"
+          "declaration": "1.0.104"
         }
       ],
       "latest_stable": "1.0.104",
@@ -60,7 +60,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/anyhow",
       "upstream": "https://github.com/dtolnay/anyhow",
-      "selected": "1.0.104"
+      "selected": "1.0.104",
+      "lock_versions": [
+        "1.0.104"
+      ]
     },
     {
       "name": "apache-avro",
@@ -68,7 +71,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.21"
+          "declaration": "0.23.0"
         }
       ],
       "latest_stable": "0.23.0",
@@ -76,7 +79,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/apache-avro",
       "upstream": "https://github.com/apache/avro-rs",
-      "selected": "0.23.0"
+      "selected": "0.23.0",
+      "lock_versions": [
+        "0.23.0"
+      ]
     },
     {
       "name": "arrow-array",
@@ -84,7 +90,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "57"
+          "declaration": "58.4.2"
         }
       ],
       "latest_stable": "60.2.0",
@@ -93,7 +99,10 @@
       "registry": "https://crates.io/api/v1/crates/arrow-array",
       "upstream": "https://github.com/apache/arrow-rs",
       "selected": "58.4.2",
-      "constraint": "Latest stable LanceDB0.41.0 requires Arrow^58.0.0; select latest non-yanked stable58 family, latest overall60.2.0 incompatible at Arrow type boundary"
+      "constraint": "Latest overall Arrow60.2.0 is outside lancedb0.41.0\u2019s ^58.0.0 family; selected latest non-yanked stable58 patch58.4.2 and lock resolves Lance14.0.2/Arrow58.4.2.",
+      "lock_versions": [
+        "58.4.2"
+      ]
     },
     {
       "name": "arrow-schema",
@@ -101,7 +110,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "57"
+          "declaration": "58.4.2"
         }
       ],
       "latest_stable": "60.2.0",
@@ -110,7 +119,10 @@
       "registry": "https://crates.io/api/v1/crates/arrow-schema",
       "upstream": "https://github.com/apache/arrow-rs",
       "selected": "58.4.2",
-      "constraint": "Latest stable LanceDB0.41.0 requires Arrow^58.0.0; select latest non-yanked stable58 family, latest overall60.2.0 incompatible at Arrow type boundary"
+      "constraint": "Latest stable LanceDB0.41.0 requires Arrow^58.0.0; select latest non-yanked stable58 family, latest overall60.2.0 incompatible at Arrow type boundary",
+      "lock_versions": [
+        "58.4.2"
+      ]
     },
     {
       "name": "async-trait",
@@ -118,7 +130,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.1"
+          "declaration": "0.1.92"
         }
       ],
       "latest_stable": "0.1.92",
@@ -126,7 +138,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/async-trait",
       "upstream": "https://github.com/dtolnay/async-trait",
-      "selected": "0.1.92"
+      "selected": "0.1.92",
+      "lock_versions": [
+        "0.1.92"
+      ]
     },
     {
       "name": "async-walkdir",
@@ -134,7 +149,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "2"
+          "declaration": "2.2.0"
         }
       ],
       "latest_stable": "2.2.0",
@@ -142,7 +157,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/async-walkdir",
       "upstream": "https://github.com/ririsoft/async-walkdir",
-      "selected": "2.2.0"
+      "selected": "2.2.0",
+      "lock_versions": [
+        "2.2.0"
+      ]
     },
     {
       "name": "axum",
@@ -151,7 +169,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "0.8",
+            "version": "0.8.9",
             "default-features": false,
             "features": [
               "http1",
@@ -167,7 +185,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/axum",
       "upstream": "https://github.com/tokio-rs/axum",
-      "selected": "0.8.9"
+      "selected": "0.8.9",
+      "lock_versions": [
+        "0.8.9"
+      ]
     },
     {
       "name": "backon",
@@ -175,7 +196,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "1"
+          "declaration": "1.6.0"
         }
       ],
       "latest_stable": "1.6.0",
@@ -183,7 +204,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/backon",
       "upstream": "https://github.com/Xuanwo/backon",
-      "selected": "1.6.0"
+      "selected": "1.6.0",
+      "lock_versions": [
+        "1.6.0"
+      ]
     },
     {
       "name": "base64",
@@ -191,7 +215,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.22"
+          "declaration": "0.23.1"
         }
       ],
       "latest_stable": "0.23.1",
@@ -199,7 +223,12 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/base64",
       "upstream": "https://github.com/marshallpierce/rust-base64",
-      "selected": "0.23.1"
+      "selected": "0.23.1",
+      "lock_versions": [
+        "0.13.1",
+        "0.22.1",
+        "0.23.1"
+      ]
     },
     {
       "name": "blake3",
@@ -207,7 +236,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "1.8"
+          "declaration": "1.8.7"
         }
       ],
       "latest_stable": "1.8.7",
@@ -215,7 +244,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/blake3",
       "upstream": "https://github.com/BLAKE3-team/BLAKE3",
-      "selected": "1.8.7"
+      "selected": "1.8.7",
+      "lock_versions": [
+        "1.8.7"
+      ]
     },
     {
       "name": "chrono",
@@ -224,7 +256,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "0.4",
+            "version": "0.4.45",
             "features": [
               "serde"
             ]
@@ -236,7 +268,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/chrono",
       "upstream": "https://github.com/chronotope/chrono",
-      "selected": "0.4.45"
+      "selected": "0.4.45",
+      "lock_versions": [
+        "0.4.45"
+      ]
     },
     {
       "name": "chrono-tz",
@@ -244,7 +279,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.10"
+          "declaration": "0.10.4"
         }
       ],
       "latest_stable": "0.10.4",
@@ -252,7 +287,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/chrono-tz",
       "upstream": "https://github.com/chronotope/chrono-tz",
-      "selected": "0.10.4"
+      "selected": "0.10.4",
+      "lock_versions": [
+        "0.10.4"
+      ]
     },
     {
       "name": "clap",
@@ -261,7 +299,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "4",
+            "version": "4.6.9",
             "features": [
               "derive",
               "env"
@@ -274,7 +312,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/clap",
       "upstream": "https://github.com/clap-rs/clap",
-      "selected": "4.6.9"
+      "selected": "4.6.9",
+      "lock_versions": [
+        "4.6.9"
+      ]
     },
     {
       "name": "confyg",
@@ -282,7 +323,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.3"
+          "declaration": "0.3.0"
         }
       ],
       "latest_stable": "0.3.0",
@@ -290,7 +331,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/confyg",
       "upstream": "https://github.com/oxur/confyg",
-      "selected": "0.3.0"
+      "selected": "0.3.0",
+      "lock_versions": [
+        "0.3.0"
+      ]
     },
     {
       "name": "csv",
@@ -298,7 +342,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "1"
+          "declaration": "1.4.0"
         }
       ],
       "latest_stable": "1.4.0",
@@ -306,7 +350,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/csv",
       "upstream": "https://github.com/BurntSushi/rust-csv",
-      "selected": "1.4.0"
+      "selected": "1.4.0",
+      "lock_versions": [
+        "1.4.0"
+      ]
     },
     {
       "name": "dirs",
@@ -314,7 +361,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "6"
+          "declaration": "7.0.0"
         }
       ],
       "latest_stable": "7.0.0",
@@ -322,7 +369,12 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/dirs",
       "upstream": "https://codeberg.org/dirs/dirs-rs",
-      "selected": "7.0.0"
+      "selected": "7.0.0",
+      "lock_versions": [
+        "5.0.1",
+        "6.0.0",
+        "7.0.0"
+      ]
     },
     {
       "name": "failsafe",
@@ -330,7 +382,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "1"
+          "declaration": "1.3.0"
         }
       ],
       "latest_stable": "1.3.0",
@@ -338,7 +390,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/failsafe",
       "upstream": "https://github.com/dmexe/failsafe-rs",
-      "selected": "1.3.0"
+      "selected": "1.3.0",
+      "lock_versions": [
+        "1.3.0"
+      ]
     },
     {
       "name": "fastembed",
@@ -346,7 +401,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "5"
+          "declaration": "7.7.1"
         }
       ],
       "latest_stable": "7.7.1",
@@ -354,7 +409,11 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/fastembed",
       "upstream": "https://github.com/Anush008/fastembed-rs",
-      "selected": "7.7.1"
+      "selected": "7.7.1",
+      "lock_versions": [
+        "7.7.1"
+      ],
+      "constraint": "Stable fastembed7.7.1 requires ort=2.0.0-rc.15; this upstream-pinned prerelease transitive is retained and is not an independently selected direct dependency."
     },
     {
       "name": "flate2",
@@ -362,7 +421,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "1"
+          "declaration": "1.1.11"
         }
       ],
       "latest_stable": "1.1.11",
@@ -370,7 +429,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/flate2",
       "upstream": "https://github.com/rust-lang/flate2-rs",
-      "selected": "1.1.11"
+      "selected": "1.1.11",
+      "lock_versions": [
+        "1.1.11"
+      ]
     },
     {
       "name": "futures",
@@ -378,7 +440,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.3"
+          "declaration": "0.3.34"
         }
       ],
       "latest_stable": "0.3.34",
@@ -386,7 +448,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/futures",
       "upstream": "https://github.com/rust-lang/futures-rs",
-      "selected": "0.3.34"
+      "selected": "0.3.34",
+      "lock_versions": [
+        "0.3.34"
+      ]
     },
     {
       "name": "glob",
@@ -394,7 +459,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.3"
+          "declaration": "0.3.4"
         }
       ],
       "latest_stable": "0.3.4",
@@ -402,7 +467,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/glob",
       "upstream": "https://github.com/rust-lang/glob",
-      "selected": "0.3.4"
+      "selected": "0.3.4",
+      "lock_versions": [
+        "0.3.4"
+      ]
     },
     {
       "name": "http",
@@ -410,12 +478,12 @@
         {
           "path": "crates/fabryk-auth/Cargo.toml",
           "section": "dependencies",
-          "declaration": "1"
+          "declaration": "1.5.0"
         },
         {
           "path": "crates/fabryk-mcp-auth/Cargo.toml",
           "section": "dev-dependencies",
-          "declaration": "1"
+          "declaration": "1.5.0"
         }
       ],
       "latest_stable": "1.5.0",
@@ -423,7 +491,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/http",
       "upstream": "https://github.com/hyperium/http",
-      "selected": "1.5.0"
+      "selected": "1.5.0",
+      "lock_versions": [
+        "1.5.0"
+      ]
     },
     {
       "name": "jsonwebtoken",
@@ -432,7 +503,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "10",
+            "version": "12.0.0",
             "default-features": false,
             "features": [
               "aws_lc_rs",
@@ -446,7 +517,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/jsonwebtoken",
       "upstream": "https://github.com/Keats/jsonwebtoken",
-      "selected": "12.0.0"
+      "selected": "12.0.0",
+      "lock_versions": [
+        "12.0.0"
+      ]
     },
     {
       "name": "lancedb",
@@ -454,7 +528,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.27"
+          "declaration": "0.41.0"
         }
       ],
       "latest_stable": "0.41.0",
@@ -462,7 +536,11 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/lancedb",
       "upstream": "https://github.com/lancedb/lancedb",
-      "selected": "0.41.0"
+      "selected": "0.41.0",
+      "lock_versions": [
+        "0.41.0"
+      ],
+      "constraint": "Selected lancedb0.41.0 resolves Lance14.0.2 and Arrow^58.0.0; selected Arrow58.4.2 is the latest stable matching family."
     },
     {
       "name": "log",
@@ -470,7 +548,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.4"
+          "declaration": "0.4.35"
         }
       ],
       "latest_stable": "0.4.35",
@@ -478,7 +556,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/log",
       "upstream": "https://github.com/rust-lang/log",
-      "selected": "0.4.35"
+      "selected": "0.4.35",
+      "lock_versions": [
+        "0.4.35"
+      ]
     },
     {
       "name": "memmap2",
@@ -486,7 +567,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.9"
+          "declaration": "0.9.12"
         }
       ],
       "latest_stable": "0.9.12",
@@ -494,7 +575,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/memmap2",
       "upstream": "https://github.com/RazrFalcon/memmap2-rs",
-      "selected": "0.9.12"
+      "selected": "0.9.12",
+      "lock_versions": [
+        "0.9.12"
+      ]
     },
     {
       "name": "oxur-odm",
@@ -502,7 +586,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.3"
+          "declaration": "0.3.5"
         }
       ],
       "latest_stable": "0.3.5",
@@ -510,7 +594,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/oxur-odm",
       "upstream": "https://github.com/oxur/oxur",
-      "selected": "0.3.5"
+      "selected": "0.3.5",
+      "lock_versions": [
+        "0.3.5"
+      ]
     },
     {
       "name": "petgraph",
@@ -518,7 +605,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.8"
+          "declaration": "0.8.3"
         }
       ],
       "latest_stable": "0.8.3",
@@ -526,7 +613,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/petgraph",
       "upstream": "https://github.com/petgraph/petgraph",
-      "selected": "0.8.3"
+      "selected": "0.8.3",
+      "lock_versions": [
+        "0.8.3"
+      ]
     },
     {
       "name": "pgp",
@@ -534,7 +624,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.19"
+          "declaration": "0.21.1"
         }
       ],
       "latest_stable": "0.21.1",
@@ -542,7 +632,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/pgp",
       "upstream": "https://github.com/rpgp/rpgp",
-      "selected": "0.21.1"
+      "selected": "0.21.1",
+      "lock_versions": [
+        "0.21.1"
+      ]
     },
     {
       "name": "proptest",
@@ -550,7 +643,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "1"
+          "declaration": "1.12.0"
         }
       ],
       "latest_stable": "1.12.0",
@@ -558,7 +651,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/proptest",
       "upstream": "https://github.com/proptest-rs/proptest",
-      "selected": "1.12.0"
+      "selected": "1.12.0",
+      "lock_versions": [
+        "1.12.0"
+      ]
     },
     {
       "name": "pulldown-cmark",
@@ -567,7 +663,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "0.13",
+            "version": "0.13.6",
             "default-features": false
           }
         }
@@ -577,7 +673,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/pulldown-cmark",
       "upstream": "https://github.com/raphlinus/pulldown-cmark",
-      "selected": "0.13.6"
+      "selected": "0.13.6",
+      "lock_versions": [
+        "0.13.6"
+      ]
     },
     {
       "name": "rdkafka",
@@ -586,7 +685,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "0.39",
+            "version": "0.40.0",
             "features": [
               "cmake-build"
             ]
@@ -598,7 +697,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/rdkafka",
       "upstream": "https://github.com/fede1024/rust-rdkafka",
-      "selected": "0.40.0"
+      "selected": "0.40.0",
+      "lock_versions": [
+        "0.40.0"
+      ]
     },
     {
       "name": "redb",
@@ -606,7 +708,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "4"
+          "declaration": "5.0.0"
         }
       ],
       "latest_stable": "5.0.0",
@@ -614,7 +716,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/redb",
       "upstream": "https://github.com/cberner/redb",
-      "selected": "5.0.0"
+      "selected": "5.0.0",
+      "lock_versions": [
+        "5.0.0"
+      ]
     },
     {
       "name": "redis",
@@ -637,7 +742,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/redis",
       "upstream": "https://github.com/redis-rs/redis-rs",
-      "selected": "1.8.2"
+      "selected": "1.8.2",
+      "lock_versions": [
+        "1.8.2"
+      ]
     },
     {
       "name": "regex",
@@ -645,7 +753,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "1"
+          "declaration": "1.13.2"
         }
       ],
       "latest_stable": "1.13.2",
@@ -653,7 +761,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/regex",
       "upstream": "https://github.com/rust-lang/regex",
-      "selected": "1.13.2"
+      "selected": "1.13.2",
+      "lock_versions": [
+        "1.13.2"
+      ]
     },
     {
       "name": "reqwest",
@@ -662,7 +773,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "0.13",
+            "version": "0.13.5",
             "default-features": false,
             "features": [
               "json",
@@ -674,7 +785,7 @@
           "path": "crates/ecl-core/Cargo.toml",
           "section": "dependencies",
           "declaration": {
-            "version": "0.13",
+            "version": "0.13.5",
             "features": [
               "json"
             ]
@@ -686,7 +797,11 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/reqwest",
       "upstream": "https://github.com/seanmonstar/reqwest",
-      "selected": "0.13.5"
+      "selected": "0.13.5",
+      "lock_versions": [
+        "0.12.28",
+        "0.13.5"
+      ]
     },
     {
       "name": "rkyv",
@@ -695,7 +810,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "0.8",
+            "version": "0.8.18",
             "features": [
               "bytecheck"
             ]
@@ -707,7 +822,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/rkyv",
       "upstream": "https://github.com/rkyv/rkyv",
-      "selected": "0.8.18"
+      "selected": "0.8.18",
+      "lock_versions": [
+        "0.8.18"
+      ]
     },
     {
       "name": "rmcp",
@@ -716,7 +834,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "1",
+            "version": "3.11.0",
             "features": [
               "server",
               "transport-io"
@@ -729,7 +847,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/rmcp",
       "upstream": "https://github.com/modelcontextprotocol/rust-sdk/",
-      "selected": "3.11.0"
+      "selected": "3.11.0",
+      "lock_versions": [
+        "3.11.0"
+      ]
     },
     {
       "name": "russh",
@@ -737,7 +858,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.60"
+          "declaration": "0.65.4"
         }
       ],
       "latest_stable": "0.65.4",
@@ -745,7 +866,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/russh",
       "upstream": "https://github.com/warp-tech/russh",
-      "selected": "0.65.4"
+      "selected": "0.65.4",
+      "lock_versions": [
+        "0.65.4"
+      ]
     },
     {
       "name": "russh-keys",
@@ -753,7 +877,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.49"
+          "declaration": "0.49.2"
         }
       ],
       "latest_stable": "0.49.2",
@@ -761,7 +885,8 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/russh-keys",
       "upstream": "https://github.com/warp-tech/russh",
-      "selected": "0.49.2"
+      "selected": "0.49.2",
+      "lock_versions": []
     },
     {
       "name": "russh-sftp",
@@ -769,7 +894,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "2"
+          "declaration": "4.0.0"
         }
       ],
       "latest_stable": "4.0.0",
@@ -777,7 +902,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/russh-sftp",
       "upstream": "https://github.com/AspectUnk/russh-sftp",
-      "selected": "4.0.0"
+      "selected": "4.0.0",
+      "lock_versions": [
+        "4.0.0"
+      ]
     },
     {
       "name": "schemars",
@@ -785,7 +913,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "1.2"
+          "declaration": "1.2.3"
         }
       ],
       "latest_stable": "1.2.3",
@@ -793,7 +921,11 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/schemars",
       "upstream": "https://github.com/GREsau/schemars",
-      "selected": "1.2.3"
+      "selected": "1.2.3",
+      "lock_versions": [
+        "0.9.0",
+        "1.2.3"
+      ]
     },
     {
       "name": "serde",
@@ -802,7 +934,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "1",
+            "version": "1.0.229",
             "features": [
               "derive"
             ]
@@ -814,7 +946,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/serde",
       "upstream": "https://github.com/serde-rs/serde",
-      "selected": "1.0.229"
+      "selected": "1.0.229",
+      "lock_versions": [
+        "1.0.229"
+      ]
     },
     {
       "name": "serde_bytes",
@@ -822,7 +957,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.11"
+          "declaration": "0.11.19"
         }
       ],
       "latest_stable": "0.11.19",
@@ -830,7 +965,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/serde_bytes",
       "upstream": "https://github.com/serde-rs/bytes",
-      "selected": "0.11.19"
+      "selected": "0.11.19",
+      "lock_versions": [
+        "0.11.19"
+      ]
     },
     {
       "name": "serde_json",
@@ -838,7 +976,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "1"
+          "declaration": "1.0.154"
         }
       ],
       "latest_stable": "1.0.154",
@@ -846,7 +984,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/serde_json",
       "upstream": "https://github.com/serde-rs/json",
-      "selected": "1.0.154"
+      "selected": "1.0.154",
+      "lock_versions": [
+        "1.0.154"
+      ]
     },
     {
       "name": "shellexpand",
@@ -854,7 +995,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "3.1"
+          "declaration": "3.1.2"
         }
       ],
       "latest_stable": "3.1.2",
@@ -862,23 +1003,30 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/shellexpand",
       "upstream": "https://gitlab.com/ijackson/rust-shellexpand",
-      "selected": "3.1.2"
+      "selected": "3.1.2",
+      "lock_versions": [
+        "3.1.2"
+      ]
     },
     {
       "name": "stop-words",
-      "sites": [
-        {
-          "path": "Cargo.toml",
-          "section": "workspace.dependencies",
-          "declaration": "0.10"
-        }
-      ],
+      "sites": [],
       "latest_stable": "0.10.1",
       "msrv": null,
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/stop-words",
       "upstream": "https://github.com/cmccomb/rust-stop-words",
-      "selected": "0.10.1"
+      "selected": "0.10.1",
+      "lock_versions": [
+        "0.10.1"
+      ],
+      "direct_declaration_status": "removed after exact ISO English behavior moved to the small licensed private corpus; package remains transitive through lance-tokenizer 14.0.2",
+      "original_direct_site": {
+        "path": "Cargo.toml",
+        "section": "workspace.dependencies",
+        "declaration": "0.10.1"
+      },
+      "transitive_constraint": "lance-tokenizer 14.0.2 still selects stop-words 0.10.1 with iso+nltk; product StopwordFilter preserves baseline stop-words 0.10.0 ISO English (1298 terms) via the licensed private ISO English data source."
     },
     {
       "name": "strsim",
@@ -886,7 +1034,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.11"
+          "declaration": "0.11.1"
         }
       ],
       "latest_stable": "0.11.1",
@@ -894,7 +1042,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/strsim",
       "upstream": "https://github.com/rapidfuzz/strsim-rs",
-      "selected": "0.11.1"
+      "selected": "0.11.1",
+      "lock_versions": [
+        "0.11.1"
+      ]
     },
     {
       "name": "tantivy",
@@ -902,7 +1053,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.26"
+          "declaration": "0.27.0"
         }
       ],
       "latest_stable": "0.27.0",
@@ -910,7 +1061,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/tantivy",
       "upstream": "https://github.com/quickwit-oss/tantivy",
-      "selected": "0.27.0"
+      "selected": "0.27.0",
+      "lock_versions": [
+        "0.27.0"
+      ]
     },
     {
       "name": "tempfile",
@@ -918,7 +1072,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "3"
+          "declaration": "3.27.0"
         }
       ],
       "latest_stable": "3.27.0",
@@ -926,7 +1080,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/tempfile",
       "upstream": "https://github.com/Stebalien/tempfile",
-      "selected": "3.27.0"
+      "selected": "3.27.0",
+      "lock_versions": [
+        "3.27.0"
+      ]
     },
     {
       "name": "thiserror",
@@ -934,7 +1091,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "2"
+          "declaration": "2.0.21"
         }
       ],
       "latest_stable": "2.0.21",
@@ -942,7 +1099,11 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/thiserror",
       "upstream": "https://github.com/dtolnay/thiserror",
-      "selected": "2.0.21"
+      "selected": "2.0.21",
+      "lock_versions": [
+        "1.0.69",
+        "2.0.21"
+      ]
     },
     {
       "name": "tokio",
@@ -951,7 +1112,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "1",
+            "version": "1.54.1",
             "features": [
               "rt-multi-thread",
               "macros",
@@ -969,7 +1130,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/tokio",
       "upstream": "https://github.com/tokio-rs/tokio",
-      "selected": "1.54.1"
+      "selected": "1.54.1",
+      "lock_versions": [
+        "1.54.1"
+      ]
     },
     {
       "name": "tokio-stream",
@@ -977,7 +1141,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.1"
+          "declaration": "0.1.19"
         }
       ],
       "latest_stable": "0.1.19",
@@ -985,7 +1149,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/tokio-stream",
       "upstream": "https://github.com/tokio-rs/tokio",
-      "selected": "0.1.19"
+      "selected": "0.1.19",
+      "lock_versions": [
+        "0.1.19"
+      ]
     },
     {
       "name": "tokio-test",
@@ -993,7 +1160,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.4"
+          "declaration": "0.4.6"
         }
       ],
       "latest_stable": "0.4.6",
@@ -1001,7 +1168,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/tokio-test",
       "upstream": "https://github.com/tokio-rs/tokio",
-      "selected": "0.4.6"
+      "selected": "0.4.6",
+      "lock_versions": [
+        "0.4.6"
+      ]
     },
     {
       "name": "toml",
@@ -1009,7 +1179,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "1"
+          "declaration": "1.2.2+spec-1.1.0"
         }
       ],
       "latest_stable": "1.2.2+spec-1.1.0",
@@ -1017,7 +1187,13 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/toml",
       "upstream": "https://github.com/toml-rs/toml",
-      "selected": "1.2.2+spec-1.1.0"
+      "selected": "1.2.2+spec-1.1.0",
+      "lock_versions": [
+        "0.8.23",
+        "0.9.12+spec-1.1.0",
+        "1.2.2+spec-1.1.0"
+      ],
+      "constraint": "Preserve stable build metadata 1.2.2+spec-1.1.0; Cargo requirements ignore SemVer build metadata and emit an informational warning."
     },
     {
       "name": "toml_edit",
@@ -1025,12 +1201,12 @@
         {
           "path": "crates/fabryk-cli/Cargo.toml",
           "section": "dependencies",
-          "declaration": "0.25"
+          "declaration": "0.25.20+spec-1.1.0"
         },
         {
           "path": "crates/textrynum-util/Cargo.toml",
           "section": "dependencies",
-          "declaration": "0.25"
+          "declaration": "0.25.20+spec-1.1.0"
         }
       ],
       "latest_stable": "0.25.20+spec-1.1.0",
@@ -1038,7 +1214,12 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/toml_edit",
       "upstream": "https://github.com/toml-rs/toml",
-      "selected": "0.25.20+spec-1.1.0"
+      "selected": "0.25.20+spec-1.1.0",
+      "lock_versions": [
+        "0.22.27",
+        "0.25.20+spec-1.1.0"
+      ],
+      "constraint": "Preserve stable build metadata 0.25.20+spec-1.1.0 at both direct crate sites; Cargo requirements ignore SemVer build metadata and emit an informational warning."
     },
     {
       "name": "tower",
@@ -1046,7 +1227,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.5"
+          "declaration": "0.5.3"
         }
       ],
       "latest_stable": "0.5.3",
@@ -1054,7 +1235,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/tower",
       "upstream": "https://github.com/tower-rs/tower",
-      "selected": "0.5.3"
+      "selected": "0.5.3",
+      "lock_versions": [
+        "0.5.3"
+      ]
     },
     {
       "name": "tracing",
@@ -1062,7 +1246,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.1"
+          "declaration": "0.1.44"
         }
       ],
       "latest_stable": "0.1.44",
@@ -1070,7 +1254,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/tracing",
       "upstream": "https://github.com/tokio-rs/tracing",
-      "selected": "0.1.44"
+      "selected": "0.1.44",
+      "lock_versions": [
+        "0.1.44"
+      ]
     },
     {
       "name": "tracing-subscriber",
@@ -1079,7 +1266,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "0.3",
+            "version": "0.3.23",
             "features": [
               "env-filter"
             ]
@@ -1091,7 +1278,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/tracing-subscriber",
       "upstream": "https://github.com/tokio-rs/tracing",
-      "selected": "0.3.23"
+      "selected": "0.3.23",
+      "lock_versions": [
+        "0.3.23"
+      ]
     },
     {
       "name": "twyg",
@@ -1099,7 +1289,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.6"
+          "declaration": "0.6.3"
         }
       ],
       "latest_stable": "0.6.3",
@@ -1107,7 +1297,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/twyg",
       "upstream": "https://github.com/oxur/twyg",
-      "selected": "0.6.3"
+      "selected": "0.6.3",
+      "lock_versions": [
+        "0.6.3"
+      ]
     },
     {
       "name": "uuid",
@@ -1116,7 +1309,7 @@
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
           "declaration": {
-            "version": "1",
+            "version": "1.29.3",
             "features": [
               "v4",
               "serde"
@@ -1129,7 +1322,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/uuid",
       "upstream": "https://github.com/uuid-rs/uuid",
-      "selected": "1.29.3"
+      "selected": "1.29.3",
+      "lock_versions": [
+        "1.29.3"
+      ]
     },
     {
       "name": "wiremock",
@@ -1137,37 +1333,37 @@
         {
           "path": "crates/ecl-adapter-gcs/Cargo.toml",
           "section": "dev-dependencies",
-          "declaration": "0.6"
+          "declaration": "0.6.5"
         },
         {
           "path": "crates/ecl-adapter-gdrive/Cargo.toml",
           "section": "dev-dependencies",
-          "declaration": "0.6"
+          "declaration": "0.6.5"
         },
         {
           "path": "crates/ecl-core/Cargo.toml",
           "section": "dev-dependencies",
-          "declaration": "0.6"
+          "declaration": "0.6.5"
         },
         {
           "path": "crates/ecl-gcp-auth/Cargo.toml",
           "section": "dev-dependencies",
-          "declaration": "0.6"
+          "declaration": "0.6.5"
         },
         {
           "path": "crates/ecl-pipeline/Cargo.toml",
           "section": "dev-dependencies",
-          "declaration": "0.6"
+          "declaration": "0.6.5"
         },
         {
           "path": "crates/ecl-sink-gcs/Cargo.toml",
           "section": "dev-dependencies",
-          "declaration": "0.6"
+          "declaration": "0.6.5"
         },
         {
           "path": "crates/ecl-sink-kafka/Cargo.toml",
           "section": "dev-dependencies",
-          "declaration": "0.6"
+          "declaration": "0.6.5"
         }
       ],
       "latest_stable": "0.6.5",
@@ -1175,7 +1371,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/wiremock",
       "upstream": "https://github.com/LukeMathWalker/wiremock-rs",
-      "selected": "0.6.5"
+      "selected": "0.6.5",
+      "lock_versions": [
+        "0.6.5"
+      ]
     },
     {
       "name": "yaml_serde",
@@ -1183,7 +1382,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "0.10"
+          "declaration": "0.10.7"
         }
       ],
       "latest_stable": "0.10.7",
@@ -1191,7 +1390,10 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/yaml_serde",
       "upstream": "https://github.com/yaml/yaml-serde",
-      "selected": "0.10.7"
+      "selected": "0.10.7",
+      "lock_versions": [
+        "0.10.7"
+      ]
     },
     {
       "name": "zip",
@@ -1199,7 +1401,7 @@
         {
           "path": "Cargo.toml",
           "section": "workspace.dependencies",
-          "declaration": "8"
+          "declaration": "9.8.1"
         }
       ],
       "latest_stable": "9.8.1",
@@ -1207,11 +1409,14 @@
       "yanked": false,
       "registry": "https://crates.io/api/v1/crates/zip",
       "upstream": "https://github.com/zip-rs/zip2",
-      "selected": "9.8.1"
+      "selected": "9.8.1",
+      "lock_versions": [
+        "9.8.1"
+      ]
     }
   ],
   "refreshed": "2026-11-21",
-  "status": "CDC author inventory, refreshed 2026-11-21; implementation selections/proof pending",
+  "status": "CC implementation and local evidence recorded; independent CDC review, fresh candidate CI and ledger acceptance pending",
   "tooling": [
     {
       "name": "actions/checkout",
@@ -1239,5 +1444,49 @@
       "latest_stable": "0.13.14",
       "selected": "verify actual helper, use latest stable through owned task-local root if needed"
     }
-  ]
+  ],
+  "implementation_observation": {
+    "candidate_source_base": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
+    "workspace_manifests_reconciled": 42,
+    "unique_external_packages_reconciled": 64,
+    "target_tables": 0,
+    "git_dependency_declarations": 0,
+    "internal_package_versions": "all remain 0.5.0",
+    "direct_selected_versions": "The 63 retained direct external package entries are selected at their authoritative latest stable versions except the recorded Lance-compatible Arrow family constraint; stop-words is retained as a transitive-only provenance entry after removal of unused direct declarations.",
+    "resolved_family_constraints": [
+      "lancedb 0.41.0 -> Lance 14.0.2; Arrow ^58.0.0, selected 58.4.2 (latest stable matching family).",
+      "fastembed 7.7.1 -> ort 2.0.0-rc.15 (upstream-pinned prerelease transitive).",
+      "Cargo.lock contains multiple allowed generations for some transitive names (including toml, toml_edit, reqwest, http, and Tantivy); lock_versions records every resolved registry version by name.",
+      "stop-words 0.10.1 is now transitive-only through lance-tokenizer 14.0.2 (iso+nltk); the product filter retains its original ISO English semantics using the attributed 1298-term ISO corpus. Original inventory provenance remains one of 64 packages; current direct retained count is 63."
+    ],
+    "toolchains": {
+      "msrv_candidate": "rustc 1.94.0",
+      "latest_stable_candidate": "rustc 1.100.0",
+      "global_default_changed": false
+    },
+    "local_gate_state": {
+      "msrv_all_features_all_targets": "pass, artifacts/check-msrv-iteration03-all-features02.log; actual Cargo status 0 on final source",
+      "msrv_default_all_targets": "pass, artifacts/check-msrv-iteration03-default02.log; actual Cargo status 0 on final source",
+      "isolated_feature_selections": "17/17 pass: 15 unchanged direct-status item347 witnesses plus final-source reruns of fabryk/full and fabryk-vector/vector-lancedb; see feature-msrv-final-summary.txt and feature-msrv-iteration03-*final.log",
+      "latest_stable_debug_build": "pass, artifacts/build-debug-iteration03-pass02.log; actual Cargo status 0",
+      "latest_stable_release_build": "pass, artifacts/build-release-iteration03-ort-only01.log; actual Cargo status 0 with narrow task-local ORT linker wrapper",
+      "latest_stable_clippy_debug_release": "pass using original workflow strict flags, no all-targets; artifacts/clippy-debug-iteration03-pass02.log and clippy-release-iteration03-wrapped01.log, actual Cargo status 0",
+      "latest_stable_debug_tests": "pass, artifacts/test-debug-iteration03-pass02.log; 2440 passed, 0 failed, 61 ignored; actual Cargo status 0",
+      "latest_stable_release_tests": "pass under the explicit narrow task-local ORT runtime wrapper, artifacts/test-release-iteration03-ort-only03.log; 2440 passed, 0 failed, 61 ignored; actual Cargo status 0. The unwrapped test-release-final01.log remains failed before tests with ___isPlatformVersionAtLeast.",
+      "fastembed_ignored_integration_tests": "4/4 actual ignored tests passed serially with owned cache and model inference, artifacts/fastembed-ignored-iteration03-pass01.log; actual Cargo status 0",
+      "docs": "pass, artifacts/doc-iteration03-pass01.log; actual Cargo status 0 with existing rustdoc warnings",
+      "freshness": "pass, artifacts/freshness-iteration03-pass01.log; make check-deps-cicd returned captured status 0 with cargo-edit-upgrade 0.13.14; log also notes malformed blank legacy summary line",
+      "packaging": "pass, cargo +1.100.0 package --workspace --locked --no-verify actual status 0; 43 workspace archives produced and fabryk-fts stopword JSON plus full notice inspected in package-archive-inspection-iteration03.txt; packaging only, no publication"
+    },
+    "original_direct_external_packages": 64,
+    "current_direct_external_packages_retained": 63,
+    "original_declaration_counts": {
+      "all_external_declarations_including_inherited_consumers": 458,
+      "explicit_external_version_sites": 73
+    },
+    "current_declaration_counts": {
+      "all_external_declarations_including_inherited_consumers": 456,
+      "explicit_external_version_sites": 72
+    }
+  }
 }
