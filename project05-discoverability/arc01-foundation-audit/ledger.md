@@ -72,3 +72,14 @@ distinct new witnesses; old partial attestation stays unverified. All SEARCH/
 remainingarc gates remain pending; core38/7+001–010 accepted unchanged. If the
 limited task is platform-flagged again, stop/recover without variants. No
 Daybreak/provider/service/security execution, source repair or CI/fullgate rerun.
+
+Progress2026-11-22 FOURTH STOP AFTER REPORTED RESTART: after00b3d62 and before
+the turn-level flag no further tool command ran; no reconciliation/version/
+offline-lock/build/test/probe/provider/newlog in this resumption. Root cause and
+request ID unknown. Administrative recovery8df182exit0 found source719/planning
+00b3clean/unstaged, no new attempt files, active native processes0. Four partial
+files unchanged/unverified; prior hash/lock issues unresolved. Only current
+arc-plan/ledger and existing NOTSUBMITTED feedback draft may change, no further
+execution retry. Core38/7+10findings accepted;03's17+4questions+2cleared and all
+SEARCH/remainingarc gates pending. Same models/source/scope, budget2/5used, no
+user pause/waiver/completion. No support message or Daybreak/service/scan.

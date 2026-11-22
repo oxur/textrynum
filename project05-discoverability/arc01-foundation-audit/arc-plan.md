@@ -572,3 +572,35 @@ actionable repair handoff, not one probe, arc02 repairs or arc05 implementation.
 
 - 2026-11-22 v1.12 — Recorded reported restart/resumption, independently checked
   ownership/state and precise current authority at 2026-11-22T09:31:43-06:00, before execution.
+
+## Fourth turn-level stop after reported restart — v1.13
+
+The platform flag returned after the user explicitly reported restarting the
+app and resumed the same selected CDC/CC models. This is the FOURTH turn-level
+flag; its root cause and exact blocked request ID remain unknown. Do not infer
+a particular rejected Rust command or restart causality. After authorization
+commit00b3d62046c0c24e0704e740890755bac585786d and before the flag, no further
+tool command was issued. No pre-run reconciliation, version read, offline lock
+generation, build/test/probe, provider/service or new attempt file/log started
+in this resumption. The earlier re-entry ps EPERM was an ordinary sandbox
+permission event resolved by reviewed metadata-only escalation, not this flag.
+
+Administrative recovery8df182 exited0: planning00b3d62/source719 clean/unstaged,
+no new attempt files and native/probe processes0. Four original partial files
+retain exact prior hashes/bytes and remain UNVERIFIED, with stale initial hash
+not run attestation and prior lock assertion unresolved. No scratch/target or
+source mutation, diagnostic interpretation or execution retry is authorized.
+Only administrative arc notes and the existing local NOTSUBMITTED feedback
+draft are updated to retain these facts; no support submission or Daybreak
+call/scan occurs. If an administrative action is itself flagged, stop without
+variants. All ownership returns to parent after this exact administrative commit.
+
+Only core38paths/7cells and001–010 are independently accepted. Current03 retains
+17unaccepted proposals,4questions and2cleared leads; all SEARCH/remainingarc
+gates remain pending. Last CC prompt is iteration02,2of5 refinements used/3left.
+No user pause, criteria waiver, source repair, scope/model/context change or
+whole-audit completion is claimed. No further retry is authorized by this
+recovery; a supported route is still needed.
+
+- 2026-11-22 v1.13 — Recorded fourth stop after reported restart and exact
+  administrative recovery at 2026-11-22T09:35:59-06:00; unfinished full audit preserved.
