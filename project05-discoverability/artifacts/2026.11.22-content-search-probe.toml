@@ -1,0 +1,12 @@
+[package]
+name = "foundation-content-search-probe"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+fabryk-core = { path = "/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core" }
+fabryk-content = { path = "/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content" }
+fabryk-fts = { path = "/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts", features = ["fts-tantivy"] }
+tokio = { version = "1.54.1", features = ["rt-multi-thread", "macros", "net", "io-util", "fs", "sync", "time"] }
+tempfile = "3"
+serde_json = "1"

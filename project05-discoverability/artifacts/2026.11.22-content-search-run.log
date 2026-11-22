@@ -1,0 +1,590 @@
+# Slice03 content/search run log — 2026-11-22
+
+Pin: source `719c58f245fe4a9115c7c0391d3e268c99157e2f`; planning base `18889fd186e970a4636624748fb2f62193329174`. Package: `foundation-content-search-probe`; final command used offline locked scratch manifest and transferred target. `CARGO_EXIT=0`.
+
+Product locked selection: `cargo tree --locked -p fabryk-fts --features fts-tantivy -e features --depth 1` => `fabryk-fts 0.5.0`, Tantivy `0.27.0`, Tokio `1.54.1`; features include rt-multi-thread, macros, net, io-util, fs, sync, time. Scratch final tree: `cargo tree --offline --locked --manifest-path /private/tmp/foundation-content-search-probe/Cargo.toml -e features --depth 1`; same direct workspace Tokio feature selection and local `fabryk-content/core/fts 0.5.0`, but scratch lock is a dependency subset and not the product lock.
+
+## Final locked public-entrypoint probe
+
+Command: `cargo run --quiet --offline --locked --manifest-path /private/tmp/foundation-content-search-probe/Cargo.toml --target-dir /private/tmp/arc01-slice02-cargo-target`
+True exit: `0`
+
+```text
+
+thread 'main' (325194372) panicked at /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content/src/markdown/parser.rs:227:31:
+end byte index 1 is not a char boundary; it is inside 'é' (bytes 0..2) of `éxample body`
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+paragraph_unicode_limit1_panics=true
+paragraph_ascii_limit=alpha...
+paragraph_zero_limit=...
+paragraph_exact_limit=alpha
+
+thread 'main' (325194372) panicked at /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts/src/document.rs:267:26:
+start byte index 4 is not a char boundary; it is inside '\u{2003}' (bytes 3..6) of `foo bar baz`
+document_emspace_snippet_panics=true
+document_dotted_i_shifted_excerpt=...9needleA...
+document_ascii_shifted_control=...89needle...
+document_dotted_i_snippet_limit_4=...needle...
+document_dotted_i_snippet_limit_8=...begins; needle...
+document_dotted_i_snippet_limit_12=...begins; needle...
+document_dotted_i_snippet_limit_16=...begins; needle is...
+empty_content_snippet=
+frontmatter_prefix_open_close_delimiters=true
+frontmatter_prefix_open_close_has_value=true
+frontmatter_prefix_open_close_body=trailing note|# Body|
+frontmatter_malformed_delimiters=true
+frontmatter_malformed_has_value=false
+frontmatter_malformed_body=# Body|
+frontmatter_empty_delimiters=true
+frontmatter_empty_has_value=true
+frontmatter_empty_body=Body|
+frontmatter_no_close_delimiters=false
+frontmatter_no_close_has_value=false
+frontmatter_no_close_body=---|title: Acme|Body|
+extract_text_fenced_dash=Body
+id_core_" A__  B\tC "=a-b-c
+id_content_" A__  B\tC "=a----b	c
+id_core_"A   B"=a-b
+id_content_"A   B"=a---b
+id_core_"A_B"=a-b
+id_content_"A_B"=a-b
+metadata_id_title_category_source_section_author_date=Acme_File|chapter: Chapter fallback source: Acme Inc. author: Acme Research date: 2026-11-22 section: A.1 aliases: [Alias One]|nested|Some("Acme Inc.")|None|Some("Acme Research")|Some("2026-11-22")
+fts_id_title_category_source_section_content_type_author_date=acme-file|Body heading|nested|Some("Acme Inc.")|Some("A.1")|Some("concept_card")|None|None
+fts_content_has_frontmatter=false
+collision_known_ids=a-b-c,x-one,y-two,z-three
+collision_shared_resolution=Some("a-b-c")|ExactTitle
+title_over_alias_resolution=Some("x-one")|ExactTitle
+ambiguous_alias_resolution=Some("x-one")|Alias("Alternate Alias")
+validation_All=valid=false;cards=2;sources=3;disk=2;missing_fs=1;missing_cfg=0
+validation_All_missing_paths=/var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmp40QQ2A/sources/absent.pdf
+validation_CardsConfig=valid=true;cards=2;sources=3;disk=0;missing_fs=0;missing_cfg=0
+validation_CardsConfig_missing_paths=
+validation_CardsFilesystem=valid=false;cards=2;sources=3;disk=2;missing_fs=1;missing_cfg=0
+validation_CardsFilesystem_missing_paths=/var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmp40QQ2A/sources/absent.pdf
+validation_ConfigFilesystem=valid=false;cards=2;sources=3;disk=2;missing_fs=1;missing_cfg=0
+validation_ConfigFilesystem_missing_paths=/var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmp40QQ2A/sources/absent.pdf
+config_filesystem_missing_content_root_errors=true
+and_split_fields=
+mixed_phrase_and_term=cadence-only
+quoted_stopword_phrase_original_doc=phrase-adjacent
+quoted_stopword_phrase_adjacent_doc=phrase-adjacent
+minmatch_one_of_three=only-one,split
+quote_vs_adjacency_actual_ids=phrase-adjacent
+quoted_phrase_stopwords_disabled_control=phrase-only
+mixed_phrase_actual_ids=cadence-only
+request_mode_same_query_and=
+request_mode_same_query_or=
+minimum_match_100pct_one_term=only-one,split
+configured_reverse_boost_ranking=boost-body,boost-title|boost-title:6.970
+limit1_filtered=total=1;items=
+limit20_filtered=total=2;items=eligible-low
+limit20_unfiltered=total=2;items=eligible-low,high-wrong;first=high-wrong:10.836
+simple_request_snippet_length=short=Some("...around...");long=Some("...sequence around needle and afterward.")
+
+thread 'tokio-rt-worker' (325194395) panicked at /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts/src/tantivy_search.rs:278:26:
+start byte index 4 is not a char boundary; it is inside '\u{2003}' (bytes 3..6) of `foo bar baz`
+tantivy_emspace_snippet_panics=true
+tantivy_request_snippet_length_ignored=equal=true;a=Some("target");b=Some("target")
+
+thread 'tokio-rt-worker' (325194395) panicked at /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tantivy-0.27.0/src/collector/top_score_collector.rs:94:9:
+assertion `left != right` failed: Limit must be greater than 0
+  left: 0
+ right: 0
+tantivy_zero_limit_task_panics=true
+default_fuzzy_off_typo_ids=
+configured_fuzzy_typo_ids=boost-body,boost-title
+stopword_positive=cadence-only
+all_stopwords_fallback_actual_ids=the-only
+tantivy_shifted_excerpt_controls=shifted=Some("...-needle...");ascii-shifted=Some("...9-needle...")
+tantivy_request_snippet_length_ignored_long_control=equal=true;a=Some("...epsilon target zeta...");b=Some("...epsilon target zeta...")
+missing_tantivy_index_backend_result=simple|one
+simple_tantivy_field_categoryneedle=simple=field;tantivy=
+simple_tantivy_field_sourceneedle=simple=field;tantivy=
+simple_tantivy_field_tagneedle=simple=field;tantivy=
+custom_tier_filter_request=simple=field;tantivy=field
+content_type_unified_directory_conventions=metadata_unified=Some(UnifiedConcept);fts_unified=Some("concept_card");metadata_concepts_unified=None;fts_concepts_unified=Some("unified_concept")
+A_build_B_append_ids=a,b
+A_force_rebuild_B_unchanged_append=processed=0;indexed=1;ids=a
+append_changed_same_id=processed=1;indexed=1;ids=a,b
+append_source_deletion=processed=0;indexed=0;ids=a,b
+same_id_across_appended_roots=total=2;ids=shared,shared
+controlled_mtime_observation=before=1795332187.850780238;after=1795332187.991358143;same_integer_seconds=true
+same_second_freshness_rebuild_stats=processed=0;indexed=1;old=same;new=
+simple_no_content_path=0
+slice03_probe_finished=true
+```
+
+## Preserved harness failure history
+
+The failures below were harness construction/oracle errors, not product findings. Their correction is included to keep the replay history auditable.
+
+- attempt-001-replay: ``cargo check --offline --manifest-path /private/tmp/foundation-content-search-probe/Cargo.toml --target-dir /private/tmp/arc01-slice02-cargo-target` exit `101`; attempted direct access to private `FrontmatterResult.value` and malformed diagnostic format arguments. Corrected to public `value()` accessor and valid format arguments.
+- attempt-002: ``cargo check --offline --manifest-path /private/tmp/foundation-content-search-probe/Cargo.toml --target-dir /private/tmp/arc01-slice02-cargo-target` exit `101`; zero-limit task moved backend later needed by controls. Corrected by cloning backend/task state before spawn.
+- attempts-006/007: probe process exit `101`; scratch assertion indexed an absent hyphen-token match. Corrected by choosing corpus/token boundary that actually discriminates.
+- attempt-010: ``cargo check --offline --manifest-path /private/tmp/foundation-content-search-probe/Cargo.toml --target-dir /private/tmp/arc01-slice02-cargo-target` exit `101`; scratch lacked serde_json dependency for custom-filter fixture. Added only to scratch manifest.
+- attempt-013: ``cargo run --offline --locked --manifest-path /private/tmp/foundation-content-search-probe/Cargo.toml --target-dir /private/tmp/arc01-slice02-cargo-target` exit `101`; feature reduction made scratch lock stale. Regenerated only scratch lock with `cargo generate-lockfile --offline`, then final exact locked run exited 0.
+
+Representative preserved compiler/panic diagnostics:
+
+```text
+--- attempt-001-replay.log ---
+    Checking pin-project-lite v0.2.18
+    Checking memchr v2.8.3
+    Checking cfg-if v1.0.5
+    Checking futures-core v0.3.34
+    Checking futures-io v0.3.34
+    Checking parking v2.2.1
+    Checking futures-sink v0.3.34
+    Checking fastrand v2.5.0
+    Checking slab v0.4.12
+    Checking futures-task v0.3.34
+    Checking regex-syntax v0.8.12
+    Checking foldhash v0.2.0
+    Checking libc v0.2.191
+    Checking serde_core v1.0.229
+    Checking crossbeam-utils v0.8.23
+    Checking atomic-waker v1.1.2
+    Checking time-core v0.1.9
+    Checking stable_deref_trait v1.2.1
+    Checking smallvec v1.16.6
+    Checking powerfmt v0.2.1
+    Checking bitflags v2.13.2
+    Checking num-conv v0.2.2
+    Checking option-ext v0.2.0
+    Checking itoa v1.0.19
+    Checking byteorder v1.5.0
+    Checking event-listener v5.4.2
+   Compiling darling_core v0.24.1
+    Checking ownedbytes v0.9.0
+    Checking zmij v1.0.23
+    Checking zerocopy v0.8.64
+    Checking crunchy v0.2.4
+    Checking futures-channel v0.3.34
+    Checking hashbrown v0.17.1
+    Checking either v1.19.0
+    Checking async-task v4.7.1
+    Checking scopeguard v1.2.0
+    Checking futures-lite v2.6.1
+    Checking piper v0.2.5
+    Checking num-traits v0.2.19
+    Checking thiserror v2.0.21
+    Checking utf8-ranges v1.0.5
+    Checking equivalent v1.0.3
+    Checking bitpacking v0.9.3
+    Checking aho-corasick v1.1.5
+    Checking log v0.4.35
+    Checking concurrent-queue v2.5.0
+    Checking lock_api v0.4.14
+    Checking crossbeam-epoch v0.9.21
+    Checking typeid v1.0.3
+    Checking bytes v1.12.2
+    Checking futures-util v0.3.34
+    Checking murmurhash32 v0.4.0
+    Checking event-listener-strategy v0.5.4
+    Checking itertools v0.14.0
+    Checking once_cell v1.21.4
+    Checking libyaml-rs v0.3.0
+    Checking ryu v1.0.23
+    Checking tantivy-bitpacker v0.27.0
+    Checking minimal-lexical v0.2.1
+    Checking downcast-rs v2.0.2
+    Checking inventory v0.3.25
+    Checking fastdivide v0.4.2
+    Checking core-foundation-sys v0.8.7
+    Checking async-channel v2.5.0
+    Checking async-lock v3.5.0
+    Checking unicase v2.10.0
+    Checking crossbeam-deque v0.8.8
+    Checking fnv v1.0.7
+    Checking glob v0.3.4
+    Checking measure_time v0.9.0
+    Checking indexmap v2.14.2
+    Checking lru v0.18.5
+    Checking nom v7.1.3
+    Checking errno v0.3.15
+   Compiling jobserver v0.1.35
+    Checking dirs-sys v0.5.0
+    Checking getrandom v0.3.4
+    Checking parking_lot_core v0.9.12
+    Checking socket2 v0.6.5
+    Checking getrandom v0.4.3
+    Checking mio v1.2.5
+    Checking ordered-float v5.5.1
+    Checking rayon-core v1.13.0
+    Checking iana-time-zone v0.1.65
+    Checking rustix v1.1.6
+    Checking blocking v1.7.0
+    Checking dirs v6.0.0
+    Checking signal-hook-registry v1.4.8
+    Checking dirs v7.0.0
+    Checking pulldown-cmark v0.13.6
+    Checking rand_core v0.9.5
+    Checking memmap2 v0.9.12
+    Checking arc-swap v1.9.5
+   Compiling cc v1.11.3
+    Checking shellexpand v3.1.2
+    Checking parking_lot v0.12.5
+    Checking crc32fast v1.5.5
+    Checking async-fs v2.2.0
+    Checking crossbeam-channel v0.5.17
+    Checking oneshot v0.1.13
+    Checking unwrap-infallible v1.0.0
+    Checking base64 v0.23.1
+    Checking htmlescape v0.3.1
+    Checking strsim v0.11.1
+    Checking frostem v1.20260821.8
+    Checking tokio v1.54.1
+    Checking rayon v1.12.0
+    Checking datasketches v0.5.0
+    Checking census v0.4.2
+    Checking levenshtein_automata v0.2.1
+    Checking lz4_flex v0.14.2
+    Checking rustc-hash v2.1.3
+    Checking async-walkdir v2.2.0
+    Checking regex-automata v0.4.19
+    Checking tantivy-fst v0.5.0
+    Checking serde v1.0.229
+    Checking deranged v0.5.9
+    Checking serde_json v1.0.154
+    Checking erased-serde v0.4.11
+    Checking uuid v1.29.3
+    Checking tempfile v3.27.0
+    Checking fs4 v0.13.1
+    Checking yaml_serde v0.10.7
+    Checking tantivy-tokenizer-api v0.7.0
+    Checking typetag v0.2.23
+    Checking sketches-ddsketch v0.4.2
+    Checking serde-tuple-vec-map v1.0.1
+    Checking chrono v0.4.45
+   Compiling darling_macro v0.24.1
+    Checking tantivy-query-grammar v0.27.0
+   Compiling zstd-sys v2.1.3+zstd.1.5.7
+    Checking futures-executor v0.3.34
+    Checking futures v0.3.34
+   Compiling darling v0.24.1
+    Checking time v0.3.55
+    Checking regex v1.13.2
+   Compiling bon-macros v3.10.3
+    Checking ppv-lite86 v0.2.21
+    Checking rand_chacha v0.9.0
+    Checking rand v0.9.5
+    Checking tantivy-common v0.27.0
+    Checking fabryk-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core)
+    Checking tantivy-stacker v0.27.0
+    Checking fabryk-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content)
+   Compiling zstd-safe v8.3.0
+    Checking bon v3.10.3
+    Checking zstd v0.14.4
+    Checking tantivy-sstable v0.27.0
+    Checking tantivy-columnar v0.27.0
+    Checking tantivy v0.27.0
+    Checking fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+    Checking foundation-content-search-probe v0.1.0 (/private/tmp/foundation-content-search-probe)
+error: 2 positional arguments in format string, but no arguments were given
+   --> src/main.rs:242:217
+    |
+242 | ...ap()); emit("append_source_deletion", format!("processed={};indexed={};ids={deletion_ids}"));
+    |                                                             ^^         ^^
+
+warning: unused import: `PathBuf`
+ --> src/main.rs:3:23
+  |
+3 | use std::path::{Path, PathBuf};
+  |                       ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0616]: field `had_delimiters` of struct `FrontmatterResult` is private
+  --> src/main.rs:66:47
+   |
+66 |         emit(&format!("{name}_delimiters"), r.had_delimiters);
+   |                                               ^^^^^^^^^^^^^^ private field
+   |
+help: a method `had_delimiters` also exists, call it with parentheses
+   |
+66 |         emit(&format!("{name}_delimiters"), r.had_delimiters());
+   |                                                             ++
+
+error[E0616]: field `value` of struct `FrontmatterResult` is private
+  --> src/main.rs:67:46
+   |
+67 |         emit(&format!("{name}_has_value"), r.value.is_some());
+   |                                              ^^^^^ private field
+   |
+help: a method `value` also exists, call it with parentheses
+   |
+67 |         emit(&format!("{name}_has_value"), r.value().is_some());
+   |                                                   ++
+
+For more information about this error, try `rustc --explain E0616`.
+warning: `foundation-content-search-probe` (bin "foundation-content-search-probe") generated 1 warning
+error: could not compile `foundation-content-search-probe` (bin "foundation-content-search-probe") due to 3 previous errors; 1 warning emitted
+--- attempt-002.log ---
+   Compiling foundation-content-search-probe v0.1.0 (/private/tmp/foundation-content-search-probe)
+error[E0382]: borrow of moved value: `backend`
+   --> src/main.rs:162:17
+    |
+124 |     let backend = tantivy(&qidx, SearchConfig::default());
+    |         ------- move occurs because `backend` has type `TantivySearch`, which does not implement the `Copy` trait
+...
+158 |     let zero = tokio::spawn(async move { backend.search(SearchParams { query: "target".into(), limit: Some(0), ..Default::default()...
+    |                             ----------   ------- variable moved due to use in coroutine
+    |                             |
+    |                             value moved here
+...
+162 |     let exact = backend.search(SearchParams { query: "harmoniq".into(), ..Default::default() }).await.unwrap();
+    |                 ^^^^^^^ value borrowed here after move
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `foundation-content-search-probe` (bin "foundation-content-search-probe") due to 1 previous error
+--- attempt-006.log ---
+   Compiling foundation-content-search-probe v0.1.0 (/private/tmp/foundation-content-search-probe)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.81s
+     Running `/private/tmp/arc01-slice02-cargo-target/debug/foundation-content-search-probe`
+
+thread 'main' (325162701) panicked at /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content/src/markdown/parser.rs:227:31:
+end byte index 1 is not a char boundary; it is inside 'é' (bytes 0..2) of `éxample body`
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+paragraph_unicode_limit1_panics=true
+paragraph_ascii_limit=alpha...
+paragraph_zero_limit=...
+paragraph_exact_limit=alpha
+
+thread 'main' (325162701) panicked at /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts/src/document.rs:267:26:
+start byte index 4 is not a char boundary; it is inside '\u{2003}' (bytes 3..6) of `foo bar baz`
+document_emspace_snippet_panics=true
+document_dotted_i_shifted_excerpt=...9needleA...
+document_dotted_i_snippet_limit_4=...needle...
+document_dotted_i_snippet_limit_8=...begins; needle...
+document_dotted_i_snippet_limit_12=...begins; needle...
+document_dotted_i_snippet_limit_16=...begins; needle is...
+empty_content_snippet=
+frontmatter_prefix_open_close_delimiters=true
+frontmatter_prefix_open_close_has_value=true
+frontmatter_prefix_open_close_body=trailing note|# Body|
+frontmatter_malformed_delimiters=true
+frontmatter_malformed_has_value=false
+frontmatter_malformed_body=# Body|
+frontmatter_empty_delimiters=true
+frontmatter_empty_has_value=true
+frontmatter_empty_body=Body|
+frontmatter_no_close_delimiters=false
+frontmatter_no_close_has_value=false
+frontmatter_no_close_body=---|title: Acme|Body|
+extract_text_fenced_dash=Body
+id_core_" A__  B\tC "=a-b-c
+id_content_" A__  B\tC "=a----b	c
+id_core_"A   B"=a-b
+id_content_"A   B"=a---b
+id_core_"A_B"=a-b
+id_content_"A_B"=a-b
+metadata_id_title_category_source_section_author_date=Acme_File|chapter: Chapter fallback source: Acme Inc. author: Acme Research date: 2026-11-22 section: A.1 aliases: [Alias One]|nested|Some("Acme Inc.")|None|Some("Acme Research")|Some("2026-11-22")
+fts_id_title_category_source_section_content_type_author_date=acme-file|Body heading|nested|Some("Acme Inc.")|Some("A.1")|Some("concept_card")|None|None
+fts_content_has_frontmatter=false
+collision_known_ids=a-b-c,x-one,y-two,z-three
+collision_shared_resolution=Some("a-b-c")|ExactTitle
+title_over_alias_resolution=Some("x-one")|ExactTitle
+ambiguous_alias_resolution=Some("z-three")|Alias("Alternate Alias")
+validation_All=valid=false;cards=2;sources=3;disk=2;missing_fs=1;missing_cfg=0
+validation_All_missing_paths=/var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmpehtJSq/sources/absent.pdf
+validation_CardsConfig=valid=true;cards=2;sources=3;disk=0;missing_fs=0;missing_cfg=0
+validation_CardsConfig_missing_paths=
+validation_CardsFilesystem=valid=false;cards=2;sources=3;disk=2;missing_fs=1;missing_cfg=0
+validation_CardsFilesystem_missing_paths=/var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmpehtJSq/sources/absent.pdf
+validation_ConfigFilesystem=valid=false;cards=2;sources=3;disk=2;missing_fs=1;missing_cfg=0
+validation_ConfigFilesystem_missing_paths=/var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmpehtJSq/sources/absent.pdf
+config_filesystem_missing_content_root_errors=true
+and_split_fields=
+mixed_phrase_and_term=cadence-only
+quoted_stopword_phrase_original_doc=phrase-adjacent
+quoted_stopword_phrase_adjacent_doc=phrase-adjacent
+minmatch_one_of_three=only-one,split
+quote_vs_adjacency_actual_ids=phrase-adjacent
+quoted_phrase_stopwords_disabled_control=phrase-only
+mixed_phrase_actual_ids=cadence-only
+request_mode_same_query_and=
+request_mode_same_query_or=
+minimum_match_100pct_one_term=only-one,split
+configured_reverse_boost_ranking=boost-body,boost-title|boost-title:6.970
+limit1_filtered=total=1;items=
+limit20_filtered=total=2;items=eligible-low
+limit20_unfiltered=total=2;items=eligible-low,high-wrong;first=high-wrong:10.836
+simple_request_snippet_length=short=Some("...around...");long=Some("...sequence around needle and afterward.")
+
+thread 'tokio-rt-worker' (325162758) panicked at /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts/src/tantivy_search.rs:278:26:
+start byte index 4 is not a char boundary; it is inside '\u{2003}' (bytes 3..6) of `foo bar baz`
+tantivy_emspace_snippet_panics=true
+tantivy_request_snippet_length_ignored=equal=true;a=Some("target");b=Some("target")
+
+thread 'tokio-rt-worker' (325162758) panicked at /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tantivy-0.27.0/src/collector/top_score_collector.rs:94:9:
+assertion `left != right` failed: Limit must be greater than 0
+  left: 0
+ right: 0
+tantivy_zero_limit_task_panics=true
+default_fuzzy_off_typo_ids=
+configured_fuzzy_typo_ids=boost-body,boost-title
+stopword_positive=cadence-only
+all_stopwords_fallback_actual_ids=the-only
+
+thread 'main' (325162701) panicked at src/main.rs:192:67:
+index out of bounds: the len is 0 but the index is 0
+--- attempt-007.log ---
+   Compiling foundation-content-search-probe v0.1.0 (/private/tmp/foundation-content-search-probe)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.83s
+     Running `/private/tmp/arc01-slice02-cargo-target/debug/foundation-content-search-probe`
+
+thread 'main' (325163500) panicked at /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content/src/markdown/parser.rs:227:31:
+end byte index 1 is not a char boundary; it is inside 'é' (bytes 0..2) of `éxample body`
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+paragraph_unicode_limit1_panics=true
+paragraph_ascii_limit=alpha...
+paragraph_zero_limit=...
+paragraph_exact_limit=alpha
+
+thread 'main' (325163500) panicked at /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts/src/document.rs:267:26:
+start byte index 4 is not a char boundary; it is inside '\u{2003}' (bytes 3..6) of `foo bar baz`
+document_emspace_snippet_panics=true
+document_dotted_i_shifted_excerpt=...9needleA...
+document_dotted_i_snippet_limit_4=...needle...
+document_dotted_i_snippet_limit_8=...begins; needle...
+document_dotted_i_snippet_limit_12=...begins; needle...
+document_dotted_i_snippet_limit_16=...begins; needle is...
+empty_content_snippet=
+frontmatter_prefix_open_close_delimiters=true
+frontmatter_prefix_open_close_has_value=true
+frontmatter_prefix_open_close_body=trailing note|# Body|
+frontmatter_malformed_delimiters=true
+frontmatter_malformed_has_value=false
+frontmatter_malformed_body=# Body|
+frontmatter_empty_delimiters=true
+frontmatter_empty_has_value=true
+frontmatter_empty_body=Body|
+frontmatter_no_close_delimiters=false
+frontmatter_no_close_has_value=false
+frontmatter_no_close_body=---|title: Acme|Body|
+extract_text_fenced_dash=Body
+id_core_" A__  B\tC "=a-b-c
+id_content_" A__  B\tC "=a----b	c
+id_core_"A   B"=a-b
+id_content_"A   B"=a---b
+id_core_"A_B"=a-b
+id_content_"A_B"=a-b
+metadata_id_title_category_source_section_author_date=Acme_File|chapter: Chapter fallback source: Acme Inc. author: Acme Research date: 2026-11-22 section: A.1 aliases: [Alias One]|nested|Some("Acme Inc.")|None|Some("Acme Research")|Some("2026-11-22")
+fts_id_title_category_source_section_content_type_author_date=acme-file|Body heading|nested|Some("Acme Inc.")|Some("A.1")|Some("concept_card")|None|None
+fts_content_has_frontmatter=false
+collision_known_ids=a-b-c,x-one,y-two,z-three
+collision_shared_resolution=Some("a-b-c")|ExactTitle
+title_over_alias_resolution=Some("x-one")|ExactTitle
+ambiguous_alias_resolution=Some("z-three")|Alias("Alternate Alias")
+validation_All=valid=false;cards=2;sources=3;disk=2;missing_fs=1;missing_cfg=0
+validation_All_missing_paths=/var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmpEYDLrE/sources/absent.pdf
+validation_CardsConfig=valid=true;cards=2;sources=3;disk=0;missing_fs=0;missing_cfg=0
+validation_CardsConfig_missing_paths=
+validation_CardsFilesystem=valid=false;cards=2;sources=3;disk=2;missing_fs=1;missing_cfg=0
+validation_CardsFilesystem_missing_paths=/var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmpEYDLrE/sources/absent.pdf
+validation_ConfigFilesystem=valid=false;cards=2;sources=3;disk=2;missing_fs=1;missing_cfg=0
+validation_ConfigFilesystem_missing_paths=/var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmpEYDLrE/sources/absent.pdf
+config_filesystem_missing_content_root_errors=true
+and_split_fields=
+mixed_phrase_and_term=cadence-only
+quoted_stopword_phrase_original_doc=phrase-adjacent
+quoted_stopword_phrase_adjacent_doc=phrase-adjacent
+minmatch_one_of_three=only-one,split
+quote_vs_adjacency_actual_ids=phrase-adjacent
+quoted_phrase_stopwords_disabled_control=phrase-only
+mixed_phrase_actual_ids=cadence-only
+request_mode_same_query_and=
+request_mode_same_query_or=
+minimum_match_100pct_one_term=only-one,split
+configured_reverse_boost_ranking=boost-body,boost-title|boost-title:6.970
+limit1_filtered=total=1;items=
+limit20_filtered=total=2;items=eligible-low
+limit20_unfiltered=total=2;items=eligible-low,high-wrong;first=high-wrong:10.836
+simple_request_snippet_length=short=Some("...around...");long=Some("...sequence around needle and afterward.")
+
+thread 'tokio-rt-worker' (325163531) panicked at /Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts/src/tantivy_search.rs:278:26:
+start byte index 4 is not a char boundary; it is inside '\u{2003}' (bytes 3..6) of `foo bar baz`
+tantivy_emspace_snippet_panics=true
+tantivy_request_snippet_length_ignored=equal=true;a=Some("target");b=Some("target")
+
+thread 'tokio-rt-worker' (325163531) panicked at /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tantivy-0.27.0/src/collector/top_score_collector.rs:94:9:
+assertion `left != right` failed: Limit must be greater than 0
+  left: 0
+ right: 0
+tantivy_zero_limit_task_panics=true
+default_fuzzy_off_typo_ids=
+configured_fuzzy_typo_ids=boost-body,boost-title
+stopword_positive=cadence-only
+all_stopwords_fallback_actual_ids=the-only
+
+thread 'main' (325163500) panicked at src/main.rs:192:67:
+index out of bounds: the len is 0 but the index is 0
+--- attempt-010.log ---
+   Compiling foundation-content-search-probe v0.1.0 (/private/tmp/foundation-content-search-probe)
+error[E0433]: cannot find module or crate `serde_json` in this scope
+   --> src/main.rs:218:71
+    |
+218 |     let extra = SearchParams { query: "*".into(), extra_filters: Some(serde_json::json!({"tier":"advanced"})), ..Default::default() };
+    |                                                                       ^^^^^^^^^^ use of unresolved module or unlinked crate `serde_json`
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `foundation-content-search-probe` (bin "foundation-content-search-probe") due to 1 previous error
+--- attempt-013.log ---
+error: cannot update the lock file /private/tmp/foundation-content-search-probe/Cargo.lock because --locked was passed to prevent this
+help: to generate the lock file without accessing the network, remove the --locked flag and use --offline instead.
+```
+
+## Actual resolved feature trees
+
+Product command `cargo tree --locked -p fabryk-fts --features fts-tantivy -e features --depth 1`; true exit `0`:
+
+```text
+fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+├── async-trait feature "default"
+├── async-walkdir feature "default"
+├── chrono feature "default"
+├── chrono feature "serde"
+├── serde feature "default"
+├── serde feature "derive"
+├── fabryk-content feature "default"
+├── fabryk-core feature "default"
+├── futures feature "default"
+├── log feature "default"
+├── serde_json feature "default"
+├── tokio feature "default"
+├── tokio feature "fs"
+├── tokio feature "io-util"
+├── tokio feature "macros"
+├── tokio feature "net"
+├── tokio feature "rt-multi-thread"
+├── tokio feature "sync"
+├── tokio feature "time"
+└── tantivy feature "default"
+[dev-dependencies]
+├── tempfile feature "default"
+└── tokio-test feature "default"
+```
+
+Scratch command `cargo tree --offline --locked --manifest-path /private/tmp/foundation-content-search-probe/Cargo.toml -e features --depth 1`; true exit `0`:
+
+```text
+foundation-content-search-probe v0.1.0 (/private/tmp/foundation-content-search-probe)
+├── fabryk-content feature "default"
+├── fabryk-core feature "default"
+├── serde_json feature "default"
+├── tokio feature "default"
+├── tokio feature "fs"
+├── tokio feature "io-util"
+├── tokio feature "macros"
+├── tokio feature "net"
+├── tokio feature "rt-multi-thread"
+├── tokio feature "sync"
+├── tokio feature "time"
+├── fabryk-fts feature "default"
+├── fabryk-fts feature "fts-tantivy"
+└── tempfile feature "default"
+```
+
+## Lockfile package comparison
+
+Product `/Users/oubiwann/lab/oxur/textrynum/Cargo.lock` and scratch `/private/tmp/foundation-content-search-probe/Cargo.lock` select the same direct package versions: `fabryk-core 0.5.0`, `fabryk-content 0.5.0`, `fabryk-fts 0.5.0`, `tantivy 0.27.0`, `tokio 1.54.1`, `serde_json 1.0.154`, `tempfile 3.27.0`. The scratch lock is a subset resolution and is not a full product-lock run.

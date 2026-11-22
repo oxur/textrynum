@@ -1,12 +1,11 @@
-# Ledger
+# Ledger — slice03 content/search
 
-Issued; all rows open. Author attestation and prior pass acceptance do not close
-these31paths/seven pass02scale obligations or the full arc.
+All five SEARCH criteria are author-proposed-done for independent CDC review. Proposed-done records the CC work/evidence; it does not independently accept this pass or close arc01.
 
 | ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| SEARCH-01 | Complete31-path semantic intake and retained fullRust guidance | Fulltext source-cited readback, exact coverage-set reconciliation and per-file dispositions, fullJSON/license check | correctness-grade | arc01 pass02 | open | | No sampling or receipt-only coverage |
-| SEARCH-02 | Allseven scales and competing parsing/identity/query/cache policies assessed | Actual caller traces and complete logical/crate/application/workspace dispositions | correctness-grade | Operator full foundation audit | open | | Held/cancelled feature scope remains separate |
-| SEARCH-03 | Behavioral claims have discriminating actual-entrypoint oracles | Owned source/manifest/lock/log with true exits, positive/negative/counterexample controls and explicitstatic/runtime limits | correctness-grade | arc01 evidence contract | open | | No fullnative/CI duplication or external provider trial |
-| SEARCH-04 | Findings actionable and root-deduplicated | StableIDs after010, severity, exactsource, failure/evidence confidence, owner/consumer, fix/compatibility/oracle; hypotheses separate | correctness-grade | arc01 finding contract | open | | Do not silently modify accepted001–010 |
-| SEARCH-05 | Index/map/close preserve all other populations and diagnosis boundary | Exact31path+7pass02cell diff, acceptedpass01 preserved, allhashes/counts/targets/features unchanged; sourceclean719 | correctness-grade | arc01 acceptance | open | | IndependentCDCacceptance and widercomposition remain required |
+| SEARCH-01 | Complete31-path semantic intake and retained fullRust guidance | Full source-cited readback, exact coverage-set reconciliation and per-file dispositions, JSON/license check | correctness-grade | arc01 pass02 | proposed-done | `../../artifacts/2026.11.22-content-search-evidence.md`; coverage JSON | All31 rows updated; corpus is1,298 unique strings; absent CLI09 remains disclosed |
+| SEARCH-02 | Allseven scales and competing parsing/identity/query/cache policies assessed | Caller traces and file/module/logical/crate/application/codebase/workspace dispositions | correctness-grade | Operator full foundation audit | proposed-done | `../../artifacts/2026.11.22-content-search-evidence.md` | Cross-scale reach and unproven contract questions are bounded |
+| SEARCH-03 | Behavioral claims have discriminating actual-entrypoint oracles | Scratch source/manifest/lock/log, exact commands, true exits, positive/negative controls | correctness-grade | arc01 evidence contract | proposed-done | `../../artifacts/2026.11.22-content-search-probe.rs`; `.toml`; `.lock`; `2026.11.22-content-search-run.log` | Locked scratch exit0; harness exits/fixes retained; no full native/CI reruns |
+| SEARCH-04 | Findings actionable and root-deduplicated | Stable IDs after010, severity, exact source, confidence, owner/consumer, fix/compat/oracle; hypotheses separate | correctness-grade | arc01 finding contract | proposed-done | `../../artifacts/2026.11.22-content-search-evidence.md`; Rust report | FA-RS-011–033 proposed only; 23 findings, cleared leads separate |
+| SEARCH-05 | Index/map/close preserve all other populations and diagnosis boundary | Exact31 rows+7 cells diff; accepted pass01 and all other populations/hashes preserved; source clean719 | correctness-grade | arc01 acceptance | proposed-done | `../../artifacts/2026.11.21-audit-coverage.json`; `closing-report.md` | CDC independent review and wider composition remain outstanding |
