@@ -8,8 +8,8 @@
   "requested_session": "retained gpt-6-luna High; hidden backend identity unreported",
   "refinement_budget": {
     "initial": 0,
-    "used": 0,
-    "remaining": 5
+    "used": 1,
+    "remaining": 4
   },
   "population": {
     "paths": 31,
@@ -40,37 +40,37 @@
       "path": "crates/fabryk-mcp-content/README.md",
       "lines": 17,
       "intake": "Full README read.",
-      "contract_conclusion": "Brief feature summary names list_items/get_item/list_sources/get_source; treat these as documented labels until confirmed against actual slot constants. No correction is proposed from this row alone.",
-      "loci": "README.md:1-17; src/tools.rs:125-218,388-404,617-627,754-762",
-      "contrary_controls": "README says under construction; configurable names and prefixes are available.",
+      "contract_conclusion": "README presents list_items/get_item/list_sources/get_source as MCP tools, but current uncustomized ContentTools slots are list/get/categories and SourceTools slots are sources_list/sources_chapters/sources_get_chapter/sources_check_availability/sources_get_path. Proposed FA-RS-067 is specific to this content README; accepted FA-RS-035 remains limited to FTS/graph README rows.",
+      "loci": "README.md:9-13; src/tools.rs:125-131,157-218,258-305,395-404,456-521",
+      "contrary_controls": "README labels the crate under construction; with_prefix/with_names allow caller-selected names but do not establish these names as defaults or aliases.",
       "refs": [
-        "FA-RS-035"
+        "FA-RS-067"
       ],
-      "missing_proof": "No downstream client registry or intended alias policy."
+      "missing_proof": "No downstream alias or intent evidence; no client registry was inspected."
     },
     {
       "path": "crates/fabryk-mcp-content/src/fs_content_provider.rs",
       "lines": 715,
       "intake": "Full provider and embedded tests read.",
-      "contract_conclusion": "Summaries use frontmatter/title/heading/stem and category/frontmatter/parent/uncategorized fallbacks; category list title casing uses chars().next() then byte slice id[1..]. This is proposed FA-RS-059 for a leading multibyte category; no runtime panic was induced.",
-      "loci": "src/fs_content_provider.rs:122-161,231-258,357-715",
-      "contrary_controls": "ASCII title/category fallback, category sorting/filtering, summaries and serialization have source tests; no Unicode-leading category case.",
+      "contract_conclusion": "Frontmatter category or parent-directory text reaches ContentItemSummary.category; ConceptCardFrontmatter.category is Option<String>. list_categories takes chars().next() then slices the original at byte index1, so a leading multibyte scalar can panic on valid input. FA-RS-059 is proposed Medium for bounded category-list reliability; no corpus prevalence or runtime panic is claimed.",
+      "loci": "src/fs_content_provider.rs:130-160,231-258,568-628; fabryk-content/src/concept_card.rs:27-40",
+      "contrary_controls": "ASCII category/title and parent-directory fallbacks are covered; no multibyte-leading category case. Sorting and category filtering are separate from display-name construction.",
       "refs": [
         "FA-RS-059"
       ],
-      "missing_proof": "No runtime reproduction or production corpus prevalence; future Unicode-safe oracle only."
+      "missing_proof": "No reproduction or corpus incidence; future Unicode-safe behavior oracle only."
     },
     {
       "path": "crates/fabryk-mcp-content/src/fs_guide_provider.rs",
       "lines": 462,
       "intake": "Full provider and embedded tests read.",
-      "contract_conclusion": "Guide title fallback is frontmatter title, first heading, file stem; description fallback is frontmatter description then first paragraph of complete content. The complete file is passed to the paragraph helper without stripping frontmatter; proposed FA-RS-060 is bounded to that fallback.",
-      "loci": "src/fs_guide_provider.rs:86-120,134-177,282-345,430-461; companion fabryk-content/src/markdown/parser.rs:109-145",
-      "contrary_controls": "Explicit frontmatter description and plain Markdown paragraph fallbacks are tested independently; no frontmatter-without-description case.",
+      "contract_conclusion": "Title priority is frontmatter title, first heading, then file stem. Description priority is frontmatter description then extract_first_paragraph on the complete file. The parser helper skips heading events and returns the first nonempty paragraph event, but the assigned primary source does not establish the parser event sequence for a valid frontmatter block lacking description. Retain FA-RS-060 as ungraded, not as an accepted output defect.",
+      "loci": "src/fs_guide_provider.rs:86-120,134-159,282-345; fabryk-content/src/markdown/parser.rs:109-150",
+      "contrary_controls": "Explicit frontmatter-description and plain-Markdown paragraph cases are tested separately; neither proves the disputed frontmatter-only fallback result. Title fallback is a separate current path.",
       "refs": [
         "FA-RS-060"
       ],
-      "missing_proof": "No parser execution; CDC should independently confirm exact returned summary for a frontmatter-only fallback fixture."
+      "missing_proof": "No parser call; future discriminating valid frontmatter/body oracle must establish exact output."
     },
     {
       "path": "crates/fabryk-mcp-content/src/fs_question_provider.rs",
@@ -96,23 +96,26 @@
       "path": "crates/fabryk-mcp-content/src/lib.rs",
       "lines": 58,
       "intake": "Full public entrypoint read.",
-      "contract_conclusion": "Public modules and re-exports include four FS providers, traits and argument/tool types; exports establish names, not client registration behavior.",
-      "loci": "src/lib.rs:32-58",
-      "contrary_controls": "README and each tools/provider module were read alongside the export list.",
-      "refs": [],
-      "missing_proof": "No compiled facade or application registry."
+      "contract_conclusion": "Public facade exports ContentTools, SourceTools, GuideTools, providers and traits. The actual default names are determined by the slot constants in tools.rs, while caller overrides remain opt-in.",
+      "loci": "src/lib.rs:32-58; src/tools.rs:125-131,395-404,625-627",
+      "contrary_controls": "Public exports establish callable types but not a compiled external registry or alias behavior.",
+      "refs": [
+        "FA-RS-067"
+      ],
+      "missing_proof": "No compile or consuming application import check."
     },
     {
       "path": "crates/fabryk-mcp-content/src/tools.rs",
       "lines": 1869,
       "intake": "Full tools module and all embedded tests read.",
-      "contract_conclusion": "Content prefix/slot overrides determine actual names, while get descriptions reconstruct a list name from provider plural; separate configuration can make the description false (FA-RS-058). List extras are schema-merged then passed through; default provider trait may ignore them. Input get ID field and output summary ID are separate.",
-      "loci": "src/tools.rs:125-225,228-355,388-606,617-857,1032-1535,1658-1742",
-      "contrary_controls": "Tests cover default/prefixed names, custom dispatch, custom get field and extra-filter pass-through. Existing name tests do not combine provider default plural with a different prefix and inspect get description.",
+      "contract_conclusion": "ContentTools registers default list/get/categories and resolves prefix/slot overrides at registration and dispatch. Generated get guidance reconstructs a list name from provider plural, so configuration can make the name wrong (FA-RS-058). with_get_id_field changes only the input schema/dispatch field; summary result id remains provider-owned. SourceTools registers five source_* slots; these are the defaults compared with README proposal FA-RS-067.",
+      "loci": "src/tools.rs:125-218,228-305,307-350,395-404,456-521; fs_content_provider.rs:147-160",
+      "contrary_controls": "Tests cover prefix and custom slot dispatch; default test asserts list/get/categories. No test asserts get guidance tracks the effective list name. Input property customization is not output-id renaming.",
       "refs": [
-        "FA-RS-058"
+        "FA-RS-058",
+        "FA-RS-067"
       ],
-      "missing_proof": "No client use, provider implementation guarantee or runtime dispatch."
+      "missing_proof": "No client trial or downstream custom alias; no output-field change is inferred."
     },
     {
       "path": "crates/fabryk-mcp-content/src/traits.rs",
@@ -218,19 +221,19 @@
       "path": "crates/fabryk-mcp-graph/src/tools.rs",
       "lines": 2100,
       "intake": "Full tool implementation and embedded tests read.",
-      "contract_conclusion": "17 slots; node filter is post-processing on selected list/step handlers, not graph_path or single-node handlers. Limits vary by handler. Learning-path branch retains original step ordinals but recomputes total from retained vector; this is Q06-03 pending ordinal policy.",
-      "loci": "src/tools.rs:27-81,88-178,184-357,360-658,660-1052,1054-2100; fabryk-graph/src/algorithms.rs:90-113,565-601",
-      "contrary_controls": "Tests cover filter no-op/match, single-node exclusion, graph paths, limits and basic step numbering. No filtered-step gap case is covered. Positive controls show related/centrality filtering before limit.",
+      "contract_conclusion": "The node filter is post-processing on selected list/step results. related filters before truncating; prerequisites retains target/cycle context while filtering ordered nodes; neighborhood filters nodes but keeps the source edge list; bridge candidates are bounded before filtering; bridge-category results remain at most the backend limit; learning_path recalculates retained total_steps but retains original one-based ordinals. Q06-03 and Q06-05 leave ordinal and neighborhood edge policy ungraded. Existing graph finding IDs remain unchanged.",
+      "loci": "src/tools.rs:312-320,664-694,740-762,765-803,823-869,901-997,1001-1047; fabryk-graph/src/algorithms.rs:90-113,565-601",
+      "contrary_controls": "Related truncates after filtering. Bridge filters after candidate limit, so result may be shorter but not larger. Single-node/path/structured exclusions are documented. No uniform induced-subgraph or fill-to-limit promise is inferred.",
       "refs": [
-        "FA-RS-035",
         "FA-RS-038",
         "FA-RS-045",
         "FA-RS-049",
         "FA-RS-051",
         "FA-RS-052",
-        "Q06-03"
+        "Q06-03",
+        "Q06-05"
       ],
-      "missing_proof": "No runtime filtering check or policy for ordinal gaps; bridge results may be shorter after filter but still obey maximum."
+      "missing_proof": "No filter execution or owner choice for edge context/step ordinal policy."
     },
     {
       "path": "crates/fabryk-mcp-semantic/Cargo.toml",
@@ -260,25 +263,29 @@
       "path": "crates/fabryk-mcp-semantic/src/tools.rs",
       "lines": 779,
       "intake": "Full implementation and embedded tests read.",
-      "contract_conclusion": "Schema exposes category/source across modes; keyword forwards both, vector drops category/source, and hybrid filters only FTS before fusion. Category is a confirmed forwarding gap (FA-RS-057); source mapping is Q06-02. Handler falls through to hybrid for any mode other than keyword/vector, but dispatch schema enforcement is Q06-01. Fallback without vector returns raw FTS shape; no shape defect claimed.",
-      "loci": "src/tools.rs:23-67,73-85,91-114,123-209,211-247,250-333,339-779; fabryk-vector/src/types.rs:185-240; backend.rs:225-253; fabryk-fts/src/backend.rs:37-71",
-      "contrary_controls": "Tests exercise keyword, vector availability, hybrid fallback, limit cap and vector-slot branches. Mock FTS ignores filter params, so tests are not forwarding proof. Category capability exists in vector API.",
+      "contract_conclusion": "Schema advertises category and source without mode qualification. Keyword forwards both; vector omits both; hybrid forwards both to FTS but not its vector leg (FA-RS-057 category; FA-RS-062 source). VectorSearchParams supports category and arbitrary metadata filters, but no named source mapping is established (Q06-02). Hybrid asks FTS for twice the clamped limit and returns that untrimmed FTS result when no vector exists, a conditional maximum violation (FA-RS-061); keyword/vector and vector-present RRF retain their bound. Unknown mode falls through to hybrid, while transport validation remains Q06-01. FA-RS-060 remains ungraded.",
+      "loci": "src/tools.rs:23-36,211-247,250-329; fabryk-vector/src/types.rs:185-240; fabryk-fts/src/backend.rs:37-71",
+      "contrary_controls": "Keyword forwards both filters and limit; vector forwards limit; vector-present hybrid passes limit to RRF. FTS fallback is conditional on backend returned hits; no real backend response was observed.",
       "refs": [
         "FA-RS-057",
+        "FA-RS-061",
+        "FA-RS-062",
         "Q06-01",
         "Q06-02"
       ],
-      "missing_proof": "No external schema validator/dispatch check, no indexed source mapping and no real backend query."
+      "missing_proof": "No dispatch validator, source metadata mapping, backend query, or no-vector result execution."
     },
     {
       "path": "crates/fabryk-mcp/Cargo.toml",
       "lines": 25,
       "intake": "Full facade manifest read.",
-      "contract_conclusion": "Umbrella forwards HTTP, FTS and graph cache features and excludes assets from package contents; package archive behavior was not verified.",
-      "loci": "Cargo.toml:1-25",
-      "contrary_controls": "README has a separate historical 0.2 example and current unreleased 0.5 section.",
-      "refs": [],
-      "missing_proof": "No packaging/archive build or feature compilation."
+      "contract_conclusion": "The umbrella manifest depends on fabryk-mcp-auth and declares HTTP/FTS/graph-cache forwarding features; assets are excluded. This package name is the current auth dependency evidence compared with the health how-to import.",
+      "loci": "Cargo.toml:11-25; ../fabryk-mcp-auth/Cargo.toml:1-9",
+      "contrary_controls": "Source exports auth through the umbrella module; manifest does not prove feature compilation or archive behavior.",
+      "refs": [
+        "FA-RS-066"
+      ],
+      "missing_proof": "No package/build/import execution."
     },
     {
       "path": "crates/fabryk-mcp/README.md",
@@ -314,23 +321,25 @@
       "path": "crates/fabryk-mcp/src/lib.rs",
       "lines": 15,
       "intake": "Full facade entrypoint read.",
-      "contract_conclusion": "Re-exports core at root and component crates under auth/content/fts/graph/semantic modules; source facade matches the crate-level README model.",
-      "loci": "src/lib.rs:1-15; Cargo.toml:13-25",
-      "contrary_controls": "Module feature and component exports read; no claim of executable composition.",
-      "refs": [],
-      "missing_proof": "No compile/client import check."
+      "contract_conclusion": "Umbrella re-exports core at root and component crates as auth/content/fts/graph/semantic modules. The auth module name is current and differs from the health how-to import order.",
+      "loci": "src/lib.rs:6-15; Cargo.toml:13-19",
+      "contrary_controls": "Facade declaration is direct source evidence; no external import compilation was run.",
+      "refs": [
+        "FA-RS-066"
+      ],
+      "missing_proof": "No downstream crate compile or client import check."
     },
     {
       "path": "docs/howtos/mcp-async-startup.md",
       "lines": 331,
       "intake": "Full how-to read; relevant VectorSlot calls compared with assigned semantic API.",
-      "contract_conclusion": "VectorSlot alias and with_vector_slot exist and are publicly exported; service-state API names are in fabryk-core source. State narrative documents only a startup subset of current enum; see Q06-04.",
-      "loci": "mcp-async-startup.md:17-53,165-208,288-331; fabryk-mcp-semantic/src/tools.rs:91-92,157-169,197-208; fabryk-core/src/service.rs:152-195",
-      "contrary_controls": "VectorSlot actual alias, builder and resolve method match names in how-to. No async startup was run.",
+      "contract_conclusion": "VectorSlot/with_vector_slot names match the current semantic public API. Startup state narrative is illustrative but does not state whether the lifecycle enumeration is exhaustive; Q06-04 records this boundary alongside the health guide.",
+      "loci": "mcp-async-startup.md:17-53,165-208,288-331; fabryk-mcp-semantic/src/tools.rs:91-92,157-169,197-208; fabryk-core/src/service.rs:150-195",
+      "contrary_controls": "VectorSlot alias and builder are present; no startup was run. ServiceState declares six states beyond the guide narrative subset.",
       "refs": [
         "Q06-04"
       ],
-      "missing_proof": "No app integration, lifecycle runtime or full state taxonomy decision."
+      "missing_proof": "No application lifecycle/runtime or owner decision on exhaustive state list."
     },
     {
       "path": "docs/howtos/mcp-configuration.md",
@@ -349,87 +358,153 @@
       "path": "docs/howtos/mcp-health.md",
       "lines": 273,
       "intake": "Full guide read and health/service APIs checked statically.",
-      "contract_conclusion": "health_router returns 200 only for Ready/Stopped and 503 for Starting/Failed/Degraded (`health_router.rs:61-105`); ServiceState also includes Stopping/Degraded (`service.rs:152-165`). The guide's state tables omit some public states; completeness is Q06-04, not a severity-graded defect.",
-      "loci": "mcp-health.md:154-202; fabryk-mcp-core/src/health_router.rs:61-105; fabryk-core/src/service.rs:152-195",
-      "contrary_controls": "The four listed common states have accurate documented outcomes; health implementation and state enum retain more cases.",
+      "contract_conclusion": "Health route maps Ready/Stopped to HTTP200 and all other service states to503; guide tables give four common mappings but omit Degraded and Stopping, leaving table exhaustiveness ungraded as Q06-04. Its discovery import fabryk_auth_mcp does not match current package fabryk-mcp-auth or umbrella fabryk_mcp::auth; proposed FA-RS-066 is a separate snippet-name mismatch.",
+      "loci": "mcp-health.md:114-132,154-202; fabryk-mcp-core/src/health_router.rs:61-112; fabryk-core/src/service.rs:150-195; fabryk-mcp-auth/Cargo.toml:1-9; fabryk-mcp/src/lib.rs:9-15",
+      "contrary_controls": "Documented Ready/Stopped/Starting/Failed HTTP outcomes agree with source; health and discovery route architecture is separate from auth crate import naming.",
       "refs": [
+        "FA-RS-066",
         "Q06-04"
       ],
-      "missing_proof": "No health route execution or docs-owner decision on exhaustive state tables."
+      "missing_proof": "No route execution or application compile; no documentation-owner choice on exhaustive state tables."
     },
     {
       "path": "docs/howtos/mcp-metadata.md",
       "lines": 880,
       "intake": "Full guide read; current source claims linked to retained slice05 dispositions.",
-      "contract_conclusion": "Construction-time backend status versus call-time freshness prose is already accepted FA-RS-055. Additive strategy behavior is accepted FA-RS-054; no new root is proposed. Earlier current README/version boundary and IDs remain preserved.",
-      "loci": "mcp-metadata.md:230-280,507-545,628-650,724-746,838-878; cumulative report FA-RS-054/055",
-      "contrary_controls": "Current source status and directory output were previously statically inspected/independently accepted. No directory call ran here.",
+      "contract_conclusion": "Previously accepted FA-RS-054/055 remain unchanged. The first FilterSummary example uses fields absent from the current public type (FA-RS-063); a later example uses note/filters and FilterInfo fields correctly. The directory example calls/asserts underscore names with a hyphenated server name and uses an obsolete content accessor (FA-RS-064).",
+      "loci": "mcp-metadata.md:374-390,507-545,628-650,692-723,774-795,838-878; fabryk-mcp-core/src/discoverable.rs:138-155,302-305,352-355,406-409,545-553,598-604; Cargo.lock rmcp3.11.0",
+      "contrary_controls": "Later FilterSummary example matches current type; directory source appends the literal server name; existing FA-RS-054/055 status/freshness evidence retained.",
       "refs": [
         "FA-RS-054",
-        "FA-RS-055"
+        "FA-RS-055",
+        "FA-RS-063",
+        "FA-RS-064"
       ],
-      "missing_proof": "No client choice or runtime freshness claim."
+      "missing_proof": "No doc-example compile, directory call, or runtime freshness check."
     },
     {
       "path": "docs/howtos/mcp-with-claude-code.md",
       "lines": 235,
       "intake": "Full guide read; current tool examples compared with assigned public MCP source.",
-      "contract_conclusion": "Fabryk server method names and content/FTS/graph composition examples exist statically; GraphTools exposes 17 tools while this guide's tool table lists a subset. Because the table does not explicitly promise exhaustiveness and external Claude transport facts are outside this static check, no new finding is proposed.",
-      "loci": "mcp-with-claude-code.md:84-115,166-203; fabryk-mcp-core/src/server.rs:200-285; fabryk-mcp-graph/src/tools.rs:184-220,360-658",
-      "contrary_controls": "Example uses registered APIs and the tool table describes crate purpose; no actual Claude Code/client validation was run.",
+      "contract_conclusion": "The direct serve_http prose says root while current server mounts /mcp, proposed FA-RS-065. The custom-router example also uses /mcp. The graph tool table is a subset and does not promise exhaustiveness; external Claude transport behavior remains unverified.",
+      "loci": "mcp-with-claude-code.md:84-115,166-203; fabryk-mcp-core/src/server.rs:263-276; fabryk-mcp-graph/src/tools.rs:184-220,360-658",
+      "contrary_controls": "Custom-router example agrees with /mcp source mount. Listed graph tools are a subset, with no explicit exhaustive claim.",
       "refs": [
-        "FA-RS-035"
+        "FA-RS-065"
       ],
-      "missing_proof": "No current external client/transport behavior, no intended exhaustiveness decision for the abbreviated table."
+      "missing_proof": "No direct HTTP request, Claude Code, external client or table-exhaustiveness decision."
     }
   ],
   "seven_scales": {
-    "line_function": "Direct control flow and call arguments inspected for each relevant row.",
-    "module": "Provider, tools, trait, filter and helper interactions traced within modules.",
-    "logical_unit": "Provider to schema/handler to backend parameter to serialized response traced for the four tool families.",
-    "crate": "Public exports/manifests read for each assigned MCP crate and facade; no compile or feature proof.",
-    "application": "No consuming application or deployment configuration assessed.",
-    "codebase": "Selected cross-crate source paths traced at pinned revision; no broad behavioral property claimed.",
-    "workspace": "Global integration, deployed topology, external clients and original owner/cell acceptance remain pending."
+    "line_function": {
+      "conclusion": "Semantic handler branches establish category/source forwarding, request limits and direct no-vector fallback; content functions establish tool-name rendering, Unicode slice and full guide-helper input; graph handlers establish filter/limit/projection order.",
+      "boundary": "Static source path only; parser/backend/route outcomes not executed.",
+      "missing_proof": "Actual result count, category panic, guide parse output and registered route calls.",
+      "reentry": "Use the bounded per-finding oracle only after separate authorization."
+    },
+    "module": {
+      "conclusion": "Content provider/tool, semantic tool, graph filter/tool, discoverability and server modules compose through the specific calls cited in rows.",
+      "boundary": "No module initialization or whole-module behavior run.",
+      "missing_proof": "Runtime composition and unrepresented consumers.",
+      "reentry": "Review provider-to-tool and filter-to-response boundaries in focused authorized work."
+    },
+    "logical_unit": {
+      "conclusion": "Traced schema→args→FTS/vector params→fallback/RRF→payload; slot/provider name→guidance/input field→output ID; frontmatter input→paragraph helper; graph algorithm result→filtered projection.",
+      "boundary": "Source proves call arguments and selected transformations, not all backend outputs.",
+      "missing_proof": "Source metadata key, exact frontmatter Markdown events, neighborhood edge policy and learning ordinal policy.",
+      "reentry": "Resolve Q06-02/03/05 and FA-RS-060 through owner choices and focused future oracles."
+    },
+    "crate": {
+      "conclusion": "Current content, semantic, graph, core, auth and umbrella public declarations establish slots, FilterSummary fields, vector filters, server names and facade aliases.",
+      "boundary": "No feature compilation, doc-example build, package archive or downstream import check.",
+      "missing_proof": "Compile validity of current how-to snippets and external feature graph.",
+      "reentry": "A separately authorized compile/example check can confirm the static mismatches."
+    },
+    "application": {
+      "conclusion": "Assigned how-tos provide concrete examples for discoverability, HTTP routes, health/auth, async slots and Claude setup; those examples can be compared with public source even without app execution.",
+      "boundary": "No actual consuming application source/configuration or Claude/client run is assessed.",
+      "missing_proof": "Deployment route, auth middleware composition and real client outcomes.",
+      "reentry": "A future app/client review requires its own authorization and inputs."
+    },
+    "codebase": {
+      "conclusion": "Selected content/core/semantic/FTS/vector/graph/service cross-crate paths at source719 were traced for the claims above.",
+      "boundary": "No broad theorem for every package or hidden caller.",
+      "missing_proof": "Unassigned owners, compiled feature combinations and real data/backend behavior.",
+      "reentry": "Compose only after bounded row and owner reviews; original pass remains separate."
+    },
+    "workspace": {
+      "conclusion": "Supplementary findings/questions do not alter original38/31/291 or49 cells7/7/35 and do not close prior SEARCH/held work.",
+      "boundary": "No workspace build, deployment topology or external service behavior.",
+      "missing_proof": "Original owner/cell/client/behavioral/SEARCH/full-arc acceptance.",
+      "reentry": "CDC may compose this corrected supplement with remaining static and separately authorized behavioral evidence."
+    }
   },
   "proposed_findings": [
     "FA-RS-057",
     "FA-RS-058",
     "FA-RS-059",
-    "FA-RS-060"
+    "FA-RS-061",
+    "FA-RS-062",
+    "FA-RS-063",
+    "FA-RS-064",
+    "FA-RS-065",
+    "FA-RS-066",
+    "FA-RS-067"
   ],
   "ungraded_questions": [
     {
+      "id": "FA-RS-060",
+      "status": "ungraded; original Low proposal history retained",
+      "question": "Does a valid frontmatter-bearing guide without description produce a frontmatter-derived first paragraph through the current parser path?",
+      "evidence": "fs_guide_provider.rs:106-120,134-159; fabryk-content/src/markdown/parser.rs:109-150. Input flow is established; returned output is not.",
+      "owner": "Guide provider/documentation owner.",
+      "future_oracle": "Compare valid frontmatter/body with stripped-body first paragraph, retaining explicit-description and plain-Markdown controls.",
+      "execution": "not run"
+    },
+    {
       "id": "Q06-01",
-      "question": "Does the supported MCP dispatch boundary reject an out-of-enum semantic mode before the handler catch-all routes it to hybrid?",
-      "evidence": "Schema enum and handler fallback: crates/fabryk-mcp-semantic/src/tools.rs:227-231,262-265,294-329.",
+      "status": "ungraded",
+      "question": "Does supported MCP dispatch reject a mode outside the schema enum before the handler fallback?",
+      "evidence": "semantic/tools.rs:227-231,262-265,294-329.",
       "owner": "MCP dispatch contract owner.",
-      "future_oracle": "Submit an unknown mode through supported dispatch and establish whether it is rejected or routed.",
-      "grade": "ungraded"
+      "future_oracle": "Establish acceptance/rejection at supported dispatch.",
+      "execution": "not run"
     },
     {
       "id": "Q06-02",
-      "question": "How should the semantic source input map to vector document metadata?",
-      "evidence": "FTS source forwarding and vector parameter surface: crates/fabryk-mcp-semantic/src/tools.rs:280-328; crates/fabryk-vector/src/types.rs:185-240.",
-      "owner": "Semantic/vector integration owner.",
-      "future_oracle": "Define indexed source metadata and verify filtered vector and hybrid outputs with matching and nonmatching records.",
-      "grade": "ungraded"
+      "status": "ungraded",
+      "question": "What owner-approved metadata mapping should carry source filtering into vector requests, or is a mode-specific policy intended?",
+      "evidence": "semantic/tools.rs:280-328; vector/types.rs:185-240.",
+      "owner": "Semantic/vector integration owners.",
+      "future_oracle": "Choose key/value mapping or mode scope, then verify matching/nonmatching source results across modes.",
+      "execution": "not run"
     },
     {
       "id": "Q06-03",
-      "question": "Should filtered learning-path steps retain original ordinals or be renumbered?",
-      "evidence": "MCP filtering/count and graph one-based step generation: crates/fabryk-mcp-graph/src/tools.rs:1001-1021; crates/fabryk-graph/src/algorithms.rs:90-113,565-601.",
+      "status": "ungraded",
+      "question": "Should filtering a learning-path step preserve ordinal gaps or renumber visible steps?",
+      "evidence": "graph/tools.rs:1001-1021; fabryk-graph/src/algorithms.rs:90-113,565-601.",
       "owner": "Graph/MCP contract owner.",
-      "future_oracle": "Filter the middle step of a three-step path and state the intended relationship between emitted step values and total_steps.",
-      "grade": "ungraded"
+      "future_oracle": "Remove a middle step from a three-step path and apply owner policy to step and total_steps.",
+      "execution": "not run"
     },
     {
       "id": "Q06-04",
-      "question": "Are the health how-to state tables intended to be exhaustive?",
-      "evidence": "ServiceState variants and health response mapping: crates/fabryk-core/src/service.rs:152-195; crates/fabryk-mcp-core/src/health_router.rs:61-105; docs/howtos/mcp-health.md:154-202; docs/howtos/mcp-async-startup.md:17-53,165-208,288-331.",
-      "owner": "MCP health/startup documentation and lifecycle API owners.",
-      "future_oracle": "Decide whether tables are illustrative or exhaustive; if exhaustive, enumerate all six states with their health mapping. No runtime route check.",
-      "grade": "ungraded"
+      "status": "ungraded",
+      "question": "Are health/startup state tables exhaustive or illustrative?",
+      "evidence": "fabryk-core/src/service.rs:150-195; fabryk-mcp-core/src/health_router.rs:80-105; docs/howtos/mcp-health.md:165-202; docs/howtos/mcp-async-startup.md:17-53,288-301.",
+      "owner": "Health/startup documentation and lifecycle API owners.",
+      "future_oracle": "Choose completeness; if exhaustive, map all six states.",
+      "execution": "not run"
+    },
+    {
+      "id": "Q06-05",
+      "status": "ungraded",
+      "question": "Should neighborhood edges be filtered when node filtering removes endpoint nodes, or remain as wider neighborhood context?",
+      "evidence": "fabryk-mcp-graph/src/tools.rs:765-803 filters result.nodes and serializes result.edges.",
+      "owner": "Graph/MCP response contract owner.",
+      "future_oracle": "Choose the edge-context policy and compare node IDs with returned edge endpoints.",
+      "execution": "not run"
     }
   ],
   "prior_statuses_preserved": [
@@ -470,5 +545,20 @@
     "client": "pending",
     "SEARCH": "pending and untouched",
     "full_arc": "pending"
+  },
+  "correction_history": {
+    "initial_candidate": "03b19625352eaa882cb60051b172f0ca4f74ce0b",
+    "cdc_review": "f31a0ad",
+    "correction_readiness": "381272451bcacc4d996ca5fa8153d546f0449bef",
+    "same_pass": true,
+    "author_refinement": "1/5",
+    "unsupported_exit128_attestation": "withdrawn; CDC found no witness in immutable initial runner; not rerun"
+  },
+  "privacy_incident": {
+    "initial_runner_count": 19,
+    "initial_runner_bytes_unchanged": true,
+    "duplicate_archive_created": false,
+    "root_process_disposition": "pending; not waived",
+    "current_owned_output_count": 0
   }
 }
