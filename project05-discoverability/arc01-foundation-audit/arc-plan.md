@@ -748,3 +748,20 @@ Author72858completed0, no active mutable process; CDC owns planning/index for
 closure/reassessment. Next work requires useful independent concrete scope.
 
 - 2026-11-22 v1.19 — Accepted static direction contract, Medium038 and local retro.
+
+## Separate vector construction-contract increment — v1.20
+
+After14closure766f599, slice15 records independent static public construction/
+provider/cache contract questions in six vector files2471lines. CDC own current
+logical-unit reads and official Rust chunks precondition support readiness; CC
+reads all six files before source-cited readback. No provider/model/native or
+SEARCH operation is assigned. Public preconditions, current same-provider/default
+controls, cache identity versus dimensional validity and defensive cardinality
+questions determine calibrated findings. Shared compatibility concerns do not
+automatically merge independent cache and append mechanisms. New IDs039+ only
+if supported; no finding-count target. Same retained models/session, initial0/5
+refinements;03 remains2/5used. Five-path CC handoff follows prompt commit.
+Original owner/cell/vector/graph/SEARCH gates and final arc composition unchanged;
+all prior accepted/pending finding bytes remain protected. No repairs begun.
+
+- 2026-11-22 v1.20 — Recorded vector construction API scope before contributor work.
