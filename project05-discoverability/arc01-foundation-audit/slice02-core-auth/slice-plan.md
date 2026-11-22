@@ -62,3 +62,5 @@ with both trailers, then returns ownership for independent CDC review.
 
 - 2026-11-21 initial cc-prompt.md issued to same selected Luna High session
   01a2019f-73de-7de1-831f-53d55b3da247 after map acceptance; no refinement used.
+
+- 2026-11-22 refinement01 issued after candidate deff5467 independent review1: explicit audience/case contracts, owner fields, index/intake/source chronology and cited CDC local evidence. Initial failure retained; no source/test repair or repeated suite. Absolute output paths now mandatory after wrong-workdir incident.

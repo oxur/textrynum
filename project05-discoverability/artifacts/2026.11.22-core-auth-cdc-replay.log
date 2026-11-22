@@ -1,0 +1,72 @@
+Initial CDC rustc invocation omitted --crate-name for a date-prefixed source filename. Actual exit1:
+error: invalid character '.' in crate name: `2026.11.22_core_auth_cdc_header_check`
+error: aborting due to 1 previous error
+No binary or network call was executed. Corrected below.
+COMMAND ['rustc', '--crate-name', 'core_auth_cdc_header_check', '--edition=2024', '/Users/oubiwann/lab/oxur/textrynum/.worktrees/planning/project05-discoverability/artifacts/2026.11.22-core-auth-cdc-header-check.rs', '--extern', 'jsonwebtoken=/private/tmp/arc01-slice02-cargo-target/debug/deps/libjsonwebtoken-dfbe0e6dcd12750b.rlib', '-L', 'dependency=/private/tmp/arc01-slice02-cargo-target/debug/deps', '-o', '/private/tmp/arc01-slice02-cdc-replay/header-check']
+
+EXIT 0
+Exact cached SDK header precheck passed: RS256, kid unknown; JWT dispatch only.
+
+EXIT 0
+
+CDC INDEPENDENT REPLAY: owned local127.0.0.1 fixture only; NO_PROXY local; synthetic JWT SDK prechecked; no real credentials/provider.
+COMMAND ['cargo', 'run', '--offline', '--locked', '--manifest-path', '/private/tmp/arc01-slice02-probe/Cargo.toml']
+AUTH token=infra status=401 Unauthorized challenge="Bearer resource_metadata=\"/.well-known/oauth-protected-resource\"" body={"error":{"category":"authentication","message":"failed to fetch JWKS: fixture upstream timeout"}}
+AUTH token=invalid status=401 Unauthorized challenge="Bearer resource_metadata=\"/.well-known/oauth-protected-resource\"" body={"error":{"category":"authentication","message":"invalid token signature: fixture invalid token"}}
+AUTH token=valid status=200 OK challenge="<absent>" body=inner-ok
+AUTH empty status=401 Unauthorized inner_calls=1
+AUTH lower_scheme status=401 Unauthorized inner_calls=1
+FILE get_item traversal: OK content="Acme outside fixture"
+FILE get_guide traversal: OK content="Acme guide outside fixture"
+FILE directory_named_md: ERR I/O error at /var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmpXWqyDM/content/folder.md: Is a directory (os error 21)
+MCP_CONTENT get dispatch traversal: Ok(CallToolResult { result_type: Some(ResultType("complete")), content: [Text(TextContent { text: "{\n  \"id\": \"../outside\",\n  \"content\": \"Acme outside fixture\"\n}", meta: None, annotations: None })], structured_content: None, is_error: Some(false), meta: None })
+MCP_CONTENT get_guide dispatch traversal: Ok(CallToolResult { result_type: Some(ResultType("complete")), content: [Text(TextContent { text: "Acme guide outside fixture", meta: None, annotations: None })], structured_content: None, is_error: Some(false), meta: None })
+LIFECYCLE max_attempts=0 state=stopped
+LIFECYCLE successful_retry attempts=2 state=ready
+LIFECYCLE exhausted state=failed: fixture exhausted
+LIFECYCLE panic join_error=true state=starting wait_ready=Err("Service 'panic-init' not ready after 5ms (state: starting)")
+LIFECYCLE manually_ready_empty_slot=None
+DISCOVERY path=/.well-known/oauth-authorization-server status=200 OK metadata=Ok(Object {"authorization_endpoint": String("https://login.acme.example/o/oauth2/v2/auth"), "code_challenge_methods_supported": Array [String("S256")], "grant_types_supported": Array [String("authorization_code"), String("refresh_token")], "id_token_signing_alg_values_supported": Array [String("RS256")], "issuer": String("https://login.acme.example"), "jwks_uri": String("https://www.googleapis.com/oauth2/v3/certs"), "response_types_supported": Array [String("code")], "scopes_supported": Array [String("openid"), String("email"), String("profile")], "subject_types_supported": Array [String("public")], "token_endpoint": String("https://oauth2.googleapis.com/token")})
+DISCOVERY path=/.well-known/oauth-authorization-server/mcp status=200 OK metadata=Ok(Object {"authorization_endpoint": String("https://accounts.google.com/o/oauth2/v2/auth"), "code_challenge_methods_supported": Array [String("S256")], "grant_types_supported": Array [String("authorization_code"), String("refresh_token")], "id_token_signing_alg_values_supported": Array [String("RS256")], "issuer": String("https://accounts.google.com"), "jwks_uri": String("https://www.googleapis.com/oauth2/v3/certs"), "response_types_supported": Array [String("code")], "scopes_supported": Array [String("openid"), String("email"), String("profile")], "subject_types_supported": Array [String("public")], "token_endpoint": String("https://oauth2.googleapis.com/token")})
+DISCOVERY path=/.well-known/oauth-authorization-server/mcp/ status=404 Not Found metadata=Err(Error("EOF while parsing a value", line: 1, column: 0))
+DISCOVERY path=/.well-known/oauth-protected-resource status=200 OK metadata=Ok(Object {"authorization_servers": Array [String("https://login.acme.example")], "bearer_methods_supported": Array [String("header")], "resource": String("https://api.acme.example/mcp"), "scopes_supported": Array [String("openid"), String("email"), String("profile")]})
+DISCOVERY path=/.well-known/oauth-protected-resource/mcp status=200 OK metadata=Ok(Object {"authorization_servers": Array [String("https://login.acme.example")], "bearer_methods_supported": Array [String("header")], "resource": String("https://api.acme.example/mcp"), "scopes_supported": Array [String("openid"), String("email"), String("profile")]})
+DISCOVERY path=/.well-known/oauth-protected-resource/mcp/ status=404 Not Found metadata=Err(Error("EOF while parsing a value", line: 1, column: 0))
+GOOGLE unknown_kid result=Err(NoMatchingKey("unknown")) fixture_requests=1
+GOOGLE unknown_kid result=Err(NoMatchingKey("unknown")) fixture_requests=2
+REDIS mock get_u64 invalid=Err(Serialization("invalid digit found in string"))
+REDIS mock incr_by invalid-current=Ok(1)
+REDIS mock scan_keys glob_a_question_star=Ok([])
+REDIS mock get_multi_json invalid-json=Ok([])
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s
+     Running `/private/tmp/arc01-slice02-cargo-target/debug/core-auth-probe`
+
+thread 'tokio-rt-worker' (325040884) panicked at src/main.rs:102:153:
+fixture panic
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+EXIT 0
+
+CDC STALL PROBE command ['cargo', 'run', '--offline', '--locked', '--manifest-path', '/private/tmp/arc01-slice02-cdc-stall/Cargo.toml']
+STALLED_JWKS accepted1 request; validation still pending at500ms outer guard, then cancelled. This does not measure an internal deadline or prove an infinite runtime.
+   Compiling core-auth-probe v0.1.0 (/private/tmp/arc01-slice02-cdc-stall)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.03s
+     Running `/private/tmp/arc01-slice02-cargo-target/debug/core-auth-probe`
+
+EXIT 0
+
+CDC ADC DIRECTORY command ['cargo', 'run', '--offline', '--locked', '--manifest-path', '/private/tmp/arc01-slice02-probe/Cargo.toml', '--', 'adc']
+STALLED_JWKS accepted1 request; validation still pending at500ms outer guard, then cancelled. This does not measure an internal deadline or prove an infinite runtime.
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.11s
+     Running `/private/tmp/arc01-slice02-cargo-target/debug/core-auth-probe adc`
+
+EXIT 0
+
+CDC REPLAY HARNESS CORRECTION: prior ADC command accidentally ran the stall binary because two scratch packages shared name/version and target output. That command exit0 is NOT ADC evidence; the wrapper assertion failed (exit1). Unique CDC package name/lock root label now isolates binary; dependency selection and original probe bytes unchanged.
+COMMAND ['cargo', 'run', '--offline', '--locked', '--manifest-path', '/private/tmp/arc01-slice02-cdc-replay/package/Cargo.toml', '--', 'adc']
+ADC GOOGLE_APPLICATION_CREDENTIALS=Some("/private/tmp/arc01-slice02-cdc-replay/adc-directory") resolved=Some("/private/tmp/arc01-slice02-cdc-replay/adc-directory")
+   Compiling core-auth-cdc-replay v0.1.0 (/private/tmp/arc01-slice02-cdc-replay/package)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.19s
+     Running `/private/tmp/arc01-slice02-cargo-target/debug/core-auth-cdc-replay adc`
+
+EXIT 0
