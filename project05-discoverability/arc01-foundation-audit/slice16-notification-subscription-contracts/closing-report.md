@@ -1,6 +1,6 @@
 # Slice16 close — notification/subscription composition
 
-**Assignment:** original `cc-prompt.md` under this slice, continued under `cc-prompt-resumption01.md`. **Source:** `719c58f245fe4a9115c7c0391d3e268c99157e2f`, clean. **Planning base:** `78847d67ec54f1617bb3f734ceaf60f86a32f99a`. **Status:** CC proposes the bounded static criteria met; independent CDC review is pending. This is not whole-server, original full-pass, runtime, or arc acceptance.
+**Assignment:** original `cc-prompt.md` under this slice, continued under `cc-prompt-resumption01.md`. **Source:** `719c58f245fe4a9115c7c0391d3e268c99157e2f`, clean. **Planning base:** `78847d67ec54f1617bb3f734ceaf60f86a32f99a`. **Current status:** CDC independently accepts NTF01–05/Low040/Medium041 at67cf34e for this static facet. The author criterion walk below preserves its original proposed status. This is not whole-server, original full-pass, runtime, or arc acceptance.
 
 ## Delivered paths
 
@@ -19,7 +19,7 @@ The cumulative Rust report and index retain their exact pre-assignment byte pref
 - Complete first-party source intake: notifier.rs 255 lines, server.rs 1,243, lib.rs 162. The selected `rmcp` 3.11.0 ranges and four supplied matching SHA-256 receipts are documented in the companion artifact. Primary protocol inputs are exact versioned 2025-11-25 references.
 - Source-anchored manual reasoning only: mixed update/prune pass and A/B subscribe/unsubscribe/resubscribe sequence. No Rust, Cargo, test, executable behavior, transport, peer fixture, notification, RPC, service, provider, model, CI, security, or SEARCH operation ran. No actual client delivery or usability claim.
 - Source checkout remains at clean 719. Planning mutations used absolute paths and physical `git -C /Users/oubiwann/lab/oxur/textrynum/.worktrees/planning`.
-- Nine protected paths were checked by byte count and SHA-256 only. The original-author four, unfinished/unverified CDC four, and coverage JSON remain separate populations; none was opened, interpreted, executed, or validated. The previous 360-owner/49-cell record, prior finding statuses, and SEARCH/full-pass gates remain unchanged.
+- Nine protected paths were checked by byte count and SHA-256 only. The original-author four, unfinished/unverified CDC four, and coverage JSON remain separate populations; bytes were read only for fingerprints, with no textual/semantic inspection or execution; unfinished preparations remain unverified. The previous 360-owner/49-cell record, prior finding statuses, and SEARCH/full-pass gates remain unchanged.
 - Slice15 VEC-05 and the bounded slice are independently accepted on corrected current history. Old `bf193…` remains malformed and reachable on the backup branch; this close neither grants an exception nor claims retroactive compliance.
 - Required privacy screen was applied to the contents of the exact five owned paths using the supplied byte regex. Counts only: `0, 0, 0, 0, 0`; total `0`.
 
@@ -52,3 +52,7 @@ The complete message file had a blank separator followed immediately by both req
 ## Handoff
 
 Refinement budget remains slice16 0/5; slice15 remains 1/5 and slice03 2/5. No mutable command or child process remains. I return only the five listed outputs and planning index to CDC for independent review. Original coverage, SEARCH, full-pass, and final arc composition gates remain pending.
+
+## Independent closure
+
+CDC accepts the five bounded criteria; [verification](cdc-verification.md) records actual-source reasoning, exact preservation/commit checks and tool-limit corrections. [Retrospective](cdc-retrospective.md). Ownership returned after exec14694completed0; refinements0/5. All original owner/cell/SEARCH/fullarc gates remain open. Later repair owners must handle notifier identity/concurrency and legacy callback compatibility; no repair now.

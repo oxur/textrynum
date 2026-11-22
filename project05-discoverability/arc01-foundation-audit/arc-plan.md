@@ -870,3 +870,16 @@ exact protected manifest and updated cumulative prefixes. Distinct new runner,
 same models/session/intake. At dispatch only the original five16outputs/index
 pass to CC; root/CDC read-only until handback. Source719/index read-only, no
 service/RPC/native/SEARCH operation. Original coverage/SEARCH/fullarc unchanged.
+
+
+## Slice16 independently accepted — 2026-11-22
+
+Author67cf34e/source719 independently reviewed; allfiveNTFcriteria accepted for
+static notifier/subscription composition. Low040 redundant failure-prune method
+attempts and Medium041 legacy unsubscribe composition are distinct roots. Bulk
+helper/fallback policies and protocol versions remain controls; no actualRPC/
+clientdelivery proof. See16CDCverification/retro. Later arc02repair handoff must
+account for identity/concurrent-map safety and existing bulk/legacycompatibility;
+no repair/protocol migration commissioned. Current coverage38/31/291,49cells7/7/35,
+SEARCH and final independent arc composition unchanged.16refinements0/5;15:1/5;
+03:2/5. Exec14694completed0 and returned planning/index; CDC owns next scope.
