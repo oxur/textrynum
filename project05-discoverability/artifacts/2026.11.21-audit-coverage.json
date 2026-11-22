@@ -13406,7 +13406,7 @@
       "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "complete TOML parse and per-member projection of package metadata, dependency declarations, feature map and explicit target tables; compared to Cargo metadata targets; semantic code review pending",
       "line_count": 22,
-      "review_method": "Manifest/target/features reviewed; one lib, no direct features. See 2026.11.22-core-auth-evidence.md \u00a738-path reconciliation."
+      "review_method": "Manifest/target/features reviewed; one lib, no direct features. See 2026.11.22-core-auth-evidence.md §38-path reconciliation."
     },
     {
       "path": "crates/fabryk-acl/README.md",
@@ -13704,7 +13704,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "complete TOML parse and per-member projection of package metadata, dependency declarations, feature map and explicit target tables; compared to Cargo metadata targets; semantic code review pending",
       "line_count": 37,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/README.md",
@@ -13717,7 +13717,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "tracked Git path + SHA-256 + byte/line/type projection; semantic review not performed in slice01",
       "line_count": 17,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/src/concept_card.rs",
@@ -13730,7 +13730,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 238,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/src/lib.rs",
@@ -13743,7 +13743,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 67,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/src/markdown/frontmatter.rs",
@@ -13756,7 +13756,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 481,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/src/markdown/helpers.rs",
@@ -13769,7 +13769,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 599,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/src/markdown/mod.rs",
@@ -13782,7 +13782,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 48,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/src/markdown/parser.rs",
@@ -13795,7 +13795,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 416,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/src/metadata.rs",
@@ -13808,7 +13808,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 518,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/src/sources/mod.rs",
@@ -13821,7 +13821,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 23,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/src/sources/resolver.rs",
@@ -13834,7 +13834,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 367,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/src/sources/scanner.rs",
@@ -13847,7 +13847,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 315,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/src/sources/types.rs",
@@ -13860,7 +13860,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 295,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-content/src/sources/validator.rs",
@@ -13873,7 +13873,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 429,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-core/Cargo.toml",
@@ -13899,7 +13899,7 @@
       "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "tracked Git path + SHA-256 + byte/line/type projection; semantic review not performed in slice01",
       "line_count": 18,
-      "review_method": "Full README reviewed against core lifecycle/config APIs; see evidence \u00a738-path reconciliation."
+      "review_method": "Full README reviewed against core lifecycle/config APIs; see evidence §38-path reconciliation."
     },
     {
       "path": "crates/fabryk-core/src/deploy.rs",
@@ -14107,7 +14107,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "complete TOML parse and per-member projection of package metadata, dependency declarations, feature map and explicit target tables; compared to Cargo metadata targets; semantic code review pending",
       "line_count": 43,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/README.md",
@@ -14120,7 +14120,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "tracked Git path + SHA-256 + byte/line/type projection; semantic review not performed in slice01",
       "line_count": 56,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/STOPWORDS-LICENSE.md",
@@ -14133,7 +14133,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "tracked Git path + SHA-256 + byte/line/type projection; semantic review not performed in slice01",
       "line_count": 57,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/backend.rs",
@@ -14146,7 +14146,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 686,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/builder.rs",
@@ -14159,7 +14159,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 1034,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/concept_card_extractor.rs",
@@ -14172,7 +14172,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 396,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/document.rs",
@@ -14185,7 +14185,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 576,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/freshness.rs",
@@ -14198,7 +14198,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 647,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/indexer.rs",
@@ -14211,7 +14211,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 299,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/lib.rs",
@@ -14224,7 +14224,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 206,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/probe.rs",
@@ -14237,7 +14237,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 133,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/query.rs",
@@ -14250,7 +14250,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 404,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/schema.rs",
@@ -14263,7 +14263,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 319,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/stopwords-en-iso.json",
@@ -14276,7 +14276,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "tracked Git path + SHA-256 + byte/line/type projection; semantic review not performed in slice01",
       "line_count": 1,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/stopwords.rs",
@@ -14289,7 +14289,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 347,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/tantivy_search.rs",
@@ -14302,7 +14302,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 587,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-fts/src/types.rs",
@@ -14315,7 +14315,7 @@
       "coverage_status": "CC-proposed diagnosis; pending independent CDC review",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 261,
-      "review_method": "Slice03 full semantic source review plus public-entrypoint scratch probe; see 2026.11.22-content-search-evidence.md and 2026.11.22-content-search-run.log"
+      "review_method": "Full 31-path semantic review and prior public-entrypoint probe are documented in 2026.11.22-content-search-evidence.md; this refinement is documentation/static analysis only. Independent replay and CDC acceptance pending."
     },
     {
       "path": "crates/fabryk-gcp/Cargo.toml",
@@ -15667,5 +15667,5 @@
       "line_count": 3
     }
   ],
-  "status_note": "Map independently accepted; pass01/slice02 diagnosis independently accepted38paths/sevenscales. pass02/slice03 has CC-proposed semantic diagnosis for31paths/sevenscales pending independent CDC review. Remaining291paths and35pass-scale cells pending. inspection_method preserves original map-stage receipt; review_method and coverage_status record subsequent semantic work."
+  "status_note": "Map independently accepted; pass01/slice02 diagnosis independently accepted (38 paths/seven scales). pass02/slice03 author documentation correction is complete; all 31 paths/seven scales remain pending independent CDC replay/acceptance. Remaining 291 paths and 35 pass-scale cells pending. inspection_method preserves original map-stage receipt; review_method records prior semantic work and this docs-only refinement without advancing status."
 }

@@ -2,22 +2,32 @@
 
 ## Disposition
 
-**CC-proposed diagnosis complete; independent CDC review pending.** The full slice assignment was executed: all 31 assigned source files were read in full at source `719c58f245fe4a9115c7c0391d3e268c99157e2f`; the already-completed complete Rust guidance intake was retained; the 1,298-item stopword corpus and license provenance were validated; actual public entrypoints were probed; and findings FA-RS-011–033 were drafted with source references, confidence, repair ownership/consumers, fix direction, compatibility disposition and discriminating oracles. The exact evidence and per-file/seven-scale map are in [content/search evidence](../../artifacts/2026.11.22-content-search-evidence.md). Full raw final output and harness failure history are in [run log](../../artifacts/2026.11.22-content-search-run.log).
+**Documentation/static-analysis correction complete; independent CDC replay and acceptance pending.** This refinement corrected the cumulative Rust report, evidence dispositions, index navigation, coverage descriptions, ledger, and close. It did not run a probe, test, build, native/CI gate, provider, security check, network call, or source command. The previously captured probe package, scratch lock, and raw run log remain unchanged and are not re-attested by this close.
+
+The original slice work recorded 31 assigned source files reviewed at source `719c58f245fe4a9115c7c0391d3e268c99157e2f`, retained the preceding complete Rust guidance intake, and recorded public-entrypoint probe outcomes. This refinement preserved that history while correcting unsupported contract claims and runtime attribution. Frozen candidate IDs FA-RS-011–033 remain unchanged: 17 are proposed findings, four are contract questions (014, 016, 028, 029), two are cleared (018, 031); FA-RS-021/022 are static proposals whose cited runtime was not discriminating. The earlier provisional normalization item moved to a cleared lead before freeze; no FA-RS-034 exists.
 
 ## Ledger walk
 
-| Ledger row | Proposed disposition | Evidence |
+| Ledger row | Author-side state | Independent state |
 | --- | --- | --- |
-| SEARCH-01 | Proposed-done | 31/31 full-read source dispositions, complete JSON/license check, retained full Rust intake, source-cited pre-probe readback; see evidence and coverage JSON. |
-| SEARCH-02 | Proposed-done | Seven-scale map and actual cross-crate/application consumer traces; intentional policies and open contract questions separated in evidence. |
-| SEARCH-03 | Proposed-done | Unique scratch package, selected Tantivy feature, product-vs-scratch dependency/feature comparison, final locked command exit0, raw output, corrected harness failure history, positive and negative controls. |
-| SEARCH-04 | Proposed-done | FA-RS-011–033 proposed with required finding fields and separate cleared leads; accepted FA-RS-001–010 preserved. |
-| SEARCH-05 | Proposed-done | Exact31 coverage rows and seven pass02 cells updated; pass01 and all other populations retained; source remains pinned and clean; only assigned result/close paths staged for this commit. |
+| SEARCH-01 | Prior intake retained; documentation correction complete | Pending CDC review and acceptance |
+| SEARCH-02 | Seven-scale and contract dispositions corrected in records | Pending CDC review and acceptance |
+| SEARCH-03 | Existing probe provenance preserved without rerun | Independent replay pending; acceptance pending |
+| SEARCH-04 | Report findings and frozen-ID dispositions corrected | Pending CDC review and acceptance |
+| SEARCH-05 | Coverage descriptions and close corrected; population/status preserved | Pending CDC review and acceptance |
 
-## Coverage and limits
+## Correction and evidence notes
 
-The index now records 38 independently accepted pass01 paths, 31 CC-proposed pass02 paths and 291 pending paths; seven pass01 scales accepted, seven pass02 scales proposed and 35 pass03–07 scales pending. The arc remains open. The diagnosis is not CDC acceptance, repair acceptance, whole-project completion or a 0.5.0 readiness decision. No product files, product lock, product target, or accepted evidence were modified. No full native/workspace/CI suite, live provider, external service or hosted operation was run. Reader-generation concurrency and several schema/metadata intent questions remain unproven and are explicitly disclosed.
+- Complete proposed finding entries now live in the one cumulative Rust report. The evidence companion retains intake, per-file/seven-scale map, prior command/exit/provenance record, and the 23-ID status/reason table.
+- Source contract corrections distinguish backend-specific search strategies and optional extra-filter capability, documented append-only behavior, documented validator scan errors, and frontmatter grammar that does not require standalone delimiter lines.
+- Probe attribution is narrowed: the snippet helper panic is not attributed to an executed SimpleSearch call; request-level query-mode/minimum-match results do not establish configured And/threshold behavior; the tier fixture is basic/request advanced; update/delete output did not query old/new terms; and mtime timestamps were observed but not controlled.
+- High rationales for FA-RS-025 and FA-RS-030 concern retrieval/index correctness only. No authorization, data-destruction, or source-loss claim is made.
+- Product source remains pinned to `719c58f245fe4a9115c7c0391d3e268c99157e2f`; this correction changed planning documentation only. The scratch lock comparison remains limited to 203 packages/404 edges and 202 matching non-root name/version/source tuples; feature-graph equality is not established.
+- The required local text confidentiality screen covered exactly six owned planning paths and their path strings: zero matching content entries and zero matching path entries. This is counts-only documentation screening, not a source/runtime security test.
+- The platform interruption/recovery record remains preserved: recovery found planning clean at the original candidate and source clean at 719, no staged changes, the prior CC session exited successfully, no active owned Cargo/Rust/probe process, and no CDC replay started. This refinement then changed only the six authorized planning documents. No safeguard was bypassed or retried.
 
-## Ownership handback
+## Limits and ownership handback
 
-CC returns ownership of the assigned planning result/close paths, coverage/index updates, and new probe/evidence artifacts to CDC for read-only independent review; the commit identifier is reported in the completion handback. The source checkout and source index remain CDC-owned and unchanged. The transferred Cargo target `/private/tmp/arc01-slice02-cargo-target` is idle after the completed probe. No mutable Cargo/probe process remains. CDC may accept, reject or request a bounded refinement; no rewrite, push, merge or repair is authorized by this close.
+The 31-path slice remains unaccepted until CDC independently reviews and performs any required replay. The full arc remains active; accepted pass01, this candidate's prior recorded probe, and the documentation correction do not constitute repairs, whole-audit completion, real-client usability, or release readiness. No native/probe/provider/security execution is authorized in this continuation.
+
+CC returns ownership of the six assigned planning result/close paths and planning index to CDC for read-only independent review. The docs-only planning commit ID is reported in the handback. The source checkout/index remain CDC-owned and unchanged. No mutable command or probe process is active. CDC may accept, reject, or issue a bounded correction; this close does not authorize source work, replay, merge, push, or publication.
