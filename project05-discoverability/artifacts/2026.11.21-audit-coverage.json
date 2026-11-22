@@ -9073,6 +9073,12 @@
           "opt-level": 1
         }
       }
+    },
+    "package_population_counts": {
+      "fabryk": 19,
+      "ecl": 21,
+      "utility": 1,
+      "total": 41
     }
   },
   "architecture_and_facades": {
@@ -10734,7 +10740,8 @@
       }
     ],
     "discrepancy_leads": [
-      "README prose says 20 crates; architecture YAML subtitle says 24 crates; Cargo metadata returns 41 workspace packages. Counts are recorded as mismatches to reconcile in later audit, not accepted as current population."
+      "`README.md:15` describes Fabryk specifically as 20 crates; locked metadata has 19 Fabryk packages. The complete metadata set also has 21 ECL packages and 1 utility package (41 workspace packages total). This Fabryk-specific README statement is a later reconciliation lead, not a severity finding and not a whole-workspace count.",
+      "`docs/arch/architecture.yaml:5` describes the whole workspace as 24 crates; locked metadata has 41 workspace packages. This architecture/workspace statement is a separate later reconciliation lead, not a severity finding."
     ]
   },
   "passes": [
@@ -11157,26 +11164,62 @@
     {
       "path": "docs/superpowers/plans/2026-03-13-ecl-pipeline-runner.md",
       "classification": "untracked ECL planning/reference candidate",
-      "reason": "root .gitignore /docs/superpowers; kept as a first-party candidate for Pass07 reference-only review, not treated as current governing plan until ownership/currency is established",
-      "content_inspected": false
+      "reason": "Root .gitignore excludes /docs/superpowers. Initial CC preserved this as a candidate pending owner/currency confirmation; CDC has now dispositioned it as a preserved reference-only Pass07 input, not live authority/source or permission for held work. Its contents remain unopened; see per-file pre_dump_screen.",
+      "content_inspected": false,
+      "initial_cc_disposition": "Preserved as a first-party candidate pending owner/currency confirmation; not treated as current governing plan.",
+      "current_cdc_disposition": "Preserved reference-only input for pass07; not live authority, not source, and not permission for held work.",
+      "pre_dump_screen": {
+        "date": "2026-11-21",
+        "method": "CDC encoded case-insensitive private-name pattern screen",
+        "match_count": 0,
+        "bytes": 27873,
+        "contents_opened_or_extracted": false
+      }
     },
     {
       "path": "docs/superpowers/plans/pipeline-runner/milestone-5.1-cli-commands.md",
       "classification": "untracked ECL planning/reference candidate",
-      "reason": "root .gitignore /docs/superpowers; kept as a first-party candidate for Pass07 reference-only review, not treated as current governing plan until ownership/currency is established",
-      "content_inspected": false
+      "reason": "Root .gitignore excludes /docs/superpowers. Initial CC preserved this as a candidate pending owner/currency confirmation; CDC has now dispositioned it as a preserved reference-only Pass07 input, not live authority/source or permission for held work. Its contents remain unopened; see per-file pre_dump_screen.",
+      "content_inspected": false,
+      "initial_cc_disposition": "Preserved as a first-party candidate pending owner/currency confirmation; not treated as current governing plan.",
+      "current_cdc_disposition": "Preserved reference-only input for pass07; not live authority, not source, and not permission for held work.",
+      "pre_dump_screen": {
+        "date": "2026-11-21",
+        "method": "CDC encoded case-insensitive private-name pattern screen",
+        "match_count": 0,
+        "bytes": 57160,
+        "contents_opened_or_extracted": false
+      }
     },
     {
       "path": "docs/superpowers/plans/pipeline-runner/milestone-5.2-observability-reporting.md",
       "classification": "untracked ECL planning/reference candidate",
-      "reason": "root .gitignore /docs/superpowers; kept as a first-party candidate for Pass07 reference-only review, not treated as current governing plan until ownership/currency is established",
-      "content_inspected": false
+      "reason": "Root .gitignore excludes /docs/superpowers. Initial CC preserved this as a candidate pending owner/currency confirmation; CDC has now dispositioned it as a preserved reference-only Pass07 input, not live authority/source or permission for held work. Its contents remain unopened; see per-file pre_dump_screen.",
+      "content_inspected": false,
+      "initial_cc_disposition": "Preserved as a first-party candidate pending owner/currency confirmation; not treated as current governing plan.",
+      "current_cdc_disposition": "Preserved reference-only input for pass07; not live authority, not source, and not permission for held work.",
+      "pre_dump_screen": {
+        "date": "2026-11-21",
+        "method": "CDC encoded case-insensitive private-name pattern screen",
+        "match_count": 0,
+        "bytes": 39508,
+        "contents_opened_or_extracted": false
+      }
     },
     {
       "path": "docs/superpowers/plans/pipeline-runner/milestone-6.1-slack-stub-validation.md",
       "classification": "untracked ECL planning/reference candidate",
-      "reason": "root .gitignore /docs/superpowers; kept as a first-party candidate for Pass07 reference-only review, not treated as current governing plan until ownership/currency is established",
-      "content_inspected": false
+      "reason": "Root .gitignore excludes /docs/superpowers. Initial CC preserved this as a candidate pending owner/currency confirmation; CDC has now dispositioned it as a preserved reference-only Pass07 input, not live authority/source or permission for held work. Its contents remain unopened; see per-file pre_dump_screen.",
+      "content_inspected": false,
+      "initial_cc_disposition": "Preserved as a first-party candidate pending owner/currency confirmation; not treated as current governing plan.",
+      "current_cdc_disposition": "Preserved reference-only input for pass07; not live authority, not source, and not permission for held work.",
+      "pre_dump_screen": {
+        "date": "2026-11-21",
+        "method": "CDC encoded case-insensitive private-name pattern screen",
+        "match_count": 0,
+        "bytes": 40791,
+        "contents_opened_or_extracted": false
+      }
     }
   ],
   "excluded_populations": [
@@ -11206,7 +11249,7 @@
     },
     {
       "path": "docs/superpowers/plans/",
-      "reason": "kept separately in untracked candidate set; not treated as current plan-of-record without owner/currency confirmation"
+      "reason": "Four ignored ECL planning files are separately listed as preserved reference-only Pass07 inputs per CDC disposition; they are not live authority/source or permission for held work. Initial CC had left owner/currency unresolved; contents remain unopened and the CDC pre-dump screen is recorded per file."
     }
   ],
   "tracked_paths": [

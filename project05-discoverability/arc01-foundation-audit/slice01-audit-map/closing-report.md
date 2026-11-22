@@ -53,3 +53,25 @@ No raw command transcript archive or additional verifier was created. The first-
 ## Handoff
 
 The exact five owned paths are committed together in the planning worktree with both required co-author trailers. CC's self-review and diff checks are attested only. Ownership of these named paths and planning index is returned to CDC for independent map/intake reconciliation; CDC remains responsible for accepting or issuing a preserved refinement. No mutable process remains active. No project05 feature coding, source changes, external action, push, merge, tag or publication was performed.
+
+
+## Refinement 01 — correction and return (2026-11-21)
+
+This addendum preserves the initial proposed-close record above, including its defects as found by CDC. Its combined `20/24` population wording and unresolved ECL-candidate wording are superseded by this refinement. Assignment: immutable `cc-prompt-iteration01.md` at planning `003fbfc69dc037f8a5e6cf22e323a89cdc3c4246`; source remained clean at `719c58f245fe4a9115c7c0391d3e268c99157e2f`. CC changed only the five paths enumerated below; the initial failed candidate and CDC verification remain intact.
+
+### Corrected rows
+
+| Row | Refinement01 doer disposition (attested; CDC review pending) |
+| --- | --- |
+| MAP-01 | **Retained proposed-done.** Population and feature data were left intact. The canonical identity digest over all tracked rows, member/manifests, pass counts and pass/scale cells is `6e198ec361c28865e6676c0711077ca4c786a9a5cd1f73e798fca1804d609575`, equal to the initial candidate digest. The map still has 360 unique paths, 41 members/manifests/packages, 45 targets, and 49 pending cells. |
+| MAP-02 | **Retained proposed-done.** All path assignments and counts remain unchanged (38/31/25/50/14/150/52). Both mcp-auth paths remain pass01/slice02; pass01/pass04 totals remain 38/50. The four ignored ECL files are now CDC-dispositioned, preserved reference-only Pass07 inputs; not live authority/source or permission for held work. CDC’s Nov 21 pre-dump private-name screen found 0 matches per file at 27,873 / 57,160 / 39,508 / 40,791 bytes in listed-path order. Contents remain unopened. |
+| MAP-03 | **Corrected, proposed-done.** Index source-architecture pointer is now the absolute pinned source path. The former relative target resolves to absent `.worktrees/docs/arch/architecture.yaml`; the corrected target exists at source 719, and all local Markdown links resolve. Population leads now distinguish README Fabryk-specific 20 vs 19 Fabryk metadata packages from YAML whole-workspace 24 vs 41 packages; 21 ECL and 1 utility account for the rest. Both remain reconciliation leads, not findings. |
+| MAP-04 | **Retained proposed-done, attested.** Initial intake, failure/query history and scope limits remain preserved. Source stayed clean; no build/native/remote gate or semantic audit occurred. CDC review remains pending. |
+
+### Changed paths and checks
+
+Only these five authorized planning paths changed: `project05-discoverability/artifacts/2026.11.21-audit-index.md`, `2026.11.21-audit-coverage.json`, `2026.11.21-audit-map-execution.md`, this slice `ledger.md`, and this `closing-report.md`. `cargo metadata --locked --no-deps --format-version 1` exited 0 and independently yielded 19 Fabryk, 21 ECL, 1 utility and 41 total packages; source evidence is `README.md:15` and `docs/arch/architecture.yaml:5`. The old bad link failed its path-resolution check and the corrected absolute link exists; every local Markdown index link exists. All 360 path assignments, all 41 member/manifest rows, 45-target count, pass counts and 49 pending cells match the initial canonical identity digest above. The execution record contains per-file screening, exact scope, and failure disclosures. No source mutation, build/test/native/remote gate, semantic review, held work, or active mutable process.
+
+### Handoff
+
+The exact five paths are committed together on the planning branch with both required co-author trailers. CC has completed this refinement’s bounded self-review and returns planning-file/index ownership to CDC now. CDC is read-only until its independent review disposition; no next slice is authorized or started.
