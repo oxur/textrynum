@@ -68,11 +68,14 @@ use only Acme Inc. and anonymized technical labels.
 
 ## Commit and ownership return
 
-Commit: this closing report is included in the exact scoped ordinary commit;
-its object ID is returned in the final handback. Required trailers are:
-`Co-authored-by: Codex <noreply@openai.com>` and
-`Co-authored-by: Billo AI <ai-engineering@billo.systems>`.
+The initial five-path content commit is preserved as
+`bf193ab9d3f26fb7a858e54e84e92aa97d692542`. Post-commit review found that
+`git interpret-trailers --parse` recognized only its Billo AI line because the
+two co-author lines were separated by a blank line. No amend or history rewrite
+was used. This close-report-only follow-up records that finding and uses both
+required co-author lines together in one final trailer block; the final handback
+identifies the follow-up commit.
 
-After the commit and post-commit clean/source/hash checks, CC explicitly returns
-ownership of the five named planning paths and planning index to CDC for
-independent review. No mutable process remains active at handback.
+After the follow-up commit, CC explicitly returns ownership of the five named
+planning paths and planning index to CDC for independent review. No mutable
+process remains active at handback.
