@@ -1,7 +1,8 @@
 # Vector construction API and embedding identity contracts
 
-Status: ready for separate static assignment after14closure766f599. Same selected
-retained LunaHigh author and Sol6.1High independent CDC; initial0/5 refinements.
+Status: author candidate7133ede9 under independent review; correction iteration01
+issued after concrete source/provenance defects. Same selected
+retained LunaHigh author and Sol6.1High independent CDC; 1/5 refinements used,4remaining.
 Original full graph/vector and SEARCH gates remain open. No runtime/provider,
 fixture or model operation is assigned; source719 and source index read-only.
 
@@ -34,3 +35,11 @@ handback. New stable IDs039+ only if supported; no count target. No existing
 001–038 finding/status bytes, coverage owner/cell or SEARCH gate changes. All
 results directly project05/artifacts. Exact prompt defines five CC-owned paths,
 readback/terminology/stop and byte-append recipe. CDC reviews independently.
+
+Independent review2026-11-22: correct source locators, preservation population
+(original author evidence versus four unverified CDC preparations), dimension/
+precondition language. bf193 has both co-author strings but only Billo parses;
+7133 parses both and records it without repairing history. VEC-05 attribution
+component unmet/exception-pending for Operator; no criteria waiver or rewrite.
+Preserved correction01 defines same five outputs/static authority and exact
+message-file/parsed-trailer recipe. No runtime or product work commissioned.

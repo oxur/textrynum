@@ -765,3 +765,23 @@ Original owner/cell/vector/graph/SEARCH gates and final arc composition unchange
 all prior accepted/pending finding bytes remain protected. No repairs begun.
 
 - 2026-11-22 v1.20 — Recorded vector construction API scope before contributor work.
+
+## Vector record correction and attribution exception — v1.21
+
+Slice15 author contentbf193ab9 plus close-followup7133ede9 returned with source719
+clean/exec13602completed0. Independent review found wrong preservation-population
+labels (original author evidence vs unfinished CDC four), approximate source
+locators, dimension/precondition wording and malformed SHA formatting. Correction01
+records same five owned outputs, source-only authority and1/5refinements used.
+CDC independently checked both four-file sets unchanged; no contents parsed/run.
+
+bf193 contains both co-author text lines but a blank separates blocks; Git parses
+only Billo.7133 parses both adjacent trailers and records the immutable defect,
+not a retroactive repair. VEC-05 attribution component is UNMET/EXCEPTION-PENDING
+for Operator disposition; no all-commit compliance or waived gate is claimed.
+No amend/rebase/rewrite authorized. Every upcoming message must use an owned
+complete message file with adjacent trailers, parsed before commit and actual
+object checked afterward. Root will surface any Operator-only disposition after
+concrete record corrections/independent review. Original arc/SEARCH gates remain.
+
+- 2026-11-22 v1.21 — Issued15correction01 and preserved attribution defect explicitly.
