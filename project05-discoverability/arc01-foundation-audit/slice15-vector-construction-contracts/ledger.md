@@ -15,7 +15,10 @@ whole-pass ownership, graph/vector, MCP, SEARCH or final arc acceptance.
 CDC may accept, revise or reject this bounded proposal. The earlier accepted
 findings and all pending original audit gates remain unchanged.
 
-CDC correction01: source/provenance/dimension records require correction before
-substantive disposition. Actual original and CDC four artifact sets independently
-checked unchanged; their roles differ. VEC-05 attribution remains explicitly unmet
-or exception-pending; only Operator may dispose it. No amend/rewrite authorized.
+CDC correction01: controlling citations, documented nonzero-precondition framing,
+dimension/space distinction, and author-vs-CDC artifact provenance are corrected.
+Both four-file sets and coverage JSON were hash-preserved; CDC supplies the
+independent byte comparison against364cffe. CDC preparation contents remain
+unopened and unverified. VEC-05 attribution remains UNMET/EXCEPTION-PENDING; only
+Operator may dispose it. The next message file must parse both adjacent trailers.
+Both prior author commits remain immutable; no amend/rewrite is authorized.
