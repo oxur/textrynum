@@ -1120,3 +1120,20 @@ and corrected positional-file/pre/post normalized parsed-author recipe. Exact6pa
 index at dispatch; root/CDC read-only until actual return. Source719read-only;
 no source execution/fixes/SEARCH; original owner/cell/behavioral/full-arc gates and
 unverified partials unchanged. CDC owns until dispatch, then same retained author.
+
+## Review01 and correction01 — 2026-11-22
+
+Candidate03b19625/exec80620 completed0 and returned exact6/index. Static06not
+accepted: false no-limit control, unproven guide fallback outcome, source-filter
+promise versus mapping choice, missing exact current docs dispositions and generic
+scale conclusions require correction. Detailed artifacts2026.11.22-mcp-tools-cdc-
+review01.md/CDCverification retain criteria/source and actual failures. Initial raw
+runner has19 privacy-pattern matches from authored terms/labels and a temporary
+uncommitted close sentence removed before staging; final6files/source have0. Raw
+bytes preserved privately, no matched name/archive/purge/rewrite. Root counts-only
+notification and privacy-process disposition pending; no retroactive compliance.
+Claimed current wrong-repository Git128 has no execution witness and must be
+withdrawn/reclassified, never recreated. Preserved correction01 consumes1/5,
+4remain, same retained models/static authority/exact6outputs. Prior IDs/statuses,
+38/31/291,49cells7/7/35/protected9 and all held gates unchanged. CDC owns until
+handoff; no active mutable child. No source/product/SEARCH execution or fix.
