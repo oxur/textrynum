@@ -43,3 +43,15 @@ Produced `project05-discoverability/artifacts/2026.11.22-relationship-parser-con
 This is CC author attestation only. CDC independently determines finding acceptance, question calibration, and criterion status. The report and index preserve the complete byte prefixes from fixed baseline `56d9f3d79f07d68114ebfb24c576679b446408a1`. The exact nine protected paths were parsed from the canonical manifest at immutable `78847d67ec54f1617bb3f734ceaf60f86a32f99a` and compared as raw bytes to the fixed baseline; all nine matched. Unfinished CDC preparations remain unverified and were not textually inspected or executed.
 
 Commit verification and exact five-path/planning-index ownership return are reported with the final handback. No mutable child or process remains after the scoped commit.
+
+
+## Independent CDC acceptance — 2026-11-22
+
+REL-01–05/Medium FA-RS-045 independently accepted statically after b0a3735.
+Q21-01/02 remain ungraded, with graph builder/Relationship/MCP API owners and
+policy-dependent future oracles. CDC clarified approved support narrowing versus
+today's contract, actual per-tool response shapes, and captured wrapper versus
+uncaptured individual statuses; candidate history retained. See [CDC verification](cdc-verification.md)
+and [retrospective](cdc-retrospective.md). Budget0/5, source719 unchanged. All
+original owner/scale/runtime/SEARCH/final-arc gates remain; CDC owns planning/index
+for original04's source-complete static phase, no active mutable process.

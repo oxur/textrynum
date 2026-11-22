@@ -50,3 +50,15 @@ All results directly project05artifacts. Original001–044, questions,38/31/291,
 49cells7/7/35 and full-pass/runtime/SEARCH/final-composition gates unchanged. After
 this bounded review, reconcile original populations and record a finite source-
 complete package/pass tranche; narrow facets cannot replace original full scope.
+
+
+## Independent CDC acceptance — 2026-11-22
+
+REL-01–05/Medium FA-RS-045 independently accepted statically after b0a3735.
+Q21-01/02 remain ungraded, with graph builder/Relationship/MCP API owners and
+policy-dependent future oracles. CDC clarified approved support narrowing versus
+today's contract, actual per-tool response shapes, and captured wrapper versus
+uncaptured individual statuses; candidate history retained. See [CDC verification](cdc-verification.md)
+and [retrospective](cdc-retrospective.md). Budget0/5, source719 unchanged. All
+original owner/scale/runtime/SEARCH/final-arc gates remain; CDC owns planning/index
+for original04's source-complete static phase, no active mutable process.
