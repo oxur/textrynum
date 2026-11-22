@@ -1,6 +1,7 @@
 # Audit map and source contract intake
 
-Status: issued, no closure claimed. Current assignment: cc-prompt.md.
+Status: initial proposed close requires correction; current assignment:
+cc-prompt-iteration01.md. No independent acceptance claimed.
 
 ## Useful result and boundary
 
@@ -66,3 +67,9 @@ reconciles source/query coverage and reviews intake before acceptance.
 - 2026-11-21 initial cc-prompt.md issued to exact Luna High session
   01a2019f-73de-7de1-831f-53d55b3da247; current/active; no predecessor or
   refinement executed. CDC exact turn_context receipt supplied in prompt.
+
+- 2026-11-21 initial CC candidate3ac3e43102325e497f500ace8f06a5c12995ac09
+  returned clean with five owned paths. CDC independently reproduced complete
+  populations but requires navigation/population/grouping corrections; see
+  cdc-verification.md. Refinement1/5 issued as cc-prompt-iteration01.md to same
+  selected Luna High context; initial prompt and failed review preserved.
