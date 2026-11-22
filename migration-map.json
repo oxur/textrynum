@@ -6424,7 +6424,7 @@
       ]
     },
     "arc00_execution": {
-      "status": "pinned full-upgrade candidate719c58f pushed for actual CI44982217154; independent affected MSRV/runtime review and CC evidence-only corrections in progress",
+      "status": "Bothslices independently accepted; finalCI44982217154success at719c58f; fresharccompositiongatepending",
       "source_branch": "codex/ci-dependencies",
       "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
       "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",
@@ -6457,7 +6457,7 @@
         }
       },
       "source_candidate": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
-      "source_mutation_owner": "CDC exclusive after explicit CC return at719c58f; CC iteration04 owns only named planning documentation, no source/index/Cargo/commits",
+      "source_mutation_owner": "CDC exclusive; no activeCC/native process; freshreviewfilehandoffpending",
       "baseline_candidate_ci_run": 44957414892,
       "CC_session": "01a2006e-2618-7721-b361-1bd809d21d87",
       "baseline_candidate_ci_result": {
@@ -6488,7 +6488,7 @@
         "isolated_feature_selections": 17,
         "entry_source": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
         "CC_session": "01a2006e-2618-7721-b361-1bd809d21d87",
-        "ownership": "CDC exclusive source/index/Cargo/planningGit; CC named planning document/artifact corrections only",
+        "ownership": "CDC source/index/planning; no activeCC/nativework",
         "actual_turn_context": {
           "timestamp": "2026-11-22T02:22:00.259Z",
           "model": "gpt-6-luna",
@@ -6566,7 +6566,7 @@
         ],
         "package_contents": "all41actual archives/443files pinned719c58f, no owned temporary examples; FTS1298-term runtime JSON and full license/provenance independently byte/hash-checked in actual archive; --no-verify packaging only, no publication",
         "candidate_ci_run": 44982217154,
-        "candidate_ci_status": "in_progress;MSRVjob137084978561 completed success,debugLint,releaseBuild;full logs/completejobs pending",
+        "candidate_ci_status": "completed_success",
         "iteration03_return": {
           "exec": 30498,
           "exit": 0,
@@ -6576,12 +6576,11 @@
         },
         "private_pattern_scan": {
           "source_files": 360,
-          "planning_existing_files": 534,
-          "planning_listed_paths": 535,
+          "planning_files": 540,
           "new_source_objects": 72,
           "path_hits": 0,
           "content_hits": 0,
-          "method": "encoded case-insensitive byte pattern counts only, after native/registry/CIreview artifacts"
+          "method": "encoded case-insensitive byte pattern, final assembled close before fresh verifier file"
         },
         "documentation_correction": {
           "owned_exec": 14297,
@@ -6600,9 +6599,32 @@
           "avro": "6pass/test0 including fullwiredecode",
           "iso": "all1298oldterms+6exclusions actualCargo0",
           "current_registry": "63/63retained direct selections reconcile current authoritative metadata; only2documentedArrowfamily exceptions, none yanked",
-          "literal_MAX": "actualCargo0/all260exactIDs/nativeL2scores/order/latewinner/MAXno-match/zero;initialdriver-only101preserved"
+          "literal_MAX": "actualCargo0/all260exactIDs/nativeL2scores/order/latewinner/MAXno-match/zero;initialdriver-only101preserved",
+          "acceptance": "all7slicerowsdone; finalfresharcgateseparate"
         },
-        "source_supporting_proof": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/artifacts/persistence-proof.md"
+        "source_supporting_proof": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/artifacts/persistence-proof.md",
+        "status": "independently_accepted",
+        "candidate_ci_result": {
+          "source": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+          "run": 44982217154,
+          "conclusion": "success",
+          "completed_at": "2026-11-22T04:33:01Z",
+          "jobs": [
+            137084978480,
+            137084978300,
+            137084978561
+          ],
+          "each_debug_release": {
+            "summaries": 85,
+            "passed": 2440,
+            "failed": 0,
+            "ignored": 61
+          },
+          "toolchains": [
+            "Linux1.100.0",
+            "Linux1.94.0"
+          ]
+        }
       }
     },
     "audit_intake_observations": [

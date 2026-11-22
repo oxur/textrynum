@@ -1,6 +1,6 @@
 # CI and latest-dependency foundation
 
-Status: authorized for bounded Autonomous execution after the requested AGENTS
+Opening status (superseded by current version1.6 summary below): authorized for bounded Autonomous execution after the requested AGENTS
 policy and source-cleanup integration. Duncan lifted the earlier hosted-purge
 hold on 2026-11-21, accepting cleanup so far and keeping that task open without
 blocking the remaining work. No repository deletion/recreation is authorized.
@@ -221,3 +221,14 @@ Current full-upgrade assignment: slice02-latest-dependencies/cc-prompt.md, seven
 A fresh exact-Luna High CC session replaces the completed baseline context for the distinct64-package task; it is not an extra simultaneous contributor. Reuse accepted baseline/caches/canonical evidence rather than carrying complete old test output or replaying passing gates. CDC retains independent source review and task-branch CI authority; CC has exclusive source/index ownership only from actual runner start until explicit return. No source update yet; actual dispatch metadata will be recorded from the runner, not inferred.
 
 - 2026-11-21 v1.5 — concrete slice02 issued after baseline acceptance, current registry/API inventory and approved persistence/MSRV contract; no new unresolved Operator choice or audit/feature authority.
+
+
+## Current version1.6 — both slices accepted, formal composition gate pending
+
+This summary supersedes earlier pending run/choice/assignment prose; those paragraphs remain history. Slice01 accepted sourceedc8db69/run44957414892 before any full sweep. Slice02 is independently accepted at23572bf/719c58f, actual run44982217154success04:33:01UTC, complete debug/release each2440/0/61 plus real1.94MSRV. All original freshness/format/lockedall-featurebuild/strictlint/test gates remain; all7slice rows done, full independent/persistence/package/provider proofs and CDC retrospective complete. CI-01/DEP-01/CI-02 done; final REVIEW-01 is intentionally pending fresh selectedSolHigh composition. No extra slice or changed capability decomposition is needed.
+
+Current63retained direct selections are latest stable with explicit Arrow58.4.2/LanceDB0.41 constraint against overallArrow60.2.0 and upstream-pinned ORT/ssh-key prereleases. ApprovedRust1.94/currentRMCP Resource/ContentBlock migration and exactlicensedISO1298 preservation are implemented/documented. Actual macOSarm64 and Linuxx86_64 checks establish the advertised candidate on those configurations; no untested platform promise. Default-unwrappedMacrelease link still fails on ORT availability helper; authentic dynamically discovered Clang-runtime configured builds/freshlinks/inference pass, and the verbatim README flag command was not separately executed. Vector metadata filtering preservesUtf8schema/nativeL2 with128-rowID batching plus actual output; O(N)metadata/repeated-query latency remains disclosed.
+
+Usable result is pushed only on unmerged codex/ci-dependencies at719c58f. Published release/0.5.x remains92c72d7; original migration FF/all15release pushes were already fulfilled. No main/release update, PR, tag/package publication or deploy is authorized/performed here. Hosted purge stays open/nonblocking, fullaudit and features remain unopened. Two incidental source observations are preserved only in the existing project audit-intake note, not accepted audit findings.
+
+- 2026-11-21 v1.6 — slice02 surfaced actual feature-unification, boundedfilter/native-link/package-population evidence needs; approved compatibility decisions and real accepted delivery/limits are now recorded. Source/CI capability remains exactly the two-slice arc; final fresh-context gate remains separate before endpoint acceptance.

@@ -1417,7 +1417,7 @@
     }
   ],
   "refreshed": "2026-11-21",
-  "status": "CC implementation and local evidence recorded; independent CDC review, fresh candidate CI and ledger acceptance pending",
+  "status": "Slice02 independently accepted at719c58f after complete candidateCI44982217154; final fresh arc-composition gate remains separate",
   "tooling": [
     {
       "name": "actions/checkout",
@@ -1501,8 +1501,31 @@
       "vector": "cdc-vector-bounded-release.log15pass;literalMAX/all260 cdc-vector-literal-max-pass02.log actual0, earlier driver-onlyE0283 retained failed",
       "iso": "cdc-iso-product-oracle.log1298baseline terms+6exclusions actual0",
       "provider": "cdc-fastembed-release.log4realtests0 using fresh configured release binary",
-      "acceptance": "allrowsopenpendingcompleteCI/close/retro",
+      "acceptance": "All7slice rows independently accepted; final fresh arc composition separate",
       "hosted_msrv": "ci-msrv-44982217154.log actualLinux1.94.0/pinnedSHA/lockedallfeaturealltarget5m53success;debug/release CI still running"
+    },
+    "candidate_source": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+    "candidate_ci": {
+      "run": 44982217154,
+      "status": "completed",
+      "conclusion": "success",
+      "source": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "jobs": {
+        "debug": 137084978480,
+        "release": 137084978300,
+        "msrv": 137084978561
+      },
+      "each_debug_release": {
+        "summaries": 85,
+        "passed": 2440,
+        "failed": 0,
+        "ignored": 61
+      },
+      "toolchains": [
+        "LinuxRust1.100.0",
+        "LinuxRust1.94.0"
+      ],
+      "completed_at": "2026-11-22T04:33:01Z"
     }
   }
 }

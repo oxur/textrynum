@@ -1,0 +1,326 @@
+{
+  "conclusion": "success",
+  "createdAt": "2026-11-22T03:47:34Z",
+  "databaseId": 44982217154,
+  "event": "push",
+  "headBranch": "codex/ci-dependencies",
+  "headSha": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+  "jobs": [
+    {
+      "completedAt": "2026-11-22T04:33:00Z",
+      "conclusion": "success",
+      "databaseId": 137084978300,
+      "name": "Build and Test (release)",
+      "startedAt": "2026-11-22T03:47:36Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-22T03:47:38Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-22T03:47:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:47:40Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-11-22T03:47:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:47:41Z",
+          "conclusion": "success",
+          "name": "Install Rust toolchain",
+          "number": 3,
+          "startedAt": "2026-11-22T03:47:40Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:47:55Z",
+          "conclusion": "success",
+          "name": "Install system dependencies",
+          "number": 4,
+          "startedAt": "2026-11-22T03:47:41Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:48:01Z",
+          "conclusion": "success",
+          "name": "Run Swatinem/rust-cache@v2.9.3",
+          "number": 5,
+          "startedAt": "2026-11-22T03:47:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:48:01Z",
+          "conclusion": "skipped",
+          "name": "Check dependencies",
+          "number": 6,
+          "startedAt": "2026-11-22T03:48:01Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:48:02Z",
+          "conclusion": "success",
+          "name": "Check formatting",
+          "number": 7,
+          "startedAt": "2026-11-22T03:48:01Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T04:02:56Z",
+          "conclusion": "success",
+          "name": "Build",
+          "number": 8,
+          "startedAt": "2026-11-22T03:48:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T04:08:19Z",
+          "conclusion": "success",
+          "name": "Lint",
+          "number": 9,
+          "startedAt": "2026-11-22T04:02:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T04:32:56Z",
+          "conclusion": "success",
+          "name": "Run tests",
+          "number": 10,
+          "startedAt": "2026-11-22T04:08:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T04:32:56Z",
+          "conclusion": "success",
+          "name": "Post Run Swatinem/rust-cache@v2.9.3",
+          "number": 19,
+          "startedAt": "2026-11-22T04:32:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T04:32:57Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 20,
+          "startedAt": "2026-11-22T04:32:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T04:32:57Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 21,
+          "startedAt": "2026-11-22T04:32:57Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/oxur/textrynum/actions/runs/44982217154/job/137084978300"
+    },
+    {
+      "completedAt": "2026-11-22T04:27:19Z",
+      "conclusion": "success",
+      "databaseId": 137084978480,
+      "name": "Build and Test (debug)",
+      "startedAt": "2026-11-22T03:47:36Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-22T03:47:38Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-22T03:47:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:47:39Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-11-22T03:47:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:47:40Z",
+          "conclusion": "success",
+          "name": "Install Rust toolchain",
+          "number": 3,
+          "startedAt": "2026-11-22T03:47:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:47:48Z",
+          "conclusion": "success",
+          "name": "Install system dependencies",
+          "number": 4,
+          "startedAt": "2026-11-22T03:47:40Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:47:54Z",
+          "conclusion": "success",
+          "name": "Run Swatinem/rust-cache@v2.9.3",
+          "number": 5,
+          "startedAt": "2026-11-22T03:47:48Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:48:03Z",
+          "conclusion": "success",
+          "name": "Check dependencies",
+          "number": 6,
+          "startedAt": "2026-11-22T03:47:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:48:05Z",
+          "conclusion": "success",
+          "name": "Check formatting",
+          "number": 7,
+          "startedAt": "2026-11-22T03:48:03Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:58:30Z",
+          "conclusion": "success",
+          "name": "Build",
+          "number": 8,
+          "startedAt": "2026-11-22T03:48:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T04:03:21Z",
+          "conclusion": "success",
+          "name": "Lint",
+          "number": 9,
+          "startedAt": "2026-11-22T03:58:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T04:27:17Z",
+          "conclusion": "success",
+          "name": "Run tests",
+          "number": 10,
+          "startedAt": "2026-11-22T04:03:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T04:27:17Z",
+          "conclusion": "success",
+          "name": "Post Run Swatinem/rust-cache@v2.9.3",
+          "number": 19,
+          "startedAt": "2026-11-22T04:27:17Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T04:27:17Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 20,
+          "startedAt": "2026-11-22T04:27:17Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T04:27:17Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 21,
+          "startedAt": "2026-11-22T04:27:17Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/oxur/textrynum/actions/runs/44982217154/job/137084978480"
+    },
+    {
+      "completedAt": "2026-11-22T03:54:00Z",
+      "conclusion": "success",
+      "databaseId": 137084978561,
+      "name": "Minimum Rust version (1.94.0)",
+      "startedAt": "2026-11-22T03:47:36Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-22T03:47:38Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-22T03:47:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:47:39Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-11-22T03:47:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:47:48Z",
+          "conclusion": "success",
+          "name": "Install Rust toolchain",
+          "number": 3,
+          "startedAt": "2026-11-22T03:47:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:47:57Z",
+          "conclusion": "success",
+          "name": "Install system dependencies",
+          "number": 4,
+          "startedAt": "2026-11-22T03:47:48Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:48:04Z",
+          "conclusion": "success",
+          "name": "Run Swatinem/rust-cache@v2.9.3",
+          "number": 5,
+          "startedAt": "2026-11-22T03:47:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:53:57Z",
+          "conclusion": "success",
+          "name": "Check workspace on minimum Rust",
+          "number": 6,
+          "startedAt": "2026-11-22T03:48:04Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:53:58Z",
+          "conclusion": "success",
+          "name": "Post Run Swatinem/rust-cache@v2.9.3",
+          "number": 11,
+          "startedAt": "2026-11-22T03:53:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:53:58Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 12,
+          "startedAt": "2026-11-22T03:53:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-22T03:53:58Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 13,
+          "startedAt": "2026-11-22T03:53:58Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/oxur/textrynum/actions/runs/44982217154/job/137084978561"
+    }
+  ],
+  "status": "completed",
+  "updatedAt": "2026-11-22T04:33:01Z",
+  "url": "https://github.com/oxur/textrynum/actions/runs/44982217154"
+}
