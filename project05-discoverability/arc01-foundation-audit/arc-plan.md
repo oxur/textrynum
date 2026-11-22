@@ -228,3 +228,36 @@ claim substitutes for actual client trials.
 - 2026-11-21 v1.2 — Activated the user-authorized full arc01 after accepted arc00
   and verified integrated/published719. Recorded exact roles, single ownership,
   endpoint and explicit diagnosis/results-home constraints before audit execution.
+
+## Execution decomposition — v1.3
+
+The seven named passes remain the required population. The following slices
+retain review headroom and produce a complete diagnosis, not selected examples.
+Only slice01's open set is issued now; later slices are detailed from its actual
+map and accepted coverage. Each slice includes its own meaningful evidence,
+independent CDC review, ledger, bubble-up and retrospective.
+
+| Slice | Useful result and pass ownership | Dependency |
+| --- | --- | --- |
+| 01 — audit-map | Exhaustive file/member/target/language/tool/features map, exclusions, architecture pointers and validation applicability | Current integrated719 + canonical authorization |
+| 02 — core-auth | Pass1: all core/auth/ACL/Redis/GCP configuration and trust boundaries | Accepted map |
+| 03 — content-search | Pass2: content/source/FTS, schema and fallback contracts | Accepted map/core boundary |
+| 04 — graph-vector | Pass3: every graph/vector file, algorithms, persistence and retrieval lifecycle | Accepted map/shared boundaries |
+| 05 — mcp-runtime | Pass4 infrastructure: mcp-core, transport, registries, resources/prompts/subscriptions and lifecycle | Accepted core/engine boundaries |
+| 06 — mcp-tools-ux | Pass4 tool suites/facades: every schema/handler, discoverability, IDs/provenance/payload/recovery and real-client limits | Accepted MCP runtime/engines |
+| 07 — application-assembly | Pass5: all CLI/builders/orchestration/startup/shutdown/thin integration | Accepted library and MCP boundaries |
+| 08 — ecl-execution | Pass6 execution: ECL core/steps/workflows/pipeline/spec/topology/state/CLI | Accepted map |
+| 09 — ecl-io | Pass6 I/O: every adapter/sink/stage/secrets/GCP auth and pipeline integration | Accepted execution contracts |
+| 10 — workspace-release | Pass7: remaining design/util/facades, all manifests/Make/shell/CI/config/examples/reference/binary populations and release/package/feature composition | Prior passes + map reconciliation |
+| 11 — synthesis-handoff | Complete per-language reports/index, cross-cutting duplicate/root-cause synthesis, finding owners/oracles and actionable repair handoff | Every population inspected; final arc composition remains independent |
+
+Guide loading is itself a prerequisite, not source coverage. Full Rust
+SKILL/guide text (anti-patterns first) must be loaded before semantic Rust
+review; map/data extraction alone does not constitute that review. Structured
+population projections are not replacements for normative guide reading or
+full-file semantic review. All first-party files retain a named disposition;
+references/binary assets receive explicit method and limits.
+
+- 2026-11-21 v1.3 — Split the seven required passes into eleven reviewable
+  increments, including two MCP and two ECL slices for context/reproduction
+  headroom; no population or scale is dropped. Issued slice01 map/intake.
