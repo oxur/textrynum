@@ -1,5 +1,7 @@
 # CI and latest-dependency foundation
 
+Current version1.7/status: **accepted arc00** at719c58f, actual complete CI44982217154 and [fresh independent composition](cdc-verification.md). All4rows/two slices done. This summary supersedes every earlier pending statement below, including version1.6's formal-gate hold. Source is the pushed, unmerged task branch; published release/0.5.x remains92c. No audit/features/integration/publication begins here.
+
 Opening status (superseded by current version1.6 summary below): authorized for bounded Autonomous execution after the requested AGENTS
 policy and source-cleanup integration. Duncan lifted the earlier hosted-purge
 hold on 2026-11-21, accepting cleanup so far and keeping that task open without
@@ -232,3 +234,6 @@ Current63retained direct selections are latest stable with explicit Arrow58.4.2/
 Usable result is pushed only on unmerged codex/ci-dependencies at719c58f. Published release/0.5.x remains92c72d7; original migration FF/all15release pushes were already fulfilled. No main/release update, PR, tag/package publication or deploy is authorized/performed here. Hosted purge stays open/nonblocking, fullaudit and features remain unopened. Two incidental source observations are preserved only in the existing project audit-intake note, not accepted audit findings.
 
 - 2026-11-21 v1.6 — slice02 surfaced actual feature-unification, boundedfilter/native-link/package-population evidence needs; approved compatibility decisions and real accepted delivery/limits are now recorded. Source/CI capability remains exactly the two-slice arc; final fresh-context gate remains separate before endpoint acceptance.
+
+
+- 2026-11-21 v1.7 — fresh selectedSol6.1High composition at719c58f independently accepted all4rows after finalCI and canonical child/arc closures/retrospectives. Formalhold lifted only for accepting this bounded prerequisite; no capability expansion or automatic next-stage authority. Latest-compatible Arrow58.4.2 versus60.2.0, approved1.94/RMCP/corpus choices and configured-vs-defaultMacruntime limits remain explicit in version1.6 and the final close. Projectrow10/status bubble up; fullaudit/repairs/features remain future work.

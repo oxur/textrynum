@@ -6424,7 +6424,7 @@
       ]
     },
     "arc00_execution": {
-      "status": "Bothslices independently accepted; finalCI44982217154success at719c58f; fresharccompositiongatepending",
+      "status": "accepted_arc00_endpoint",
       "source_branch": "codex/ci-dependencies",
       "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
       "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",
@@ -6457,7 +6457,7 @@
         }
       },
       "source_candidate": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
-      "source_mutation_owner": "CDC exclusive; no activeCC/native process; freshreviewfilehandoffpending",
+      "source_mutation_owner": "CDC; no activeCC/nativeprocess; freshverifierfileownershipreturned",
       "baseline_candidate_ci_run": 44957414892,
       "CC_session": "01a2006e-2618-7721-b361-1bd809d21d87",
       "baseline_candidate_ci_result": {
@@ -6576,11 +6576,11 @@
         },
         "private_pattern_scan": {
           "source_files": 360,
-          "planning_files": 540,
+          "planning_files": 541,
           "new_source_objects": 72,
           "path_hits": 0,
           "content_hits": 0,
-          "method": "encoded case-insensitive byte pattern, final assembled close before fresh verifier file"
+          "method": "encoded case-insensitive byte pattern, including final fresh-verifier/current closure records"
         },
         "documentation_correction": {
           "owned_exec": 14297,
@@ -6600,7 +6600,7 @@
           "iso": "all1298oldterms+6exclusions actualCargo0",
           "current_registry": "63/63retained direct selections reconcile current authoritative metadata; only2documentedArrowfamily exceptions, none yanked",
           "literal_MAX": "actualCargo0/all260exactIDs/nativeL2scores/order/latewinner/MAXno-match/zero;initialdriver-only101preserved",
-          "acceptance": "all7slicerowsdone; finalfresharcgateseparate"
+          "acceptance": "all7slice rows accepted;fresharccompositionalsoaccepted"
         },
         "source_supporting_proof": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/artifacts/persistence-proof.md",
         "status": "independently_accepted",
@@ -6625,7 +6625,34 @@
             "Linux1.94.0"
           ]
         }
-      }
+      },
+      "final_source": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "integration_state": "unmerged codex/ci-dependencies pushed onlyGitHub;release/0.5.x remains92c72d7;noPR/mainupdate/tag/publication/deploy",
+      "final_ci": {
+        "run": 44982217154,
+        "source": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+        "conclusion": "success",
+        "completed_at": "2026-11-22T04:33:01Z",
+        "jobs": [
+          137084978480,
+          137084978300,
+          137084978561
+        ]
+      },
+      "fresh_composition_review": {
+        "reviewer": "/root/arc_composition_review",
+        "requested_model": "gpt-6.1-sol",
+        "reasoning_effort": "high",
+        "backend_identity": "unreported",
+        "verdict": "accepted",
+        "source": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+        "planning_packet": "c7ac2d8f80a8fa8398bac897b2d13148d419a667",
+        "path": "project05-discoverability/arc00-ci-dependencies/cdc-verification.md",
+        "record_sha256": "16daba93ee01c47e47576111121d071b1f16970e94f16e8d30cb576321116b2c",
+        "ownership": "solefile returned;no native/source/index/Gitmutation"
+      },
+      "project_row10": "done",
+      "next_scope": "fullaudit remains planned/unopened; no automaticadvance"
     },
     "audit_intake_observations": [
       {

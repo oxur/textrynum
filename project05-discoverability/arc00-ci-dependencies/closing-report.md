@@ -1,6 +1,6 @@
 # CI/dependency prerequisite — assembled arc closing report
 
-CDC assembly verdict: capability delivered at719c58f; both slices independently accepted. Formal arc acceptance awaits the supplied fresh selectedSolHigh context's arc-root cdc-verification.md. This is not self-signoff or authority to start the audit/features/integration/publication.
+Current formal verdict: **arc00 accepted** at719c58f by the fresh selectedSol6.1High context in [independent composition verification](cdc-verification.md). All4arc rows and both slices are done. This final summary supersedes the earlier assembly-pending state preserved at planningc7ac2d8; the assembler did not self-sign. Stop at this unmerged CI/dependency endpoint; no audit/features/integration/publication authority follows.
 
 ## Capability and exactly two delivered increments
 
@@ -11,7 +11,7 @@ The project required fresh genuine CI FIRST, then all latest stable external dep
 | CI-01 | Done: [slice01 independent acceptance](slice01-green-baseline/cdc-verification.md), complete run44957414892 atedc8db69. |
 | DEP-01 | Done: [slice02 independent acceptance](slice02-latest-dependencies/cdc-verification.md), current authoritative registry/allmanifest/lock/API inventory. |
 | CI-02 | Done: full assembled candidate actualrun44982217154, actual1.94 minimum/17feature applicability, independent old-data/wire/native/provider/package checks. |
-| REVIEW-01 | Pending only formal fresh-context composition record; [slice reviews](slice02-latest-dependencies/cdc-verification.md) and [arc retrospective](cdc-retrospective.md) are available. |
+| REVIEW-01 | Done: [fresh independent gate](cdc-verification.md), complete child reviews and [arc retrospective](cdc-retrospective.md). |
 
 ## Composition demonstration and limits
 
@@ -25,6 +25,11 @@ Original unwrapped macOS release linking fails on ORT's availability helper; aut
 
 Arc-plan versions1.1–1.6 record actual CDC/two-slice decomposition, approvedMSRV/facade decisions, real writer/reader proof, baseline acceptance, full-upgrade prompt and final accepted implementation/limits. No third slice, new arc or reordered roadmap is needed. Slice02's NLTKunification/boundedfilter/native-link/package-count lessons fit the existing compatibility scope; incidental preexistingSFTP/notifier evidence remains only in project05/artifacts/dependency-planning-audit-intake.md for the later full audit, not a commissioned finding.
 
-This delivers projectroadmap arc00 and prepares projectrow10closure after formal independent composition. It does not accept the rest of project05 or its0.5release/UX/audit requirements. Current source719c58f is clean, normally pushed only to unmerged codex/ci-dependencies; release/0.5.x remains published92c, and all original migration FF/push duties were previously completed. No PR/main/releaseupdate/tag/packagepublication/deployment. Hostedpurge remains open/nonblocking. The endpoint is acceptedarc00; do not automatically open arc01audit or project06/07features.
+This delivers projectroadmap arc00 and closes projectrow10 through actual independent composition. It does not accept the rest of project05 or its0.5release/UX/audit requirements. Current source719c58f is clean, normally pushed only to unmerged codex/ci-dependencies; release/0.5.x remains published92c, and all original migration FF/push duties were previously completed. No PR/main/releaseupdate/tag/packagepublication/deployment. Hostedpurge remains open/nonblocking. The endpoint is acceptedarc00; do not automatically open arc01audit or project06/07features.
 
 [Arc retrospective](cdc-retrospective.md) synthesizes both child retrospectives and follow-through, without claiming universal method improvement. Final fresh verifier owns only the separate arc cdc-verification.md after explicit handoff; assembler retains no authority to independently approve itself.
+
+
+## Final ownership and endpoint
+
+Fresh reviewer /root/arc_composition_review accepted the complete packet at719c58f/c7ac2d8, wrote only arc-root cdc-verification.md, and explicitly returned named-file ownership. No Cargo/source/index/Git mutation occurred in that review. CDC then recorded REVIEW-01/project10 and current-state summaries under existing authority. Source stays clean719c58f on codex/ci-dependencies; published release/0.5.x stays92c72d7. All local CC/native invocations are complete; no mutable process is left unowned. Complete actual CI is44982217154, all3jobs success. Hosted purge is open/nonblocking; fullaudit is next and remains unopened. This is the requested bounded endpoint, not whole-project advance.

@@ -1,6 +1,6 @@
 # CDC retrospective — arc00 CI/dependency foundation
 
-2026-11-21America/Chicago; author selectedSol6.1High CDC /root/ci_dependency_cdc. Evidence cutoff: complete final CI44982217154 at719c58f, plus both independently accepted slices. Formal fresh-context composition is pending; this analysis cannot substitute for it. Read the governing project/arc/slice plans, preserved prompts/returns/verification and both child retrospectives, actual source/runtime/CI/version/package evidence, including failed attempts. Comparative effectiveness, total cost/tokens and hidden backend identity are unknown.
+2026-11-21America/Chicago; author selectedSol6.1High CDC /root/ci_dependency_cdc. Evidence cutoff: complete final CI44982217154 at719c58f, plus both independently accepted slices. Formal fresh-context composition was subsequently [independently accepted](cdc-verification.md); this analysis does not substitute for it. Read the governing project/arc/slice plans, preserved prompts/returns/verification and both child retrospectives, actual source/runtime/CI/version/package evidence, including failed attempts. Comparative effectiveness, total cost/tokens and hidden backend identity are unknown.
 
 ## Capability and what the two slices add together
 
@@ -25,3 +25,6 @@ Owner is the next project CDC/prompt author/reviewer, through existing plans and
 ## Scope and endpoint
 
 Both child retrospectives exist and are included, including adverse evidence and CDC's own driver/cfg/authority mistakes. Source and package/API correctness acceptance is independent of this retrospective. The fresh-context gate remains a distinct final record. No change to the project roadmap is required beyond current status/compatibility summaries: fullaudit/repairs still precede features, project06/07stayheld and08deferred, hostedpurgeopen/nonblocking. Stop at acceptedarc00; no branch integration or publication is inferred.
+
+
+Final follow-through: the fresh context accepted all4arc rows after independently reading final CI/child closure, and returned sole verification-file ownership. Its MAX-scope and inventory-example observations were already resolved without product changes. This supports the bounded composition verdict, not a universal claim about review effectiveness. The arc stops here with projectrow10done and the audit unopened.

@@ -8,6 +8,16 @@ related: ["project06-pipeline", "project07-live-ingest", "project08-reasoning", 
 
 # Discoverability and a dependable 0.5.0 MCP foundation
 
+## Current state — version1.7, 2026-11-21
+
+Arc00 is **independently accepted**: genuine green baselineedc8db69/run44957414892 preceded the latest-dependency sweep; finalsource23572bf/719c58f passes complete CI44982217154 (debug/release each2440passed/0failed/61existingignored, plus actualRust1.94MSRV), meaningful independent runtime/data/package checks and the fresh selectedSol6.1High composition gate. See [arc close](arc00-ci-dependencies/closing-report.md), [independent verdict](arc00-ci-dependencies/cdc-verification.md) and [arc retrospective](arc00-ci-dependencies/cdc-retrospective.md). Projectrows09/10done; the project itself remains open. This current summary supersedes older pending dispatch/run/choice prose below, which remains history.
+
+All63retained direct selections are current stable with two coupled exceptions: arrow-array/arrow-schema58.4.2 for latestLanceDB0.41, versus overallArrow60.2.0. Upstream ORT/ssh-key prerelease pins are documented, not hidden as globallylatest transitives. ApprovedRust1.94/currentRMCP Resource/ContentBlock migration and exactlicensedISO1298 preservation are implemented with downstream notes. Default-unwrappedMacrelease linking still fails on ORT's availability helper; authentic dynamically discovered Clang-runtime configured builds/freshlinks/actualCPU inference pass. The README flag command was not run verbatim; no out-of-boxMac/allplatform claim. Package--no-verify evidence is actualarchive content, separate from workspace compilation.
+
+The accepted source is clean on pushed, **unmerged codex/ci-dependencies at719c58f**. Published release/0.5.x remains92c72d7; the earlier requested migration FF/all15release-ref pushes were already fulfilled. No main/release update, PR, tag/package publication or deployment is authorized/performed by arc00. Hostedpurge remains open/nonblocking. Fullaudit/repairs remain next and unopened; project06/07features stayheld and08deferred. Stop at this prerequisite endpoint unless Duncan authorizes the next bounded work.
+
+Actual selected contributors: CDC /root/ci_dependency_cdc gpt-6.1-sol High; sourceCC gpt-6-luna High session01a2006e-2618-7721-b361-1bd809d21d87 (baseline session01a2000f-9f2d-7660-97b4-f54373f19a94); fresh arc verifier /root/arc_composition_review gpt-6.1-sol High. Requested configuration receipts were checked; hidden backend identity is unreported. No silent substitution occurred.
+
 ## Outcome and boundaries
 
 Ship a solid 0.5.0 foundation for updating existing domain MCP servers and building
@@ -62,7 +72,7 @@ decision, not an action authorized by this continuation.
 
 | Arc | Useful result | Dependencies / status |
 | --- | --- | --- |
-| 00 — CI and dependencies | Fresh green CI, latest external dependencies and green checks again | Integration complete; bounded Autonomous execution authorized; hosted purge deferred |
+| 00 — CI and dependencies | Fresh green CI, latest external dependencies and green checks again | Accepted at719c58f; unmerged task branch, complete CI/fresh review; hosted purge open/nonblocking |
 | 01 — Foundation audit | Complete, severity-graded, evidence-based workspace and architecture findings with an implementation handoff | Detailed plan exists; execution has not started |
 | 02 — Foundation repair and consolidation | Audited defects repaired at their root, shared policies centralized, real behavior and integration demonstrated | Requires accepted audit; slices are created from actual findings, not invented in advance |
 | 03 — ChatGPT UX and reusable server readiness | Natural ChatGPT workflows, efficient discovery and payloads, consistent thin-server assembly, backend lifecycle and remaining existing extraction obligations | Blocked until audit and repair gates pass; detailed scope will be reconciled then |
@@ -221,3 +231,6 @@ home in `project05-discoverability/artifacts/`.
   `codex/ci-dependencies`; contributor dispatch follows the recorded selection.
 
 - 2026-11-21 v1.6 — arc00 CDC dispatch/ownership accepted; slice01 minimal baseline repair opened from current run 44952335686. Exact CC dispatch and independent results remain pending.
+
+
+- 2026-11-21 v1.7 — accepted arc00 bubbles up projectrows09/10 with exact source/CI/fresh-review evidence, current compatibility/native/package limits and actual role assignments. This adds a clear current-state summary superseding old pending prose; no new arc/slice/scope or automatic audit/feature/release authority. Remaining roadmap/order and open hostedpurge are unchanged.
