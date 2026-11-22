@@ -1,0 +1,23 @@
+{
+  "submitted_at": "2026-11-22T15:41:56.499516+00:00",
+  "transport": "Codex CLI 0.158.0 app-server stdio feedback/upload",
+  "request": {
+    "id": 2,
+    "method": "feedback/upload",
+    "params": {
+      "classification": "bug",
+      "includeLogs": false,
+      "extraLogFiles": [],
+      "reason": "Repeated false-positive cybersecurity flag blocks local Rust MCP framework checks\n\nI’m working on Textrynum, a Rust MCP/RAG server framework. The current blocked task is ordinary local software correctness verification: Unicode/snippet behavior, query and filter semantics, metadata, and index freshness. It uses synthetic Acme text and owned temporary index directories. This verification does not use network services, authentication, credentials, traversal fixtures, or attack payloads. The broader repository review previously included authentication code; that is not exercised by this blocked step.\n\nThis is the third attempt to continue this work. The latest attempt followed a full application restart, but the coordinator again returned: “This content was flagged for possible cybersecurity risk.” It stopped before any Rust build, test, probe, or pre-run reconciliation started. We kept the same configured models and context throughout; we did not change safeguards or retry through other agents. Please investigate the classification and whether session/client state is contributing.\n\nI have seen similar false positives in other projects, where restarting the desktop app has sometimes cleared them. The latest attempt here was after a full application restart and still failed.",
+      "threadId": null,
+      "tags": null
+    }
+  },
+  "response": {
+    "id": 2,
+    "result": {
+      "threadId": "no-active-thread-01a203eb-d26f-73a2-ae62-a9350da65b07",
+      "promptHash": null
+    }
+  }
+}

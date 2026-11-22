@@ -83,3 +83,16 @@ arc-plan/ledger and existing NOTSUBMITTED feedback draft may change, no further
 execution retry. Core38/7+10findings accepted;03's17+4questions+2cleared and all
 SEARCH/remainingarc gates pending. Same models/source/scope, budget2/5used, no
 user pause/waiver/completion. No support message or Daybreak/service/scan.
+
+Progress2026-11-22 AUTHORIZED FEEDBACK SUBMITTED: Duncan explicitly requested
+submission, describing this as the third attempt and the latest as following a
+full application restart. The report uses that attempt count; earlier entries
+preserve their separate counts of stopped coordinator turns. Codex CLI0.158.0
+app-server feedback/upload returned success at2026-11-22T15:41:56Z, reference
+no-active-thread-01a203eb-d26f-73a2-ae62-a9350da65b07. Only the title/report body
+was sent, includeLogs=false, extraLogFiles=[], threadId=null. No source files,
+logs, attachments or raw conversation submitted; no active-chat association or
+support-ticket number claimed. Report and exact receipt are in project05
+artifacts/2026.11.22-platform-false-positive-feedback.md and matching-receipt.json.
+No audit retry, source change, Daybreak action or acceptance advance occurred.
+The platform blocker and all pending audit gates remain open.
