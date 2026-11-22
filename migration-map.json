@@ -6535,7 +6535,11 @@
         "path": "project05-discoverability/artifacts/dependency-planning-audit-intake.md",
         "origin": "arc00 dependency source inspection",
         "source": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
-        "status": "incidental source evidence only; full audit unopened; no acceptance or repair authority"
+        "status": "incidental source evidence only; full audit unopened; no acceptance or repair authority",
+        "observations": [
+          "SFTP unconditional server-key acceptance",
+          "resource subscription pruning branch performs a second actual update send"
+        ]
       }
     ]
   },
