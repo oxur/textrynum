@@ -924,3 +924,17 @@ Clarification/rejection/disposition remains a possible future owner outcome, not
 an instruction to implement held06scheduler features. Same retainedmodels/session,
 18initial0/5; fiveCCoutputs/index only atdispatch, terminology/privacy/footers and
 byte-onlypreservation contracts propagated. Originalcoverage/SEARCH/fullarc open.
+
+
+## Slice18 independently accepted — 2026-11-22
+
+Author6e0d468b/source719 independently reviewed: RSC01–05/Medium043 accepted for
+CURRENT callable declaration/planner contract inconsistency. Validsame-resource
+exclusivewriters remainonebatch; actualhandleroverlap/dataeffects unobserved.
+Futuremilestonecomment, publiccurrentcalls, validation and downstreamcontrols
+allretained; this does not commission held06resource-aware scheduling. Later
+repair/disposition owner may honor exclusion or clarify/reject unsupportedpromise,
+with batchcomposition/throughput/callercompatibility explicit. See18CDCverification/
+retro/fullcanonicalRustfinding andcloseinventory/bubble-up. Exec79449completed0,
+indexreturnedCDC;18refinements0/5. Original38/31/291 and49cells7/7/35, ECL/fullpass/
+SEARCH/finalcomposition unchanged; arcactive, no repair/runtimeauthority expanded.

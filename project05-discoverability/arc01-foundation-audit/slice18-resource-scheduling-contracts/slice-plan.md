@@ -53,3 +53,6 @@ uncertain retain questions. Stable043+ only if supported, with current promise/
 contrary comment/owner compatibility and later disposition choices. All results
 project05artifacts; five authorpaths/index in prompt. Preserve all prior001–042,
 original38/31/291 owners and49cells7/7/35, SEARCH/fullpasses/finalcomposition.
+
+
+Current disposition2026-11-22: RSC01–05/Medium043 independently accepted at6e0d468b for present callablecontract inconsistency only. Futurecomment/callercontrols retained; no actualoverlap/featurecommission.0/5refinements. See CDCverification/retro.

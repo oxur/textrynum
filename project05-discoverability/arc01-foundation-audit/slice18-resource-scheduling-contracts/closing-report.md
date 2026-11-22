@@ -1,6 +1,6 @@
 # Slice18 close — resource scheduling declaration and enforcement contracts
 
-**Assignment:** `slice18-resource-scheduling-contracts/cc-prompt.md`. **Source:** `719c58f245fe4a9115c7c0391d3e268c99157e2f`, clean/read-only. **Current author assessment:** CC proposes RSC-01–05 met after scoped commit checks; independent CDC review is pending. This is bounded static API/documentation consistency work, not execution, repair, or full-arc acceptance.
+**Assignment:** `slice18-resource-scheduling-contracts/cc-prompt.md`. **Source:** `719c58f245fe4a9115c7c0391d3e268c99157e2f`, clean/read-only. **Current independent assessment:** CDC accepts RSC01–05/Medium043 statically at6e0d468b. Author-proposed criterion history remains below. This is bounded static API/documentation consistency work, not execution, repair, or full-arc acceptance.
 
 ## Exact delivered paths
 
@@ -32,3 +32,30 @@
 ## Independent review boundary
 
 This close records author attestation only. CDC independently determines findings and criterion acceptance. No mutable command or child process remains. I return exactly the five listed paths and planning index to CDC for independent review. Original ECL/full-pass, coverage, SEARCH, and final arc-composition gates remain open.
+
+## Independent closure and exact evidence
+
+[CDC verification](cdc-verification.md) supplies own source extents, criterionwalk,
+currentpubliccontract/contrarycomment interpretation, actual parsedauthors and
+byte-preservation checks. [Retrospective](cdc-retrospective.md). Both normalized
+actual6e0d authorvalues present; exactfiveauthorpaths, completepre47c35report/index
+prefixes and allnineprotectedbytes unchanged; privacyexactpath/content0 and source/
+index719clean. Hashing readsbytes only, without semanticinspection/reconciliation/
+execution; unfinishedCDC preparations remain UNVERIFIED. Exec79449completed0,
+noactiveownedmutablecommand; indexreturnedCDC.18budget0/5, priorsunchanged.
+
+## Artifact inventory and three-part bubble-up
+
+1. Assigned contribution: supporting source map/manualtables in project05artifacts/
+   2026.11.22-resource-scheduling-contracts.md, one canonical full043diagnosis in
+   cumulative Rust report, one indexnote, ledger/close and CDCverification/retro.
+   All five RSC criteria accepted within this static facet, no repaired behavior.
+2. Arc implications: later repair/disposition handoff must decide supported
+   exclusive-write contract versus explicit clarification/rejection; consider
+   batchcomposition/throughput and the full read/write conflictmatrix if honoring
+   exclusivity. Futuremilestone/held06 scope remains explicit. No design/feature
+   implementation or additional runtime authority is supplied here.
+3. Silent-drop check: source795+completecompanionunits/currentvalidity/exactnames/
+   creator-derivededges/downstreamcontrols, futurecomment, calibrated finding,
+   preservation/privacy/owncommit/handback and all five ledger rows accounted.
+   Original38/31/291,49cells7/7/35, ECL/fullpass/SEARCH/finalcomposition remain open.
