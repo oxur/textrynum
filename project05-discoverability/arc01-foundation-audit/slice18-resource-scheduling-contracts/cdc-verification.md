@@ -102,3 +102,17 @@ Frozen coordinationlog /private/tmp/textrynum-resource-scheduling-slice18-run.js
 encodedprivatepattern0.18refinements0/5;17/16:0/5;15:1/5;03:2/5 unchanged.
 Original38/31/291 owners and49cells7/7/35, SEARCH/fullpass/finalcomposition pending;
 no userpause or criteriawaiver, arcactive. No repair/feature authority expanded.
+
+
+## Nonzero administrative command accounting
+
+Complete frozen-log exit enumeration found two nonzero bookkeeping commands:
+rg memory lookup1 meant no matching notes; rg2 named nonexistent
+rust-guidelines/references/07-concurrency-async.md while also searching the skill
+root. The actual guides/07-concurrency-async.md had already been completely read
+with API/ownership guides(exit0), and the subsequent scoped canonical-guide query
+completed0. No required source/guidance intake is missing, no product/platform
+failure occurred, and no refinement or source/native rerun is needed. These
+observations remain in the frozen log; positive source/criterion evidence and
+independent verdict are unchanged. This note corrects omission from the initial
+closing narrative without rewriting that commit.
