@@ -438,3 +438,14 @@ remains unanswered; no service call, setup change or scan was performed.
 
 - 2026-11-22 v1.9 — Recorded second turn-level stop, authoritative recovery and
   administrative preservation only at 2026-11-22T02:34:00-06:00; full audit remains unfinished.
+
+### Retained review-context re-entry pointer
+
+After an approved supported route is resolved, parent can reactivate the SAME
+/root/foundation_composition_review chat/context. At source719 it completed
+360tracked dispositions (344full-text files, structured Cargo.lock and15binary
+assets) plus8ignored dispositions. Its full source/guidance/static-candidate
+notes remain in that retained context; they are not accepted semantic coverage
+or a whole-arc verdict. No duplicate archive, new source analysis or execution
+is commissioned by this pointer. CDC/CC selected contexts and issued prompts
+remain preserved; no context/model change is an authorized filter workaround.
