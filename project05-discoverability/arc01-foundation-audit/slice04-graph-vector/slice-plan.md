@@ -107,3 +107,17 @@ any script statement or planning write ran. Its combined shell's final diff chec
 returned0; that is not a successful preparation witness. Encoding the prose as
 UTF-8 corrected the local script, whose next complete invocation returned0. This
 was not a source/product/test/platform failure and consumed no refinement.
+
+
+## Review01 and correction01 — 2026-11-22
+
+Candidatec8a448cb/exec79020 completed0 and returned exact six outputs/index.
+Independent review does not accept the static phase: correct false duplicate-warning,
+empty mock vector/chunks controls, current locators/population wording and exact
+factory promise; explicitly disposition valid graph cycle/normalization/zero-limit/
+edge-multiplicity cases against current public contracts. Findings are not forced.
+Detailed review is in project artifacts2026.11.22-graph-vector-cdc-review01.md;
+CDC verification retains the criterion walk, actual preserved failures and passing
+metadata/preservation checks.046–048 remain proposals; all prior IDs/gates unchanged.
+Preserved iteration01 consumes1/5 refinements,4 remain. Same retained models,
+source719 read-only, no execution or repair. CDC owns until exact-six-path handoff.

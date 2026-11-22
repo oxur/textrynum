@@ -386,3 +386,29 @@ remain open. Same retained roles; no source/native/service/SEARCH execution.
 Original04ready: exact25 paths/11,072 lines, actual own intake receipts,7GV-S
 criteria,6CCoutputs/index, initial0/5. New prompt carries terminology/stop and
 fixed programmatic preservation contracts. CDC owns until actual dispatch.
+
+
+## Review01 and correction01 — 2026-11-22
+
+Candidatec8a448cb/exec79020 completed0 and returned exact six outputs/index.
+Independent review does not accept the static phase: correct false duplicate-warning,
+empty mock vector/chunks controls, current locators/population wording and exact
+factory promise; explicitly disposition valid graph cycle/normalization/zero-limit/
+edge-multiplicity cases against current public contracts. Findings are not forced.
+Detailed review is in project artifacts2026.11.22-graph-vector-cdc-review01.md;
+CDC verification retains the criterion walk, actual preserved failures and passing
+metadata/preservation checks.046–048 remain proposals; all prior IDs/gates unchanged.
+Preserved iteration01 consumes1/5 refinements,4 remain. Same retained models,
+source719 read-only, no execution or repair. CDC owns until exact-six-path handoff.
+
+
+## Operator reaffirmation — 2026-11-22
+
+Duncan explicitly said: “Carry on with the remaining slices in Autonomous Mode
+with the same CDC/CC models :-D”. Continue the finite original04→10 static phases
+and original11 synthesis under the retained CDC gpt-6.1-sol High / CC gpt-6-luna
+High arrangement. This reaffirms ongoing authority, not source fixes, execution,
+pushes, a paused state or waived gates. Original blocked verification/SEARCH/native
+checks and unfinished preparations remain open/UNVERIFIED. Current04 routine
+review/refinement proceeds without another root acknowledgement; final whole-arc
+acceptance still requires actual evidence and independent composition.

@@ -17,3 +17,17 @@ Initial0/5 refinements. CC proposes all seven static criteria met after scoped c
 CC proposes FA-RS-046 (rkyv feature/docs exceed available persistence path), FA-RS-047 (whole-second graph cache freshness can reuse stale content), and FA-RS-048 (vector total is post-limit returned count while documented as matching count). They remain CC-proposed until CDC review. Existing accepted038/039/042/045 and Q19/Q21/slice15 questions are preserved. Original25/11072 static rows and seven scales are assessed; original pass03, all runtime/SEARCH/whole-arc gates stay pending. Budget0/5.
 
 Preservation and exact commit checks are recorded in the close and final handback. No source/native/provider/service/RPC/test/build/SEARCH operation or repair occurred.
+
+
+## Review01 and correction01 — 2026-11-22
+
+Candidatec8a448cb/exec79020 completed0 and returned exact six outputs/index.
+Independent review does not accept the static phase: correct false duplicate-warning,
+empty mock vector/chunks controls, current locators/population wording and exact
+factory promise; explicitly disposition valid graph cycle/normalization/zero-limit/
+edge-multiplicity cases against current public contracts. Findings are not forced.
+Detailed review is in project artifacts2026.11.22-graph-vector-cdc-review01.md;
+CDC verification retains the criterion walk, actual preserved failures and passing
+metadata/preservation checks.046–048 remain proposals; all prior IDs/gates unchanged.
+Preserved iteration01 consumes1/5 refinements,4 remain. Same retained models,
+source719 read-only, no execution or repair. CDC owns until exact-six-path handoff.
