@@ -710,3 +710,23 @@ planning/index after author exec84226 completed0. Any next independent source-qu
 scope requires concrete readiness and recorded prompt before dispatch.
 
 - 2026-11-22 v1.17 — Accepted bounded13, oneLow/onequestion and process retro.
+
+## Separate graph direction-contract increment — v1.18
+
+After13closure5846941, source reconnaissance establishes a genuinely independent
+public-API/code-architecture question: competing prerequisite edge conventions
+across extractor/store/direct and recursive queries/MCP routes. Slice14 records
+eight full author intake files6321lines plus persistence carrier range; CDC's own
+explicit current logical-unit read extents are in its plan, not borrowed from the
+unavailable reviewer. Static manual single-edge/three-node traces only, no Rust
+execution or SEARCH dependency. Opposite tests remain evidence of incompatible
+conventions; canonical direction and compatibility are future repair decisions.
+One root finding038+ only if supported, no route duplication/count target.
+
+Same retained models/CCsession; author then independentCDC, initial14budget0/5.
+Original04/full graph and all owner/cell/SEARCH gates remain pending; accepted
+001–010/034–036 and037question preserved. CDC owns planning/index until exact
+five-path handoff. Concrete append-prefix recipe adopts12/13 local retrospective
+lesson; cosmetic newline/status assertions are not semantic gates.
+
+- 2026-11-22 v1.18 — Recorded bounded graph direction contract before CC work.

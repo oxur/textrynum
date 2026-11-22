@@ -126,3 +126,9 @@ five CFG criteria accepted only within static configuration responsibility/guide
 scope.036 Low accepted,037 unresolved question (original Low proposal retained).
 No source/runtime/SEARCH work or original coverage/cell change. Verification/retro
 in13; final arc composition pending.0/5 refinements13;03 unchanged2/5used.
+
+Progress2026-11-22 SLICE14 READY: substantive static public-API direction scope
+recorded; eight full CC intake files6321lines plus persistence carrier range,
+CDC own explicit logical-unit extents. Manual source derivation only, competing
+conventions/compatibility unresolved. Same models;0/5 refinements. Original graph
+pass/SEARCH/whole-arc gates unchanged; see14plan/prompt before author dispatch.
