@@ -47,3 +47,20 @@ compatible correction, not mandatory new integration. Separate root mechanisms;
 no finding-count target. Stable044+ only for supported diagnoses, questions allowed.
 All results project05artifacts; prior001–043, coverage38/31/291,49cells7/7/35,
 SEARCH/fullpass/finalcomposition unchanged. No fixtures, behavior program or repair.
+
+
+## Independent review correction01 — 2026-11-22
+
+Candidate b8d0e12b0f1558d04aea1eba9aa8762860398858 returned clean, exec14104
+completed0. CDC reconciled actual complete primary reads (1334lines) and current
+Record/Stage units; source supports the raw-string countercase and Q20-01 remains
+ungraded. Before criterion acceptance, correct the actual package/namespace and
+make the future oracle conditional on the selected policy. No new behavioral
+proof, tests, representation or constraint is authorized. Current delimiter-bearing
+inputs cannot become retroactively invalid through documentation alone.
+
+Preserved cc-prompt-iteration01.md issues one bounded source-record correction;
+20refinements1/5used,4remaining. Existing CC-proposed044 and all prior statuses/
+source719/coverage/SEARCH boundaries remain. Originalprompt and b8d0 witness kept.
+CDC owns planning/index until correction dispatch, then exact five-path handoff
+with index artifact unchanged; root/CDC read-only while CC owns the index.

@@ -979,3 +979,20 @@ indeterminate. Separate mechanisms, no counttarget or new pipeline feature/CLI
 integration promise. No record-processing execution/fixtures/SEARCH/repair.20initial
 0/5, fiveCCoutputs/index only at dispatch; all prior findings/questions/coverage/
 original passes and final composition remain unchanged. Results project05artifacts.
+
+
+## Independent review correction01 — 2026-11-22
+
+Candidate b8d0e12b0f1558d04aea1eba9aa8762860398858 returned clean, exec14104
+completed0. CDC reconciled actual complete primary reads (1334lines) and current
+Record/Stage units; source supports the raw-string countercase and Q20-01 remains
+ungraded. Before criterion acceptance, correct the actual package/namespace and
+make the future oracle conditional on the selected policy. No new behavioral
+proof, tests, representation or constraint is authorized. Current delimiter-bearing
+inputs cannot become retroactively invalid through documentation alone.
+
+Preserved cc-prompt-iteration01.md issues one bounded source-record correction;
+20refinements1/5used,4remaining. Existing CC-proposed044 and all prior statuses/
+source719/coverage/SEARCH boundaries remain. Originalprompt and b8d0 witness kept.
+CDC owns planning/index until correction dispatch, then exact five-path handoff
+with index artifact unchanged; root/CDC read-only while CC owns the index.
