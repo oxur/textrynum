@@ -107,3 +107,10 @@ unchanged. Parent-confirmed feedback17c6ecb is submitted; do not resubmit.
 Arc-planv1.14 and the durable CC prompt propagate the precise terminology/stop
 contract. Slice12 requires separate CC proposal and CDC static acceptance;
 rows02–08 remain open and core38/7+001–010 accepted unchanged.
+
+Progress2026-11-22 SLICE12 ACCEPTED: candidateb382da16 independently reviewed
+byCDC, allfiveAPIcriteria/26feature-key relationships accepted statically, twoLow
+DOCfindings034/035 accepted. Original38/7whole-owner/cell acceptance unchanged;
+SEARCH and rows02–08 remain open. No source/runtime/CI work. See slice12 CDC
+verification/retro. Whole-arc composition still pending; next separate scope
+requires its own plan/prompt. Slice12 refinements0/5; slice03 remains2/5used.

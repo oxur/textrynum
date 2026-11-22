@@ -1,6 +1,7 @@
 # Static Cargo feature and public API consistency review
 
-Status: prepared for exact retained LunaHigh author after CDC source reconnaissance.
+Status: independently accepted bounded static review at CC candidateb382da16;
+all five API criteria complete. Final whole-arc composition remains pending.
 Source719 read-only; planning/index has a single mutation owner. New bounded
 increment12 does not replace original04–11 or advance blocked SEARCH criteria.
 
@@ -43,3 +44,8 @@ five refinements default; no substitution and no broader runtime work. If a task
 is platform-flagged, stop affected work/report without variants or retries.
 
 Initial assignment:0of5 refinements used; slice03 remains2of5used/3remaining.
+
+Acceptance2026-11-22: two Low documentation findings034/035 accepted statically;
+no26-key declaration/gate mismatch found. No source-file owner/pass-scale cell
+is closed by this facet. See CDC verification/retrospective;0of5 refinements
+used, and slice03 remains2of5used/3remaining with all SEARCH gates pending.
