@@ -6424,7 +6424,7 @@
       ]
     },
     "arc00_execution": {
-      "status": "slice02 unaccepted working tree: all selected compatibility oracles executed with genuine statuses; final1.94/native/package/provider/candidate CI and independent close pending",
+      "status": "pinned full-upgrade candidate719c58f pushed for actual CI44982217154; independent affected MSRV/runtime review and CC evidence-only corrections in progress",
       "source_branch": "codex/ci-dependencies",
       "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
       "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",
@@ -6457,7 +6457,7 @@
         }
       },
       "source_candidate": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
-      "source_mutation_owner": "CC exact-Luna High session01a2006e-2618-7721-b361-1bd809d21d87, owned exec30498, exclusive until explicit return",
+      "source_mutation_owner": "CDC exclusive after explicit CC return at719c58f; CC iteration04 owns only named planning documentation, no source/index/Cargo/commits",
       "baseline_candidate_ci_run": 44957414892,
       "CC_session": "01a2006e-2618-7721-b361-1bd809d21d87",
       "baseline_candidate_ci_result": {
@@ -6481,14 +6481,14 @@
       },
       "baseline_CC_session": "01a2000f-9f2d-7660-97b4-f54373f19a94",
       "slice02": {
-        "prompt": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration03.md",
+        "prompt": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration04.md",
         "rows": 7,
         "external_packages": 64,
         "manifests": 42,
         "isolated_feature_selections": 17,
         "entry_source": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
         "CC_session": "01a2006e-2618-7721-b361-1bd809d21d87",
-        "ownership": "CC exclusive source/index while exec30498 active; CDC design/plans/independent review",
+        "ownership": "CDC exclusive source/index/Cargo/planningGit; CC named planning document/artifact corrections only",
         "actual_turn_context": {
           "timestamp": "2026-11-22T02:22:00.259Z",
           "model": "gpt-6-luna",
@@ -6520,8 +6520,8 @@
           "later17_replay": "directly captured Cargo statuses,17 exit0/full success logs",
           "acceptance": "all DEP2 rows open; real Cargo status plus full logs required"
         },
-        "prepared_correction": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration03.md",
-        "prepared_correction_status": "iteration03 actually resumed same session in owned exec30498",
+        "prepared_correction": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration04.md",
+        "prepared_correction_status": "issued evidence-only correction after explicit iteration03 source return; not yet resumed",
         "new_compatibility_review": {
           "metadata_filter": "bounded native row-ID scan/batching/MAX/zero and260match runtime controls passed; no all-N vector candidates/upfront caller-limit allocation; final review pending",
           "english_stopwords": "explicit Operator preservation choice now received after ordinary-authority implementation; exact1298-term product oracle passed, notices/provenance and real package inclusion still reviewed",
@@ -6564,7 +6564,24 @@
           "23572bf936cd99395cabad857f91fdd985a96bbd",
           "719c58f245fe4a9115c7c0391d3e268c99157e2f"
         ],
-        "package_contents": "all41actual archives/443files pinned719c58f, no owned temporary examples; FTS1298-term runtime JSON and full license/provenance independently byte/hash-checked in actual archive; --no-verify packaging only, no publication"
+        "package_contents": "all41actual archives/443files pinned719c58f, no owned temporary examples; FTS1298-term runtime JSON and full license/provenance independently byte/hash-checked in actual archive; --no-verify packaging only, no publication",
+        "candidate_ci_run": 44982217154,
+        "candidate_ci_status": "in_progress",
+        "iteration03_return": {
+          "exec": 30498,
+          "exit": 0,
+          "source": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+          "clean": true,
+          "remaining_owned_processes": 0
+        },
+        "private_pattern_scan": {
+          "source_files": 360,
+          "planning_files": 510,
+          "new_source_objects": 72,
+          "path_hits": 0,
+          "content_hits": 0,
+          "method": "encoded case-insensitive byte pattern, counts only"
+        }
       }
     },
     "audit_intake_observations": [
