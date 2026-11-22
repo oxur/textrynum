@@ -10,7 +10,7 @@ description = "Generic auth primitives for Fabryk — AuthenticatedUser, TokenVa
 
 [dependencies]
 axum = { workspace = true }
-http = "1"
+http = "1.5.0"
 tower = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }

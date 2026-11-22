@@ -11,7 +11,7 @@ description = "Full-text search infrastructure for Fabryk (Tantivy backend)"
 
 [features]
 default = []
-fts-tantivy = ["dep:tantivy", "dep:stop-words"]
+fts-tantivy = ["dep:tantivy"]
 
 [dependencies]
 fabryk-core = { version = "0.5.0", path = "../fabryk-core" }
@@ -37,7 +37,6 @@ chrono = { workspace = true }
 
 # Full-text search (feature-gated)
 tantivy = { workspace = true, optional = true }
-stop-words = { workspace = true, optional = true }
 
 [dev-dependencies]
 tempfile = { workspace = true }

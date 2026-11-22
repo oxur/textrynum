@@ -24,13 +24,13 @@ failsafe = { workspace = true }
 twyg = { workspace = true }
 tracing = { workspace = true }
 # HTTP client for Claude API
-reqwest = { version = "0.13", features = ["json"] }
+reqwest = { version = "0.13.5", features = ["json"] }
 
 [dev-dependencies]
 proptest = { workspace = true }
 tempfile = { workspace = true }
 tokio = { workspace = true, features = ["test-util"] }
-wiremock = "0.6"
+wiremock = "0.6.5"
 
 [lints.rust]
 unsafe_code = "forbid"

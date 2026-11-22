@@ -37,7 +37,7 @@ thiserror = { workspace = true }
 [dev-dependencies]
 ecl-pipeline-state = { path = "../ecl-pipeline-state", version = "0.5.0" }
 tokio = { workspace = true, features = ["test-util"] }
-wiremock = "0.6"
+wiremock = "0.6.5"
 tempfile = { workspace = true }
 tracing = { workspace = true }
 

@@ -23,7 +23,7 @@ tracing = { workspace = true }
 
 [dev-dependencies]
 tempfile = { workspace = true }
-wiremock = "0.6"
+wiremock = "0.6.5"
 
 [lints.rust]
 unsafe_code = "forbid"
