@@ -1,56 +1,33 @@
-# Slice14 — graph direction contract: author close
+# Slice14 — graph direction contract: independent close
 
-Status: CC author-proposed complete; CDC independent review pending. Source
-719c58f245fe4a9115c7c0391d3e268c99157e2f remained read-only. No criterion is
-independently accepted by this report. The assignment closed is the initial
-prompt at `/Users/oubiwann/lab/oxur/textrynum/.worktrees/planning/project05-discoverability/arc01-foundation-audit/slice14-graph-direction-contracts/cc-prompt.md`.
+**Accepted bounded static assessment** at CC candidate
+db8fad2bc72be6e8f01aab8c65bb00ccb27b4d01. CDC independently traced the exact
+controlling method/type/producer/store/query/MCP bodies and opposite tests,
+checked the complete author intake/readback receipt and both manual derivation
+tables, and accepts all five DIR criteria. See [CDC verification](cdc-verification.md).
 
-## Ledger walk
+038 Medium is one static public-API/code-architecture root finding: conflicting
+prerequisite edge conventions cannot satisfy producer, direct and recursive
+queries together. MCP routes inherit that inconsistency. Tests encode both
+conventions; they were read, not run. get_related and edge carriers are correct
+for their stated inputs. Generic builder_version exists, but the bounded carrier
+range supplies no orientation-specific transition policy. Canonical direction
+and manual/persisted compatibility remain explicit future repair-owner decisions.
+No source or migration implementation occurred.
 
-| Row | CC disposition | Evidence |
-| --- | --- | --- |
-| DIR-01 | CC-proposed | Eight complete source files/6,321 lines, required persistence carrier range, applicable retained guidance, and source-cited readback recorded in the [companion artifact](../../artifacts/2026.11.22-graph-direction-contracts.md). |
-| DIR-02 | CC-proposed | Producer/store/direct and recursive query/MCP boundaries traced; opposite assertions preserved; one consolidated FA-RS-038 proposed. |
-| DIR-03 | CC-proposed | Manual single-edge and three-node maps cover both conventions, distinguish direct/recursive sets, BFS/topological order, and identify negative controls. No executable derivation or test run. |
-| DIR-04 | CC-proposed | FA-RS-038 includes source, severity, scale, mechanism, confidence, owner, repair direction, compatibility decision requirement and future oracle. Canonical direction remains unresolved. |
-| DIR-05 | CC-proposed | Exact five-path diff, append prefixes, coverage/SEARCH hashes and trailers are checked for the author handback; CDC review remains pending. |
+The [companion artifact](../../artifacts/2026.11.22-graph-direction-contracts.md)
+contains intake/source maps/tables/negative controls, while the cumulative report
+holds the detailed finding once. CDC reconciled actual completed privacy checks,
+qualified generic version metadata and coverage wording, and added the explicit
+non-Prerequisite contrary control. No author refinement was required for these
+source-backed review clarifications;0/5 used. The original author candidate and
+issued prompt remain preserved. [Retrospective](cdc-retrospective.md) records the
+byte-prefix recipe's observed use without inferring a controlled improvement.
 
-## Result and artifact inventory
-
-The slice produced one supporting artifact at the project05 results home explicitly
-required by the arc plan: [graph direction contract artifact](../../artifacts/2026.11.22-graph-direction-contracts.md). Detailed finding text appears once in the cumulative [Rust audit results](../../artifacts/2026.11.22-audit-results-rust.md), with a single root finding consolidating extractor, store, direct/recursive query, fixture/test and MCP symptoms.
-
-The static derivation finds that Relationship documentation gives semantic A -> B
-direction, extractors emit current-card -> listed-prerequisite, and downstream
-storage preserves endpoints. Direct helpers and free dependents follow one edge
-convention; recursive prerequisites/learning path follow the other. Their current
-source tests preserve opposing assertions. No Rust, Cargo, test, runtime, fixture,
-SEARCH, provider, security or external-client operation occurred. No source edit
-or migration was made. This does not establish a test result, deployed impact,
-whole-crate correctness, or full graph-pass acceptance.
-
-## Bubble-up to the arc
-
-1. **Assigned capability:** this bounded increment answered whether prerequisite
-   producer/store/query/MCP direction contracts compose consistently. Static
-   evidence supports one root finding and a concrete future repair decision. The
-   deliverable is the artifact and report append at the planning commit identified
-   in handback; no implementation or execution claim is made.
-2. **Plan feedback:** the arc breakdown already allows source-guided graph
-   assessment and the prompt explicitly required a canonical-direction and
-   compatibility decision to remain open. No new slice scope or sequencing
-   change is justified by this bounded result; graph/vector pass03 and final arc
-   composition remain pending.
-3. **Silent-drop check:** delivered all eight full-file reads, persistence range,
-   exact producers/store/query/MCP traces, both manual chain conventions,
-   opposite source tests, at least five negative controls, one consolidated
-   finding proposal, limits, and preservation/ownership accounting. Excluded as
-   specified: code repair, canonical orientation selection, migration design
-   execution, tests/runtime, SEARCH, other graph algorithms/cache/vector behavior,
-   whole-file acceptance and full arc/pass closure. No assigned item was silently
-   dropped.
-
-Ownership of the five assigned planning paths and planning index is explicitly
-returned to CDC for independent review. All finding acceptance, ledger closure,
-pass03 coverage and arc composition gates remain pending. No mutable command
-remains active.
+CCexec72858 completed0 and returned the exact five outputs/planning index. CDC
+owns planning/index; no mutable author process remains. Source/index719 and
+coverageJSON/four SEARCH partials are unchanged. Preparations stay unverified.
+Original owner coverage38accepted/31proposed/291pending and49cells7accepted/
+7proposed/35pending remain; no full graph/MCP/SEARCH gate or final independent arc
+composition is closed.03budget stays2/5used. Further permitted work needs its own
+concrete independent scope; the full arc is active and incomplete.

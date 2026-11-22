@@ -132,3 +132,9 @@ recorded; eight full CC intake files6321lines plus persistence carrier range,
 CDC own explicit logical-unit extents. Manual source derivation only, competing
 conventions/compatibility unresolved. Same models;0/5 refinements. Original graph
 pass/SEARCH/whole-arc gates unchanged; see14plan/prompt before author dispatch.
+
+Progress2026-11-22 SLICE14 ACCEPTED: candidatedb8fad2b independently reviewed byCDC;
+allfiveDIRcriteria accepted for static direction facet, oneMedium038 root. Both
+conventions/opposite tests preserved; canonical direction/compatibility unresolved.
+No Rust/runtime proof or original owner/cell/graph/MCP/SEARCH gate change. See14
+CDCverification/retro.0/5 refinements14;03 remains2/5used. Finalarc open.

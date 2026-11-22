@@ -1,6 +1,7 @@
 # Graph prerequisite direction: public API consistency
 
-Status: ready for bounded static assignment after13closure5846941. Same selected
+Status: independently accepted bounded static scope at candidatedb8fad2b,
+after13closure5846941. Same selected
 retained LunaHigh author and independent Sol6.1High CDC;0/5 refinements initially.
 Original slice04/full graph pass remains pending. This increment checks a code/
 architecture contract across extraction, graph storage, public queries and MCP
@@ -39,3 +40,8 @@ All results directly project05/artifacts; CC owns five paths only. Exact prompt
 sets readback/guidance, terminology/stop and append-byte recipe. CDC independently
 checks five DIR criteria. No original owner/cell/SEARCH gate changes. Final
 independent whole-arc composition is still required.03budget remains2/5used.
+
+Acceptance2026-11-22: all five DIR criteria supported within the direction facet;
+038 Medium accepted statically, canonical direction/compatibility unresolved.
+No original whole-file/pass-scale/SEARCH gate change.0/5 author refinements used;
+see CDC verification/retrospective.

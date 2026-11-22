@@ -730,3 +730,21 @@ five-path handoff. Concrete append-prefix recipe adopts12/13 local retrospective
 lesson; cosmetic newline/status assertions are not semantic gates.
 
 - 2026-11-22 v1.18 — Recorded bounded graph direction contract before CC work.
+
+## Accepted bounded graph direction review — v1.19
+
+Slice14 candidatedb8fad2b independently accepted for five DIR criteria.038 Medium
+is one source-grounded public-API/code-architecture root finding across producer/
+store/direct/recursive/MCP direction semantics, with both convention tables and
+opposite source tests. No Rust/client execution claim; canonical direction and
+manual/persisted compatibility remain future repair-owner decisions. Generic
+builder_version metadata remains explicit; no absence of all versioning claimed.
+
+Whole-owner coverage38accepted/31proposed/291pending and49cells7accepted/7proposed/
+35pending are unchanged. Accepted findings001–010/034–036/038;037 remains a
+question and011–033 unchanged. Original graph/MCP/SEARCH gates and final arc
+composition remain open. Same retained models;14refinements0/5,03 remains2/5used.
+Author72858completed0, no active mutable process; CDC owns planning/index for
+closure/reassessment. Next work requires useful independent concrete scope.
+
+- 2026-11-22 v1.19 — Accepted static direction contract, Medium038 and local retro.
