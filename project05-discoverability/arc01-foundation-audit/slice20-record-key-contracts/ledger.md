@@ -26,3 +26,8 @@ Preserved cc-prompt-iteration01.md issues one bounded source-record correction;
 source719/coverage/SEARCH boundaries remain. Originalprompt and b8d0 witness kept.
 CDC owns planning/index until correction dispatch, then exact five-path handoff
 with index artifact unchanged; root/CDC read-only while CC owns the index.
+
+
+## Correction01 completion — 2026-11-22
+
+Applied only the requested package/namespace and conditional-oracle correction. The actual package is `ecl-stages` and the namespace is `ecl_stages::aggregate`; current delimiter-bearing values remain admissible under the inspected source, with no documentation-only retroactive narrowing. The future oracle now branches on an explicit approved policy. FA-RS-044 remains CC-proposed pending CDC review; Q20-01 remains ungraded. No tests, programs, fixtures, or repairs were performed. Initial candidate history and its failed review remain preserved; refinement budget is now 1/5 used, 4 remaining. Pre-commit checks: retained report prefix and audit-index bytes matched; diff whitespace check passed; source worktree remained clean at719; exact-owned-path privacy-pattern counts were zero. Hash-only checks matched seven of the nine inherited protected files; `2026.11.22-content-search-cdc-probe.toml` and `2026.11.21-audit-coverage.json` had the expected byte lengths but did not match the inherited SHA-256 values. Their contents were not inspected, and the unfinished CDC evidence remains UNVERIFIED. The audit index stayed byte-identical. Commit/trailer verification and exact handback are recorded in the closing report and final return.

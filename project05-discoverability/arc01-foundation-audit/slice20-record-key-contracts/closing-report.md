@@ -16,7 +16,7 @@
 - CC proposes one Medium aggregate finding, FA-RS-044, for two valid composite string tuples that map to the same unescaped `|`-joined key and therefore aggregate together. Full source, severity, owner, fix direction, ID compatibility, and later oracle are recorded once in the cumulative Rust report.
 - Assemble's per-stream index replacement for repeated definitions with different foreign keys is retained as Q20-01, ungraded. The public config is deserializable, but current tests/docs do not establish same-stream repetition as supported.
 - No product, record-processing program, fixture, test, Rust/Cargo/build, RPC/service/provider, SEARCH, source/CI repair, pipeline integration, or external action occurred. Source stayed at719.
-- Findings001–043 and Q19-01–04, original coverage38/31/291 and49cells7/7/35, SEARCH, full ECL/pass-scale and final-arc gates remain unchanged. Slice20 refinement budget remains0/5.
+- Findings001–043 and Q19-01–04, original coverage38/31/291 and49cells7/7/35, SEARCH, full ECL/pass-scale and final-arc gates remain unchanged. At the initial close the refinement budget was0/5; correction01 now uses1/5, with4 remaining. The initial candidate/review history is preserved.
 
 ## Ledger walk
 
@@ -41,3 +41,10 @@ Produced `project05-discoverability/artifacts/2026.11.22-record-key-contracts.md
 ## Independent review boundary
 
 This is CC author attestation only. CDC independently determines finding acceptance, question calibration, and criterion status. No mutable command or child process remains. I return exactly the five listed paths and planning index to CDC for independent review.
+
+
+## Correction01 — 2026-11-22
+
+Corrected FA-RS-044 routing to the actual `ecl-stages` package / `ecl_stages::aggregate` namespace and made its future oracle conditional on an explicit approved policy. The current source continues to accept delimiter-bearing string values; documentation alone does not make the demonstrated inputs invalid. Under a future approved policy that supports these values, verify distinct groups/sums1 and2, copied group fields, and ID compatibility. Under an explicitly approved narrowing policy, verify predictable rejection before coalescing, without simultaneously requiring successful two-group output. Controls follow the selected policy. No policy or repair was chosen. FA-RS-044 remains CC-proposed pending CDC review; Q20-01 remains ungraded. No tests, programs, fixtures, source edits, or repairs occurred.
+
+Pre-commit checks: the cumulative Rust report retained its exact 107,669-byte historical prefix; the 20,603-byte audit index matched its correction-baseline SHA-256 and its earlier 20,053-byte prefix; `git diff --check` passed; source remained clean at719; the encoded privacy-pattern count was zero in each of the five owned paths. Hash-only checks matched seven of nine inherited protected-file fingerprints. The 541-byte `2026.11.22-content-search-cdc-probe.toml` and 541,517-byte `2026.11.21-audit-coverage.json` matched their recorded sizes but not their inherited hashes; neither content was inspected, and the unfinished CDC evidence remains UNVERIFIED. No assertion is made that those two fingerprints were unchanged from the inherited manifest. The index artifact is an authorized handback path and remained byte-identical.
