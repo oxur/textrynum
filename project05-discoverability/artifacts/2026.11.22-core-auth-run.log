@@ -1,0 +1,686 @@
+   Compiling core-auth-probe v0.1.0 (/private/tmp/arc01-slice02-probe)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.39s
+     Running `/private/tmp/arc01-slice02-cargo-target/debug/core-auth-probe`
+AUTH token=infra status=401 Unauthorized challenge="Bearer resource_metadata=\"/.well-known/oauth-protected-resource\"" body={"error":{"category":"authentication","message":"failed to fetch JWKS: fixture upstream timeout"}}
+AUTH token=invalid status=401 Unauthorized challenge="Bearer resource_metadata=\"/.well-known/oauth-protected-resource\"" body={"error":{"category":"authentication","message":"invalid token signature: fixture invalid token"}}
+AUTH token=valid status=200 OK challenge="<absent>" body=inner-ok
+AUTH empty status=401 Unauthorized inner_calls=1
+AUTH lower_scheme status=401 Unauthorized inner_calls=1
+FILE get_item traversal: OK content="Acme outside fixture"
+FILE get_guide traversal: OK content="Acme guide outside fixture"
+FILE directory_named_md: ERR I/O error at /var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmpCCIT8V/content/folder.md: Is a directory (os error 21)
+LIFECYCLE max_attempts=0 state=stopped
+LIFECYCLE successful_retry attempts=2 state=ready
+LIFECYCLE exhausted state=failed: fixture exhausted
+
+thread 'tokio-rt-worker' (324856975) panicked at src/main.rs:95:153:
+fixture panic
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+LIFECYCLE panic join_error=true state=starting wait_ready=Err("Service 'panic-init' not ready after 5ms (state: starting)")
+LIFECYCLE manually_ready_empty_slot=None
+DISCOVERY path=/.well-known/oauth-authorization-server status=200 OK metadata={"authorization_endpoint":"https://login.acme.example/o/oauth2/v2/auth","code_challenge_methods_supported":["S256"],"grant_types_supported":["authorization_code","refresh_token"],"id_token_signing_alg_values_supported":["RS256"],"issuer":"https://login.acme.example","jwks_uri":"https://www.googleapis.com/oauth2/v3/certs","response_types_supported":["code"],"scopes_supported":["openid","email","profile"],"subject_types_supported":["public"],"token_endpoint":"https://oauth2.googleapis.com/token"}
+DISCOVERY path=/.well-known/oauth-authorization-server/mcp status=200 OK metadata={"authorization_endpoint":"https://accounts.google.com/o/oauth2/v2/auth","code_challenge_methods_supported":["S256"],"grant_types_supported":["authorization_code","refresh_token"],"id_token_signing_alg_values_supported":["RS256"],"issuer":"https://accounts.google.com","jwks_uri":"https://www.googleapis.com/oauth2/v3/certs","response_types_supported":["code"],"scopes_supported":["openid","email","profile"],"subject_types_supported":["public"],"token_endpoint":"https://oauth2.googleapis.com/token"}
+DISCOVERY path=/.well-known/oauth-protected-resource status=200 OK metadata={"authorization_servers":["https://login.acme.example"],"bearer_methods_supported":["header"],"resource":"https://api.acme.example/mcp","scopes_supported":["openid","email","profile"]}
+DISCOVERY path=/.well-known/oauth-protected-resource/mcp status=200 OK metadata={"authorization_servers":["https://login.acme.example"],"bearer_methods_supported":["header"],"resource":"https://api.acme.example/mcp","scopes_supported":["openid","email","profile"]}
+GOOGLE local_jwks_fixture unavailable: Operation not permitted (os error 1); no provider request attempted
+REDIS mock get_u64 invalid=Err(Serialization("invalid digit found in string"))
+REDIS mock incr_by invalid-current=Ok(1)
+REDIS mock scan_keys glob_a_question_star=Ok([])
+REDIS mock get_multi_json invalid-json=Ok([])
+
+PROBE_EXIT=0
+    Finished `test` profile [optimized + debuginfo] target(s) in 0.41s
+     Running unittests src/lib.rs (/private/tmp/arc01-slice02-cargo-target/debug/deps/fabryk_acl-4691eab0118752e8)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (/private/tmp/arc01-slice02-cargo-target/debug/deps/fabryk_auth-73d7ba1aca8c8496)
+
+running 16 tests
+test error::tests::test_auth_error_display ... ok
+test error::tests::test_auth_error_invalid_domain_display ... ok
+test error::tests::test_is_client_error ... ok
+test middleware::tests::test_extract_bearer_token_wrong_scheme ... ok
+test middleware::tests::test_extract_bearer_token_valid ... ok
+test user::tests::test_email_from_parts_anonymous ... ok
+test user::tests::test_authenticated_user_clone ... ok
+test middleware::tests::test_extract_bearer_token_missing ... ok
+test user::tests::test_user_from_parts_absent ... ok
+test middleware::tests::test_unauthorized_response_status ... ok
+test user::tests::test_email_from_parts_present ... ok
+test user::tests::test_user_from_parts_present ... ok
+test middleware::tests::test_middleware_disabled_passes_through ... ok
+test middleware::tests::test_middleware_invalid_token_returns_401 ... ok
+test middleware::tests::test_middleware_missing_token_returns_401 ... ok
+test middleware::tests::test_middleware_valid_token_passes_and_injects_user ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (/private/tmp/arc01-slice02-cargo-target/debug/deps/fabryk_auth_google-a0c074a00b1adcbd)
+
+running 9 tests
+test tests::test_check_domain_empty_allows_any ... ok
+test tests::test_check_domain_fallback_from_email ... ok
+test tests::test_check_domain_hd_takes_precedence ... ok
+test tests::test_validate_wrong_audience ... ok
+test tests::test_validate_empty_domain_allows_any ... ok
+test tests::test_validate_expired_jwt ... ok
+test tests::test_validate_valid_jwt ... ok
+test tests::test_validate_missing_email ... ok
+test tests::test_validate_wrong_domain ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running unittests src/lib.rs (/private/tmp/arc01-slice02-cargo-target/debug/deps/fabryk_core-b217c24715bd0285)
+
+running 177 tests
+test error::tests::test_error_file_not_found ... ok
+test error::tests::test_error_config ... ok
+test deploy::tests::test_service_name_returns_none_when_k_service_absent ... ok
+test deploy::tests::test_revision_name_returns_none_when_k_revision_absent ... ok
+test error::tests::test_error_io_constructor ... ok
+test error::tests::test_error_from_io_error ... ok
+test error::tests::test_error_invalid_path ... ok
+test deploy::tests::test_is_cloud_run_returns_false_when_k_service_absent ... ok
+test error::tests::test_error_display_all_variants ... ok
+test error::tests::test_error_io_from ... ok
+test error::tests::test_error_from_json_error ... ok
+test error::tests::test_error_not_found ... ok
+test error::tests::test_error_io_with_path ... ok
+test error::tests::test_error_not_found_msg ... ok
+test error::tests::test_error_operation ... ok
+test error::tests::test_error_parse ... ok
+test error::tests::test_error_source_io ... ok
+test error::tests::test_error_source_non_io ... ok
+test error::tests::test_log_error_chain_nested ... ok
+test error::tests::test_log_error_chain_no_source ... ok
+test error::tests::test_log_error_chain_with_source ... ok
+test error::tests::test_result_alias ... ok
+test orchestration::tests::test_managed_service_with_description ... ok
+test orchestration::tests::test_managed_service_new ... ok
+test orchestration::tests::test_orchestrator_default ... ok
+test orchestration::tests::test_orchestrator_register_and_handle ... ok
+test orchestration::tests::test_orchestrator_status_summary ... ok
+test orchestration::tests::test_orchestrator_not_ready_when_one_service_not_ready ... ok
+test orchestration::tests::test_orchestrator_all_ready_when_all_services_ready ... ok
+test orchestration::tests::test_orchestrator_empty_all_ready ... ok
+test probe::tests::test_backend_probe_as_arc_dyn ... ok
+test probe::tests::test_backend_probe_default_document_count ... ok
+test probe::tests::test_backend_probe_default_kind ... ok
+test probe::tests::test_backend_probe_default_last_indexed ... ok
+test probe::tests::test_backend_probe_document_count_none ... ok
+test probe::tests::test_backend_probe_document_count_some ... ok
+test probe::tests::test_backend_probe_is_object_safe ... ok
+test probe::tests::test_backend_probe_kind ... ok
+test probe::tests::test_backend_probe_last_indexed_none ... ok
+test probe::tests::test_backend_probe_last_indexed_some ... ok
+test probe::tests::test_backend_probe_name ... ok
+test probe::tests::test_backend_probe_ready_false ... ok
+test probe::tests::test_backend_probe_ready_true ... ok
+test probe::tests::test_backend_probe_send_sync ... ok
+test probe::tests::test_backend_probe_vec_of_arc_dyn ... ok
+test service::tests::test_retry_config_default ... ok
+test service::tests::test_service_handle_clone_shares_state ... ok
+test service::tests::test_service_handle_debug ... ok
+test service::tests::test_service_handle_initial_state ... ok
+test service::tests::test_service_handle_send_sync ... ok
+test service::tests::test_service_handle_state_transitions ... ok
+test service::tests::test_service_handle_subscribe ... ok
+test service::tests::test_service_handle_wait_ready_already_failed ... ok
+test service::tests::test_service_handle_wait_ready_already_ready ... ok
+test service::tests::test_service_state_display ... ok
+test service::tests::test_service_state_predicates ... ok
+test service::tests::test_transitions_cloned_handle_shares_log ... ok
+test service::tests::test_spawn_with_retry_succeeds_first_attempt ... ok
+test service::tests::test_transitions_initial_state_recorded ... ok
+test service::tests::test_transitions_records_all_changes ... ok
+test service::tests::test_wait_all_ready_all_already_ready ... ok
+test service::tests::test_wait_all_ready_empty_services ... ok
+test service::tests::test_wait_all_ready_one_fails ... ok
+test slot::tests::test_backend_slot_send_sync ... ok
+test slot::tests::test_clone_shares_backend ... ok
+test slot::tests::test_debug_empty ... ok
+test slot::tests::test_debug_with_value ... ok
+test slot::tests::test_inner_returns_arc ... ok
+test slot::tests::test_new_slot_not_ready ... ok
+test slot::tests::test_require_when_failed ... ok
+test slot::tests::test_require_when_not_ready ... ok
+test slot::tests::test_require_when_starting ... ok
+test slot::tests::test_set_and_require ... ok
+test slot::tests::test_set_without_ready ... ok
+test state::tests::test_app_state_arc_count ... ok
+test state::tests::test_app_state_across_tasks ... ok
+test state::tests::test_app_state_clone ... ok
+test state::tests::test_app_state_clone_independence ... ok
+test state::tests::test_app_state_config_arc ... ok
+test state::tests::test_app_state_config_ref ... ok
+test state::tests::test_app_state_content_path ... ok
+test state::tests::test_app_state_debug ... ok
+test state::tests::test_app_state_from_arc ... ok
+test state::tests::test_app_state_new ... ok
+test state::tests::test_app_state_project_name ... ok
+test state::tests::test_app_state_send_sync ... ok
+test traits::tests::test_config_provider_base_path ... ok
+test traits::tests::test_config_provider_cache_path_default ... ok
+test traits::tests::test_config_provider_cache_path_override ... ok
+test traits::tests::test_config_provider_content_path ... ok
+test traits::tests::test_config_provider_content_path_multiple ... ok
+test traits::tests::test_config_provider_is_clone ... ok
+test traits::tests::test_config_provider_project_name ... ok
+test traits::tests::test_config_provider_send_sync ... ok
+test service::tests::test_spawn_with_retry_exhausts_attempts ... ok
+test service::tests::test_spawn_with_retry_succeeds_after_failures ... ok
+test util::files::tests::test_count_files_empty ... ok
+test util::files::tests::test_count_files ... ok
+test util::files::tests::test_exists_directory ... ok
+test util::files::tests::test_find_options_builder ... ok
+test util::files::tests::test_find_file_by_id_prefix_match ... ok
+test util::files::tests::test_find_options_default ... ok
+test util::files::tests::test_find_file_by_id_exact_match ... ok
+test service::tests::test_service_handle_elapsed ... ok
+test service::tests::test_service_handle_wait_ready_failed ... ok
+test service::tests::test_transitions_timestamps_monotonic ... ok
+test util::ids::tests::test_humanize_id_double_separator ... ok
+test util::files::tests::test_find_file_by_id_dash_prefix ... ok
+test util::ids::tests::test_humanize_id_empty ... ok
+test util::ids::tests::test_humanize_id_kebab_case ... ok
+test util::ids::tests::test_humanize_id_roundtrip_with_normalize ... ok
+test util::ids::tests::test_humanize_id_single_word ... ok
+test util::ids::tests::test_humanize_id_snake_case ... ok
+test util::ids::tests::test_id_from_path_hidden_file ... ok
+test util::ids::tests::test_id_from_path_nested ... ok
+test util::ids::tests::test_id_from_path_no_extension ... ok
+test util::ids::tests::test_id_from_path_simple ... ok
+test util::ids::tests::test_id_from_path_with_underscores ... ok
+test util::ids::tests::test_id_from_path_no_stem ... ok
+test util::ids::tests::test_normalize_id_empty ... ok
+test util::ids::tests::test_normalize_id_already_normalized ... ok
+test util::ids::tests::test_normalize_id_mixed_case ... ok
+test util::ids::tests::test_normalize_id_mixed_separators ... ok
+test util::ids::tests::test_normalize_id_simple ... ok
+test util::ids::tests::test_normalize_id_uppercase ... ok
+test util::ids::tests::test_normalize_id_with_spaces ... ok
+test util::ids::tests::test_normalize_id_with_underscores ... ok
+test util::ids::tests::test_normalize_id_with_whitespace ... ok
+test util::paths::tests::test_binary_path_exists ... ok
+test util::paths::tests::test_binary_dir_exists ... ok
+test util::paths::tests::test_expand_tilde_relative_without_tilde ... ok
+test util::paths::tests::test_expand_tilde_tilde_only ... ok
+test util::paths::tests::test_expand_tilde_tilde_with_slash ... ok
+test util::files::tests::test_read_file_not_found ... ok
+test util::files::tests::test_list_subdirectories_empty ... ok
+test util::paths::tests::test_expand_tilde_with_tilde ... ok
+test util::files::tests::test_find_file_by_id_not_found ... ok
+test util::paths::tests::test_expand_tilde_without_tilde ... ok
+test util::paths::tests::test_find_dir_with_marker_no_parent ... ok
+test util::paths::tests::test_find_dir_with_marker_not_found ... ok
+test util::paths::tests::test_max_walk_levels_value ... ok
+test util::resolver::tests::test_builder_pattern ... ok
+test util::resolver::tests::test_config_dir_nonexistent_env_var ... ok
+test util::files::tests::test_find_all_files_file_info ... ok
+test util::resolver::tests::test_env_var ... ok
+test util::resolver::tests::test_new_kebab_case_name ... ok
+test util::resolver::tests::test_config_dir_with_fallback ... ok
+test util::resolver::tests::test_new_simple_name ... ok
+test util::resolver::tests::test_new_snake_case_name ... ok
+test util::resolver::tests::test_project_root_nonexistent ... ok
+test util::files::tests::test_exists ... ok
+test util::resolver::tests::test_config_dir_from_env ... ok
+test util::time::tests::test_days_to_date_epoch ... ok
+test util::time::tests::test_days_to_date_known ... ok
+test util::time::tests::test_iso8601_now_format ... ok
+test orchestration::tests::test_orchestrator_wait_all_ready_services_transition ... ok
+test service::tests::test_wait_all_ready_parallel_startup ... ok
+test service::tests::test_service_handle_wait_ready_success ... ok
+test util::resolver::tests::test_project_root_from_env ... ok
+test util::files::tests::test_find_all_files_extension_filter ... ok
+test util::files::tests::test_read_file ... ok
+test util::files::tests::test_find_file_by_id_multiple_patterns ... ok
+test util::files::tests::test_list_subdirectories ... ok
+test util::files::tests::test_find_file_by_id_nested ... ok
+test util::resolver::tests::test_project_root_with_fallback ... ok
+test util::files::tests::test_find_file_by_id_underscore_prefix ... ok
+test util::files::tests::test_find_all_files_max_depth ... ok
+test util::paths::tests::test_find_dir_with_marker_nested ... ok
+test util::files::tests::test_find_all_files ... ok
+test util::paths::tests::test_find_dir_with_marker_basic ... ok
+test util::files::tests::test_find_all_files_nested ... ok
+test util::files::tests::test_find_file_by_id_with_pattern ... ok
+test util::files::tests::test_list_subdirectories_mixed ... ok
+test util::files::tests::test_find_file_by_id_max_depth ... ok
+test util::paths::tests::test_find_dir_with_marker_max_levels ... ok
+test service::tests::test_service_handle_wait_ready_timeout ... ok
+test service::tests::test_wait_all_ready_one_timeout ... ok
+
+test result: ok. 177 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running unittests src/lib.rs (/private/tmp/arc01-slice02-cargo-target/debug/deps/fabryk_gcp-6508728b9ac6198f)
+
+running 11 tests
+test adc::tests::test_credential_type_from_str ... ok
+test adc::tests::test_credential_type_display ... ok
+test adc::tests::test_read_credential_type_nonexistent_file ... ok
+test adc::tests::test_resolve_adc_path_env_empty_string ... ok
+test adc::tests::test_resolve_adc_path_env_nonexistent_file ... ok
+test adc::tests::test_read_credential_type_service_account ... ok
+test adc::tests::test_read_credential_type_other ... ok
+test adc::tests::test_read_credential_type_authorized_user ... ok
+test adc::tests::test_read_credential_type_invalid_json ... ok
+test adc::tests::test_read_credential_type_missing_type_field ... ok
+test adc::tests::test_resolve_adc_path_from_env ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (/private/tmp/arc01-slice02-cargo-target/debug/deps/fabryk_mcp_auth-cd48e6d14d441adf)
+
+running 7 tests
+test tests::test_authorization_server_metadata_google ... ok
+test tests::test_protected_resource_metadata ... ok
+test tests::test_authorization_server_metadata ... ok
+test tests::test_discovery_routes_protected_resource_mcp ... ok
+test tests::test_discovery_routes_authorization_server ... ok
+test tests::test_discovery_routes_protected_resource ... ok
+test tests::test_discovery_routes_authorization_server_mcp ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (/private/tmp/arc01-slice02-cargo-target/debug/deps/fabryk_redis-34853aa5a5f99b20)
+
+running 13 tests
+test client::tests::test_redis_client_is_debug ... ok
+test client::tests::test_redis_client_implements_redis_ops ... ok
+test client::tests::test_redis_client_is_clone ... ok
+test client::tests::test_redis_client_is_send_sync ... ok
+test tests::test_mock_redis_get_missing_key ... ok
+test tests::test_mock_redis_health_check ... ok
+test tests::test_mock_redis_get_u64_default ... ok
+test tests::test_mock_redis_set_get_json ... ok
+test tests::test_mock_redis_incr_by ... ok
+test tests::test_mock_redis_scan_keys ... ok
+test tests::test_mock_redis_get_multi_json ... ok
+test client::tests::test_redis_client_new_invalid_url ... ok
+test client::tests::test_redis_client_new_connection_refused ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.46s
+
+   Doc-tests fabryk_acl
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests fabryk_auth
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests fabryk_auth_google
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests fabryk_core
+
+running 25 tests
+test crates/fabryk-core/src/orchestration.rs - orchestration::ServiceOrchestrator (line 103) ... ignored
+test crates/fabryk-core/src/error.rs - error::log_error_chain (line 184) - compile ... ok
+test crates/fabryk-core/src/service.rs - service::spawn_with_retry (line 86) ... ignored
+test crates/fabryk-core/src/util/files.rs - util::files::find_all_files (line 146) - compile ... ok
+test crates/fabryk-core/src/util/files.rs - util::files::find_file_by_id (line 57) - compile ... ok
+test crates/fabryk-core/src/util/resolver.rs - util::resolver (line 10) - compile ... ok
+test crates/fabryk-core/src/util/paths.rs - util::paths::find_dir_with_marker (line 30) - compile ... ok
+test crates/fabryk-core/src/orchestration.rs - orchestration::ManagedService (line 24) ... ok
+test crates/fabryk-core/src/probe.rs - probe::BackendProbe (line 24) ... ok
+test crates/fabryk-core/src/util/paths.rs - util::paths::expand_tilde (line 63) ... ok
+test crates/fabryk-core/src/traits.rs - traits::ConfigProvider::cache_path (line 138) ... ok
+test crates/fabryk-core/src/traits.rs - traits::ConfigProvider (line 25) ... ok
+test crates/fabryk-core/src/service.rs - service (line 8) ... ok
+test crates/fabryk-core/src/state.rs - state::AppState<C>::new (line 74) ... ok
+test crates/fabryk-core/src/slot.rs - slot::BackendSlot (line 21) ... ok
+test crates/fabryk-core/src/util/resolver.rs - util::resolver::PathResolver::env_var (line 92) ... ok
+test crates/fabryk-core/src/state.rs - state (line 15) ... ok
+test crates/fabryk-core/src/util/ids.rs - util::ids::humanize_id (line 68) ... ok
+test crates/fabryk-core/src/util/time.rs - util::time::iso8601_now (line 15) ... ok
+test crates/fabryk-core/src/traits.rs - traits::ConfigProvider::project_name (line 58) ... ok
+test crates/fabryk-core/src/state.rs - state::AppState<C>::config (line 108) ... ok
+test crates/fabryk-core/src/traits.rs - traits::ConfigProvider::content_path (line 100) ... ok
+test crates/fabryk-core/src/state.rs - state::AppState<C>::config_arc (line 133) ... ok
+test crates/fabryk-core/src/util/ids.rs - util::ids::normalize_id (line 19) ... ok
+test crates/fabryk-core/src/util/ids.rs - util::ids::id_from_path (line 43) ... ok
+
+test result: ok. 23 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+all doctests ran in 0.58s; merged doctests compilation took 0.45s
+   Doc-tests fabryk_gcp
+
+running 1 test
+test crates/fabryk-gcp/src/lib.rs - (line 8) - compile ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.28s; merged doctests compilation took 0.16s
+   Doc-tests fabryk_mcp_auth
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests fabryk_redis
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+LOCKED_TEST_EXIT=0
+
+INITIAL_PROBE_ATTEMPT command: CARGO_TARGET_DIR=/private/tmp/arc01-slice02-cargo-target cargo run --offline --manifest-path /private/tmp/arc01-slice02-probe/Cargo.toml
+INITIAL_PROBE_EXIT=101
+Raw diagnostic: thread main panicked at src/main.rs:102:59: called Result::unwrap() on an Err value: Os { code: 1, kind: PermissionDenied, message: "Operation not permitted" }; local loopback socket fixture could not bind under this sandbox. No external provider request was attempted.
+
+ADC_DIRECTORY_OVERRIDE command: HOME=/private/tmp/arc01-slice02-adc/home GOOGLE_APPLICATION_CREDENTIALS=/private/tmp/arc01-slice02-adc/creds-directory CARGO_TARGET_DIR=/private/tmp/arc01-slice02-cargo-target /private/tmp/arc01-slice02-cargo-target/debug/core-auth-probe adc
+ADC GOOGLE_APPLICATION_CREDENTIALS=Some("/private/tmp/arc01-slice02-adc/creds-directory") resolved=Some("/private/tmp/arc01-slice02-adc/creds-directory")
+ADC_DIRECTORY_OVERRIDE_EXIT=0
+
+ADC_MISSING_OVERRIDE_FALLBACK command: HOME=/private/tmp/arc01-slice02-adc/home GOOGLE_APPLICATION_CREDENTIALS=/private/tmp/arc01-slice02-adc/missing.json CARGO_TARGET_DIR=/private/tmp/arc01-slice02-cargo-target /private/tmp/arc01-slice02-cargo-target/debug/core-auth-probe adc
+ADC GOOGLE_APPLICATION_CREDENTIALS=Some("/private/tmp/arc01-slice02-adc/missing.json") resolved=Some("/private/tmp/arc01-slice02-adc/home/Library/Application Support/gcloud/application_default_credentials.json")
+ADC_MISSING_OVERRIDE_FALLBACK_EXIT=0
+   Compiling serde_core v1.0.229
+   Compiling serde_json v1.0.154
+   Compiling serde v1.0.229
+   Compiling futures-channel v0.3.34
+   Compiling num-traits v0.2.19
+   Compiling typenum v1.20.1
+   Compiling strsim v0.11.1
+   Compiling iana-time-zone v0.1.65
+   Compiling zmij v1.0.23
+   Compiling aho-corasick v1.1.5
+   Compiling regex-syntax v0.8.12
+   Compiling syn v3.0.10
+   Compiling syn v2.0.119
+   Compiling pulldown-cmark v0.13.6
+   Compiling ref-cast v1.0.27
+   Compiling unicase v2.10.0
+   Compiling itoa v1.0.19
+   Compiling const-oid v0.10.3
+   Compiling unicode-general-category v1.1.0
+   Compiling cpufeatures v0.3.1
+   Compiling tinyvec v1.13.3
+   Compiling dyn-clone v1.0.20
+   Compiling rmcp v3.11.0
+   Compiling uuid v1.29.3
+   Compiling percent-encoding v2.3.2
+   Compiling unicode-normalization v0.1.26
+   Compiling hybrid-array v0.4.15
+   Compiling crypto-common v0.2.2
+   Compiling block-buffer v0.12.1
+   Compiling regex-automata v0.4.19
+   Compiling digest v0.11.3
+   Compiling sha2 v0.11.1
+   Compiling darling_core v0.24.1
+   Compiling serde_derive_internals v0.30.0
+   Compiling serde_derive v1.0.229
+   Compiling tokio-macros v2.7.2
+   Compiling futures-macro v0.3.34
+   Compiling thiserror-impl v2.0.21
+   Compiling async-trait v0.1.92
+   Compiling ref-cast-impl v1.0.27
+   Compiling tracing-attributes v0.1.31
+   Compiling schemars_derive v1.2.3
+   Compiling regex v1.13.2
+   Compiling tokio v1.54.1
+   Compiling futures-util v0.3.34
+   Compiling indexmap v2.14.2
+   Compiling tracing v0.1.44
+   Compiling thiserror v2.0.21
+   Compiling darling_macro v0.24.1
+   Compiling async-walkdir v2.2.0
+   Compiling darling v0.24.1
+   Compiling rmcp-macros v3.11.0
+   Compiling yaml_serde v0.10.7
+   Compiling chrono v0.4.45
+   Compiling futures-executor v0.3.34
+   Compiling futures v0.3.34
+   Compiling schemars v1.2.3
+   Compiling fabryk-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-core)
+   Compiling tokio-util v0.7.20
+   Compiling tokio-stream v0.1.19
+   Compiling tokio-test v0.4.6
+   Compiling fabryk-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-content)
+   Compiling fabryk-fts v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-fts)
+   Compiling fabryk-mcp-core v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-core)
+   Compiling fabryk-mcp-content v0.5.0 (/Users/oubiwann/lab/oxur/textrynum/crates/fabryk-mcp-content)
+    Finished `test` profile [optimized + debuginfo] target(s) in 14.91s
+     Running unittests src/lib.rs (/private/tmp/arc01-slice02-cargo-target/debug/deps/fabryk_mcp_content-05ec73cf5891306b)
+
+running 136 tests
+test fs_content_provider::tests::test_content_type_names_default ... ok
+test fs_content_provider::tests::test_content_type_names ... ok
+test fs_content_provider::tests::test_summary_serialization_skips_none_fields ... ok
+test fs_guide_provider::tests::test_empty_guides_directory ... ok
+test fs_content_provider::tests::test_empty_directory ... ok
+test fs_content_provider::tests::test_title_fallback_to_file_stem ... ok
+test fs_content_provider::tests::test_title_fallback_to_heading ... ok
+test fs_content_provider::tests::test_category_fallback_to_uncategorized ... ok
+test fs_guide_provider::tests::test_get_guide_index_pattern ... ok
+test fs_guide_provider::tests::test_guide_summary_roundtrip ... ok
+test fs_guide_provider::tests::test_custom_patterns ... ok
+test fs_guide_provider::tests::test_guide_summary_serialization_skips_none ... ok
+test fs_content_provider::tests::test_get_item_readme_pattern ... ok
+test fs_guide_provider::tests::test_get_guide_readme_pattern ... ok
+test fs_guide_provider::tests::test_guide_title_fallback_to_stem ... ok
+test fs_content_provider::tests::test_category_fallback_to_parent_dir ... ok
+test fs_content_provider::tests::test_get_item_not_found ... ok
+test fs_content_provider::tests::test_list_items_filtered_by_source ... ok
+test fs_content_provider::tests::test_list_items_filtered_by_subcategory ... ok
+test fs_content_provider::tests::test_count ... ok
+test fs_content_provider::tests::test_list_items_filtered_by_extraction_confidence ... ok
+test fs_content_provider::tests::test_list_categories ... ok
+test fs_content_provider::tests::test_case_insensitive_category_filter ... ok
+test fs_content_provider::tests::test_list_items_with_category_filter ... ok
+test fs_question_provider::tests::test_empty_content_directory ... ok
+test fs_content_provider::tests::test_get_item_by_id ... ok
+test fs_guide_provider::tests::test_get_guide_by_id ... ok
+test fs_content_provider::tests::test_list_items_filtered_by_tier ... ok
+test fs_content_provider::tests::test_list_items_with_limit ... ok
+test fs_source_provider::tests::test_chapter_number_extraction ... ok
+test fs_content_provider::tests::test_summary_fields ... ok
+test fs_content_provider::tests::test_list_items_filtered_with_category_and_limit ... ok
+test fs_content_provider::tests::test_list_items_all ... ok
+test fs_guide_provider::tests::test_get_guide_not_found ... ok
+test fs_source_provider::tests::test_empty_sources_directory ... ok
+test fs_guide_provider::tests::test_guide_description_from_frontmatter ... ok
+test fs_content_provider::tests::test_count_in_category ... ok
+test fs_guide_provider::tests::test_guide_description_fallback_to_paragraph ... ok
+test fs_source_provider::tests::test_get_source_path_not_found ... ok
+test fs_source_provider::tests::test_humanize_source_id ... ok
+test fs_source_provider::tests::test_get_source_path_unconverted ... ok
+test fs_guide_provider::tests::test_guide_topic_defaults_to_general ... ok
+test fs_guide_provider::tests::test_guide_title_from_frontmatter ... ok
+test fs_guide_provider::tests::test_guide_title_from_heading ... ok
+test fs_guide_provider::tests::test_list_guides_sorted_by_topic_then_title ... ok
+test fs_guide_provider::tests::test_guide_topic_from_parent_dir ... ok
+test fs_source_provider::tests::test_source_format_serialization ... ok
+test fs_source_provider::tests::test_source_summary_serialization ... ok
+test fs_source_provider::tests::test_with_unconverted_sources_batch ... ok
+test tools::tests::test_content_tools_categories ... ok
+test tools::tests::test_content_tools_creation ... ok
+test tools::tests::test_content_tools_custom_get_id_field_description ... ok
+test tools::tests::test_content_tools_custom_get_id_field_dispatch ... ok
+test tools::tests::test_content_tools_custom_get_id_field_missing ... ok
+test tools::tests::test_content_tools_custom_get_id_field_schema ... ok
+test tools::tests::test_content_tools_custom_names_dispatch ... ok
+test tools::tests::test_content_tools_default_get_id_field ... ok
+test fs_guide_provider::tests::test_list_guides ... ok
+test tools::tests::test_content_tools_descriptions ... ok
+test tools::tests::test_content_tools_get ... ok
+test tools::tests::test_content_tools_get_not_found ... ok
+test tools::tests::test_content_tools_has_tool ... ok
+test tools::tests::test_content_tools_list ... ok
+test tools::tests::test_content_tools_list_passes_extra_filters ... ok
+test tools::tests::test_content_tools_list_with_category ... ok
+test tools::tests::test_content_tools_list_with_limit ... ok
+test tools::tests::test_content_tools_unknown_tool ... ok
+test tools::tests::test_content_tools_with_custom_descriptions ... ok
+test tools::tests::test_content_tools_with_custom_names ... ok
+test fs_source_provider::tests::test_list_sources_unconverted_has_no_chapters ... ok
+test fs_source_provider::tests::test_get_source_path_converted ... ok
+test tools::tests::test_content_tools_with_extra_list_schema ... ok
+test tools::tests::test_content_tools_with_prefix ... ok
+test tools::tests::test_content_tools_without_prefix ... ok
+test tools::tests::test_guide_tools_creation ... ok
+test tools::tests::test_guide_tools_custom_names ... ok
+test tools::tests::test_guide_tools_custom_names_dispatch ... ok
+test tools::tests::test_guide_tools_has_tool ... ok
+test tools::tests::test_guide_tools_get_not_found ... ok
+test tools::tests::test_guide_tools_get ... ok
+test tools::tests::test_guide_tools_list ... ok
+test tools::tests::test_guide_tools_tool_names ... ok
+test tools::tests::test_guide_tools_unknown_tool ... ok
+test tools::tests::test_question_search_tools_creation ... ok
+test tools::tests::test_question_search_tools_custom_names ... ok
+test tools::tests::test_question_search_tools_has_tool ... ok
+test tools::tests::test_question_search_tools_custom_names_dispatch ... ok
+test tools::tests::test_question_search_tools_no_results ... ok
+test tools::tests::test_question_search_tools_tool_name ... ok
+test tools::tests::test_question_search_tools_search ... ok
+test tools::tests::test_question_search_tools_unknown_tool ... ok
+test tools::tests::test_source_tools_chapters ... ok
+test tools::tests::test_source_tools_check_availability ... ok
+test tools::tests::test_source_tools_check_availability_has_tool ... ok
+test tools::tests::test_source_tools_creation ... ok
+test tools::tests::test_source_tools_custom_names_dispatch ... ok
+test tools::tests::test_source_tools_custom_names_for_new_slots ... ok
+test tools::tests::test_source_tools_get_chapter ... ok
+test tools::tests::test_source_tools_get_chapter_not_found ... ok
+test tools::tests::test_source_tools_has_five_tools ... ok
+test tools::tests::test_source_tools_get_path ... ok
+test tools::tests::test_source_tools_list ... ok
+test tools::tests::test_source_tools_has_tool ... ok
+test tools::tests::test_source_tools_names ... ok
+test tools::tests::test_source_tools_unknown_tool ... ok
+test tools::tests::test_source_tools_with_custom_names ... ok
+test traits::tests::test_category_info_serialization ... ok
+test traits::tests::test_category_info_without_description ... ok
+test traits::tests::test_chapter_info_serialization ... ok
+test traits::tests::test_chapter_info_without_number ... ok
+test traits::tests::test_guide_summary_list_serialization ... ok
+test traits::tests::test_guide_summary_serialization ... ok
+test traits::tests::test_question_match_serialization ... ok
+test traits::tests::test_question_match_without_tier ... ok
+test traits::tests::test_question_search_response_empty ... ok
+test traits::tests::test_question_search_response_serialization ... ok
+test fs_source_provider::tests::test_is_available ... ok
+test fs_source_provider::tests::test_get_chapter_missing_source ... ok
+test fs_source_provider::tests::test_get_chapter_content ... ok
+test fs_question_provider::tests::test_results_sorted_descending ... ok
+test fs_question_provider::tests::test_tier_included_in_match ... ok
+test fs_question_provider::tests::test_below_threshold_filtered ... ok
+test fs_question_provider::tests::test_no_tier_returns_none ... ok
+test fs_source_provider::tests::test_get_chapter_missing_section ... ok
+test fs_source_provider::tests::test_get_chapter_missing_chapter ... ok
+test fs_source_provider::tests::test_get_chapter_with_section ... ok
+test fs_source_provider::tests::test_list_chapters_missing_source ... ok
+test fs_question_provider::tests::test_substring_match_gets_boost ... ok
+test fs_question_provider::tests::test_exact_match_returns_high_similarity ... ok
+test fs_question_provider::tests::test_empty_answers_questions_skipped ... ok
+test fs_question_provider::tests::test_limit_respected ... ok
+test fs_source_provider::tests::test_list_chapters ... ok
+test fs_question_provider::tests::test_custom_threshold ... ok
+test fs_question_provider::tests::test_response_query_preserved ... ok
+test fs_source_provider::tests::test_list_sources_converted_and_unconverted ... ok
+test fs_source_provider::tests::test_list_sources_chapter_counts ... ok
+
+test result: ok. 136 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+
+   Doc-tests fabryk_mcp_content
+
+running 10 tests
+test crates/fabryk-mcp-content/src/fs_content_provider.rs - fs_content_provider (line 22) ... ignored
+test crates/fabryk-mcp-content/src/fs_guide_provider.rs - fs_guide_provider (line 21) ... ignored
+test crates/fabryk-mcp-content/src/fs_question_provider.rs - fs_question_provider (line 23) ... ignored
+test crates/fabryk-mcp-content/src/fs_source_provider.rs - fs_source_provider (line 22) ... ignored
+test crates/fabryk-mcp-content/src/lib.rs - (line 16) ... ignored
+test crates/fabryk-mcp-content/src/tools.rs - tools::ContentTools (line 112) ... ignored
+test crates/fabryk-mcp-content/src/traits.rs - traits::ContentItemProvider (line 51) ... ignored
+test crates/fabryk-mcp-content/src/traits.rs - traits::GuideProvider (line 198) ... ignored
+test crates/fabryk-mcp-content/src/traits.rs - traits::QuestionSearchProvider (line 273) ... ignored
+test crates/fabryk-mcp-content/src/traits.rs - traits::SourceProvider (line 136) ... ignored
+
+test result: ok. 0 passed; 0 failed; 10 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.27s; merged doctests compilation took 0.14s
+
+MCP_CONTENT_TEST_EXIT=0
+   Compiling core-auth-probe v0.1.0 (/private/tmp/arc01-slice02-probe)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.93s
+     Running `/private/tmp/arc01-slice02-cargo-target/debug/core-auth-probe`
+AUTH token=infra status=401 Unauthorized challenge="Bearer resource_metadata=\"/.well-known/oauth-protected-resource\"" body={"error":{"category":"authentication","message":"failed to fetch JWKS: fixture upstream timeout"}}
+AUTH token=invalid status=401 Unauthorized challenge="Bearer resource_metadata=\"/.well-known/oauth-protected-resource\"" body={"error":{"category":"authentication","message":"invalid token signature: fixture invalid token"}}
+AUTH token=valid status=200 OK challenge="<absent>" body=inner-ok
+AUTH empty status=401 Unauthorized inner_calls=1
+AUTH lower_scheme status=401 Unauthorized inner_calls=1
+FILE get_item traversal: OK content="Acme outside fixture"
+FILE get_guide traversal: OK content="Acme guide outside fixture"
+FILE directory_named_md: ERR I/O error at /var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmpd0xcm2/content/folder.md: Is a directory (os error 21)
+MCP_CONTENT get dispatch traversal: Ok(CallToolResult { result_type: Some(ResultType("complete")), content: [Text(TextContent { text: "{\n  \"id\": \"../outside\",\n  \"content\": \"Acme outside fixture\"\n}", meta: None, annotations: None })], structured_content: None, is_error: Some(false), meta: None })
+MCP_CONTENT get_guide dispatch traversal: Ok(CallToolResult { result_type: Some(ResultType("complete")), content: [Text(TextContent { text: "Acme guide outside fixture", meta: None, annotations: None })], structured_content: None, is_error: Some(false), meta: None })
+LIFECYCLE max_attempts=0 state=stopped
+LIFECYCLE successful_retry attempts=2 state=ready
+LIFECYCLE exhausted state=failed: fixture exhausted
+
+thread 'tokio-rt-worker' (324869589) panicked at src/main.rs:102:153:
+fixture panic
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+LIFECYCLE panic join_error=true state=starting wait_ready=Err("Service 'panic-init' not ready after 5ms (state: starting)")
+LIFECYCLE manually_ready_empty_slot=None
+DISCOVERY path=/.well-known/oauth-authorization-server status=200 OK metadata={"authorization_endpoint":"https://login.acme.example/o/oauth2/v2/auth","code_challenge_methods_supported":["S256"],"grant_types_supported":["authorization_code","refresh_token"],"id_token_signing_alg_values_supported":["RS256"],"issuer":"https://login.acme.example","jwks_uri":"https://www.googleapis.com/oauth2/v3/certs","response_types_supported":["code"],"scopes_supported":["openid","email","profile"],"subject_types_supported":["public"],"token_endpoint":"https://oauth2.googleapis.com/token"}
+DISCOVERY path=/.well-known/oauth-authorization-server/mcp status=200 OK metadata={"authorization_endpoint":"https://accounts.google.com/o/oauth2/v2/auth","code_challenge_methods_supported":["S256"],"grant_types_supported":["authorization_code","refresh_token"],"id_token_signing_alg_values_supported":["RS256"],"issuer":"https://accounts.google.com","jwks_uri":"https://www.googleapis.com/oauth2/v3/certs","response_types_supported":["code"],"scopes_supported":["openid","email","profile"],"subject_types_supported":["public"],"token_endpoint":"https://oauth2.googleapis.com/token"}
+DISCOVERY path=/.well-known/oauth-protected-resource status=200 OK metadata={"authorization_servers":["https://login.acme.example"],"bearer_methods_supported":["header"],"resource":"https://api.acme.example/mcp","scopes_supported":["openid","email","profile"]}
+DISCOVERY path=/.well-known/oauth-protected-resource/mcp status=200 OK metadata={"authorization_servers":["https://login.acme.example"],"bearer_methods_supported":["header"],"resource":"https://api.acme.example/mcp","scopes_supported":["openid","email","profile"]}
+GOOGLE local_jwks_fixture unavailable: Operation not permitted (os error 1); no provider request attempted
+REDIS mock get_u64 invalid=Err(Serialization("invalid digit found in string"))
+REDIS mock incr_by invalid-current=Ok(1)
+REDIS mock scan_keys glob_a_question_star=Ok([])
+REDIS mock get_multi_json invalid-json=Ok([])
+
+DISPATCH_PROBE_EXIT=0
+   Compiling core-auth-probe v0.1.0 (/private/tmp/arc01-slice02-probe)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.01s
+     Running `/private/tmp/arc01-slice02-cargo-target/debug/core-auth-probe`
+AUTH token=infra status=401 Unauthorized challenge="Bearer resource_metadata=\"/.well-known/oauth-protected-resource\"" body={"error":{"category":"authentication","message":"failed to fetch JWKS: fixture upstream timeout"}}
+AUTH token=invalid status=401 Unauthorized challenge="Bearer resource_metadata=\"/.well-known/oauth-protected-resource\"" body={"error":{"category":"authentication","message":"invalid token signature: fixture invalid token"}}
+AUTH token=valid status=200 OK challenge="<absent>" body=inner-ok
+AUTH empty status=401 Unauthorized inner_calls=1
+AUTH lower_scheme status=401 Unauthorized inner_calls=1
+FILE get_item traversal: OK content="Acme outside fixture"
+FILE get_guide traversal: OK content="Acme guide outside fixture"
+FILE directory_named_md: ERR I/O error at /var/folders/_j/0spgkqmj781_drg31_1tzgtr0000gn/T/.tmpjtILyS/content/folder.md: Is a directory (os error 21)
+MCP_CONTENT get dispatch traversal: Ok(CallToolResult { result_type: Some(ResultType("complete")), content: [Text(TextContent { text: "{\n  \"id\": \"../outside\",\n  \"content\": \"Acme outside fixture\"\n}", meta: None, annotations: None })], structured_content: None, is_error: Some(false), meta: None })
+MCP_CONTENT get_guide dispatch traversal: Ok(CallToolResult { result_type: Some(ResultType("complete")), content: [Text(TextContent { text: "Acme guide outside fixture", meta: None, annotations: None })], structured_content: None, is_error: Some(false), meta: None })
+LIFECYCLE max_attempts=0 state=stopped
+LIFECYCLE successful_retry attempts=2 state=ready
+LIFECYCLE exhausted state=failed: fixture exhausted
+
+thread 'tokio-rt-worker' (324943830) panicked at src/main.rs:102:153:
+fixture panic
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+LIFECYCLE panic join_error=true state=starting wait_ready=Err("Service 'panic-init' not ready after 5ms (state: starting)")
+LIFECYCLE manually_ready_empty_slot=None
+DISCOVERY path=/.well-known/oauth-authorization-server status=200 OK metadata=Ok(Object {"authorization_endpoint": String("https://login.acme.example/o/oauth2/v2/auth"), "code_challenge_methods_supported": Array [String("S256")], "grant_types_supported": Array [String("authorization_code"), String("refresh_token")], "id_token_signing_alg_values_supported": Array [String("RS256")], "issuer": String("https://login.acme.example"), "jwks_uri": String("https://www.googleapis.com/oauth2/v3/certs"), "response_types_supported": Array [String("code")], "scopes_supported": Array [String("openid"), String("email"), String("profile")], "subject_types_supported": Array [String("public")], "token_endpoint": String("https://oauth2.googleapis.com/token")})
+DISCOVERY path=/.well-known/oauth-authorization-server/mcp status=200 OK metadata=Ok(Object {"authorization_endpoint": String("https://accounts.google.com/o/oauth2/v2/auth"), "code_challenge_methods_supported": Array [String("S256")], "grant_types_supported": Array [String("authorization_code"), String("refresh_token")], "id_token_signing_alg_values_supported": Array [String("RS256")], "issuer": String("https://accounts.google.com"), "jwks_uri": String("https://www.googleapis.com/oauth2/v3/certs"), "response_types_supported": Array [String("code")], "scopes_supported": Array [String("openid"), String("email"), String("profile")], "subject_types_supported": Array [String("public")], "token_endpoint": String("https://oauth2.googleapis.com/token")})
+DISCOVERY path=/.well-known/oauth-authorization-server/mcp/ status=404 Not Found metadata=Err(Error("EOF while parsing a value", line: 1, column: 0))
+DISCOVERY path=/.well-known/oauth-protected-resource status=200 OK metadata=Ok(Object {"authorization_servers": Array [String("https://login.acme.example")], "bearer_methods_supported": Array [String("header")], "resource": String("https://api.acme.example/mcp"), "scopes_supported": Array [String("openid"), String("email"), String("profile")]})
+DISCOVERY path=/.well-known/oauth-protected-resource/mcp status=200 OK metadata=Ok(Object {"authorization_servers": Array [String("https://login.acme.example")], "bearer_methods_supported": Array [String("header")], "resource": String("https://api.acme.example/mcp"), "scopes_supported": Array [String("openid"), String("email"), String("profile")]})
+DISCOVERY path=/.well-known/oauth-protected-resource/mcp/ status=404 Not Found metadata=Err(Error("EOF while parsing a value", line: 1, column: 0))
+GOOGLE local_jwks_fixture unavailable: Operation not permitted (os error 1); no provider request attempted
+REDIS mock get_u64 invalid=Err(Serialization("invalid digit found in string"))
+REDIS mock incr_by invalid-current=Ok(1)
+REDIS mock scan_keys glob_a_question_star=Ok([])
+REDIS mock get_multi_json invalid-json=Ok([])
+
+TRAILING_SLASH_PROBE_EXIT=0
