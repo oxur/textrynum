@@ -996,3 +996,17 @@ Preserved cc-prompt-iteration01.md issues one bounded source-record correction;
 source719/coverage/SEARCH boundaries remain. Originalprompt and b8d0 witness kept.
 CDC owns planning/index until correction dispatch, then exact five-path handoff
 with index artifact unchanged; root/CDC read-only while CC owns the index.
+
+
+## Slice20 independently accepted — 2026-11-22
+
+KEY01–05/Medium044 accepted statically after authorb8d0e12/correctionbedf656:
+current valid string tuples collide under delimiter encoding. Actual owner
+ecl-stages; future oracle conditional on approved preserve/reject policy, no
+retroactive input narrowing or repair choice. Assemble Q20-01 ungraded. See20
+CDC verification/retro and project artifact preservation-reconciliation JSON.
+Two reported protected mismatches were copied expected-digest errors; all nine
+bytes match canonical manifest and five immutable snapshots. Failed checker
+observation preserved; wrapper0 did not prove9/9. Unfinished preparations remain
+UNVERIFIED, all SEARCH gates pending. Budget1/5, source719/38/31/291/49cells7/7/35
+unchanged. No runtime/full-pass/final composition acceptance. CDC owns next scope.

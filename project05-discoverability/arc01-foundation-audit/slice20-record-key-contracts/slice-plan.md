@@ -64,3 +64,14 @@ Preserved cc-prompt-iteration01.md issues one bounded source-record correction;
 source719/coverage/SEARCH boundaries remain. Originalprompt and b8d0 witness kept.
 CDC owns planning/index until correction dispatch, then exact five-path handoff
 with index artifact unchanged; root/CDC read-only while CC owns the index.
+
+
+## Independent CDC acceptance — 2026-11-22
+
+CDC accepts KEY-01–05 and Medium FA-RS-044 within this static existing-library
+contract facet after correctionbedf656 and independent preservation resolution.
+Q20-01 remains ungraded. See [CDC verification](cdc-verification.md) and
+[retrospective](cdc-retrospective.md). Original b8d0/bedf assertions and failed
+checks remain chronological witnesses. Budget1/5 used,4 remaining. No runtime,
+whole-owner/pass/scale/SEARCH or final-arc acceptance follows. Source719 unchanged;
+CDC owns planning/index for next approved bounded scope, no active mutable child.

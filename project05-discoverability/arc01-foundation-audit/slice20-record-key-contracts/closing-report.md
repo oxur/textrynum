@@ -48,3 +48,36 @@ This is CC author attestation only. CDC independently determines finding accepta
 Corrected FA-RS-044 routing to the actual `ecl-stages` package / `ecl_stages::aggregate` namespace and made its future oracle conditional on an explicit approved policy. The current source continues to accept delimiter-bearing string values; documentation alone does not make the demonstrated inputs invalid. Under a future approved policy that supports these values, verify distinct groups/sums1 and2, copied group fields, and ID compatibility. Under an explicitly approved narrowing policy, verify predictable rejection before coalescing, without simultaneously requiring successful two-group output. Controls follow the selected policy. No policy or repair was chosen. FA-RS-044 remains CC-proposed pending CDC review; Q20-01 remains ungraded. No tests, programs, fixtures, source edits, or repairs occurred.
 
 Pre-commit checks: the cumulative Rust report retained its exact 107,669-byte historical prefix; the 20,603-byte audit index matched its correction-baseline SHA-256 and its earlier 20,053-byte prefix; `git diff --check` passed; source remained clean at719; the encoded privacy-pattern count was zero in each of the five owned paths. Hash-only checks matched seven of nine inherited protected-file fingerprints. The 541-byte `2026.11.22-content-search-cdc-probe.toml` and 541,517-byte `2026.11.21-audit-coverage.json` matched their recorded sizes but not their inherited hashes; neither content was inspected, and the unfinished CDC evidence remains UNVERIFIED. No assertion is made that those two fingerprints were unchanged from the inherited manifest. The index artifact is an authorized handback path and remained byte-identical.
+
+
+## Independent preservation resolution — 2026-11-22
+
+The correction's reported two mismatches are preserved as an actual failed
+expectation check. CDC traced the expectations to correction runner line130,
+item_30: two locally copied constants differ from the canonical slice16
+resumption manifest at immutable78847d67ec54f1617bb3f734ceaf60f86a32f99a.
+One copied TOML digest has66characters. The command exited0 but printed seven
+matches/two mismatches; its wrapper exit is not a passing9/9 verdict.
+
+CDC parsed the canonical manifest and compared all nine working byte arrays
+with raw Git blobs at fixed4c3a50e, d5b01ad, b8d0e12, e1db0a7 and bedf656.
+All nine match the canonical lengths/digests and every snapshot byte-for-byte.
+The two protected files did not change: the expected constants were transcribed
+incorrectly. Exact actual/claimed digests, immutable sources and booleans are in
+[the preservation receipt](../../artifacts/2026.11.22-record-key-preservation-reconciliation.json).
+Hashing reads bytes; this establishes preservation, not textual/semantic review,
+diagnostic reconciliation, execution or acceptance. Old CDC preparations remain
+UNVERIFIED; all SEARCH gates remain pending. Future checks derive expectations
+programmatically from a named fixed Git baseline or parse the canonical manifest,
+compare raw bytes for an exact path set, and compute displayed digests from those
+bytes. No protected bytes were regenerated or edited.
+
+## Independent CDC acceptance — 2026-11-22
+
+CDC accepts KEY-01–05 and Medium FA-RS-044 within this static existing-library
+contract facet after correctionbedf656 and independent preservation resolution.
+Q20-01 remains ungraded. See [CDC verification](cdc-verification.md) and
+[retrospective](cdc-retrospective.md). Original b8d0/bedf assertions and failed
+checks remain chronological witnesses. Budget1/5 used,4 remaining. No runtime,
+whole-owner/pass/scale/SEARCH or final-arc acceptance follows. Source719 unchanged;
+CDC owns planning/index for next approved bounded scope, no active mutable child.

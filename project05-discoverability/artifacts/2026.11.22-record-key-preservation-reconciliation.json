@@ -1,0 +1,448 @@
+{
+  "purpose": "Metadata-only independent preservation reconciliation after a two-value expected-hash transcription error; no protected diagnostic interpretation or execution.",
+  "checked_at_utc": "2026-11-22T20:31:16.777744+00:00",
+  "planning_head": "bedf6568f067f7814984b480bbcbd61fb2e330a9",
+  "source_head": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+  "canonical_manifest": {
+    "path": "project05-discoverability/arc01-foundation-audit/slice16-notification-subscription-contracts/cc-prompt-resumption01.md",
+    "commit": "78847d67ec54f1617bb3f734ceaf60f86a32f99a",
+    "sha256": "d657b51fa713efd5d21e5d96284cb496b56ccd0b600a94995406ddecd9ada5e5",
+    "worktree_byte_identical_to_committed_prompt": true
+  },
+  "author_expectation_witness": {
+    "log_path": "/private/tmp/textrynum-record-key-slice20-iteration01-run.jsonl",
+    "log_line": 130,
+    "item_id": "item_30",
+    "command_exit": 0,
+    "reported_matches": 7,
+    "reported_mismatches": 2,
+    "interpretation": "Command exited0 but printed false metadata comparisons; this was not a passing nine-file preservation check.",
+    "log_bytes": 264811,
+    "log_sha256": "b5c75ac485b5b35bf038a2082d5113520821489ec914c9f6f6fea655a6bd1704"
+  },
+  "files": [
+    {
+      "path": "project05-discoverability/artifacts/2026.11.22-content-search-probe.rs",
+      "worktree_bytes": 25075,
+      "worktree_sha256": "f08fac7db35435c3f23d0ef449547ab8232ba711bae938e6367638ae5459a039",
+      "canonical_manifest_bytes": 25075,
+      "canonical_manifest_sha256": "f08fac7db35435c3f23d0ef449547ab8232ba711bae938e6367638ae5459a039",
+      "canonical_matches_worktree": true,
+      "author_checker_expected": {
+        "bytes": 25075,
+        "sha256_claimed": "f08fac7db35435c3f23d0ef449547ab8232ba711bae938e6367638ae5459a039",
+        "digest_character_count": 64
+      },
+      "author_checker_expected_matches_canonical": true,
+      "snapshots": [
+        {
+          "commit": "4c3a50e12c41d0f54b124ef5b778cc770e5a8ba4",
+          "bytes": 25075,
+          "sha256": "f08fac7db35435c3f23d0ef449547ab8232ba711bae938e6367638ae5459a039",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "d5b01ad7b83f165fbce13fed3ad23a63f35f4e96",
+          "bytes": 25075,
+          "sha256": "f08fac7db35435c3f23d0ef449547ab8232ba711bae938e6367638ae5459a039",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "b8d0e12b0f1558d04aea1eba9aa8762860398858",
+          "bytes": 25075,
+          "sha256": "f08fac7db35435c3f23d0ef449547ab8232ba711bae938e6367638ae5459a039",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "e1db0a7ba0ee5ca00dde30cb7d9b03bfa179af4b",
+          "bytes": 25075,
+          "sha256": "f08fac7db35435c3f23d0ef449547ab8232ba711bae938e6367638ae5459a039",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "bedf6568f067f7814984b480bbcbd61fb2e330a9",
+          "bytes": 25075,
+          "sha256": "f08fac7db35435c3f23d0ef449547ab8232ba711bae938e6367638ae5459a039",
+          "byte_identical_to_worktree": true
+        }
+      ]
+    },
+    {
+      "path": "project05-discoverability/artifacts/2026.11.22-content-search-probe.toml",
+      "worktree_bytes": 522,
+      "worktree_sha256": "6c241f2fa1aa4d6c320db035b68a60ee81d8162e6e78075bb755f100d24e4185",
+      "canonical_manifest_bytes": 522,
+      "canonical_manifest_sha256": "6c241f2fa1aa4d6c320db035b68a60ee81d8162e6e78075bb755f100d24e4185",
+      "canonical_matches_worktree": true,
+      "author_checker_expected": {
+        "bytes": 522,
+        "sha256_claimed": "6c241f2fa1aa4d6c320db035b68a60ee81d8162e6e78075bb755f100d24e4185",
+        "digest_character_count": 64
+      },
+      "author_checker_expected_matches_canonical": true,
+      "snapshots": [
+        {
+          "commit": "4c3a50e12c41d0f54b124ef5b778cc770e5a8ba4",
+          "bytes": 522,
+          "sha256": "6c241f2fa1aa4d6c320db035b68a60ee81d8162e6e78075bb755f100d24e4185",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "d5b01ad7b83f165fbce13fed3ad23a63f35f4e96",
+          "bytes": 522,
+          "sha256": "6c241f2fa1aa4d6c320db035b68a60ee81d8162e6e78075bb755f100d24e4185",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "b8d0e12b0f1558d04aea1eba9aa8762860398858",
+          "bytes": 522,
+          "sha256": "6c241f2fa1aa4d6c320db035b68a60ee81d8162e6e78075bb755f100d24e4185",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "e1db0a7ba0ee5ca00dde30cb7d9b03bfa179af4b",
+          "bytes": 522,
+          "sha256": "6c241f2fa1aa4d6c320db035b68a60ee81d8162e6e78075bb755f100d24e4185",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "bedf6568f067f7814984b480bbcbd61fb2e330a9",
+          "bytes": 522,
+          "sha256": "6c241f2fa1aa4d6c320db035b68a60ee81d8162e6e78075bb755f100d24e4185",
+          "byte_identical_to_worktree": true
+        }
+      ]
+    },
+    {
+      "path": "project05-discoverability/artifacts/2026.11.22-content-search-probe.lock",
+      "worktree_bytes": 47728,
+      "worktree_sha256": "5b60133ce1714418470e314b21c252113a4e5c5fa75c8de13c65b1420c39b19d",
+      "canonical_manifest_bytes": 47728,
+      "canonical_manifest_sha256": "5b60133ce1714418470e314b21c252113a4e5c5fa75c8de13c65b1420c39b19d",
+      "canonical_matches_worktree": true,
+      "author_checker_expected": {
+        "bytes": 47728,
+        "sha256_claimed": "5b60133ce1714418470e314b21c252113a4e5c5fa75c8de13c65b1420c39b19d",
+        "digest_character_count": 64
+      },
+      "author_checker_expected_matches_canonical": true,
+      "snapshots": [
+        {
+          "commit": "4c3a50e12c41d0f54b124ef5b778cc770e5a8ba4",
+          "bytes": 47728,
+          "sha256": "5b60133ce1714418470e314b21c252113a4e5c5fa75c8de13c65b1420c39b19d",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "d5b01ad7b83f165fbce13fed3ad23a63f35f4e96",
+          "bytes": 47728,
+          "sha256": "5b60133ce1714418470e314b21c252113a4e5c5fa75c8de13c65b1420c39b19d",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "b8d0e12b0f1558d04aea1eba9aa8762860398858",
+          "bytes": 47728,
+          "sha256": "5b60133ce1714418470e314b21c252113a4e5c5fa75c8de13c65b1420c39b19d",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "e1db0a7ba0ee5ca00dde30cb7d9b03bfa179af4b",
+          "bytes": 47728,
+          "sha256": "5b60133ce1714418470e314b21c252113a4e5c5fa75c8de13c65b1420c39b19d",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "bedf6568f067f7814984b480bbcbd61fb2e330a9",
+          "bytes": 47728,
+          "sha256": "5b60133ce1714418470e314b21c252113a4e5c5fa75c8de13c65b1420c39b19d",
+          "byte_identical_to_worktree": true
+        }
+      ]
+    },
+    {
+      "path": "project05-discoverability/artifacts/2026.11.22-content-search-run.log",
+      "worktree_bytes": 29721,
+      "worktree_sha256": "8d8feb5aac36e7bca07cbb42248f137dc72b96fdff8d5fdf465b06ceadda5e6e",
+      "canonical_manifest_bytes": 29721,
+      "canonical_manifest_sha256": "8d8feb5aac36e7bca07cbb42248f137dc72b96fdff8d5fdf465b06ceadda5e6e",
+      "canonical_matches_worktree": true,
+      "author_checker_expected": {
+        "bytes": 29721,
+        "sha256_claimed": "8d8feb5aac36e7bca07cbb42248f137dc72b96fdff8d5fdf465b06ceadda5e6e",
+        "digest_character_count": 64
+      },
+      "author_checker_expected_matches_canonical": true,
+      "snapshots": [
+        {
+          "commit": "4c3a50e12c41d0f54b124ef5b778cc770e5a8ba4",
+          "bytes": 29721,
+          "sha256": "8d8feb5aac36e7bca07cbb42248f137dc72b96fdff8d5fdf465b06ceadda5e6e",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "d5b01ad7b83f165fbce13fed3ad23a63f35f4e96",
+          "bytes": 29721,
+          "sha256": "8d8feb5aac36e7bca07cbb42248f137dc72b96fdff8d5fdf465b06ceadda5e6e",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "b8d0e12b0f1558d04aea1eba9aa8762860398858",
+          "bytes": 29721,
+          "sha256": "8d8feb5aac36e7bca07cbb42248f137dc72b96fdff8d5fdf465b06ceadda5e6e",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "e1db0a7ba0ee5ca00dde30cb7d9b03bfa179af4b",
+          "bytes": 29721,
+          "sha256": "8d8feb5aac36e7bca07cbb42248f137dc72b96fdff8d5fdf465b06ceadda5e6e",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "bedf6568f067f7814984b480bbcbd61fb2e330a9",
+          "bytes": 29721,
+          "sha256": "8d8feb5aac36e7bca07cbb42248f137dc72b96fdff8d5fdf465b06ceadda5e6e",
+          "byte_identical_to_worktree": true
+        }
+      ]
+    },
+    {
+      "path": "project05-discoverability/artifacts/2026.11.22-content-search-cdc-probe.rs",
+      "worktree_bytes": 15752,
+      "worktree_sha256": "e04f1a0d0c185ff429180536e64a828de69e857e4ffb29d2e2de6bc5afff088a",
+      "canonical_manifest_bytes": 15752,
+      "canonical_manifest_sha256": "e04f1a0d0c185ff429180536e64a828de69e857e4ffb29d2e2de6bc5afff088a",
+      "canonical_matches_worktree": true,
+      "author_checker_expected": {
+        "bytes": 15752,
+        "sha256_claimed": "e04f1a0d0c185ff429180536e64a828de69e857e4ffb29d2e2de6bc5afff088a",
+        "digest_character_count": 64
+      },
+      "author_checker_expected_matches_canonical": true,
+      "snapshots": [
+        {
+          "commit": "4c3a50e12c41d0f54b124ef5b778cc770e5a8ba4",
+          "bytes": 15752,
+          "sha256": "e04f1a0d0c185ff429180536e64a828de69e857e4ffb29d2e2de6bc5afff088a",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "d5b01ad7b83f165fbce13fed3ad23a63f35f4e96",
+          "bytes": 15752,
+          "sha256": "e04f1a0d0c185ff429180536e64a828de69e857e4ffb29d2e2de6bc5afff088a",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "b8d0e12b0f1558d04aea1eba9aa8762860398858",
+          "bytes": 15752,
+          "sha256": "e04f1a0d0c185ff429180536e64a828de69e857e4ffb29d2e2de6bc5afff088a",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "e1db0a7ba0ee5ca00dde30cb7d9b03bfa179af4b",
+          "bytes": 15752,
+          "sha256": "e04f1a0d0c185ff429180536e64a828de69e857e4ffb29d2e2de6bc5afff088a",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "bedf6568f067f7814984b480bbcbd61fb2e330a9",
+          "bytes": 15752,
+          "sha256": "e04f1a0d0c185ff429180536e64a828de69e857e4ffb29d2e2de6bc5afff088a",
+          "byte_identical_to_worktree": true
+        }
+      ]
+    },
+    {
+      "path": "project05-discoverability/artifacts/2026.11.22-content-search-cdc-probe.toml",
+      "worktree_bytes": 541,
+      "worktree_sha256": "a7471fdc14c83fce774101076cabb03911bb6886fd6308d329023f462336a6d4",
+      "canonical_manifest_bytes": 541,
+      "canonical_manifest_sha256": "a7471fdc14c83fce774101076cabb03911bb6886fd6308d329023f462336a6d4",
+      "canonical_matches_worktree": true,
+      "author_checker_expected": {
+        "bytes": 541,
+        "sha256_claimed": "a7471fdc14c83c3fce774101076cabb03911bb6886fd6308d329023f462336a6d4",
+        "digest_character_count": 66
+      },
+      "author_checker_expected_matches_canonical": false,
+      "snapshots": [
+        {
+          "commit": "4c3a50e12c41d0f54b124ef5b778cc770e5a8ba4",
+          "bytes": 541,
+          "sha256": "a7471fdc14c83fce774101076cabb03911bb6886fd6308d329023f462336a6d4",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "d5b01ad7b83f165fbce13fed3ad23a63f35f4e96",
+          "bytes": 541,
+          "sha256": "a7471fdc14c83fce774101076cabb03911bb6886fd6308d329023f462336a6d4",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "b8d0e12b0f1558d04aea1eba9aa8762860398858",
+          "bytes": 541,
+          "sha256": "a7471fdc14c83fce774101076cabb03911bb6886fd6308d329023f462336a6d4",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "e1db0a7ba0ee5ca00dde30cb7d9b03bfa179af4b",
+          "bytes": 541,
+          "sha256": "a7471fdc14c83fce774101076cabb03911bb6886fd6308d329023f462336a6d4",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "bedf6568f067f7814984b480bbcbd61fb2e330a9",
+          "bytes": 541,
+          "sha256": "a7471fdc14c83fce774101076cabb03911bb6886fd6308d329023f462336a6d4",
+          "byte_identical_to_worktree": true
+        }
+      ]
+    },
+    {
+      "path": "project05-discoverability/artifacts/2026.11.22-content-search-cdc-probe.lock",
+      "worktree_bytes": 47733,
+      "worktree_sha256": "5c1ba213248a216cea25ee00e1f89691504b1433d8d2baa953cab39372cda48b",
+      "canonical_manifest_bytes": 47733,
+      "canonical_manifest_sha256": "5c1ba213248a216cea25ee00e1f89691504b1433d8d2baa953cab39372cda48b",
+      "canonical_matches_worktree": true,
+      "author_checker_expected": {
+        "bytes": 47733,
+        "sha256_claimed": "5c1ba213248a216cea25ee00e1f89691504b1433d8d2baa953cab39372cda48b",
+        "digest_character_count": 64
+      },
+      "author_checker_expected_matches_canonical": true,
+      "snapshots": [
+        {
+          "commit": "4c3a50e12c41d0f54b124ef5b778cc770e5a8ba4",
+          "bytes": 47733,
+          "sha256": "5c1ba213248a216cea25ee00e1f89691504b1433d8d2baa953cab39372cda48b",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "d5b01ad7b83f165fbce13fed3ad23a63f35f4e96",
+          "bytes": 47733,
+          "sha256": "5c1ba213248a216cea25ee00e1f89691504b1433d8d2baa953cab39372cda48b",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "b8d0e12b0f1558d04aea1eba9aa8762860398858",
+          "bytes": 47733,
+          "sha256": "5c1ba213248a216cea25ee00e1f89691504b1433d8d2baa953cab39372cda48b",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "e1db0a7ba0ee5ca00dde30cb7d9b03bfa179af4b",
+          "bytes": 47733,
+          "sha256": "5c1ba213248a216cea25ee00e1f89691504b1433d8d2baa953cab39372cda48b",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "bedf6568f067f7814984b480bbcbd61fb2e330a9",
+          "bytes": 47733,
+          "sha256": "5c1ba213248a216cea25ee00e1f89691504b1433d8d2baa953cab39372cda48b",
+          "byte_identical_to_worktree": true
+        }
+      ]
+    },
+    {
+      "path": "project05-discoverability/artifacts/2026.11.22-content-search-cdc-run.log",
+      "worktree_bytes": 663,
+      "worktree_sha256": "0189c14b29d4fa5bdcd8b495be2474c2d1f0b426f6aca95771a6524be785b24c",
+      "canonical_manifest_bytes": 663,
+      "canonical_manifest_sha256": "0189c14b29d4fa5bdcd8b495be2474c2d1f0b426f6aca95771a6524be785b24c",
+      "canonical_matches_worktree": true,
+      "author_checker_expected": {
+        "bytes": 663,
+        "sha256_claimed": "0189c14b29d4fa5bdcd8b495be2474c2d1f0b426f6aca95771a6524be785b24c",
+        "digest_character_count": 64
+      },
+      "author_checker_expected_matches_canonical": true,
+      "snapshots": [
+        {
+          "commit": "4c3a50e12c41d0f54b124ef5b778cc770e5a8ba4",
+          "bytes": 663,
+          "sha256": "0189c14b29d4fa5bdcd8b495be2474c2d1f0b426f6aca95771a6524be785b24c",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "d5b01ad7b83f165fbce13fed3ad23a63f35f4e96",
+          "bytes": 663,
+          "sha256": "0189c14b29d4fa5bdcd8b495be2474c2d1f0b426f6aca95771a6524be785b24c",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "b8d0e12b0f1558d04aea1eba9aa8762860398858",
+          "bytes": 663,
+          "sha256": "0189c14b29d4fa5bdcd8b495be2474c2d1f0b426f6aca95771a6524be785b24c",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "e1db0a7ba0ee5ca00dde30cb7d9b03bfa179af4b",
+          "bytes": 663,
+          "sha256": "0189c14b29d4fa5bdcd8b495be2474c2d1f0b426f6aca95771a6524be785b24c",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "bedf6568f067f7814984b480bbcbd61fb2e330a9",
+          "bytes": 663,
+          "sha256": "0189c14b29d4fa5bdcd8b495be2474c2d1f0b426f6aca95771a6524be785b24c",
+          "byte_identical_to_worktree": true
+        }
+      ]
+    },
+    {
+      "path": "project05-discoverability/artifacts/2026.11.21-audit-coverage.json",
+      "worktree_bytes": 541517,
+      "worktree_sha256": "4c278c0c8cf2289970c114c692ff3b40df63aa1f6c8cea3c3c4fcb7b11600c58",
+      "canonical_manifest_bytes": 541517,
+      "canonical_manifest_sha256": "4c278c0c8cf2289970c114c692ff3b40df63aa1f6c8cea3c3c4fcb7b11600c58",
+      "canonical_matches_worktree": true,
+      "author_checker_expected": {
+        "bytes": 541517,
+        "sha256_claimed": "4c278c0c8cf22898b728511a8cfb3c40df63aa1f6c8cea3c3c4fcb7b11600c58",
+        "digest_character_count": 64
+      },
+      "author_checker_expected_matches_canonical": false,
+      "snapshots": [
+        {
+          "commit": "4c3a50e12c41d0f54b124ef5b778cc770e5a8ba4",
+          "bytes": 541517,
+          "sha256": "4c278c0c8cf2289970c114c692ff3b40df63aa1f6c8cea3c3c4fcb7b11600c58",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "d5b01ad7b83f165fbce13fed3ad23a63f35f4e96",
+          "bytes": 541517,
+          "sha256": "4c278c0c8cf2289970c114c692ff3b40df63aa1f6c8cea3c3c4fcb7b11600c58",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "b8d0e12b0f1558d04aea1eba9aa8762860398858",
+          "bytes": 541517,
+          "sha256": "4c278c0c8cf2289970c114c692ff3b40df63aa1f6c8cea3c3c4fcb7b11600c58",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "e1db0a7ba0ee5ca00dde30cb7d9b03bfa179af4b",
+          "bytes": 541517,
+          "sha256": "4c278c0c8cf2289970c114c692ff3b40df63aa1f6c8cea3c3c4fcb7b11600c58",
+          "byte_identical_to_worktree": true
+        },
+        {
+          "commit": "bedf6568f067f7814984b480bbcbd61fb2e330a9",
+          "bytes": 541517,
+          "sha256": "4c278c0c8cf2289970c114c692ff3b40df63aa1f6c8cea3c3c4fcb7b11600c58",
+          "byte_identical_to_worktree": true
+        }
+      ]
+    }
+  ],
+  "verdict": {
+    "protected_files": 9,
+    "all_worktree_bytes_match_canonical_and_five_snapshots": true,
+    "author_expected_digest_transcription_errors": 2,
+    "protected_files_changed_by_this_check": false,
+    "diagnostics_semantically_inspected_reconciled_or_executed": false,
+    "unfinished_cdc_preparations_remain_unverified": true,
+    "search_acceptance_advanced": false
+  }
+}
