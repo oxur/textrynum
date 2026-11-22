@@ -808,3 +808,25 @@ Original owner coverage38/31/291 and49cells7/7/35 remain, all original remaining
 passes/SEARCH and final arc composition open. No repair/feature work begun.
 
 - 2026-11-22 v1.22 — Accepted15source portion; exact attribution criterion stays unmet.
+
+## Independent notification/subscription scope — v1.23
+
+Root surfaced Operator's one-commit bf193 exception question; no answer is assumed.
+VEC-05/15full closure remain unmet/pending. Independent16source scope may proceed:
+three first-party files1660lines, exact pinned SDK version/lifecycle/notification
+references and versioned2025 resource contract. Current legacy callbacks, shared
+notifier state, mixed-failure prune attempts and unsubscribe/resubscribe state
+are manually traced. Actual delivery/UX/runtime and new2026feature implementation
+are not commissioned. Bulk-helper/fallback policies and protocol versions are
+contrary controls; no guessed current-client behavior or count target.
+
+Same retained LunaHigh author/Sol6.1High CDC; source719/index read-only, initial
+16budget0/5. All results directly project05artifacts; five CC outputs only.
+Required protected manifest lists both original-author and unfinished-CDC quartets
+with roles via15close; no driver interpretation. Own commits must parse both
+adjacent trailers before/after creation. This cannot waive the earlier exception.
+CDC owns planning/index until handoff; root read-only, Operator decision may be
+recorded only at coordinated ownership boundary. Original coverage/SEARCH/arc
+composition gates unchanged; no repair/service operation.
+
+- 2026-11-22 v1.23 — Recorded independent16source contract before contributor work.
