@@ -341,6 +341,11 @@ slice03 native replay had started and no uncommitted audit records existed. A
 recovery log-reader initially failed on a non-JSON warning footer; tolerant
 read-only recovery then completed. No product or evidence was changed.
 
+The root cause of the turn-level platform interruption is unknown. No specific
+Rust/Tantivy command was rejected: no CDC slice03 native replay had started. The
+native hold is parent's precautionary restriction, not evidence that ordinary
+software tests require another service.
+
 Parent subsequently authorized only unaffected static software-correctness,
 contract and documentation coordination for slice03. CDC owns planning/index
 for that work until an exact documentation-only CC handoff; source/native/probe/

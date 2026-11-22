@@ -61,3 +61,41 @@ coverage, not independent semantic acceptance.
 
 Review1 requires the preserved docs/analysis-only iteration01. No native command,
 provider call, source/probe/log change or execution retry is authorized.
+
+## Review2 — documentation candidate287975f, 2026-11-22
+
+**Static correction progressed; not accepted.** CC returned the exact six docs/JSON
+paths at287975f6c7b376fd70e684d95f348d3ce4d0ed8b, session27947 exit0. Full report
+narratives now retain17proposals; four frozen IDs are questions014/016/028/029,
+two are cleared018/031. All23 frozen IDs remain visible and native/replay gates
+remain pending. CDC read the revised report, full evidence and canonical close/
+ledger. No CDC native/provider/probe execution occurred.
+
+A narrow provenance correction is still required: immutable probe157–158
+explicitly constructs configured MinimumMatch with minimum_match_percent1.0,
+and the raw log captures minimum_match_100pct_one_term. The new statement that
+FA022 had only a non-discriminating request override is false. Attribute that
+existing author oracle accurately, keeping independent CDC replay pending. The
+configured-And isolation for021 remains pending. The SimpleSearchzero-limit
+claim is static-only (no corresponding captured call), and the actual Tantivy
+paired snippet requests were1/100 rather than4/100. The close must distinguish
+read-only source-contract commands, which occurred, from source-code execution
+and mutations, which did not. A small docs-only iteration02 preserves this
+review history and counts as refinement2of5, with three remaining.
+
+The selected context and full contract remain unchanged. A source-level return
+count nuance belongs within025: total is the already-limited unfiltered TopDocs
+length, not all matching documents; no new issue ID or independent count test
+is claimed. Title015 should rely on metadata's own frontmatter/Markdown fallback
+contract, not a supposed universal cross-API title-parity promise.
+
+Restricted-run bookkeeping failures are distinct from platform/permission gates:
+three relative rg/hash reads failed ENOENT in the retained source tool cwd; the
+launch --cd planning did not establish all resumed tool-call cwd behavior. Use
+absolute READ and output paths. One docs transform failed KeyError14 before
+writing; a read had trailing-shell-operator syntax error. The corrected transform
+later joined a table row to a heading; author checks caught and repaired it before
+staging. Ordinary shared Git-index write permissions then required the normal
+reviewed escalation for the already-authorized six-path commit and succeeded.
+None is a native rerun or a retry of flagged content. The complete coordination
+log remains /private/tmp/textrynum-foundation-content-search-docs-review1.jsonl.

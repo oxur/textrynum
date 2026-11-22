@@ -49,3 +49,8 @@ Defaultfive semantic refinements; no invented global budget or numeric UX trial.
   native/probe/provider/security execution remains on hold, independent replay
   and acceptance remain pending. Preserved iteration01 is refinement1of5, with
   four remaining; no reset and no runtime command authorized by this update.
+
+- 2026-11-22 docs-only iteration01 returned287975f with17proposals/fourquestions/
+  twocleared, all23frozen IDs preserved. Static review2 requests a narrow existing-
+  oracle attribution correction in immutable iteration02; refinement2of5, three
+  remain. No new runtime, source mutation or acceptance.
