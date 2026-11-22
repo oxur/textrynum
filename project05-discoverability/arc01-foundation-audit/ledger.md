@@ -158,3 +158,9 @@ all-five/full15closure, waiver or rewrite. Final evidence/AGENTSpolicy/object
 table in15CDCverification; root to surface Operator disposition. Source719clean,
 author15598completed0;1/5refinements,03 unchanged2/5. Independent permitted work
 may continue; original owner/cell/SEARCH/fullarc gates unchanged.
+
+Progress2026-11-22 SLICE16 READY: independent static notifier/subscription scope
+recorded, three full files1660lines and exact pinned version references. Manual
+attempt/state cases only; no services/runtime. Same models,0/5refinements.
+VEC-05/15full completion remains unmet pending actual Operator answer; this scope
+does not waive it or original owner/scale/SEARCH/fullarc gates. See16plan/prompt.
