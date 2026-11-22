@@ -6471,14 +6471,14 @@
       },
       "baseline_CC_session": "01a2000f-9f2d-7660-97b4-f54373f19a94",
       "slice02": {
-        "prompt": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration02.md",
+        "prompt": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration03.md",
         "rows": 7,
         "external_packages": 64,
         "manifests": 42,
         "isolated_feature_selections": 17,
         "entry_source": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
         "CC_session": "01a2006e-2618-7721-b361-1bd809d21d87",
-        "ownership": "CC exclusive source/index while exec55183 active; CDC design/plans/independent review",
+        "ownership": "CDC between exited exec55183 and same-session resume",
         "actual_turn_context": {
           "timestamp": "2026-11-22T01:57:29.921Z",
           "model": "gpt-6-luna",
@@ -6500,7 +6500,7 @@
           "isolated_results": "all exit0",
           "acceptance": "reviewer inspected doer results, final candidate/affected reruns and CI still required"
         },
-        "compatibility_stage": "Redb representative state/two hashes, Lance SDK old rows/schema/current rebuild and two Tantivy records executed; complete Redb/all3 Tantivy/connected logging still required",
+        "compatibility_stage": "executed15bounded Lance cases,1connected MCP logging case and full Redb JSON/pointers/hashes; MAX allocation correction, complete Tantivy/Lance/ISO replays and final gates pending",
         "status_capture_review": {
           "original_unified_default_and17": "valid pipefail witnesses; no retraction",
           "later_unified_final01_final02_and_default_final01": "actual Cargo failures despite wrapper0; not passed",
@@ -6508,8 +6508,8 @@
           "later17_replay": "directly captured Cargo statuses,17 exit0/full success logs",
           "acceptance": "all DEP2 rows open; real Cargo status plus full logs required"
         },
-        "prepared_correction": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration02.md",
-        "prepared_correction_status": "iteration02 actually resumed same session in owned exec55183",
+        "prepared_correction": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration03.md",
+        "prepared_correction_status": "iteration03 issued after safe idle stop; same-session resume pending",
         "new_compatibility_review": {
           "metadata_filter": "all-N buffering unaccepted; bounded native row-ID streaming/batching authorized private route, actual native plan/semantics/bounded-state proof required",
           "english_stopwords": "parent/CDC engineering disposition under existing preserve-behavior authority: exact1298-word licensed private ISO corpus and unused direct dependency removal; prior inferred approval gate superseded, no new Operator answer; intentional198-word adoption held",
@@ -6527,7 +6527,16 @@
           "binary_diff_sha256": "cb296f545d6f3007e86e64d47474ae8021d0b9e31f235019a4e4bc82dde478da",
           "source_commit": "none; all edits/evidence preserved"
         },
-        "owned_CLI_pid": 32862
+        "owned_CLI_pid": 32862,
+        "second_interruption": {
+          "exec": 55183,
+          "pid": 32862,
+          "exit": 1,
+          "condition": "no active item events or mutable children; normal SIGINT at observed idle boundary",
+          "modified_tracked_files": 34,
+          "binary_diff_sha256": "c6271c535812f09091ba38a881221ad97b148b3046303523d06abdd64e745d51",
+          "source_commit": "none; all edits/evidence preserved"
+        }
       }
     },
     "audit_intake_observations": [
