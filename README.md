@@ -71,6 +71,7 @@ fabryk-gcp = "0.2"          # GCP credential detection
 ```
 
 See the [Fabryk README](crates/fabryk/README.md) for the full crate map and feature flags.
+For current unreleased MCP source compatibility notes and the workspace's Rust 1.94 prerequisite, see the [Fabryk MCP README](crates/fabryk-mcp/README.md#current-workspace-source-compatibility-unreleased-050).
 
 ### HOWTOs
 
@@ -119,7 +120,7 @@ Step-by-step guides for common integration tasks with Fabryk MCP servers:
 
 ### Prerequisites
 
-- Rust 1.85+
+- Rust 1.94+
 
 ### Building
 
@@ -128,6 +129,20 @@ git clone https://github.com/oxur/textrynum
 cd textrynum
 cargo build
 ```
+
+On macOS, a release link involving ONNX Runtime's CoreML objects may report an
+undefined `___isPlatformVersionAtLeast` when the Rust link uses
+`-nodefaultlibs`. If that occurs, add the installed Clang runtime archive to
+Rust links using the active Xcode toolchain:
+
+```bash
+runtime="$(xcrun clang --print-resource-dir)/lib/darwin/libclang_rt.osx.a"
+RUSTFLAGS="-C link-arg=$runtime" cargo build --locked --workspace --all-features --release
+```
+
+This task-local link argument supplies the compiler's authentic availability
+helper; it does not change the macOS deployment target. The ordinary unmodified
+link still needs verification on each supported macOS toolchain.
 
 ### Testing
 

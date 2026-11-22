@@ -44,7 +44,9 @@ pub fn serialize_record_avro(
     let avro_value = json_to_avro_record(record, schema)?;
 
     // Encode to Avro binary datum.
-    let datum = apache_avro::to_avro_datum(schema, avro_value)
+    let datum = apache_avro::writer::datum::GenericDatumWriter::builder(schema)
+        .build()
+        .and_then(|writer| writer.write_value_to_vec(avro_value))
         .map_err(|e| AvroError::EncodingError(Box::new(e)))?;
 
     // Build Confluent wire format: magic byte + schema ID + datum.
@@ -197,6 +199,30 @@ mod tests {
         assert!(!bytes.is_empty());
         // Verify wire format header.
         assert_eq!(bytes[0], 0x00); // Magic byte
+        assert_eq!(
+            i32::from_be_bytes([bytes[1], bytes[2], bytes[3], bytes[4]]),
+            42
+        );
+
+        let mut encoded_datum = &bytes[5..];
+        let decoded = apache_avro::reader::datum::GenericDatumReader::builder(&schema)
+            .build()
+            .unwrap()
+            .read_value(&mut encoded_datum)
+            .unwrap();
+        assert_eq!(
+            decoded,
+            AvroValue::Record(vec![
+                ("id".to_string(), AvroValue::String("txn-001".to_string())),
+                ("amount".to_string(), AvroValue::Double(42.5)),
+                ("count".to_string(), AvroValue::Int(3)),
+                ("active".to_string(), AvroValue::Boolean(true)),
+            ])
+        );
+        assert!(
+            encoded_datum.is_empty(),
+            "datum reader consumed complete payload"
+        );
     }
 
     #[test]

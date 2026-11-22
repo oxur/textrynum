@@ -24,13 +24,13 @@ use crate::embedding::EmbeddingProvider;
 use crate::types::{EmbeddedDocument, VectorSearchParams, VectorSearchResult, VectorSearchResults};
 use arrow_array::{
     Array, FixedSizeListArray, Float32Array, RecordBatch, RecordBatchIterator, RecordBatchReader,
-    StringArray,
+    StringArray, UInt64Array,
 };
 use arrow_schema::{DataType, Field, Schema};
 use async_trait::async_trait;
 use fabryk_core::{Error, Result};
 use futures::TryStreamExt;
-use lancedb::query::{ExecutableQuery, QueryBase};
+use lancedb::query::{ExecutableQuery, QueryBase, QueryExecutionOptions, Select};
 use std::sync::Arc;
 
 /// LanceDB-backed vector search backend.
@@ -42,6 +42,13 @@ pub struct LancedbBackend {
     table_name: String,
     provider: Arc<dyn EmbeddingProvider>,
     document_count: usize,
+}
+
+struct FilteredVectorQuery<'a> {
+    embedding: &'a [f32],
+    category: &'a Option<String>,
+    threshold: f32,
+    limit: usize,
 }
 
 impl LancedbBackend {
@@ -103,9 +110,12 @@ impl VectorBackend for LancedbBackend {
             return Ok(VectorSearchResults::empty(self.name()));
         }
 
-        let query_embedding = self.provider.embed(&params.query).await?;
         let limit = params.limit.unwrap_or(10);
         let threshold = params.similarity_threshold.unwrap_or(0.0);
+        if limit == 0 {
+            return Ok(VectorSearchResults::empty(self.name()));
+        }
+        let query_embedding = self.provider.embed(&params.query).await?;
 
         let table = self
             .connection
@@ -114,49 +124,33 @@ impl VectorBackend for LancedbBackend {
             .await
             .map_err(|e| Error::operation(format!("Failed to open table: {e}")))?;
 
-        let mut query = table
-            .vector_search(query_embedding)
-            .map_err(|e| Error::operation(format!("Failed to create vector search: {e}")))?
-            .limit(limit);
-
-        // Apply category filter
-        if let Some(ref category) = params.category {
-            query = query.only_if(format!("category = '{}'", category.replace('\'', "''")));
-        }
-
-        // Apply metadata filters
-        for (key, value) in &params.metadata_filters {
-            query = query.only_if(format!(
-                "json_extract(metadata, '$.{}') = '{}'",
-                key.replace('\'', "''"),
-                value.replace('\'', "''")
-            ));
-        }
-
-        let results = query
-            .execute()
-            .await
-            .map_err(|e| Error::operation(format!("Vector search failed: {e}")))?;
-
-        let batches: Vec<RecordBatch> = results
-            .try_collect()
-            .await
-            .map_err(|e| Error::operation(format!("Failed to collect results: {e}")))?;
-
-        let mut items = Vec::new();
-        for batch in &batches {
-            let parsed = parse_search_results(batch)?;
-            items.extend(parsed);
-        }
-
-        // Filter by threshold and sort
-        items.retain(|r| r.score >= threshold);
-        items.sort_by(|a, b| {
-            b.score
-                .partial_cmp(&a.score)
-                .unwrap_or(std::cmp::Ordering::Equal)
-        });
-        items.truncate(limit);
+        let items = if params.metadata_filters.is_empty() {
+            let mut query = table
+                .vector_search(query_embedding)
+                .map_err(|e| Error::operation(format!("Failed to create vector search: {e}")))?
+                .limit(limit)
+                .select(Select::columns(&["id", "metadata", "_distance"]));
+            if let Some(ref category) = params.category {
+                query = query.only_if(format!("category = '{}'", category.replace('\'', "''")));
+            }
+            let batches = query
+                .execute()
+                .await
+                .map_err(|e| Error::operation(format!("Vector search failed: {e}")))?
+                .try_collect::<Vec<_>>()
+                .await
+                .map_err(|e| Error::operation(format!("Failed to collect results: {e}")))?;
+            let mut items = Vec::new();
+            for batch in &batches {
+                items.extend(parse_search_results(batch)?);
+            }
+            items.retain(|item| item.score >= threshold);
+            sort_truncate(&mut items, limit);
+            items
+        } else {
+            self.search_with_metadata_filters(&table, query_embedding, &params, threshold, limit)
+                .await?
+        };
 
         let total = items.len();
         Ok(VectorSearchResults {
@@ -173,6 +167,138 @@ impl VectorBackend for LancedbBackend {
     fn document_count(&self) -> Result<usize> {
         Ok(self.document_count)
     }
+}
+
+impl LancedbBackend {
+    async fn search_with_metadata_filters(
+        &self,
+        table: &lancedb::Table,
+        query_embedding: Vec<f32>,
+        params: &VectorSearchParams,
+        threshold: f32,
+        limit: usize,
+    ) -> Result<Vec<VectorSearchResult>> {
+        const ROW_ID_BATCH: usize = 128;
+        let mut scan = table
+            .query()
+            .select(Select::columns(&["metadata"]))
+            .with_row_id();
+        if let Some(ref category) = params.category {
+            scan = scan.only_if(format!("category = '{}'", category.replace('\'', "''")));
+        }
+        let mut options = QueryExecutionOptions::default();
+        options.max_batch_length = ROW_ID_BATCH as u32;
+        let mut stream = scan
+            .execute_with_options(options)
+            .await
+            .map_err(|e| Error::operation(format!("Metadata scan failed: {e}")))?;
+
+        let mut row_ids = Vec::with_capacity(ROW_ID_BATCH);
+        // `limit` is caller supplied and may be much larger than the table (or
+        // even `usize::MAX`). Grow only as matching rows are actually returned.
+        let mut items = Vec::new();
+        let filtered_query = FilteredVectorQuery {
+            embedding: &query_embedding,
+            category: &params.category,
+            threshold,
+            limit,
+        };
+        while let Some(batch) = stream
+            .try_next()
+            .await
+            .map_err(|e| Error::operation(format!("Metadata scan failed: {e}")))?
+        {
+            let row_id_col = batch
+                .column_by_name("_rowid")
+                .ok_or_else(|| Error::operation("Metadata scan omitted _rowid"))?
+                .as_any()
+                .downcast_ref::<UInt64Array>()
+                .ok_or_else(|| Error::operation("Metadata scan _rowid is not UInt64"))?;
+            let metadata_col = batch
+                .column_by_name("metadata")
+                .ok_or_else(|| Error::operation("Metadata scan omitted metadata"))?
+                .as_any()
+                .downcast_ref::<StringArray>()
+                .ok_or_else(|| Error::operation("Metadata scan metadata is not Utf8"))?;
+
+            for row in 0..batch.num_rows() {
+                let metadata: std::collections::HashMap<String, String> =
+                    serde_json::from_str(metadata_col.value(row)).map_err(|e| {
+                        Error::operation(format!("Invalid persisted metadata JSON: {e}"))
+                    })?;
+                if params
+                    .metadata_filters
+                    .iter()
+                    .all(|(key, value)| metadata.get(key) == Some(value))
+                {
+                    row_ids.push(row_id_col.value(row));
+                    if row_ids.len() == ROW_ID_BATCH {
+                        self.query_row_id_batch(table, &filtered_query, &row_ids, &mut items)
+                            .await?;
+                        row_ids.clear();
+                    }
+                }
+            }
+        }
+        if !row_ids.is_empty() {
+            self.query_row_id_batch(table, &filtered_query, &row_ids, &mut items)
+                .await?;
+        }
+        sort_truncate(&mut items, limit);
+        Ok(items)
+    }
+
+    async fn query_row_id_batch(
+        &self,
+        table: &lancedb::Table,
+        filtered_query: &FilteredVectorQuery<'_>,
+        row_ids: &[u64],
+        items: &mut Vec<VectorSearchResult>,
+    ) -> Result<()> {
+        let predicate = format!(
+            "_rowid IN ({})",
+            row_ids
+                .iter()
+                .map(u64::to_string)
+                .collect::<Vec<_>>()
+                .join(",")
+        );
+        let mut query = table
+            .vector_search(filtered_query.embedding.to_vec())
+            .map_err(|e| Error::operation(format!("Failed to create vector search: {e}")))?
+            .only_if(predicate)
+            .limit(filtered_query.limit.min(row_ids.len()))
+            .select(Select::columns(&["id", "metadata", "_distance"]));
+        if let Some(category) = filtered_query.category {
+            query = query.only_if(format!("category = '{}'", category.replace('\'', "''")));
+        }
+        let mut stream = query
+            .execute()
+            .await
+            .map_err(|e| Error::operation(format!("Filtered vector search failed: {e}")))?;
+        while let Some(batch) = stream
+            .try_next()
+            .await
+            .map_err(|e| Error::operation(format!("Filtered vector search failed: {e}")))?
+        {
+            items.extend(
+                parse_search_results(&batch)?
+                    .into_iter()
+                    .filter(|item| item.score >= filtered_query.threshold),
+            );
+        }
+        sort_truncate(items, filtered_query.limit);
+        Ok(())
+    }
+}
+
+fn sort_truncate(items: &mut Vec<VectorSearchResult>, limit: usize) {
+    items.sort_by(|a, b| {
+        b.score
+            .partial_cmp(&a.score)
+            .unwrap_or(std::cmp::Ordering::Equal)
+    });
+    items.truncate(limit);
 }
 
 impl std::fmt::Debug for LancedbBackend {
@@ -268,20 +394,20 @@ fn parse_search_results(batch: &RecordBatch) -> Result<Vec<VectorSearchResult>> 
 
     let distance_col = batch
         .column_by_name("_distance")
-        .and_then(|c| c.as_any().downcast_ref::<Float32Array>());
+        .ok_or_else(|| Error::operation("Missing '_distance' column in vector results"))?
+        .as_any()
+        .downcast_ref::<Float32Array>()
+        .ok_or_else(|| Error::operation("'_distance' column is not Float32Array"))?;
 
     let mut results = Vec::new();
     for i in 0..batch.num_rows() {
         let id = id_col.value(i).to_string();
 
-        let metadata: std::collections::HashMap<String, String> = metadata_col
-            .value(i)
-            .parse::<serde_json::Value>()
-            .ok()
-            .and_then(|v| serde_json::from_value(v).ok())
-            .unwrap_or_default();
+        let metadata: std::collections::HashMap<String, String> =
+            serde_json::from_str(metadata_col.value(i))
+                .map_err(|e| Error::operation(format!("Invalid persisted metadata JSON: {e}")))?;
 
-        let distance = distance_col.map(|c| c.value(i)).unwrap_or(0.0);
+        let distance = distance_col.value(i);
         // Distance-to-score normalization: 1/(1 + distance)
         let score = 1.0 / (1.0 + distance);
 
@@ -304,6 +430,23 @@ fn parse_search_results(batch: &RecordBatch) -> Result<Vec<VectorSearchResult>> 
 mod tests {
     use super::*;
     use crate::types::VectorDocument;
+
+    struct ZeroEmbeddingProvider;
+
+    #[async_trait]
+    impl EmbeddingProvider for ZeroEmbeddingProvider {
+        async fn embed(&self, _text: &str) -> Result<Vec<f32>> {
+            Ok(vec![0.0; 4])
+        }
+
+        fn dimension(&self) -> usize {
+            4
+        }
+
+        fn name(&self) -> &str {
+            "zero-test-provider"
+        }
+    }
 
     fn make_test_documents(dimension: usize) -> Vec<EmbeddedDocument> {
         vec![
@@ -402,11 +545,10 @@ mod tests {
         let docs = make_test_documents(4);
         let batch = build_record_batch(&docs, 4).unwrap();
 
-        let results = parse_search_results(&batch).unwrap();
-        assert_eq!(results.len(), 3);
-        assert_eq!(results[0].id, "doc-1");
-        // Without _distance column, distance defaults to 0 → score = 1.0
-        assert_eq!(results[0].score, 1.0);
+        assert!(
+            parse_search_results(&batch).is_err(),
+            "missing native distance must be reported"
+        );
     }
 
     #[test]
@@ -494,6 +636,268 @@ mod tests {
         for item in &results.items {
             assert!(item.score >= 0.0 && item.score <= 1.0);
         }
+    }
+
+    #[tokio::test]
+    async fn test_lancedb_known_l2_scores_ranking_and_filtering() {
+        let dir = tempfile::tempdir().unwrap();
+        let db_path = dir.path().join("known-distance-db");
+        let uri = db_path.to_str().unwrap();
+
+        let connection = lancedb::connect(uri).execute().await.unwrap();
+        let unrelated_schema = Arc::new(Schema::new(vec![Field::new(
+            "marker",
+            DataType::Utf8,
+            false,
+        )]));
+        connection
+            .create_empty_table("unrelated", unrelated_schema)
+            .execute()
+            .await
+            .unwrap();
+        drop(connection);
+
+        let mut nullable = VectorDocument::new("doc-null", "Document with nullable category")
+            .with_metadata("owner", "acme");
+        nullable.category = None;
+        let documents = vec![
+            EmbeddedDocument::new(nullable, vec![0.0; 4]),
+            EmbeddedDocument::new(
+                VectorDocument::new("doc-one", "One vector row")
+                    .with_category("reports")
+                    .with_metadata("owner", "acme"),
+                vec![1.0; 4],
+            ),
+            EmbeddedDocument::new(
+                VectorDocument::new("doc-two", "Two vector row")
+                    .with_category("archive")
+                    .with_metadata("owner", "example"),
+                vec![2.0; 4],
+            ),
+        ];
+        let backend = LancedbBackend::build(
+            uri,
+            "cc_vectors",
+            Arc::new(ZeroEmbeddingProvider),
+            documents,
+        )
+        .await
+        .unwrap();
+
+        let results = backend
+            .search(VectorSearchParams::new("zero query").with_limit(10))
+            .await
+            .unwrap();
+        assert_eq!(
+            results
+                .items
+                .iter()
+                .map(|item| item.id.as_str())
+                .collect::<Vec<_>>(),
+            ["doc-null", "doc-one", "doc-two"]
+        );
+        for ((item, distance), score) in
+            results
+                .items
+                .iter()
+                .zip([0.0_f32, 4.0, 16.0])
+                .zip([1.0_f32, 1.0 / 5.0, 1.0 / 17.0])
+        {
+            assert!((item.distance - distance).abs() < 1e-5);
+            assert!((item.score - score).abs() < 1e-5);
+        }
+
+        let category = backend
+            .search(VectorSearchParams::new("zero query").with_category("reports"))
+            .await
+            .unwrap();
+        assert_eq!(category.items.len(), 1);
+        assert_eq!(category.items[0].id, "doc-one");
+
+        let metadata = backend
+            .search(VectorSearchParams::new("zero query").with_filter("owner", "acme"))
+            .await
+            .unwrap();
+        assert_eq!(metadata.items.len(), 2);
+        assert!(
+            metadata
+                .items
+                .iter()
+                .all(|item| item.metadata["owner"] == "acme")
+        );
+
+        let farther_only = backend
+            .search(
+                VectorSearchParams::new("zero query")
+                    .with_filter("owner", "example")
+                    .with_limit(1),
+            )
+            .await
+            .unwrap();
+        assert_eq!(farther_only.items.len(), 1);
+        assert_eq!(farther_only.items[0].id, "doc-two");
+        assert!((farther_only.items[0].distance - 16.0).abs() < 1e-5);
+        assert!((farther_only.items[0].score - 1.0 / 17.0).abs() < 1e-5);
+
+        let conjunction = backend
+            .search(
+                VectorSearchParams::new("zero query")
+                    .with_category("archive")
+                    .with_filter("owner", "example")
+                    .with_filter("absent", "value"),
+            )
+            .await
+            .unwrap();
+        assert!(conjunction.items.is_empty());
+        assert_eq!(conjunction.total, 0);
+        let huge_limit_no_match = backend
+            .search(
+                VectorSearchParams::new("zero query")
+                    .with_filter("absent", "value")
+                    .with_limit(usize::MAX),
+            )
+            .await
+            .unwrap();
+        assert!(huge_limit_no_match.items.is_empty());
+        assert_eq!(huge_limit_no_match.total, 0);
+        let conjunction = backend
+            .search(
+                VectorSearchParams::new("zero query")
+                    .with_category("archive")
+                    .with_filter("owner", "example"),
+            )
+            .await
+            .unwrap();
+        assert_eq!(
+            conjunction
+                .items
+                .iter()
+                .map(|item| item.id.as_str())
+                .collect::<Vec<_>>(),
+            ["doc-two"]
+        );
+        assert!(
+            backend
+                .search(
+                    VectorSearchParams::new("zero query")
+                        .with_limit(0)
+                        .with_filter("owner", "acme")
+                )
+                .await
+                .unwrap()
+                .items
+                .is_empty()
+        );
+
+        let connection = lancedb::connect(uri).execute().await.unwrap();
+        let table_names = connection.table_names().execute().await.unwrap();
+        assert!(table_names.iter().any(|name| name == "cc_vectors"));
+        assert!(table_names.iter().any(|name| name == "unrelated"));
+    }
+
+    #[tokio::test]
+    async fn test_metadata_filter_streams_multiple_bounded_row_id_batches() {
+        let dir = tempfile::tempdir().unwrap();
+        let db_path = dir.path().join("multi-row-id-batches");
+        let mut documents = (0..259)
+            .map(|index| {
+                EmbeddedDocument::new(
+                    VectorDocument::new(format!("doc-{index:03}"), "Earlier non-winning row")
+                        .with_category("reports")
+                        .with_metadata("owner", "acme"),
+                    vec![1.0; 4],
+                )
+            })
+            .collect::<Vec<_>>();
+        documents.push(EmbeddedDocument::new(
+            VectorDocument::new("doc-late-winner", "Late winning row")
+                .with_category("reports")
+                .with_metadata("owner", "acme"),
+            vec![0.0; 4],
+        ));
+        let backend = LancedbBackend::build(
+            db_path.to_str().unwrap(),
+            "multi_rows",
+            Arc::new(ZeroEmbeddingProvider),
+            documents,
+        )
+        .await
+        .unwrap();
+
+        let table = backend
+            .connection
+            .open_table("multi_rows")
+            .execute()
+            .await
+            .unwrap();
+        let scan_plan = table
+            .query()
+            .select(Select::columns(&["metadata"]))
+            .with_row_id()
+            .explain_plan(false)
+            .await
+            .unwrap();
+        println!("bounded metadata scan physical plan:\n{scan_plan}");
+        let vector_plan = table
+            .vector_search(vec![0.0; 4])
+            .unwrap()
+            .only_if("_rowid IN (1,2,3)")
+            .limit(1)
+            .select(Select::columns(&["id", "metadata", "_distance"]))
+            .explain_plan(false)
+            .await
+            .unwrap();
+        println!("bounded row-id vector physical plan:\n{vector_plan}");
+        drop(table);
+
+        let late = backend
+            .search(
+                VectorSearchParams::new("zero query")
+                    .with_filter("owner", "acme")
+                    .with_limit(1),
+            )
+            .await
+            .unwrap();
+        assert_eq!(late.items.len(), 1);
+        assert_eq!(late.items[0].id, "doc-late-winner");
+        assert!((late.items[0].distance).abs() < 1e-5);
+        assert!((late.items[0].score - 1.0).abs() < 1e-5);
+        println!(
+            "metadata scan covered 260 matching rows over multiple 128-row batches; final row was returned as nearest result"
+        );
+
+        let all = backend
+            .search(
+                VectorSearchParams::new("zero query")
+                    .with_filter("owner", "acme")
+                    .with_limit(300),
+            )
+            .await
+            .unwrap();
+        assert_eq!(all.total, 260);
+        assert_eq!(all.items.len(), 260);
+        assert_eq!(all.items[0].id, "doc-late-winner");
+        assert!((all.items[0].distance).abs() < 1e-5);
+        assert!((all.items[0].score - 1.0).abs() < 1e-5);
+        let ids = all
+            .items
+            .iter()
+            .map(|item| item.id.as_str())
+            .collect::<std::collections::HashSet<_>>();
+        assert_eq!(ids.len(), 260);
+        assert!(ids.contains("doc-000") && ids.contains("doc-258"));
+        assert!(all.items.iter().all(|item| {
+            if item.id == "doc-late-winner" {
+                item.distance.abs() < 1e-5 && (item.score - 1.0).abs() < 1e-5
+            } else {
+                (item.distance - 4.0).abs() < 1e-5 && (item.score - 0.2).abs() < 1e-5
+            }
+        }));
+        assert!(
+            all.items
+                .windows(2)
+                .all(|pair| pair[0].score >= pair[1].score)
+        );
     }
 
     #[tokio::test]

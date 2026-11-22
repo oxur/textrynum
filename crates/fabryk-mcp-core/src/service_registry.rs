@@ -16,7 +16,7 @@
 
 use crate::registry::{ToolRegistry, ToolResult};
 use fabryk_core::service::ServiceHandle;
-use rmcp::model::{CallToolResult, Content, Tool};
+use rmcp::model::{CallToolResult, ContentBlock, Tool};
 use serde_json::Value;
 
 /// A registry wrapper that gates tool calls on service readiness.
@@ -68,7 +68,7 @@ impl ToolRegistry for ServiceAwareRegistry {
                          service '{svc_name}' is {state_str} \
                          (elapsed: {elapsed:.1?}). Try again shortly."
                     );
-                    Ok(CallToolResult::error(vec![Content::text(msg)]))
+                    Ok(CallToolResult::error(vec![ContentBlock::text(msg)]))
                 }));
             }
         }
@@ -86,7 +86,7 @@ impl ToolRegistry for ServiceAwareRegistry {
 mod tests {
     use super::*;
     use fabryk_core::service::ServiceState;
-    use rmcp::model::RawContent;
+    use rmcp::model::ContentBlock;
 
     fn make_tool(name: &str, description: &str) -> Tool {
         Tool::new(
@@ -109,7 +109,7 @@ mod tests {
             if self.has_tool(name) {
                 let name = name.to_string();
                 Some(Box::pin(async move {
-                    Ok(CallToolResult::success(vec![Content::text(format!(
+                    Ok(CallToolResult::success(vec![ContentBlock::text(format!(
                         "result: {name}"
                     ))]))
                 }))
@@ -150,10 +150,11 @@ mod tests {
         assert_eq!(result.is_error, Some(true));
 
         // Check error message contains service name and state
-        let text = match &result.content[0].raw {
-            RawContent::Text(t) => t.text.clone(),
-            _ => panic!("Expected text content"),
-        };
+        let text = result.content[0]
+            .as_text()
+            .expect("Expected text content")
+            .text
+            .clone();
         assert!(text.contains("search"));
         assert!(text.contains("fts"));
         assert!(text.contains("starting"));
@@ -213,10 +214,11 @@ mod tests {
             .unwrap();
         assert_eq!(result.is_error, Some(true));
 
-        let text = match &result.content[0].raw {
-            RawContent::Text(t) => t.text.clone(),
-            _ => panic!("Expected text content"),
-        };
+        let text = result.content[0]
+            .as_text()
+            .expect("Expected text content")
+            .text
+            .clone();
         assert!(text.contains("vector"));
     }
 
@@ -253,10 +255,11 @@ mod tests {
             .unwrap()
             .await
             .unwrap();
-        let text = match &result.content[0].raw {
-            RawContent::Text(t) => t.text.clone(),
-            _ => panic!("Expected text content"),
-        };
+        let text = result.content[0]
+            .as_text()
+            .expect("Expected text content")
+            .text
+            .clone();
 
         // Should contain: tool name, service name, state, elapsed, retry hint
         assert!(text.contains("traverse"));

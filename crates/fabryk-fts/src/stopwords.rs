@@ -1,8 +1,8 @@
 //! Stopword filtering for search queries.
 //!
 //! This module filters common words (stopwords) from search queries to improve
-//! search quality. It uses the `stop-words` crate for a comprehensive English
-//! stopword list (~500 words) and supports:
+//! search quality. It preserves the ISO English corpus used before LanceDB's
+//! feature unification selected the smaller NLTK corpus, and supports:
 //!
 //! - Allowlist: Words to preserve even if they're stopwords
 //! - Custom stopwords: Additional words to filter
@@ -37,10 +37,14 @@
 //! assert_eq!(filter.filter("I V I progression"), "I V I progression");
 //! ```
 
-use std::collections::HashSet;
-use stop_words::{LANGUAGE, get};
-
 use crate::SearchConfig;
+use std::collections::HashSet;
+use std::sync::LazyLock;
+
+const ENGLISH_ISO_JSON: &str = include_str!("stopwords-en-iso.json");
+static ENGLISH_ISO: LazyLock<Vec<String>> = LazyLock::new(|| {
+    serde_json::from_str(ENGLISH_ISO_JSON).expect("embedded ISO English stopwords are valid JSON")
+});
 
 /// Stopword filter for query preprocessing.
 ///
@@ -54,10 +58,7 @@ pub struct StopwordFilter {
 impl StopwordFilter {
     /// Create a new stopword filter from configuration.
     pub fn new(config: &SearchConfig) -> Self {
-        let mut stopwords: HashSet<String> = get(LANGUAGE::English)
-            .iter()
-            .map(|s| s.to_lowercase())
-            .collect();
+        let mut stopwords: HashSet<String> = ENGLISH_ISO.iter().map(|s| s.to_lowercase()).collect();
 
         // Add custom stopwords
         for word in &config.custom_stopwords {
@@ -307,8 +308,14 @@ mod tests {
     fn test_stopword_count() {
         let filter = default_filter();
 
-        // stop-words crate has 500+ English stopwords
         assert!(filter.stopword_count() >= 500);
+        assert_eq!(filter.stopword_count(), 1298);
+        for word in ["able", "across", "therefore", "system"] {
+            assert!(filter.is_stopword(word), "ISO English term {word}");
+        }
+        for word in ["ain", "hadn", "mightn", "mustn", "needn", "shan"] {
+            assert!(!filter.is_stopword(word), "NLTK-only term {word}");
+        }
     }
 
     #[test]

@@ -58,17 +58,13 @@ mod tests {
 
     impl ResourceRegistry for TestResources {
         fn resources(&self) -> Vec<Resource> {
-            use rmcp::model::{Annotated, RawResource};
-            vec![Annotated::new(
-                RawResource::new("test://doc", "Test Document"),
-                None,
-            )]
+            vec![Resource::new("test://doc", "Test Document")]
         }
 
         fn read(&self, uri: &str) -> Option<ResourceFuture> {
             if uri == "test://doc" {
                 Some(Box::pin(async {
-                    Ok(vec![ResourceContents::text("test://doc", "hello")])
+                    Ok(vec![ResourceContents::text("hello", "test://doc")])
                 }))
             } else {
                 None
@@ -90,6 +86,11 @@ mod tests {
         assert!(future.is_some());
         let contents = future.unwrap().await.unwrap();
         assert_eq!(contents.len(), 1);
+        assert!(matches!(
+            &contents[0],
+            ResourceContents::TextResourceContents { uri, text, .. }
+                if uri == "test://doc" && text == "hello"
+        ));
     }
 
     #[test]

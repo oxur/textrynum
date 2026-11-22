@@ -112,9 +112,14 @@ pub use validate::{assert_tools_valid, validate_tools, warn_on_invalid_tools};
 // Re-exports — rmcp types used by downstream crates
 pub mod model {
     //! Re-exported rmcp model types.
+    #[expect(
+        deprecated,
+        reason = "Keep the public logging facade needed by the legacy notification contract."
+    )]
+    pub use rmcp::model::LoggingLevel;
     pub use rmcp::model::{
-        AnnotateAble, Annotated, CallToolResult, Content, ErrorCode, ErrorData, LoggingLevel,
-        RawResource, Resource, ResourceContents, Tool,
+        CallToolResponse, CallToolResult, ContentBlock, ErrorCode, ErrorData, ListToolsResult,
+        ReadResourceResponse, ReadResourceResult, Resource, ResourceContents, Tool,
     };
 }
 

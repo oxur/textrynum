@@ -13,7 +13,7 @@ use std::sync::Arc;
 
 use crate::registry::{ToolRegistry, ToolResult};
 use fabryk_core::BackendProbe;
-use rmcp::model::{CallToolResult, Content, ErrorData, Tool};
+use rmcp::model::{CallToolResult, ContentBlock, ErrorData, Tool};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
@@ -194,7 +194,7 @@ impl ToolRegistry for HealthTools {
         Some(Box::pin(async move {
             let json = serde_json::to_string_pretty(&response)
                 .map_err(|e| ErrorData::internal_error(e.to_string(), None))?;
-            Ok(CallToolResult::success(vec![Content::text(json)]))
+            Ok(CallToolResult::success(vec![ContentBlock::text(json)]))
         }))
     }
 }
@@ -219,7 +219,7 @@ pub async fn handle_health(
 
     let json = serde_json::to_string_pretty(&response)
         .map_err(|e| ErrorData::internal_error(e.to_string(), None))?;
-    Ok(CallToolResult::success(vec![Content::text(json)]))
+    Ok(CallToolResult::success(vec![ContentBlock::text(json)]))
 }
 
 /// Handle an enriched health check request with backend probes.
@@ -261,7 +261,7 @@ pub async fn handle_health_enriched(
 
     let json = serde_json::to_string_pretty(&response)
         .map_err(|e| ErrorData::internal_error(e.to_string(), None))?;
-    Ok(CallToolResult::success(vec![Content::text(json)]))
+    Ok(CallToolResult::success(vec![ContentBlock::text(json)]))
 }
 
 // ============================================================================
@@ -417,10 +417,11 @@ mod tests {
         assert_eq!(result.is_error, Some(false));
 
         // Parse the response JSON to verify backend info
-        let content_text = match &result.content[0].raw {
-            rmcp::model::RawContent::Text(t) => t.text.clone(),
-            _ => panic!("Expected text content"),
-        };
+        let content_text = result.content[0]
+            .as_text()
+            .expect("Expected text content")
+            .text
+            .clone();
         let response: HealthResponse = serde_json::from_str(&content_text).unwrap();
 
         let backends = response.backends.unwrap();
@@ -457,10 +458,11 @@ mod tests {
         let future = tools.call("health", json!({})).unwrap();
         let result = future.await.unwrap();
 
-        let content_text = match &result.content[0].raw {
-            rmcp::model::RawContent::Text(t) => t.text.clone(),
-            _ => panic!("Expected text content"),
-        };
+        let content_text = result.content[0]
+            .as_text()
+            .expect("Expected text content")
+            .text
+            .clone();
         let response: HealthResponse = serde_json::from_str(&content_text).unwrap();
 
         let search_config = response.search_config.unwrap();
@@ -481,10 +483,11 @@ mod tests {
         let future = tools.call("health", json!({})).unwrap();
         let result = future.await.unwrap();
 
-        let content_text = match &result.content[0].raw {
-            rmcp::model::RawContent::Text(t) => t.text.clone(),
-            _ => panic!("Expected text content"),
-        };
+        let content_text = result.content[0]
+            .as_text()
+            .expect("Expected text content")
+            .text
+            .clone();
         let response: HealthResponse = serde_json::from_str(&content_text).unwrap();
 
         assert_eq!(response.status, "healthy");
@@ -571,10 +574,11 @@ mod tests {
             .unwrap();
         assert_eq!(result.is_error, Some(false));
 
-        let content_text = match &result.content[0].raw {
-            rmcp::model::RawContent::Text(t) => t.text.clone(),
-            _ => panic!("Expected text content"),
-        };
+        let content_text = result.content[0]
+            .as_text()
+            .expect("Expected text content")
+            .text
+            .clone();
         let response: HealthResponse = serde_json::from_str(&content_text).unwrap();
 
         assert_eq!(response.server_name, "enriched-server");
@@ -588,10 +592,11 @@ mod tests {
             .await
             .unwrap();
 
-        let content_text = match &result.content[0].raw {
-            rmcp::model::RawContent::Text(t) => t.text.clone(),
-            _ => panic!("Expected text content"),
-        };
+        let content_text = result.content[0]
+            .as_text()
+            .expect("Expected text content")
+            .text
+            .clone();
         let response: HealthResponse = serde_json::from_str(&content_text).unwrap();
 
         assert!(response.backends.is_none());

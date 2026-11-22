@@ -36,7 +36,7 @@
 //! ```
 
 use crate::registry::{ToolRegistry, ToolResult};
-use rmcp::model::{CallToolResult, Content, Tool};
+use rmcp::model::{CallToolResult, ContentBlock, Tool};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::HashMap;
@@ -518,7 +518,7 @@ impl<R: ToolRegistry> DiscoverableRegistry<R> {
 
         Box::pin(async move {
             let text = serde_json::to_string_pretty(&json).unwrap_or_else(|_| json.to_string());
-            Ok(CallToolResult::success(vec![Content::text(text)]))
+            Ok(CallToolResult::success(vec![ContentBlock::text(text)]))
         })
     }
 }
@@ -561,7 +561,7 @@ impl<R: ToolRegistry + Send + Sync> ToolRegistry for DiscoverableRegistry<R> {
 mod tests {
     use super::*;
     use crate::CompositeRegistry;
-    use rmcp::model::Content;
+    use rmcp::model::ContentBlock;
     use serde_json::json;
 
     fn make_tool(name: &str, description: &str) -> Tool {
@@ -585,7 +585,7 @@ mod tests {
             if self.has_tool(name) {
                 let name = name.to_string();
                 Some(Box::pin(async move {
-                    Ok(CallToolResult::success(vec![Content::text(format!(
+                    Ok(CallToolResult::success(vec![ContentBlock::text(format!(
                         "result: {name}"
                     ))]))
                 }))
@@ -596,10 +596,11 @@ mod tests {
     }
 
     fn extract_text(result: &CallToolResult) -> String {
-        match &result.content[0].raw {
-            rmcp::model::RawContent::Text(t) => t.text.clone(),
-            _ => panic!("Expected text content"),
-        }
+        result.content[0]
+            .as_text()
+            .expect("Expected text content")
+            .text
+            .clone()
     }
 
     // ── description enrichment ───────────────────────────────────────────────

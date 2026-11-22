@@ -7,7 +7,7 @@
 //! - [`serialize_response`] — Serialize any `T: Serialize` into a [`CallToolResult`]
 //! - [`tier_confidence_schema`] — Standard metadata filter schema (tier + confidence)
 
-use rmcp::model::{CallToolResult, Content, ErrorData, Tool};
+use rmcp::model::{CallToolResult, ContentBlock, ErrorData, Tool};
 use serde::Serialize;
 
 /// Construct a [`Tool`] from a name, description, and JSON schema value.
@@ -57,7 +57,7 @@ pub fn make_tool_no_params(name: &str, description: &str) -> Tool {
 pub fn serialize_response<T: Serialize>(value: &T) -> Result<CallToolResult, ErrorData> {
     let json = serde_json::to_string_pretty(value)
         .map_err(|e| ErrorData::internal_error(format!("Serialization error: {}", e), None))?;
-    Ok(CallToolResult::success(vec![Content::text(json)]))
+    Ok(CallToolResult::success(vec![ContentBlock::text(json)]))
 }
 
 /// Standard metadata filter schema for knowledge-base graph tools.

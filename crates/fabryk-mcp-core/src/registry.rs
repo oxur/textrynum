@@ -123,7 +123,7 @@ impl ToolRegistry for CompositeRegistry {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use rmcp::model::Content;
+    use rmcp::model::ContentBlock;
     use serde_json::json;
 
     fn make_tool(name: &str, description: &str) -> Tool {
@@ -147,7 +147,7 @@ mod tests {
             if self.has_tool(name) {
                 let name = name.to_string();
                 Some(Box::pin(async move {
-                    Ok(CallToolResult::success(vec![Content::text(format!(
+                    Ok(CallToolResult::success(vec![ContentBlock::text(format!(
                         "called: {name}"
                     ))]))
                 }))

@@ -9,8 +9,9 @@ use crate::registry::ToolRegistry;
 use crate::resource::ResourceRegistry;
 use fabryk_core::service::{ServiceHandle, ServiceState};
 use rmcp::model::{
-    CallToolResult, Content, ErrorData, Implementation, ListResourcesResult, ProtocolVersion,
-    ReadResourceRequestParams, ReadResourceResult, ServerCapabilities, ServerInfo,
+    CallToolResponse, CallToolResult, ContentBlock, ErrorData, Implementation, ListResourcesResult,
+    ListToolsResult, ProtocolVersion, ReadResourceRequestParams, ReadResourceResponse,
+    ReadResourceResult, ServerCapabilities, ServerConfig as RmcpServerConfig,
     SubscribeRequestParams, UnsubscribeRequestParams,
 };
 use rmcp::service::{NotificationContext, RequestContext};
@@ -305,7 +306,7 @@ impl FabrykMcpServer {
     ) -> Result<CallToolResult, ErrorData> {
         match self.registry.call(name, args) {
             Some(future) => future.await,
-            None => Ok(CallToolResult::error(vec![Content::text(format!(
+            None => Ok(CallToolResult::error(vec![ContentBlock::text(format!(
                 "Unknown tool: {name}"
             ))])),
         }
@@ -343,7 +344,11 @@ impl FabrykMcpServer {
 }
 
 impl ServerHandler for FabrykMcpServer {
-    fn get_info(&self) -> ServerInfo {
+    #[expect(
+        deprecated,
+        reason = "Retain the server logging capability for clients using the existing MCP logging contract."
+    )]
+    fn get_info(&self) -> RmcpServerConfig {
         let capabilities = if self.resource_registry.is_some() {
             ServerCapabilities::builder()
                 .enable_tools()
@@ -359,7 +364,7 @@ impl ServerHandler for FabrykMcpServer {
                 .build()
         };
 
-        let mut info = ServerInfo::new(capabilities)
+        let mut info = RmcpServerConfig::new(capabilities)
             .with_protocol_version(ProtocolVersion::LATEST)
             .with_server_info(Implementation::new(
                 self.config.name.clone(),
@@ -392,27 +397,21 @@ impl ServerHandler for FabrykMcpServer {
     ) -> impl std::future::Future<Output = Result<rmcp::model::ListToolsResult, ErrorData>> + Send + '_
     {
         let tools = self.list_tools_inner();
-        async move {
-            Ok(rmcp::model::ListToolsResult {
-                tools,
-                next_cursor: None,
-                meta: None,
-            })
-        }
+        async move { Ok(ListToolsResult::with_all_items(tools)) }
     }
 
     fn call_tool(
         &self,
         request: rmcp::model::CallToolRequestParams,
         _context: RequestContext<RoleServer>,
-    ) -> impl std::future::Future<Output = Result<CallToolResult, ErrorData>> + Send + '_ {
+    ) -> impl std::future::Future<Output = Result<CallToolResponse, ErrorData>> + Send + '_ {
         let name = request.name.to_string();
         let args = request
             .arguments
             .map(serde_json::Value::Object)
             .unwrap_or(serde_json::Value::Null);
 
-        async move { self.call_tool_inner(&name, args).await }
+        async move { self.call_tool_inner(&name, args).await.map(Into::into) }
     }
 
     #[allow(clippy::manual_async_fn)]
@@ -429,8 +428,9 @@ impl ServerHandler for FabrykMcpServer {
         &self,
         request: ReadResourceRequestParams,
         _context: RequestContext<RoleServer>,
-    ) -> impl std::future::Future<Output = Result<ReadResourceResult, ErrorData>> + Send + '_ {
-        async move { self.read_resource_inner(&request.uri).await }
+    ) -> impl std::future::Future<Output = Result<ReadResourceResponse, ErrorData>> + Send + '_
+    {
+        async move { self.read_resource_inner(&request.uri).await.map(Into::into) }
     }
 
     #[allow(clippy::manual_async_fn)]
@@ -491,7 +491,7 @@ mod tests {
         fn call(&self, name: &str, _args: serde_json::Value) -> Option<ToolResult> {
             if name == "test_tool" {
                 Some(Box::pin(async {
-                    Ok(CallToolResult::success(vec![Content::text("ok")]))
+                    Ok(CallToolResult::success(vec![ContentBlock::text("ok")]))
                 }))
             } else {
                 None
@@ -725,15 +725,12 @@ mod tests {
     #[tokio::test]
     async fn test_list_resources_delegates_to_registry() {
         use crate::resource::ResourceRegistry;
-        use rmcp::model::{Annotated, RawResource, Resource};
+        use rmcp::model::Resource;
 
         struct TestResources;
         impl ResourceRegistry for TestResources {
             fn resources(&self) -> Vec<Resource> {
-                vec![Annotated::new(
-                    RawResource::new("test://res", "Test Resource"),
-                    None,
-                )]
+                vec![Resource::new("test://res", "Test Resource")]
             }
             fn read(&self, _uri: &str) -> Option<crate::resource::ResourceFuture> {
                 None
@@ -792,15 +789,12 @@ mod tests {
     #[test]
     fn test_list_resources_inner_with_registry() {
         use crate::resource::ResourceRegistry;
-        use rmcp::model::{Annotated, RawResource, Resource};
+        use rmcp::model::Resource;
 
         struct TestResources;
         impl ResourceRegistry for TestResources {
             fn resources(&self) -> Vec<Resource> {
-                vec![Annotated::new(
-                    RawResource::new("test://res", "Test Resource"),
-                    None,
-                )]
+                vec![Resource::new("test://res", "Test Resource")]
             }
             fn read(&self, _uri: &str) -> Option<crate::resource::ResourceFuture> {
                 None
@@ -842,20 +836,17 @@ mod tests {
     #[tokio::test]
     async fn test_read_resource_inner_known_uri() {
         use crate::resource::ResourceRegistry;
-        use rmcp::model::{Annotated, RawResource, Resource, ResourceContents};
+        use rmcp::model::{Resource, ResourceContents};
 
         struct DocResources;
         impl ResourceRegistry for DocResources {
             fn resources(&self) -> Vec<Resource> {
-                vec![Annotated::new(
-                    RawResource::new("test://doc", "Test Doc"),
-                    None,
-                )]
+                vec![Resource::new("test://doc", "Test Doc")]
             }
             fn read(&self, uri: &str) -> Option<crate::resource::ResourceFuture> {
                 if uri == "test://doc" {
                     Some(Box::pin(async {
-                        Ok(vec![ResourceContents::text("test://doc", "content")])
+                        Ok(vec![ResourceContents::text("content", "test://doc")])
                     }))
                 } else {
                     None
@@ -866,6 +857,11 @@ mod tests {
         let server = FabrykMcpServer::new(MockRegistry).with_resources(DocResources);
         let result = server.read_resource_inner("test://doc").await.unwrap();
         assert_eq!(result.contents.len(), 1);
+        assert!(matches!(
+            &result.contents[0],
+            ResourceContents::TextResourceContents { uri, text, .. }
+                if uri == "test://doc" && text == "content"
+        ));
     }
 
     #[tokio::test]
@@ -887,28 +883,314 @@ mod tests {
 mod http_tests {
     use super::*;
     use crate::registry::{CompositeRegistry, ToolResult};
-    use rmcp::model::{CallToolResult, Content, Tool};
+    use crate::static_resources::{StaticResourceDef, StaticResources};
+    use rmcp::model::{CallToolResult, ContentBlock, Tool};
+    use serde_json::{Value, json};
+    use std::time::Duration;
+    use tokio::task::JoinHandle;
+
+    struct AbortOnDrop(JoinHandle<()>);
+
+    impl Drop for AbortOnDrop {
+        fn drop(&mut self) {
+            self.0.abort();
+        }
+    }
 
     struct MockRegistry;
 
     impl ToolRegistry for MockRegistry {
         fn tools(&self) -> Vec<Tool> {
-            vec![Tool::new(
-                "test_tool",
-                "A test tool",
-                crate::empty_input_schema(),
-            )]
+            vec![
+                Tool::new("test_tool", "A test tool", crate::empty_input_schema()),
+                Tool::new("test_error", "An error tool", crate::empty_input_schema()),
+            ]
         }
 
         fn call(&self, name: &str, _args: serde_json::Value) -> Option<ToolResult> {
-            if name == "test_tool" {
-                Some(Box::pin(async {
-                    Ok(CallToolResult::success(vec![Content::text("ok")]))
-                }))
-            } else {
-                None
+            match name {
+                "test_tool" => Some(Box::pin(async {
+                    Ok(CallToolResult::success(vec![ContentBlock::text(
+                        "tool payload",
+                    )]))
+                })),
+                "test_error" => Some(Box::pin(async {
+                    Ok(CallToolResult::error(vec![ContentBlock::text(
+                        "expected tool error",
+                    )]))
+                })),
+                _ => None,
             }
         }
+    }
+
+    async fn send_legacy(
+        client: &reqwest::Client,
+        url: &str,
+        session_id: Option<&str>,
+        body: Value,
+    ) -> reqwest::Response {
+        let mut request = client
+            .post(url)
+            .header("Content-Type", "application/json")
+            .header("Accept", "application/json, text/event-stream")
+            .json(&body);
+        if let Some(session_id) = session_id {
+            request = request.header("Mcp-Session-Id", session_id);
+        }
+        tokio::time::timeout(Duration::from_secs(5), request.send())
+            .await
+            .expect("bounded MCP request")
+            .expect("send MCP request")
+    }
+
+    async fn sse_json(response: reqwest::Response) -> Value {
+        let body = tokio::time::timeout(Duration::from_secs(5), response.text())
+            .await
+            .expect("bounded MCP event response")
+            .expect("read MCP event response");
+        let data = body
+            .lines()
+            .filter_map(|line| line.strip_prefix("data: "))
+            .find(|line| !line.is_empty())
+            .expect("legacy response contains a JSON-RPC event");
+        serde_json::from_str(data).expect("event is JSON-RPC")
+    }
+
+    #[tokio::test]
+    async fn default_http_service_preserves_legacy_mcp_wire_behavior() {
+        let missing_resource_root = tempfile::tempdir().expect("owned missing-resource directory");
+        let resources =
+            StaticResources::new(missing_resource_root.path()).with_resource(StaticResourceDef {
+                uri: "acme://guide".into(),
+                name: "Guide".into(),
+                description: "Acme test guide".into(),
+                mime_type: "text/markdown".into(),
+                filename: "guide.md".into(),
+                fallback: Some("# Acme Guide".into()),
+            });
+        let server = FabrykMcpServer::new(MockRegistry).with_resources(resources);
+        let notifier = server.notifier();
+        let service = server.into_http_service();
+        let router = axum::Router::new().nest_service("/mcp", service);
+
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0")
+            .await
+            .expect("bind loopback listener");
+        let address = listener.local_addr().expect("bound address");
+        let task = AbortOnDrop(tokio::spawn(async move {
+            let _ = axum::serve(listener, router).await;
+        }));
+        let client = reqwest::Client::builder()
+            .timeout(Duration::from_secs(5))
+            .build()
+            .expect("build bounded test client");
+        let url = format!("http://{address}/mcp");
+
+        let initialize = send_legacy(
+            &client,
+            &url,
+            None,
+            json!({
+                "jsonrpc": "2.0",
+                "id": 1,
+                "method": "initialize",
+                "params": {
+                    "protocolVersion": "2025-11-25",
+                    "capabilities": {},
+                    "clientInfo": {"name": "Acme test client", "version": "1.0"}
+                }
+            }),
+        )
+        .await;
+        assert_eq!(initialize.status(), reqwest::StatusCode::OK);
+        let session_id = initialize
+            .headers()
+            .get("Mcp-Session-Id")
+            .expect("legacy initialize returns session id")
+            .to_str()
+            .expect("session id is valid header text")
+            .to_owned();
+        let initialized = sse_json(initialize).await;
+        assert_eq!(initialized["result"]["protocolVersion"], "2025-11-25");
+
+        let notification = send_legacy(
+            &client,
+            &url,
+            Some(&session_id),
+            json!({"jsonrpc": "2.0", "method": "notifications/initialized"}),
+        )
+        .await;
+        assert!(notification.status().is_success());
+
+        let listed_tools = sse_json(
+            send_legacy(
+                &client,
+                &url,
+                Some(&session_id),
+                json!({"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}}),
+            )
+            .await,
+        )
+        .await;
+        let tool_names: Vec<&str> = listed_tools["result"]["tools"]
+            .as_array()
+            .expect("listed tools array")
+            .iter()
+            .map(|tool| tool["name"].as_str().expect("tool name"))
+            .collect();
+        assert_eq!(tool_names, ["test_tool", "test_error"]);
+
+        let called = sse_json(
+            send_legacy(
+                &client,
+                &url,
+                Some(&session_id),
+                json!({
+                    "jsonrpc": "2.0", "id": 3, "method": "tools/call",
+                    "params": {"name": "test_tool", "arguments": {}}
+                }),
+            )
+            .await,
+        )
+        .await;
+        assert_eq!(called["result"]["content"][0]["text"], "tool payload");
+        assert_eq!(called["result"]["isError"], false);
+
+        let failed = sse_json(
+            send_legacy(
+                &client,
+                &url,
+                Some(&session_id),
+                json!({
+                    "jsonrpc": "2.0", "id": 4, "method": "tools/call",
+                    "params": {"name": "test_error", "arguments": {}}
+                }),
+            )
+            .await,
+        )
+        .await;
+        assert_eq!(failed["result"]["isError"], true);
+        assert_eq!(
+            failed["result"]["content"][0]["text"],
+            "expected tool error"
+        );
+
+        let listed_resources = sse_json(
+            send_legacy(
+                &client,
+                &url,
+                Some(&session_id),
+                json!({"jsonrpc": "2.0", "id": 5, "method": "resources/list", "params": {}}),
+            )
+            .await,
+        )
+        .await;
+        let resource = &listed_resources["result"]["resources"][0];
+        assert_eq!(resource["uri"], "acme://guide");
+        assert_eq!(resource["name"], "Guide");
+        assert_eq!(resource["description"], "Acme test guide");
+        assert_eq!(resource["mimeType"], "text/markdown");
+
+        let read = sse_json(
+            send_legacy(
+                &client,
+                &url,
+                Some(&session_id),
+                json!({
+                    "jsonrpc": "2.0", "id": 6, "method": "resources/read",
+                    "params": {"uri": "acme://guide"}
+                }),
+            )
+            .await,
+        )
+        .await;
+        let content = &read["result"]["contents"][0];
+        assert_eq!(content["uri"], "acme://guide");
+        assert_eq!(content["text"], "# Acme Guide");
+        assert_eq!(content["mimeType"], "text/plain");
+
+        // A request barrier after initialized ensures the server registered this peer.
+        assert_eq!(notifier.client_count().await, 1);
+        let mut log_stream = client
+            .get(&url)
+            .header("Accept", "text/event-stream")
+            .header("Mcp-Session-Id", &session_id)
+            .header("Mcp-Protocol-Version", "2025-11-25")
+            .send()
+            .await
+            .expect("open legacy server event stream");
+        assert_eq!(log_stream.status(), reqwest::StatusCode::OK);
+        #[expect(
+            deprecated,
+            reason = "Verify the SEP-2577 legacy logging notification still reaches a connected client; no same-semantics replacement exists."
+        )]
+        let recipient_count = notifier
+            .log(
+                rmcp::model::LoggingLevel::Warning,
+                "compatibility-oracle",
+                json!({"event": "legacy-log", "sequence": 42}),
+            )
+            .await;
+        assert_eq!(recipient_count, 1);
+        let mut event_bytes = Vec::new();
+        let event = tokio::time::timeout(Duration::from_secs(5), async {
+            'events: loop {
+                let chunk = log_stream
+                    .chunk()
+                    .await
+                    .expect("read SSE chunk")
+                    .expect("logging event arrives");
+                event_bytes.extend_from_slice(&chunk);
+                let text = String::from_utf8_lossy(&event_bytes);
+                for block in text.split("\n\n") {
+                    let data = block
+                        .lines()
+                        .filter_map(|line| {
+                            line.trim_end_matches('\r')
+                                .strip_prefix("data:")
+                                .map(str::trim_start)
+                        })
+                        .filter(|line| !line.is_empty())
+                        .collect::<Vec<_>>()
+                        .join("\n");
+                    if !data.is_empty()
+                        && let Ok(notification) = serde_json::from_str::<Value>(&data)
+                    {
+                        break 'events notification;
+                    }
+                }
+            }
+        })
+        .await
+        .expect("bounded connected logging event");
+        assert_eq!(event["jsonrpc"], "2.0");
+        assert_eq!(event["method"], "notifications/message");
+        assert_eq!(event["params"]["level"], "warning");
+        assert_eq!(event["params"]["logger"], "compatibility-oracle");
+        assert_eq!(
+            event["params"]["data"],
+            json!({"event": "legacy-log", "sequence": 42})
+        );
+
+        let rejected_host = client
+            .post(&url)
+            .header("Host", "untrusted.acme.example")
+            .header("Content-Type", "application/json")
+            .header("Accept", "application/json, text/event-stream")
+            .json(&json!({
+                "jsonrpc": "2.0", "id": 7, "method": "initialize",
+                "params": {
+                    "protocolVersion": "2025-11-25", "capabilities": {},
+                    "clientInfo": {"name": "Acme test client", "version": "1.0"}
+                }
+            }))
+            .send()
+            .await
+            .expect("send disallowed Host regression request");
+        assert_eq!(rejected_host.status(), reqwest::StatusCode::FORBIDDEN);
+
+        drop(task);
     }
 
     #[test]

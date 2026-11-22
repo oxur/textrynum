@@ -72,7 +72,14 @@ impl DecompressStage {
                 continue;
             }
 
-            let name = file.name().to_string();
+            let name = file
+                .name()
+                .map_err(|e| StageError::Permanent {
+                    stage: "decompress".into(),
+                    item_id: item.id.clone(),
+                    message: format!("failed to read ZIP entry {i} name: {e}"),
+                })?
+                .into_owned();
 
             // Extension filter.
             if !self.config.extensions.is_empty() {

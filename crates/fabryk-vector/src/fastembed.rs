@@ -62,7 +62,7 @@ impl FastEmbedProvider {
     pub fn new(model_name: &str, cache_path: Option<&str>) -> Result<Self> {
         let model_enum = resolve_model(model_name)?;
 
-        let mut init = fastembed::InitOptions::new(model_enum);
+        let mut init = fastembed::TextInitOptions::new(model_enum);
         if let Some(path) = cache_path {
             init = init.with_cache_dir(std::path::PathBuf::from(path));
         }
@@ -152,6 +152,17 @@ impl std::fmt::Debug for FastEmbedProvider {
 mod tests {
     use super::*;
 
+    fn provider_with_task_cache() -> FastEmbedProvider {
+        let cache_path = std::env::var_os("CC_SLICE02_FASTEMBED_CACHE_DIR")
+            .map(std::path::PathBuf::from)
+            .unwrap_or_else(|| std::env::temp_dir().join("fabryk-fastembed-test-cache"));
+        FastEmbedProvider::new(
+            "bge-small-en-v1.5",
+            Some(cache_path.to_str().expect("FastEmbed cache path is UTF-8")),
+        )
+        .expect("initialize FastEmbed model using the test-owned cache")
+    }
+
     #[test]
     fn test_resolve_model_known() {
         assert!(resolve_model("bge-small-en-v1.5").is_ok());
@@ -176,7 +187,7 @@ mod tests {
     #[tokio::test]
     #[ignore = "requires model download (~50MB)"]
     async fn test_fastembed_provider_creation() {
-        let provider = FastEmbedProvider::new("bge-small-en-v1.5", None).unwrap();
+        let provider = provider_with_task_cache();
         assert_eq!(provider.dimension(), 384);
         assert_eq!(provider.name(), "bge-small-en-v1.5");
     }
@@ -184,7 +195,7 @@ mod tests {
     #[tokio::test]
     #[ignore = "requires model download (~50MB)"]
     async fn test_fastembed_embed_single() {
-        let provider = FastEmbedProvider::new("bge-small-en-v1.5", None).unwrap();
+        let provider = provider_with_task_cache();
         let embedding = provider.embed("Hello world").await.unwrap();
         assert_eq!(embedding.len(), 384);
 
@@ -196,7 +207,7 @@ mod tests {
     #[tokio::test]
     #[ignore = "requires model download (~50MB)"]
     async fn test_fastembed_embed_batch() {
-        let provider = FastEmbedProvider::new("bge-small-en-v1.5", None).unwrap();
+        let provider = provider_with_task_cache();
         let texts = vec!["Hello", "World", "Test"];
         let embeddings = provider.embed_batch(&texts).await.unwrap();
 
@@ -209,7 +220,7 @@ mod tests {
     #[tokio::test]
     #[ignore = "requires model download (~50MB)"]
     async fn test_fastembed_deterministic() {
-        let provider = FastEmbedProvider::new("bge-small-en-v1.5", None).unwrap();
+        let provider = provider_with_task_cache();
         let e1 = provider.embed("same text").await.unwrap();
         let e2 = provider.embed("same text").await.unwrap();
         assert_eq!(e1, e2);

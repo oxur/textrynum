@@ -8,9 +8,12 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 use rmcp::RoleServer;
-use rmcp::model::{
-    LoggingLevel, LoggingMessageNotificationParam, ResourceUpdatedNotificationParam,
-};
+use rmcp::model::ResourceUpdatedNotificationParam;
+#[expect(
+    deprecated,
+    reason = "SEP-2577 deprecates logging, but existing clients still use this notification contract and no same-semantics replacement is provided."
+)]
+use rmcp::model::{LoggingLevel, LoggingMessageNotificationParam};
 use rmcp::service::Peer;
 use tokio::sync::RwLock;
 
@@ -47,6 +50,10 @@ impl Notifier {
     ///
     /// Returns the number of clients that received the notification
     /// successfully. Dead peers are pruned automatically.
+    #[expect(
+        deprecated,
+        reason = "Preserve the existing MCP logging notification contract for legacy clients."
+    )]
     pub async fn log(&self, level: LoggingLevel, logger: &str, data: serde_json::Value) -> usize {
         let param = LoggingMessageNotificationParam::new(level, data).with_logger(logger);
         let mut peers = self.peers.write().await;
@@ -197,6 +204,10 @@ mod tests {
     }
 
     #[tokio::test]
+    #[expect(
+        deprecated,
+        reason = "Exercise the legacy MCP logging notification path retained by the SDK."
+    )]
     async fn test_log_with_no_peers_returns_zero() {
         let notifier = Notifier::new();
         let count = notifier

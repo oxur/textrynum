@@ -1,5 +1,11 @@
 # Fabryk MCP
 
+This crate's legacy logging notifications remain available for existing MCP
+clients. RMCP 3.11 deprecates logging under SEP-2577 and provides no replacement
+with the same broadcast semantics; Fabryk keeps the existing notification
+contract for compatibility. Clients that have moved beyond SEP-2577 should not
+depend on server logging notifications.
+
 [![][crate-badge]][crate]
 [![][docs-badge]][docs]
 
@@ -52,6 +58,58 @@ fabryk-mcp = { version = "0.2", features = ["http", "fts-tantivy", "graph-rkyv-c
 | `http` | Streamable HTTP transport via rmcp (adds axum) |
 | `fts-tantivy` | Tantivy backend for FTS tools |
 | `graph-rkyv-cache` | rkyv caching for graph tools |
+
+## Current workspace source compatibility (unreleased 0.5.0)
+
+The examples above retain the historical published `0.2` usage. The current
+workspace source is preparing an unreleased `0.5.0`; its MCP SDK update uses
+the flat `Resource` and `ContentBlock` model directly, without the former
+`Annotated`/`RawResource` wrapper layer. This describes the source checkout,
+not a released package.
+
+For custom tool results, replace the old text facade:
+
+```rust,ignore
+// Earlier source
+use fabryk_mcp::model::{CallToolResult, Content};
+let result = CallToolResult::success(vec![Content::text("ready")]);
+```
+
+with the current model:
+
+```rust,ignore
+use fabryk_mcp::model::{CallToolResult, ContentBlock};
+let result = CallToolResult::success(vec![ContentBlock::text("ready")]);
+let text = result.content[0].as_text().expect("text result").text.as_str();
+```
+
+For resources, replace `Annotated::new(RawResource::new(uri, name), None)`
+with `Resource::new(uri, name)`. Description and MIME type are builder
+methods on `Resource`:
+
+```rust,ignore
+use fabryk_mcp::model::Resource;
+
+let resource = Resource::new("acme://guide", "Guide")
+    .with_description("Acme integration guide")
+    .with_mime_type("text/markdown");
+```
+
+The Fabryk `ToolRegistry` and `CallToolResult` contracts remain the same; the
+SDK's `ServerHandler` boundary now returns `CallToolResponse` and
+`ReadResourceResponse`, which the server adapts internally. HTTP service
+defaults retain stateful legacy sessions and loopback Host protection. For a
+public deployment, set the allowed host through the existing configuration:
+
+```rust,ignore
+use rmcp::transport::streamable_http_server::StreamableHttpServerConfig;
+
+let config = StreamableHttpServerConfig::default()
+    .with_allowed_hosts(["mcp.acme.example"]);
+let service = server.into_http_service_with_config(config);
+```
+
+The workspace minimum Rust version is 1.94.
 
 ## License
 

@@ -6,7 +6,7 @@
 use crate::traits::{ContentItemProvider, GuideProvider, QuestionSearchProvider, SourceProvider};
 use fabryk_mcp_core::error::McpErrorExt;
 use fabryk_mcp_core::helpers::{make_tool, serialize_response};
-use fabryk_mcp_core::model::{CallToolResult, Content, ErrorData, Tool};
+use fabryk_mcp_core::model::{CallToolResult, ContentBlock, ErrorData, Tool};
 use fabryk_mcp_core::registry::{ToolRegistry, ToolResult};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
@@ -567,7 +567,7 @@ impl<P: SourceProvider + 'static> ToolRegistry for SourceTools<P> {
                     .get_chapter(&args.source_id, &args.chapter, args.section.as_deref())
                     .await
                     .map_err(|e| e.to_mcp_error())?;
-                Ok(CallToolResult::success(vec![Content::text(content)]))
+                Ok(CallToolResult::success(vec![ContentBlock::text(content)]))
             }));
         }
 
@@ -735,7 +735,7 @@ impl<P: GuideProvider + 'static> ToolRegistry for GuideTools<P> {
                     .get_guide(&args.id)
                     .await
                     .map_err(|e| e.to_mcp_error())?;
-                Ok(CallToolResult::success(vec![Content::text(content)]))
+                Ok(CallToolResult::success(vec![ContentBlock::text(content)]))
             }));
         }
 

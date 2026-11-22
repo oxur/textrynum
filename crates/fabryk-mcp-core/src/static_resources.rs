@@ -6,7 +6,7 @@
 
 use std::path::PathBuf;
 
-use rmcp::model::{AnnotateAble, ErrorCode, ErrorData, RawResource, Resource, ResourceContents};
+use rmcp::model::{ErrorCode, ErrorData, Resource, ResourceContents};
 
 use crate::resource::{ResourceFuture, ResourceRegistry};
 
@@ -74,17 +74,9 @@ impl ResourceRegistry for StaticResources {
         self.resources
             .iter()
             .map(|def| {
-                RawResource {
-                    uri: def.uri.clone(),
-                    name: def.name.clone(),
-                    title: None,
-                    description: Some(def.description.clone()),
-                    mime_type: Some(def.mime_type.clone()),
-                    size: None,
-                    icons: None,
-                    meta: None,
-                }
-                .no_annotation()
+                Resource::new(def.uri.clone(), def.name.clone())
+                    .with_description(def.description.clone())
+                    .with_mime_type(def.mime_type.clone())
             })
             .collect()
     }
@@ -147,14 +139,14 @@ mod tests {
 
         let listed = sr.resources();
         assert_eq!(listed.len(), 2);
-        assert_eq!(listed[0].raw.uri, "skill://a");
-        assert_eq!(listed[0].raw.name, "Test skill://a");
+        assert_eq!(listed[0].uri, "skill://a");
+        assert_eq!(listed[0].name, "Test skill://a");
         assert_eq!(
-            listed[0].raw.description.as_deref(),
+            listed[0].description.as_deref(),
             Some("Description for skill://a")
         );
-        assert_eq!(listed[0].raw.mime_type.as_deref(), Some("text/markdown"));
-        assert_eq!(listed[1].raw.uri, "skill://b");
+        assert_eq!(listed[0].mime_type.as_deref(), Some("text/markdown"));
+        assert_eq!(listed[1].uri, "skill://b");
     }
 
     #[tokio::test]

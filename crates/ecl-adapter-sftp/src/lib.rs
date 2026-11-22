@@ -64,7 +64,7 @@ impl client::Handler for SshHandler {
 
     fn check_server_key(
         &mut self,
-        _server_public_key: &keys::ssh_key::PublicKey,
+        _server_public_key: &keys::PublicKeyOrCertificate,
     ) -> impl std::future::Future<Output = Result<bool, Self::Error>> + Send {
         // Accept all server keys for now.
         // TODO: Add known_hosts verification for production.
@@ -245,6 +245,8 @@ impl SourceAdapter for SftpAdapter {
 
         let mut items = Vec::new();
         for entry in entries {
+            // With russh-sftp's current default features, SftpString aliases
+            // String. The optional raw-string representation is not enabled.
             let name = entry.file_name();
 
             // Skip directories.
