@@ -42,3 +42,12 @@ privacy-count checks establish preservation only. Source719clean, native/probe
 processes0, ownership returned to parent after this bounded administrative commit.
 Rows02–08 and all SEARCH acceptance stay open. User Daybreak SETUP-ONLY question
 still pending; no service/scan or execution retry. Approved route remains needed.
+
+Progress2026-11-22 USER-REQUESTED ONE RETRY: arc-planv1.10 records explicit same-
+context authority for the already assessed ordinary-local03 cases only. Re-entry
+planning4c3a50e/source719 clean, nativeprocesses0, fourpartialfilehashes unchanged.
+Prior preparation remains unverified; reconcile metadata before any locked run,
+retain original failures/bytes and use separate retry provenance. Daybreak is
+unavailable/declined; no service/scan or support message. If platform flags this
+attempt again, stop/recover/return ownership without variants. All acceptance
+remains pending actual proof; the full audit is not complete or user-paused.

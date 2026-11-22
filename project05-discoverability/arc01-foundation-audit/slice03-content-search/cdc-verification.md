@@ -131,3 +131,17 @@ required new defect probes. No network/auth/provider/credential/traversal/servic
 or security-specific execution is included. A new unique isolated CDC package
 and captured offline lock/actual locked run will retain true statuses and full
 outputs; no such native evidence exists yet at this entry record.
+
+## Single user-requested retry entry — evidence still pending
+
+Following the second stop and unchanged administrative preservation at7b04a4b/
+4c3a50e, the user explicitly requested one retry of this same ordinary local
+framework correctness task. Arc-planv1.10 records the exact same-context limits
+and required stop on another platform flag. Re-entry refs/state and partial
+artifact hashes are verified; no new behavioral proof exists at this entry.
+The earlier full-record lock assertion remains unresolved until ordinary
+metadata reconciliation; the initial pre-edit hash is not run attestation.
+Original four partial artifacts remain preserved/unverified as historical
+preparation. A separate retry log will carry any current receipt and actual
+exits, without rewriting old failures or declaring implicit passes. All five
+SEARCH criteria and31path/7cell acceptance remain pending.

@@ -449,3 +449,43 @@ notes remain in that retained context; they are not accepted semantic coverage
 or a whole-arc verdict. No duplicate archive, new source analysis or execution
 is commissioned by this pointer. CDC/CC selected contexts and issued prompts
 remain preserved; no context/model change is an authorized filter workaround.
+
+## User-requested single local retry — v1.10, 2026-11-22
+
+The user reports similar apparent false-positive alerts in other projects and
+says they often persist until a GPT Desktop restart. The user explicitly asks
+to try again. No restart is assumed to have happened, and the platform flags'
+root cause remains unknown. Daybreak was declined/unavailable: no setup/data/
+service/scan call is authorized or performed. Parent separately checks supported
+reporting channels; CDC must not send provider/support messages.
+
+The user/parent authorize ONE retry of the SAME previously assessed benign
+ordinary local Rust framework content/search verification in the SAME selected
+gpt-6.1-sol High CDC context. No new context/model, workaround or relabeling.
+Re-entry verified planning4c3a50e clean, source719 clean, no staged changes and
+zero active native/probe processes. CDC owns planning/index and the idle owned
+target for this attempt. The four partial files' authoritative recovery hashes
+match exactly; their old incomplete provenance remains UNVERIFIED and preserved.
+The unresolved pre-run full-lock-record assertion and stale initial probe hash
+need ordinary diagnostic metadata reconciliation before any locked run. Keep
+those prior bytes/failures; a separate retry log will record the current input
+hashes, reconciliation, actual commands/exits and any new evidence.
+
+Only the already assessed Acme TempDir Unicode/query/filter/metadata/index-
+lifecycle groups are allowed, with the unique CDC package/binary, owned offline
+lock generation and actual --locked Cargo execution, owned target/fixtures and
+absolute flat project artifact outputs. No auth, network/provider, credential,
+traversal/security payload, service or later-group extension; global config,
+source/index and unknown outputs stay protected. This is ordinary framework
+software correctness work; the broader full audit does include security
+observations, and this entry does not erase or relabel them.
+
+If this limited retry is platform-flagged again: STOP, perform administrative
+recovery only, preserve exact available error/context/step and execution state,
+return ownership, and do not try variants, models/contexts or another execution
+retry. Successful execution may support the allowed03 close with independent
+review, but no SEARCH row is accepted before actual necessary proof. Full audit
+scope, models, finding history and endpoint remain intact and uncompleted.
+
+- 2026-11-22 v1.10 — Recorded the user's single-retry request and bounded current
+  authority at 2026-11-22T08:51:55-06:00, before metadata reconciliation or execution.
