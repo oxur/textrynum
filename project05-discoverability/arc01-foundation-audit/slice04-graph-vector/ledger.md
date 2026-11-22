@@ -8,7 +8,7 @@ Initial0/5 refinements. CC proposes all seven static criteria met after scoped c
 | GV-S02 | Every original row semantically assessed | Source loci/contracts/reasoning/contrary evidence/tests/limits per file | correctness-grade | Same | CC-proposed met; CDC pending | Coverage JSON25 semantic rows | No placeholder/hash-only dispositions |
 | GV-S03 | Graph/vector logical composition and architecture assessed | Builder/extractor/storage/algorithm/provider/backend/hybrid/error/ownership/feature map | correctness-grade | Same | CC-proposed met; CDC pending | Companion architecture sections | Caller/config limits and accepted roots preserved |
 | GV-S04 | All seven scales explicitly dispositioned | Static conclusions, boundary dependencies and missing actual proof | correctness-grade | Same | CC-proposed met; CDC pending | Coverage JSON seven scales | No original scale/behavior acceptance |
-| GV-S05 | Calibrated diagnoses and meaningful negative checks | Stable046+, severity/source/owner/compatibility/oracle; five-plus contrary checks | correctness-grade | Same | CC-proposed met; CDC pending | FA-RS-046–048; ten source checks | No forced parity/metric/cache policy |
+| GV-S05 | Calibrated diagnoses and meaningful negative checks | Stable046+, severity/source/owner/compatibility/oracle; five-plus contrary checks | correctness-grade | Same | CC-proposed met; CDC pending | FA-RS-046–053; eighteen source checks | No forced parity/metric/cache policy |
 | GV-S06 | Actual gaps and next evidence retained | Entry conditions per unavailable behavioral/integration claim | correctness-grade | Same | CC-proposed met; CDC pending | Seven-scale table and gates | Full original pass remains pending |
 | GV-S07 | Scoped records/commit/preserved evidence | Exact6 outputs, readiness prefixes, protected9 raw bytes, source719/privacy/authors | correctness-grade | Same | CC-proposed met after scoped checks; CDC pending | Closing report and final handback | Original coverage JSON untouched |
 
@@ -31,3 +31,8 @@ CDC verification retains the criterion walk, actual preserved failures and passi
 metadata/preservation checks.046–048 remain proposals; all prior IDs/gates unchanged.
 Preserved iteration01 consumes1/5 refinements,4 remain. Same retained models,
 source719 read-only, no execution or repair. CDC owns until exact-six-path handoff.
+
+
+## Correction01 CC response — 2026-11-22
+
+Review01 corrections are incorporated in the six outputs. The 25-row/seven-scale accounting remains complete; corrected warning/mock/batch controls, exact locators/population boundary and intake provenance are recorded. CC proposes FA-RS-049–052 for the four explicitly reviewed graph cases and FA-RS-053 for the narrow vector factory documentation mismatch. FA-RS-046–048 remain proposals with preserved IDs and current valid cases. GV-S01–07 are CC-proposed complete for this static correction, CDC review pending; original pass03, behavior, SEARCH and whole-arc gates remain open. This is refinement1/5; four remain.

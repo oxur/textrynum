@@ -26,7 +26,7 @@
       "digest": "not recorded in CDC verification; not supplied"
     },
     {
-      "slice": "15-correction01",
+      "slice": "15 initial full intake (correction01 record distinguished)",
       "files_reused": [
         "crates/fabryk-vector/src/backend.rs",
         "crates/fabryk-vector/src/builder.rs",
@@ -36,9 +36,12 @@
         "crates/fabryk-vector/src/types.rs"
       ],
       "lines": 2471,
-      "record": "/private/tmp/textrynum-vector-construction-slice15-iteration01-run.jsonl",
-      "bytes": 285810,
-      "sha256": "db7cadd25e339582c5ca438a1e8a6e6056dabf54acc53f88ca95dc6242e7b146"
+      "record": "/private/tmp/textrynum-vector-construction-slice15-run.jsonl",
+      "bytes": 356604,
+      "sha256": "5abe1b218a1a3f0ac821d5268d4e94dc2e07e784126f5a95566a70b4f34ab359",
+      "correction01_record": "/private/tmp/textrynum-vector-construction-slice15-iteration01-run.jsonl",
+      "correction01_bytes": 285810,
+      "correction01_sha256": "db7cadd25e339582c5ca438a1e8a6e6056dabf54acc53f88ca95dc6242e7b146"
     },
     {
       "slice": "17",
@@ -83,7 +86,12 @@
   "current_findings_proposed": [
     "FA-RS-046",
     "FA-RS-047",
-    "FA-RS-048"
+    "FA-RS-048",
+    "FA-RS-049",
+    "FA-RS-050",
+    "FA-RS-051",
+    "FA-RS-052",
+    "FA-RS-053"
   ],
   "prior_scope_references": [
     "FA-RS-038",
@@ -140,20 +148,27 @@
       "original_pass": "pass03-graph-vector",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
-      "semantic_conclusion": "Traversal APIs expose direct/recursive prerequisite and dependent routes, typed relationship filters, centrality/coverage/variant helpers, and transformed-cost shortest path; prior direction and filter roots remain accepted, while metric/tie/provenance stays Q19.",
+      "semantic_conclusion": "Traversal APIs retain accepted direction/filter roots and Q19 metric/tie/provenance questions. Review01 adds four source-backed low-severity contract mismatches: full-graph cycle detection leaks into prerequisite results (049), multiedge degree exceeds its documented normalized range (050), zero bridge maximum can admit one match (051), and neighborhood collection retains only the discovery edge for parallel links (052). All are static derivations; no order or runtime output is claimed.",
       "source_loci": [
         "132–203",
         "213–267",
         "274–360",
         "415–491",
+        "609–651",
         "658–690",
-        "734–838"
+        "734–838",
+        "882–908",
+        "1322–1352"
       ],
-      "contrary_checks": "Non-prerequisite traversal filters and missing-node path cases are source/test controls; tests were read only.",
+      "contrary_checks": "Cycle-free/prerequisite-only cases, no-prerequisite early return, one-edge centrality, positive/no-match bridge limits, neighborhood radius/filter/single-edge cases are controls. Existing tests do not cover the reviewed unrelated-cycle, multiedge, zero-limit, or parallel-neighborhood cases; tests were read only.",
       "finding_question_refs": [
         "FA-RS-038",
-        " FA-RS-045",
-        " Q19-01–04"
+        "FA-RS-045",
+        "FA-RS-049",
+        "FA-RS-050",
+        "FA-RS-051",
+        "FA-RS-052",
+        "Q19-01–04"
       ],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
@@ -174,10 +189,10 @@
       "contrary_checks": "New-file cache-miss, skip-cache, missing/dangling manual file, alias/weight and two-direction controls exist in source tests.",
       "finding_question_refs": [
         "FA-RS-038",
-        " FA-RS-042",
-        " FA-RS-047",
-        " Q04-GV-01",
-        " Q21-01/02"
+        "FA-RS-042",
+        "FA-RS-047",
+        "Q04-GV-01",
+        "Q21-01/02"
       ],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
@@ -197,7 +212,7 @@
       "contrary_checks": "Selected frontmatter defaults and alternate/empty cases are covered in source tests, not executed here.",
       "finding_question_refs": [
         "FA-RS-038",
-        " FA-RS-045"
+        "FA-RS-045"
       ],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
@@ -217,7 +232,7 @@
       "contrary_checks": "Mock/default extraction is a test control; it does not prove other domain parsers or whole graph behavior.",
       "finding_question_refs": [
         "FA-RS-038",
-        " FA-RS-042"
+        "FA-RS-042"
       ],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
@@ -256,7 +271,7 @@
       "contrary_checks": "Malformed JSON errors and missing-endpoint skip are contrary controls; standalone byte hashing is not the GraphBuilder mtime key.",
       "finding_question_refs": [
         "FA-RS-046",
-        " FA-RS-047"
+        "FA-RS-047"
       ],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
@@ -291,9 +306,7 @@
         "226–385"
       ],
       "contrary_checks": "Empty graph, uncategorized nodes, distribution and bounded top-N cases are source controls; no stable tie contract was found.",
-      "finding_question_refs": [
-        "None proposed"
-      ],
+      "finding_question_refs": [],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
     {
@@ -303,7 +316,7 @@
       "original_pass": "pass03-graph-vector",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
-      "semantic_conclusion": "Relationship is a typed enum with canonical names/default weights; GraphData maintains three public representations, first-wins duplicate node insertion, endpoint-checked edges and permits parallel edges.",
+      "semantic_conclusion": "Relationship is a typed enum with canonical names/default weights; GraphData maintains three public representations, first-wins duplicate node insertion, endpoint-checked edges and permits parallel edges. The wrapper API accepts parallel relationship edges; this current supported case is relevant to FA-RS-050 and FA-RS-052.",
       "source_loci": [
         "36–159",
         "340–379",
@@ -312,8 +325,10 @@
       "contrary_checks": "Wrapper mutation controls do not prove invariants under arbitrary direct mutation of public fields.",
       "finding_question_refs": [
         "FA-RS-038",
-        " FA-RS-045",
-        " Q21-01/02"
+        "FA-RS-045",
+        "FA-RS-050",
+        "FA-RS-052",
+        "Q21-01/02"
       ],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
@@ -324,16 +339,17 @@
       "original_pass": "pass03-graph-vector",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
-      "semantic_conclusion": "Validator warns for orphans, errors on self-loops, duplicate endpoint/name edges, typed prerequisite cycles and invalid canonical references; non-prerequisite cycles intentionally pass this check.",
+      "semantic_conclusion": "Validation errors mark the graph invalid; orphan and duplicate endpoint/name checks add warnings only. Duplicate keys are (from,to,relationship.name); only typed prerequisite cycles are errors, while non-prerequisite cycles are an intentional negative control.",
       "source_loci": [
         "109–279",
         "340–548",
         "554–642"
       ],
-      "contrary_checks": "`is_valid` means no recorded errors, not every GraphData invariant or every cycle policy.",
+      "contrary_checks": "Orphan and duplicate-edge warnings do not invalidate; RelatesTo cycles do not trigger prerequisite-cycle error. Separate sort behavior is cross-referenced in FA-RS-049.",
       "finding_question_refs": [
+        "FA-RS-049",
         "FA-RS-038",
-        " Q21-02"
+        "Q21-02"
       ],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
@@ -349,9 +365,7 @@
         "1–53"
       ],
       "contrary_checks": "No feature-combination Cargo checks or model/native build were run.",
-      "finding_question_refs": [
-        "None proposed"
-      ],
+      "finding_question_refs": [],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
     {
@@ -361,18 +375,19 @@
       "original_pass": "pass03-graph-vector",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
-      "semantic_conclusion": "Factory reads enabled/backend but always returns Simple for disabled, unknown and Lance requests (explicit current fallback); Simple performs O(n) cosine/filter/limit search and counts only post-truncation results, supporting FA-RS-048. Cache records documents plus caller hash and loads with the supplied provider.",
+      "semantic_conclusion": "Factory reads enabled/backend but returns Simple for disabled, unknown and Lance requests; its gated Lance branch explicitly directs callers to the separate async builder. This fallback remains current, while the public selection claim is inaccurate (FA-RS-053). Simple search and Lance both count post-limit results, supporting FA-RS-048; broad VectorConfig assembly remains Q04-GV-02.",
       "source_loci": [
         "23–79",
         "85–220",
         "223–297",
         "523–626"
       ],
-      "contrary_checks": "Empty-store early return, threshold/category/metadata/limit and shape-mismatch cases are contrary controls; no all-feature parity is inferred.",
+      "contrary_checks": "Explicit Lance async-build fallback is preserved; empty-store, filtering, limit and score-shape paths remain controls. No feature-parity or factory redesign is inferred.",
       "finding_question_refs": [
-        "FA-RS-039",
-        " FA-RS-048",
-        " Q15 provider/cache/cardinality"
+        "FA-RS-048",
+        "FA-RS-053",
+        "Q04-GV-02",
+        "Q15 provider/cache/cardinality"
       ],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
@@ -383,17 +398,17 @@
       "original_pass": "pass03-graph-vector",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
-      "semantic_conclusion": "Builder extracts, batches and returns SimpleVectorBackend; cache key hashes sorted path+content bytes. It does not call VectorExtractor::content_glob; chunks accepts zero; `zip` pairs arbitrary provider batches; append embeds with its supplied provider and extends without checking identity.",
+      "semantic_conclusion": "Builder extracts, batches and returns SimpleVectorBackend; cache key hashes sorted path+content bytes. It does not call VectorExtractor::content_glob. with_batch_size stores zero; build/append panic only if control reaches chunks(0), preserving accepted FA-RS-039 without duplicate root. zip cardinality and append-provider identity remain separate open questions.",
       "source_loci": [
         "119–257",
         "277–428",
         "457–753"
       ],
-      "contrary_checks": "Cache hit/miss/skip and default/mock cardinality are controls; append provider identity remains the accepted open question.",
+      "contrary_checks": "Missing-input errors, fresh-cache early return and other pre-loop exits can prevent chunks(0); a successful path reaching the call panics for zero. Default/mock providers emit one embedding per input; arbitrary custom-provider cardinality remains ungraded.",
       "finding_question_refs": [
         "FA-RS-039",
-        " FA-RS-042",
-        " Q15 provider/cache/cardinality"
+        "FA-RS-042",
+        "Q15 provider/cache/cardinality"
       ],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
@@ -422,12 +437,12 @@
       "original_pass": "pass03-graph-vector",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "reused complete same-author receipt",
-      "semantic_conclusion": "EmbeddingProvider exposes single and batch calls; default batch is sequential one-per-input, and the mock emits deterministic fixed-dimension normalized vectors (empty text yields zero vector).",
+      "semantic_conclusion": "EmbeddingProvider default batch remains sequential and one-per-input. Mock vectors are deterministic and normalized when norm is nonzero; dimension-4 empty text yields index-derived components, not a zero vector. The existing empty-text test checks length only and has a misleading zero-vector comment.",
       "source_loci": [
         "14–111",
         "121–194"
       ],
-      "contrary_checks": "Mock cardinality/dimension controls do not constrain arbitrary custom providers.",
+      "contrary_checks": "For dimension 4 the empty-byte formula yields pre-normalized 0,1/256,2/256,3/256; the current test asserts length only. Dimension 1 yields zero; dimension 0 yields an empty vector. No public zero-vector guarantee is inferred.",
       "finding_question_refs": [
         "Q15 cardinality"
       ],
@@ -458,13 +473,13 @@
       "original_pass": "pass03-graph-vector",
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "fresh complete source read at pinned719",
-      "semantic_conclusion": "Feature-gated provider recognizes four named models and selected aliases, probes dimension during construction, and serializes non-Send/Sync model access through Mutex plus spawn_blocking; model-download tests are ignored.",
+      "semantic_conclusion": "Feature-gated provider resolves model names, probes dimension during construction, and captures Arc<Mutex<TextEmbedding>> in spawn_blocking for embed calls. The module comment's dependency non-Send/Sync assertion is not treated as independently verified; no Cargo/build or trait check ran. Model-download tests remain ignored.",
       "source_loci": [
         "20–31",
         "33–145",
         "151–228"
       ],
-      "contrary_checks": "Known/unknown model parsing is source-tested; ignored downloads do not prove current provider availability or remote model behavior.",
+      "contrary_checks": "Source shows mutex serialization and spawn_blocking join/error paths; no dependency auto-trait claim or native/model behavior is asserted.",
       "finding_question_refs": [
         "Q15 cache/provider identity"
       ],
@@ -483,9 +498,7 @@
         "158–297"
       ],
       "contrary_checks": "Vector-only, FTS-only, shared-ID, empty and limit tests are contrary controls; no cross-backend score equivalence is promised.",
-      "finding_question_refs": [
-        "None proposed"
-      ],
+      "finding_question_refs": [],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
     {
@@ -505,7 +518,7 @@
       "contrary_checks": "Schema, empty, category, metadata conjunction, batch, score and limit cases are source tests; no LanceDB operation was run.",
       "finding_question_refs": [
         "FA-RS-048",
-        " Q15 provider/cache identity"
+        "Q15 provider/cache identity"
       ],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
@@ -557,9 +570,7 @@
         "70–134"
       ],
       "contrary_checks": "Probe unit tests use Simple backend; no service health/readiness behavior was observed.",
-      "finding_question_refs": [
-        "None proposed"
-      ],
+      "finding_question_refs": [],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     },
     {
@@ -579,7 +590,7 @@
       "contrary_checks": "Serde/default, empty, metadata and limit type tests are source checks only; actual service configuration is outside this population.",
       "finding_question_refs": [
         "FA-RS-048",
-        " Q04-GV-02"
+        "Q04-GV-02"
       ],
       "actual_behavioral_proof": "not run; separate authorization/gates required"
     }
@@ -634,6 +645,46 @@
       "check": "factory Simple fallback for disabled/unknown/Lance is explicit current code behavior",
       "source": "crates/fabryk-vector/src/backend.rs:54-79,523-545",
       "status": "no all-feature parity failure inferred"
+    },
+    {
+      "check": "duplicate endpoint/name edges are warnings and do not invalidate by themselves",
+      "source": "crates/fabryk-graph/src/validation.rs:29-54,184-213",
+      "status": "static source check; test not run"
+    },
+    {
+      "check": "dimension-4 mock empty text is nonzero by index arithmetic; existing test asserts only length",
+      "source": "crates/fabryk-vector/src/embedding.rs:63-87,170-178",
+      "status": "manual arithmetic; no test run"
+    },
+    {
+      "check": "zero batch size panics only if a build/append path reaches chunks(0); accepted039 remains the root",
+      "source": "crates/fabryk-vector/src/builder.rs:96-100,130-173,220,357",
+      "status": "static source check; no execution"
+    },
+    {
+      "check": "prerequisite validation uses a typed subgraph while prerequisite result sorting uses the full graph",
+      "source": "crates/fabryk-graph/src/validation.rs:216-246; src/algorithms.rs:286-337; petgraph-0.8.3/src/algo/mod.rs:187-205",
+      "status": "manual source/dependency-doc derivation; no algorithm run"
+    },
+    {
+      "check": "centrality fixture lacks supported distinct parallel relationship edges",
+      "source": "crates/fabryk-graph/src/types.rs:471-489; src/algorithms.rs:344-364,882-908",
+      "status": "manual arithmetic; tests read only"
+    },
+    {
+      "check": "bridge tests cover positive limit and no-match but not zero; append precedes bound check",
+      "source": "crates/fabryk-graph/src/algorithms.rs:609-650,1337-1352; crates/fabryk-mcp-graph/src/tools.rs:168-177,638-655,1024-1035",
+      "status": "static source derivation; no call"
+    },
+    {
+      "check": "neighborhood basic/radius/filter tests omit parallel edge multiplicity; traversal records discovery edges",
+      "source": "crates/fabryk-graph/src/algorithms.rs:164-201,734-786; crates/fabryk-mcp-graph/src/tools.rs:765-803",
+      "status": "static source check; tests read only"
+    },
+    {
+      "check": "LanceDB branch explicitly retains Simple fallback while public selection prose claims LancedbBackend",
+      "source": "crates/fabryk-vector/src/backend.rs:54-79; crates/fabryk-vector/src/lancedb.rs:54-70",
+      "status": "static source check; no feature build"
     }
   ],
   "seven_scales": [
@@ -664,8 +715,8 @@
     },
     {
       "scale": "whole codebase",
-      "conclusion": "Only original pass03 graph/vector population of 25 paths is semantically covered here.",
-      "missing_proof": "Original38/31/291 owner states, remaining pass03 files, all other codebase populations and full-pass gates unchanged."
+      "conclusion": "This is exactly original pass03's 25-path graph/vector source population; it does not satisfy original pass03 behavioral or pass-scale acceptance.",
+      "missing_proof": "Cross-pass/application/workspace composition, original04–10 source populations, aggregate 291 pending paths, original 38/31/291 owner states and 49 scale cells remain open. No SEARCH/full-pass status changes."
     },
     {
       "scale": "workspace/system",
