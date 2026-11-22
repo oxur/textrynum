@@ -1,7 +1,7 @@
 # Audit map and source contract intake
 
-Status: initial proposed close requires correction; current assignment:
-cc-prompt-iteration01.md. No independent acceptance claimed.
+Status: independently accepted after refinement01; current completed assignment:
+cc-prompt-iteration01.md. Semantic audit coverage remains pending.
 
 ## Useful result and boundary
 
@@ -73,3 +73,5 @@ reconciles source/query coverage and reviews intake before acceptance.
   populations but requires navigation/population/grouping corrections; see
   cdc-verification.md. Refinement1/5 issued as cc-prompt-iteration01.md to same
   selected Luna High context; initial prompt and failed review preserved.
+
+- 2026-11-21 refinement01 candidate498834f independently accepted; all four MAP rows reproduced. No mutable CC process remains; planning/index ownership returned to CDC.

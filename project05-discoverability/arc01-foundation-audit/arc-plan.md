@@ -261,3 +261,27 @@ references/binary assets receive explicit method and limits.
 - 2026-11-21 v1.3 — Split the seven required passes into eleven reviewable
   increments, including two MCP and two ECL slices for context/reproduction
   headroom; no population or scale is dropped. Issued slice01 map/intake.
+
+## Accepted map clarification — v1.4
+
+Slice01 map is independently accepted at candidate 498834f (CDC verification in
+slice01-audit-map). Actual source remains clean 719: 360 tracked paths, 41 actual
+member packages, 45 metadata targets. All semantic coverage remains pending.
+The seven named passes and eleven-slice decomposition are unchanged.
+
+Four ignored ECL planning files under docs/superpowers/plans are preserved
+reference-only pass07 inputs, separately from the 360 tracked source denominator.
+They are not current authority, product source or permission to revive held work.
+Before any dump/extraction, use the encoded private-name screen; CDC screened
+these exact four on Nov 21 with counts 0/0/0/0 and bytes 27873/57160/39508/40791.
+Changed/new ignored inputs require a fresh screen. Unknown-owner outputs remain
+untouched. Workbench nested archives/vendor snapshots stay excluded as identified
+nonproduct reference populations; initial metadata-only traversal is disclosed.
+
+README's 20 refers to Fabryk specifically (metadata 19), while architecture YAML's 24
+refers to the workspace (metadata 41: 19 Fabryk, 21 ECL, 1 utility). These are
+qualified semantic reconciliation leads for pass07, not accepted findings.
+
+- 2026-11-21 v1.4 — Slice01 accepted complete map with preserved correction
+  history. Recorded four ignored-file reference dispositions/privacy screen and
+  like-population count qualifiers; no audit population, scale or endpoint change.
