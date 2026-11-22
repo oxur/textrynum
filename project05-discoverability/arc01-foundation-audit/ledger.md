@@ -29,3 +29,16 @@ authorized only ordinary isolated slice03 Unicode/query/filter/metadata/index-
 lifecycle verification after this clean boundary; arc-planv1.8 records the exact
 limits. Security-specific/provider/service/later-group execution remains held.
 All rows02–08 and all SEARCH/31path/7pass02cell acceptance remain pending.
+
+Progress2026-11-22 SECOND PLATFORM STOP — administrative preservation only:
+two turn-level flags/root cause unknown; no user pause, scope reduction or gate
+waiver. Only core38paths/7cells accepted; docs02d5f retains17unaccepted proposals
+plus4questions/2cleared. Slice03 CDC never started build/test/probe-run: version
+reads and offline owned-lock generation0 preceded an unresolved pre-run assertion.
+Four unfinished cdc-probe.rs/.toml/.lock and cdc-run.log files are committed
+unchanged with the existing arc-planv1.9/ledger note; they remain unverified.
+Initial logged hash predates an edit and is not run attestation. Metadata/hash/
+privacy-count checks establish preservation only. Source719clean, native/probe
+processes0, ownership returned to parent after this bounded administrative commit.
+Rows02–08 and all SEARCH acceptance stay open. User Daybreak SETUP-ONLY question
+still pending; no service/scan or execution retry. Approved route remains needed.

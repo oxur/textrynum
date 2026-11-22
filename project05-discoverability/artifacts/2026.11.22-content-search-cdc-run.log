@@ -1,0 +1,18 @@
+# CDC isolated ordinary-local content/search verification
+Authority c72311d5f873db2b4f6beaf62843f36412a7dc01; product719; documentation candidate d5f19d09. No providers/services/security payload.
+Canonical probe SHA256 d7fdc37adf4888b165c75a01487c5007729f46781f9a1298c4abc315bc9a92ee
+
+COMMAND ["rustc", "--version"]
+rustc 1.95.0 (59807616e 2026-04-14)
+
+TRUE_EXIT 0
+
+COMMAND ["cargo", "--version"]
+cargo 1.95.0 (f2d3ce0bd 2026-03-21)
+
+TRUE_EXIT 0
+
+COMMAND ["cargo", "generate-lockfile", "--offline", "--manifest-path", "/private/tmp/foundation-content-search-cdc-verify/Cargo.toml"]
+     Locking 202 packages to latest Rust 1.95.0 compatible versions
+
+TRUE_EXIT 0

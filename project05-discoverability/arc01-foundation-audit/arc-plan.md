@@ -404,3 +404,37 @@ needed proof. The full audit scope/endpoint stays active and unchanged.
 
 - 2026-11-22 v1.8 — Recorded explicit parent scoped authority and clean single-
   owner entry at 2026-11-22T02:23:49-06:00, before native verification execution.
+
+## Second platform stop and unfinished-work preservation — v1.9
+
+The platform flagged the CDC TURN twice; the root cause remains unknown. After
+the second stop, parent required administrative recovery/preservation only and
+no execution retry, variants, new context/model, lock fix, provider or service.
+The original user-authorized full audit is NOT complete: only core/pass01's
+38paths/seven scale cells and findings001–010 are independently accepted. Docs02
+d5f19d09 preserves stable011–033 as17unaccepted proposals, four questions and
+two cleared leads. All SEARCH/replay/whole-arc gates remain pending, with no
+user-requested pause, waived criteria or reduced full-audit scope.
+
+For slice03 CDC, no build, test or probe-run ever started. Toolchain version
+reads and owned offline lock generation exited0, then a pre-run Python full-
+record comparison failed an unresolved assertion before recording its receipt.
+No claim about the new lock's correctness or a specific blocked execution is
+made. Four owned partial preparation files are preserved UNVERIFIED under
+project05-discoverability/artifacts/2026.11.22-content-search-cdc-:
+probe.rs, probe.toml, probe.lock and run.log. The run log's initial probe hash
+predates a pre-run source edit and is not a current run attestation; there was
+no run. Preserve the original bytes and incomplete provenance for an approved
+route. Metadata/hash/private-pattern-count checks prove preservation only.
+
+Recovery found source719 clean, planningc72311d plus exactly those four owned
+untracked files, no staging and no active native/probe process. Administrative
+preservation appends only this note and the arc ledger and commits those exact
+four files unchanged; no source/target/scratch mutation or further validation.
+The last preserved prompt is slice03-content-search/cc-prompt-iteration02.md;
+2of5 refinements used,3remain. All ownership returns to parent after commit,
+with no active owned mutable process. The user Daybreak SETUP-ONLY question
+remains unanswered; no service call, setup change or scan was performed.
+
+- 2026-11-22 v1.9 — Recorded second turn-level stop, authoritative recovery and
+  administrative preservation only at 2026-11-22T02:34:00-06:00; full audit remains unfinished.
