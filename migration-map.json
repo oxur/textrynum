@@ -6471,14 +6471,14 @@
       },
       "baseline_CC_session": "01a2000f-9f2d-7660-97b4-f54373f19a94",
       "slice02": {
-        "prompt": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration01.md",
+        "prompt": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration02.md",
         "rows": 7,
         "external_packages": 64,
         "manifests": 42,
         "isolated_feature_selections": 17,
         "entry_source": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
         "CC_session": "01a2006e-2618-7721-b361-1bd809d21d87",
-        "ownership": "resumed CC exclusive source/index until return; CDC design/plans/independent review",
+        "ownership": "CDC between exited exec3060 and next same-session resume; CC exclusive while resumed",
         "actual_turn_context": {
           "timestamp": "2026-11-21T23:29:19.987Z",
           "model": "gpt-6-luna",
@@ -6509,12 +6509,23 @@
           "acceptance": "all DEP2 rows open; real Cargo status plus full logs required"
         },
         "prepared_correction": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration02.md",
-        "prepared_correction_status": "not dispatched while owned runner3060 active",
+        "prepared_correction_status": "issued after preserved idle-boundary interruption; same-session resume pending",
         "new_compatibility_review": {
           "metadata_filter": "all-N buffering unaccepted; bounded native row-ID streaming/batching authorized private route, actual native plan/semantics/bounded-state proof required",
           "english_stopwords": "pending Operator choice: preserve1298-word ISO data/remove unused dependency recommended, or adopt198-word NLTK; lowered assertion unaccepted",
           "release_tests": "actual ORT CoreML availability-helper link failure,0executed summaries; authentic local compiler runtime route identified, full replay required",
           "provider": "actual4ignored Fastembed tests observed passing, tee-only gate status remains provisional"
+        },
+        "interruption": {
+          "exec": 3060,
+          "pid": 48527,
+          "exit": 1,
+          "condition": "no active command events or Cargo/rustc/bash children; normal SIGINT at observed idle boundary",
+          "source_HEAD": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
+          "modified_files": 33,
+          "empty_index": true,
+          "binary_diff_sha256": "cb296f545d6f3007e86e64d47474ae8021d0b9e31f235019a4e4bc82dde478da",
+          "source_commit": "none; all edits/evidence preserved"
         }
       }
     },
