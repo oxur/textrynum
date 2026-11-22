@@ -489,3 +489,36 @@ scope, models, finding history and endpoint remain intact and uncompleted.
 
 - 2026-11-22 v1.10 — Recorded the user's single-retry request and bounded current
   authority at 2026-11-22T08:51:55-06:00, before metadata reconciliation or execution.
+
+## Consumed retry, third stop and local feedback draft — v1.11
+
+The user's ONE same-context retry was consumed by a third platform TURN flag:
+“This content was flagged for possible cybersecurity risk.” The root cause is
+unknown; no individual failed execution command is identified. In THIS retry,
+only read-only re-entry checks and the three-document authorization commit
+84f37c6debf699c46fcebfe83c36e21e323a323c completed. No pre-run metadata
+reconciliation, new version read, offline lock generation, build/test/probe or
+new retry log started. Earlier version/offline-lock0 results belong to the
+previous attempt and are not latest-retry evidence. No further retry, variant,
+model/context change, provider/service or diagnostic lock fix is authorized.
+
+Administrative recovery found planning84f37c6 clean/unstaged, source719 clean/
+unstaged and no active native/probe process. The four previously preserved
+partial files remain byte-unchanged and UNVERIFIED; the initial logged hash
+still predates a pre-run edit and is not run attestation. All SEARCH gates stay
+pending. Only core/pass01's38paths/7cells and10findings are accepted; docs02d5f
+retains17unaccepted proposals,4questions and2cleared leads. The full audit is
+unfinished; no user pause, scope reduction or criteria waiver occurred. Last
+prompt remains iteration02,2of5 refinements used/3remaining.
+
+Daybreak is unavailable/declined per the user; no setup/data/service/scan calls
+were made. Parent authorized administrative notes and a LOCAL DRAFT ONLY at
+[platform feedback draft](../artifacts/2026.11.22-platform-false-positive-feedback.md).
+It copies no private customer identity, proprietary source or raw conversation,
+and has NOT been submitted. Supported feedback-route investigation belongs to
+parent; CDC sent no provider/support message. All ownership returns to parent
+after the exact administrative commit; source/target/scratch stay unchanged
+and idle. The retained reviewer re-entry pointer remains applicable.
+
+- 2026-11-22 v1.11 — Recorded consumed retry/third-stop recovery and local
+  unsubmitted feedback draft at 2026-11-22T09:01:29-06:00; no execution or acceptance.
