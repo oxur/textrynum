@@ -6510,7 +6510,7 @@
           "isolated_results": "all exit0",
           "acceptance": "reviewer inspected doer results, final candidate/affected reruns and CI still required",
           "snapshot": "pre-iteration02 corpus/bounded-filter corrections; valid historical witnesses, current final source replay pending",
-          "current_final_snapshot": "genuine unified/default plus fabryk/full and fabryk-vector/vector-lancedb pass;7additional affected selections reserved for CDC final review;8unchanged prior witnesses retained"
+          "current_final_snapshot": "unified/default+2CCcases pass;7affected selections independently reproduced0 at719c58f;8unaffected historical witnesses retained, all17 applicability reconciled"
         },
         "compatibility_stage": "full Redb JSON/pointers/hashes, all3 Tantivy records, full Lance old schema/rows/current rebuild,1298ISO product terms and connected logging executed; final pinned independent replays/close pending",
         "status_capture_review": {
@@ -6521,7 +6521,7 @@
           "acceptance": "all DEP2 rows open; real Cargo status plus full logs required"
         },
         "prepared_correction": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration04.md",
-        "prepared_correction_status": "issued evidence-only correction after explicit iteration03 source return; not yet resumed",
+        "prepared_correction_status": "iteration04 same-session docs-only resume active in14297; source candidate unchanged",
         "new_compatibility_review": {
           "metadata_filter": "bounded native row-ID scan/batching/MAX/zero and260match runtime controls passed; no all-N vector candidates/upfront caller-limit allocation; final review pending",
           "english_stopwords": "explicit Operator preservation choice now received after ordinary-authority implementation; exact1298-term product oracle passed, notices/provenance and real package inclusion still reviewed",
@@ -6566,7 +6566,7 @@
         ],
         "package_contents": "all41actual archives/443files pinned719c58f, no owned temporary examples; FTS1298-term runtime JSON and full license/provenance independently byte/hash-checked in actual archive; --no-verify packaging only, no publication",
         "candidate_ci_run": 44982217154,
-        "candidate_ci_status": "in_progress",
+        "candidate_ci_status": "in_progress;MSRVjob137084978561 completed success,debugLint,releaseBuild;full logs/completejobs pending",
         "iteration03_return": {
           "exec": 30498,
           "exit": 0,
@@ -6581,6 +6581,23 @@
           "path_hits": 0,
           "content_hits": 0,
           "method": "encoded case-insensitive byte pattern, counts only"
+        },
+        "documentation_correction": {
+          "owned_exec": 14297,
+          "configuration_timestamp": "2026-11-22T03:51:17.623Z",
+          "model": "gpt-6-luna",
+          "effort": "high",
+          "scope": "named own planning docs/artifacts only; CDC retains exclusive source/index/Cargo/planningGit"
+        },
+        "independent_runtime_review": {
+          "source": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+          "persistence": "all4old-copy replays actualCargo0,27original fixtures rehashed before/aftereach; fullRedb/all3Tantivy/fullLanceSDK/rebuild",
+          "mcp_wire": "actualCargo0/1pass including realpeerlogging+Host403",
+          "bounded_vector_release": "15pass/test0,MAX/zero/260/nativeplans",
+          "provider_release": "4actualFastembedtests pass/test0 in freshconfiguredreleasebinary",
+          "avro": "6pass/test0 including fullwiredecode",
+          "iso": "all1298oldterms+6exclusions actualCargo0",
+          "current_registry": "63/63retained direct selections reconcile current authoritative metadata; only2documentedArrowfamily exceptions, none yanked"
         }
       }
     },
