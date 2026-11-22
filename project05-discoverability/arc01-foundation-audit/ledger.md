@@ -62,3 +62,13 @@ gates remain unaccepted/pending. No further retry authorized, no user pause or
 waived criterion; refinement budget remains2/5used. Daybreak declined/unavailable,
 no calls/scans. Administrative notes and a local NOTSUBMITTED feedback draft are
 the only newly authorized outputs; all ownership returns after their commit.
+
+Progress2026-11-22 REPORTED RESTART/RESUMPTION: user explicitly resumes sameCDC/
+CC models and pending ordinary-local03 verification. Planning5961f3b/source719
+clean, fourpartialhashes unchanged, nativeprocesses0; ps sandbox permission was
+resolved by normal reviewed metadata-only escalation. Arc-planv1.12 records
+actual authority before execution. Reconcile old diagnostic bookkeeping with
+distinct new witnesses; old partial attestation stays unverified. All SEARCH/
+remainingarc gates remain pending; core38/7+001–010 accepted unchanged. If the
+limited task is platform-flagged again, stop/recover without variants. No
+Daybreak/provider/service/security execution, source repair or CI/fullgate rerun.

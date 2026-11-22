@@ -522,3 +522,53 @@ and idle. The retained reviewer re-entry pointer remains applicable.
 
 - 2026-11-22 v1.11 — Recorded consumed retry/third-stop recovery and local
   unsubmitted feedback draft at 2026-11-22T09:01:29-06:00; no execution or acceptance.
+
+## User-reported restart and same-context resumption — v1.12
+
+The user now explicitly reports restarting the app and requests resuming the
+foundation audit with the same CDC/CC models. This is new authorization for the
+pending previously assessed ordinary-local03 verification, superseding the
+prior consumed-retry hold for that task. It is not evidence that a restart
+caused or cured the unknown platform classification. Daybreak remains declined;
+no setup/data/scan/service or support message is authorized.
+
+Independent re-entry confirmed planning5961f3b9aa4e81913a59aa5cb486cf59b82f6aea
+and source719c58f245fe4a9115c7c0391d3e268c99157e2f clean/unstaged. The four
+partial preparation hashes remain exactly preserved and UNVERIFIED. Direct
+physical planning reads now succeed in the normal sandbox. A process metadata
+read alone failed with macOS ps EPERM, then ordinary reviewed escalation
+confirmed zero Cargo/Rust/probe processes; this permission event is distinct
+from the earlier turn-level platform flags. No global setting or symlink changed.
+CDC now owns planning/index and the idle owned target; CC has no active command.
+
+Retained CDC gpt-6.1-sol High and exact CC gpt-6-luna High/session
+01a2019f-73de-7de1-831f-53d55b3da247 remain selected. Full source/guidance intake
+and completed gates are retained, not repeated solely for restart. Last prompt
+is03iteration02;2of5 refinements used/3remain. Corrected d5f diagnosis retains
+17unaccepted proposals,4questions014/016/028/029,2cleared018/031 and stable
+011–033. Accepted001–010/core38paths/7cells remain preserved.
+
+Before any locked run, reconcile the earlier incomplete lock-record assertion
+and stale initial hash as ordinary diagnostic bookkeeping. Keep all prior
+bytes/failures and use distinct current-attempt witnesses/hashes; do not turn
+the old pre-edit hash into run attestation. The only native verification now
+authorized is the already inspected local03 Unicode/query/filter/metadata/index-
+lifecycle driver with synthetic Acme TempDirs, unique CDC package/binary, owned
+offline lock and actual --locked run, true exits/full provenance, owned target
+and absolute flat project artifacts. No auth/network/provider/credential/
+traversal/security payload/service/OS-process test or later-group native
+extension. Preserve source/index/global config and unknown files. No source
+repair, full baseline/CI rerun or publication.
+
+If this same limited resumption is platform-flagged again: STOP and recover
+administratively, preserve facts/outputs/available step identifiers, return
+ownership and do not try variants, models/contexts or automatic retries. If it
+succeeds, complete03 review/close/bubble-up/CDC retro and continue the full arc
+under its intact contract and specifically scoped safe subsequent assignments.
+Security-specific/provider/exploit/service execution remains held; static
+diagnoses retain their actual confidence. No SEARCH or later gate is accepted
+before its needed proof; the endpoint remains the entire accepted audit and
+actionable repair handoff, not one probe, arc02 repairs or arc05 implementation.
+
+- 2026-11-22 v1.12 — Recorded reported restart/resumption, independently checked
+  ownership/state and precise current authority at 2026-11-22T09:31:43-06:00, before execution.

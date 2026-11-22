@@ -145,3 +145,15 @@ Original four partial artifacts remain preserved/unverified as historical
 preparation. A separate retry log will carry any current receipt and actual
 exits, without rewriting old failures or declaring implicit passes. All five
 SEARCH criteria and31path/7cell acceptance remain pending.
+
+## Restart/resumption entry — independent runtime proof still pending
+
+The user reports an app restart and explicitly resumes the same retained models/
+contexts. Arc-planv1.12 records current scope before dependent execution. CDC
+independently verified clean planning5961f3b/source719, four preserved partial
+hashes and nativeprocesses0 (normal ps read needed reviewed escalation). Prior
+full intake/corrected diagnosis and original proof remain retained. No claim is
+made that the restart cured classification. New attempt witnesses must first
+reconcile the unresolved pre-run lock comparison/current source hash without
+rewriting the old four partial files or overstating their initial log. All
+SEARCH/coverage acceptance remains pending actual required independent proof.
