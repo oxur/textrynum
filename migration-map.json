@@ -6500,7 +6500,14 @@
           "isolated_results": "all exit0",
           "acceptance": "reviewer inspected doer results, final candidate/affected reruns and CI still required"
         },
-        "compatibility_stage": "actual old fixtures preserved; new Redb representative read executed, whole-state comparison still required; Lance new reader compiling; other runtime/legacy proofs pending"
+        "compatibility_stage": "actual old fixtures preserved; new Redb representative read executed, whole-state comparison still required; Lance new reader compiling; other runtime/legacy proofs pending",
+        "status_capture_review": {
+          "original_unified_default_and17": "valid pipefail witnesses; no retraction",
+          "later_unified_final01_final02_and_default_final01": "actual Cargo failures despite wrapper0; not passed",
+          "later_unified_final03_default_final02": "Finished logs but uncaptured Cargo status; provisional only",
+          "later17_replay": "directly captured Cargo statuses,17 exit0/full success logs",
+          "acceptance": "all DEP2 rows open; real Cargo status plus full logs required"
+        }
       }
     },
     "audit_intake_observations": [
