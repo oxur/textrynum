@@ -1035,3 +1035,20 @@ CDC verification/retro for real read extents, preserved admin failures and exact
 raw-byte evidence. Budget0/5. Source719, original38/31/291 and49cells7/7/35 remain;
 no behavioral/SEARCH/full-pass/final composition acceptance. CDC owns next finite
 original04→10 source-complete static phases, no active mutable child.
+
+
+## Finite original-population static phases — 2026-11-22
+
+After21closure10ea6615, reconciled unchanged original map: pass01–07 own
+38/31/25/50/14/150/52 paths; statuses38accepted/31CC-proposed/291pending,
+49cells7/7/35 unchanged. Narrow facets12–21 do not complete original owners.
+Recorded [finite roadmap](../artifacts/2026.11.22-static-phase-coverage-plan.md).
+Original04→05→06→07→08→09→10 source-complete STATIC phases cover exactly
+25/19/31/14/92/58/52 remaining paths, with per-file semantics/contrary checks,
+all seven scale dispositions and binary/reference methods. Source-reading alone
+is not semantic acceptance. Original03 blocked proof/partials remain untouched;
+core38/7 accepted separately. Whole-slice/behavioral/pass-scale/final-arc gates
+remain open. Same retained roles; no source/native/service/SEARCH execution.
+Original04ready: exact25 paths/11,072 lines, actual own intake receipts,7GV-S
+criteria,6CCoutputs/index, initial0/5. New prompt carries terminology/stop and
+fixed programmatic preservation contracts. CDC owns until actual dispatch.
