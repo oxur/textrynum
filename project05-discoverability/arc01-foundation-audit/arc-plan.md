@@ -1090,3 +1090,16 @@ SEARCH/full-arc acceptance; unchanged38/31/291,49cells7/7/35 and protected bytes
 Source719clean; no source execution/fix. Author exec32848 completed0 and explicitly
 returned index/sixpaths; CDC owns planning/index, no mutable child. Next finite
 original05MCP-runtime19paths/6741lines, same retained models/static authority.
+
+
+## Original05 MCP runtime static readiness — 2026-11-22
+
+After04staticclosurec2240cb, open exact original05runtime19paths/6741lines (pass04
+partition; original06ownsother31). CDCown complete intake in05plan, same author
+retained16receipts reused only honestly. MR-S01–07 govern per-file semantics,
+architecture, all7scales, contrary/currentSDK controls and honest missing proof.
+Same retained CC6LunaHigh/CDC6.1SolHigh, initial05budget0/5. Exactsixoutputs/index
+at dispatch; root/CDC read-only until handback. Source719read-only, no source/
+native/service/RPC/SEARCH execution or fix; all original owner/cell/behavioral/
+composition gates unchanged. New prompt carries terminology and programmatic
+byte-preservation/message-file actual-trailer contracts. CDC owns until dispatch.
