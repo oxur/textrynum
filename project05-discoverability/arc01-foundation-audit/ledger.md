@@ -96,3 +96,14 @@ support-ticket number claimed. Report and exact receipt are in project05
 artifacts/2026.11.22-platform-false-positive-feedback.md and matching-receipt.json.
 No audit retry, source change, Daybreak action or acceptance advance occurred.
 The platform blocker and all pending audit gates remain open.
+
+Progress2026-11-22 SEPARATE STATIC API CHECK: Duncan resumes same-model Autonomous
+code quality assessment for separate bounded public-API/feature/configuration/
+entrypoint questions. Slice12 opens declarations/public-entrypoint consistency
+only:41manifest projection,9members/26keys/18full files plus7READMEs/context.
+No SEARCH operation, driver or partial bookkeeping is retried; all old gates
+remain pending and partials untouched. Whole-pass owners/statuses/49cells are
+unchanged. Parent-confirmed feedback17c6ecb is submitted; do not resubmit.
+Arc-planv1.14 and the durable CC prompt propagate the precise terminology/stop
+contract. Slice12 requires separate CC proposal and CDC static acceptance;
+rows02–08 remain open and core38/7+001–010 accepted unchanged.

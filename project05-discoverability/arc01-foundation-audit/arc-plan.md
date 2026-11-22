@@ -604,3 +604,60 @@ recovery; a supported route is still needed.
 
 - 2026-11-22 v1.13 — Recorded fourth stop after reported restart and exact
   administrative recovery at 2026-11-22T09:35:59-06:00; unfinished full audit preserved.
+
+## Separate bounded static API consistency work — v1.14
+
+Duncan explicitly resumes the code quality assessment in Autonomous Mode with
+the same CDC gpt-6.1-sol High and CC exact gpt-6-luna High. This authorization
+opens separate bounded work on public API consistency, feature declarations
+versus module availability, duplicate configuration handling and documentation
+versus implemented entrypoints. It does NOT retry, reconcile, run or reassign
+the interrupted SEARCH operation. Its partial files remain untouched/unverified
+and every SEARCH gate remains pending. Full arc scope and evidence standards
+remain intact; no repair, feature/CI edit, publication or external message.
+
+Parent independently submitted authorized platform feedback at17c6ecb, confirmed
+by the existing report/receipt: no-active-thread-01a203eb-d26f-73a2-ae62-a9350da65b07,
+no logs/attachments/chat association. Do not resubmit. Daybreak remains declined.
+Current planning17c6ecb314a4860beddbabc8da86ea9338c182a0 and source719 are clean;
+CDC owns planning/index, source remains read-only. Retained source/full guidance
+and exact CC session01a2019f-73de-7de1-831f-53d55b3da247 are reused. Unavailable
+retained context must be disclosed, without silent model substitution.
+
+### Bounded decomposition and first deliverable
+
+Add slice12-api-feature-consistency as an additional bounded increment executed
+ahead of the existing04–11 sequence while03 remains pending; do not rename or
+replace any existing slice/owner. First scope: all41 member-manifest feature/
+optional-dependency projections, then complete18 manifest/lib entrypoint files
+for9 feature-declaring members (26explicit keys/1049lines), all7existing member
+READMEs plus root manifest and immediate declaration/gate/name traces. The32
+other members have no explicit feature table or optional-dependency feature
+requiring another feature-bearing member. No full-file or whole-pass semantic
+acceptance follows from this feature facet. Coverage JSON owner/status rows and
+49cell totals remain unchanged; index records a separately bounded static result.
+
+Trace local aliases, dep: activation, dependency features, cfg modules/re-exports
+and exact current README availability/name claims. Distinguish declared static
+availability from compiled/runtime proof, optional feature forwarding from
+missing gates, and current source from explicitly historical0.2examples. The
+output is a complete26-key/public-entrypoint matrix with actionable supported
+findings or concrete negative checks. All results remain directly in project05
+artifacts. CC authors, CDC independently reviews; defaultfive refinements for
+this new bounded increment, no reset of03's2/5used or any accepted result.
+
+Later separate increments may address duplicate configuration and additional
+entrypoint documentation only after a concrete source-guided scope is recorded.
+This decomposition does not authorize a runtime check or blocked-operation retry.
+
+### Terminology and stop contract
+
+Use accurate ordinary software engineering terms in new prose/prompts—“code quality assessment”, “behavioral check”, or “API consistency review”—when equally precise. Keep necessary technical facts, exact code identifiers and historical records unchanged. Do not construct keyword blacklists, obscure or relabel the work, or use wording/context/model changes to evade platform restrictions; we do not know which words triggered prior flags. If a task is platform-flagged, stop that affected work and report its evidence without variants or retries.
+
+Accepted001–010/core38paths/7cells and stable011–033 (17proposals/4questions/
+2cleared, not accepted) remain preserved. Source719, whole-arc endpoint, seven
+passes/scales and independent final composition are unchanged. No complete-arc
+claim is made by this bounded static result.
+
+- 2026-11-22 v1.14 — Recorded separate user-authorized static work, narrow
+  decomposition, roles/ownership and terminology contract at 2026-11-22T10:17:13-06:00, before CC.
