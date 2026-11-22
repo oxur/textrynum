@@ -6447,7 +6447,7 @@
         "entry_gate": "independently accepted actual green baseline CI before slice02 edits"
       },
       "source_candidate": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
-      "source_mutation_owner": "CC exact-Luna High session01a2006e-2618-7721-b361-1bd809d21d87 exclusive until explicit return",
+      "source_mutation_owner": "CC exact-Luna High session01a2006e-2618-7721-b361-1bd809d21d87, owned exec55183, exclusive until explicit return",
       "baseline_candidate_ci_run": 44957414892,
       "CC_session": "01a2006e-2618-7721-b361-1bd809d21d87",
       "baseline_candidate_ci_result": {
@@ -6478,9 +6478,9 @@
         "isolated_feature_selections": 17,
         "entry_source": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
         "CC_session": "01a2006e-2618-7721-b361-1bd809d21d87",
-        "ownership": "CDC between exited exec3060 and next same-session resume; CC exclusive while resumed",
+        "ownership": "CC exclusive source/index while exec55183 active; CDC design/plans/independent review",
         "actual_turn_context": {
-          "timestamp": "2026-11-21T23:29:19.987Z",
+          "timestamp": "2026-11-22T01:57:29.921Z",
           "model": "gpt-6-luna",
           "effort": "high",
           "cwd": "/Users/oubiwann/lab/oxur/textrynum",
@@ -6488,7 +6488,7 @@
           "sandbox_policy": "workspace-write",
           "backend_identity": "unreported"
         },
-        "owned_exec_session": 3060,
+        "owned_exec_session": 55183,
         "initial_exec_session": 8373,
         "initial_disposition": "returned before edits; actual model/effort verified; concrete metadata filename now supplied",
         "configuration_receipt": "Coordinator-applied and independently verified Operator selection is authoritative; CC acknowledged and cross-checked; generic identity/introspection absence is not mismatch evidence",
@@ -6509,7 +6509,7 @@
           "acceptance": "all DEP2 rows open; real Cargo status plus full logs required"
         },
         "prepared_correction": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration02.md",
-        "prepared_correction_status": "issued with authority correction before actual same-session resume",
+        "prepared_correction_status": "iteration02 actually resumed same session in owned exec55183",
         "new_compatibility_review": {
           "metadata_filter": "all-N buffering unaccepted; bounded native row-ID streaming/batching authorized private route, actual native plan/semantics/bounded-state proof required",
           "english_stopwords": "parent/CDC engineering disposition under existing preserve-behavior authority: exact1298-word licensed private ISO corpus and unused direct dependency removal; prior inferred approval gate superseded, no new Operator answer; intentional198-word adoption held",
@@ -6526,7 +6526,8 @@
           "empty_index": true,
           "binary_diff_sha256": "cb296f545d6f3007e86e64d47474ae8021d0b9e31f235019a4e4bc82dde478da",
           "source_commit": "none; all edits/evidence preserved"
-        }
+        },
+        "owned_CLI_pid": 32862
       }
     },
     "audit_intake_observations": [
