@@ -6456,7 +6456,7 @@
           "chronology": "Earlier preservation proceeded under existing ordinary engineering authority after correcting an inferred approval gate; this later answer is not retroactive approval/timeout evidence"
         }
       },
-      "source_candidate": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
+      "source_candidate": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "source_mutation_owner": "CC exact-Luna High session01a2006e-2618-7721-b361-1bd809d21d87, owned exec30498, exclusive until explicit return",
       "baseline_candidate_ci_run": 44957414892,
       "CC_session": "01a2006e-2618-7721-b361-1bd809d21d87",
@@ -6525,7 +6525,7 @@
         "new_compatibility_review": {
           "metadata_filter": "bounded native row-ID scan/batching/MAX/zero and260match runtime controls passed; no all-N vector candidates/upfront caller-limit allocation; final review pending",
           "english_stopwords": "explicit Operator preservation choice now received after ordinary-authority implementation; exact1298-term product oracle passed, notices/provenance and real package inclusion still reviewed",
-          "release_tests": "post-refactor debug and configured release each genuine0/85summaries2440passed0failed61ignored; narrower ORT-only fresh-link proof compiling; default-unwrapped failure preserved",
+          "release_tests": "full configured release genuine0/85summaries2440passed0failed61ignored; fresh narrowed ORT-only CLI/vector links and315targeted tests genuine0; default-unwrapped failure preserved",
           "provider": "current-turn item103 actual4ignored Fastembed tests, direct Cargo0/full log; final pinned/provider scope review pending"
         },
         "interruption": {
@@ -6559,7 +6559,12 @@
           "fabryk-mcp/fts-tantivy",
           "fabryk-mcp-core/http",
           "fabryk-mcp-fts/fts-tantivy"
-        ]
+        ],
+        "source_commits": [
+          "23572bf936cd99395cabad857f91fdd985a96bbd",
+          "719c58f245fe4a9115c7c0391d3e268c99157e2f"
+        ],
+        "package_contents": "all41actual archives/443files pinned719c58f, no owned temporary examples; FTS1298-term runtime JSON and full license/provenance independently byte/hash-checked in actual archive; --no-verify packaging only, no publication"
       }
     },
     "audit_intake_observations": [
