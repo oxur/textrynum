@@ -1,6 +1,7 @@
 # Configuration loading contracts and documented entrypoints
 
-Status: ready for author assignment, source719 read-only. Separate static
+Status: independently accepted bounded static assessment at candidatee435422c,
+source719 read-only. Separate static
 increment13 follows accepted slice12; it does not replace original04–11 or
 advance any SEARCH gate. Same selected CDC Sol6.1High/CC LunaHigh, retained
 session; CDC owns independent slice review. Final independent arc composition
@@ -30,3 +31,8 @@ edits. CC proposes; independent CDC checks all five CFG criteria in the ledger.
 Only static text inspection/documentation bookkeeping is assigned. The immutable
 prompt defines exact ownership and terminology/stop contract. No code repair,
 Cargo/runtime operation or blocked driver reconciliation is commissioned.
+
+Acceptance2026-11-22:036 Low accepted statically;037 retained as an unresolved
+documentation question after independent context review. All five CFG criteria
+accepted only within this facet, original coverage/SEARCH unchanged.0/5 author
+refinements used; see CDC verification/retrospective.

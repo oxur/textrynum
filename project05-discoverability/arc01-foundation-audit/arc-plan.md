@@ -696,3 +696,17 @@ propagates terminology/stop and preservation contracts. Initial13budget0/5;
 03 stays2/5used. CDC owns planning/index until exact five-path CC handoff.
 
 - 2026-11-22 v1.16 — Recorded configuration scope/readiness before contributor work.
+
+## Accepted bounded configuration review — v1.17
+
+Slice13 candidatee435422c independently accepted for five CFG criteria, four
+complete files/1387lines plus direct caller traces.036 Low accepted statically;
+037 preserves its author-proposed Low history but remains an unresolved guide-
+context question after full-fragment review. No compile/runtime claim. Intentional
+policy/dispatch separation and manual PORT handling remain controls. Original
+38accepted paths/7cells, pending011–033/SEARCH and final arc composition are
+unchanged. Same retained models;0/5 refinements13,03 remains2/5used. CDC owns
+planning/index after author exec84226 completed0. Any next independent source-quality
+scope requires concrete readiness and recorded prompt before dispatch.
+
+- 2026-11-22 v1.17 — Accepted bounded13, oneLow/onequestion and process retro.
