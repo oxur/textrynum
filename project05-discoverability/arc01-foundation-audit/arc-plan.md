@@ -1010,3 +1010,15 @@ bytes match canonical manifest and five immutable snapshots. Failed checker
 observation preserved; wrapper0 did not prove9/9. Unfinished preparations remain
 UNVERIFIED, all SEARCH gates pending. Budget1/5, source719/38/31/291/49cells7/7/35
 unchanged. No runtime/full-pass/final composition acceptance. CDC owns next scope.
+
+
+## Slice21 relationship parser scope — 2026-11-22
+
+After20closure56d9f3d, record separate current name/parser/typed-consumer review.
+Actual retained14/17 full5276 intake plus fresh stock extractor/query1362; bounded
+case/alias/typed equality/manual-weight controls and compatibility, no missing-arm-
+only inference. Same retained models/session,21initial0/5, exactfiveCCoutputs/index
+at dispatch; source719 read-only. Fixed56d9 raw-byte preservation inputs derived
+programmatically, no copied opaque expected hashes. New terminology/stop rules in
+prompt. No execution/SEARCH/repair or original coverage acceptance. After21 reconcile
+seven original populations and record finite source-complete package/pass tranche.
