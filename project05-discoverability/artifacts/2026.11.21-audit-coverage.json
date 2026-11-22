@@ -13458,7 +13458,7 @@
       "coverage_status": "CC reviewed; independent CDC acceptance pending",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 480,
-      "review_method": "Full source/tests; JWT, opaque, claims/cache review; FA-RS-003/004 and H-RS-001. Local JWKS fixture bind blocked; see raw log."
+      "review_method": "Full source/tests; JWT, opaque, claims/cache review; FA-RS-003/004/009 and H-RS-001. Initial author JWKS bind failure preserved; CDC later independently observed unknown-kid requests 1 then 2 and bounded stall; see CDC evidence/log."
     },
     {
       "path": "crates/fabryk-auth/Cargo.toml",
@@ -13497,7 +13497,7 @@
       "coverage_status": "CC reviewed; independent CDC acceptance pending",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 43,
-      "review_method": "Full source reviewed; public identity/config contracts; no separate finding."
+      "review_method": "Full source reviewed; public identity/config contracts. AuthConfig.audience is an expected audience and is traced into FA-RS-009 across the Google JWT and opaque paths."
     },
     {
       "path": "crates/fabryk-auth/src/middleware.rs",
@@ -13510,7 +13510,7 @@
       "coverage_status": "CC reviewed; independent CDC acceptance pending",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 339,
-      "review_method": "Full source/tests; AuthLayer oneshot for valid/invalid/provider error/empty/lowercase token; FA-RS-002 and H-RS-002."
+      "review_method": "Full source/tests; AuthLayer oneshot for valid/invalid/provider error/empty/lowercase token; FA-RS-002/010 and H-RS-002. Lowercase Bearer rejection independently replayed by CDC conflicts with RFC 9110 section 11.1 case-insensitive scheme requirement."
     },
     {
       "path": "crates/fabryk-auth/src/user.rs",
