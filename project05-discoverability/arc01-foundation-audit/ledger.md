@@ -14,3 +14,11 @@ Row01 is independently reproduced map acceptance; rows02–08 remain open. Plann
 | 08 | Independent review and actionable repair handoff complete | Separate review of coverage and evidence; finding-to-owner handoff | correctness-grade | Operator decision 2026-11-21 | open | | |
 
 Progress2026-11-22: [slice02 diagnosis accepted](slice02-core-auth/cdc-verification.md) at6ae2752,38/360paths and7/49cells; tenfindings/twoquestions bubble up to later complete handoff. Rows02–08 remainopen until allpasses/finalcomposition; no repair acceptance.
+
+Progress2026-11-22 restricted continuation: slice03 candidate8d89b637 remains
+unaccepted (23proposals011–033;31CC-proposed paths/7CC-proposed pass02 cells).
+Platform risk interruption triggered clean read-only recovery; parent then
+authorized static correctness/contract/documentation coordination only. Native/
+probe/provider/security execution stays on hold; row04 and dependent acceptance
+remain open. No user pause, coverage reduction or claimed replay. See arc-plan
+v1.7 and slice03 CDC review1/iteration01. Accepted38paths/7cells unchanged.

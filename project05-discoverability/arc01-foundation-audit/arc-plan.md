@@ -328,3 +328,36 @@ issue the next bounded content/search assignment under the unchanged contract.
 
 - 2026-11-22 v1.6 — Accepted first semantic pass with explicit remaining full
   coverage, preserved correction/failures, repair owners and scoped retro lessons.
+
+## Restricted static continuation — v1.7, 2026-11-22
+
+A platform message flagged the CDC turn for possible cybersecurity risk. Parent
+ordered state recovery only; no blocked execution/content was retried. Read-only
+recovery found planning clean at8d89b6372d8713b3824b7793bcee5f3ca768a56d,
+source clean at719c58f245fe4a9115c7c0391d3e268c99157e2f, no staged changes,
+CC session14227 completed exit0, and no active owned Cargo/Rust/probe process.
+Existing prompts, candidate, logs and scratch outputs were preserved; no CDC
+slice03 native replay had started and no uncommitted audit records existed. A
+recovery log-reader initially failed on a non-JSON warning footer; tolerant
+read-only recovery then completed. No product or evidence was changed.
+
+Parent subsequently authorized only unaffected static software-correctness,
+contract and documentation coordination for slice03. CDC owns planning/index
+for that work until an exact documentation-only CC handoff; source/native/probe/
+provider/security execution remains on hold. No safeguard bypass, model change,
+blocked-content retry or new native/provider test is authorized. The overall arc
+remains active with its full original scope; this is not a user-requested pause
+or a reduced acceptance contract. Gates requiring unperformed independent replay
+remain pending. Accepted001–010 and pass01 remain preserved; the23 slice03
+proposals011–033 at8d89b637 remain unaccepted.
+
+The next preserved prompt is slice03-content-search/cc-prompt-iteration01.md,
+semantic refinement1of5, limited to analysis/documentation corrections. Static
+review may clear or reclassify unsupported proposals with written reasons and
+original IDs; it cannot silently manufacture runtime evidence or accept coverage.
+The initial provisional24/011–034 progress description is superseded by the
+first frozen candidate's23/011–033; explain that draft-to-freeze change rather
+than treating the provisional numbering as canonical accepted findings.
+
+- 2026-11-22 v1.7 — Recorded actual platform interruption, clean recovery,
+  restricted static continuation and pending independent gates at 2026-11-22T01:44:58-06:00.
