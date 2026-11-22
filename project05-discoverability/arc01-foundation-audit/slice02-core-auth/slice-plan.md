@@ -64,3 +64,5 @@ with both trailers, then returns ownership for independent CDC review.
   01a2019f-73de-7de1-831f-53d55b3da247 after map acceptance; no refinement used.
 
 - 2026-11-22 refinement01 issued after candidate deff5467 independent review1: explicit audience/case contracts, owner fields, index/intake/source chronology and cited CDC local evidence. Initial failure retained; no source/test repair or repeated suite. Absolute output paths now mandatory after wrong-workdir incident.
+
+- 2026-11-22 canonical cc-prompt-iteration02.md continues refinement1 with the exact missing privacy recipe. CDC normalSIGINT stopped owned idle runner32665(exit1), preserving six staged corrections and all evidence; no new semantic round/reset (1of5used). Arbitrary prose-base64 guessed screen is not an accepted oracle; actual encoded-byte scan required.
