@@ -1,0 +1,68 @@
+{
+  "old_tip": "d32ec510c09d35587ad5def20152b87ac406e2ca",
+  "new_tip": "2f4bfc2f56638334b10dd90a491e16dac189cb17",
+  "base": "364cffe2eb792cded3b2667ce8bb5d7a21457ee7",
+  "backup_branch": "codex/planning-before-footer-fix-20261122-d32ec51",
+  "commits_preserved": 6,
+  "total_commit_count_preserved": true,
+  "only_target_footer_changed": true,
+  "unrelated_refs_unchanged": true,
+  "source_head": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+  "source_clean": true,
+  "planning_clean": true,
+  "mapping": [
+    {
+      "old": "bf193ab9d3f26fb7a858e54e84e92aa97d692542",
+      "new": "046a8707d9bb63cdf55a98416c9e30f76b99da6b",
+      "tree": "2800e16b28c1fc30551fe2ef144da1b3508caa39",
+      "tree_and_metadata_preserved": true,
+      "message_changed": true,
+      "both_coauthors_parsed": true
+    },
+    {
+      "old": "7133ede9adc5eb500ec9479505193550940dd3eb",
+      "new": "80bba35aea8d61d0f2704e8e71b43aec1a885d04",
+      "tree": "5934565bfdffefef953dbeff1240003d7b128bf5",
+      "tree_and_metadata_preserved": true,
+      "message_changed": false,
+      "both_coauthors_parsed": true
+    },
+    {
+      "old": "653a394d9b100f5f9f2b4a925ce984637819ac87",
+      "new": "ae644a652bc4b053ab58f810a40afbf521c42fd6",
+      "tree": "721bfebba550e29243353b96f7548824dd30ac01",
+      "tree_and_metadata_preserved": true,
+      "message_changed": false,
+      "both_coauthors_parsed": true
+    },
+    {
+      "old": "98fca6cb344b7efc0c0efd28e1529fda5f947cf7",
+      "new": "2afde0273057f7d9954dbe27300e3e7a989b29d8",
+      "tree": "a951d1752b2cefb67fca0f21d9a3379f8d47b607",
+      "tree_and_metadata_preserved": true,
+      "message_changed": false,
+      "both_coauthors_parsed": true
+    },
+    {
+      "old": "cb6fbeba795866bdd9510157dd115d15537743e3",
+      "new": "1fa7923fe62708d2d4e3a7d71c6db06a60e40aa6",
+      "tree": "925a42d3c8412caeb3f7407ce68b788b589e8afb",
+      "tree_and_metadata_preserved": true,
+      "message_changed": false,
+      "both_coauthors_parsed": true
+    },
+    {
+      "old": "d32ec510c09d35587ad5def20152b87ac406e2ca",
+      "new": "2f4bfc2f56638334b10dd90a491e16dac189cb17",
+      "tree": "221b1ae89a0f55f26a12897966304c06db2fe718",
+      "tree_and_metadata_preserved": true,
+      "message_changed": false,
+      "both_coauthors_parsed": true
+    }
+  ],
+  "operator_instruction": "Let's just edit the commit message to fix it",
+  "verified_at_utc": "2026-11-22T18:36:15.662754+00:00",
+  "method": "Interactive rebase reworded only the target footer; keep-empty/reapply options preserved every commit, update-refs disabled, original author/committer identity and dates verified byte-for-byte.",
+  "scope": "Local orphan planning history only. No remotes updated. No source files or protected preparation artifacts modified.",
+  "historical_references": "Old commit IDs in existing records remain historical witnesses reachable from the backup branch. Use this mapping for current lineage; do not relabel the old object as compliant."
+}
