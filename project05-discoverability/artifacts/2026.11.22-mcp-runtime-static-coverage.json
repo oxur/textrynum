@@ -1,0 +1,459 @@
+{
+  "assessment": "ORIGINAL05 MCP runtime source-complete static phase",
+  "status": "CC-proposed source-complete static semantic phase; independent CDC review pending; original whole-slice/pass/behavioral gates pending",
+  "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+  "planning_readiness": "1fea18e3546fdc415226bd263e89edef124e05d2",
+  "original_pass": "pass04",
+  "original_owner": "slice05-mcp-runtime",
+  "population": {
+    "paths": 19,
+    "lines": 6741,
+    "binary_paths": 0,
+    "original_owner_status_unchanged": true
+  },
+  "intake_receipts": [
+    {
+      "slice": "05 own assignment",
+      "files_reused": [],
+      "line_extents": {
+        "crates/fabryk-mcp-core/Cargo.toml": "1-44",
+        "crates/fabryk-mcp-core/src/builder.rs": "1-264",
+        "crates/fabryk-mcp-core/src/discoverable.rs": "1-1473",
+        "crates/fabryk-mcp-core/src/error.rs": "1-141",
+        "crates/fabryk-mcp-core/src/guidance.rs": "1-297",
+        "crates/fabryk-mcp-core/src/health_router.rs": "1-217",
+        "crates/fabryk-mcp-core/src/helpers.rs": "1-154",
+        "crates/fabryk-mcp-core/src/lib.rs": "1-162",
+        "crates/fabryk-mcp-core/src/notifier.rs": "1-255",
+        "crates/fabryk-mcp-core/src/registry.rs": "1-265",
+        "crates/fabryk-mcp-core/src/resource.rs": "1-101",
+        "crates/fabryk-mcp-core/src/search_fallback.rs": "1-119",
+        "crates/fabryk-mcp-core/src/server.rs": "1-1243",
+        "crates/fabryk-mcp-core/src/service_registry.rs": "1-271",
+        "crates/fabryk-mcp-core/src/static_resources.rs": "1-241",
+        "crates/fabryk-mcp-core/src/tools/diagnostics.rs": "1-254",
+        "crates/fabryk-mcp-core/src/tools/health.rs": "1-678",
+        "crates/fabryk-mcp-core/src/tools/mod.rs": "1-13",
+        "crates/fabryk-mcp-core/src/validate.rs": "1-549"
+      },
+      "record": "complete bounded source reads at pinned source tree; no external/reviewer receipt borrowed",
+      "digest": "not recorded"
+    }
+  ],
+  "fresh_complete_population_files": [
+    "crates/fabryk-mcp-core/Cargo.toml",
+    "crates/fabryk-mcp-core/src/builder.rs",
+    "crates/fabryk-mcp-core/src/discoverable.rs",
+    "crates/fabryk-mcp-core/src/error.rs",
+    "crates/fabryk-mcp-core/src/guidance.rs",
+    "crates/fabryk-mcp-core/src/health_router.rs",
+    "crates/fabryk-mcp-core/src/helpers.rs",
+    "crates/fabryk-mcp-core/src/lib.rs",
+    "crates/fabryk-mcp-core/src/notifier.rs",
+    "crates/fabryk-mcp-core/src/registry.rs",
+    "crates/fabryk-mcp-core/src/resource.rs",
+    "crates/fabryk-mcp-core/src/search_fallback.rs",
+    "crates/fabryk-mcp-core/src/server.rs",
+    "crates/fabryk-mcp-core/src/service_registry.rs",
+    "crates/fabryk-mcp-core/src/static_resources.rs",
+    "crates/fabryk-mcp-core/src/tools/diagnostics.rs",
+    "crates/fabryk-mcp-core/src/tools/health.rs",
+    "crates/fabryk-mcp-core/src/tools/mod.rs",
+    "crates/fabryk-mcp-core/src/validate.rs"
+  ],
+  "prior_scope_references": [
+    "FA-RS-040 and FA-RS-041 remain separate accepted slice16 roots; no duplicate symptom proposed.",
+    "FA-RS-016/Q16 remains an ungraded prior question; recognizer parity is not established.",
+    "Other prior question IDs/owners remain unchanged; no question resolved by feature absence.",
+    "Locked RMCP 3.11.0 handler source is used only for peer-version adapter/error/lifecycle interpretation."
+  ],
+  "rows": [
+    {
+      "path": "crates/fabryk-mcp-core/Cargo.toml",
+      "line_count": 44,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Default feature set is empty; HTTP enables RMCP streamable HTTP and Axum. HTTP test dependencies are dev-only.",
+      "source_loci": "12–44",
+      "contrary_checks": "Manifest scopes HTTP and test dependencies; it does not establish transport/client behavior.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/builder.rs",
+      "line_count": 264,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Builder composes ordered tool registries, metadata, services, and static resources; into_parts/build_with_registry provide a wrapper insertion seam.",
+      "source_loci": "32–180; tests 210–264",
+      "contrary_checks": "Tests assert constructed config and resource registration, not validation, duplicate resolution, or wire behavior.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/discoverable.rs",
+      "line_count": 1473,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Wrapper enriches tool descriptions, injects a directory tool, and projects optional metadata. Guidance workflow becomes flat query strategy; task strategies serialize separately, so both strategy keys can coexist.",
+      "source_loci": "183–300; 311–553; tests 608–1473",
+      "contrary_checks": "Directory tests assert JSON fields/serialization, not agent choice or client usability; strategy precedence comment conflicts with actual additive projection.",
+      "finding_question_refs": [
+        "FA-RS-054",
+        "FA-RS-055"
+      ],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/error.rs",
+      "line_count": 141,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Two conversion traits map core errors to RMCP errors; JSON maps to parse error in the simple converter but falls through to internal error in contextual conversion.",
+      "source_loci": "9–57; tests 63–141",
+      "contrary_checks": "Tests inspect messages rather than the full mapping table; the distinction is limited to caller-selected conversion APIs.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/guidance.rs",
+      "line_count": 297,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "ServerGuidance stores workflow, conventions, constraints, tool metadata, connectors, freshness, and subscription recommendations. Instructions render context/subscriptions/conventions/constraints; structured directory projection is supplied by DiscoverableRegistry.",
+      "source_loci": "23–159; tests 162–297",
+      "contrary_checks": "Builder tests check stored fields/rendered sections, not end-to-end client discovery.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/health_router.rs",
+      "line_count": 217,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "HTTP route snapshots live ServiceHandle state per request; Ready/Stopped yields 200, all other states yield 503, and empty services yield 200.",
+      "source_loci": "61–112; tests 118–217",
+      "contrary_checks": "Tests assert route status/body for Ready, Starting, Stopped, Failed, and empty only; no deployment/monitoring semantics.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/helpers.rs",
+      "line_count": 154,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Tool helpers construct schemas and successful JSON text results; non-object schema input becomes an empty map, while no-argument helper uses the explicit object schema.",
+      "source_loci": "13–81; tests 88–154",
+      "contrary_checks": "Tests cover helper output shape; they do not prove complete JSON Schema or client acceptance.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/lib.rs",
+      "line_count": 162,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Facade exports registry/server/notifier/guidance/discovery/resources/health APIs; HTTP module, router, transport types, and Axum export are feature-gated.",
+      "source_loci": "47–110; 112–162",
+      "contrary_checks": "Source facade is mapped; no downstream compilation or published package claim is made.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/notifier.rs",
+      "line_count": 255,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Clone-shared peer and URI-subscription vectors support legacy logging/resource notifications, targeted updates, no-subscription broadcast fallback, and list-change notification.",
+      "source_loci": "29–185; tests 187–255",
+      "contrary_checks": "Accepted FA-RS-040/041 remain the only roots for resend/prune and URI-wide unsubscribe composition; current tests mostly cover empty state, not peer delivery.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/registry.rs",
+      "line_count": 265,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Composite listing concatenates registries; dispatch tries registries in insertion order and returns the first Some result.",
+      "source_loci": "43–117; tests 123–265",
+      "contrary_checks": "Order is documented and duplicate validator exists in validate.rs; dispatch collision is a static control-flow conclusion, not an executed test result.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/resource.rs",
+      "line_count": 101,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "ResourceRegistry returns a resource list and optional boxed async read; the trait does not define subscription state or a concrete protocol lifecycle.",
+      "source_loci": "14–45; tests 47–101",
+      "contrary_checks": "Tests cover object safety, one known URI, and unknown URI; no client semantics.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/search_fallback.rs",
+      "line_count": 119,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "FTS resolves only when slot is ready, lockable, and populated; otherwise it returns the supplied simple backend. Backend name uses readiness only.",
+      "source_loci": "48–86; tests 92–119",
+      "contrary_checks": "Tests cover no-slot/not-ready controls; no provider/backend operation was run.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/server.rs",
+      "line_count": 1243,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Server composes shared registry/notifier/resources; stdio waits for RMCP termination; feature-gated HTTP builds local-session service and health route; handlers delegate tools/resources and register legacy subscription callbacks.",
+      "source_loci": "75–290; 293–463; tests 469–1243",
+      "contrary_checks": "HTTP test source asserts legacy 2025 wire shape, read MIME, logging and Host rejection (960–1194); test code was read only. SDK 3.11 performs peer-version error remapping.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/service_registry.rs",
+      "line_count": 271,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Tool listing remains available while calls check current service state; Ready and Degraded delegate, other states become tool-error results, unknown names remain None.",
+      "source_loci": "22–79; tests 85–271",
+      "contrary_checks": "Tests cover Starting, Ready, Degraded, multi-service and unknown-name cases; separate from HTTP and MCP health summaries.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/static_resources.rs",
+      "line_count": 241,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Listing advertises configured MIME. Read performs blocking read_to_string in async future, emits text contents, uses fallback on every I/O error, otherwise RESOURCE_NOT_FOUND.",
+      "source_loci": "13–110; tests 112–241",
+      "contrary_checks": "Tests deliberately show list MIME text/markdown while read MIME is text/plain and cover missing-file fallback; no read-error-class matrix.",
+      "finding_question_refs": [
+        "FA-RS-056"
+      ],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/tools/diagnostics.rs",
+      "line_count": 254,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "debug_config redacts only oauth.client_id/client_secret and documents caller preprocessing for custom redaction; service_status is a per-call state snapshot and overall Ready-only summary.",
+      "source_loci": "21–125; tests 132–254",
+      "contrary_checks": "Tests exercise the named OAuth keys and empty/Ready/Starting summaries; not a generic secret scanner or liveness endpoint.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/tools/health.rs",
+      "line_count": 678,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "HealthTools captures name/version/count/config at construction and queries optional BackendProbe values at call time; status remains \"healthy\" even when a reported backend ready flag is false.",
+      "source_loci": "20–200; tests 271–678",
+      "contrary_checks": "Tests assert probe readiness visibility and optional-field omission, not aggregate failure status; this is distinct from HTTP service health.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/tools/mod.rs",
+      "line_count": 13,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Module exposes diagnostics and health implementations and their public types/functions.",
+      "source_loci": "6–13",
+      "contrary_checks": "Export-only file; no independent behavior.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    },
+    {
+      "path": "crates/fabryk-mcp-core/src/validate.rs",
+      "line_count": 549,
+      "original_owner": "slice05-mcp-runtime",
+      "original_pass": "pass04",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
+      "semantic_conclusion": "Validator checks name constraints, object schema shape, description presence, and duplicate names; warn/assert enforcement is opt-in at the call site.",
+      "source_loci": "21–240; tests 246–549",
+      "contrary_checks": "Tests cover named cases, including duplicate names; source does not invoke validation automatically during ServerBuilder/FabrykMcpServer construction or validate full JSON Schema semantics.",
+      "finding_question_refs": [],
+      "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
+      "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
+    }
+  ],
+  "negative_checks": [
+    {
+      "check": "CompositeRegistry first-match dispatch and duplicate-name validator coexist; no automatic startup rejection claimed.",
+      "source": "registry.rs:104–117; validate.rs:175–197",
+      "status": "source-derived contrary control; not executed"
+    },
+    {
+      "check": "Guidance workflow maps to flat query strategy; task strategy uses separate field and test says both can appear.",
+      "source": "discoverable.rs:204–225,389–429,502–508,1174–1203",
+      "status": "source-derived contrary control; not executed"
+    },
+    {
+      "check": "Service Ready/Degraded call gate differs from Ready/Stopped HTTP 200 policy and MCP health status.",
+      "source": "service_registry.rs:22–79; health_router.rs:80–112; tools/health.rs:147–199",
+      "status": "source-derived contrary control; not executed"
+    },
+    {
+      "check": "Locked RMCP maps RESOURCE_NOT_FOUND to INVALID_PARAMS only for the new peer version.",
+      "source": "rmcp-3.11.0/src/handler/server.rs:328–335",
+      "status": "source-derived contrary control; not executed"
+    },
+    {
+      "check": "Listed MIME can differ from text-read MIME; existing source test asserts text/plain.",
+      "source": "static_resources.rs:72–109; server.rs:1079–1112",
+      "status": "source-derived contrary control; not executed"
+    },
+    {
+      "check": "Custom diagnostic redaction is caller-owned; automatic fields are limited to oauth client_id/client_secret.",
+      "source": "tools/diagnostics.rs:26–30,85–100",
+      "status": "source-derived contrary control; not executed"
+    },
+    {
+      "check": "Empty optional directory sections are omitted; slim output alone is not a finding.",
+      "source": "discoverable.rs:406–479; tests 738–767,1244–1279",
+      "status": "source-derived contrary control; not executed"
+    },
+    {
+      "check": "Resource capabilities depend on registry presence, including an empty registry.",
+      "source": "server.rs:346–377,703–723",
+      "status": "source-derived contrary control; not executed"
+    },
+    {
+      "check": "Fallback error branch covers all read errors, while docs/tests describe missing-file fallback only.",
+      "source": "static_resources.rs:30–35,91–106,176–211",
+      "status": "source-derived contrary control; not executed"
+    },
+    {
+      "check": "ServerConfig and builder metadata defaults remain caller inputs; no unstated nonempty name/version rule is imposed.",
+      "source": "server.rs:33–52; builder.rs:46–58",
+      "status": "source-derived contrary control; not executed"
+    },
+    {
+      "check": "Resource capability advertisement follows registry presence, including a configured empty registry.",
+      "source": "server.rs:346–377,703–723",
+      "status": "source-derived contrary control; not executed"
+    },
+    {
+      "check": "Backend status is a stored snapshot; the freshness finding is limited to the explicit dynamic documentation promise.",
+      "source": "discoverable.rs:166–181,272–276,495–500; docs/howtos/mcp-metadata.md:875–878",
+      "status": "source-derived contrary control; not executed"
+    }
+  ],
+  "seven_scales": [
+    {
+      "scale": "line/function",
+      "conclusion": "Direct branches for directory strategies, backend status, static-resource fallback, first-match dispatch and health mapping are traced.",
+      "missing_proof": "No execution, state transition, induced I/O failure, collision dispatch, or client response observation."
+    },
+    {
+      "scale": "file/module",
+      "conclusion": "Builder, registry, server, guidance, health, resources, notifier, errors and validation composition are mapped; FA-RS-040/041 remain existing roots.",
+      "missing_proof": "No failure injection, slow-peer, blocked-lock, concurrency, shutdown-race or filesystem fault evidence."
+    },
+    {
+      "scale": "logical unit",
+      "conclusion": "ServerBuilder → wrappers → FabrykMcpServer → RMCP handler and the distinct resource/health state paths are traced.",
+      "missing_proof": "No independent integration client or running service; re-entry requires authorized bounded integration evidence."
+    },
+    {
+      "scale": "crate/target",
+      "conclusion": "Default feature set is empty; HTTP is optional; facade re-exports and current crate API are source-mapped.",
+      "missing_proof": "No feature build, compiler/API verification, or published-package behavior."
+    },
+    {
+      "scale": "application/service",
+      "conclusion": "Current how-tos describe service gating, backend capability metadata, and health composition; concrete dynamic directory rebuild caller is not established.",
+      "missing_proof": "Owning application composition and runtime status transitions remain assigned to later owner scope."
+    },
+    {
+      "scale": "whole codebase",
+      "conclusion": "Exactly original05 pass04 partition, 19 paths/6,741 lines; existing roots/questions remain deduplicated.",
+      "missing_proof": "Original06’s other31 paths, full owner/pass, cross-owner composition, aggregate denominators and cells remain pending."
+    },
+    {
+      "scale": "workspace/system",
+      "conclusion": "Locked RMCP adapter source is used narrowly; source and planning histories remain separate.",
+      "missing_proof": "No workspace CI/build, client, provider, SEARCH, release, or system behavior evidence; those original gates remain closed."
+    }
+  ],
+  "gate_state": {
+    "MR-S01": "CC proposes met; CDC review pending",
+    "MR-S02": "CC proposes met; CDC review pending",
+    "MR-S03": "CC proposes met; CDC review pending",
+    "MR-S04": "CC proposes met for static phase only; CDC review pending",
+    "MR-S05": "CC proposes met; three diagnoses proposed, questions retained; CDC review pending",
+    "MR-S06": "CC proposes met; actual behavior/full-slice proof explicitly pending",
+    "MR-S07": "pending commit-time verification"
+  },
+  "original_pass_label": "original05 static only; no whole pass acceptance",
+  "current_findings_accepted_static": [],
+  "cc_proposed_findings": [
+    "FA-RS-054",
+    "FA-RS-055",
+    "FA-RS-056"
+  ],
+  "cdc_review": "pending; no independent acceptance implied"
+}
