@@ -48,3 +48,6 @@ controls; calibrated actionable diagnosis; preservation/own commit handback. Sam
 five-path pattern in prompt; all results directly project05artifacts. Existing
 001–041, protected quartets, original38/31/291 and49cells7/7/35, SEARCH/fullarc
 remain unchanged. No repairs/services/native/discovery fixtures are commissioned.
+
+
+Current disposition2026-11-22: candidate001f6097 independently accepted DSC01–05/Medium042 statically. No matcher/runtime/whole-pass/SEARCH acceptance. Refinements0/5; see CDCverification/retro.

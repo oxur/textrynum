@@ -1,6 +1,6 @@
 # Slice17 close — extractor discovery customization
 
-**Assignment:** `slice17-extractor-discovery-contracts/cc-prompt.md`. **Source:** `719c58f245fe4a9115c7c0391d3e268c99157e2f`, clean. **Planning readiness HEAD:** `2e41ff460258fe4ecef790acf21a2e9d178c725e`. **Status:** CC proposes the bounded static criteria met; independent CDC review is pending. This is not whole-workspace consumer mapping, full-file/pass acceptance, runtime acceptance, or arc closure.
+**Assignment:** `slice17-extractor-discovery-contracts/cc-prompt.md`. **Source:** `719c58f245fe4a9115c7c0391d3e268c99157e2f`, clean. **Planning readiness HEAD:** `2e41ff460258fe4ecef790acf21a2e9d178c725e`. **Current status:** CDC independently accepts DSC01–05/Medium042 at001f6097. Author-proposed criterion history is preserved below. This is not whole-workspace consumer mapping, full-file/pass acceptance, runtime acceptance, or arc closure.
 
 ## Exact delivered paths
 
@@ -19,7 +19,7 @@ Only the exact five assigned paths were authored. The cumulative Rust report and
 - Full assigned source intake: five files, 2,788 lines; plus the exact assigned graph/vector stock override ranges. Full extents, `rg` scope and source anchors are recorded in the companion artifact.
 - Source-only manual comparison for two valid lowercase Markdown files; the meaning of root-level `**/` is explicitly an assumption. No matcher, fixture, discovery program, product code, tests, Cargo/build, provider/service/RPC, SEARCH, CI, security, or external operation ran.
 - Graph and vector cache/error boundaries are recorded only to distinguish cold discovery from pre-discovery exits. No cache issue is diagnosed.
-- The protected original-author quartet, unfinished/unverified CDC quartet, and coverage JSON were checked by the nine expected size/SHA pairs only; contents were not opened or interpreted. Prior findings001–041, coverage38/31/291 and49cells7/7/35, slice16 closure, SEARCH, and full-arc gates remain unchanged.
+- The protected original-author quartet, unfinished/unverified CDC quartet, and coverage JSON were checked by the nine expected size/SHA pairs only; bytes were read only for fingerprints, without textual/semantic inspection or execution. Prior findings001–041, coverage38/31/291 and49cells7/7/35, slice16 closure, SEARCH, and full-arc gates remain unchanged.
 - Source stayed clean at719. Planning changes used absolute paths and the physical planning worktree via `git -C`. The required privacy scan covered the exact five owned path contents. Counts only: `0, 0, 0, 0, 0`; total `0`.
 - The single proposed FA-RS-042 remains unaccepted until CDC’s independent review. No repair or arc-plan change is claimed.
 
@@ -52,3 +52,7 @@ Precommit `wc -l`, scoped `rg`, `git diff --check`, source/planning revision che
 ## Handoff
 
 Refinement budget remains slice17 0/5; slice16 0/5, slice15 1/5, and slice03 2/5. No mutable command or child process remains. I return exactly the five assigned outputs and planning index to CDC for independent review. Original owner/pass-scale, SEARCH and final arc-composition gates remain pending.
+
+## Independent closure
+
+All five bounded DSC criteria/Medium042 independently accepted. [CDC verification](cdc-verification.md) supplies source interpretation, actual read extents and preservation/commit checks; [retrospective](cdc-retrospective.md). Exec10096completed0/index returned;0/5refinements. Later owners choose supported customization versus promise revision; original full-pass/SEARCH/finalcomposition unchanged.

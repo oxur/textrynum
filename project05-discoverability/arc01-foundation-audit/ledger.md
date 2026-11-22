@@ -230,3 +230,17 @@ No discovery fixture/runtime/SEARCH/cache diagnosis or source repair. Exact scop
 in17plan/prompt;0/5refinements, fiveCCoutputs/index only at dispatch. Original
 owner/cell/SEARCH/fullarc gates unchanged; no finding-count target. All new results
 project05artifacts; exactprivacy/parsedfooters/retainedprefix contracts propagate.
+
+
+## Slice17 independently accepted — 2026-11-22
+
+Author001f6097/source719 independently reviewed: allfiveDSCcriteria/Medium042
+accepted statically, five full CC files2788lines plus stockoverride references.
+Both named builders omit documented content_glob input; current fixedMarkdown
+and defaults are controls. Manualpattern dialect/root assumptions explicit,
+no matcher/discovery/cache/SEARCH proof. Later repair handoff needs an explicit
+honor-customization versus revise-promise decision for both sites, default/cache-
+population compatibility, no forced shared abstraction. No repair now. See17
+CDCverification/retro. Exec10096completed0 and returned index; CDC owns next scope.
+17budget0/5; original38/31/291 and49cells7/7/35, SEARCH/fullpasses/finalcomposition
+unchanged. Arc remains active; no feature work or criteria waiver.
