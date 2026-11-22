@@ -6424,7 +6424,7 @@
       ]
     },
     "arc00_execution": {
-      "status": "slice02 upgraded working tree: actual1.94 unified/default and all17 isolated checks green; persistence/runtime proofs in progress, not accepted",
+      "status": "slice02 upgraded working tree unaccepted: valid1.94 original/newer17 evidence, partial persistence proofs; actual local release link failure, bounded filter correction and stopword decision pending",
       "source_branch": "codex/ci-dependencies",
       "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
       "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",
@@ -6500,13 +6500,21 @@
           "isolated_results": "all exit0",
           "acceptance": "reviewer inspected doer results, final candidate/affected reruns and CI still required"
         },
-        "compatibility_stage": "actual old fixtures preserved; new Redb representative read executed, whole-state comparison still required; Lance new reader compiling; other runtime/legacy proofs pending",
+        "compatibility_stage": "Redb representative state/two hashes, Lance SDK old rows/schema/current rebuild and two Tantivy records executed; complete Redb/all3 Tantivy/connected logging still required",
         "status_capture_review": {
           "original_unified_default_and17": "valid pipefail witnesses; no retraction",
           "later_unified_final01_final02_and_default_final01": "actual Cargo failures despite wrapper0; not passed",
           "later_unified_final03_default_final02": "Finished logs but uncaptured Cargo status; provisional only",
           "later17_replay": "directly captured Cargo statuses,17 exit0/full success logs",
           "acceptance": "all DEP2 rows open; real Cargo status plus full logs required"
+        },
+        "prepared_correction": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration02.md",
+        "prepared_correction_status": "not dispatched while owned runner3060 active",
+        "new_compatibility_review": {
+          "metadata_filter": "all-N buffering unaccepted; bounded native row-ID streaming/batching authorized private route, actual native plan/semantics/bounded-state proof required",
+          "english_stopwords": "pending Operator choice: preserve1298-word ISO data/remove unused dependency recommended, or adopt198-word NLTK; lowered assertion unaccepted",
+          "release_tests": "actual ORT CoreML availability-helper link failure,0executed summaries; authentic local compiler runtime route identified, full replay required",
+          "provider": "actual4ignored Fastembed tests observed passing, tee-only gate status remains provisional"
         }
       }
     },
