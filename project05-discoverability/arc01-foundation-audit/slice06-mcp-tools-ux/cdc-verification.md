@@ -13,3 +13,5 @@ Root disposition remains pending. No raw matching text/name is emitted or archiv
 whole06/pass04/client/behavioral/cell/SEARCH/full-arc gates remain open, source719
 unchanged/read-only. Budget1/5used for preserved correction01,4remain. CDC owns
 planning/index until exact-six-path dispatch; no active mutable child. Same models.
+
+Pre-dispatch locator clarification: the direct HTTP route is documented at server.rs265–267 and actually mounted at276; detailed review now cites263–276. The earlier f31a0ad range243–268 covered the API prose, not the mount line. No source or author refinement changed.
