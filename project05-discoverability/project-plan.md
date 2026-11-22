@@ -8,7 +8,7 @@ related: ["project06-pipeline", "project07-live-ingest", "project08-reasoning", 
 
 # Discoverability and a dependable 0.5.0 MCP foundation
 
-## Current state — version1.8, 2026-11-21
+## Current state — version1.9, 2026-11-21
 
 Duncan explicitly requested fast-forwarding `codex/ci-dependencies` into
 `release/0.5.x`, pushing it to all remotes, then starting the foundation audit in
@@ -16,6 +16,12 @@ Autonomous Mode with the same CDC/CC models. The fast-forward and normal atomic
 pushes of only `release/0.5.x` to github, codeberg and macpro succeeded; all three
 remote tips were read back at `719c58f245fe4a9115c7c0391d3e268c99157e2f`.
 No merge commit, force push, main update, tag or publication occurred.
+
+The release-ref push-triggered CI44986949945 also completed successfully at
+exact719: Linux Rust1.100 debug/release each2440 passed/0 failed/61 existing
+ignored; real Rust1.94 MSRV check succeeded. The concise [integration witness](artifacts/2026.11.21-release-ref-ci-summary.json)
+retains all three job/log identities. This is additional unchanged-source
+integration evidence, not semantic audit coverage or a repeated native gate.
 
 Arc00 remains independently accepted; its complete CI44982217154, runtime,
 feature, package and compatibility evidence remains applicable to unchanged719.
@@ -256,3 +262,5 @@ home in `project05-discoverability/artifacts/`.
 - 2026-11-21 v1.7 — accepted arc00 bubbles up projectrows09/10 with exact source/CI/fresh-review evidence, current compatibility/native/package limits and actual role assignments. This adds a clear current-state summary superseding old pending prose; no new arc/slice/scope or automatic audit/feature/release authority. Remaining roadmap/order and open hostedpurge are unchanged.
 
 - 2026-11-21 v1.8 — Duncan authorized release/0.5.x FF/all-remotes push and complete arc01 Autonomous audit with unchanged selected models. Integrated719 is pinned; diagnosis, independent review and repair handoff are authorized, repairs and publication are not.
+
+- 2026-11-21 v1.9 — Recorded successful push-triggered release-ref CI44986949945 as additional exact719 integration evidence while arc01 proceeds; all audit/repair/publication boundaries unchanged.

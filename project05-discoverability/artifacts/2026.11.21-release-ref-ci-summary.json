@@ -1,0 +1,209 @@
+{
+  "run": "44986949945",
+  "sha": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+  "conclusion": "success",
+  "url": "https://github.com/oxur/textrynum/actions/runs/44986949945",
+  "temporary_evidence_root": "/tmp/textrynum-release05-44986949945-35mzoa39",
+  "jobs": [
+    {
+      "id": 137099486290,
+      "name": "Build and Test (release)",
+      "conclusion": "success",
+      "log_bytes": 1012817,
+      "log_sha256": "4ccc5dca7e304aed66545940823415b6a053f08f70a379ddb66b08a1b8dda264",
+      "source_sha_present": true,
+      "actual_rust_versions": [
+        "1.100.0"
+      ],
+      "test_summary_count": 85,
+      "test_totals": {
+        "passed": 2440,
+        "failed": 0,
+        "ignored": 61
+      },
+      "compiler_error_codes": [],
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7.0.1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Rust toolchain",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install system dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2.9.3",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check dependencies",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Check formatting",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build",
+          "conclusion": "success"
+        },
+        {
+          "name": "Lint",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2.9.3",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7.0.1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 137099486522,
+      "name": "Minimum Rust version (1.94.0)",
+      "conclusion": "success",
+      "log_bytes": 461463,
+      "log_sha256": "a44f79aadf6117a56b56549dd61c3afacebdade8e33912d5d024f07b077341b2",
+      "source_sha_present": true,
+      "actual_rust_versions": [
+        "1.94.0"
+      ],
+      "test_summary_count": 0,
+      "test_totals": {
+        "passed": 0,
+        "failed": 0,
+        "ignored": 0
+      },
+      "compiler_error_codes": [],
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7.0.1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Rust toolchain",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install system dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2.9.3",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check workspace on minimum Rust",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2.9.3",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7.0.1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 137099486523,
+      "name": "Build and Test (debug)",
+      "conclusion": "success",
+      "log_bytes": 1021242,
+      "log_sha256": "3b341ea10083dc0839f6faf285353604819f82ebec29cd87b166a9d0238a05fe",
+      "source_sha_present": true,
+      "actual_rust_versions": [
+        "1.100.0"
+      ],
+      "test_summary_count": 85,
+      "test_totals": {
+        "passed": 2440,
+        "failed": 0,
+        "ignored": 61
+      },
+      "compiler_error_codes": [],
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7.0.1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Rust toolchain",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install system dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2.9.3",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check formatting",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build",
+          "conclusion": "success"
+        },
+        {
+          "name": "Lint",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2.9.3",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7.0.1",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

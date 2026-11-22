@@ -285,3 +285,24 @@ qualified semantic reconciliation leads for pass07, not accepted findings.
 - 2026-11-21 v1.4 — Slice01 accepted complete map with preserved correction
   history. Recorded four ignored-file reference dispositions/privacy screen and
   like-population count qualifiers; no audit population, scale or endpoint change.
+
+## Additional release-ref integration witness — v1.5
+
+The push-triggered [run44986949945](https://github.com/oxur/textrynum/actions/runs/44986949945)
+completed successfully at exact719 on release/0.5.x. Parent fetched all three
+complete job logs/metadata and parsed the real toolchains/steps; CDC independently
+read the retained summary and reproduced all log hashes, exact SHA presence,
+all85 test summaries per test lane and zero private-pattern counts. Linux
+Rust1.100 debug and release each:2440 passed/0 failed/61 existing ignored. Actual
+Rust1.94 MSRV job succeeded; its check is not a test-suite claim. All required
+steps succeeded; release's dependency-freshness step is intentionally debug-only.
+
+[Concise durable summary](../artifacts/2026.11.21-release-ref-ci-summary.json)
+retains URL, jobIDs137099486290/137099486522/137099486523, full-log SHA-256 values
+and temporary original evidence paths. Raw2.5MB logs are preserved at the named
+original temporary root and not duplicated here. This is additional release-ref
+integration evidence, not new semantic audit coverage or a new entry gate; no
+local/native suite was repeated. Accepted arc00 limitations remain applicable.
+
+- 2026-11-21 v1.5 — Retained parent-observed successful release-ref CI and CDC's
+  full-log digest/test-summary reconciliation; no source, scope or gate change.
