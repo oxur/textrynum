@@ -965,3 +965,17 @@ MCPAPIowners; oracles followonly a chosenpolicy. See19CDCverification/retro/clos
 ActualsameCC14full4446receipt reused; freshaffectedunits and pinneddependency read.
 Exec82382completed0/indexreturnedCDC;19refinements0/5. Original001–043,38/31/291,
 49cells7/7/35, SEARCH/fullpasses/finalcomposition unchanged; no execution/repair.
+
+
+## Slice20 record-key consistency scope — 2026-11-22
+
+After19closure d30d3a9, record separate static existing Rust-library stage API
+assessment before same-model author work. Full1334-line aggregate/assemble/lib
+population plus Record/Stage companions; CDC own full source reads in20plan.
+Trace raw as_str tuple encoding (not JSON quoting), exact current admissibility,
+manual valid strings and controls. Repeated-stream join support not inferred
+from Vec alone; inspect validation/aliases/current contracts, retain question if
+indeterminate. Separate mechanisms, no counttarget or new pipeline feature/CLI
+integration promise. No record-processing execution/fixtures/SEARCH/repair.20initial
+0/5, fiveCCoutputs/index only at dispatch; all prior findings/questions/coverage/
+original passes and final composition remain unchanged. Results project05artifacts.
