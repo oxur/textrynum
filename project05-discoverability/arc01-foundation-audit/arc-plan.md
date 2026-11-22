@@ -938,3 +938,16 @@ with batchcomposition/throughput/callercompatibility explicit. See18CDCverificat
 retro/fullcanonicalRustfinding andcloseinventory/bubble-up. Exec79449completed0,
 indexreturnedCDC;18refinements0/5. Original38/31/291 and49cells7/7/35, ECL/fullpass/
 SEARCH/finalcomposition unchanged; arcactive, no repair/runtimeauthority expanded.
+
+
+## Slice19 graph path public-contract scope — 2026-11-22
+
+After18closuref7d4e2d/adminaccounting06ae885, record separate source-quality
+assessment of pathmetric/returnededge/MCPprojection contracts before dispatch.
+ActualsameCC14full4446line receipt substantiated; freshaffectedunits and locked
+petgraphreferences, CDC owncontrollingreads/hashreceipt in19plan/prompt. Keep
+uniformwording, implementedcost, rawweights and representativeedge policy distinct;
+validfinitecases/ties/workingcontrols, questionsallowed. No forcedcanonicalmetric/
+provenancepromise, algorithmexecution, SEARCH or repairs. Same retainedmodels,
+19initial0/5; fiveCCoutputs/index atdispatch, allpriorfinding/coverage/fullarc
+boundaries unchanged. Project05artifacts results; fullclose/preservation rules.
