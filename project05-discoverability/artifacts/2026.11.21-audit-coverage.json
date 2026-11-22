@@ -10810,43 +10810,43 @@
     {
       "pass_id": "pass01",
       "scale": "line/function",
-      "status": "CC reviewed; independent CDC acceptance pending",
+      "status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "coverage_owner_slice": "slice02-core-auth"
     },
     {
       "pass_id": "pass01",
       "scale": "file/module",
-      "status": "CC reviewed; independent CDC acceptance pending",
+      "status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "coverage_owner_slice": "slice02-core-auth"
     },
     {
       "pass_id": "pass01",
       "scale": "logical unit",
-      "status": "CC reviewed; independent CDC acceptance pending",
+      "status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "coverage_owner_slice": "slice02-core-auth"
     },
     {
       "pass_id": "pass01",
       "scale": "crate/target",
-      "status": "CC reviewed; independent CDC acceptance pending",
+      "status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "coverage_owner_slice": "slice02-core-auth"
     },
     {
       "pass_id": "pass01",
       "scale": "application/service/executable",
-      "status": "CC reviewed; independent CDC acceptance pending",
+      "status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "coverage_owner_slice": "slice02-core-auth"
     },
     {
       "pass_id": "pass01",
       "scale": "whole codebase",
-      "status": "CC reviewed; independent CDC acceptance pending",
+      "status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "coverage_owner_slice": "slice02-core-auth"
     },
     {
       "pass_id": "pass01",
       "scale": "workspace/system boundaries",
-      "status": "CC reviewed; independent CDC acceptance pending",
+      "status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "coverage_owner_slice": "slice02-core-auth"
     },
     {
@@ -13403,10 +13403,10 @@
       "owner": "fabryk-acl",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "complete TOML parse and per-member projection of package metadata, dependency declarations, feature map and explicit target tables; compared to Cargo metadata targets; semantic code review pending",
       "line_count": 22,
-      "review_method": "Manifest/target/features reviewed; one lib, no direct features. See 2026.11.22-core-auth-evidence.md §38-path reconciliation."
+      "review_method": "Manifest/target/features reviewed; one lib, no direct features. See 2026.11.22-core-auth-evidence.md \u00a738-path reconciliation."
     },
     {
       "path": "crates/fabryk-acl/README.md",
@@ -13416,7 +13416,7 @@
       "owner": "fabryk-acl",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "tracked Git path + SHA-256 + byte/line/type projection; semantic review not performed in slice01",
       "line_count": 18,
       "review_method": "Full README contract reviewed; ACL explicitly placeholder/deferred, no project06 authorization inferred."
@@ -13429,7 +13429,7 @@
       "owner": "fabryk-acl",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 12,
       "review_method": "Full source reviewed; placeholder only, deferred scope; no finding."
@@ -13442,7 +13442,7 @@
       "owner": "fabryk-auth-google",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "complete TOML parse and per-member projection of package metadata, dependency declarations, feature map and explicit target tables; compared to Cargo metadata targets; semantic code review pending",
       "line_count": 19,
       "review_method": "Manifest/dependency/target/features reviewed; one lib, no direct features."
@@ -13455,7 +13455,7 @@
       "owner": "fabryk-auth-google",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 480,
       "review_method": "Full source/tests; JWT, opaque, claims/cache review; FA-RS-003/004/009 and H-RS-001. Initial author JWKS bind failure preserved; CDC later independently observed unknown-kid requests 1 then 2 and bounded stall; see CDC evidence/log."
@@ -13468,7 +13468,7 @@
       "owner": "fabryk-auth",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "complete TOML parse and per-member projection of package metadata, dependency declarations, feature map and explicit target tables; compared to Cargo metadata targets; semantic code review pending",
       "line_count": 23,
       "review_method": "Manifest/dependency/target/features reviewed; one lib, no direct features."
@@ -13481,7 +13481,7 @@
       "owner": "fabryk-auth",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 89,
       "review_method": "Full source/tests; AuthError classification compared with middleware; supports FA-RS-002."
@@ -13494,7 +13494,7 @@
       "owner": "fabryk-auth",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 43,
       "review_method": "Full source reviewed; public identity/config contracts. AuthConfig.audience is an expected audience and is traced into FA-RS-009 across the Google JWT and opaque paths."
@@ -13507,7 +13507,7 @@
       "owner": "fabryk-auth",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 339,
       "review_method": "Full source/tests; AuthLayer oneshot for valid/invalid/provider error/empty/lowercase token; FA-RS-002/010 and H-RS-002. Lowercase Bearer rejection independently replayed by CDC conflicts with RFC 9110 section 11.1 case-insensitive scheme requirement."
@@ -13520,7 +13520,7 @@
       "owner": "fabryk-auth",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 85,
       "review_method": "Full source/tests; user identity and request extension helpers; no separate finding."
@@ -13869,7 +13869,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "complete TOML parse and per-member projection of package metadata, dependency declarations, feature map and explicit target tables; compared to Cargo metadata targets; semantic code review pending",
       "line_count": 37,
       "review_method": "Manifest/dependency/target/features reviewed; one lib, no direct features; locked package tests passed."
@@ -13882,10 +13882,10 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "tracked Git path + SHA-256 + byte/line/type projection; semantic review not performed in slice01",
       "line_count": 18,
-      "review_method": "Full README reviewed against core lifecycle/config APIs; see evidence §38-path reconciliation."
+      "review_method": "Full README reviewed against core lifecycle/config APIs; see evidence \u00a738-path reconciliation."
     },
     {
       "path": "crates/fabryk-core/src/deploy.rs",
@@ -13895,7 +13895,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 46,
       "review_method": "Full source/tests; environment-derived service/revision helpers and absent-variable cases reviewed; no finding."
@@ -13908,7 +13908,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 435,
       "review_method": "Full source/tests; error display/source/log chain behavior reviewed; no finding."
@@ -13921,7 +13921,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 52,
       "review_method": "Full source/re-export surface reconciled with assigned modules and package target; no finding."
@@ -13934,7 +13934,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 360,
       "review_method": "Full source/tests; registration and readiness coordination reviewed; normal transitions passed."
@@ -13947,7 +13947,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 274,
       "review_method": "Full source/tests; object safety/default probes/readiness reviewed; no finding."
@@ -13960,7 +13960,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 730,
       "review_method": "Full source/tests; retry, panic, zero attempts and wait_ready public API probe; FA-RS-005."
@@ -13973,7 +13973,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 257,
       "review_method": "Full source/tests; state/storage contract and empty-ready precondition checked; search fallback reads inner value; no finding."
@@ -13986,7 +13986,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 325,
       "review_method": "Full source/tests; Arc ownership and ConfigProvider Send+Sync bounds checked against unsafe impls; no unsoundness finding."
@@ -13999,7 +13999,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 330,
       "review_method": "Full source/docs; config provider contracts and consumers traced; no separate finding."
@@ -14012,7 +14012,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 624,
       "review_method": "Full source/tests; direct/recursive lookup and provider+tool dispatch traversal/directory fixtures; FA-RS-001."
@@ -14025,7 +14025,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 224,
       "review_method": "Full source/tests; ID normalization/extraction/humanization reviewed; no separate finding."
@@ -14038,7 +14038,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 15,
       "review_method": "Full module exports read and reconciled with utility implementations; no finding."
@@ -14051,7 +14051,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 221,
       "review_method": "Full source/tests; path expansion/marker traversal reviewed; no separate finding."
@@ -14064,7 +14064,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 327,
       "review_method": "Full source/tests; config/root environment and fallback semantics reviewed; no separate finding."
@@ -14077,7 +14077,7 @@
       "owner": "fabryk-core",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 90,
       "review_method": "Full source/tests; conversion/formatting behavior reviewed; no separate finding."
@@ -14294,7 +14294,7 @@
       "owner": "fabryk-gcp",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "complete TOML parse and per-member projection of package metadata, dependency declarations, feature map and explicit target tables; compared to Cargo metadata targets; semantic code review pending",
       "line_count": 19,
       "review_method": "Manifest/dependency/target/features reviewed; one lib, no direct features."
@@ -14307,7 +14307,7 @@
       "owner": "fabryk-gcp",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 280,
       "review_method": "Full source/tests; public resolver in isolated child environments; directory override accepted; FA-RS-006."
@@ -14320,7 +14320,7 @@
       "owner": "fabryk-gcp",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 22,
       "review_method": "Full source/tests; credential/config error variants reviewed; no separate finding."
@@ -14333,7 +14333,7 @@
       "owner": "fabryk-gcp",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 32,
       "review_method": "Full source/docs/re-exports reviewed; no ambient credential bytes or external service used."
@@ -14490,7 +14490,7 @@
       "owner": "fabryk-mcp-auth",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "complete TOML parse and per-member projection of package metadata, dependency declarations, feature map and explicit target tables; compared to Cargo metadata targets; semantic code review pending",
       "line_count": 18,
       "review_method": "Manifest/dependency/target/features reviewed; one lib, no direct features."
@@ -14503,7 +14503,7 @@
       "owner": "fabryk-mcp-auth",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 233,
       "review_method": "Full source/tests; returned Router oneshot root,/mcp, Acme values and trailing slash; Google-specific /mcp behavior distinguished."
@@ -15058,7 +15058,7 @@
       "owner": "fabryk-redis",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "complete TOML parse and per-member projection of package metadata, dependency declarations, feature map and explicit target tables; compared to Cargo metadata targets; semantic code review pending",
       "line_count": 31,
       "review_method": "Manifest/dependency/target/features reviewed; one lib, no direct features; Redis version from product lock."
@@ -15071,7 +15071,7 @@
       "owner": "fabryk-redis",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 153,
       "review_method": "Full source/tests; actual command mappings reviewed; invalid URL/refused connection controls passed; no Redis server installed."
@@ -15084,7 +15084,7 @@
       "owner": "fabryk-redis",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 17,
       "review_method": "Full source reviewed; connection/command/serialization errors checked; no separate finding."
@@ -15097,7 +15097,7 @@
       "owner": "fabryk-redis",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 159,
       "review_method": "Full source/tests; RedisOps contract and JSON wrappers checked; malformed multi-JSON skipping is intentional."
@@ -15110,7 +15110,7 @@
       "owner": "fabryk-redis",
       "planned_pass": "pass01",
       "planned_slice": "slice02-core-auth",
-      "coverage_status": "CC reviewed; independent CDC acceptance pending",
+      "coverage_status": "independently accepted diagnosis; slice02 review2 at6ae2752",
       "inspection_method": "path/module/test-layout and Rust cfg/module declaration projections; body-level semantic inspection pending",
       "line_count": 93,
       "review_method": "Full source/tests; actual mock numeric/glob probes; FA-RS-007/008."
@@ -15636,5 +15636,5 @@
       "line_count": 3
     }
   ],
-  "status_note": "Pass01/slice02 has CC-proposed semantic dispositions; independent CDC review is pending. All other tracked path rows and pass/scale cells remain pending semantic inspection. This map remains a reconciliation/coverage artifact, not independent acceptance."
+  "status_note": "Map independently accepted; pass01/slice02 diagnosis independently accepted38paths/sevenscales at6ae2752. Remaining322paths/42cells pending. inspection_method preserves original map-stage receipt; later review_method and coverage_status supersede its original pending wording. No repair or arc acceptance."
 }

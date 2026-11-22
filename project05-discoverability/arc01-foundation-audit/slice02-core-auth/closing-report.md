@@ -1,6 +1,6 @@
 # Slice02 closing report — core/auth foundation diagnosis
 
-**Status:** CC proposes done; independent CDC review and acceptance pending.
+**Current status:** CDC independently accepted diagnosis at candidate6ae2752 on2026-11-22; see [verification](cdc-verification.md) and [retrospective](cdc-retrospective.md). The author proposed-done row walk below is preserved as its candidate attestation, superseded by review2.
 **Execution date:** 2026-11-22 America/Chicago
 **Assignment:** immutable `slice02-core-auth/cc-prompt.md`, issued planning commit `fb28833b824d0fd2401e2cb0de7e5c4e51725e37`
 **Source:** `codex/foundation-audit` at `719c58f245fe4a9115c7c0391d3e268c99157e2f`, clean at end of work

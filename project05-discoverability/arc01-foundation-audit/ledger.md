@@ -12,3 +12,5 @@ Row01 is independently reproduced map acceptance; rows02–08 remain open. Plann
 | 06 | Every finding has stable ID, severity, file:line, fix direction and validation oracle | Report audit against the finding contract | correctness-grade | Operator decision 2026-11-21 | open | | |
 | 07 | Diagnosis kept separate from implementation | Source state comparison; no audit-time repairs | correctness-grade | Operator decision 2026-11-21 | open | | |
 | 08 | Independent review and actionable repair handoff complete | Separate review of coverage and evidence; finding-to-owner handoff | correctness-grade | Operator decision 2026-11-21 | open | | |
+
+Progress2026-11-22: [slice02 diagnosis accepted](slice02-core-auth/cdc-verification.md) at6ae2752,38/360paths and7/49cells; tenfindings/twoquestions bubble up to later complete handoff. Rows02–08 remainopen until allpasses/finalcomposition; no repair acceptance.

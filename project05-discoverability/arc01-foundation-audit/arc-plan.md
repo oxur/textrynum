@@ -1,6 +1,6 @@
 # Full workspace and architecture audit
 
-Status: active, explicitly authorized 2026-11-21. Audit results and acceptance are not yet claimed. Project05's remaining feature work is held until
+Status: active, explicitly authorized 2026-11-21. Full arc acceptance is not yet claimed; the map and pass01 diagnosis are independently accepted. Project05's remaining feature work is held until
 this audit and the subsequent repair/composition gate are complete.
 
 ## Consumer, purpose and stop condition
@@ -306,3 +306,25 @@ local/native suite was repeated. Accepted arc00 limitations remain applicable.
 
 - 2026-11-21 v1.5 — Retained parent-observed successful release-ref CI and CDC's
   full-log digest/test-summary reconciliation; no source, scope or gate change.
+
+## Accepted first semantic pass — v1.6, 2026-11-22
+
+Slice02 core/auth diagnosis is independently accepted at candidate6ae2752 after
+preserved review1 and refinement1/numbered missing-input continuation. All five
+CORE rows,38tracked paths/sevenmembers and sevenpass01scale cells are supported;
+remaining322paths/42cells stay open. Ten findingsFA-RS-001..010 (7Medium/3Low)
+have logical repair owners/oracles; two hypotheses remain separate. Source stays
+clean719 and no repair occurred. [Independent review](slice02-core-auth/cdc-verification.md)
+and [retrospective](slice02-core-auth/cdc-retrospective.md) retain actual runtime,
+static-only/provider/client limits, all failures and count/source chronology.
+
+Later complete repair handoff must include path containment across consumers,
+auth outage classification, Google cache/deadline/audience policy, lifecyclepanic
+state, ADC file selection, mockRedis parity and scheme-case interoperability.
+No changes are implemented here. Arc05 CI-efficiency planning was added separately
+at3d550d7; its execution is not opened by audit progress. CDC regains planning/
+index/source/native authority after returned CC continuation41135exit0, then may
+issue the next bounded content/search assignment under the unchanged contract.
+
+- 2026-11-22 v1.6 — Accepted first semantic pass with explicit remaining full
+  coverage, preserved correction/failures, repair owners and scoped retro lessons.

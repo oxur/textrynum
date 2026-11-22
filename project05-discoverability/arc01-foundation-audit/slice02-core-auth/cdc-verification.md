@@ -41,3 +41,52 @@ Immutable `cc-prompt-iteration01.md` requests documentation/analysis corrections
 only. This is refinement1 of the default5; no unchanged suite rerun is requested.
 CDC retains source/native authority and owns these independent records. CC gets
 only the six named existing result/close paths until its explicit returned commit.
+
+## Review2 — accepted diagnosis, 2026-11-22
+
+Corrected candidate `6ae2752b152069a4cca9f70efbc18d4caa796611`, following preserved
+review1 and refinement1 (canonical iteration01 plus missing-input continuation
+iteration02). One of five semantic refinements used; no reset. CDC independently
+read the complete final report/close/ledger and changed evidence/index/map fields,
+recovering truncated combined diffs with bounded direct reads. No new product,
+provider, native or full-suite execution was needed for documentation correction.
+
+| Row | Verdict | Independent basis |
+| --- | --- | --- |
+| CORE-01 | done | All38 assigned source/manifests/docs were read by both roles;6552lines/sevenmembers reconciled. Full Rust corpus and absentCLI09 caveat retained, with source-cited intake preceding semantic work. |
+| CORE-02 | done | All seven scales have assigned-surface dispositions. Explicit cross-crate audience trace and RFC9110 case contract now assessed; root causes and broader-pass obligations remain distinct. |
+| CORE-03 | done with stated evidence limits | Actual independent provider/tool-registry, AuthLayer, lifecycle, localJWKS and ADC entrypoints support the runtime claims. Sequentialunknownkid requestcount1→2 and500ms boundedstall actual0 are distinct from static timeout/opaqueaudience reasoning; no external-provider/MCPwire/ChatGPT/Redisserver claim. Original genuine locked suites233unit+24doc/2ignored plus136consumer/10ignoreddoc retained without rerun. |
+| CORE-04 | done | Ten stable findings001–010:7Medium/3Low. Every entry has severity, exact controlling source, scale, failure mechanism, evidence confidence, logical repair owner, fix direction, compatibility decision and discriminating oracle. H-RS-001/002 are excluded from confirmed totals. |
+| CORE-05 | done | Independent structured diff proves exactly38owned rows/sevenpass01cells,322otherrows/42othercells and all package/target/features/hash metadata preserved. All360 source hashes match719 and both source/planning were clean after CC return. Exact6owned correction paths and actual required trailers verified. Corrected index distinguishes mapping, semantic review and later pass gaps. |
+
+FA-RS-009 is accepted as a static present expected-audience contract gap: the
+opaque branch drops the configured value and has no client-binding comparison.
+No live-token acceptance or deployed exploit is inferred. Compatibility-sensitive
+repair must explicitly decide reject-opaque versus trustworthy supported binding;
+this audit does not silently remove a supported fallback. FA-RS-010 is a Low
+interoperability defect: only scheme casing changes between actual200and401;
+credential bytes remain case-sensitive. RFC9110section11.1 supplies the protocol
+contract, not an invented client trial.
+
+Original eight findings remain supported; the filesystem finding's Medium grade
+is bounded to demonstrated local provider/registry exposure, with deployment and
+host authorization unknown. Later raw source-provider joins must still be audited.
+Lifecyclepanic state is observed, while abort/cancellation repair cases are future
+oracles. Redis production parity remains documented/static, with server absent.
+AppStateunsafe bounds, ReadyNone precondition, ACLdeferred status, deliberateJSON
+skip and Google-specific discovery remain cleared/narrowed as recorded.
+
+The exact authoritative six-path encoded-byte privacy scan returned0; CDC also
+repeated it independently and rehashed all360sourcefiles. The earlier arbitrary
+prose-base64 guessed screen is explicitly invalid evidence. NormalSIGINT ended
+runner32665(exit1) at an observed completed-tool boundary, preserving six staged
+blobs SHA256a1de7a7bd5534792068ad79d3b2d78d18205531a3603c43c825a4e4fc16544f4.
+CDC continuation commit eab0059 used --only its2ownedpaths and independently proved
+those staged blobs unchanged. SameLunaHigh continuation41135 exited0 and explicitly
+returned ownership; no active mutable process remains at this acceptance boundary.
+
+This accepts slice02/pass01 diagnosis only:38/360tracked paths and7/49pass-scale
+cells. Remaining322paths/42cells, full arc composition and repair handoff stay open.
+No repairs, feature work, CI-efficiency implementation, release readiness or
+publication are accepted/authorized here. Ten findings plus two questions bubble
+up to the later complete repair handoff; source stays clean719.
