@@ -951,3 +951,17 @@ validfinitecases/ties/workingcontrols, questionsallowed. No forcedcanonicalmetri
 provenancepromise, algorithmexecution, SEARCH or repairs. Same retainedmodels,
 19initial0/5; fiveCCoutputs/index atdispatch, allpriorfinding/coverage/fullarc
 boundaries unchanged. Project05artifacts results; fullclose/preservation rules.
+
+
+## Slice19 independently accepted — 2026-11-22
+
+Author30de32d6/source719 reviewed: PTH01–05 accepted within static pathcontract
+scope, no new gradedfinding, four ungradedownerquestions Q19-01–04. Uniform-cost
+wording alone does not promise equalcost/hops; rawsum/internalcost/representative
+edge and ties remain distinct. Currentedgefollowup recoverscandidatecontext, no
+prior selectededge guarantee established within inspectedscope. No globalgraph
+exoneration or forcedfeature/APIchange. Laterhandoff routesquestions tograph/domain/
+MCPAPIowners; oracles followonly a chosenpolicy. See19CDCverification/retro/close.
+ActualsameCC14full4446receipt reused; freshaffectedunits and pinneddependency read.
+Exec82382completed0/indexreturnedCDC;19refinements0/5. Original001–043,38/31/291,
+49cells7/7/35, SEARCH/fullpasses/finalcomposition unchanged; no execution/repair.

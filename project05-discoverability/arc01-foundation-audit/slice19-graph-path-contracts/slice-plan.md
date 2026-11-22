@@ -45,3 +45,6 @@ automatic defect. Questions valid if current metric or representativeedge policy
 indeterminate. No forced minimum-hop/weightstrength or new API decision. Stable
 044+ only if supported, no counttarget. No accepted038orientation change or prior
 SEARCH proof; original graph/fullpass/finalcomposition remain pending.
+
+
+Current disposition2026-11-22: PTH01–05 independently accepted at30de32d6, no new gradedfinding, Q19-01–04 ownerquestions. No canonicalmetric/provenance/tiepromise invented or originalcoverage/SEARCH acceptance.0/5refinements; see CDCverification/retro.

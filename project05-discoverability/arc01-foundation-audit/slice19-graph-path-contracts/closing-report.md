@@ -1,6 +1,6 @@
 # Slice19 close — graph path metric and returned-edge contracts
 
-**Assignment:** `slice19-graph-path-contracts/cc-prompt.md`. **Source:** `719c58f245fe4a9115c7c0391d3e268c99157e2f`, clean/read-only. **Current author assessment:** CC proposes PTH-01–05 met after scoped commit checks; independent CDC review is pending. This bounded static review proposes no new finding and selects no path metric or edge-provenance policy.
+**Assignment:** `slice19-graph-path-contracts/cc-prompt.md`. **Source:** `719c58f245fe4a9115c7c0391d3e268c99157e2f`, clean/read-only. **Current independent assessment:** CDC accepts PTH01–05 at30de32d6 for the bounded static no-finding/question disposition. Author-proposed criterion history remains below. This bounded static review proposes no new finding and selects no path metric or edge-provenance policy.
 
 ## Exact delivered paths
 
@@ -42,3 +42,15 @@ Produced `project05-discoverability/artifacts/2026.11.22-graph-path-contracts.md
 ## Independent review boundary
 
 This is CC author attestation only. CDC independently determines criterion acceptance and whether the retained questions are well calibrated. No mutable command or child process remains. I return exactly the five listed paths and planning index to CDC for independent review.
+
+## Independent closure and actual preservation
+
+[CDC verification](cdc-verification.md) supplies own source/receipt reconciliation,
+finitecase interpretation, corrected library/application attribution and Q19-01–04
+owner/oracle routes. [Retrospective](cdc-retrospective.md). Actual30de bothauthors
+parse; exactfiveauthorpaths; completepre493report/indexprefixes and protected9bytes
+unchanged; source/index719clean; privacyownedpath/content0. Hashing reads bytes
+only, not semantic diagnostic inspection/reconciliation/execution; unfinishedCDC
+quartet remainsUNVERIFIED. Exec82382completed0 and returned index, noactiveowned
+mutablecommand.19refinements0/5; allpriorfindings/coverage/SEARCH/fullarc unchanged.
+No new metric, provenance/tiefeature, algorithmexecution or mandatoryrepair.
