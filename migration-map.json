@@ -6424,7 +6424,7 @@
       ]
     },
     "arc00_execution": {
-      "status": "slice02 upgraded working tree unaccepted: valid1.94 original/newer17 evidence, partial persistence proofs; actual local release link failure, bounded filter correction and stopword decision pending",
+      "status": "slice02 unaccepted working tree: all selected compatibility oracles executed with genuine statuses; final1.94/native/package/provider/candidate CI and independent close pending",
       "source_branch": "codex/ci-dependencies",
       "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
       "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",
@@ -6498,9 +6498,11 @@
           "workspace_default_all_targets": "exit0",
           "isolated_feature_selections": 17,
           "isolated_results": "all exit0",
-          "acceptance": "reviewer inspected doer results, final candidate/affected reruns and CI still required"
+          "acceptance": "reviewer inspected doer results, final candidate/affected reruns and CI still required",
+          "snapshot": "pre-iteration02 corpus/bounded-filter corrections; valid historical witnesses, current final source replay pending",
+          "current_final_snapshot": "pending actual replay"
         },
-        "compatibility_stage": "executed15bounded Lance cases,1connected MCP logging case and full Redb JSON/pointers/hashes; MAX allocation correction, complete Tantivy/Lance/ISO replays and final gates pending",
+        "compatibility_stage": "full Redb JSON/pointers/hashes, all3 Tantivy records, full Lance old schema/rows/current rebuild,1298ISO product terms and connected logging executed; final pinned independent replays/close pending",
         "status_capture_review": {
           "original_unified_default_and17": "valid pipefail witnesses; no retraction",
           "later_unified_final01_final02_and_default_final01": "actual Cargo failures despite wrapper0; not passed",
@@ -6511,9 +6513,9 @@
         "prepared_correction": "project05-discoverability/arc00-ci-dependencies/slice02-latest-dependencies/cc-prompt-iteration03.md",
         "prepared_correction_status": "iteration03 actually resumed same session in owned exec30498",
         "new_compatibility_review": {
-          "metadata_filter": "all-N buffering unaccepted; bounded native row-ID streaming/batching authorized private route, actual native plan/semantics/bounded-state proof required",
+          "metadata_filter": "bounded native row-ID scan/batching/MAX/zero and260match runtime controls passed; no all-N vector candidates/upfront caller-limit allocation; final review pending",
           "english_stopwords": "parent/CDC engineering disposition under existing preserve-behavior authority: exact1298-word licensed private ISO corpus and unused direct dependency removal; prior inferred approval gate superseded, no new Operator answer; intentional198-word adoption held",
-          "release_tests": "actual ORT CoreML availability-helper link failure,0executed summaries; authentic local compiler runtime route identified, full replay required",
+          "release_tests": "original unwrapped ORT CoreML availability-helper link failed; authentic dynamic compiler-rt wrapper active full release suite, no outcome yet",
           "provider": "actual4ignored Fastembed tests observed passing, tee-only gate status remains provisional"
         },
         "interruption": {
@@ -6536,7 +6538,9 @@
           "modified_tracked_files": 34,
           "binary_diff_sha256": "c6271c535812f09091ba38a881221ad97b148b3046303523d06abdd64e745d51",
           "source_commit": "none; all edits/evidence preserved"
-        }
+        },
+        "current_retained_direct_packages": 63,
+        "current_explicit_version_sites": 72
       }
     },
     "audit_intake_observations": [
