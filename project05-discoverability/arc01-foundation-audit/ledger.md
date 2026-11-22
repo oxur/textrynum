@@ -217,3 +217,16 @@ account for identity/concurrent-map safety and existing bulk/legacycompatibility
 no repair/protocol migration commissioned. Current coverage38/31/291,49cells7/7/35,
 SEARCH and final independent arc composition unchanged.16refinements0/5;15:1/5;
 03:2/5. Exec14694completed0 and returned planning/index; CDC owns next scope.
+
+
+## Slice17 discovery customization scope — 2026-11-22
+
+After16closuref6ddd03, record separate source-quality contract assessment before
+sameLunaHighauthor/Sol6.1HighCDC handoff: five full intake files2788lines, current
+CDC own full graphbuilder/extractor and exact core/vector controlling ranges.
+Compare public content_glob promises to named builder selectors using narrower
+Markdown pattern, working defaults/root/manual controls and cold-path boundaries.
+No discovery fixture/runtime/SEARCH/cache diagnosis or source repair. Exact scope
+in17plan/prompt;0/5refinements, fiveCCoutputs/index only at dispatch. Original
+owner/cell/SEARCH/fullarc gates unchanged; no finding-count target. All new results
+project05artifacts; exactprivacy/parsedfooters/retainedprefix contracts propagate.
