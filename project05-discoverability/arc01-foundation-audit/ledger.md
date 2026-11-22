@@ -22,3 +22,10 @@ authorized static correctness/contract/documentation coordination only. Native/
 probe/provider/security execution stays on hold; row04 and dependent acceptance
 remain open. No user pause, coverage reduction or claimed replay. See arc-plan
 v1.7 and slice03 CDC review1/iteration01. Accepted38paths/7cells unchanged.
+
+Progress2026-11-22 scoped verification entry: docs02 candidate d5f19d0 is clean,
+source719 unchanged, CCsession58752exit0 and native processes0. Parent separately
+authorized only ordinary isolated slice03 Unicode/query/filter/metadata/index-
+lifecycle verification after this clean boundary; arc-planv1.8 records the exact
+limits. Security-specific/provider/service/later-group execution remains held.
+All rows02–08 and all SEARCH/31path/7pass02cell acceptance remain pending.

@@ -366,3 +366,41 @@ than treating the provisional numbering as canonical accepted findings.
 
 - 2026-11-22 v1.7 — Recorded actual platform interruption, clean recovery,
   restricted static continuation and pending independent gates at 2026-11-22T01:44:58-06:00.
+
+## Scoped ordinary-local verification authority — v1.8, 2026-11-22
+
+After read-only inspection of the frozen269-line slice03 driver and its local
+case groups, parent explicitly assessed a genuinely unaffected safer task:
+ordinary isolated Unicode/query/filter/metadata/index-lifecycle correctness. It
+has owned text/index fixtures and no network/provider/auth/credential/traversal/
+security payload, service or OS-process test. This is a separately scoped
+continuation, not a retry of the unknown turn-level platform interruption.
+
+At the clean docs02 boundary, CC returned d5f19d09c246f85f4e4e4ed99deb511c76b436df
+and session58752 exited0. CDC read the complete four-doc diff, verified exact
+paths/trailers, unchanged accepted report prefix, original probe/manifest/lock/
+raw-log bytes, unchanged coverage/index, clean source719/planningd5f and zero
+active Cargo/Rust/probe processes. CDC now solely owns planning/index and the
+idle transferred /private/tmp/arc01-slice02-cargo-target.
+
+Parent's precautionary native hold is lifted ONLY for isolated slice03 ordinary
+local correctness verification: Unicode paragraph/snippet boundaries and excerpt
+normalization; valid-frontmatter title/source-resolution/file-kind metadata;
+configured/request query modes, threshold/boost/quote behavior; filtered retrieval
+counts/limits/snippet options; rebuild/append-cache coherence, ID collisions and
+controlled same-second freshness. Use a unique CDC package/binary, owned offline
+lock generation and actual --locked run, owned target/temp fixtures, absolute
+flat project artifacts, true exit/full provenance and discriminating negative
+controls. Keep original author proof and failures intact; wrapper0 does not
+establish all claims. Normal Cargo cache locks/bookkeeping are acknowledged;
+protect source/index/global config and unknown outputs. No full baseline rerun.
+
+All SECURITY-SPECIFIC execution, providers, services and later-group native
+execution remain held until independently scoped. No Daybreak setup/scan, model
+substitution, external service or permission assumption is authorized. If this
+limited task is platform-flagged, stop/preserve/report; no variants, new context
+or model as a workaround. All SEARCH/coverage acceptance remains pending actual
+needed proof. The full audit scope/endpoint stays active and unchanged.
+
+- 2026-11-22 v1.8 — Recorded explicit parent scoped authority and clean single-
+  owner entry at 2026-11-22T02:23:49-06:00, before native verification execution.

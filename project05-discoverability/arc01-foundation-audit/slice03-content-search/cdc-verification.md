@@ -99,3 +99,35 @@ staging. Ordinary shared Git-index write permissions then required the normal
 reviewed escalation for the already-authorized six-path commit and succeeded.
 None is a native rerun or a retry of flagged content. The complete coordination
 log remains /private/tmp/textrynum-foundation-content-search-docs-review1.jsonl.
+
+## Review3 — corrected documentation d5f19d0; native entry pending
+
+CDC read the complete four-doc delta and independently verified exact allowlist
+and both actual trailers, unchanged accepted pass01 report prefix and protected
+original probe/manifest/lock/raw-log bytes, unchanged index/coverage, source clean
+719/planning clean d5f19d0, CCsession58752exit0 and zero native processes. Existing
+configured-MinimumMatch/zero/snippet/metadata/count attributions are corrected.
+All23 IDs retain17proposals/fourquestions/twocleared. This is static correction
+readiness, not independent diagnosis acceptance; all five SEARCH rows remain
+pending. Review uses actual ID/disposition/source-evidence reconciliation rather
+than asserting exact low-impact prose strings. Earlier literal-wording guard
+failures are documentation-check design issues, not source or verification
+failures; keep them in the retrospective.
+
+The author's close uses 'index unchanged' for the audit-index.md navigation file,
+which was indeed unchanged in iteration02. Git's shared planning index was used
+for the exact four-document commit under bounded CC authority and returned clean
+to CDC; no Git-index ownership exception is inferred from that ambiguous wording.
+
+Parent has now separately authorized the ordinary local03 cases assessed from
+the frozen driver. Arc-planv1.8 records that scope before execution. Needed
+independent cases: public Unicode paragraph/helper/snippet behavior with actual
+Simple/Tantivy controls; own-frontmatter metadata and resolver/file-kind checks;
+configured And/mixed-phrase isolation, configured threshold, request override,
+boost and stopword controls; filter/limit/count/zero/snippet results; rebuild plus
+append-metadata state, duplicate IDs and controlled same-second mtime. Cleared
+append-refresh/full-fallback-parity/arbitrary-domain-filter policies are not
+required new defect probes. No network/auth/provider/credential/traversal/service
+or security-specific execution is included. A new unique isolated CDC package
+and captured offline lock/actual locked run will retain true statuses and full
+outputs; no such native evidence exists yet at this entry record.
