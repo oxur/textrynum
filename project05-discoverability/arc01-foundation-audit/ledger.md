@@ -164,3 +164,21 @@ recorded, three full files1660lines and exact pinned version references. Manual
 attempt/state cases only; no services/runtime. Same models,0/5refinements.
 VEC-05/15full completion remains unmet pending actual Operator answer; this scope
 does not waive it or original owner/scale/SEARCH/fullarc gates. See16plan/prompt.
+
+
+## Slice15 current closure — 2026-11-22
+
+Duncan authorized editing the malformed commit message. Root's targeted rewrite
+is independently verified: six commits/count/trees/identities/dates preserved;
+only the target footer separator changed. All current mapped commits and receipt
+0943666 parse both co-authors. Current046a8707 corresponds to oldbf193, which
+remains malformed and reachable on the backup branch. This is a corrected current
+lineage, not an exception or retroactive compliance of the old object.
+[CDC verification](slice15-vector-construction-contracts/cdc-verification.md#current-closure-after-authorized-footer-correction--2026-11-22)
+records exact mapping/evidence; the receipt is in project05artifacts.
+
+All five VEC criteria and bounded slice15 are now independently accepted, with
+Low039 static and three questions. No source/runtime work, protected preparation
+validation, original owner/cell/SEARCH or whole-arc acceptance changes.
+Refinements1/5used,4remaining;03 remains2/5used. Future complete message files
+must pass parsed-footer checks before creation and on the actual commit object.

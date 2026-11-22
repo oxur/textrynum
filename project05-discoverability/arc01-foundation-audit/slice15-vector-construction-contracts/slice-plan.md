@@ -1,5 +1,12 @@
 # Vector construction API and embedding identity contracts
 
+Current status: all five VEC criteria independently accepted on the corrected
+current lineage after Operator-authorized footer editing; Low039 static, three
+contract questions. See current closure below. Prior pending statements are
+historical snapshots before that authorization and correction.
+
+## Historical review record before footer correction
+
 Status: corrected candidate98fca6cb substantively accepted (VEC-01–04/Low039);
 VEC-05 attribution UNMET/EXCEPTION-PENDING, full slice completion held. Same selected
 retained LunaHigh author and Sol6.1High independent CDC; 1/5 refinements used,4remaining.
@@ -49,3 +56,21 @@ supported; Low039 accepted statically, provider/cache/cardinality remain three
 questions. VEC-05 preservation verified but attribution not met. Operator-only
 disposition remains pending; no whole-slice/pass/arc acceptance or pause.
 See CDC verification/retro.1/5 refinements used.
+
+
+## Current closure — 2026-11-22
+
+Duncan authorized editing the malformed commit message. Root's targeted rewrite
+is independently verified: six commits/count/trees/identities/dates preserved;
+only the target footer separator changed. All current mapped commits and receipt
+0943666 parse both co-authors. Current046a8707 corresponds to oldbf193, which
+remains malformed and reachable on the backup branch. This is a corrected current
+lineage, not an exception or retroactive compliance of the old object.
+[CDC verification](cdc-verification.md#current-closure-after-authorized-footer-correction--2026-11-22)
+records exact mapping/evidence; the receipt is in project05artifacts.
+
+All five VEC criteria and bounded slice15 are now independently accepted, with
+Low039 static and three questions. No source/runtime work, protected preparation
+validation, original owner/cell/SEARCH or whole-arc acceptance changes.
+Refinements1/5used,4remaining;03 remains2/5used. Future complete message files
+must pass parsed-footer checks before creation and on the actual commit object.

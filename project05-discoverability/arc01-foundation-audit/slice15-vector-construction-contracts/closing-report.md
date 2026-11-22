@@ -1,5 +1,12 @@
 # Slice15 review handoff — attribution disposition pending
 
+Current status: all five VEC criteria independently accepted on the corrected
+current lineage after Operator-authorized footer editing; Low039 static, three
+contract questions. See current closure below. Prior pending statements are
+historical snapshots before that authorization and correction.
+
+## Historical review record before footer correction
+
 **Substantive static assessment accepted; full slice completion pending.** CDC
 independently accepts VEC-01–04 and Low039 at corrected author candidate
 98fca6cb344b7efc0c0efd28e1529fda5f947cf7. VEC-05 preservation/ownership checks
@@ -53,3 +60,21 @@ Refinements1/5used,4remaining;03 remains2/5used. Original coverage38accepted/
 All original graph/vector/MCP/SEARCH and final arc-composition gates remain open.
 This holds15full closure; it does not pause the overall arc or unrelated permitted
 source-quality work. [Retrospective](cdc-retrospective.md) records process lessons.
+
+
+## Current closure — 2026-11-22
+
+Duncan authorized editing the malformed commit message. Root's targeted rewrite
+is independently verified: six commits/count/trees/identities/dates preserved;
+only the target footer separator changed. All current mapped commits and receipt
+0943666 parse both co-authors. Current046a8707 corresponds to oldbf193, which
+remains malformed and reachable on the backup branch. This is a corrected current
+lineage, not an exception or retroactive compliance of the old object.
+[CDC verification](cdc-verification.md#current-closure-after-authorized-footer-correction--2026-11-22)
+records exact mapping/evidence; the receipt is in project05artifacts.
+
+All five VEC criteria and bounded slice15 are now independently accepted, with
+Low039 static and three questions. No source/runtime work, protected preparation
+validation, original owner/cell/SEARCH or whole-arc acceptance changes.
+Refinements1/5used,4remaining;03 remains2/5used. Future complete message files
+must pass parsed-footer checks before creation and on the actual commit object.

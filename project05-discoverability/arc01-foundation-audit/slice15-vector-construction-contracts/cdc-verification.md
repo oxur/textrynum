@@ -1,5 +1,12 @@
 # CDC verification — slice15 vector construction contracts
 
+Current status: all five VEC criteria independently accepted on the corrected
+current lineage after Operator-authorized footer editing; Low039 static, three
+contract questions. See current closure below. Prior pending statements are
+historical snapshots before that authorization and correction.
+
+## Historical review record before footer correction
+
 ## Independent verdict and boundary
 
 VEC-01–04 and Low039 independently accepted for this static construction/API
@@ -113,3 +120,35 @@ No Rust/product build/test/provider/model/service/SEARCH execution occurred.
 Refinements1/5used,4remaining;03 remains2/5used. Original coverage38/7 and all
 remaining arc gates unchanged. Only15full closure waits for attribution; the
 whole arc is active, without a user pause or automatic hold on independent work.
+
+
+## Current closure after authorized footer correction — 2026-11-22
+
+Duncan instructed “Let's just edit the commit message to fix it”. Root completed
+that targeted local message correction and returned clean planning09436660259f59eab9f598d07f6bd5959e78cf9f.
+CDC independently compared all six old/current commit objects: every tree,
+author/committer identity and date is byte-identical; parent mapping and total
+commit count are preserved. Only the target's blank line between co-authors was
+removed; every other message is exact. Both actual co-authors parse on all six
+current objects and the receipt commit. The receipt-only tip follows mapped
+readiness2f4bfc2f56638334b10dd90a491e16dac189cb17.
+
+The [mapping receipt](../../artifacts/2026.11.22-planning-footer-correction.json)
+records bf193ab9→046a8707,7133ede9→80bba35a,653a394d→ae644a65,
+98fca6cb→2afde027,cb6fbeba→1fa7923f,d32ec510→2f4bfc2f.
+Old bf193 still parses only Billo and remains reachable on
+codex/planning-before-footer-fix-20261122-d32ec51. Historical references above
+retain their original meaning. This is an actual authorized correction on the
+current lineage, not an exception or retroactive compliance of the old object.
+No push or source change occurred.
+
+VEC-05 is now independently satisfied on the corrected current lineage; VEC-01–05
+and this bounded static slice are accepted. Low039 remains the sole accepted
+source finding, with three ungraded provider/cache/cardinality questions.
+Preserved file trees retain both protected quartets/coverage and prior prefixes;
+no unfinished preparation became verified. Source/index719 remain clean.
+Original38accepted/31proposed/291pending owner coverage and49cells7accepted/
+7proposed/35pending, SEARCH and final arc composition remain unchanged.
+Refinements1/5used,4remaining;03 remains2/5used. Future commits require a complete
+owned message file with adjacent trailers parsed before commit and actual-object
+values checked afterward. No runtime, source repair, provider or service work.
