@@ -1,0 +1,7 @@
+# CDC retrospective — original05 static phase
+
+Source-complete review supplied useful architecture controls rather than equating every policy difference with a defect: health surfaces intentionally differ, registry ordering has a validator, legacy/current RMCP errors differ, and broader fallback was not proven wrong. Stable056 remains a question instead of disappearing or acquiring a severity from missing tests. Two supported current-contract findings remain054/055.
+
+Two recurring attribution-check mistakes added avoidable work: interpret-trailers takes a positional file, and actual-object output must be normalized to a set of stripped nonempty values. Both exact authors were present; a formatter blank line is not an attribution defect. The prompt already stated the normalized rule; future author handoffs should reuse its exact recipe rather than recreate stricter prose-shaped assertions. JSON serialization and log parsing failures were actual local authoring errors, preserved with corrected outcomes, not product failures. There was no extra refinement or source rerun.
+
+All19 semantic rows/seven scales were reviewed independently, but this static phase cannot satisfy original runtime/client/cell gates. The next finite original06 phase must include actual tool/consumer contracts and visual dispositions rather than turn this closure into whole-pass acceptance. Old interrupted preparations remain untouched/UNVERIFIED; no process or ownership ambiguity remains after explicit handback.

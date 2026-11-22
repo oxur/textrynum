@@ -1,6 +1,6 @@
 {
   "assessment": "ORIGINAL05 MCP runtime source-complete static phase",
-  "status": "CC-proposed source-complete static semantic phase; independent CDC review pending; original whole-slice/pass/behavioral gates pending",
+  "status": "CDC-accepted source-complete STATIC semantic phase only; original whole-slice/pass/behavioral/cell gates pending",
   "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
   "planning_readiness": "1fea18e3546fdc415226bd263e89edef124e05d2",
   "original_pass": "pass04",
@@ -76,7 +76,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Default feature set is empty; HTTP enables RMCP streamable HTTP and Axum. HTTP test dependencies are dev-only.",
-      "source_loci": "12–44",
+      "source_loci": "12\u201344",
       "contrary_checks": "Manifest scopes HTTP and test dependencies; it does not establish transport/client behavior.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -90,7 +90,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Builder composes ordered tool registries, metadata, services, and static resources; into_parts/build_with_registry provide a wrapper insertion seam.",
-      "source_loci": "32–180; tests 210–264",
+      "source_loci": "32\u2013180; tests 210\u2013264",
       "contrary_checks": "Tests assert constructed config and resource registration, not validation, duplicate resolution, or wire behavior.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -104,7 +104,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Wrapper enriches tool descriptions, injects a directory tool, and projects optional metadata. Guidance workflow becomes flat query strategy; task strategies serialize separately, so both strategy keys can coexist.",
-      "source_loci": "183–300; 311–553; tests 608–1473",
+      "source_loci": "183\u2013300; 311\u2013553; tests 608\u20131473",
       "contrary_checks": "Directory tests assert JSON fields/serialization, not agent choice or client usability; strategy precedence comment conflicts with actual additive projection.",
       "finding_question_refs": [
         "FA-RS-054",
@@ -121,7 +121,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Two conversion traits map core errors to RMCP errors; JSON maps to parse error in the simple converter but falls through to internal error in contextual conversion.",
-      "source_loci": "9–57; tests 63–141",
+      "source_loci": "9\u201357; tests 63\u2013141",
       "contrary_checks": "Tests inspect messages rather than the full mapping table; the distinction is limited to caller-selected conversion APIs.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -135,7 +135,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "ServerGuidance stores workflow, conventions, constraints, tool metadata, connectors, freshness, and subscription recommendations. Instructions render context/subscriptions/conventions/constraints; structured directory projection is supplied by DiscoverableRegistry.",
-      "source_loci": "23–159; tests 162–297",
+      "source_loci": "23\u2013159; tests 162\u2013297",
       "contrary_checks": "Builder tests check stored fields/rendered sections, not end-to-end client discovery.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -149,7 +149,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "HTTP route snapshots live ServiceHandle state per request; Ready/Stopped yields 200, all other states yield 503, and empty services yield 200.",
-      "source_loci": "61–112; tests 118–217",
+      "source_loci": "61\u2013112; tests 118\u2013217",
       "contrary_checks": "Tests assert route status/body for Ready, Starting, Stopped, Failed, and empty only; no deployment/monitoring semantics.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -163,7 +163,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Tool helpers construct schemas and successful JSON text results; non-object schema input becomes an empty map, while no-argument helper uses the explicit object schema.",
-      "source_loci": "13–81; tests 88–154",
+      "source_loci": "13\u201381; tests 88\u2013154",
       "contrary_checks": "Tests cover helper output shape; they do not prove complete JSON Schema or client acceptance.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -177,7 +177,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Facade exports registry/server/notifier/guidance/discovery/resources/health APIs; HTTP module, router, transport types, and Axum export are feature-gated.",
-      "source_loci": "47–110; 112–162",
+      "source_loci": "47\u2013110; 112\u2013162",
       "contrary_checks": "Source facade is mapped; no downstream compilation or published package claim is made.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -191,7 +191,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Clone-shared peer and URI-subscription vectors support legacy logging/resource notifications, targeted updates, no-subscription broadcast fallback, and list-change notification.",
-      "source_loci": "29–185; tests 187–255",
+      "source_loci": "29\u2013185; tests 187\u2013255",
       "contrary_checks": "Accepted FA-RS-040/041 remain the only roots for resend/prune and URI-wide unsubscribe composition; current tests mostly cover empty state, not peer delivery.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -205,7 +205,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Composite listing concatenates registries; dispatch tries registries in insertion order and returns the first Some result.",
-      "source_loci": "43–117; tests 123–265",
+      "source_loci": "43\u2013117; tests 123\u2013265",
       "contrary_checks": "Order is documented and duplicate validator exists in validate.rs; dispatch collision is a static control-flow conclusion, not an executed test result.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -219,7 +219,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "ResourceRegistry returns a resource list and optional boxed async read; the trait does not define subscription state or a concrete protocol lifecycle.",
-      "source_loci": "14–45; tests 47–101",
+      "source_loci": "14\u201345; tests 47\u2013101",
       "contrary_checks": "Tests cover object safety, one known URI, and unknown URI; no client semantics.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -233,7 +233,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "FTS resolves only when slot is ready, lockable, and populated; otherwise it returns the supplied simple backend. Backend name uses readiness only.",
-      "source_loci": "48–86; tests 92–119",
+      "source_loci": "48\u201386; tests 92\u2013119",
       "contrary_checks": "Tests cover no-slot/not-ready controls; no provider/backend operation was run.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -247,8 +247,8 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Server composes shared registry/notifier/resources; stdio waits for RMCP termination; feature-gated HTTP builds local-session service and health route; handlers delegate tools/resources and register legacy subscription callbacks.",
-      "source_loci": "75–290; 293–463; tests 469–1243",
-      "contrary_checks": "HTTP test source asserts legacy 2025 wire shape, read MIME, logging and Host rejection (960–1194); test code was read only. SDK 3.11 performs peer-version error remapping.",
+      "source_loci": "75\u2013290; 293\u2013463; tests 469\u20131243",
+      "contrary_checks": "HTTP test source asserts legacy 2025 wire shape, read MIME, logging and Host rejection (960\u20131194); test code was read only. SDK 3.11 performs peer-version error remapping.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
       "static_disposition": "source-complete row; scale and proof limits recorded in assessment"
@@ -261,7 +261,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Tool listing remains available while calls check current service state; Ready and Degraded delegate, other states become tool-error results, unknown names remain None.",
-      "source_loci": "22–79; tests 85–271",
+      "source_loci": "22\u201379; tests 85\u2013271",
       "contrary_checks": "Tests cover Starting, Ready, Degraded, multi-service and unknown-name cases; separate from HTTP and MCP health summaries.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -275,7 +275,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Listing advertises configured MIME. Read performs blocking read_to_string in async future, emits text contents, uses fallback on every I/O error, otherwise RESOURCE_NOT_FOUND.",
-      "source_loci": "13–110; tests 112–241",
+      "source_loci": "13\u2013110; tests 112\u2013241",
       "contrary_checks": "Tests deliberately show list MIME text/markdown while read MIME is text/plain and cover missing-file fallback; no read-error-class matrix.",
       "finding_question_refs": [
         "FA-RS-056"
@@ -291,7 +291,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "debug_config redacts only oauth.client_id/client_secret and documents caller preprocessing for custom redaction; service_status is a per-call state snapshot and overall Ready-only summary.",
-      "source_loci": "21–125; tests 132–254",
+      "source_loci": "21\u2013125; tests 132\u2013254",
       "contrary_checks": "Tests exercise the named OAuth keys and empty/Ready/Starting summaries; not a generic secret scanner or liveness endpoint.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -305,7 +305,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "HealthTools captures name/version/count/config at construction and queries optional BackendProbe values at call time; status remains \"healthy\" even when a reported backend ready flag is false.",
-      "source_loci": "20–200; tests 271–678",
+      "source_loci": "20\u2013200; tests 271\u2013678",
       "contrary_checks": "Tests assert probe readiness visibility and optional-field omission, not aggregate failure status; this is distinct from HTTP service health.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -319,7 +319,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Module exposes diagnostics and health implementations and their public types/functions.",
-      "source_loci": "6–13",
+      "source_loci": "6\u201313",
       "contrary_checks": "Export-only file; no independent behavior.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -333,7 +333,7 @@
       "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
       "intake": "complete bounded read at pinned source, including inline tests/feature-gated tests",
       "semantic_conclusion": "Validator checks name constraints, object schema shape, description presence, and duplicate names; warn/assert enforcement is opt-in at the call site.",
-      "source_loci": "21–240; tests 246–549",
+      "source_loci": "21\u2013240; tests 246\u2013549",
       "contrary_checks": "Tests cover named cases, including duplicate names; source does not invoke validation automatically during ServerBuilder/FabrykMcpServer construction or validate full JSON Schema semantics.",
       "finding_question_refs": [],
       "actual_behavioral_proof": "none; test source was inspected but no test/runtime execution occurred",
@@ -343,62 +343,62 @@
   "negative_checks": [
     {
       "check": "CompositeRegistry first-match dispatch and duplicate-name validator coexist; no automatic startup rejection claimed.",
-      "source": "registry.rs:104–117; validate.rs:175–197",
+      "source": "registry.rs:104\u2013117; validate.rs:175\u2013197",
       "status": "source-derived contrary control; not executed"
     },
     {
       "check": "Guidance workflow maps to flat query strategy; task strategy uses separate field and test says both can appear.",
-      "source": "discoverable.rs:204–225,389–429,502–508,1174–1203",
+      "source": "discoverable.rs:204\u2013225,389\u2013429,502\u2013508,1174\u20131203",
       "status": "source-derived contrary control; not executed"
     },
     {
       "check": "Service Ready/Degraded call gate differs from Ready/Stopped HTTP 200 policy and MCP health status.",
-      "source": "service_registry.rs:22–79; health_router.rs:80–112; tools/health.rs:147–199",
+      "source": "service_registry.rs:22\u201379; health_router.rs:80\u2013112; tools/health.rs:147\u2013199",
       "status": "source-derived contrary control; not executed"
     },
     {
       "check": "Locked RMCP maps RESOURCE_NOT_FOUND to INVALID_PARAMS only for the new peer version.",
-      "source": "rmcp-3.11.0/src/handler/server.rs:328–335",
+      "source": "rmcp-3.11.0/src/handler/server.rs:328\u2013335",
       "status": "source-derived contrary control; not executed"
     },
     {
       "check": "Listed MIME can differ from text-read MIME; existing source test asserts text/plain.",
-      "source": "static_resources.rs:72–109; server.rs:1079–1112",
+      "source": "static_resources.rs:72\u2013109; server.rs:1079\u20131112",
       "status": "source-derived contrary control; not executed"
     },
     {
       "check": "Custom diagnostic redaction is caller-owned; automatic fields are limited to oauth client_id/client_secret.",
-      "source": "tools/diagnostics.rs:26–30,85–100",
+      "source": "tools/diagnostics.rs:26\u201330,85\u2013100",
       "status": "source-derived contrary control; not executed"
     },
     {
       "check": "Empty optional directory sections are omitted; slim output alone is not a finding.",
-      "source": "discoverable.rs:406–479; tests 738–767,1244–1279",
+      "source": "discoverable.rs:406\u2013479; tests 738\u2013767,1244\u20131279",
       "status": "source-derived contrary control; not executed"
     },
     {
       "check": "Resource capabilities depend on registry presence, including an empty registry.",
-      "source": "server.rs:346–377,703–723",
+      "source": "server.rs:346\u2013377,703\u2013723",
       "status": "source-derived contrary control; not executed"
     },
     {
-      "check": "Fallback error branch covers all read errors, while docs/tests describe missing-file fallback only.",
-      "source": "static_resources.rs:30–35,91–106,176–211",
+      "check": "Fallback covers all read errors; docs promise missing-file fallback but do not prohibit other fallback, so056 remains an ungraded policy question.",
+      "source": "static_resources.rs:30\u201335,91\u2013106,176\u2013211",
       "status": "source-derived contrary control; not executed"
     },
     {
       "check": "ServerConfig and builder metadata defaults remain caller inputs; no unstated nonempty name/version rule is imposed.",
-      "source": "server.rs:33–52; builder.rs:46–58",
+      "source": "server.rs:33\u201352; builder.rs:46\u201358",
       "status": "source-derived contrary control; not executed"
     },
     {
-      "check": "Resource capability advertisement follows registry presence, including a configured empty registry.",
-      "source": "server.rs:346–377,703–723",
+      "check": "Unknown registry tool returns None; server explicitly converts unknown tool to an error result rather than inferring automatic exception parity.",
+      "source": "registry.rs:104\u2013117; server.rs:301\u2013313",
       "status": "source-derived contrary control; not executed"
     },
     {
       "check": "Backend status is a stored snapshot; the freshness finding is limited to the explicit dynamic documentation promise.",
-      "source": "discoverable.rs:166–181,272–276,495–500; docs/howtos/mcp-metadata.md:875–878",
+      "source": "discoverable.rs:166\u2013181,272\u2013276,495\u2013500; docs/howtos/mcp-metadata.md:875\u2013878",
       "status": "source-derived contrary control; not executed"
     }
   ],
@@ -415,7 +415,7 @@
     },
     {
       "scale": "logical unit",
-      "conclusion": "ServerBuilder → wrappers → FabrykMcpServer → RMCP handler and the distinct resource/health state paths are traced.",
+      "conclusion": "ServerBuilder \u2192 wrappers \u2192 FabrykMcpServer \u2192 RMCP handler and the distinct resource/health state paths are traced.",
       "missing_proof": "No independent integration client or running service; re-entry requires authorized bounded integration evidence."
     },
     {
@@ -431,7 +431,7 @@
     {
       "scale": "whole codebase",
       "conclusion": "Exactly original05 pass04 partition, 19 paths/6,741 lines; existing roots/questions remain deduplicated.",
-      "missing_proof": "Original06’s other31 paths, full owner/pass, cross-owner composition, aggregate denominators and cells remain pending."
+      "missing_proof": "Original06\u2019s other31 paths, full owner/pass, cross-owner composition, aggregate denominators and cells remain pending."
     },
     {
       "scale": "workspace/system",
@@ -440,20 +440,35 @@
     }
   ],
   "gate_state": {
-    "MR-S01": "CC proposes met; CDC review pending",
-    "MR-S02": "CC proposes met; CDC review pending",
-    "MR-S03": "CC proposes met; CDC review pending",
-    "MR-S04": "CC proposes met for static phase only; CDC review pending",
-    "MR-S05": "CC proposes met; three diagnoses proposed, questions retained; CDC review pending",
-    "MR-S06": "CC proposes met; actual behavior/full-slice proof explicitly pending",
-    "MR-S07": "pending commit-time verification"
+    "MR-S01": "CDC accepts for source-complete STATIC phase only; original behavioral/full-slice gates remain pending",
+    "MR-S02": "CDC accepts for source-complete STATIC phase only; original behavioral/full-slice gates remain pending",
+    "MR-S03": "CDC accepts for source-complete STATIC phase only; original behavioral/full-slice gates remain pending",
+    "MR-S04": "CDC accepts for source-complete STATIC phase only; original behavioral/full-slice gates remain pending",
+    "MR-S05": "CDC accepts for source-complete STATIC phase only; original behavioral/full-slice gates remain pending",
+    "MR-S06": "CDC accepts for source-complete STATIC phase only; original behavioral/full-slice gates remain pending",
+    "MR-S07": "CDC accepts for source-complete STATIC phase only; original behavioral/full-slice gates remain pending"
   },
   "original_pass_label": "original05 static only; no whole pass acceptance",
-  "current_findings_accepted_static": [],
-  "cc_proposed_findings": [
+  "current_findings_accepted_static": [
     "FA-RS-054",
-    "FA-RS-055",
+    "FA-RS-055"
+  ],
+  "cc_proposed_findings": [],
+  "cdc_review": "accepted bounded static phase;054 Low,055 Medium;056 ungraded because fallback promise not exclusive; no original owner/cell advancement",
+  "ungraded_questions": [
     "FA-RS-056"
   ],
-  "cdc_review": "pending; no independent acceptance implied"
+  "author_candidate_proposals": {
+    "commit": "aaed0256cf495274384c9ca9344d9f920c3de48b",
+    "ids": [
+      "FA-RS-054",
+      "FA-RS-055",
+      "FA-RS-056"
+    ],
+    "grades": [
+      "Low",
+      "Medium",
+      "Low"
+    ]
+  }
 }
