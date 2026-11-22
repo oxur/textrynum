@@ -6444,7 +6444,17 @@
           "legacy_wrapper_compatibility_layer": "not required"
         },
         "arrow_family": "58 retained as explicit latest LanceDB0.41 upstream compatibility constraint",
-        "entry_gate": "independently accepted actual green baseline CI before slice02 edits"
+        "entry_gate": "independently accepted actual green baseline CI before slice02 edits",
+        "english_corpus": {
+          "status": "explicitly_approved",
+          "choice": "Preserve ISO corpus in repo",
+          "requirements": [
+            "verified upstream license/provenance",
+            "remove unused direct dependency"
+          ],
+          "authority": "Actual Operator answer relayed by parent during iteration03",
+          "chronology": "Earlier preservation proceeded under existing ordinary engineering authority after correcting an inferred approval gate; this later answer is not retroactive approval/timeout evidence"
+        }
       },
       "source_candidate": "edc8db69a2ef45d49e1c369ad5cf489dc58d161b",
       "source_mutation_owner": "CC exact-Luna High session01a2006e-2618-7721-b361-1bd809d21d87, owned exec30498, exclusive until explicit return",
@@ -6500,7 +6510,7 @@
           "isolated_results": "all exit0",
           "acceptance": "reviewer inspected doer results, final candidate/affected reruns and CI still required",
           "snapshot": "pre-iteration02 corpus/bounded-filter corrections; valid historical witnesses, current final source replay pending",
-          "current_final_snapshot": "pending actual replay"
+          "current_final_snapshot": "genuine unified/default plus fabryk/full and fabryk-vector/vector-lancedb pass;7additional affected selections reserved for CDC final review;8unchanged prior witnesses retained"
         },
         "compatibility_stage": "full Redb JSON/pointers/hashes, all3 Tantivy records, full Lance old schema/rows/current rebuild,1298ISO product terms and connected logging executed; final pinned independent replays/close pending",
         "status_capture_review": {
@@ -6514,8 +6524,8 @@
         "prepared_correction_status": "iteration03 actually resumed same session in owned exec30498",
         "new_compatibility_review": {
           "metadata_filter": "bounded native row-ID scan/batching/MAX/zero and260match runtime controls passed; no all-N vector candidates/upfront caller-limit allocation; final review pending",
-          "english_stopwords": "parent/CDC engineering disposition under existing preserve-behavior authority: exact1298-word licensed private ISO corpus and unused direct dependency removal; prior inferred approval gate superseded, no new Operator answer; intentional198-word adoption held",
-          "release_tests": "original unwrapped ORT CoreML availability-helper link failed; authentic dynamic compiler-rt wrapper active full release suite, no outcome yet",
+          "english_stopwords": "explicit Operator preservation choice now received after ordinary-authority implementation; exact1298-term product oracle passed, notices/provenance and real package inclusion still reviewed",
+          "release_tests": "wrapped full suite genuine Cargo0,85summaries2440passed0failed61ignored; original unwrapped link and wrapped default-socket failures preserved, consumer config documentation pending",
           "provider": "actual4ignored Fastembed tests observed passing, tee-only gate status remains provisional"
         },
         "interruption": {
@@ -6540,7 +6550,16 @@
           "source_commit": "none; all edits/evidence preserved"
         },
         "current_retained_direct_packages": 63,
-        "current_explicit_version_sites": 72
+        "current_explicit_version_sites": 72,
+        "remaining_affected_feature_checks": [
+          "fabryk/fts-tantivy",
+          "fabryk/vector-lancedb",
+          "fabryk-fts/fts-tantivy",
+          "fabryk-mcp/http",
+          "fabryk-mcp/fts-tantivy",
+          "fabryk-mcp-core/http",
+          "fabryk-mcp-fts/fts-tantivy"
+        ]
       }
     },
     "audit_intake_observations": [
