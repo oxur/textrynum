@@ -6676,6 +6676,15 @@
       "source_branch": "codex/foundation-audit",
       "audit_results_home": "project05-discoverability/artifacts/",
       "hosted_purge": "open and nonblocking"
+    },
+    "ci_efficiency_arc": {
+      "date": "2026-11-22",
+      "path": "project05-discoverability/arc05-ci-efficiency/arc-plan.md",
+      "status": "planned; no implementation or CI dispatch",
+      "authority": "Operator explicitly requested analysis, brainstorming and a series of CI improvements during active foundation audit",
+      "sequence": "accepted audit inputs and specific repair prerequisites; option to pull first measured bounded improvement before bulk repairs; arc04 consumes final accepted CI arrangement",
+      "preserve": "all original applicable correctness, freshness, feature, MSRV, platform and packaging gates",
+      "active_endpoint": "complete accepted arc01 diagnosis and actionable repair handoff"
     }
   },
   "history_rewrite": {

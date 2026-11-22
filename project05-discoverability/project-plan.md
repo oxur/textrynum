@@ -8,7 +8,7 @@ related: ["project06-pipeline", "project07-live-ingest", "project08-reasoning", 
 
 # Discoverability and a dependable 0.5.0 MCP foundation
 
-## Current state — version1.9, 2026-11-21
+## Current state — version1.10, 2026-11-22
 
 Duncan explicitly requested fast-forwarding `codex/ci-dependencies` into
 `release/0.5.x`, pushing it to all remotes, then starting the foundation audit in
@@ -43,6 +43,14 @@ records ownership and review gates. Hosted purge remains open/nonblocking;
 arc02 repairs, features, project06/07, project08 and release publication remain
 outside this authorization. Project rows09/10 remain done; all other rows remain
 subject to their own evidence and gates.
+
+Duncan additionally requested a dedicated CI-efficiency arc during the active
+audit. [Arc05](arc05-ci-efficiency/arc-plan.md) is now planned, with actual timing
+and cache analysis, evidence-based alternatives, bounded implementation readiness
+and real-CI comparison. Arc01 remains the authorized execution endpoint. A first
+measured improvement may be pulled forward after audit acceptance if its specific
+repair dependencies permit, so bulk repairs can benefit; exact priority remains
+undecided and CI implementation is not dispatched by this planning addition.
 
 ## Outcome and boundaries
 
@@ -103,6 +111,7 @@ decision, not an action authorized by this continuation.
 | 02 — Foundation repair and consolidation | Audited defects repaired at their root, shared policies centralized, real behavior and integration demonstrated | Requires accepted audit; slices are created from actual findings, not invented in advance |
 | 03 — ChatGPT UX and reusable server readiness | Natural ChatGPT workflows, efficient discovery and payloads, consistent thin-server assembly, backend lifecycle and remaining existing extraction obligations | Blocked until audit and repair gates pass; detailed scope will be reconciled then |
 | 04 — 0.5.0 release validation | Usable packaged crates, demonstrated downstream migration/new-server construction and real ChatGPT task acceptance | Requires accepted foundation and server-readiness composition; Operator release approval remains explicit |
+| 05 — [CI efficiency](arc05-ci-efficiency/arc-plan.md) | Measured shorter CI feedback/runtime with unchanged applicable correctness, feature, MSRV, platform, packaging and freshness gates | Planned; accepted audit inputs and specific repair prerequisites; optional first bounded improvement before bulk repairs if suitable; arc04 consumes accepted final CI arrangement |
 
 The deferred vector-search improvements belong here tentatively. After the audit,
 choose an explicit disposition for hosted embedding providers, long-document
@@ -264,3 +273,5 @@ home in `project05-discoverability/artifacts/`.
 - 2026-11-21 v1.8 — Duncan authorized release/0.5.x FF/all-remotes push and complete arc01 Autonomous audit with unchanged selected models. Integrated719 is pinned; diagnosis, independent review and repair handoff are authorized, repairs and publication are not.
 
 - 2026-11-21 v1.9 — Recorded successful push-triggered release-ref CI44986949945 as additional exact719 integration evidence while arc01 proceeds; all audit/repair/publication boundaries unchanged.
+
+- 2026-11-22 v1.10 — Added requested arc05 CI analysis/brainstorming/bounded implementation roadmap with actual descriptive run timing and cache leads. Audit remains active; no CI edit/trial dispatch or numeric target invented. Optional post-audit early improvement is explicit.
