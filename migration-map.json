@@ -6424,7 +6424,7 @@
       ]
     },
     "arc00_execution": {
-      "status": "slice02 same-session receipt acknowledged; required intake/source mapping active before baseline fixtures",
+      "status": "slice02 upgraded working tree: actual1.94 unified/default and all17 isolated checks green; persistence/runtime proofs in progress, not accepted",
       "source_branch": "codex/ci-dependencies",
       "source_baseline": "92c72d7058dea91c0d475959e8c5b51b65f577ab",
       "source_checkout": "/Users/oubiwann/lab/oxur/textrynum",
@@ -6491,7 +6491,16 @@
         "owned_exec_session": 3060,
         "initial_exec_session": 8373,
         "initial_disposition": "returned before edits; actual model/effort verified; concrete metadata filename now supplied",
-        "configuration_receipt": "Coordinator-applied and independently verified Operator selection is authoritative; CC acknowledged and cross-checked; generic identity/introspection absence is not mismatch evidence"
+        "configuration_receipt": "Coordinator-applied and independently verified Operator selection is authoritative; CC acknowledged and cross-checked; generic identity/introspection absence is not mismatch evidence",
+        "working_tree_msrv_checks": {
+          "toolchain": "1.94.0",
+          "workspace_all_features_all_targets": "exit0",
+          "workspace_default_all_targets": "exit0",
+          "isolated_feature_selections": 17,
+          "isolated_results": "all exit0",
+          "acceptance": "reviewer inspected doer results, final candidate/affected reruns and CI still required"
+        },
+        "compatibility_stage": "actual old fixtures preserved; new Redb representative read executed, whole-state comparison still required; Lance new reader compiling; other runtime/legacy proofs pending"
       }
     },
     "audit_intake_observations": [
