@@ -244,3 +244,17 @@ population compatibility, no forced shared abstraction. No repair now. See17
 CDCverification/retro. Exec10096completed0 and returned index; CDC owns next scope.
 17budget0/5; original38/31/291 and49cells7/7/35, SEARCH/fullpasses/finalcomposition
 unchanged. Arc remains active; no feature work or criteria waiver.
+
+
+## Slice18 current resource-scheduling scope — 2026-11-22
+
+After17closurefcb57c9, bounded existing-ECL declaration/planner/runner contract
+assessment recorded before author work. Primary795full lines plus complete
+companion enforcement units; CDC own source extents in18plan. Establish current
+valid supportedpromise, exactname/derivededges/validation and downstreamlimits,
+retain ResourceGraph futuremilestonecomment and held/cancelledscope as contrary
+controls. Manualvalidresourcecases only; no actualoverlap/execution/feature repair.
+Clarification/rejection/disposition remains a possible future owner outcome, not
+an instruction to implement held06scheduler features. Same retainedmodels/session,
+18initial0/5; fiveCCoutputs/index only atdispatch, terminology/privacy/footers and
+byte-onlypreservation contracts propagated. Originalcoverage/SEARCH/fullarc open.
