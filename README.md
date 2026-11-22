@@ -184,3 +184,12 @@ bounded active implementation scope, using source branch `codex/ci-dependencies`
 at `92c72d7`, source checkout `/Users/oubiwann/lab/oxur/textrynum`, and the separate
 planning worktree. CDC 6.1 Sol High coordinates/reviews CC 6 Luna High. Hosted purge
 stays open and nonblocking. The full audit and project06/07 features are unopened.
+
+## Current foundation audit handoff — 2026-11-21
+
+Duncan authorized integration of accepted arc00 and then full arc01 audit in
+Autonomous Mode using unchanged CDC6.1SolHigh/CC6LunaHigh. Release/0.5.x is now
+fast-forwarded to719c58f and normally pushed/read back at all three remotes.
+The current project/arc summaries supersede older “unmerged/audit unopened”
+status prose above. Full audit is active, diagnosis-only; audit results belong
+in project05/artifacts. Repairs, features and release publication remain held.

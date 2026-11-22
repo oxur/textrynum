@@ -1,6 +1,6 @@
 # Full workspace and architecture audit
 
-Status: planned, not executed. Project05's remaining feature work is held until
+Status: active, explicitly authorized 2026-11-21. Audit results and acceptance are not yet claimed. Project05's remaining feature work is held until
 this audit and the subsequent repair/composition gate are complete.
 
 ## Consumer, purpose and stop condition
@@ -171,3 +171,60 @@ obligations forward. All audit results remain in project05/artifacts.
 [Dependency-planning audit intake](../artifacts/dependency-planning-audit-intake.md) preserves a pinned SFTP server-key observation from arc00's routine source inspection. It is source evidence for the later Existing ECL/trust-boundary passes, not a commissioned, severity-graded or accepted finding and not completed audit coverage. Revalidate against the accepted post-upgrade baseline. The audit remains planned and unexecuted; no security redesign is authorized by this link.
 
 - 2026-11-21 v1.1 — Linked the explicitly requested incidental prerequisite observation in the Operator-mandated project artifacts home; no audit execution or acceptance claimed.
+
+## Current authorization and preflight
+
+Duncan's current request is: “let's fast-forward codex/ci-dependencies into
+release/0.5.x, push it to all remotes, and then start the foundation audit in
+Autonomous Mode with the same CDC/CC models.” The integration/push is fulfilled:
+release719 was normally/atomically pushed to github, codeberg and macpro and all
+three advertised tips read back exactly719. No main/tag/publication effect.
+Arc00 is independently accepted. Current immutable audit source is
+`719c58f245fe4a9115c7c0391d3e268c99157e2f`; initial planning is
+`10e1253b205ec73eeedc48a98ddd6af1341bc1ba`. The existing accepted CI/native
+proof applies to unchanged source; new branch CI44986949945 is additional.
+
+The default endpoint is this entire audit arc, including named coverage passes,
+all seven review scales, findings, independent review, synthesis, actionable
+repair handoff and closing retrospectives. Do not open arc02 or implement repairs.
+All audit results, inventories, evidence and reproducers go directly in
+`project05-discoverability/artifacts/`; canonical planning/prompt/close/review/
+retrospective files remain in the owning slice root. Actual America/Chicago
+execution dates determine output prefixes.
+
+| Responsibility | Selected configuration and actual context | Ownership / gate |
+| --- | --- | --- |
+| CDC, planning, independent slice review | gpt-6.1-sol High, Codex/OpenAI, `/root/foundation_audit_cdc` | Owns planning/index and source branch operations until explicit CC handoff; no product edits |
+| CC, audit author | exact gpt-6-luna High, local Codex CLI | Session receipt checked on dispatch; normal workspace-write/reviewed approvals; no substitution or bypass |
+| Final arc composition | fresh gpt-6.1-sol High context, requested through coordinator at readiness | Independent of CC and assembling CDC; acceptance remains pending until real review |
+
+Physical source `/Users/oubiwann/lab/oxur/textrynum` was clean at719 on
+`codex/ci-dependencies`; release checkout is separately clean at719.
+Reuse the existing source checkout on dedicated `codex/foundation-audit`;
+branch selection is the only authorized source-tree mutation. Product files,
+source index and build/native outputs are otherwise protected. Planning physical
+root is `/Users/oubiwann/lab/oxur/textrynum/.worktrees/planning`, clean initially.
+One mutation owner at a time: CDC owns both until named CC handoff, then CDC
+reviews read-only until return. No duplicate Cargo/native work. Preserve unknown
+outputs; scoped isolated reproducers need explicit output ownership.
+
+Required contracts: current AGENTS/project/arc/ledgers, collaboration-framework,
+project-management wayfinder and operation guides, complete code-auditing set,
+work-verification, prompt-authoring/intake and AUM contract, agent-coordination,
+testing and methodology-stewardship; full Rust language guides beginning with
+anti-patterns before semantic auditing, plus detected other-language/tool
+coverage. Historical reports remain leads only. Configuration receipts prove
+requested settings, not hidden backend identity. Default five refinements per
+slice, unchanged by staffing; no volunteered global budget or separate budget
+questionnaire is imposed.
+
+Hosted purge stays open/nonblocking; no external messages, provider requests,
+repository deletion/recreation, features, service deployment, publication or
+outside-repository coding. All customer examples use Acme Inc. Current ECL is
+fully audited while project06 development remains held. Real ChatGPT UX evidence
+and agreed trial thresholds remain later release obligations; no local audit
+claim substitutes for actual client trials.
+
+- 2026-11-21 v1.2 — Activated the user-authorized full arc01 after accepted arc00
+  and verified integrated/published719. Recorded exact roles, single ownership,
+  endpoint and explicit diagnosis/results-home constraints before audit execution.

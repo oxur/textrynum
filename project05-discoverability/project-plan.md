@@ -1,6 +1,6 @@
 ---
 project: project05-discoverability
-status: planning
+status: active
 depends-on: []
 blocks: []
 related: ["project06-pipeline", "project07-live-ingest", "project08-reasoning", "ai-engineering"]
@@ -8,15 +8,35 @@ related: ["project06-pipeline", "project07-live-ingest", "project08-reasoning", 
 
 # Discoverability and a dependable 0.5.0 MCP foundation
 
-## Current state — version1.7, 2026-11-21
+## Current state — version1.8, 2026-11-21
 
-Arc00 is **independently accepted**: genuine green baselineedc8db69/run44957414892 preceded the latest-dependency sweep; finalsource23572bf/719c58f passes complete CI44982217154 (debug/release each2440passed/0failed/61existingignored, plus actualRust1.94MSRV), meaningful independent runtime/data/package checks and the fresh selectedSol6.1High composition gate. See [arc close](arc00-ci-dependencies/closing-report.md), [independent verdict](arc00-ci-dependencies/cdc-verification.md) and [arc retrospective](arc00-ci-dependencies/cdc-retrospective.md). Projectrows09/10done; the project itself remains open. This current summary supersedes older pending dispatch/run/choice prose below, which remains history.
+Duncan explicitly requested fast-forwarding `codex/ci-dependencies` into
+`release/0.5.x`, pushing it to all remotes, then starting the foundation audit in
+Autonomous Mode with the same CDC/CC models. The fast-forward and normal atomic
+pushes of only `release/0.5.x` to github, codeberg and macpro succeeded; all three
+remote tips were read back at `719c58f245fe4a9115c7c0391d3e268c99157e2f`.
+No merge commit, force push, main update, tag or publication occurred.
 
-All63retained direct selections are current stable with two coupled exceptions: arrow-array/arrow-schema58.4.2 for latestLanceDB0.41, versus overallArrow60.2.0. Upstream ORT/ssh-key prerelease pins are documented, not hidden as globallylatest transitives. ApprovedRust1.94/currentRMCP Resource/ContentBlock migration and exactlicensedISO1298 preservation are implemented with downstream notes. Default-unwrappedMacrelease linking still fails on ORT's availability helper; authentic dynamically discovered Clang-runtime configured builds/freshlinks/actualCPU inference pass. The README flag command was not run verbatim; no out-of-boxMac/allplatform claim. Package--no-verify evidence is actualarchive content, separate from workspace compilation.
+Arc00 remains independently accepted; its complete CI44982217154, runtime,
+feature, package and compatibility evidence remains applicable to unchanged719.
+The push-triggered branch CI44986949945 is additional evidence, not a replacement
+prerequisite or a reason to repeat passing native gates. See the retained
+[arc00 close](arc00-ci-dependencies/closing-report.md),
+[independent acceptance](arc00-ci-dependencies/cdc-verification.md) and
+[retrospective](arc00-ci-dependencies/cdc-retrospective.md).
 
-The accepted source is clean on pushed, **unmerged codex/ci-dependencies at719c58f**. Published release/0.5.x remains92c72d7; the earlier requested migration FF/all15release-ref pushes were already fulfilled. No main/release update, PR, tag/package publication or deployment is authorized/performed by arc00. Hostedpurge remains open/nonblocking. Fullaudit/repairs remain next and unopened; project06/07features stayheld and08deferred. Stop at this prerequisite endpoint unless Duncan authorizes the next bounded work.
-
-Actual selected contributors: CDC /root/ci_dependency_cdc gpt-6.1-sol High; sourceCC gpt-6-luna High session01a2006e-2618-7721-b361-1bd809d21d87 (baseline session01a2000f-9f2d-7660-97b4-f54373f19a94); fresh arc verifier /root/arc_composition_review gpt-6.1-sol High. Requested configuration receipts were checked; hidden backend identity is unreported. No silent substitution occurred.
+Arc01 is now authorized and active through the complete full-workspace,
+diagnosis-only audit, independent composition acceptance and actionable repair
+handoff. CDC `/root/foundation_audit_cdc` uses explicitly selected `gpt-6.1-sol`
+High on Codex/OpenAI; CC uses exact `gpt-6-luna` High through local Codex CLI.
+No substitution is authorized. The task source branch will be
+`codex/foundation-audit` at719, using the clean existing source checkout; source
+bytes remain read-only. Planning stays on the separate orphan branch. The
+[arc preflight](arc01-foundation-audit/arc-plan.md#current-authorization-and-preflight)
+records ownership and review gates. Hosted purge remains open/nonblocking;
+arc02 repairs, features, project06/07, project08 and release publication remain
+outside this authorization. Project rows09/10 remain done; all other rows remain
+subject to their own evidence and gates.
 
 ## Outcome and boundaries
 
@@ -72,8 +92,8 @@ decision, not an action authorized by this continuation.
 
 | Arc | Useful result | Dependencies / status |
 | --- | --- | --- |
-| 00 — CI and dependencies | Fresh green CI, latest external dependencies and green checks again | Accepted at719c58f; unmerged task branch, complete CI/fresh review; hosted purge open/nonblocking |
-| 01 — Foundation audit | Complete, severity-graded, evidence-based workspace and architecture findings with an implementation handoff | Detailed plan exists; execution has not started |
+| 00 — CI and dependencies | Fresh green CI, latest external dependencies and green checks again | Accepted at719c58f; fast-forwarded and published on release/0.5.x to all three remotes; hosted purge open/nonblocking |
+| 01 — Foundation audit | Complete, severity-graded, evidence-based workspace and architecture findings with an implementation handoff | Active, explicitly authorized in Autonomous Mode at integrated719; diagnosis only |
 | 02 — Foundation repair and consolidation | Audited defects repaired at their root, shared policies centralized, real behavior and integration demonstrated | Requires accepted audit; slices are created from actual findings, not invented in advance |
 | 03 — ChatGPT UX and reusable server readiness | Natural ChatGPT workflows, efficient discovery and payloads, consistent thin-server assembly, backend lifecycle and remaining existing extraction obligations | Blocked until audit and repair gates pass; detailed scope will be reconciled then |
 | 04 — 0.5.0 release validation | Usable packaged crates, demonstrated downstream migration/new-server construction and real ChatGPT task acceptance | Requires accepted foundation and server-readiness composition; Operator release approval remains explicit |
@@ -234,3 +254,5 @@ home in `project05-discoverability/artifacts/`.
 
 
 - 2026-11-21 v1.7 — accepted arc00 bubbles up projectrows09/10 with exact source/CI/fresh-review evidence, current compatibility/native/package limits and actual role assignments. This adds a clear current-state summary superseding old pending prose; no new arc/slice/scope or automatic audit/feature/release authority. Remaining roadmap/order and open hostedpurge are unchanged.
+
+- 2026-11-21 v1.8 — Duncan authorized release/0.5.x FF/all-remotes push and complete arc01 Autonomous audit with unchanged selected models. Integrated719 is pinned; diagnosis, independent review and repair handoff are authorized, repairs and publication are not.

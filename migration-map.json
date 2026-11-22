@@ -6665,7 +6665,18 @@
           "resource subscription pruning branch performs a second actual update send"
         ]
       }
-    ]
+    ],
+    "foundation_audit_authorization": {
+      "date": "2026-11-21",
+      "source_revision": "719c58f245fe4a9115c7c0391d3e268c99157e2f",
+      "release_0_5_x": "fast-forwarded; normal atomic push and exact readback on github, codeberg, macpro",
+      "scope": "complete arc01 diagnosis-only audit, independent acceptance and actionable repair handoff; no arc02 execution",
+      "CDC": "gpt-6.1-sol High, Codex/OpenAI /root/foundation_audit_cdc",
+      "CC": "gpt-6-luna High, local Codex CLI; exact receipt at dispatch",
+      "source_branch": "codex/foundation-audit",
+      "audit_results_home": "project05-discoverability/artifacts/",
+      "hosted_purge": "open and nonblocking"
+    }
   },
   "history_rewrite": {
     "date": "2026-11-21",
