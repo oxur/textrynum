@@ -1,7 +1,7 @@
 # Vector construction API and embedding identity contracts
 
-Status: author candidate7133ede9 under independent review; correction iteration01
-issued after concrete source/provenance defects. Same selected
+Status: corrected candidate98fca6cb substantively accepted (VEC-01–04/Low039);
+VEC-05 attribution UNMET/EXCEPTION-PENDING, full slice completion held. Same selected
 retained LunaHigh author and Sol6.1High independent CDC; 1/5 refinements used,4remaining.
 Original full graph/vector and SEARCH gates remain open. No runtime/provider,
 fixture or model operation is assigned; source719 and source index read-only.
@@ -43,3 +43,9 @@ precondition language. bf193 has both co-author strings but only Billo parses;
 component unmet/exception-pending for Operator; no criteria waiver or rewrite.
 Preserved correction01 defines same five outputs/static authority and exact
 message-file/parsed-trailer recipe. No runtime or product work commissioned.
+
+Independent disposition2026-11-22: source/precondition/provenance corrections
+supported; Low039 accepted statically, provider/cache/cardinality remain three
+questions. VEC-05 preservation verified but attribution not met. Operator-only
+disposition remains pending; no whole-slice/pass/arc acceptance or pause.
+See CDC verification/retro.1/5 refinements used.

@@ -785,3 +785,26 @@ object checked afterward. Root will surface any Operator-only disposition after
 concrete record corrections/independent review. Original arc/SEARCH gates remain.
 
 - 2026-11-22 v1.21 — Issued15correction01 and preserved attribution defect explicitly.
+
+## Vector substantive review and pending attribution — v1.22
+
+Corrected15candidate98fca6cb independently supports VEC-01–04 and Low039 (an
+undocumented public nonzero-batch precondition). Three provider/cache/cardinality
+contracts remain ungraded questions. No Rust/runtime proof, automatic config
+wiring or selected API repair. Actual source locators and preservation provenance
+are corrected; both original author and unfinished CDC artifact sets unchanged.
+
+VEC-05 preservation is verified, but attribution remains UNMET/EXCEPTION-PENDING:
+bf193 has both text lines, only Billo parses;7133/98 parse both and do not repair
+it. No Operator disposition or rewrite authorized. Root will ask about the exact
+one-commit exception using final CDCverification/close evidence; full15closure
+stays held. This does not pause independent quality work or the overall arc.
+
+CC15598completed0, no mutable child/native process. CDC retains planning/index
+for next genuinely independent static scope; root stays read-only there pending
+coordinated handoff. Same selected models;15budget1/5used,03 remains2/5used.
+Accepted source diagnoses001–010/034–036/038–039;037question and011–033 unchanged.
+Original owner coverage38/31/291 and49cells7/7/35 remain, all original remaining
+passes/SEARCH and final arc composition open. No repair/feature work begun.
+
+- 2026-11-22 v1.22 — Accepted15source portion; exact attribution criterion stays unmet.
